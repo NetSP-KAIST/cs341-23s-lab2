@@ -1,0 +1,97 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/libaom/source/config -I../../third_party/libaom/source/config/linux/x64 -I../../third_party/libaom/source/libaom
+cflags = -msse2 -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libaom_intrinsics_sse2
+target_out_dir = obj/third_party/libaom
+target_output_name = libaom_intrinsics_sse2
+
+build obj/third_party/libaom/libaom_intrinsics_sse2/cdef_block_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/cdef_block_sse2.c
+  source_file_part = cdef_block_sse2.c
+  source_name_part = cdef_block_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/cfl_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/cfl_sse2.c
+  source_file_part = cfl_sse2.c
+  source_name_part = cfl_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/convolve_2d_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/convolve_2d_sse2.c
+  source_file_part = convolve_2d_sse2.c
+  source_name_part = convolve_2d_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/convolve_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/convolve_sse2.c
+  source_file_part = convolve_sse2.c
+  source_name_part = convolve_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/jnt_convolve_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/jnt_convolve_sse2.c
+  source_file_part = jnt_convolve_sse2.c
+  source_name_part = jnt_convolve_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/warp_plane_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/warp_plane_sse2.c
+  source_file_part = warp_plane_sse2.c
+  source_name_part = warp_plane_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/wiener_convolve_sse2.o: cc ../../third_party/libaom/source/libaom/av1/common/x86/wiener_convolve_sse2.c
+  source_file_part = wiener_convolve_sse2.c
+  source_name_part = wiener_convolve_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/aom_convolve_copy_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/aom_convolve_copy_sse2.c
+  source_file_part = aom_convolve_copy_sse2.c
+  source_name_part = aom_convolve_copy_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/aom_subpixel_8t_intrin_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/aom_subpixel_8t_intrin_sse2.c
+  source_file_part = aom_subpixel_8t_intrin_sse2.c
+  source_name_part = aom_subpixel_8t_intrin_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/aom_asm_stubs.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/aom_asm_stubs.c
+  source_file_part = aom_asm_stubs.c
+  source_name_part = aom_asm_stubs
+build obj/third_party/libaom/libaom_intrinsics_sse2/fft_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/fft_sse2.c
+  source_file_part = fft_sse2.c
+  source_name_part = fft_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/highbd_intrapred_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/highbd_intrapred_sse2.c
+  source_file_part = highbd_intrapred_sse2.c
+  source_name_part = highbd_intrapred_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/intrapred_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/intrapred_sse2.c
+  source_file_part = intrapred_sse2.c
+  source_name_part = intrapred_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/loopfilter_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/loopfilter_sse2.c
+  source_file_part = loopfilter_sse2.c
+  source_name_part = loopfilter_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/av1_fwd_txfm_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/av1_fwd_txfm_sse2.c
+  source_file_part = av1_fwd_txfm_sse2.c
+  source_name_part = av1_fwd_txfm_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/av1_k_means_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/av1_k_means_sse2.c
+  source_file_part = av1_k_means_sse2.c
+  source_name_part = av1_k_means_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/av1_quantize_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/av1_quantize_sse2.c
+  source_file_part = av1_quantize_sse2.c
+  source_name_part = av1_quantize_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/encodetxb_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/encodetxb_sse2.c
+  source_file_part = encodetxb_sse2.c
+  source_name_part = encodetxb_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/error_intrin_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/error_intrin_sse2.c
+  source_file_part = error_intrin_sse2.c
+  source_name_part = error_intrin_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/reconinter_enc_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/reconinter_enc_sse2.c
+  source_file_part = reconinter_enc_sse2.c
+  source_name_part = reconinter_enc_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/temporal_filter_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/temporal_filter_sse2.c
+  source_file_part = temporal_filter_sse2.c
+  source_name_part = temporal_filter_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/wedge_utils_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/wedge_utils_sse2.c
+  source_file_part = wedge_utils_sse2.c
+  source_name_part = wedge_utils_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/av1_temporal_denoiser_sse2.o: cc ../../third_party/libaom/source/libaom/av1/encoder/x86/av1_temporal_denoiser_sse2.c
+  source_file_part = av1_temporal_denoiser_sse2.c
+  source_name_part = av1_temporal_denoiser_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/avg_intrin_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/avg_intrin_sse2.c
+  source_file_part = avg_intrin_sse2.c
+  source_name_part = avg_intrin_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/fwd_txfm_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/fwd_txfm_sse2.c
+  source_file_part = fwd_txfm_sse2.c
+  source_name_part = fwd_txfm_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/quantize_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/quantize_sse2.c
+  source_file_part = quantize_sse2.c
+  source_name_part = quantize_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/blk_sse_sum_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/blk_sse_sum_sse2.c
+  source_file_part = blk_sse_sum_sse2.c
+  source_name_part = blk_sse_sum_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/sum_squares_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/sum_squares_sse2.c
+  source_file_part = sum_squares_sse2.c
+  source_name_part = sum_squares_sse2
+build obj/third_party/libaom/libaom_intrinsics_sse2/variance_sse2.o: cc ../../third_party/libaom/source/libaom/aom_dsp/x86/variance_sse2.c
+  source_file_part = variance_sse2.c
+  source_name_part = variance_sse2
+
+build obj/third_party/libaom/libaom_intrinsics_sse2.stamp: stamp obj/third_party/libaom/libaom_intrinsics_sse2/cdef_block_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/cfl_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/convolve_2d_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/convolve_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/jnt_convolve_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/warp_plane_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/wiener_convolve_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/aom_convolve_copy_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/aom_subpixel_8t_intrin_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/aom_asm_stubs.o obj/third_party/libaom/libaom_intrinsics_sse2/fft_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/highbd_intrapred_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/intrapred_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/loopfilter_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/av1_fwd_txfm_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/av1_k_means_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/av1_quantize_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/encodetxb_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/error_intrin_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/reconinter_enc_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/temporal_filter_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/wedge_utils_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/av1_temporal_denoiser_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/avg_intrin_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/fwd_txfm_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/quantize_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/blk_sse_sum_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/sum_squares_sse2.o obj/third_party/libaom/libaom_intrinsics_sse2/variance_sse2.o

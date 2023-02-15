@@ -1,0 +1,44 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDAWN_ENABLE_ASSERTS -DDAWN_ENABLE_BACKEND_NULL -DDAWN_ENABLE_BACKEND_OPENGL -DDAWN_ENABLE_BACKEND_DESKTOP_GL -DDAWN_ENABLE_BACKEND_OPENGLES -DDAWN_ENABLE_BACKEND_VULKAN -DDAWN_USE_X11 -DDAWN_ENABLE_ERROR_INJECTION -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/dawn/src -I../../third_party/dawn/src -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-shadow
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = common
+target_out_dir = obj/third_party/dawn/src/dawn/common
+target_output_name = libcommon
+
+build obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp: stamp obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp obj/third_party/dawn/include/dawn/headers_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp
+build obj/third_party/dawn/src/dawn/common/common/Assert.o: cxx ../../third_party/dawn/src/dawn/common/Assert.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = Assert.cpp
+  source_name_part = Assert
+build obj/third_party/dawn/src/dawn/common/common/DynamicLib.o: cxx ../../third_party/dawn/src/dawn/common/DynamicLib.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = DynamicLib.cpp
+  source_name_part = DynamicLib
+build obj/third_party/dawn/src/dawn/common/common/GPUInfo.o: cxx ../../third_party/dawn/src/dawn/common/GPUInfo.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = GPUInfo.cpp
+  source_name_part = GPUInfo
+build obj/third_party/dawn/src/dawn/common/common/Log.o: cxx ../../third_party/dawn/src/dawn/common/Log.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = Log.cpp
+  source_name_part = Log
+build obj/third_party/dawn/src/dawn/common/common/Math.o: cxx ../../third_party/dawn/src/dawn/common/Math.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = Math.cpp
+  source_name_part = Math
+build obj/third_party/dawn/src/dawn/common/common/RefCounted.o: cxx ../../third_party/dawn/src/dawn/common/RefCounted.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = RefCounted.cpp
+  source_name_part = RefCounted
+build obj/third_party/dawn/src/dawn/common/common/Result.o: cxx ../../third_party/dawn/src/dawn/common/Result.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = Result.cpp
+  source_name_part = Result
+build obj/third_party/dawn/src/dawn/common/common/SlabAllocator.o: cxx ../../third_party/dawn/src/dawn/common/SlabAllocator.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = SlabAllocator.cpp
+  source_name_part = SlabAllocator
+build obj/third_party/dawn/src/dawn/common/common/SystemUtils.o: cxx ../../third_party/dawn/src/dawn/common/SystemUtils.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = SystemUtils.cpp
+  source_name_part = SystemUtils
+build obj/third_party/dawn/src/dawn/common/common/GPUInfo_autogen.o: cxx gen/third_party/dawn/src/dawn/common/GPUInfo_autogen.cpp || obj/third_party/dawn/src/dawn/common/common.inputdeps.stamp
+  source_file_part = GPUInfo_autogen.cpp
+  source_name_part = GPUInfo_autogen
+
+build obj/third_party/dawn/src/dawn/common/libcommon.a: alink obj/third_party/dawn/src/dawn/common/common/Assert.o obj/third_party/dawn/src/dawn/common/common/DynamicLib.o obj/third_party/dawn/src/dawn/common/common/GPUInfo.o obj/third_party/dawn/src/dawn/common/common/Log.o obj/third_party/dawn/src/dawn/common/common/Math.o obj/third_party/dawn/src/dawn/common/common/RefCounted.o obj/third_party/dawn/src/dawn/common/common/Result.o obj/third_party/dawn/src/dawn/common/common/SlabAllocator.o obj/third_party/dawn/src/dawn/common/common/SystemUtils.o obj/third_party/dawn/src/dawn/common/common/GPUInfo_autogen.o || obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp obj/third_party/dawn/include/dawn/cpp_headers.stamp obj/third_party/dawn/include/dawn/headers.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/dawn/src/dawn/common

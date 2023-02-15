@@ -1,0 +1,10 @@
+{
+  "deps": [
+    "../../../../../mojo/public/mojom/base/base.build_metadata",
+    "../../../../../skia/public/mojom/mojom.build_metadata",
+    "../../../../../ui/gfx/geometry/mojom/mojom.build_metadata"
+  ],
+  "sources": [
+    "../../../../../../../../chrome/browser/ui/webui/image_editor/image_editor.mojom"
+  ]
+}

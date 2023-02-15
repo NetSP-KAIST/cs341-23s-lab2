@@ -1,0 +1,20 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE=1 -D__STDC_LIMIT_MACROS=1
+include_dirs = -I../.. -Iclang_newlib_x64/gen
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wno-missing-field-initializers -Wno-unused-parameter -Wloop-analysis -Wno-unneeded-internal-declaration -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -O0 -fno-omit-frame-pointer -fvisibility=hidden
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++14 -fno-trigraphs -Wno-trigraphs -fno-exceptions -fno-rtti -fvisibility-inlines-hidden
+label_name = ppapi_crash_via_check_failure_nexe
+root_out_dir = clang_newlib_x64
+target_out_dir = clang_newlib_x64/obj/chrome/test/data/nacl
+target_output_name = ppapi_crash_via_check_failure_newlib_x86_64
+
+build clang_newlib_x64/obj/chrome/test/data/nacl/ppapi_crash_via_check_failure_nexe/ppapi_crash_via_check_failure.o: clang_newlib_x64_cxx ../../chrome/test/data/nacl/crash/ppapi_crash_via_check_failure.cc
+  source_file_part = ppapi_crash_via_check_failure.cc
+  source_name_part = ppapi_crash_via_check_failure
+
+build clang_newlib_x64/ppapi_crash_via_check_failure_newlib_x86_64.nexe clang_newlib_x64/exe.unstripped/ppapi_crash_via_check_failure_newlib_x86_64.nexe: clang_newlib_x64_link clang_newlib_x64/obj/chrome/test/data/nacl/ppapi_crash_via_check_failure_nexe/ppapi_crash_via_check_failure.o clang_newlib_x64/obj/chrome/test/data/nacl/libppapi_test_lib.a clang_newlib_x64/obj/ppapi/native_client/src/untrusted/irt_stub/libppapi_stub.a clang_newlib_x64/obj/native_client/src/shared/gio/libgio.a clang_newlib_x64/obj/native_client/src/shared/platform/libplatform.a || clang_newlib_x64/obj/build/config/nacl/nacl_base.stamp clang_newlib_x64/obj/ppapi/c/c.stamp clang_newlib_x64/obj/ppapi/native_client/ppapi_lib.stamp clang_newlib_x64/obj/build/config/executable_deps.stamp
+  ldflags = -pthread -Werror -Wl,--fatal-warnings -Wl,--build-id -m64
+  libs =
+  frameworks =
+  swiftmodules =
+  output_extension = .nexe
+  output_dir = clang_newlib_x64

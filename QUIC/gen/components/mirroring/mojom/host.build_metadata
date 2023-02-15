@@ -1,0 +1,8 @@
+{
+  "deps": [
+    "common.build_metadata"
+  ],
+  "sources": [
+    "../../../../../../components/mirroring/mojom/mirroring_service_host.mojom"
+  ]
+}

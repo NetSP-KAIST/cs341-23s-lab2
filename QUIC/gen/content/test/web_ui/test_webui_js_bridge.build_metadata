@@ -1,0 +1,8 @@
+{
+  "deps": [
+
+  ],
+  "sources": [
+    "../../../../../../content/test/web_ui/webui_js_bridge_unittest.test-mojom"
+  ]
+}

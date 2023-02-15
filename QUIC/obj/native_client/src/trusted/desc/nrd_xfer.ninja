@@ -1,0 +1,76 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE=1 -D__STDC_LIMIT_MACROS=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = nrd_xfer
+target_out_dir = obj/native_client/src/trusted/desc
+target_output_name = libnrd_xfer
+
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_base.o: cc ../../native_client/src/trusted/desc/nacl_desc_base.c
+  source_file_part = nacl_desc_base.c
+  source_name_part = nacl_desc_base
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_cond.o: cc ../../native_client/src/trusted/desc/nacl_desc_cond.c
+  source_file_part = nacl_desc_cond.c
+  source_name_part = nacl_desc_cond
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_custom.o: cc ../../native_client/src/trusted/desc/nacl_desc_custom.c
+  source_file_part = nacl_desc_custom.c
+  source_name_part = nacl_desc_custom
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_dir.o: cc ../../native_client/src/trusted/desc/nacl_desc_dir.c
+  source_file_part = nacl_desc_dir.c
+  source_name_part = nacl_desc_dir
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_effector_trusted_mem.o: cc ../../native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c
+  source_file_part = nacl_desc_effector_trusted_mem.c
+  source_name_part = nacl_desc_effector_trusted_mem
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc.o: cc ../../native_client/src/trusted/desc/nacl_desc_imc.c
+  source_file_part = nacl_desc_imc.c
+  source_name_part = nacl_desc_imc
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc_shm.o: cc ../../native_client/src/trusted/desc/nacl_desc_imc_shm.c
+  source_file_part = nacl_desc_imc_shm.c
+  source_name_part = nacl_desc_imc_shm
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_invalid.o: cc ../../native_client/src/trusted/desc/nacl_desc_invalid.c
+  source_file_part = nacl_desc_invalid.c
+  source_name_part = nacl_desc_invalid
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_io.o: cc ../../native_client/src/trusted/desc/nacl_desc_io.c
+  source_file_part = nacl_desc_io.c
+  source_name_part = nacl_desc_io
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_mutex.o: cc ../../native_client/src/trusted/desc/nacl_desc_mutex.c
+  source_file_part = nacl_desc_mutex.c
+  source_name_part = nacl_desc_mutex
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_null.o: cc ../../native_client/src/trusted/desc/nacl_desc_null.c
+  source_file_part = nacl_desc_null.c
+  source_name_part = nacl_desc_null
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_quota.o: cc ../../native_client/src/trusted/desc/nacl_desc_quota.c
+  source_file_part = nacl_desc_quota.c
+  source_name_part = nacl_desc_quota
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_quota_interface.o: cc ../../native_client/src/trusted/desc/nacl_desc_quota_interface.c
+  source_file_part = nacl_desc_quota_interface.c
+  source_name_part = nacl_desc_quota_interface
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_semaphore.o: cc ../../native_client/src/trusted/desc/nacl_desc_semaphore.c
+  source_file_part = nacl_desc_semaphore.c
+  source_name_part = nacl_desc_semaphore
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_sync_socket.o: cc ../../native_client/src/trusted/desc/nacl_desc_sync_socket.c
+  source_file_part = nacl_desc_sync_socket.c
+  source_name_part = nacl_desc_sync_socket
+build obj/native_client/src/trusted/desc/nrd_xfer/nrd_all_modules.o: cc ../../native_client/src/trusted/desc/nrd_all_modules.c
+  source_file_part = nrd_all_modules.c
+  source_name_part = nrd_all_modules
+build obj/native_client/src/trusted/desc/nrd_xfer/nrd_xfer.o: cc ../../native_client/src/trusted/desc/nrd_xfer.c
+  source_file_part = nrd_xfer.c
+  source_name_part = nrd_xfer
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc.o: cc ../../native_client/src/trusted/desc/posix/nacl_desc.c
+  source_file_part = nacl_desc.c
+  source_name_part = nacl_desc
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_conn_cap.o: cc ../../native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c
+  source_file_part = nacl_desc_conn_cap.c
+  source_name_part = nacl_desc_conn_cap
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc_bound_desc.o: cc ../../native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c
+  source_file_part = nacl_desc_imc_bound_desc.c
+  source_name_part = nacl_desc_imc_bound_desc
+build obj/native_client/src/trusted/desc/nrd_xfer/nacl_makeboundsock.o: cc ../../native_client/src/trusted/desc/posix/nacl_makeboundsock.c
+  source_file_part = nacl_makeboundsock.c
+  source_name_part = nacl_makeboundsock
+
+build obj/native_client/src/trusted/desc/libnrd_xfer.a: alink obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_base.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_cond.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_custom.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_dir.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_effector_trusted_mem.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc_shm.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_invalid.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_io.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_mutex.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_null.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_quota.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_quota_interface.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_semaphore.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_sync_socket.o obj/native_client/src/trusted/desc/nrd_xfer/nrd_all_modules.o obj/native_client/src/trusted/desc/nrd_xfer/nrd_xfer.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_conn_cap.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_desc_imc_bound_desc.o obj/native_client/src/trusted/desc/nrd_xfer/nacl_makeboundsock.o || obj/build/config/nacl/nacl_base.stamp obj/native_client/src/shared/imc/libimc.a obj/native_client/src/trusted/nacl_base/libnacl_base.a obj/native_client/src/shared/platform/libplatform.a obj/native_client/src/shared/gio/libgio.a
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/native_client/src/trusted/desc

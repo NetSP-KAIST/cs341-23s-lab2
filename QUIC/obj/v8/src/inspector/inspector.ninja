@@ -1,0 +1,116 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCPPGC_VERIFY_HEAP -DENABLE_DISASSEMBLER -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -DOBJECT_PRINT -DVERIFY_HEAP -DV8_TRACE_MAPS -DV8_ENABLE_ALLOCATION_TIMEOUT -DV8_ENABLE_FORCE_SLOW_PATH -DV8_ENABLE_DOUBLE_CONST_STORE_CHECK -DV8_INTL_SUPPORT -DENABLE_HANDLE_ZAPPING -DV8_CODE_COMMENTS -DV8_ENABLE_DEBUG_CODE -DV8_ENABLE_HEAP_SNAPSHOT_VERIFY -DV8_SNAPSHOT_NATIVE_CODE_COUNTERS -DV8_USE_EXTERNAL_STARTUP_DATA -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_SHORT_BUILTIN_CALLS -DV8_EXTERNAL_CODE_SPACE -DV8_ENABLE_MAGLEV -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DV8_STATIC_ROOTS -DV8_USE_ZLIB -DV8_USE_LIBM_TRIG_FUNCTIONS -DV8_ENABLE_WASM_SIMD256_REVEC -DV8_ENABLE_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DV8_USE_PERFETTO -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_SLIM_WRITE_BARRIER -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX -DDEBUG -DV8_RUNTIME_CALL_STATS -DBUILDING_V8_SHARED -DUSING_V8_BASE_SHARED
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../v8/include -I../../v8 -Igen/v8 -Igen/v8/include -I../../v8/third_party/perfetto/include -Igen/third_party/perfetto -Igen/third_party/perfetto/build_config -I../../third_party/perfetto/include -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wmissing-field-initializers -Wunreachable-code -Wctad-maybe-unsupported -Wno-shadow -Wshorten-64-to-32 -O3 -fdata-sections -ffunction-sections -fno-unique-section-names -Wexit-time-destructors -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = inspector
+target_out_dir = obj/v8/src/inspector
+target_output_name = inspector
+
+build obj/v8/src/inspector/inspector.inputdeps.stamp: stamp obj/third_party/icu/icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/v8/generate_bytecode_builtins_list.stamp obj/v8/run_torque.stamp obj/v8/src/inspector/protocol_generated_sources.stamp
+build obj/v8/src/inspector/inspector/Protocol.o: cxx gen/v8/src/inspector/protocol/Protocol.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Protocol.cpp
+  source_name_part = Protocol
+build obj/v8/src/inspector/inspector/Console.o: cxx gen/v8/src/inspector/protocol/Console.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Console.cpp
+  source_name_part = Console
+build obj/v8/src/inspector/inspector/Debugger.o: cxx gen/v8/src/inspector/protocol/Debugger.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Debugger.cpp
+  source_name_part = Debugger
+build obj/v8/src/inspector/inspector/HeapProfiler.o: cxx gen/v8/src/inspector/protocol/HeapProfiler.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = HeapProfiler.cpp
+  source_name_part = HeapProfiler
+build obj/v8/src/inspector/inspector/Profiler.o: cxx gen/v8/src/inspector/protocol/Profiler.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Profiler.cpp
+  source_name_part = Profiler
+build obj/v8/src/inspector/inspector/Runtime.o: cxx gen/v8/src/inspector/protocol/Runtime.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Runtime.cpp
+  source_name_part = Runtime
+build obj/v8/src/inspector/inspector/Schema.o: cxx gen/v8/src/inspector/protocol/Schema.cpp || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = Schema.cpp
+  source_name_part = Schema
+build obj/v8/src/inspector/inspector/crc32.o: cxx ../../v8/src/inspector/crc32.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = crc32.cc
+  source_name_part = crc32
+build obj/v8/src/inspector/inspector/custom-preview.o: cxx ../../v8/src/inspector/custom-preview.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = custom-preview.cc
+  source_name_part = custom-preview
+build obj/v8/src/inspector/inspector/injected-script.o: cxx ../../v8/src/inspector/injected-script.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = injected-script.cc
+  source_name_part = injected-script
+build obj/v8/src/inspector/inspector/inspected-context.o: cxx ../../v8/src/inspector/inspected-context.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = inspected-context.cc
+  source_name_part = inspected-context
+build obj/v8/src/inspector/inspector/remote-object-id.o: cxx ../../v8/src/inspector/remote-object-id.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = remote-object-id.cc
+  source_name_part = remote-object-id
+build obj/v8/src/inspector/inspector/search-util.o: cxx ../../v8/src/inspector/search-util.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = search-util.cc
+  source_name_part = search-util
+build obj/v8/src/inspector/inspector/string-16.o: cxx ../../v8/src/inspector/string-16.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = string-16.cc
+  source_name_part = string-16
+build obj/v8/src/inspector/inspector/string-util.o: cxx ../../v8/src/inspector/string-util.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = string-util.cc
+  source_name_part = string-util
+build obj/v8/src/inspector/inspector/test-interface.o: cxx ../../v8/src/inspector/test-interface.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = test-interface.cc
+  source_name_part = test-interface
+build obj/v8/src/inspector/inspector/v8-console-agent-impl.o: cxx ../../v8/src/inspector/v8-console-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-console-agent-impl.cc
+  source_name_part = v8-console-agent-impl
+build obj/v8/src/inspector/inspector/v8-console-message.o: cxx ../../v8/src/inspector/v8-console-message.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-console-message.cc
+  source_name_part = v8-console-message
+build obj/v8/src/inspector/inspector/v8-console.o: cxx ../../v8/src/inspector/v8-console.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-console.cc
+  source_name_part = v8-console
+build obj/v8/src/inspector/inspector/v8-debugger-agent-impl.o: cxx ../../v8/src/inspector/v8-debugger-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-debugger-agent-impl.cc
+  source_name_part = v8-debugger-agent-impl
+build obj/v8/src/inspector/inspector/v8-debugger-barrier.o: cxx ../../v8/src/inspector/v8-debugger-barrier.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-debugger-barrier.cc
+  source_name_part = v8-debugger-barrier
+build obj/v8/src/inspector/inspector/v8-debugger-id.o: cxx ../../v8/src/inspector/v8-debugger-id.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-debugger-id.cc
+  source_name_part = v8-debugger-id
+build obj/v8/src/inspector/inspector/v8-debugger-script.o: cxx ../../v8/src/inspector/v8-debugger-script.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-debugger-script.cc
+  source_name_part = v8-debugger-script
+build obj/v8/src/inspector/inspector/v8-debugger.o: cxx ../../v8/src/inspector/v8-debugger.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-debugger.cc
+  source_name_part = v8-debugger
+build obj/v8/src/inspector/inspector/v8-heap-profiler-agent-impl.o: cxx ../../v8/src/inspector/v8-heap-profiler-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-heap-profiler-agent-impl.cc
+  source_name_part = v8-heap-profiler-agent-impl
+build obj/v8/src/inspector/inspector/v8-inspector-impl.o: cxx ../../v8/src/inspector/v8-inspector-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-inspector-impl.cc
+  source_name_part = v8-inspector-impl
+build obj/v8/src/inspector/inspector/v8-inspector-session-impl.o: cxx ../../v8/src/inspector/v8-inspector-session-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-inspector-session-impl.cc
+  source_name_part = v8-inspector-session-impl
+build obj/v8/src/inspector/inspector/v8-profiler-agent-impl.o: cxx ../../v8/src/inspector/v8-profiler-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-profiler-agent-impl.cc
+  source_name_part = v8-profiler-agent-impl
+build obj/v8/src/inspector/inspector/v8-regex.o: cxx ../../v8/src/inspector/v8-regex.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-regex.cc
+  source_name_part = v8-regex
+build obj/v8/src/inspector/inspector/v8-runtime-agent-impl.o: cxx ../../v8/src/inspector/v8-runtime-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-runtime-agent-impl.cc
+  source_name_part = v8-runtime-agent-impl
+build obj/v8/src/inspector/inspector/v8-schema-agent-impl.o: cxx ../../v8/src/inspector/v8-schema-agent-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-schema-agent-impl.cc
+  source_name_part = v8-schema-agent-impl
+build obj/v8/src/inspector/inspector/v8-stack-trace-impl.o: cxx ../../v8/src/inspector/v8-stack-trace-impl.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-stack-trace-impl.cc
+  source_name_part = v8-stack-trace-impl
+build obj/v8/src/inspector/inspector/v8-value-utils.o: cxx ../../v8/src/inspector/v8-value-utils.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-value-utils.cc
+  source_name_part = v8-value-utils
+build obj/v8/src/inspector/inspector/v8-webdriver-serializer.o: cxx ../../v8/src/inspector/v8-webdriver-serializer.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = v8-webdriver-serializer.cc
+  source_name_part = v8-webdriver-serializer
+build obj/v8/src/inspector/inspector/value-mirror.o: cxx ../../v8/src/inspector/value-mirror.cc || obj/v8/src/inspector/inspector.inputdeps.stamp
+  source_file_part = value-mirror.cc
+  source_name_part = value-mirror
+
+build obj/v8/src/inspector/inspector.stamp: stamp obj/v8/src/inspector/inspector/Protocol.o obj/v8/src/inspector/inspector/Console.o obj/v8/src/inspector/inspector/Debugger.o obj/v8/src/inspector/inspector/HeapProfiler.o obj/v8/src/inspector/inspector/Profiler.o obj/v8/src/inspector/inspector/Runtime.o obj/v8/src/inspector/inspector/Schema.o obj/v8/src/inspector/inspector/crc32.o obj/v8/src/inspector/inspector/custom-preview.o obj/v8/src/inspector/inspector/injected-script.o obj/v8/src/inspector/inspector/inspected-context.o obj/v8/src/inspector/inspector/remote-object-id.o obj/v8/src/inspector/inspector/search-util.o obj/v8/src/inspector/inspector/string-16.o obj/v8/src/inspector/inspector/string-util.o obj/v8/src/inspector/inspector/test-interface.o obj/v8/src/inspector/inspector/v8-console-agent-impl.o obj/v8/src/inspector/inspector/v8-console-message.o obj/v8/src/inspector/inspector/v8-console.o obj/v8/src/inspector/inspector/v8-debugger-agent-impl.o obj/v8/src/inspector/inspector/v8-debugger-barrier.o obj/v8/src/inspector/inspector/v8-debugger-id.o obj/v8/src/inspector/inspector/v8-debugger-script.o obj/v8/src/inspector/inspector/v8-debugger.o obj/v8/src/inspector/inspector/v8-heap-profiler-agent-impl.o obj/v8/src/inspector/inspector/v8-inspector-impl.o obj/v8/src/inspector/inspector/v8-inspector-session-impl.o obj/v8/src/inspector/inspector/v8-profiler-agent-impl.o obj/v8/src/inspector/inspector/v8-regex.o obj/v8/src/inspector/inspector/v8-runtime-agent-impl.o obj/v8/src/inspector/inspector/v8-schema-agent-impl.o obj/v8/src/inspector/inspector/v8-stack-trace-impl.o obj/v8/src/inspector/inspector/v8-value-utils.o obj/v8/src/inspector/inspector/v8-webdriver-serializer.o obj/v8/src/inspector/inspector/value-mirror.o || obj/v8/src/inspector/inspector_test_headers.stamp obj/v8/src/inspector/protocol_generated_sources.stamp ./libv8_libbase.so.TOC obj/v8/src/inspector/inspector_string_conversions.stamp obj/v8/v8_tracing.stamp obj/v8/v8_version.stamp obj/v8/third_party/inspector_protocol/crdtp.stamp obj/v8/v8_headers.stamp obj/v8/v8_config_headers.stamp obj/v8/cppgc_headers.stamp ./libv8_libplatform.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC obj/v8/third_party/inspector_protocol/crdtp_platform.stamp obj/v8/v8_internal_headers.stamp obj/v8/torque_runtime_support.stamp obj/v8/v8_flags.stamp obj/v8/v8_shared_internal_headers.stamp ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC obj/v8/v8_heap_base_headers.stamp

@@ -1,0 +1,9 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Iirt_x64/gen -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Iirt_x64/gen/third_party/perfetto/build_config -Iirt_x64/gen/third_party/perfetto
+label_name = bytecode_common
+root_out_dir = irt_x64
+target_out_dir = irt_x64/obj/third_party/perfetto/src/protozero/filtering
+target_output_name = bytecode_common
+
+
+build irt_x64/obj/third_party/perfetto/src/protozero/filtering/bytecode_common.stamp: irt_x64_stamp || irt_x64/obj/third_party/perfetto/gn/default_deps.stamp

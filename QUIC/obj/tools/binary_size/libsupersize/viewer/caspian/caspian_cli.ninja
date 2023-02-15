@@ -1,0 +1,20 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/jsoncpp/source/include
+cflags = -Wall -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = caspian_cli
+target_out_dir = obj/tools/binary_size/libsupersize/viewer/caspian
+target_output_name = caspian_cli
+
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian_cli/cli.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/cli.cc
+  source_file_part = cli.cc
+  source_name_part = cli
+
+build ./caspian_cli: link obj/tools/binary_size/libsupersize/viewer/caspian/caspian_cli/cli.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/diff.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/file_format.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/function_signature.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/grouped_path.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/lens.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/model.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/tree_builder.o obj/third_party/jsoncpp/jsoncpp/json_reader.o obj/third_party/jsoncpp/jsoncpp/json_value.o obj/third_party/jsoncpp/jsoncpp/json_writer.o obj/third_party/re2/libre2.a obj/third_party/zlib/google/libcompression_utils_portable.a | ./libchrome_zlib.so.TOC ./libc++.so.TOC || obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib.stamp obj/build/config/executable_deps.stamp obj/third_party/jsoncpp/jsoncpp.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -pie -Wl,--disable-new-dtags -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = 
+  output_dir = .
+  solibs = ./libchrome_zlib.so ./libc++.so

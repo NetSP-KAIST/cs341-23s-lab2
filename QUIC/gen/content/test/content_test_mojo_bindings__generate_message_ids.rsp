@@ -1,0 +1,4 @@
+../../content/public/test/test_service.mojom
+../../content/test/frame_host_test_interface.mojom
+../../content/test/test_browser_associated_interfaces.mojom
+../../content/test/test_mojo_binder_policy_applier_unittest.mojom

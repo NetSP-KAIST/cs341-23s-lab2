@@ -1,0 +1,4 @@
+gen/chrome/grit/image_editor_untrusted_resources.h
+gen/chrome/grit/image_editor_untrusted_resources_map.cc
+gen/chrome/grit/image_editor_untrusted_resources_map.h
+gen/chrome/image_editor_untrusted_resources.pak
