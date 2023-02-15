@@ -1,0 +1,37 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -D_7ZIP_ST -D_7Z_NO_METHODS_FILTERS -D_LZMA_PROB32
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/lzma_sdk -I../../third_party/lzma_sdk/C
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-self-assign
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = lzma_sdk_xz
+target_out_dir = obj/third_party/lzma_sdk
+target_output_name = liblzma_sdk_xz
+
+build obj/third_party/lzma_sdk/lzma_sdk_xz/BraIA64.o: cc ../../third_party/lzma_sdk/C/BraIA64.c
+  source_file_part = BraIA64.c
+  source_name_part = BraIA64
+build obj/third_party/lzma_sdk/lzma_sdk_xz/Sha256.o: cc ../../third_party/lzma_sdk/C/Sha256.c
+  source_file_part = Sha256.c
+  source_name_part = Sha256
+build obj/third_party/lzma_sdk/lzma_sdk_xz/Xz.o: cc ../../third_party/lzma_sdk/C/Xz.c
+  source_file_part = Xz.c
+  source_name_part = Xz
+build obj/third_party/lzma_sdk/lzma_sdk_xz/XzCrc64.o: cc ../../third_party/lzma_sdk/C/XzCrc64.c
+  source_file_part = XzCrc64.c
+  source_name_part = XzCrc64
+build obj/third_party/lzma_sdk/lzma_sdk_xz/XzCrc64Opt.o: cc ../../third_party/lzma_sdk/C/XzCrc64Opt.c
+  source_file_part = XzCrc64Opt.c
+  source_name_part = XzCrc64Opt
+build obj/third_party/lzma_sdk/lzma_sdk_xz/XzDec.o: cc ../../third_party/lzma_sdk/C/XzDec.c
+  source_file_part = XzDec.c
+  source_name_part = XzDec
+build obj/third_party/lzma_sdk/lzma_sdk_xz/XzIn.o: cc ../../third_party/lzma_sdk/C/XzIn.c
+  source_file_part = XzIn.c
+  source_name_part = XzIn
+build obj/third_party/lzma_sdk/lzma_sdk_xz/Sha256Opt.o: cc ../../third_party/lzma_sdk/C/Sha256Opt.c
+  source_file_part = Sha256Opt.c
+  source_name_part = Sha256Opt
+
+build obj/third_party/lzma_sdk/liblzma_sdk_xz.a: alink obj/third_party/lzma_sdk/lzma_sdk_xz/BraIA64.o obj/third_party/lzma_sdk/lzma_sdk_xz/Sha256.o obj/third_party/lzma_sdk/lzma_sdk_xz/Xz.o obj/third_party/lzma_sdk/lzma_sdk_xz/XzCrc64.o obj/third_party/lzma_sdk/lzma_sdk_xz/XzCrc64Opt.o obj/third_party/lzma_sdk/lzma_sdk_xz/XzDec.o obj/third_party/lzma_sdk/lzma_sdk_xz/XzIn.o obj/third_party/lzma_sdk/lzma_sdk_xz/Sha256Opt.o || obj/third_party/lzma_sdk/liblzma_sdk.a
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/lzma_sdk

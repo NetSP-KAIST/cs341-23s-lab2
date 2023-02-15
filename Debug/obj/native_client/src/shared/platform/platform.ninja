@@ -1,0 +1,98 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE=1 -D__STDC_LIMIT_MACROS=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = platform
+target_out_dir = obj/native_client/src/shared/platform
+target_output_name = libplatform
+
+build obj/native_client/src/shared/platform/platform/nacl_check.o: cc ../../native_client/src/shared/platform/nacl_check.c
+  source_file_part = nacl_check.c
+  source_name_part = nacl_check
+build obj/native_client/src/shared/platform/platform/nacl_global_secure_random.o: cc ../../native_client/src/shared/platform/nacl_global_secure_random.c
+  source_file_part = nacl_global_secure_random.c
+  source_name_part = nacl_global_secure_random
+build obj/native_client/src/shared/platform/platform/nacl_host_desc_common.o: cc ../../native_client/src/shared/platform/nacl_host_desc_common.c
+  source_file_part = nacl_host_desc_common.c
+  source_name_part = nacl_host_desc_common
+build obj/native_client/src/shared/platform/platform/nacl_interruptible_condvar.o: cc ../../native_client/src/shared/platform/nacl_interruptible_condvar.c
+  source_file_part = nacl_interruptible_condvar.c
+  source_name_part = nacl_interruptible_condvar
+build obj/native_client/src/shared/platform/platform/nacl_interruptible_mutex.o: cc ../../native_client/src/shared/platform/nacl_interruptible_mutex.c
+  source_file_part = nacl_interruptible_mutex.c
+  source_name_part = nacl_interruptible_mutex
+build obj/native_client/src/shared/platform/platform/nacl_log.o: cc ../../native_client/src/shared/platform/nacl_log.c
+  source_file_part = nacl_log.c
+  source_name_part = nacl_log
+build obj/native_client/src/shared/platform/platform/nacl_secure_random_common.o: cc ../../native_client/src/shared/platform/nacl_secure_random_common.c
+  source_file_part = nacl_secure_random_common.c
+  source_name_part = nacl_secure_random_common
+build obj/native_client/src/shared/platform/platform/nacl_sync_checked.o: cc ../../native_client/src/shared/platform/nacl_sync_checked.c
+  source_file_part = nacl_sync_checked.c
+  source_name_part = nacl_sync_checked
+build obj/native_client/src/shared/platform/platform/nacl_time_common.o: cc ../../native_client/src/shared/platform/nacl_time_common.c
+  source_file_part = nacl_time_common.c
+  source_name_part = nacl_time_common
+build obj/native_client/src/shared/platform/platform/platform_init.o: cc ../../native_client/src/shared/platform/platform_init.c
+  source_file_part = platform_init.c
+  source_name_part = platform_init
+build obj/native_client/src/shared/platform/platform/refcount_base.o: cxx ../../native_client/src/shared/platform/refcount_base.cc
+  source_file_part = refcount_base.cc
+  source_name_part = refcount_base
+build obj/native_client/src/shared/platform/platform/aligned_malloc.o: cc ../../native_client/src/shared/platform/posix/aligned_malloc.c
+  source_file_part = aligned_malloc.c
+  source_name_part = aligned_malloc
+build obj/native_client/src/shared/platform/platform/condition_variable.o: cc ../../native_client/src/shared/platform/posix/condition_variable.c
+  source_file_part = condition_variable.c
+  source_name_part = condition_variable
+build obj/native_client/src/shared/platform/platform/lock.o: cc ../../native_client/src/shared/platform/posix/lock.c
+  source_file_part = lock.c
+  source_name_part = lock
+build obj/native_client/src/shared/platform/platform/nacl_error.o: cc ../../native_client/src/shared/platform/posix/nacl_error.c
+  source_file_part = nacl_error.c
+  source_name_part = nacl_error
+build obj/native_client/src/shared/platform/platform/nacl_exit.o: cc ../../native_client/src/shared/platform/posix/nacl_exit.c
+  source_file_part = nacl_exit.c
+  source_name_part = nacl_exit
+build obj/native_client/src/shared/platform/platform/nacl_fast_mutex.o: cc ../../native_client/src/shared/platform/posix/nacl_fast_mutex.c
+  source_file_part = nacl_fast_mutex.c
+  source_name_part = nacl_fast_mutex
+build obj/native_client/src/shared/platform/platform/nacl_file_lock.o: cc ../../native_client/src/shared/platform/posix/nacl_file_lock.c
+  source_file_part = nacl_file_lock.c
+  source_name_part = nacl_file_lock
+build obj/native_client/src/shared/platform/platform/nacl_find_addrsp.o: cc ../../native_client/src/shared/platform/posix/nacl_find_addrsp.c
+  source_file_part = nacl_find_addrsp.c
+  source_name_part = nacl_find_addrsp
+build obj/native_client/src/shared/platform/platform/nacl_host_desc.o: cc ../../native_client/src/shared/platform/posix/nacl_host_desc.c
+  source_file_part = nacl_host_desc.c
+  source_name_part = nacl_host_desc
+build obj/native_client/src/shared/platform/platform/nacl_secure_random.o: cc ../../native_client/src/shared/platform/posix/nacl_secure_random.c
+  source_file_part = nacl_secure_random.c
+  source_name_part = nacl_secure_random
+build obj/native_client/src/shared/platform/platform/nacl_thread_id.o: cc ../../native_client/src/shared/platform/posix/nacl_thread_id.c
+  source_file_part = nacl_thread_id.c
+  source_name_part = nacl_thread_id
+build obj/native_client/src/shared/platform/platform/nacl_threads.o: cc ../../native_client/src/shared/platform/posix/nacl_threads.c
+  source_file_part = nacl_threads.c
+  source_name_part = nacl_threads
+build obj/native_client/src/shared/platform/platform/nacl_time.o: cc ../../native_client/src/shared/platform/posix/nacl_time.c
+  source_file_part = nacl_time.c
+  source_name_part = nacl_time
+build obj/native_client/src/shared/platform/platform/nacl_timestamp.o: cc ../../native_client/src/shared/platform/posix/nacl_timestamp.c
+  source_file_part = nacl_timestamp.c
+  source_name_part = nacl_timestamp
+build obj/native_client/src/shared/platform/platform/nacl_clock.o: cc ../../native_client/src/shared/platform/linux/nacl_clock.c
+  source_file_part = nacl_clock.c
+  source_name_part = nacl_clock
+build obj/native_client/src/shared/platform/platform/nacl_host_dir.o: cc ../../native_client/src/shared/platform/linux/nacl_host_dir.c
+  source_file_part = nacl_host_dir.c
+  source_name_part = nacl_host_dir
+build obj/native_client/src/shared/platform/platform/nacl_semaphore.o: cc ../../native_client/src/shared/platform/linux/nacl_semaphore.c
+  source_file_part = nacl_semaphore.c
+  source_name_part = nacl_semaphore
+
+build obj/native_client/src/shared/platform/libplatform.a: alink obj/native_client/src/shared/platform/platform/nacl_check.o obj/native_client/src/shared/platform/platform/nacl_global_secure_random.o obj/native_client/src/shared/platform/platform/nacl_host_desc_common.o obj/native_client/src/shared/platform/platform/nacl_interruptible_condvar.o obj/native_client/src/shared/platform/platform/nacl_interruptible_mutex.o obj/native_client/src/shared/platform/platform/nacl_log.o obj/native_client/src/shared/platform/platform/nacl_secure_random_common.o obj/native_client/src/shared/platform/platform/nacl_sync_checked.o obj/native_client/src/shared/platform/platform/nacl_time_common.o obj/native_client/src/shared/platform/platform/platform_init.o obj/native_client/src/shared/platform/platform/refcount_base.o obj/native_client/src/shared/platform/platform/aligned_malloc.o obj/native_client/src/shared/platform/platform/condition_variable.o obj/native_client/src/shared/platform/platform/lock.o obj/native_client/src/shared/platform/platform/nacl_error.o obj/native_client/src/shared/platform/platform/nacl_exit.o obj/native_client/src/shared/platform/platform/nacl_fast_mutex.o obj/native_client/src/shared/platform/platform/nacl_file_lock.o obj/native_client/src/shared/platform/platform/nacl_find_addrsp.o obj/native_client/src/shared/platform/platform/nacl_host_desc.o obj/native_client/src/shared/platform/platform/nacl_secure_random.o obj/native_client/src/shared/platform/platform/nacl_thread_id.o obj/native_client/src/shared/platform/platform/nacl_threads.o obj/native_client/src/shared/platform/platform/nacl_time.o obj/native_client/src/shared/platform/platform/nacl_timestamp.o obj/native_client/src/shared/platform/platform/nacl_clock.o obj/native_client/src/shared/platform/platform/nacl_host_dir.o obj/native_client/src/shared/platform/platform/nacl_semaphore.o || obj/build/config/nacl/nacl_base.stamp obj/native_client/src/shared/gio/libgio.a
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/native_client/src/shared/platform

@@ -1,0 +1,47 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DTINT_BUILD_SPV_READER=0 -DTINT_BUILD_SPV_WRITER=1 -DTINT_BUILD_WGSL_READER=1 -DTINT_BUILD_WGSL_WRITER=1 -DTINT_BUILD_MSL_WRITER=1 -DTINT_BUILD_HLSL_WRITER=1 -DTINT_BUILD_GLSL_WRITER=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/dawn/src/tint -I../../third_party/dawn -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/spirv-tools/src -I../../third_party/vulkan-deps/spirv-tools/src/include -I../../third_party/dawn/include
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = libtint_syntax_tree_src
+target_out_dir = obj/third_party/dawn/src/tint
+target_output_name = libtint_syntax_tree_src
+
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp: stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/clone_context.o: cxx ../../third_party/dawn/src/tint/clone_context.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = clone_context.cc
+  source_name_part = clone_context
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/demangler.o: cxx ../../third_party/dawn/src/tint/demangler.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = demangler.cc
+  source_name_part = demangler
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/program.o: cxx ../../third_party/dawn/src/tint/program.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = program.cc
+  source_name_part = program
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/program_builder.o: cxx ../../third_party/dawn/src/tint/program_builder.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = program_builder.cc
+  source_name_part = program_builder
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/const_eval.o: cxx ../../third_party/dawn/src/tint/resolver/const_eval.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = const_eval.cc
+  source_name_part = const_eval
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/dependency_graph.o: cxx ../../third_party/dawn/src/tint/resolver/dependency_graph.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = dependency_graph.cc
+  source_name_part = dependency_graph
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/init_conv_intrinsic.o: cxx ../../third_party/dawn/src/tint/resolver/init_conv_intrinsic.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = init_conv_intrinsic.cc
+  source_name_part = init_conv_intrinsic
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/intrinsic_table.o: cxx ../../third_party/dawn/src/tint/resolver/intrinsic_table.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = intrinsic_table.cc
+  source_name_part = intrinsic_table
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/resolver.o: cxx ../../third_party/dawn/src/tint/resolver/resolver.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = resolver.cc
+  source_name_part = resolver
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/sem_helper.o: cxx ../../third_party/dawn/src/tint/resolver/sem_helper.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = sem_helper.cc
+  source_name_part = sem_helper
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/uniformity.o: cxx ../../third_party/dawn/src/tint/resolver/uniformity.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = uniformity.cc
+  source_name_part = uniformity
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src/validator.o: cxx ../../third_party/dawn/src/tint/resolver/validator.cc || obj/third_party/dawn/src/tint/libtint_syntax_tree_src.inputdeps.stamp
+  source_file_part = validator.cc
+  source_name_part = validator
+
+build obj/third_party/dawn/src/tint/libtint_syntax_tree_src.stamp: stamp obj/third_party/dawn/src/tint/libtint_syntax_tree_src/clone_context.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/demangler.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/program.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/program_builder.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/const_eval.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/dependency_graph.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/init_conv_intrinsic.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/intrinsic_table.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/resolver.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/sem_helper.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/uniformity.o obj/third_party/dawn/src/tint/libtint_syntax_tree_src/validator.o || obj/third_party/dawn/src/tint/libtint_base_src.stamp obj/third_party/dawn/src/tint/libtint_constant_src.stamp obj/third_party/dawn/src/tint/libtint_text_src.stamp obj/third_party/dawn/src/tint/libtint_type_src.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp

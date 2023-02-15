@@ -1,0 +1,8 @@
+{
+  "deps": [
+    "test_secondary_interface.build_metadata"
+  ],
+  "sources": [
+    "../../../../../../content/test/web_ui/webui_js_bridge_unittest2.test-mojom"
+  ]
+}

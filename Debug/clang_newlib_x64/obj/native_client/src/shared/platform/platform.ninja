@@ -1,0 +1,48 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE=1 -D__STDC_LIMIT_MACROS=1
+include_dirs = -I../.. -Iclang_newlib_x64/gen
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wno-missing-field-initializers -Wno-unused-parameter -Wloop-analysis -Wno-unneeded-internal-declaration -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -O0 -fno-omit-frame-pointer -fvisibility=hidden
+cflags_c = -std=c11
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++14 -fno-trigraphs -Wno-trigraphs -fno-exceptions -fno-rtti -fvisibility-inlines-hidden
+label_name = platform
+root_out_dir = clang_newlib_x64
+target_out_dir = clang_newlib_x64/obj/native_client/src/shared/platform
+target_output_name = libplatform
+
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_check.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/nacl_check.c
+  source_file_part = nacl_check.c
+  source_name_part = nacl_check
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_log.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/nacl_log.c
+  source_file_part = nacl_log.c
+  source_name_part = nacl_log
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/condition_variable.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/condition_variable.c
+  source_file_part = condition_variable.c
+  source_name_part = condition_variable
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/lock.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/lock.c
+  source_file_part = lock.c
+  source_name_part = lock
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_error.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/nacl_error.c
+  source_file_part = nacl_error.c
+  source_name_part = nacl_error
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_exit.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/nacl_exit.c
+  source_file_part = nacl_exit.c
+  source_name_part = nacl_exit
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_thread_id.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/nacl_thread_id.c
+  source_file_part = nacl_thread_id.c
+  source_name_part = nacl_thread_id
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_threads.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/nacl_threads.c
+  source_file_part = nacl_threads.c
+  source_name_part = nacl_threads
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_timestamp.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/posix/nacl_timestamp.c
+  source_file_part = nacl_timestamp.c
+  source_name_part = nacl_timestamp
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_sync_checked.o: clang_newlib_x64_cc ../../native_client/src/shared/platform/nacl_sync_checked.c
+  source_file_part = nacl_sync_checked.c
+  source_name_part = nacl_sync_checked
+build clang_newlib_x64/obj/native_client/src/shared/platform/platform/refcount_base.o: clang_newlib_x64_cxx ../../native_client/src/shared/platform/refcount_base.cc
+  source_file_part = refcount_base.cc
+  source_name_part = refcount_base
+
+build clang_newlib_x64/obj/native_client/src/shared/platform/libplatform.a: clang_newlib_x64_alink clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_check.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_log.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/condition_variable.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/lock.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_error.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_exit.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_thread_id.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_threads.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_timestamp.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/nacl_sync_checked.o clang_newlib_x64/obj/native_client/src/shared/platform/platform/refcount_base.o || clang_newlib_x64/obj/build/config/nacl/nacl_base.stamp clang_newlib_x64/obj/native_client/src/shared/gio/libgio.a
+  arflags =
+  output_extension = .a
+  output_dir = clang_newlib_x64/obj/native_client/src/shared/platform

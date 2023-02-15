@@ -1,0 +1,263 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DBASE_USE_PERFETTO_CLIENT_LIBRARY=1 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DGTEST_API_= -DGTEST_HAS_POSIX_RE=0 -DGTEST_LANG_CXX11=1 -DGTEST_HAS_TR1_TUPLE=0 -DGTEST_HAS_ABSL=1 -DUNIT_TEST -DWGPU_SHARED_LIBRARY -DDAWN_ENABLE_ASSERTS -DDAWN_ENABLE_BACKEND_NULL -DDAWN_ENABLE_BACKEND_OPENGL -DDAWN_ENABLE_BACKEND_DESKTOP_GL -DDAWN_ENABLE_BACKEND_OPENGLES -DDAWN_ENABLE_BACKEND_VULKAN -DDAWN_USE_X11 -DDAWN_ENABLE_ERROR_INJECTION -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DDAWN_WIRE_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/ced/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/googletest/custom -I../../third_party/googletest/src/googlemock/include -I../../third_party/googletest/src/googletest/include -I../../third_party/dawn/third_party/glfw/include -Igen/third_party/dawn/src -I../../third_party/dawn/src -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-inconsistent-missing-override -Wno-shadow
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = end2end_tests_sources
+target_out_dir = obj/third_party/dawn/src/dawn/tests
+target_output_name = end2end_tests_sources
+
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/parsing_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/build/rust/rust_buildflags.stamp obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp obj/third_party/dawn/include/dawn/headers_gen.stamp obj/third_party/dawn/src/dawn/cpp_gen.stamp obj/third_party/dawn/src/dawn/proc_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp obj/third_party/dawn/src/dawn/native/opengl_loader_gen.stamp obj/third_party/dawn/src/dawn/native/utils_gen.stamp obj/third_party/dawn/src/dawn/wire/gen.stamp obj/third_party/icu/icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/AdapterDiscoveryTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/AdapterDiscoveryTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = AdapterDiscoveryTests.cpp
+  source_name_part = AdapterDiscoveryTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BasicTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/BasicTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = BasicTests.cpp
+  source_name_part = BasicTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BindGroupTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/BindGroupTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = BindGroupTests.cpp
+  source_name_part = BindGroupTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BufferTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/BufferTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = BufferTests.cpp
+  source_name_part = BufferTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BufferZeroInitTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/BufferZeroInitTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = BufferZeroInitTests.cpp
+  source_name_part = BufferZeroInitTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ClipSpaceTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ClipSpaceTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ClipSpaceTests.cpp
+  source_name_part = ClipSpaceTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ColorStateTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ColorStateTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ColorStateTests.cpp
+  source_name_part = ColorStateTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CommandEncoderTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CommandEncoderTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CommandEncoderTests.cpp
+  source_name_part = CommandEncoderTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CompressedTextureFormatTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CompressedTextureFormatTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CompressedTextureFormatTests.cpp
+  source_name_part = CompressedTextureFormatTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeCopyStorageBufferTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ComputeCopyStorageBufferTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ComputeCopyStorageBufferTests.cpp
+  source_name_part = ComputeCopyStorageBufferTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeDispatchTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ComputeDispatchTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ComputeDispatchTests.cpp
+  source_name_part = ComputeDispatchTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeLayoutMemoryBufferTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ComputeLayoutMemoryBufferTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ComputeLayoutMemoryBufferTests.cpp
+  source_name_part = ComputeLayoutMemoryBufferTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeSharedMemoryTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ComputeSharedMemoryTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ComputeSharedMemoryTests.cpp
+  source_name_part = ComputeSharedMemoryTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeStorageBufferBarrierTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ComputeStorageBufferBarrierTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ComputeStorageBufferBarrierTests.cpp
+  source_name_part = ComputeStorageBufferBarrierTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyExternalTextureForBrowserTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CopyExternalTextureForBrowserTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CopyExternalTextureForBrowserTests.cpp
+  source_name_part = CopyExternalTextureForBrowserTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CopyTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CopyTests.cpp
+  source_name_part = CopyTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyTextureForBrowserTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CopyTextureForBrowserTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CopyTextureForBrowserTests.cpp
+  source_name_part = CopyTextureForBrowserTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CreatePipelineAsyncTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CreatePipelineAsyncTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CreatePipelineAsyncTests.cpp
+  source_name_part = CreatePipelineAsyncTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CullingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/CullingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = CullingTests.cpp
+  source_name_part = CullingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DebugMarkerTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DebugMarkerTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DebugMarkerTests.cpp
+  source_name_part = DebugMarkerTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthBiasTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DepthBiasTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DepthBiasTests.cpp
+  source_name_part = DepthBiasTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilCopyTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DepthStencilCopyTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DepthStencilCopyTests.cpp
+  source_name_part = DepthStencilCopyTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilLoadOpTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DepthStencilLoadOpTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DepthStencilLoadOpTests.cpp
+  source_name_part = DepthStencilLoadOpTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilSamplingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DepthStencilSamplingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DepthStencilSamplingTests.cpp
+  source_name_part = DepthStencilSamplingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilStateTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DepthStencilStateTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DepthStencilStateTests.cpp
+  source_name_part = DepthStencilStateTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DestroyTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DestroyTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DestroyTests.cpp
+  source_name_part = DestroyTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceInitializationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DeviceInitializationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DeviceInitializationTests.cpp
+  source_name_part = DeviceInitializationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceLifetimeTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DeviceLifetimeTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DeviceLifetimeTests.cpp
+  source_name_part = DeviceLifetimeTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceLostTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DeviceLostTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DeviceLostTests.cpp
+  source_name_part = DeviceLostTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndexedIndirectTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DrawIndexedIndirectTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DrawIndexedIndirectTests.cpp
+  source_name_part = DrawIndexedIndirectTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndexedTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DrawIndexedTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DrawIndexedTests.cpp
+  source_name_part = DrawIndexedTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndirectTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DrawIndirectTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DrawIndirectTests.cpp
+  source_name_part = DrawIndirectTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DrawTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DrawTests.cpp
+  source_name_part = DrawTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DynamicBufferOffsetTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/DynamicBufferOffsetTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = DynamicBufferOffsetTests.cpp
+  source_name_part = DynamicBufferOffsetTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/EntryPointTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/EntryPointTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = EntryPointTests.cpp
+  source_name_part = EntryPointTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ExperimentalDP4aTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ExperimentalDP4aTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ExperimentalDP4aTests.cpp
+  source_name_part = ExperimentalDP4aTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ExternalTextureTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ExternalTextureTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ExternalTextureTests.cpp
+  source_name_part = ExternalTextureTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/FirstIndexOffsetTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/FirstIndexOffsetTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = FirstIndexOffsetTests.cpp
+  source_name_part = FirstIndexOffsetTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/FragDepthTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/FragDepthTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = FragDepthTests.cpp
+  source_name_part = FragDepthTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/GpuMemorySynchronizationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/GpuMemorySynchronizationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = GpuMemorySynchronizationTests.cpp
+  source_name_part = GpuMemorySynchronizationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/IndexFormatTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/IndexFormatTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = IndexFormatTests.cpp
+  source_name_part = IndexFormatTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MaxLimitTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/MaxLimitTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = MaxLimitTests.cpp
+  source_name_part = MaxLimitTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MemoryAllocationStressTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/MemoryAllocationStressTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = MemoryAllocationStressTests.cpp
+  source_name_part = MemoryAllocationStressTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MultisampledRenderingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/MultisampledRenderingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = MultisampledRenderingTests.cpp
+  source_name_part = MultisampledRenderingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MultisampledSamplingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/MultisampledSamplingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = MultisampledSamplingTests.cpp
+  source_name_part = MultisampledSamplingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/NonzeroBufferCreationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/NonzeroBufferCreationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = NonzeroBufferCreationTests.cpp
+  source_name_part = NonzeroBufferCreationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/NonzeroTextureCreationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/NonzeroTextureCreationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = NonzeroTextureCreationTests.cpp
+  source_name_part = NonzeroTextureCreationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ObjectCachingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ObjectCachingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ObjectCachingTests.cpp
+  source_name_part = ObjectCachingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/OpArrayLengthTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/OpArrayLengthTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = OpArrayLengthTests.cpp
+  source_name_part = OpArrayLengthTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PipelineCachingTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/PipelineCachingTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = PipelineCachingTests.cpp
+  source_name_part = PipelineCachingTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PipelineLayoutTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/PipelineLayoutTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = PipelineLayoutTests.cpp
+  source_name_part = PipelineLayoutTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PrimitiveStateTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/PrimitiveStateTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = PrimitiveStateTests.cpp
+  source_name_part = PrimitiveStateTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PrimitiveTopologyTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/PrimitiveTopologyTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = PrimitiveTopologyTests.cpp
+  source_name_part = PrimitiveTopologyTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueryTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/QueryTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = QueryTests.cpp
+  source_name_part = QueryTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueueTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/QueueTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = QueueTests.cpp
+  source_name_part = QueueTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueueTimelineTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/QueueTimelineTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = QueueTimelineTests.cpp
+  source_name_part = QueueTimelineTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ReadOnlyDepthStencilAttachmentTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ReadOnlyDepthStencilAttachmentTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ReadOnlyDepthStencilAttachmentTests.cpp
+  source_name_part = ReadOnlyDepthStencilAttachmentTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderAttachmentTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/RenderAttachmentTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = RenderAttachmentTests.cpp
+  source_name_part = RenderAttachmentTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderBundleTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/RenderBundleTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = RenderBundleTests.cpp
+  source_name_part = RenderBundleTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderPassLoadOpTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/RenderPassLoadOpTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = RenderPassLoadOpTests.cpp
+  source_name_part = RenderPassLoadOpTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderPassTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/RenderPassTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = RenderPassTests.cpp
+  source_name_part = RenderPassTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RequiredBufferSizeInCopyTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/RequiredBufferSizeInCopyTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = RequiredBufferSizeInCopyTests.cpp
+  source_name_part = RequiredBufferSizeInCopyTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SamplerFilterAnisotropicTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/SamplerFilterAnisotropicTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = SamplerFilterAnisotropicTests.cpp
+  source_name_part = SamplerFilterAnisotropicTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SamplerTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/SamplerTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = SamplerTests.cpp
+  source_name_part = SamplerTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ScissorTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ScissorTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ScissorTests.cpp
+  source_name_part = ScissorTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderF16Tests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ShaderF16Tests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ShaderF16Tests.cpp
+  source_name_part = ShaderF16Tests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ShaderTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ShaderTests.cpp
+  source_name_part = ShaderTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderValidationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ShaderValidationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ShaderValidationTests.cpp
+  source_name_part = ShaderValidationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/StorageTextureTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/StorageTextureTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = StorageTextureTests.cpp
+  source_name_part = StorageTextureTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SubresourceRenderAttachmentTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/SubresourceRenderAttachmentTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = SubresourceRenderAttachmentTests.cpp
+  source_name_part = SubresourceRenderAttachmentTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/Texture3DTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/Texture3DTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = Texture3DTests.cpp
+  source_name_part = Texture3DTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureCorruptionTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/TextureCorruptionTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = TextureCorruptionTests.cpp
+  source_name_part = TextureCorruptionTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureFormatTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/TextureFormatTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = TextureFormatTests.cpp
+  source_name_part = TextureFormatTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureSubresourceTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/TextureSubresourceTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = TextureSubresourceTests.cpp
+  source_name_part = TextureSubresourceTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureViewTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/TextureViewTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = TextureViewTests.cpp
+  source_name_part = TextureViewTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureZeroInitTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/TextureZeroInitTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = TextureZeroInitTests.cpp
+  source_name_part = TextureZeroInitTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexFormatTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/VertexFormatTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = VertexFormatTests.cpp
+  source_name_part = VertexFormatTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexOnlyRenderPipelineTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/VertexOnlyRenderPipelineTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = VertexOnlyRenderPipelineTests.cpp
+  source_name_part = VertexOnlyRenderPipelineTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexStateTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/VertexStateTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = VertexStateTests.cpp
+  source_name_part = VertexStateTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ViewportOrientationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ViewportOrientationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ViewportOrientationTests.cpp
+  source_name_part = ViewportOrientationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ViewportTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/ViewportTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = ViewportTests.cpp
+  source_name_part = ViewportTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SwapChainTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/SwapChainTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = SwapChainTests.cpp
+  source_name_part = SwapChainTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SwapChainValidationTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/SwapChainValidationTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = SwapChainValidationTests.cpp
+  source_name_part = SwapChainValidationTests
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/WindowSurfaceTests.o: cxx ../../third_party/dawn/src/dawn/tests/end2end/WindowSurfaceTests.cpp || obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.inputdeps.stamp
+  source_file_part = WindowSurfaceTests.cpp
+  source_name_part = WindowSurfaceTests
+
+build obj/third_party/dawn/src/dawn/tests/end2end_tests_sources.stamp: stamp obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/AdapterDiscoveryTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BasicTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BindGroupTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BufferTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/BufferZeroInitTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ClipSpaceTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ColorStateTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CommandEncoderTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CompressedTextureFormatTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeCopyStorageBufferTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeDispatchTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeLayoutMemoryBufferTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeSharedMemoryTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ComputeStorageBufferBarrierTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyExternalTextureForBrowserTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CopyTextureForBrowserTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CreatePipelineAsyncTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/CullingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DebugMarkerTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthBiasTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilCopyTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilLoadOpTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilSamplingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DepthStencilStateTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DestroyTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceInitializationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceLifetimeTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DeviceLostTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndexedIndirectTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndexedTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawIndirectTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DrawTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/DynamicBufferOffsetTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/EntryPointTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ExperimentalDP4aTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ExternalTextureTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/FirstIndexOffsetTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/FragDepthTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/GpuMemorySynchronizationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/IndexFormatTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MaxLimitTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MemoryAllocationStressTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MultisampledRenderingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/MultisampledSamplingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/NonzeroBufferCreationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/NonzeroTextureCreationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ObjectCachingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/OpArrayLengthTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PipelineCachingTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PipelineLayoutTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PrimitiveStateTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/PrimitiveTopologyTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueryTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueueTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/QueueTimelineTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ReadOnlyDepthStencilAttachmentTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderAttachmentTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderBundleTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderPassLoadOpTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RenderPassTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/RequiredBufferSizeInCopyTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SamplerFilterAnisotropicTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SamplerTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ScissorTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderF16Tests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ShaderValidationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/StorageTextureTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SubresourceRenderAttachmentTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/Texture3DTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureCorruptionTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureFormatTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureSubresourceTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureViewTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/TextureZeroInitTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexFormatTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexOnlyRenderPipelineTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/VertexStateTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ViewportOrientationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/ViewportTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SwapChainTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/SwapChainValidationTests.o obj/third_party/dawn/src/dawn/tests/end2end_tests_sources/WindowSurfaceTests.o || obj/third_party/dawn/src/dawn/tests/platform_mocks_sources.stamp obj/third_party/dawn/src/dawn/tests/test_infra_sources.stamp obj/third_party/dawn/src/dawn/cpp.stamp obj/third_party/dawn/src/dawn/proc.stamp obj/third_party/dawn/src/dawn/common/libcommon.a obj/third_party/dawn/src/dawn/native/headers.stamp obj/third_party/dawn/src/dawn/utils/libutils.a obj/third_party/dawn/src/dawn/wire/wire.stamp ./libbase.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC obj/base/test/libtest_support.a obj/base/test/libtest_config.a obj/base/libbase_static.a ./libbase_i18n.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC obj/testing/gmock/gmock.stamp obj/third_party/googletest/gmock.stamp obj/third_party/googletest/gtest.stamp obj/testing/gtest/libgtest.a ./libthird_party_perfetto_perfetto_test_support.so.TOC obj/third_party/test_fonts/fontconfig/fontconfig_util_linux.stamp ./libthird_party_fontconfig.so.TOC obj/base/third_party/dynamic_annotations/libdynamic_annotations.a obj/third_party/libxml/libxml_utils.a obj/third_party/libxml/libxml2.a ./libchrome_zlib.so.TOC obj/third_party/libxml/libxml_reader.a obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp obj/third_party/dawn/include/dawn/cpp_headers.stamp obj/third_party/dawn/include/dawn/headers.stamp ./libdawn_platform.so.TOC obj/third_party/dawn/src/dawn/glfw/libglfw.a obj/third_party/dawn/third_party/gn/glfw/libglfw.a ./libdawn_proc.so.TOC obj/third_party/dawn/src/dawn/native/sources.stamp obj/third_party/dawn/third_party/khronos/khronos_platform.stamp obj/third_party/dawn/src/tint/libtint.stamp obj/third_party/dawn/src/tint/libtint_ast_src.stamp obj/third_party/dawn/src/tint/libtint_base_src.stamp obj/third_party/dawn/src/tint/libtint_text_src.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/dawn/src/tint/libtint_syntax_tree_src.stamp obj/third_party/dawn/src/tint/libtint_constant_src.stamp obj/third_party/dawn/src/tint/libtint_type_src.stamp obj/third_party/dawn/src/tint/libtint_initializer_src.stamp obj/third_party/dawn/src/tint/libtint_inspector_src.stamp obj/third_party/dawn/src/tint/libtint_sem_src.stamp obj/third_party/dawn/src/tint/libtint_transform_src.stamp obj/third_party/dawn/src/tint/libtint_writer_src.stamp obj/third_party/dawn/src/tint/libtint_spv_writer_src.stamp obj/third_party/dawn/src/tint/libtint_wgsl_reader_src.stamp obj/third_party/dawn/src/tint/libtint_reader_src.stamp obj/third_party/dawn/src/tint/libtint_wgsl_writer_src.stamp obj/third_party/dawn/src/tint/libtint_msl_writer_src.stamp obj/third_party/dawn/src/tint/libtint_hlsl_writer_src.stamp obj/third_party/dawn/src/tint/libtint_glsl_writer_src.stamp obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_opt.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_val.a obj/third_party/vulkan-deps/vulkan-tools/src/vulkan_tools_headers.stamp obj/third_party/dawn/src/dawn/native/libdawn_native_static.a ./libdawn_wire.so.TOC

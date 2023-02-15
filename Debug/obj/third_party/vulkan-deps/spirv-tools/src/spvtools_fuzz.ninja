@@ -1,0 +1,593 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/vulkan-deps/spirv-tools/src -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/spirv-tools/src/include -Igen/third_party/vulkan-deps/spirv-tools/src -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-implicit-fallthrough -Wno-newline-eof -Wno-unreachable-code-break -Wno-unreachable-code-return -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = spvtools_fuzz
+target_out_dir = obj/third_party/vulkan-deps/spirv-tools/src
+target_output_name = libspvtools_fuzz
+
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp: stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz_proto_gen.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/added_function_reducer.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/added_function_reducer.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = added_function_reducer.cpp
+  source_name_part = added_function_reducer
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/available_instructions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/available_instructions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = available_instructions.cpp
+  source_name_part = available_instructions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/call_graph.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/call_graph.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = call_graph.cpp
+  source_name_part = call_graph
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/counter_overflow_id_source.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/counter_overflow_id_source.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = counter_overflow_id_source.cpp
+  source_name_part = counter_overflow_id_source
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/data_descriptor.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/data_descriptor.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = data_descriptor.cpp
+  source_name_part = data_descriptor
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/constant_uniform_facts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/constant_uniform_facts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = constant_uniform_facts.cpp
+  source_name_part = constant_uniform_facts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/data_synonym_and_id_equation_facts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/data_synonym_and_id_equation_facts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = data_synonym_and_id_equation_facts.cpp
+  source_name_part = data_synonym_and_id_equation_facts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/dead_block_facts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/dead_block_facts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = dead_block_facts.cpp
+  source_name_part = dead_block_facts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fact_manager.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/fact_manager.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fact_manager.cpp
+  source_name_part = fact_manager
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/irrelevant_value_facts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/irrelevant_value_facts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = irrelevant_value_facts.cpp
+  source_name_part = irrelevant_value_facts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/livesafe_function_facts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fact_manager/livesafe_function_facts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = livesafe_function_facts.cpp
+  source_name_part = livesafe_function_facts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/force_render_red.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/force_render_red.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = force_render_red.cpp
+  source_name_part = force_render_red
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer.cpp
+  source_name_part = fuzzer
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_context.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_context.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_context.cpp
+  source_name_part = fuzzer_context
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass.cpp
+  source_name_part = fuzzer_pass
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_access_chains.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_access_chains.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_access_chains.cpp
+  source_name_part = fuzzer_pass_add_access_chains
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_bit_instruction_synonyms.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_bit_instruction_synonyms.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_bit_instruction_synonyms.cpp
+  source_name_part = fuzzer_pass_add_bit_instruction_synonyms
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_extract.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_composite_extract.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_composite_extract.cpp
+  source_name_part = fuzzer_pass_add_composite_extract
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_inserts.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_composite_inserts.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_composite_inserts.cpp
+  source_name_part = fuzzer_pass_add_composite_inserts
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_types.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_composite_types.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_composite_types.cpp
+  source_name_part = fuzzer_pass_add_composite_types
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_copy_memory.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_copy_memory.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_copy_memory.cpp
+  source_name_part = fuzzer_pass_add_copy_memory
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_blocks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_dead_blocks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_dead_blocks.cpp
+  source_name_part = fuzzer_pass_add_dead_blocks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_breaks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_dead_breaks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_dead_breaks.cpp
+  source_name_part = fuzzer_pass_add_dead_breaks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_continues.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_dead_continues.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_dead_continues.cpp
+  source_name_part = fuzzer_pass_add_dead_continues
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_equation_instructions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_equation_instructions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_equation_instructions.cpp
+  source_name_part = fuzzer_pass_add_equation_instructions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_function_calls.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_function_calls.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_function_calls.cpp
+  source_name_part = fuzzer_pass_add_function_calls
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_global_variables.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_global_variables.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_global_variables.cpp
+  source_name_part = fuzzer_pass_add_global_variables
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_image_sample_unused_components.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_image_sample_unused_components.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_image_sample_unused_components.cpp
+  source_name_part = fuzzer_pass_add_image_sample_unused_components
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loads.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_loads.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_loads.cpp
+  source_name_part = fuzzer_pass_add_loads
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_local_variables.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_local_variables.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_local_variables.cpp
+  source_name_part = fuzzer_pass_add_local_variables
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loop_preheaders.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_loop_preheaders.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_loop_preheaders.cpp
+  source_name_part = fuzzer_pass_add_loop_preheaders
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loops_to_create_int_constant_synonyms.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_loops_to_create_int_constant_synonyms.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_loops_to_create_int_constant_synonyms.cpp
+  source_name_part = fuzzer_pass_add_loops_to_create_int_constant_synonyms
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_no_contraction_decorations.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_no_contraction_decorations.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_no_contraction_decorations.cpp
+  source_name_part = fuzzer_pass_add_no_contraction_decorations
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_opphi_synonyms.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_opphi_synonyms.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_opphi_synonyms.cpp
+  source_name_part = fuzzer_pass_add_opphi_synonyms
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_parameters.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_parameters.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_parameters.cpp
+  source_name_part = fuzzer_pass_add_parameters
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_relaxed_decorations.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_relaxed_decorations.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_relaxed_decorations.cpp
+  source_name_part = fuzzer_pass_add_relaxed_decorations
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_stores.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_stores.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_stores.cpp
+  source_name_part = fuzzer_pass_add_stores
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_synonyms.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_synonyms.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_synonyms.cpp
+  source_name_part = fuzzer_pass_add_synonyms
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_vector_shuffle_instructions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_add_vector_shuffle_instructions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_add_vector_shuffle_instructions.cpp
+  source_name_part = fuzzer_pass_add_vector_shuffle_instructions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_branch_weights.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_adjust_branch_weights.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_adjust_branch_weights.cpp
+  source_name_part = fuzzer_pass_adjust_branch_weights
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_function_controls.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_adjust_function_controls.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_adjust_function_controls.cpp
+  source_name_part = fuzzer_pass_adjust_function_controls
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_loop_controls.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_adjust_loop_controls.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_adjust_loop_controls.cpp
+  source_name_part = fuzzer_pass_adjust_loop_controls
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_memory_operands_masks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_adjust_memory_operands_masks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_adjust_memory_operands_masks.cpp
+  source_name_part = fuzzer_pass_adjust_memory_operands_masks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_selection_controls.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_adjust_selection_controls.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_adjust_selection_controls.cpp
+  source_name_part = fuzzer_pass_adjust_selection_controls
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_apply_id_synonyms.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_apply_id_synonyms.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_apply_id_synonyms.cpp
+  source_name_part = fuzzer_pass_apply_id_synonyms
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_construct_composites.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_construct_composites.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_construct_composites.cpp
+  source_name_part = fuzzer_pass_construct_composites
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_copy_objects.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_copy_objects.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_copy_objects.cpp
+  source_name_part = fuzzer_pass_copy_objects
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_donate_modules.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_donate_modules.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_donate_modules.cpp
+  source_name_part = fuzzer_pass_donate_modules
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_duplicate_regions_with_selections.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_duplicate_regions_with_selections.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_duplicate_regions_with_selections.cpp
+  source_name_part = fuzzer_pass_duplicate_regions_with_selections
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_expand_vector_reductions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_expand_vector_reductions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_expand_vector_reductions.cpp
+  source_name_part = fuzzer_pass_expand_vector_reductions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_flatten_conditional_branches.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_flatten_conditional_branches.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_flatten_conditional_branches.cpp
+  source_name_part = fuzzer_pass_flatten_conditional_branches
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_inline_functions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_inline_functions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_inline_functions.cpp
+  source_name_part = fuzzer_pass_inline_functions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_interchange_signedness_of_integer_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_interchange_signedness_of_integer_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_interchange_signedness_of_integer_operands.cpp
+  source_name_part = fuzzer_pass_interchange_signedness_of_integer_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_interchange_zero_like_constants.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_interchange_zero_like_constants.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_interchange_zero_like_constants.cpp
+  source_name_part = fuzzer_pass_interchange_zero_like_constants
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_invert_comparison_operators.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_invert_comparison_operators.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_invert_comparison_operators.cpp
+  source_name_part = fuzzer_pass_invert_comparison_operators
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_make_vector_operations_dynamic.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_make_vector_operations_dynamic.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_make_vector_operations_dynamic.cpp
+  source_name_part = fuzzer_pass_make_vector_operations_dynamic
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_merge_blocks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_merge_blocks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_merge_blocks.cpp
+  source_name_part = fuzzer_pass_merge_blocks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_merge_function_returns.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_merge_function_returns.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_merge_function_returns.cpp
+  source_name_part = fuzzer_pass_merge_function_returns
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_mutate_pointers.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_mutate_pointers.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_mutate_pointers.cpp
+  source_name_part = fuzzer_pass_mutate_pointers
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_obfuscate_constants.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_obfuscate_constants.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_obfuscate_constants.cpp
+  source_name_part = fuzzer_pass_obfuscate_constants
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_outline_functions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_outline_functions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_outline_functions.cpp
+  source_name_part = fuzzer_pass_outline_functions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_blocks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_permute_blocks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_permute_blocks.cpp
+  source_name_part = fuzzer_pass_permute_blocks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_function_parameters.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_permute_function_parameters.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_permute_function_parameters.cpp
+  source_name_part = fuzzer_pass_permute_function_parameters
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_function_variables.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_permute_function_variables.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_permute_function_variables.cpp
+  source_name_part = fuzzer_pass_permute_function_variables
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_instructions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_permute_instructions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_permute_instructions.cpp
+  source_name_part = fuzzer_pass_permute_instructions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_phi_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_permute_phi_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_permute_phi_operands.cpp
+  source_name_part = fuzzer_pass_permute_phi_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_propagate_instructions_down.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_propagate_instructions_down.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_propagate_instructions_down.cpp
+  source_name_part = fuzzer_pass_propagate_instructions_down
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_propagate_instructions_up.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_propagate_instructions_up.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_propagate_instructions_up.cpp
+  source_name_part = fuzzer_pass_propagate_instructions_up
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_push_ids_through_variables.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_push_ids_through_variables.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_push_ids_through_variables.cpp
+  source_name_part = fuzzer_pass_push_ids_through_variables
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_adds_subs_muls_with_carrying_extended.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_adds_subs_muls_with_carrying_extended.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_adds_subs_muls_with_carrying_extended.cpp
+  source_name_part = fuzzer_pass_replace_adds_subs_muls_with_carrying_extended
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_branches_from_dead_blocks_with_exits.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_branches_from_dead_blocks_with_exits.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_branches_from_dead_blocks_with_exits.cpp
+  source_name_part = fuzzer_pass_replace_branches_from_dead_blocks_with_exits
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_copy_memories_with_loads_stores.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_copy_memories_with_loads_stores.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_copy_memories_with_loads_stores.cpp
+  source_name_part = fuzzer_pass_replace_copy_memories_with_loads_stores
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_copy_objects_with_stores_loads.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_copy_objects_with_stores_loads.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_copy_objects_with_stores_loads.cpp
+  source_name_part = fuzzer_pass_replace_copy_objects_with_stores_loads
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_irrelevant_ids.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_irrelevant_ids.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_irrelevant_ids.cpp
+  source_name_part = fuzzer_pass_replace_irrelevant_ids
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_linear_algebra_instructions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_linear_algebra_instructions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_linear_algebra_instructions.cpp
+  source_name_part = fuzzer_pass_replace_linear_algebra_instructions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_loads_stores_with_copy_memories.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_loads_stores_with_copy_memories.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_loads_stores_with_copy_memories.cpp
+  source_name_part = fuzzer_pass_replace_loads_stores_with_copy_memories
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_opphi_ids_from_dead_predecessors.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_opphi_ids_from_dead_predecessors.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_opphi_ids_from_dead_predecessors.cpp
+  source_name_part = fuzzer_pass_replace_opphi_ids_from_dead_predecessors
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_opselects_with_conditional_branches.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_opselects_with_conditional_branches.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_opselects_with_conditional_branches.cpp
+  source_name_part = fuzzer_pass_replace_opselects_with_conditional_branches
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_parameter_with_global.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_parameter_with_global.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_parameter_with_global.cpp
+  source_name_part = fuzzer_pass_replace_parameter_with_global
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_params_with_struct.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_replace_params_with_struct.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_replace_params_with_struct.cpp
+  source_name_part = fuzzer_pass_replace_params_with_struct
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_split_blocks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_split_blocks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_split_blocks.cpp
+  source_name_part = fuzzer_pass_split_blocks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_commutable_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_swap_commutable_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_swap_commutable_operands.cpp
+  source_name_part = fuzzer_pass_swap_commutable_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_conditional_branch_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_swap_conditional_branch_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_swap_conditional_branch_operands.cpp
+  source_name_part = fuzzer_pass_swap_conditional_branch_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_functions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_swap_functions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_swap_functions.cpp
+  source_name_part = fuzzer_pass_swap_functions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_toggle_access_chain_instruction.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_toggle_access_chain_instruction.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_toggle_access_chain_instruction.cpp
+  source_name_part = fuzzer_pass_toggle_access_chain_instruction
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_wrap_regions_in_selections.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_wrap_regions_in_selections.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_wrap_regions_in_selections.cpp
+  source_name_part = fuzzer_pass_wrap_regions_in_selections
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_wrap_vector_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_pass_wrap_vector_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_pass_wrap_vector_synonym.cpp
+  source_name_part = fuzzer_pass_wrap_vector_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_util.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/fuzzer_util.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = fuzzer_util.cpp
+  source_name_part = fuzzer_util
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/id_use_descriptor.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/id_use_descriptor.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = id_use_descriptor.cpp
+  source_name_part = id_use_descriptor
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/instruction_descriptor.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/instruction_descriptor.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = instruction_descriptor.cpp
+  source_name_part = instruction_descriptor
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/instruction_message.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/instruction_message.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = instruction_message.cpp
+  source_name_part = instruction_message
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/overflow_id_source.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/overflow_id_source.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = overflow_id_source.cpp
+  source_name_part = overflow_id_source
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_manager.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_manager.cpp
+  source_name_part = repeated_pass_manager
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_looped_with_recommendations.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_manager_looped_with_recommendations.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_manager_looped_with_recommendations.cpp
+  source_name_part = repeated_pass_manager_looped_with_recommendations
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_random_with_recommendations.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_manager_random_with_recommendations.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_manager_random_with_recommendations.cpp
+  source_name_part = repeated_pass_manager_random_with_recommendations
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_simple.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_manager_simple.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_manager_simple.cpp
+  source_name_part = repeated_pass_manager_simple
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_recommender.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_recommender.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_recommender.cpp
+  source_name_part = repeated_pass_recommender
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_recommender_standard.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pass_management/repeated_pass_recommender_standard.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = repeated_pass_recommender_standard.cpp
+  source_name_part = repeated_pass_recommender_standard
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/pseudo_random_generator.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/pseudo_random_generator.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = pseudo_random_generator.cpp
+  source_name_part = pseudo_random_generator
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/random_generator.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/random_generator.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = random_generator.cpp
+  source_name_part = random_generator
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/replayer.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/replayer.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = replayer.cpp
+  source_name_part = replayer
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/shrinker.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/shrinker.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = shrinker.cpp
+  source_name_part = shrinker
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation.cpp
+  source_name_part = transformation
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_access_chain.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_access_chain.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_access_chain.cpp
+  source_name_part = transformation_access_chain
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_bit_instruction_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_bit_instruction_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_bit_instruction_synonym.cpp
+  source_name_part = transformation_add_bit_instruction_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_boolean.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_constant_boolean.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_constant_boolean.cpp
+  source_name_part = transformation_add_constant_boolean
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_composite.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_constant_composite.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_constant_composite.cpp
+  source_name_part = transformation_add_constant_composite
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_null.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_constant_null.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_constant_null.cpp
+  source_name_part = transformation_add_constant_null
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_scalar.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_constant_scalar.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_constant_scalar.cpp
+  source_name_part = transformation_add_constant_scalar
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_copy_memory.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_copy_memory.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_copy_memory.cpp
+  source_name_part = transformation_add_copy_memory
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_block.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_dead_block.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_dead_block.cpp
+  source_name_part = transformation_add_dead_block
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_break.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_dead_break.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_dead_break.cpp
+  source_name_part = transformation_add_dead_break
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_continue.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_dead_continue.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_dead_continue.cpp
+  source_name_part = transformation_add_dead_continue
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_early_terminator_wrapper.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_early_terminator_wrapper.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_early_terminator_wrapper.cpp
+  source_name_part = transformation_add_early_terminator_wrapper
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_function.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_function.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_function.cpp
+  source_name_part = transformation_add_function
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_global_undef.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_global_undef.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_global_undef.cpp
+  source_name_part = transformation_add_global_undef
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_global_variable.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_global_variable.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_global_variable.cpp
+  source_name_part = transformation_add_global_variable
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_image_sample_unused_components.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_image_sample_unused_components.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_image_sample_unused_components.cpp
+  source_name_part = transformation_add_image_sample_unused_components
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_local_variable.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_local_variable.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_local_variable.cpp
+  source_name_part = transformation_add_local_variable
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_loop_preheader.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_loop_preheader.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_loop_preheader.cpp
+  source_name_part = transformation_add_loop_preheader
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_loop_to_create_int_constant_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_loop_to_create_int_constant_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_loop_to_create_int_constant_synonym.cpp
+  source_name_part = transformation_add_loop_to_create_int_constant_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_no_contraction_decoration.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_no_contraction_decoration.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_no_contraction_decoration.cpp
+  source_name_part = transformation_add_no_contraction_decoration
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_opphi_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_opphi_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_opphi_synonym.cpp
+  source_name_part = transformation_add_opphi_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_parameter.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_parameter.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_parameter.cpp
+  source_name_part = transformation_add_parameter
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_relaxed_decoration.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_relaxed_decoration.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_relaxed_decoration.cpp
+  source_name_part = transformation_add_relaxed_decoration
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_spec_constant_op.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_spec_constant_op.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_spec_constant_op.cpp
+  source_name_part = transformation_add_spec_constant_op
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_synonym.cpp
+  source_name_part = transformation_add_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_array.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_array.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_array.cpp
+  source_name_part = transformation_add_type_array
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_boolean.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_boolean.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_boolean.cpp
+  source_name_part = transformation_add_type_boolean
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_float.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_float.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_float.cpp
+  source_name_part = transformation_add_type_float
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_function.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_function.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_function.cpp
+  source_name_part = transformation_add_type_function
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_int.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_int.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_int.cpp
+  source_name_part = transformation_add_type_int
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_matrix.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_matrix.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_matrix.cpp
+  source_name_part = transformation_add_type_matrix
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_pointer.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_pointer.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_pointer.cpp
+  source_name_part = transformation_add_type_pointer
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_struct.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_struct.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_struct.cpp
+  source_name_part = transformation_add_type_struct
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_vector.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_add_type_vector.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_add_type_vector.cpp
+  source_name_part = transformation_add_type_vector
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_adjust_branch_weights.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_adjust_branch_weights.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_adjust_branch_weights.cpp
+  source_name_part = transformation_adjust_branch_weights
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_construct.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_composite_construct.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_composite_construct.cpp
+  source_name_part = transformation_composite_construct
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_extract.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_composite_extract.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_composite_extract.cpp
+  source_name_part = transformation_composite_extract
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_insert.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_composite_insert.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_composite_insert.cpp
+  source_name_part = transformation_composite_insert
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_compute_data_synonym_fact_closure.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_compute_data_synonym_fact_closure.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_compute_data_synonym_fact_closure.cpp
+  source_name_part = transformation_compute_data_synonym_fact_closure
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_context.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_context.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_context.cpp
+  source_name_part = transformation_context
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_duplicate_region_with_selection.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_duplicate_region_with_selection.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_duplicate_region_with_selection.cpp
+  source_name_part = transformation_duplicate_region_with_selection
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_equation_instruction.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_equation_instruction.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_equation_instruction.cpp
+  source_name_part = transformation_equation_instruction
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_expand_vector_reduction.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_expand_vector_reduction.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_expand_vector_reduction.cpp
+  source_name_part = transformation_expand_vector_reduction
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_flatten_conditional_branch.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_flatten_conditional_branch.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_flatten_conditional_branch.cpp
+  source_name_part = transformation_flatten_conditional_branch
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_function_call.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_function_call.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_function_call.cpp
+  source_name_part = transformation_function_call
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_inline_function.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_inline_function.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_inline_function.cpp
+  source_name_part = transformation_inline_function
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_invert_comparison_operator.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_invert_comparison_operator.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_invert_comparison_operator.cpp
+  source_name_part = transformation_invert_comparison_operator
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_load.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_load.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_load.cpp
+  source_name_part = transformation_load
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_make_vector_operation_dynamic.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_make_vector_operation_dynamic.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_make_vector_operation_dynamic.cpp
+  source_name_part = transformation_make_vector_operation_dynamic
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_merge_blocks.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_merge_blocks.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_merge_blocks.cpp
+  source_name_part = transformation_merge_blocks
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_merge_function_returns.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_merge_function_returns.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_merge_function_returns.cpp
+  source_name_part = transformation_merge_function_returns
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_move_block_down.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_move_block_down.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_move_block_down.cpp
+  source_name_part = transformation_move_block_down
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_move_instruction_down.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_move_instruction_down.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_move_instruction_down.cpp
+  source_name_part = transformation_move_instruction_down
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_mutate_pointer.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_mutate_pointer.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_mutate_pointer.cpp
+  source_name_part = transformation_mutate_pointer
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_outline_function.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_outline_function.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_outline_function.cpp
+  source_name_part = transformation_outline_function
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_permute_function_parameters.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_permute_function_parameters.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_permute_function_parameters.cpp
+  source_name_part = transformation_permute_function_parameters
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_permute_phi_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_permute_phi_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_permute_phi_operands.cpp
+  source_name_part = transformation_permute_phi_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_propagate_instruction_down.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_propagate_instruction_down.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_propagate_instruction_down.cpp
+  source_name_part = transformation_propagate_instruction_down
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_propagate_instruction_up.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_propagate_instruction_up.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_propagate_instruction_up.cpp
+  source_name_part = transformation_propagate_instruction_up
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_push_id_through_variable.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_push_id_through_variable.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_push_id_through_variable.cpp
+  source_name_part = transformation_push_id_through_variable
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_record_synonymous_constants.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_record_synonymous_constants.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_record_synonymous_constants.cpp
+  source_name_part = transformation_record_synonymous_constants
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_add_sub_mul_with_carrying_extended.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_add_sub_mul_with_carrying_extended.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_add_sub_mul_with_carrying_extended.cpp
+  source_name_part = transformation_replace_add_sub_mul_with_carrying_extended
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_boolean_constant_with_constant_binary.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_boolean_constant_with_constant_binary.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_boolean_constant_with_constant_binary.cpp
+  source_name_part = transformation_replace_boolean_constant_with_constant_binary
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_branch_from_dead_block_with_exit.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_branch_from_dead_block_with_exit.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_branch_from_dead_block_with_exit.cpp
+  source_name_part = transformation_replace_branch_from_dead_block_with_exit
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_constant_with_uniform.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_constant_with_uniform.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_constant_with_uniform.cpp
+  source_name_part = transformation_replace_constant_with_uniform
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_copy_memory_with_load_store.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_copy_memory_with_load_store.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_copy_memory_with_load_store.cpp
+  source_name_part = transformation_replace_copy_memory_with_load_store
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_copy_object_with_store_load.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_copy_object_with_store_load.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_copy_object_with_store_load.cpp
+  source_name_part = transformation_replace_copy_object_with_store_load
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_id_with_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_id_with_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_id_with_synonym.cpp
+  source_name_part = transformation_replace_id_with_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_irrelevant_id.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_irrelevant_id.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_irrelevant_id.cpp
+  source_name_part = transformation_replace_irrelevant_id
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_linear_algebra_instruction.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_linear_algebra_instruction.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_linear_algebra_instruction.cpp
+  source_name_part = transformation_replace_linear_algebra_instruction
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_load_store_with_copy_memory.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_load_store_with_copy_memory.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_load_store_with_copy_memory.cpp
+  source_name_part = transformation_replace_load_store_with_copy_memory
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_opphi_id_from_dead_predecessor.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_opphi_id_from_dead_predecessor.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_opphi_id_from_dead_predecessor.cpp
+  source_name_part = transformation_replace_opphi_id_from_dead_predecessor
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_opselect_with_conditional_branch.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_opselect_with_conditional_branch.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_opselect_with_conditional_branch.cpp
+  source_name_part = transformation_replace_opselect_with_conditional_branch
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_parameter_with_global.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_parameter_with_global.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_parameter_with_global.cpp
+  source_name_part = transformation_replace_parameter_with_global
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_params_with_struct.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_replace_params_with_struct.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_replace_params_with_struct.cpp
+  source_name_part = transformation_replace_params_with_struct
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_function_control.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_set_function_control.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_set_function_control.cpp
+  source_name_part = transformation_set_function_control
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_loop_control.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_set_loop_control.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_set_loop_control.cpp
+  source_name_part = transformation_set_loop_control
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_memory_operands_mask.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_set_memory_operands_mask.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_set_memory_operands_mask.cpp
+  source_name_part = transformation_set_memory_operands_mask
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_selection_control.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_set_selection_control.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_set_selection_control.cpp
+  source_name_part = transformation_set_selection_control
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_split_block.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_split_block.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_split_block.cpp
+  source_name_part = transformation_split_block
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_store.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_store.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_store.cpp
+  source_name_part = transformation_store
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_commutable_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_swap_commutable_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_swap_commutable_operands.cpp
+  source_name_part = transformation_swap_commutable_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_conditional_branch_operands.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_swap_conditional_branch_operands.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_swap_conditional_branch_operands.cpp
+  source_name_part = transformation_swap_conditional_branch_operands
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_function_variables.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_swap_function_variables.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_swap_function_variables.cpp
+  source_name_part = transformation_swap_function_variables
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_two_functions.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_swap_two_functions.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_swap_two_functions.cpp
+  source_name_part = transformation_swap_two_functions
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_toggle_access_chain_instruction.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_toggle_access_chain_instruction.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_toggle_access_chain_instruction.cpp
+  source_name_part = transformation_toggle_access_chain_instruction
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_vector_shuffle.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_vector_shuffle.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_vector_shuffle.cpp
+  source_name_part = transformation_vector_shuffle
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_early_terminator_in_function.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_wrap_early_terminator_in_function.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_wrap_early_terminator_in_function.cpp
+  source_name_part = transformation_wrap_early_terminator_in_function
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_region_in_selection.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_wrap_region_in_selection.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_wrap_region_in_selection.cpp
+  source_name_part = transformation_wrap_region_in_selection
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_vector_synonym.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/transformation_wrap_vector_synonym.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = transformation_wrap_vector_synonym.cpp
+  source_name_part = transformation_wrap_vector_synonym
+build obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/uniform_buffer_element_descriptor.o: cxx ../../third_party/vulkan-deps/spirv-tools/src/source/fuzz/uniform_buffer_element_descriptor.cpp || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz.inputdeps.stamp
+  source_file_part = uniform_buffer_element_descriptor.cpp
+  source_name_part = uniform_buffer_element_descriptor
+
+build obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_fuzz.a: alink obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/added_function_reducer.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/available_instructions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/call_graph.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/counter_overflow_id_source.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/data_descriptor.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/constant_uniform_facts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/data_synonym_and_id_equation_facts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/dead_block_facts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fact_manager.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/irrelevant_value_facts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/livesafe_function_facts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/force_render_red.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_context.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_access_chains.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_bit_instruction_synonyms.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_extract.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_inserts.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_composite_types.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_copy_memory.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_blocks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_breaks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_dead_continues.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_equation_instructions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_function_calls.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_global_variables.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_image_sample_unused_components.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loads.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_local_variables.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loop_preheaders.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_loops_to_create_int_constant_synonyms.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_no_contraction_decorations.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_opphi_synonyms.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_parameters.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_relaxed_decorations.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_stores.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_synonyms.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_add_vector_shuffle_instructions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_branch_weights.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_function_controls.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_loop_controls.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_memory_operands_masks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_adjust_selection_controls.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_apply_id_synonyms.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_construct_composites.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_copy_objects.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_donate_modules.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_duplicate_regions_with_selections.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_expand_vector_reductions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_flatten_conditional_branches.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_inline_functions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_interchange_signedness_of_integer_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_interchange_zero_like_constants.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_invert_comparison_operators.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_make_vector_operations_dynamic.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_merge_blocks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_merge_function_returns.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_mutate_pointers.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_obfuscate_constants.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_outline_functions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_blocks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_function_parameters.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_function_variables.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_instructions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_permute_phi_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_propagate_instructions_down.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_propagate_instructions_up.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_push_ids_through_variables.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_adds_subs_muls_with_carrying_extended.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_branches_from_dead_blocks_with_exits.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_copy_memories_with_loads_stores.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_copy_objects_with_stores_loads.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_irrelevant_ids.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_linear_algebra_instructions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_loads_stores_with_copy_memories.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_opphi_ids_from_dead_predecessors.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_opselects_with_conditional_branches.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_parameter_with_global.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_replace_params_with_struct.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_split_blocks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_commutable_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_conditional_branch_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_swap_functions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_toggle_access_chain_instruction.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_wrap_regions_in_selections.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_pass_wrap_vector_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/fuzzer_util.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/id_use_descriptor.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/instruction_descriptor.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/instruction_message.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/overflow_id_source.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_looped_with_recommendations.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_random_with_recommendations.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_manager_simple.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_recommender.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/repeated_pass_recommender_standard.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/pseudo_random_generator.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/random_generator.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/replayer.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/shrinker.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_access_chain.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_bit_instruction_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_boolean.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_composite.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_null.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_constant_scalar.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_copy_memory.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_block.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_break.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_dead_continue.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_early_terminator_wrapper.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_function.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_global_undef.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_global_variable.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_image_sample_unused_components.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_local_variable.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_loop_preheader.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_loop_to_create_int_constant_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_no_contraction_decoration.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_opphi_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_parameter.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_relaxed_decoration.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_spec_constant_op.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_array.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_boolean.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_float.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_function.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_int.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_matrix.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_pointer.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_struct.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_add_type_vector.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_adjust_branch_weights.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_construct.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_extract.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_composite_insert.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_compute_data_synonym_fact_closure.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_context.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_duplicate_region_with_selection.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_equation_instruction.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_expand_vector_reduction.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_flatten_conditional_branch.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_function_call.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_inline_function.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_invert_comparison_operator.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_load.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_make_vector_operation_dynamic.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_merge_blocks.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_merge_function_returns.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_move_block_down.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_move_instruction_down.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_mutate_pointer.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_outline_function.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_permute_function_parameters.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_permute_phi_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_propagate_instruction_down.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_propagate_instruction_up.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_push_id_through_variable.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_record_synonymous_constants.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_add_sub_mul_with_carrying_extended.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_boolean_constant_with_constant_binary.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_branch_from_dead_block_with_exit.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_constant_with_uniform.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_copy_memory_with_load_store.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_copy_object_with_store_load.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_id_with_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_irrelevant_id.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_linear_algebra_instruction.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_load_store_with_copy_memory.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_opphi_id_from_dead_predecessor.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_opselect_with_conditional_branch.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_parameter_with_global.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_replace_params_with_struct.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_function_control.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_loop_control.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_memory_operands_mask.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_set_selection_control.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_split_block.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_store.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_commutable_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_conditional_branch_operands.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_function_variables.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_swap_two_functions.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_toggle_access_chain_instruction.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_vector_shuffle.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_early_terminator_in_function.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_region_in_selection.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/transformation_wrap_vector_synonym.o obj/third_party/vulkan-deps/spirv-tools/src/spvtools_fuzz/uniform_buffer_element_descriptor.o || obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_fuzz_proto.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_opt.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_reduce.a obj/third_party/protobuf/libprotobuf_full.a obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp ./libchrome_zlib.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/vulkan-deps/spirv-tools/src

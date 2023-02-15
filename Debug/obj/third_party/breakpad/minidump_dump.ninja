@@ -1,0 +1,47 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/breakpad/breakpad/src -I../../third_party/breakpad/breakpad/src/third_party
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-tautological-constant-out-of-range-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = minidump_dump
+target_out_dir = obj/third_party/breakpad
+target_output_name = minidump_dump
+
+build obj/third_party/breakpad/minidump_dump/path_helper.o: cxx ../../third_party/breakpad/breakpad/src/common/path_helper.cc
+  source_file_part = path_helper.cc
+  source_name_part = path_helper
+build obj/third_party/breakpad/minidump_dump/basic_code_modules.o: cxx ../../third_party/breakpad/breakpad/src/processor/basic_code_modules.cc
+  source_file_part = basic_code_modules.cc
+  source_name_part = basic_code_modules
+build obj/third_party/breakpad/minidump_dump/convert_old_arm64_context.o: cxx ../../third_party/breakpad/breakpad/src/processor/convert_old_arm64_context.cc
+  source_file_part = convert_old_arm64_context.cc
+  source_name_part = convert_old_arm64_context
+build obj/third_party/breakpad/minidump_dump/dump_context.o: cxx ../../third_party/breakpad/breakpad/src/processor/dump_context.cc
+  source_file_part = dump_context.cc
+  source_name_part = dump_context
+build obj/third_party/breakpad/minidump_dump/dump_object.o: cxx ../../third_party/breakpad/breakpad/src/processor/dump_object.cc
+  source_file_part = dump_object.cc
+  source_name_part = dump_object
+build obj/third_party/breakpad/minidump_dump/logging.o: cxx ../../third_party/breakpad/breakpad/src/processor/logging.cc
+  source_file_part = logging.cc
+  source_name_part = logging
+build obj/third_party/breakpad/minidump_dump/minidump.o: cxx ../../third_party/breakpad/breakpad/src/processor/minidump.cc
+  source_file_part = minidump.cc
+  source_name_part = minidump
+build obj/third_party/breakpad/minidump_dump/minidump_dump.o: cxx ../../third_party/breakpad/breakpad/src/processor/minidump_dump.cc
+  source_file_part = minidump_dump.cc
+  source_name_part = minidump_dump
+build obj/third_party/breakpad/minidump_dump/pathname_stripper.o: cxx ../../third_party/breakpad/breakpad/src/processor/pathname_stripper.cc
+  source_file_part = pathname_stripper.cc
+  source_name_part = pathname_stripper
+build obj/third_party/breakpad/minidump_dump/proc_maps_linux.o: cxx ../../third_party/breakpad/breakpad/src/processor/proc_maps_linux.cc
+  source_file_part = proc_maps_linux.cc
+  source_name_part = proc_maps_linux
+
+build ./minidump_dump: link obj/third_party/breakpad/minidump_dump/path_helper.o obj/third_party/breakpad/minidump_dump/basic_code_modules.o obj/third_party/breakpad/minidump_dump/convert_old_arm64_context.o obj/third_party/breakpad/minidump_dump/dump_context.o obj/third_party/breakpad/minidump_dump/dump_object.o obj/third_party/breakpad/minidump_dump/logging.o obj/third_party/breakpad/minidump_dump/minidump.o obj/third_party/breakpad/minidump_dump/minidump_dump.o obj/third_party/breakpad/minidump_dump/pathname_stripper.o obj/third_party/breakpad/minidump_dump/proc_maps_linux.o | ./libc++.so.TOC || obj/build/config/executable_deps.stamp
+  ldflags = -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -pie -Wl,--disable-new-dtags -Wl,-rpath=\$$ORIGIN -Werror
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = 
+  output_dir = .
+  solibs = ./libc++.so
