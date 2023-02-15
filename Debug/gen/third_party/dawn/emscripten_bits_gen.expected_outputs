@@ -1,5 +1,0 @@
-emscripten-bits/webgpu.h
-emscripten-bits/webgpu_cpp.h
-emscripten-bits/webgpu_cpp.cpp
-emscripten-bits/webgpu_struct_info.json
-emscripten-bits/library_webgpu_enum_tables.js

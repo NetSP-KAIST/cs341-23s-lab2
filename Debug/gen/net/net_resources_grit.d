@@ -1,1 +1,0 @@
-gen/net/net_resources_grit.d.stamp: ./../../net/base/dir_header.html ./gen/tools/gritsettings/default_resource_ids

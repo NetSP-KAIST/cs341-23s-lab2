@@ -1,9 +1,0 @@
-defines = -DDCHECK_ALWAYS_ON=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -DABSL_ALLOCATOR_NOTHROW=1
-include_dirs = -I../.. -Iirt_x64/gen -I../../third_party/abseil-cpp
-label_name = traits
-root_out_dir = irt_x64
-target_out_dir = irt_x64/obj/third_party/abseil-cpp/absl/random/internal
-target_output_name = traits
-
-
-build irt_x64/obj/third_party/abseil-cpp/absl/random/internal/traits.stamp: irt_x64_stamp || irt_x64/obj/third_party/abseil-cpp/absl/base/config.stamp irt_x64/obj/third_party/abseil-cpp/absl/numeric/bits.stamp irt_x64/obj/third_party/abseil-cpp/absl/numeric/int128.stamp irt_x64/obj/third_party/abseil-cpp/absl/base/core_headers.stamp

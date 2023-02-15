@@ -1,9 +1,0 @@
-{
-  "deps": [
-
-  ],
-  "sources": [
-    "../../../../../../../third_party/blink/public/mojom/use_counter/metrics/css_property_id.mojom",
-    "../../../../../../../third_party/blink/public/mojom/use_counter/metrics/web_feature.mojom"
-  ]
-}

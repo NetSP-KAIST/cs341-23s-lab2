@@ -1,2 +1,0 @@
-gen/chrome/test/data/grit/chrome_test_resources.h
-gen/chrome/chrome_test_resources.pak

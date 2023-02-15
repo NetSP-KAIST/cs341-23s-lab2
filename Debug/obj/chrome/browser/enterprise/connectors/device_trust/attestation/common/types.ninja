@@ -1,9 +1,0 @@
-defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
-include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out
-label_name = types
-target_out_dir = obj/chrome/browser/enterprise/connectors/device_trust/attestation/common
-target_output_name = types
-
-build obj/chrome/browser/enterprise/connectors/device_trust/attestation/common/types.inputdeps.stamp: stamp obj/build/chromeos_buildflags.stamp obj/chrome/browser/enterprise/connectors/device_trust/attestation/common/proto/attestation_ca_proto_gen.stamp
-
-build obj/chrome/browser/enterprise/connectors/device_trust/attestation/common/types.stamp: stamp || obj/build/chromeos_buildflags.stamp obj/chrome/browser/enterprise/connectors/device_trust/attestation/common/proto/libattestation_ca_proto.a ./libthird_party_protobuf_protobuf_lite.so.TOC
