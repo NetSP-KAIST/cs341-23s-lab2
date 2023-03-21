@@ -1,9 +1,0 @@
-{
-  "deps": [
-    "../../../../../../mojo/public/mojom/base/base.build_metadata",
-    "../../../../../../ui/base/mojom/mojom.build_metadata"
-  ],
-  "sources": [
-    "../../../../../../../../../chrome/browser/ui/webui/side_panel/companion/companion.mojom"
-  ]
-}

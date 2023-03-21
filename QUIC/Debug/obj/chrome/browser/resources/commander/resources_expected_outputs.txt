@@ -1,4 +1,0 @@
-gen/chrome/grit/commander_resources.h
-gen/chrome/grit/commander_resources_map.cc
-gen/chrome/grit/commander_resources_map.h
-gen/chrome/commander_resources.pak

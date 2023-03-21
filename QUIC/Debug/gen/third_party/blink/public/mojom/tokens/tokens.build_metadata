@@ -1,8 +1,0 @@
-{
-  "deps": [
-    "../../../../../mojo/public/mojom/base/base.build_metadata"
-  ],
-  "sources": [
-    "../../../../../../../../third_party/blink/public/mojom/tokens/tokens.mojom"
-  ]
-}

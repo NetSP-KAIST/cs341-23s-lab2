@@ -1,9 +1,0 @@
-{
-  "deps": [
-    "../../../../../mojo/public/mojom/base/base.build_metadata",
-    "../../../../../url/mojom/url_mojom_gurl.build_metadata"
-  ],
-  "sources": [
-    "../../../../../../../../chrome/browser/new_tab_page/modules/feed/feed.mojom"
-  ]
-}

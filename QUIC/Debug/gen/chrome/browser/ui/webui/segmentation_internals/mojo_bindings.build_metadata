@@ -1,8 +1,0 @@
-{
-  "deps": [
-
-  ],
-  "sources": [
-    "../../../../../../../../chrome/browser/ui/webui/segmentation_internals/segmentation_internals.mojom"
-  ]
-}
