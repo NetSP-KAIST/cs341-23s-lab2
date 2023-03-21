@@ -16,7 +16,7 @@ After configuration, two tasks will be given for evaluating each protocols:
 1. Measuring Handshake Latency and Page-loading Time Evaluation
 2. Testing Congestion Control
 
-This github repo **ONLY** contains executables of QUIC server & client.
+This github repo **ONLY** contains modified executables of QUIC server & client, for students' convenience.
 Full documentation about tasks, configuring the network & HTTP/2 settings is available at "". 
 
 
