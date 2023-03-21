@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,6 +61,7 @@
 #include "protos/perfetto/trace/statsd/statsd_atom.gen.h"
 #include "protos/perfetto/trace/power/power_rails.gen.h"
 #include "protos/perfetto/trace/power/battery_counters.gen.h"
+#include "protos/perfetto/trace/power/android_entity_state_residency.gen.h"
 #include "protos/perfetto/trace/power/android_energy_estimation_breakdown.gen.h"
 #include "protos/perfetto/common/android_energy_consumer_descriptor.gen.h"
 #include "protos/perfetto/trace/perfetto/tracing_service_event.gen.h"
@@ -67,6 +69,7 @@
 #include "protos/perfetto/trace/memory_graph.gen.h"
 #include "protos/perfetto/trace/interned_data/interned_data.gen.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.gen.h"
+#include "protos/perfetto/trace/android/network_trace.gen.h"
 #include "protos/perfetto/trace/gpu/vulkan_api_event.gen.h"
 #include "protos/perfetto/trace/gpu/vulkan_memory_event.gen.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.gen.h"
@@ -114,6 +117,7 @@
 #include "protos/perfetto/trace/ftrace/ipi.gen.h"
 #include "protos/perfetto/trace/ftrace/ion.gen.h"
 #include "protos/perfetto/trace/ftrace/i2c.gen.h"
+#include "protos/perfetto/trace/ftrace/hyp.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.gen.h"
 #include "protos/perfetto/trace/ftrace/g2d.gen.h"
@@ -245,6 +249,7 @@ bool TracePacket::operator==(const TracePacket& other) const {
    && android_game_intervention_list_ == other.android_game_intervention_list_
    && statsd_atom_ == other.statsd_atom_
    && android_system_property_ == other.android_system_property_
+   && entity_state_residency_ == other.entity_state_residency_
    && profiled_frame_symbols_ == other.profiled_frame_symbols_
    && module_symbols_ == other.module_symbols_
    && deobfuscation_mapping_ == other.deobfuscation_mapping_
@@ -256,6 +261,7 @@ bool TracePacket::operator==(const TracePacket& other) const {
    && compressed_packets_ == other.compressed_packets_
    && extension_descriptor_ == other.extension_descriptor_
    && network_packet_ == other.network_packet_
+   && network_packet_bundle_ == other.network_packet_bundle_
    && track_event_range_of_interest_ == other.track_event_range_of_interest_
    && for_testing_ == other.for_testing_
    && trusted_uid_ == other.trusted_uid_
@@ -426,6 +432,9 @@ bool TracePacket::ParseFromArray(const void* raw, size_t size) {
       case 86 /* android_system_property */:
         (*android_system_property_).ParseFromArray(field.data(), field.size());
         break;
+      case 91 /* entity_state_residency */:
+        (*entity_state_residency_).ParseFromArray(field.data(), field.size());
+        break;
       case 55 /* profiled_frame_symbols */:
         (*profiled_frame_symbols_).ParseFromArray(field.data(), field.size());
         break;
@@ -458,6 +467,9 @@ bool TracePacket::ParseFromArray(const void* raw, size_t size) {
         break;
       case 88 /* network_packet */:
         (*network_packet_).ParseFromArray(field.data(), field.size());
+        break;
+      case 92 /* network_packet_bundle */:
+        (*network_packet_bundle_).ParseFromArray(field.data(), field.size());
         break;
       case 90 /* track_event_range_of_interest */:
         (*track_event_range_of_interest_).ParseFromArray(field.data(), field.size());
@@ -501,13 +513,13 @@ bool TracePacket::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TracePacket::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TracePacket::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -515,12 +527,12 @@ std::vector<uint8_t> TracePacket::SerializeAsArray() const {
 void TracePacket::Serialize(::protozero::Message* msg) const {
   // Field 8: timestamp
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timestamp_, msg);
   }
 
   // Field 58: timestamp_clock_id
   if (_has_field_[58]) {
-    msg->AppendVarInt(58, timestamp_clock_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(58, timestamp_clock_id_, msg);
   }
 
   // Field 2: process_tree
@@ -758,6 +770,11 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
     (*android_system_property_).Serialize(msg->BeginNestedMessage<::protozero::Message>(86));
   }
 
+  // Field 91: entity_state_residency
+  if (_has_field_[91]) {
+    (*entity_state_residency_).Serialize(msg->BeginNestedMessage<::protozero::Message>(91));
+  }
+
   // Field 55: profiled_frame_symbols
   if (_has_field_[55]) {
     (*profiled_frame_symbols_).Serialize(msg->BeginNestedMessage<::protozero::Message>(55));
@@ -795,12 +812,12 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
 
   // Field 36: synchronization_marker
   if (_has_field_[36]) {
-    msg->AppendString(36, synchronization_marker_);
+    ::protozero::internal::gen_helpers::SerializeString(36, synchronization_marker_, msg);
   }
 
   // Field 50: compressed_packets
   if (_has_field_[50]) {
-    msg->AppendString(50, compressed_packets_);
+    ::protozero::internal::gen_helpers::SerializeString(50, compressed_packets_, msg);
   }
 
   // Field 72: extension_descriptor
@@ -811,6 +828,11 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
   // Field 88: network_packet
   if (_has_field_[88]) {
     (*network_packet_).Serialize(msg->BeginNestedMessage<::protozero::Message>(88));
+  }
+
+  // Field 92: network_packet_bundle
+  if (_has_field_[92]) {
+    (*network_packet_bundle_).Serialize(msg->BeginNestedMessage<::protozero::Message>(92));
   }
 
   // Field 90: track_event_range_of_interest
@@ -825,17 +847,17 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
 
   // Field 3: trusted_uid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, trusted_uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, trusted_uid_, msg);
   }
 
   // Field 10: trusted_packet_sequence_id
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, trusted_packet_sequence_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, trusted_packet_sequence_id_, msg);
   }
 
   // Field 79: trusted_pid
   if (_has_field_[79]) {
-    msg->AppendVarInt(79, trusted_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(79, trusted_pid_, msg);
   }
 
   // Field 12: interned_data
@@ -845,12 +867,12 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
 
   // Field 13: sequence_flags
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, sequence_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, sequence_flags_, msg);
   }
 
   // Field 41: incremental_state_cleared
   if (_has_field_[41]) {
-    msg->AppendTinyVarInt(41, incremental_state_cleared_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(41, incremental_state_cleared_, msg);
   }
 
   // Field 59: trace_packet_defaults
@@ -860,15 +882,15 @@ void TracePacket::Serialize(::protozero::Message* msg) const {
 
   // Field 42: previous_packet_dropped
   if (_has_field_[42]) {
-    msg->AppendTinyVarInt(42, previous_packet_dropped_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(42, previous_packet_dropped_, msg);
   }
 
   // Field 87: first_packet_on_sequence
   if (_has_field_[87]) {
-    msg->AppendTinyVarInt(87, first_packet_on_sequence_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(87, first_packet_on_sequence_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

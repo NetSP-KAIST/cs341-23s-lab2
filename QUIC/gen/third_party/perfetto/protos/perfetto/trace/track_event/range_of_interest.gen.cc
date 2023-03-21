@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,13 +48,13 @@ bool TrackEventRangeOfInterest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackEventRangeOfInterest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackEventRangeOfInterest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -61,10 +62,10 @@ std::vector<uint8_t> TrackEventRangeOfInterest::SerializeAsArray() const {
 void TrackEventRangeOfInterest::Serialize(::protozero::Message* msg) const {
   // Field 1: start_us
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, start_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, start_us_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

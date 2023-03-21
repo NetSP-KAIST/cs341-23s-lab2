@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,7 +50,7 @@ bool ChromeProcessDescriptor::ParseFromArray(const void* raw, size_t size) {
         field.get(&legacy_sort_index_);
         break;
       case 4 /* host_app_package_name */:
-        field.get(&host_app_package_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &host_app_package_name_);
         break;
       case 5 /* crash_trace_id */:
         field.get(&crash_trace_id_);
@@ -63,13 +64,13 @@ bool ChromeProcessDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeProcessDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeProcessDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> ChromeProcessDescriptor::SerializeAsArray() const {
 void ChromeProcessDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: process_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, process_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, process_type_, msg);
   }
 
   // Field 2: process_priority
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, process_priority_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, process_priority_, msg);
   }
 
   // Field 3: legacy_sort_index
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, legacy_sort_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, legacy_sort_index_, msg);
   }
 
   // Field 4: host_app_package_name
   if (_has_field_[4]) {
-    msg->AppendString(4, host_app_package_name_);
+    ::protozero::internal::gen_helpers::SerializeString(4, host_app_package_name_, msg);
   }
 
   // Field 5: crash_trace_id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, crash_trace_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, crash_trace_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

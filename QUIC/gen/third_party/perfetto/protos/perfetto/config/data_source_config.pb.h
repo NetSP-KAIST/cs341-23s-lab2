@@ -261,9 +261,10 @@ class DataSourceConfig final :
     kTargetBufferFieldNumber = 2,
     kTraceDurationMsFieldNumber = 3,
     kTracingSessionIdFieldNumber = 4,
-    kEnableExtraGuardrailsFieldNumber = 6,
     kStopTimeoutMsFieldNumber = 7,
     kSessionInitiatorFieldNumber = 8,
+    kPreferSuspendClockForDurationFieldNumber = 122,
+    kEnableExtraGuardrailsFieldNumber = 6,
   };
   // optional string name = 1;
   bool has_name() const;
@@ -736,19 +737,6 @@ class DataSourceConfig final :
   void _internal_set_tracing_session_id(uint64_t value);
   public:
 
-  // optional bool enable_extra_guardrails = 6;
-  bool has_enable_extra_guardrails() const;
-  private:
-  bool _internal_has_enable_extra_guardrails() const;
-  public:
-  void clear_enable_extra_guardrails();
-  bool enable_extra_guardrails() const;
-  void set_enable_extra_guardrails(bool value);
-  private:
-  bool _internal_enable_extra_guardrails() const;
-  void _internal_set_enable_extra_guardrails(bool value);
-  public:
-
   // optional uint32 stop_timeout_ms = 7;
   bool has_stop_timeout_ms() const;
   private:
@@ -773,6 +761,32 @@ class DataSourceConfig final :
   private:
   ::perfetto::protos::DataSourceConfig_SessionInitiator _internal_session_initiator() const;
   void _internal_set_session_initiator(::perfetto::protos::DataSourceConfig_SessionInitiator value);
+  public:
+
+  // optional bool prefer_suspend_clock_for_duration = 122;
+  bool has_prefer_suspend_clock_for_duration() const;
+  private:
+  bool _internal_has_prefer_suspend_clock_for_duration() const;
+  public:
+  void clear_prefer_suspend_clock_for_duration();
+  bool prefer_suspend_clock_for_duration() const;
+  void set_prefer_suspend_clock_for_duration(bool value);
+  private:
+  bool _internal_prefer_suspend_clock_for_duration() const;
+  void _internal_set_prefer_suspend_clock_for_duration(bool value);
+  public:
+
+  // optional bool enable_extra_guardrails = 6;
+  bool has_enable_extra_guardrails() const;
+  private:
+  bool _internal_has_enable_extra_guardrails() const;
+  public:
+  void clear_enable_extra_guardrails();
+  bool enable_extra_guardrails() const;
+  void set_enable_extra_guardrails(bool value);
+  private:
+  bool _internal_enable_extra_guardrails() const;
+  void _internal_set_enable_extra_guardrails(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.DataSourceConfig)
@@ -811,9 +825,10 @@ class DataSourceConfig final :
   uint32_t target_buffer_;
   uint32_t trace_duration_ms_;
   uint64_t tracing_session_id_;
-  bool enable_extra_guardrails_;
   uint32_t stop_timeout_ms_;
   int session_initiator_;
+  bool prefer_suspend_clock_for_duration_;
+  bool enable_extra_guardrails_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fdata_5fsource_5fconfig_2eproto;
 };
 // ===================================================================
@@ -951,9 +966,37 @@ inline void DataSourceConfig::set_trace_duration_ms(uint32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceConfig.trace_duration_ms)
 }
 
+// optional bool prefer_suspend_clock_for_duration = 122;
+inline bool DataSourceConfig::_internal_has_prefer_suspend_clock_for_duration() const {
+  bool value = (_has_bits_[0] & 0x20000000u) != 0;
+  return value;
+}
+inline bool DataSourceConfig::has_prefer_suspend_clock_for_duration() const {
+  return _internal_has_prefer_suspend_clock_for_duration();
+}
+inline void DataSourceConfig::clear_prefer_suspend_clock_for_duration() {
+  prefer_suspend_clock_for_duration_ = false;
+  _has_bits_[0] &= ~0x20000000u;
+}
+inline bool DataSourceConfig::_internal_prefer_suspend_clock_for_duration() const {
+  return prefer_suspend_clock_for_duration_;
+}
+inline bool DataSourceConfig::prefer_suspend_clock_for_duration() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceConfig.prefer_suspend_clock_for_duration)
+  return _internal_prefer_suspend_clock_for_duration();
+}
+inline void DataSourceConfig::_internal_set_prefer_suspend_clock_for_duration(bool value) {
+  _has_bits_[0] |= 0x20000000u;
+  prefer_suspend_clock_for_duration_ = value;
+}
+inline void DataSourceConfig::set_prefer_suspend_clock_for_duration(bool value) {
+  _internal_set_prefer_suspend_clock_for_duration(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceConfig.prefer_suspend_clock_for_duration)
+}
+
 // optional uint32 stop_timeout_ms = 7;
 inline bool DataSourceConfig::_internal_has_stop_timeout_ms() const {
-  bool value = (_has_bits_[0] & 0x10000000u) != 0;
+  bool value = (_has_bits_[0] & 0x08000000u) != 0;
   return value;
 }
 inline bool DataSourceConfig::has_stop_timeout_ms() const {
@@ -961,7 +1004,7 @@ inline bool DataSourceConfig::has_stop_timeout_ms() const {
 }
 inline void DataSourceConfig::clear_stop_timeout_ms() {
   stop_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x10000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 inline uint32_t DataSourceConfig::_internal_stop_timeout_ms() const {
   return stop_timeout_ms_;
@@ -971,7 +1014,7 @@ inline uint32_t DataSourceConfig::stop_timeout_ms() const {
   return _internal_stop_timeout_ms();
 }
 inline void DataSourceConfig::_internal_set_stop_timeout_ms(uint32_t value) {
-  _has_bits_[0] |= 0x10000000u;
+  _has_bits_[0] |= 0x08000000u;
   stop_timeout_ms_ = value;
 }
 inline void DataSourceConfig::set_stop_timeout_ms(uint32_t value) {
@@ -981,7 +1024,7 @@ inline void DataSourceConfig::set_stop_timeout_ms(uint32_t value) {
 
 // optional bool enable_extra_guardrails = 6;
 inline bool DataSourceConfig::_internal_has_enable_extra_guardrails() const {
-  bool value = (_has_bits_[0] & 0x08000000u) != 0;
+  bool value = (_has_bits_[0] & 0x40000000u) != 0;
   return value;
 }
 inline bool DataSourceConfig::has_enable_extra_guardrails() const {
@@ -989,7 +1032,7 @@ inline bool DataSourceConfig::has_enable_extra_guardrails() const {
 }
 inline void DataSourceConfig::clear_enable_extra_guardrails() {
   enable_extra_guardrails_ = false;
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x40000000u;
 }
 inline bool DataSourceConfig::_internal_enable_extra_guardrails() const {
   return enable_extra_guardrails_;
@@ -999,7 +1042,7 @@ inline bool DataSourceConfig::enable_extra_guardrails() const {
   return _internal_enable_extra_guardrails();
 }
 inline void DataSourceConfig::_internal_set_enable_extra_guardrails(bool value) {
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x40000000u;
   enable_extra_guardrails_ = value;
 }
 inline void DataSourceConfig::set_enable_extra_guardrails(bool value) {
@@ -1009,7 +1052,7 @@ inline void DataSourceConfig::set_enable_extra_guardrails(bool value) {
 
 // optional .perfetto.protos.DataSourceConfig.SessionInitiator session_initiator = 8;
 inline bool DataSourceConfig::_internal_has_session_initiator() const {
-  bool value = (_has_bits_[0] & 0x20000000u) != 0;
+  bool value = (_has_bits_[0] & 0x10000000u) != 0;
   return value;
 }
 inline bool DataSourceConfig::has_session_initiator() const {
@@ -1017,7 +1060,7 @@ inline bool DataSourceConfig::has_session_initiator() const {
 }
 inline void DataSourceConfig::clear_session_initiator() {
   session_initiator_ = 0;
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline ::perfetto::protos::DataSourceConfig_SessionInitiator DataSourceConfig::_internal_session_initiator() const {
   return static_cast< ::perfetto::protos::DataSourceConfig_SessionInitiator >(session_initiator_);
@@ -1028,7 +1071,7 @@ inline ::perfetto::protos::DataSourceConfig_SessionInitiator DataSourceConfig::s
 }
 inline void DataSourceConfig::_internal_set_session_initiator(::perfetto::protos::DataSourceConfig_SessionInitiator value) {
   assert(::perfetto::protos::DataSourceConfig_SessionInitiator_IsValid(value));
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x10000000u;
   session_initiator_ = value;
 }
 inline void DataSourceConfig::set_session_initiator(::perfetto::protos::DataSourceConfig_SessionInitiator value) {

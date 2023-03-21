@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -73,13 +74,13 @@ bool IPCFrame::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -87,7 +88,7 @@ std::vector<uint8_t> IPCFrame::SerializeAsArray() const {
 void IPCFrame::Serialize(::protozero::Message* msg) const {
   // Field 2: request_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, request_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, request_id_, msg);
   }
 
   // Field 3: msg_bind_service
@@ -117,10 +118,10 @@ void IPCFrame::Serialize(::protozero::Message* msg) const {
 
   // Field 1: data_for_testing
   for (auto& it : data_for_testing_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -147,7 +148,7 @@ bool IPCFrame_RequestError::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* error */:
-        field.get(&error_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &error_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -158,13 +159,13 @@ bool IPCFrame_RequestError::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame_RequestError::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_RequestError::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -172,10 +173,10 @@ std::vector<uint8_t> IPCFrame_RequestError::SerializeAsArray() const {
 void IPCFrame_RequestError::Serialize(::protozero::Message* msg) const {
   // Field 1: error
   if (_has_field_[1]) {
-    msg->AppendString(1, error_);
+    ::protozero::internal::gen_helpers::SerializeString(1, error_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -221,13 +222,13 @@ bool IPCFrame_InvokeMethodReply::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame_InvokeMethodReply::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_InvokeMethodReply::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -235,20 +236,20 @@ std::vector<uint8_t> IPCFrame_InvokeMethodReply::SerializeAsArray() const {
 void IPCFrame_InvokeMethodReply::Serialize(::protozero::Message* msg) const {
   // Field 1: success
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, success_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, success_, msg);
   }
 
   // Field 2: has_more
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, has_more_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, has_more_, msg);
   }
 
   // Field 3: reply_proto
   if (_has_field_[3]) {
-    msg->AppendString(3, reply_proto_);
+    ::protozero::internal::gen_helpers::SerializeString(3, reply_proto_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -298,13 +299,13 @@ bool IPCFrame_InvokeMethod::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame_InvokeMethod::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_InvokeMethod::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -312,25 +313,25 @@ std::vector<uint8_t> IPCFrame_InvokeMethod::SerializeAsArray() const {
 void IPCFrame_InvokeMethod::Serialize(::protozero::Message* msg) const {
   // Field 1: service_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, service_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, service_id_, msg);
   }
 
   // Field 2: method_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, method_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, method_id_, msg);
   }
 
   // Field 3: args_proto
   if (_has_field_[3]) {
-    msg->AppendString(3, args_proto_);
+    ::protozero::internal::gen_helpers::SerializeString(3, args_proto_, msg);
   }
 
   // Field 4: drop_reply
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, drop_reply_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, drop_reply_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -381,13 +382,13 @@ bool IPCFrame_BindServiceReply::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame_BindServiceReply::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_BindServiceReply::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -395,12 +396,12 @@ std::vector<uint8_t> IPCFrame_BindServiceReply::SerializeAsArray() const {
 void IPCFrame_BindServiceReply::Serialize(::protozero::Message* msg) const {
   // Field 1: success
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, success_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, success_, msg);
   }
 
   // Field 2: service_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, service_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, service_id_, msg);
   }
 
   // Field 3: methods
@@ -408,7 +409,7 @@ void IPCFrame_BindServiceReply::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -439,7 +440,7 @@ bool IPCFrame_BindServiceReply_MethodInfo::ParseFromArray(const void* raw, size_
         field.get(&id_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -450,13 +451,13 @@ bool IPCFrame_BindServiceReply_MethodInfo::ParseFromArray(const void* raw, size_
 }
 
 std::string IPCFrame_BindServiceReply_MethodInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_BindServiceReply_MethodInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -464,15 +465,15 @@ std::vector<uint8_t> IPCFrame_BindServiceReply_MethodInfo::SerializeAsArray() co
 void IPCFrame_BindServiceReply_MethodInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -499,7 +500,7 @@ bool IPCFrame_BindService::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* service_name */:
-        field.get(&service_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &service_name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -510,13 +511,13 @@ bool IPCFrame_BindService::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IPCFrame_BindService::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IPCFrame_BindService::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -524,10 +525,10 @@ std::vector<uint8_t> IPCFrame_BindService::SerializeAsArray() const {
 void IPCFrame_BindService::Serialize(::protozero::Message* msg) const {
   // Field 1: service_name
   if (_has_field_[1]) {
-    msg->AppendString(1, service_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, service_name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

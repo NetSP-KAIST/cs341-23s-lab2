@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -59,13 +60,13 @@ bool CpuhpPauseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CpuhpPauseFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CpuhpPauseFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> CpuhpPauseFtraceEvent::SerializeAsArray() const {
 void CpuhpPauseFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: active_cpus
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, active_cpus_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, active_cpus_, msg);
   }
 
   // Field 2: cpus
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, cpus_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, cpus_, msg);
   }
 
   // Field 3: pause
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pause_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pause_, msg);
   }
 
   // Field 4: time
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, time_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, time_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -141,13 +142,13 @@ bool CpuhpLatencyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CpuhpLatencyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CpuhpLatencyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -155,25 +156,25 @@ std::vector<uint8_t> CpuhpLatencyFtraceEvent::SerializeAsArray() const {
 void CpuhpLatencyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: ret
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ret_, msg);
   }
 
   // Field 3: state
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, state_, msg);
   }
 
   // Field 4: time
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, time_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, time_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -223,13 +224,13 @@ bool CpuhpEnterFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CpuhpEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CpuhpEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -237,25 +238,25 @@ std::vector<uint8_t> CpuhpEnterFtraceEvent::SerializeAsArray() const {
 void CpuhpEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: fun
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, fun_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, fun_, msg);
   }
 
   // Field 3: idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, idx_, msg);
   }
 
   // Field 4: target
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, target_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, target_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -305,13 +306,13 @@ bool CpuhpMultiEnterFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CpuhpMultiEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CpuhpMultiEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -319,25 +320,25 @@ std::vector<uint8_t> CpuhpMultiEnterFtraceEvent::SerializeAsArray() const {
 void CpuhpMultiEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: fun
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, fun_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, fun_, msg);
   }
 
   // Field 3: idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, idx_, msg);
   }
 
   // Field 4: target
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, target_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, target_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -387,13 +388,13 @@ bool CpuhpExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CpuhpExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CpuhpExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -401,25 +402,25 @@ std::vector<uint8_t> CpuhpExitFtraceEvent::SerializeAsArray() const {
 void CpuhpExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
   // Field 4: state
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, state_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

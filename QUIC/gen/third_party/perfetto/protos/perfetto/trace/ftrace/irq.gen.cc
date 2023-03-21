@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,13 +52,13 @@ bool IrqHandlerExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IrqHandlerExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IrqHandlerExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> IrqHandlerExitFtraceEvent::SerializeAsArray() const {
 void IrqHandlerExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irq
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_, msg);
   }
 
   // Field 2: ret
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -105,7 +106,7 @@ bool IrqHandlerEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&irq_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* handler */:
         field.get(&handler_);
@@ -119,13 +120,13 @@ bool IrqHandlerEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IrqHandlerEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IrqHandlerEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -133,20 +134,20 @@ std::vector<uint8_t> IrqHandlerEntryFtraceEvent::SerializeAsArray() const {
 void IrqHandlerEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irq
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: handler
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, handler_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, handler_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -184,13 +185,13 @@ bool SoftirqRaiseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SoftirqRaiseFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SoftirqRaiseFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -198,10 +199,10 @@ std::vector<uint8_t> SoftirqRaiseFtraceEvent::SerializeAsArray() const {
 void SoftirqRaiseFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: vec
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, vec_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, vec_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -239,13 +240,13 @@ bool SoftirqExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SoftirqExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SoftirqExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -253,10 +254,10 @@ std::vector<uint8_t> SoftirqExitFtraceEvent::SerializeAsArray() const {
 void SoftirqExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: vec
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, vec_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, vec_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -294,13 +295,13 @@ bool SoftirqEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SoftirqEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SoftirqEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -308,10 +309,10 @@ std::vector<uint8_t> SoftirqEntryFtraceEvent::SerializeAsArray() const {
 void SoftirqEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: vec
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, vec_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, vec_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

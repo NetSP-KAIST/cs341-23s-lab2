@@ -103,6 +103,7 @@ hb_ot_metrics_get_position T
 hb_subset_plan_destroy T
 hb_set_symmetric_difference T
 FT_Stroker_Done T
+FT_GlyphSlot_AdjustWeight T
 hb_segment_properties_hash T
 hb_map_copy T
 hb_ot_name_get_utf32 T
@@ -620,8 +621,8 @@ FT_GlyphSlot_Slant T
 hb_variation_from_string T
 hb_ot_shape_plan_collect_lookups T
 hb_subset_input_get_flags T
-hb_face_create_for_tables T
 FT_MulDiv T
+hb_face_create_for_tables T
 FT_Matrix_Multiply T
 hb_font_get_synthetic_slant T
 hb_unicode_eastasian_width T

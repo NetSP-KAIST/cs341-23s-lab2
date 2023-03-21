@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool ChromeConfig::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* trace_config */:
-        field.get(&trace_config_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &trace_config_);
         break;
       case 2 /* privacy_filtering_enabled */:
         field.get(&privacy_filtering_enabled_);
@@ -52,7 +53,7 @@ bool ChromeConfig::ParseFromArray(const void* raw, size_t size) {
         field.get(&client_priority_);
         break;
       case 5 /* json_agent_label_filter */:
-        field.get(&json_agent_label_filter_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &json_agent_label_filter_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -63,13 +64,13 @@ bool ChromeConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> ChromeConfig::SerializeAsArray() const {
 void ChromeConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: trace_config
   if (_has_field_[1]) {
-    msg->AppendString(1, trace_config_);
+    ::protozero::internal::gen_helpers::SerializeString(1, trace_config_, msg);
   }
 
   // Field 2: privacy_filtering_enabled
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, privacy_filtering_enabled_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, privacy_filtering_enabled_, msg);
   }
 
   // Field 3: convert_to_legacy_json
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, convert_to_legacy_json_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, convert_to_legacy_json_, msg);
   }
 
   // Field 4: client_priority
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, client_priority_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, client_priority_, msg);
   }
 
   // Field 5: json_agent_label_filter
   if (_has_field_[5]) {
-    msg->AppendString(5, json_agent_label_filter_);
+    ::protozero::internal::gen_helpers::SerializeString(5, json_agent_label_filter_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

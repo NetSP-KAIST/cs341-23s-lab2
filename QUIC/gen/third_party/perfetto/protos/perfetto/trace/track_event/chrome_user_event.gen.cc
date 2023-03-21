@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -37,7 +38,7 @@ bool ChromeUserEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* action */:
-        field.get(&action_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &action_);
         break;
       case 2 /* action_hash */:
         field.get(&action_hash_);
@@ -51,13 +52,13 @@ bool ChromeUserEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeUserEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeUserEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> ChromeUserEvent::SerializeAsArray() const {
 void ChromeUserEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: action
   if (_has_field_[1]) {
-    msg->AppendString(1, action_);
+    ::protozero::internal::gen_helpers::SerializeString(1, action_, msg);
   }
 
   // Field 2: action_hash
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, action_hash_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, action_hash_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

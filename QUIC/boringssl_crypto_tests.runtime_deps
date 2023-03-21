@@ -59,6 +59,7 @@
 ../../third_party/boringssl/src/crypto/fipsmodule/rand/ctrdrbg_vectors.txt
 ../../third_party/boringssl/src/crypto/hmac_extra/hmac_tests.txt
 ../../third_party/boringssl/src/crypto/hpke/hpke_test_vectors.txt
+../../third_party/boringssl/src/crypto/kyber/keccak_tests.txt
 ../../third_party/boringssl/src/crypto/pkcs8/test/empty_password.p12
 ../../third_party/boringssl/src/crypto/pkcs8/test/no_encryption.p12
 ../../third_party/boringssl/src/crypto/pkcs8/test/nss.p12
@@ -278,11 +279,11 @@ test_fonts/Tinos-Bold.ttf
 test_fonts/Tinos-BoldItalic.ttf
 test_fonts/Tinos-Italic.ttf
 test_fonts/Tinos-Regular.ttf
-fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-7
+fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9
 etc/fonts/fonts.conf
 ./libthird_party_fontconfig.so
 ./libthird_party_freetype_harfbuzz.so
 ./libchrome_zlib.so
-../../testing/location_tags.json
 bin/run_boringssl_crypto_tests
 ../../.vpython3
+../../testing/location_tags.json

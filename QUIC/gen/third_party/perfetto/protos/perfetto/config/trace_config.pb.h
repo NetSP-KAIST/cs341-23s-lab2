@@ -2804,14 +2804,15 @@ class TraceConfig final :
     kCmdTraceStartDelayFieldNumber = 35,
     kDurationMsFieldNumber = 3,
     kLockdownModeFieldNumber = 5,
+    kMaxFileSizeBytesFieldNumber = 10,
     kFileWritePeriodMsFieldNumber = 9,
+    kFlushPeriodMsFieldNumber = 13,
+    kFlushTimeoutMsFieldNumber = 14,
+    kPreferSuspendClockForDurationFieldNumber = 36,
     kEnableExtraGuardrailsFieldNumber = 4,
     kWriteIntoFileFieldNumber = 8,
     kDeferredStartFieldNumber = 12,
     kNotifyTraceurFieldNumber = 16,
-    kMaxFileSizeBytesFieldNumber = 10,
-    kFlushPeriodMsFieldNumber = 13,
-    kFlushTimeoutMsFieldNumber = 14,
     kAllowUserBuildTracingFieldNumber = 19,
     kDataSourceStopTimeoutMsFieldNumber = 23,
     kTraceUuidMsbFieldNumber = 27,
@@ -3122,6 +3123,19 @@ class TraceConfig final :
   void _internal_set_lockdown_mode(::perfetto::protos::TraceConfig_LockdownModeOperation value);
   public:
 
+  // optional uint64 max_file_size_bytes = 10;
+  bool has_max_file_size_bytes() const;
+  private:
+  bool _internal_has_max_file_size_bytes() const;
+  public:
+  void clear_max_file_size_bytes();
+  uint64_t max_file_size_bytes() const;
+  void set_max_file_size_bytes(uint64_t value);
+  private:
+  uint64_t _internal_max_file_size_bytes() const;
+  void _internal_set_max_file_size_bytes(uint64_t value);
+  public:
+
   // optional uint32 file_write_period_ms = 9;
   bool has_file_write_period_ms() const;
   private:
@@ -3133,6 +3147,45 @@ class TraceConfig final :
   private:
   uint32_t _internal_file_write_period_ms() const;
   void _internal_set_file_write_period_ms(uint32_t value);
+  public:
+
+  // optional uint32 flush_period_ms = 13;
+  bool has_flush_period_ms() const;
+  private:
+  bool _internal_has_flush_period_ms() const;
+  public:
+  void clear_flush_period_ms();
+  uint32_t flush_period_ms() const;
+  void set_flush_period_ms(uint32_t value);
+  private:
+  uint32_t _internal_flush_period_ms() const;
+  void _internal_set_flush_period_ms(uint32_t value);
+  public:
+
+  // optional uint32 flush_timeout_ms = 14;
+  bool has_flush_timeout_ms() const;
+  private:
+  bool _internal_has_flush_timeout_ms() const;
+  public:
+  void clear_flush_timeout_ms();
+  uint32_t flush_timeout_ms() const;
+  void set_flush_timeout_ms(uint32_t value);
+  private:
+  uint32_t _internal_flush_timeout_ms() const;
+  void _internal_set_flush_timeout_ms(uint32_t value);
+  public:
+
+  // optional bool prefer_suspend_clock_for_duration = 36;
+  bool has_prefer_suspend_clock_for_duration() const;
+  private:
+  bool _internal_has_prefer_suspend_clock_for_duration() const;
+  public:
+  void clear_prefer_suspend_clock_for_duration();
+  bool prefer_suspend_clock_for_duration() const;
+  void set_prefer_suspend_clock_for_duration(bool value);
+  private:
+  bool _internal_prefer_suspend_clock_for_duration() const;
+  void _internal_set_prefer_suspend_clock_for_duration(bool value);
   public:
 
   // optional bool enable_extra_guardrails = 4;
@@ -3185,45 +3238,6 @@ class TraceConfig final :
   private:
   bool _internal_notify_traceur() const;
   void _internal_set_notify_traceur(bool value);
-  public:
-
-  // optional uint64 max_file_size_bytes = 10;
-  bool has_max_file_size_bytes() const;
-  private:
-  bool _internal_has_max_file_size_bytes() const;
-  public:
-  void clear_max_file_size_bytes();
-  uint64_t max_file_size_bytes() const;
-  void set_max_file_size_bytes(uint64_t value);
-  private:
-  uint64_t _internal_max_file_size_bytes() const;
-  void _internal_set_max_file_size_bytes(uint64_t value);
-  public:
-
-  // optional uint32 flush_period_ms = 13;
-  bool has_flush_period_ms() const;
-  private:
-  bool _internal_has_flush_period_ms() const;
-  public:
-  void clear_flush_period_ms();
-  uint32_t flush_period_ms() const;
-  void set_flush_period_ms(uint32_t value);
-  private:
-  uint32_t _internal_flush_period_ms() const;
-  void _internal_set_flush_period_ms(uint32_t value);
-  public:
-
-  // optional uint32 flush_timeout_ms = 14;
-  bool has_flush_timeout_ms() const;
-  private:
-  bool _internal_has_flush_timeout_ms() const;
-  public:
-  void clear_flush_timeout_ms();
-  uint32_t flush_timeout_ms() const;
-  void set_flush_timeout_ms(uint32_t value);
-  private:
-  uint32_t _internal_flush_timeout_ms() const;
-  void _internal_set_flush_timeout_ms(uint32_t value);
   public:
 
   // optional bool allow_user_build_tracing = 19;
@@ -3343,14 +3357,15 @@ class TraceConfig final :
   ::perfetto::protos::TraceConfig_CmdTraceStartDelay* cmd_trace_start_delay_;
   uint32_t duration_ms_;
   int lockdown_mode_;
+  uint64_t max_file_size_bytes_;
   uint32_t file_write_period_ms_;
+  uint32_t flush_period_ms_;
+  uint32_t flush_timeout_ms_;
+  bool prefer_suspend_clock_for_duration_;
   bool enable_extra_guardrails_;
   bool write_into_file_;
   bool deferred_start_;
   bool notify_traceur_;
-  uint64_t max_file_size_bytes_;
-  uint32_t flush_period_ms_;
-  uint32_t flush_timeout_ms_;
   bool allow_user_build_tracing_;
   uint32_t data_source_stop_timeout_ms_;
   int64_t trace_uuid_msb_;
@@ -5285,9 +5300,37 @@ inline void TraceConfig::set_duration_ms(uint32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.duration_ms)
 }
 
+// optional bool prefer_suspend_clock_for_duration = 36;
+inline bool TraceConfig::_internal_has_prefer_suspend_clock_for_duration() const {
+  bool value = (_has_bits_[0] & 0x00020000u) != 0;
+  return value;
+}
+inline bool TraceConfig::has_prefer_suspend_clock_for_duration() const {
+  return _internal_has_prefer_suspend_clock_for_duration();
+}
+inline void TraceConfig::clear_prefer_suspend_clock_for_duration() {
+  prefer_suspend_clock_for_duration_ = false;
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline bool TraceConfig::_internal_prefer_suspend_clock_for_duration() const {
+  return prefer_suspend_clock_for_duration_;
+}
+inline bool TraceConfig::prefer_suspend_clock_for_duration() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.prefer_suspend_clock_for_duration)
+  return _internal_prefer_suspend_clock_for_duration();
+}
+inline void TraceConfig::_internal_set_prefer_suspend_clock_for_duration(bool value) {
+  _has_bits_[0] |= 0x00020000u;
+  prefer_suspend_clock_for_duration_ = value;
+}
+inline void TraceConfig::set_prefer_suspend_clock_for_duration(bool value) {
+  _internal_set_prefer_suspend_clock_for_duration(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.prefer_suspend_clock_for_duration)
+}
+
 // optional bool enable_extra_guardrails = 4;
 inline bool TraceConfig::_internal_has_enable_extra_guardrails() const {
-  bool value = (_has_bits_[0] & 0x00004000u) != 0;
+  bool value = (_has_bits_[0] & 0x00040000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_enable_extra_guardrails() const {
@@ -5295,7 +5338,7 @@ inline bool TraceConfig::has_enable_extra_guardrails() const {
 }
 inline void TraceConfig::clear_enable_extra_guardrails() {
   enable_extra_guardrails_ = false;
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline bool TraceConfig::_internal_enable_extra_guardrails() const {
   return enable_extra_guardrails_;
@@ -5305,7 +5348,7 @@ inline bool TraceConfig::enable_extra_guardrails() const {
   return _internal_enable_extra_guardrails();
 }
 inline void TraceConfig::_internal_set_enable_extra_guardrails(bool value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00040000u;
   enable_extra_guardrails_ = value;
 }
 inline void TraceConfig::set_enable_extra_guardrails(bool value) {
@@ -5474,7 +5517,7 @@ inline void TraceConfig::set_allocated_statsd_metadata(::perfetto::protos::Trace
 
 // optional bool write_into_file = 8;
 inline bool TraceConfig::_internal_has_write_into_file() const {
-  bool value = (_has_bits_[0] & 0x00008000u) != 0;
+  bool value = (_has_bits_[0] & 0x00080000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_write_into_file() const {
@@ -5482,7 +5525,7 @@ inline bool TraceConfig::has_write_into_file() const {
 }
 inline void TraceConfig::clear_write_into_file() {
   write_into_file_ = false;
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline bool TraceConfig::_internal_write_into_file() const {
   return write_into_file_;
@@ -5492,7 +5535,7 @@ inline bool TraceConfig::write_into_file() const {
   return _internal_write_into_file();
 }
 inline void TraceConfig::_internal_set_write_into_file(bool value) {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00080000u;
   write_into_file_ = value;
 }
 inline void TraceConfig::set_write_into_file(bool value) {
@@ -5570,7 +5613,7 @@ inline void TraceConfig::set_allocated_output_path(std::string* output_path) {
 
 // optional uint32 file_write_period_ms = 9;
 inline bool TraceConfig::_internal_has_file_write_period_ms() const {
-  bool value = (_has_bits_[0] & 0x00002000u) != 0;
+  bool value = (_has_bits_[0] & 0x00004000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_file_write_period_ms() const {
@@ -5578,7 +5621,7 @@ inline bool TraceConfig::has_file_write_period_ms() const {
 }
 inline void TraceConfig::clear_file_write_period_ms() {
   file_write_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline uint32_t TraceConfig::_internal_file_write_period_ms() const {
   return file_write_period_ms_;
@@ -5588,7 +5631,7 @@ inline uint32_t TraceConfig::file_write_period_ms() const {
   return _internal_file_write_period_ms();
 }
 inline void TraceConfig::_internal_set_file_write_period_ms(uint32_t value) {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
   file_write_period_ms_ = value;
 }
 inline void TraceConfig::set_file_write_period_ms(uint32_t value) {
@@ -5598,7 +5641,7 @@ inline void TraceConfig::set_file_write_period_ms(uint32_t value) {
 
 // optional uint64 max_file_size_bytes = 10;
 inline bool TraceConfig::_internal_has_max_file_size_bytes() const {
-  bool value = (_has_bits_[0] & 0x00040000u) != 0;
+  bool value = (_has_bits_[0] & 0x00002000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_max_file_size_bytes() const {
@@ -5606,7 +5649,7 @@ inline bool TraceConfig::has_max_file_size_bytes() const {
 }
 inline void TraceConfig::clear_max_file_size_bytes() {
   max_file_size_bytes_ = uint64_t{0u};
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline uint64_t TraceConfig::_internal_max_file_size_bytes() const {
   return max_file_size_bytes_;
@@ -5616,7 +5659,7 @@ inline uint64_t TraceConfig::max_file_size_bytes() const {
   return _internal_max_file_size_bytes();
 }
 inline void TraceConfig::_internal_set_max_file_size_bytes(uint64_t value) {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00002000u;
   max_file_size_bytes_ = value;
 }
 inline void TraceConfig::set_max_file_size_bytes(uint64_t value) {
@@ -5716,7 +5759,7 @@ inline void TraceConfig::set_allocated_guardrail_overrides(::perfetto::protos::T
 
 // optional bool deferred_start = 12;
 inline bool TraceConfig::_internal_has_deferred_start() const {
-  bool value = (_has_bits_[0] & 0x00010000u) != 0;
+  bool value = (_has_bits_[0] & 0x00100000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_deferred_start() const {
@@ -5724,7 +5767,7 @@ inline bool TraceConfig::has_deferred_start() const {
 }
 inline void TraceConfig::clear_deferred_start() {
   deferred_start_ = false;
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline bool TraceConfig::_internal_deferred_start() const {
   return deferred_start_;
@@ -5734,7 +5777,7 @@ inline bool TraceConfig::deferred_start() const {
   return _internal_deferred_start();
 }
 inline void TraceConfig::_internal_set_deferred_start(bool value) {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00100000u;
   deferred_start_ = value;
 }
 inline void TraceConfig::set_deferred_start(bool value) {
@@ -5744,7 +5787,7 @@ inline void TraceConfig::set_deferred_start(bool value) {
 
 // optional uint32 flush_period_ms = 13;
 inline bool TraceConfig::_internal_has_flush_period_ms() const {
-  bool value = (_has_bits_[0] & 0x00080000u) != 0;
+  bool value = (_has_bits_[0] & 0x00008000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_flush_period_ms() const {
@@ -5752,7 +5795,7 @@ inline bool TraceConfig::has_flush_period_ms() const {
 }
 inline void TraceConfig::clear_flush_period_ms() {
   flush_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline uint32_t TraceConfig::_internal_flush_period_ms() const {
   return flush_period_ms_;
@@ -5762,7 +5805,7 @@ inline uint32_t TraceConfig::flush_period_ms() const {
   return _internal_flush_period_ms();
 }
 inline void TraceConfig::_internal_set_flush_period_ms(uint32_t value) {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00008000u;
   flush_period_ms_ = value;
 }
 inline void TraceConfig::set_flush_period_ms(uint32_t value) {
@@ -5772,7 +5815,7 @@ inline void TraceConfig::set_flush_period_ms(uint32_t value) {
 
 // optional uint32 flush_timeout_ms = 14;
 inline bool TraceConfig::_internal_has_flush_timeout_ms() const {
-  bool value = (_has_bits_[0] & 0x00100000u) != 0;
+  bool value = (_has_bits_[0] & 0x00010000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_flush_timeout_ms() const {
@@ -5780,7 +5823,7 @@ inline bool TraceConfig::has_flush_timeout_ms() const {
 }
 inline void TraceConfig::clear_flush_timeout_ms() {
   flush_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline uint32_t TraceConfig::_internal_flush_timeout_ms() const {
   return flush_timeout_ms_;
@@ -5790,7 +5833,7 @@ inline uint32_t TraceConfig::flush_timeout_ms() const {
   return _internal_flush_timeout_ms();
 }
 inline void TraceConfig::_internal_set_flush_timeout_ms(uint32_t value) {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00010000u;
   flush_timeout_ms_ = value;
 }
 inline void TraceConfig::set_flush_timeout_ms(uint32_t value) {
@@ -5800,7 +5843,7 @@ inline void TraceConfig::set_flush_timeout_ms(uint32_t value) {
 
 // optional uint32 data_source_stop_timeout_ms = 23;
 inline bool TraceConfig::_internal_has_data_source_stop_timeout_ms() const {
-  bool value = (_has_bits_[0] & 0x00400000u) != 0;
+  bool value = (_has_bits_[0] & 0x00800000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_data_source_stop_timeout_ms() const {
@@ -5808,7 +5851,7 @@ inline bool TraceConfig::has_data_source_stop_timeout_ms() const {
 }
 inline void TraceConfig::clear_data_source_stop_timeout_ms() {
   data_source_stop_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 inline uint32_t TraceConfig::_internal_data_source_stop_timeout_ms() const {
   return data_source_stop_timeout_ms_;
@@ -5818,7 +5861,7 @@ inline uint32_t TraceConfig::data_source_stop_timeout_ms() const {
   return _internal_data_source_stop_timeout_ms();
 }
 inline void TraceConfig::_internal_set_data_source_stop_timeout_ms(uint32_t value) {
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00800000u;
   data_source_stop_timeout_ms_ = value;
 }
 inline void TraceConfig::set_data_source_stop_timeout_ms(uint32_t value) {
@@ -5828,7 +5871,7 @@ inline void TraceConfig::set_data_source_stop_timeout_ms(uint32_t value) {
 
 // optional bool notify_traceur = 16;
 inline bool TraceConfig::_internal_has_notify_traceur() const {
-  bool value = (_has_bits_[0] & 0x00020000u) != 0;
+  bool value = (_has_bits_[0] & 0x00200000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_notify_traceur() const {
@@ -5836,7 +5879,7 @@ inline bool TraceConfig::has_notify_traceur() const {
 }
 inline void TraceConfig::clear_notify_traceur() {
   notify_traceur_ = false;
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline bool TraceConfig::_internal_notify_traceur() const {
   return notify_traceur_;
@@ -5846,7 +5889,7 @@ inline bool TraceConfig::notify_traceur() const {
   return _internal_notify_traceur();
 }
 inline void TraceConfig::_internal_set_notify_traceur(bool value) {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00200000u;
   notify_traceur_ = value;
 }
 inline void TraceConfig::set_notify_traceur(bool value) {
@@ -5856,7 +5899,7 @@ inline void TraceConfig::set_notify_traceur(bool value) {
 
 // optional int32 bugreport_score = 30;
 inline bool TraceConfig::_internal_has_bugreport_score() const {
-  bool value = (_has_bits_[0] & 0x02000000u) != 0;
+  bool value = (_has_bits_[0] & 0x04000000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_bugreport_score() const {
@@ -5864,7 +5907,7 @@ inline bool TraceConfig::has_bugreport_score() const {
 }
 inline void TraceConfig::clear_bugreport_score() {
   bugreport_score_ = 0;
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x04000000u;
 }
 inline int32_t TraceConfig::_internal_bugreport_score() const {
   return bugreport_score_;
@@ -5874,7 +5917,7 @@ inline int32_t TraceConfig::bugreport_score() const {
   return _internal_bugreport_score();
 }
 inline void TraceConfig::_internal_set_bugreport_score(int32_t value) {
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x04000000u;
   bugreport_score_ = value;
 }
 inline void TraceConfig::set_bugreport_score(int32_t value) {
@@ -6139,7 +6182,7 @@ inline void TraceConfig::set_allocated_incremental_state_config(::perfetto::prot
 
 // optional bool allow_user_build_tracing = 19;
 inline bool TraceConfig::_internal_has_allow_user_build_tracing() const {
-  bool value = (_has_bits_[0] & 0x00200000u) != 0;
+  bool value = (_has_bits_[0] & 0x00400000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_allow_user_build_tracing() const {
@@ -6147,7 +6190,7 @@ inline bool TraceConfig::has_allow_user_build_tracing() const {
 }
 inline void TraceConfig::clear_allow_user_build_tracing() {
   allow_user_build_tracing_ = false;
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline bool TraceConfig::_internal_allow_user_build_tracing() const {
   return allow_user_build_tracing_;
@@ -6157,7 +6200,7 @@ inline bool TraceConfig::allow_user_build_tracing() const {
   return _internal_allow_user_build_tracing();
 }
 inline void TraceConfig::_internal_set_allow_user_build_tracing(bool value) {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00400000u;
   allow_user_build_tracing_ = value;
 }
 inline void TraceConfig::set_allow_user_build_tracing(bool value) {
@@ -6235,7 +6278,7 @@ inline void TraceConfig::set_allocated_unique_session_name(std::string* unique_s
 
 // optional .perfetto.protos.TraceConfig.CompressionType compression_type = 24;
 inline bool TraceConfig::_internal_has_compression_type() const {
-  bool value = (_has_bits_[0] & 0x01000000u) != 0;
+  bool value = (_has_bits_[0] & 0x02000000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_compression_type() const {
@@ -6243,7 +6286,7 @@ inline bool TraceConfig::has_compression_type() const {
 }
 inline void TraceConfig::clear_compression_type() {
   compression_type_ = 0;
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x02000000u;
 }
 inline ::perfetto::protos::TraceConfig_CompressionType TraceConfig::_internal_compression_type() const {
   return static_cast< ::perfetto::protos::TraceConfig_CompressionType >(compression_type_);
@@ -6254,7 +6297,7 @@ inline ::perfetto::protos::TraceConfig_CompressionType TraceConfig::compression_
 }
 inline void TraceConfig::_internal_set_compression_type(::perfetto::protos::TraceConfig_CompressionType value) {
   assert(::perfetto::protos::TraceConfig_CompressionType_IsValid(value));
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x02000000u;
   compression_type_ = value;
 }
 inline void TraceConfig::set_compression_type(::perfetto::protos::TraceConfig_CompressionType value) {
@@ -6354,7 +6397,7 @@ inline void TraceConfig::set_allocated_incident_report_config(::perfetto::protos
 
 // optional .perfetto.protos.TraceConfig.StatsdLogging statsd_logging = 31;
 inline bool TraceConfig::_internal_has_statsd_logging() const {
-  bool value = (_has_bits_[0] & 0x08000000u) != 0;
+  bool value = (_has_bits_[0] & 0x10000000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_statsd_logging() const {
@@ -6362,7 +6405,7 @@ inline bool TraceConfig::has_statsd_logging() const {
 }
 inline void TraceConfig::clear_statsd_logging() {
   statsd_logging_ = 0;
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline ::perfetto::protos::TraceConfig_StatsdLogging TraceConfig::_internal_statsd_logging() const {
   return static_cast< ::perfetto::protos::TraceConfig_StatsdLogging >(statsd_logging_);
@@ -6373,7 +6416,7 @@ inline ::perfetto::protos::TraceConfig_StatsdLogging TraceConfig::statsd_logging
 }
 inline void TraceConfig::_internal_set_statsd_logging(::perfetto::protos::TraceConfig_StatsdLogging value) {
   assert(::perfetto::protos::TraceConfig_StatsdLogging_IsValid(value));
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x10000000u;
   statsd_logging_ = value;
 }
 inline void TraceConfig::set_statsd_logging(::perfetto::protos::TraceConfig_StatsdLogging value) {
@@ -6383,7 +6426,7 @@ inline void TraceConfig::set_statsd_logging(::perfetto::protos::TraceConfig_Stat
 
 // optional int64 trace_uuid_msb = 27 [deprecated = true];
 inline bool TraceConfig::_internal_has_trace_uuid_msb() const {
-  bool value = (_has_bits_[0] & 0x00800000u) != 0;
+  bool value = (_has_bits_[0] & 0x01000000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_trace_uuid_msb() const {
@@ -6391,7 +6434,7 @@ inline bool TraceConfig::has_trace_uuid_msb() const {
 }
 inline void TraceConfig::clear_trace_uuid_msb() {
   trace_uuid_msb_ = int64_t{0};
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 inline int64_t TraceConfig::_internal_trace_uuid_msb() const {
   return trace_uuid_msb_;
@@ -6401,7 +6444,7 @@ inline int64_t TraceConfig::trace_uuid_msb() const {
   return _internal_trace_uuid_msb();
 }
 inline void TraceConfig::_internal_set_trace_uuid_msb(int64_t value) {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x01000000u;
   trace_uuid_msb_ = value;
 }
 inline void TraceConfig::set_trace_uuid_msb(int64_t value) {
@@ -6411,7 +6454,7 @@ inline void TraceConfig::set_trace_uuid_msb(int64_t value) {
 
 // optional int64 trace_uuid_lsb = 28 [deprecated = true];
 inline bool TraceConfig::_internal_has_trace_uuid_lsb() const {
-  bool value = (_has_bits_[0] & 0x04000000u) != 0;
+  bool value = (_has_bits_[0] & 0x08000000u) != 0;
   return value;
 }
 inline bool TraceConfig::has_trace_uuid_lsb() const {
@@ -6419,7 +6462,7 @@ inline bool TraceConfig::has_trace_uuid_lsb() const {
 }
 inline void TraceConfig::clear_trace_uuid_lsb() {
   trace_uuid_lsb_ = int64_t{0};
-  _has_bits_[0] &= ~0x04000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 inline int64_t TraceConfig::_internal_trace_uuid_lsb() const {
   return trace_uuid_lsb_;
@@ -6429,7 +6472,7 @@ inline int64_t TraceConfig::trace_uuid_lsb() const {
   return _internal_trace_uuid_lsb();
 }
 inline void TraceConfig::_internal_set_trace_uuid_lsb(int64_t value) {
-  _has_bits_[0] |= 0x04000000u;
+  _has_bits_[0] |= 0x08000000u;
   trace_uuid_lsb_ = value;
 }
 inline void TraceConfig::set_trace_uuid_lsb(int64_t value) {

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -43,19 +44,19 @@ bool PerfEvents::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEvents::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEvents::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void PerfEvents::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -105,13 +106,13 @@ bool PerfEvents_RawEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEvents_RawEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEvents_RawEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -119,25 +120,25 @@ std::vector<uint8_t> PerfEvents_RawEvent::SerializeAsArray() const {
 void PerfEvents_RawEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, type_, msg);
   }
 
   // Field 2: config
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, config_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, config_, msg);
   }
 
   // Field 3: config1
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, config1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, config1_, msg);
   }
 
   // Field 4: config2
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, config2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, config2_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -165,10 +166,10 @@ bool PerfEvents_Tracepoint::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* filter */:
-        field.get(&filter_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &filter_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -179,13 +180,13 @@ bool PerfEvents_Tracepoint::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEvents_Tracepoint::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEvents_Tracepoint::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -193,15 +194,15 @@ std::vector<uint8_t> PerfEvents_Tracepoint::SerializeAsArray() const {
 void PerfEvents_Tracepoint::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: filter
   if (_has_field_[2]) {
-    msg->AppendString(2, filter_);
+    ::protozero::internal::gen_helpers::SerializeString(2, filter_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -252,7 +253,7 @@ bool PerfEvents_Timebase::ParseFromArray(const void* raw, size_t size) {
         field.get(&timestamp_clock_);
         break;
       case 10 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -263,13 +264,13 @@ bool PerfEvents_Timebase::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEvents_Timebase::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEvents_Timebase::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -277,17 +278,17 @@ std::vector<uint8_t> PerfEvents_Timebase::SerializeAsArray() const {
 void PerfEvents_Timebase::Serialize(::protozero::Message* msg) const {
   // Field 2: frequency
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, frequency_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, frequency_, msg);
   }
 
   // Field 1: period
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, period_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, period_, msg);
   }
 
   // Field 4: counter
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, counter_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, counter_, msg);
   }
 
   // Field 3: tracepoint
@@ -302,15 +303,15 @@ void PerfEvents_Timebase::Serialize(::protozero::Message* msg) const {
 
   // Field 11: timestamp_clock
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timestamp_clock_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timestamp_clock_, msg);
   }
 
   // Field 10: name
   if (_has_field_[10]) {
-    msg->AppendString(10, name_);
+    ::protozero::internal::gen_helpers::SerializeString(10, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

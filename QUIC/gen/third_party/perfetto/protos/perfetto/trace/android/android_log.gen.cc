@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -57,13 +58,13 @@ bool AndroidLogPacket::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidLogPacket::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidLogPacket::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -79,7 +80,7 @@ void AndroidLogPacket::Serialize(::protozero::Message* msg) const {
     (*stats_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -125,13 +126,13 @@ bool AndroidLogPacket_Stats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidLogPacket_Stats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidLogPacket_Stats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -139,20 +140,20 @@ std::vector<uint8_t> AndroidLogPacket_Stats::SerializeAsArray() const {
 void AndroidLogPacket_Stats::Serialize(::protozero::Message* msg) const {
   // Field 1: num_total
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, num_total_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, num_total_, msg);
   }
 
   // Field 2: num_failed
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, num_failed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, num_failed_, msg);
   }
 
   // Field 3: num_skipped
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, num_skipped_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, num_skipped_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -206,13 +207,13 @@ bool AndroidLogPacket_LogEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&timestamp_);
         break;
       case 6 /* tag */:
-        field.get(&tag_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &tag_);
         break;
       case 7 /* prio */:
         field.get(&prio_);
         break;
       case 8 /* message */:
-        field.get(&message_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &message_);
         break;
       case 9 /* args */:
         args_.emplace_back();
@@ -227,13 +228,13 @@ bool AndroidLogPacket_LogEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidLogPacket_LogEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidLogPacket_LogEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -241,42 +242,42 @@ std::vector<uint8_t> AndroidLogPacket_LogEvent::SerializeAsArray() const {
 void AndroidLogPacket_LogEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: log_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, log_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, log_id_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: tid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, tid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, tid_, msg);
   }
 
   // Field 4: uid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, uid_, msg);
   }
 
   // Field 5: timestamp
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, timestamp_, msg);
   }
 
   // Field 6: tag
   if (_has_field_[6]) {
-    msg->AppendString(6, tag_);
+    ::protozero::internal::gen_helpers::SerializeString(6, tag_, msg);
   }
 
   // Field 7: prio
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, prio_, msg);
   }
 
   // Field 8: message
   if (_has_field_[8]) {
-    msg->AppendString(8, message_);
+    ::protozero::internal::gen_helpers::SerializeString(8, message_, msg);
   }
 
   // Field 9: args
@@ -284,7 +285,7 @@ void AndroidLogPacket_LogEvent::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(9));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -314,7 +315,7 @@ bool AndroidLogPacket_LogEvent_Arg::ParseFromArray(const void* raw, size_t size)
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* int_value */:
         field.get(&int_value_);
@@ -323,7 +324,7 @@ bool AndroidLogPacket_LogEvent_Arg::ParseFromArray(const void* raw, size_t size)
         field.get(&float_value_);
         break;
       case 4 /* string_value */:
-        field.get(&string_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -334,13 +335,13 @@ bool AndroidLogPacket_LogEvent_Arg::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string AndroidLogPacket_LogEvent_Arg::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidLogPacket_LogEvent_Arg::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -348,25 +349,25 @@ std::vector<uint8_t> AndroidLogPacket_LogEvent_Arg::SerializeAsArray() const {
 void AndroidLogPacket_LogEvent_Arg::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: int_value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, int_value_, msg);
   }
 
   // Field 3: float_value
   if (_has_field_[3]) {
-    msg->AppendFixed(3, float_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, float_value_, msg);
   }
 
   // Field 4: string_value
   if (_has_field_[4]) {
-    msg->AppendString(4, string_value_);
+    ::protozero::internal::gen_helpers::SerializeString(4, string_value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

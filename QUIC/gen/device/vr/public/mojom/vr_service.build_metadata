@@ -10,6 +10,7 @@
     "../../../../ui/gfx/mojom/mojom.build_metadata"
   ],
   "sources": [
-    "../../../../../../../device/vr/public/mojom/vr_service.mojom"
+    "../../../../../../../device/vr/public/mojom/vr_service.mojom",
+    "../../../../../../../device/vr/public/mojom/xr_session.mojom"
   ]
 }

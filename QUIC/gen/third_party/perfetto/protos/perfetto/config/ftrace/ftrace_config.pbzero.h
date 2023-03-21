@@ -54,7 +54,7 @@ const char* FtraceConfig_KsymsMemPolicy_Name(::perfetto::protos::pbzero::FtraceC
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/24, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/25, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   FtraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -95,6 +95,8 @@ class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_I
   bool preserve_ftrace_buffer() const { return at<23>().as_bool(); }
   bool has_use_monotonic_raw_clock() const { return at<24>().valid(); }
   bool use_monotonic_raw_clock() const { return at<24>().as_bool(); }
+  bool has_instance_name() const { return at<25>().valid(); }
+  ::protozero::ConstChars instance_name() const { return at<25>().as_string(); }
 };
 
 class FtraceConfig : public ::protozero::Message {
@@ -119,6 +121,7 @@ class FtraceConfig : public ::protozero::Message {
     kFunctionGraphRootsFieldNumber = 21,
     kPreserveFtraceBufferFieldNumber = 23,
     kUseMonotonicRawClockFieldNumber = 24,
+    kInstanceNameFieldNumber = 25,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FtraceConfig"; }
 
@@ -608,6 +611,37 @@ class FtraceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InstanceName =
+    ::protozero::proto_utils::FieldMetadata<
+      25,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      FtraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_InstanceName kInstanceName() { return {}; }
+  void set_instance_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_InstanceName::kFieldId, data, size);
+  }
+  void set_instance_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_InstanceName::kFieldId, chars.data, chars.size);
+  }
+  void set_instance_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_InstanceName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };

@@ -18,6 +18,11 @@ namespace gen {
 class FtraceEventBundle;
 class FtraceEventBundle_CompactSched;
 class FtraceEvent;
+class HostMemAbortFtraceEvent;
+class HostSmcFtraceEvent;
+class HostHcallFtraceEvent;
+class HypExitFtraceEvent;
+class HypEnterFtraceEvent;
 class MaliMaliKCPUFENCEWAITENDFtraceEvent;
 class MaliMaliKCPUFENCEWAITSTARTFtraceEvent;
 class MaliMaliKCPUFENCESIGNALFtraceEvent;

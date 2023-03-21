@@ -1,161 +1,160 @@
-defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCPPGC_VERIFY_HEAP -DENABLE_DISASSEMBLER -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -DOBJECT_PRINT -DVERIFY_HEAP -DV8_TRACE_MAPS -DV8_ENABLE_ALLOCATION_TIMEOUT -DV8_ENABLE_FORCE_SLOW_PATH -DV8_ENABLE_DOUBLE_CONST_STORE_CHECK -DV8_INTL_SUPPORT -DENABLE_HANDLE_ZAPPING -DV8_CODE_COMMENTS -DV8_ENABLE_DEBUG_CODE -DV8_ENABLE_HEAP_SNAPSHOT_VERIFY -DV8_SNAPSHOT_NATIVE_CODE_COUNTERS -DV8_USE_EXTERNAL_STARTUP_DATA -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_SHORT_BUILTIN_CALLS -DV8_EXTERNAL_CODE_SPACE -DV8_ENABLE_MAGLEV -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DV8_STATIC_ROOTS -DV8_USE_ZLIB -DV8_USE_LIBM_TRIG_FUNCTIONS -DV8_ENABLE_WASM_SIMD256_REVEC -DV8_ENABLE_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DV8_USE_PERFETTO -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_SLIM_WRITE_BARRIER -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX -DDEBUG -DV8_RUNTIME_CALL_STATS -DBUILDING_V8_SHARED -DUSING_V8_BASE_SHARED -DUSING_V8_PLATFORM_SHARED
-include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../v8 -I../../v8/include -Igen/v8 -Igen/v8/include -I../../v8/third_party/perfetto/include -Igen/third_party/perfetto -Igen/third_party/perfetto/build_config -I../../third_party/perfetto/include -I../../third_party/protobuf/src -Igen/protoc_out
-cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wmissing-field-initializers -Wunreachable-code -Wctad-maybe-unsupported -Wno-shadow -Wshorten-64-to-32 -O3 -fdata-sections -ffunction-sections -fno-unique-section-names -Wexit-time-destructors -DPROTOBUF_ALLOW_DEPRECATED=1
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCPPGC_VERIFY_HEAP -DENABLE_DISASSEMBLER -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -DOBJECT_PRINT -DVERIFY_HEAP -DV8_TRACE_MAPS -DV8_ENABLE_ALLOCATION_TIMEOUT -DV8_ENABLE_FORCE_SLOW_PATH -DV8_ENABLE_DOUBLE_CONST_STORE_CHECK -DV8_INTL_SUPPORT -DENABLE_HANDLE_ZAPPING -DV8_CODE_COMMENTS -DV8_ENABLE_DEBUG_CODE -DV8_ENABLE_HEAP_SNAPSHOT_VERIFY -DV8_SNAPSHOT_NATIVE_CODE_COUNTERS -DV8_USE_EXTERNAL_STARTUP_DATA -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_SHORT_BUILTIN_CALLS -DV8_EXTERNAL_CODE_SPACE -DV8_ENABLE_MAGLEV -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DV8_STATIC_ROOTS -DV8_USE_ZLIB -DV8_USE_LIBM_TRIG_FUNCTIONS -DV8_ENABLE_WASM_SIMD256_REVEC -DV8_ENABLE_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_SLIM_WRITE_BARRIER -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX -DDEBUG -DV8_RUNTIME_CALL_STATS -DBUILDING_V8_SHARED -DUSING_V8_BASE_SHARED -DUSING_V8_PLATFORM_SHARED
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../v8 -I../../v8/include -Igen/v8 -Igen/v8/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wmissing-field-initializers -Wunreachable-code -Wctad-maybe-unsupported -Wno-shadow -Wshorten-64-to-32 -O3 -fdata-sections -ffunction-sections -fno-unique-section-names -Wexit-time-destructors
 cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
 label_name = cppgc_base
 target_out_dir = obj/v8
 target_output_name = cppgc_base
 
-build obj/v8/cppgc_base.inputdeps.stamp: stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
-build obj/v8/cppgc_base/allocation.o: cxx ../../v8/src/heap/cppgc/allocation.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/allocation.o: cxx ../../v8/src/heap/cppgc/allocation.cc
   source_file_part = allocation.cc
   source_name_part = allocation
-build obj/v8/cppgc_base/compaction-worklists.o: cxx ../../v8/src/heap/cppgc/compaction-worklists.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/compaction-worklists.o: cxx ../../v8/src/heap/cppgc/compaction-worklists.cc
   source_file_part = compaction-worklists.cc
   source_name_part = compaction-worklists
-build obj/v8/cppgc_base/compactor.o: cxx ../../v8/src/heap/cppgc/compactor.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/compactor.o: cxx ../../v8/src/heap/cppgc/compactor.cc
   source_file_part = compactor.cc
   source_name_part = compactor
-build obj/v8/cppgc_base/concurrent-marker.o: cxx ../../v8/src/heap/cppgc/concurrent-marker.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/concurrent-marker.o: cxx ../../v8/src/heap/cppgc/concurrent-marker.cc
   source_file_part = concurrent-marker.cc
   source_name_part = concurrent-marker
-build obj/v8/cppgc_base/explicit-management.o: cxx ../../v8/src/heap/cppgc/explicit-management.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/explicit-management.o: cxx ../../v8/src/heap/cppgc/explicit-management.cc
   source_file_part = explicit-management.cc
   source_name_part = explicit-management
-build obj/v8/cppgc_base/free-list.o: cxx ../../v8/src/heap/cppgc/free-list.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/free-list.o: cxx ../../v8/src/heap/cppgc/free-list.cc
   source_file_part = free-list.cc
   source_name_part = free-list
-build obj/v8/cppgc_base/gc-info-table.o: cxx ../../v8/src/heap/cppgc/gc-info-table.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/gc-info-table.o: cxx ../../v8/src/heap/cppgc/gc-info-table.cc
   source_file_part = gc-info-table.cc
   source_name_part = gc-info-table
-build obj/v8/cppgc_base/gc-info.o: cxx ../../v8/src/heap/cppgc/gc-info.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/gc-info.o: cxx ../../v8/src/heap/cppgc/gc-info.cc
   source_file_part = gc-info.cc
   source_name_part = gc-info
-build obj/v8/cppgc_base/gc-invoker.o: cxx ../../v8/src/heap/cppgc/gc-invoker.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/gc-invoker.o: cxx ../../v8/src/heap/cppgc/gc-invoker.cc
   source_file_part = gc-invoker.cc
   source_name_part = gc-invoker
-build obj/v8/cppgc_base/heap-base.o: cxx ../../v8/src/heap/cppgc/heap-base.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-base.o: cxx ../../v8/src/heap/cppgc/heap-base.cc
   source_file_part = heap-base.cc
   source_name_part = heap-base
-build obj/v8/cppgc_base/heap-consistency.o: cxx ../../v8/src/heap/cppgc/heap-consistency.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-consistency.o: cxx ../../v8/src/heap/cppgc/heap-consistency.cc
   source_file_part = heap-consistency.cc
   source_name_part = heap-consistency
-build obj/v8/cppgc_base/heap-growing.o: cxx ../../v8/src/heap/cppgc/heap-growing.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-growing.o: cxx ../../v8/src/heap/cppgc/heap-growing.cc
   source_file_part = heap-growing.cc
   source_name_part = heap-growing
-build obj/v8/cppgc_base/heap-object-header.o: cxx ../../v8/src/heap/cppgc/heap-object-header.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-object-header.o: cxx ../../v8/src/heap/cppgc/heap-object-header.cc
   source_file_part = heap-object-header.cc
   source_name_part = heap-object-header
-build obj/v8/cppgc_base/heap-page.o: cxx ../../v8/src/heap/cppgc/heap-page.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-page.o: cxx ../../v8/src/heap/cppgc/heap-page.cc
   source_file_part = heap-page.cc
   source_name_part = heap-page
-build obj/v8/cppgc_base/heap-space.o: cxx ../../v8/src/heap/cppgc/heap-space.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-space.o: cxx ../../v8/src/heap/cppgc/heap-space.cc
   source_file_part = heap-space.cc
   source_name_part = heap-space
-build obj/v8/cppgc_base/heap-state.o: cxx ../../v8/src/heap/cppgc/heap-state.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-state.o: cxx ../../v8/src/heap/cppgc/heap-state.cc
   source_file_part = heap-state.cc
   source_name_part = heap-state
-build obj/v8/cppgc_base/heap-statistics-collector.o: cxx ../../v8/src/heap/cppgc/heap-statistics-collector.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap-statistics-collector.o: cxx ../../v8/src/heap/cppgc/heap-statistics-collector.cc
   source_file_part = heap-statistics-collector.cc
   source_name_part = heap-statistics-collector
-build obj/v8/cppgc_base/heap.o: cxx ../../v8/src/heap/cppgc/heap.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/heap.o: cxx ../../v8/src/heap/cppgc/heap.cc
   source_file_part = heap.cc
   source_name_part = heap
-build obj/v8/cppgc_base/incremental-marking-schedule.o: cxx ../../v8/src/heap/cppgc/incremental-marking-schedule.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/incremental-marking-schedule.o: cxx ../../v8/src/heap/cppgc/incremental-marking-schedule.cc
   source_file_part = incremental-marking-schedule.cc
   source_name_part = incremental-marking-schedule
-build obj/v8/cppgc_base/liveness-broker.o: cxx ../../v8/src/heap/cppgc/liveness-broker.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/liveness-broker.o: cxx ../../v8/src/heap/cppgc/liveness-broker.cc
   source_file_part = liveness-broker.cc
   source_name_part = liveness-broker
-build obj/v8/cppgc_base/logging.o: cxx ../../v8/src/heap/cppgc/logging.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/logging.o: cxx ../../v8/src/heap/cppgc/logging.cc
   source_file_part = logging.cc
   source_name_part = logging
-build obj/v8/cppgc_base/marker.o: cxx ../../v8/src/heap/cppgc/marker.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/marker.o: cxx ../../v8/src/heap/cppgc/marker.cc
   source_file_part = marker.cc
   source_name_part = marker
-build obj/v8/cppgc_base/marking-state.o: cxx ../../v8/src/heap/cppgc/marking-state.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/marking-state.o: cxx ../../v8/src/heap/cppgc/marking-state.cc
   source_file_part = marking-state.cc
   source_name_part = marking-state
-build obj/v8/cppgc_base/marking-verifier.o: cxx ../../v8/src/heap/cppgc/marking-verifier.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/marking-verifier.o: cxx ../../v8/src/heap/cppgc/marking-verifier.cc
   source_file_part = marking-verifier.cc
   source_name_part = marking-verifier
-build obj/v8/cppgc_base/marking-visitor.o: cxx ../../v8/src/heap/cppgc/marking-visitor.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/marking-visitor.o: cxx ../../v8/src/heap/cppgc/marking-visitor.cc
   source_file_part = marking-visitor.cc
   source_name_part = marking-visitor
-build obj/v8/cppgc_base/marking-worklists.o: cxx ../../v8/src/heap/cppgc/marking-worklists.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/marking-worklists.o: cxx ../../v8/src/heap/cppgc/marking-worklists.cc
   source_file_part = marking-worklists.cc
   source_name_part = marking-worklists
-build obj/v8/cppgc_base/member-storage.o: cxx ../../v8/src/heap/cppgc/member-storage.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/member-storage.o: cxx ../../v8/src/heap/cppgc/member-storage.cc
   source_file_part = member-storage.cc
   source_name_part = member-storage
-build obj/v8/cppgc_base/memory.o: cxx ../../v8/src/heap/cppgc/memory.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/memory.o: cxx ../../v8/src/heap/cppgc/memory.cc
   source_file_part = memory.cc
   source_name_part = memory
-build obj/v8/cppgc_base/name-trait.o: cxx ../../v8/src/heap/cppgc/name-trait.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/name-trait.o: cxx ../../v8/src/heap/cppgc/name-trait.cc
   source_file_part = name-trait.cc
   source_name_part = name-trait
-build obj/v8/cppgc_base/object-allocator.o: cxx ../../v8/src/heap/cppgc/object-allocator.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/object-allocator.o: cxx ../../v8/src/heap/cppgc/object-allocator.cc
   source_file_part = object-allocator.cc
   source_name_part = object-allocator
-build obj/v8/cppgc_base/object-size-trait.o: cxx ../../v8/src/heap/cppgc/object-size-trait.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/object-size-trait.o: cxx ../../v8/src/heap/cppgc/object-size-trait.cc
   source_file_part = object-size-trait.cc
   source_name_part = object-size-trait
-build obj/v8/cppgc_base/page-memory.o: cxx ../../v8/src/heap/cppgc/page-memory.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/page-memory.o: cxx ../../v8/src/heap/cppgc/page-memory.cc
   source_file_part = page-memory.cc
   source_name_part = page-memory
-build obj/v8/cppgc_base/persistent-node.o: cxx ../../v8/src/heap/cppgc/persistent-node.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/persistent-node.o: cxx ../../v8/src/heap/cppgc/persistent-node.cc
   source_file_part = persistent-node.cc
   source_name_part = persistent-node
-build obj/v8/cppgc_base/platform.o: cxx ../../v8/src/heap/cppgc/platform.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/platform.o: cxx ../../v8/src/heap/cppgc/platform.cc
   source_file_part = platform.cc
   source_name_part = platform
-build obj/v8/cppgc_base/pointer-policies.o: cxx ../../v8/src/heap/cppgc/pointer-policies.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/pointer-policies.o: cxx ../../v8/src/heap/cppgc/pointer-policies.cc
   source_file_part = pointer-policies.cc
   source_name_part = pointer-policies
-build obj/v8/cppgc_base/prefinalizer-handler.o: cxx ../../v8/src/heap/cppgc/prefinalizer-handler.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/prefinalizer-handler.o: cxx ../../v8/src/heap/cppgc/prefinalizer-handler.cc
   source_file_part = prefinalizer-handler.cc
   source_name_part = prefinalizer-handler
-build obj/v8/cppgc_base/process-heap-statistics.o: cxx ../../v8/src/heap/cppgc/process-heap-statistics.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/process-heap-statistics.o: cxx ../../v8/src/heap/cppgc/process-heap-statistics.cc
   source_file_part = process-heap-statistics.cc
   source_name_part = process-heap-statistics
-build obj/v8/cppgc_base/process-heap.o: cxx ../../v8/src/heap/cppgc/process-heap.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/process-heap.o: cxx ../../v8/src/heap/cppgc/process-heap.cc
   source_file_part = process-heap.cc
   source_name_part = process-heap
-build obj/v8/cppgc_base/raw-heap.o: cxx ../../v8/src/heap/cppgc/raw-heap.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/raw-heap.o: cxx ../../v8/src/heap/cppgc/raw-heap.cc
   source_file_part = raw-heap.cc
   source_name_part = raw-heap
-build obj/v8/cppgc_base/remembered-set.o: cxx ../../v8/src/heap/cppgc/remembered-set.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/remembered-set.o: cxx ../../v8/src/heap/cppgc/remembered-set.cc
   source_file_part = remembered-set.cc
   source_name_part = remembered-set
-build obj/v8/cppgc_base/source-location.o: cxx ../../v8/src/heap/cppgc/source-location.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/source-location.o: cxx ../../v8/src/heap/cppgc/source-location.cc
   source_file_part = source-location.cc
   source_name_part = source-location
-build obj/v8/cppgc_base/stats-collector.o: cxx ../../v8/src/heap/cppgc/stats-collector.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/stats-collector.o: cxx ../../v8/src/heap/cppgc/stats-collector.cc
   source_file_part = stats-collector.cc
   source_name_part = stats-collector
-build obj/v8/cppgc_base/sweeper.o: cxx ../../v8/src/heap/cppgc/sweeper.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/sweeper.o: cxx ../../v8/src/heap/cppgc/sweeper.cc
   source_file_part = sweeper.cc
   source_name_part = sweeper
-build obj/v8/cppgc_base/testing.o: cxx ../../v8/src/heap/cppgc/testing.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/testing.o: cxx ../../v8/src/heap/cppgc/testing.cc
   source_file_part = testing.cc
   source_name_part = testing
-build obj/v8/cppgc_base/trace-trait.o: cxx ../../v8/src/heap/cppgc/trace-trait.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/trace-trait.o: cxx ../../v8/src/heap/cppgc/trace-trait.cc
   source_file_part = trace-trait.cc
   source_name_part = trace-trait
-build obj/v8/cppgc_base/virtual-memory.o: cxx ../../v8/src/heap/cppgc/virtual-memory.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/virtual-memory.o: cxx ../../v8/src/heap/cppgc/virtual-memory.cc
   source_file_part = virtual-memory.cc
   source_name_part = virtual-memory
-build obj/v8/cppgc_base/visitor.o: cxx ../../v8/src/heap/cppgc/visitor.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/visitor.o: cxx ../../v8/src/heap/cppgc/visitor.cc
   source_file_part = visitor.cc
   source_name_part = visitor
-build obj/v8/cppgc_base/write-barrier.o: cxx ../../v8/src/heap/cppgc/write-barrier.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/write-barrier.o: cxx ../../v8/src/heap/cppgc/write-barrier.cc
   source_file_part = write-barrier.cc
   source_name_part = write-barrier
-build obj/v8/cppgc_base/caged-heap-local-data.o: cxx ../../v8/src/heap/cppgc/caged-heap-local-data.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/caged-heap-local-data.o: cxx ../../v8/src/heap/cppgc/caged-heap-local-data.cc
   source_file_part = caged-heap-local-data.cc
   source_name_part = caged-heap-local-data
-build obj/v8/cppgc_base/caged-heap.o: cxx ../../v8/src/heap/cppgc/caged-heap.cc || obj/v8/cppgc_base.inputdeps.stamp
+build obj/v8/cppgc_base/caged-heap.o: cxx ../../v8/src/heap/cppgc/caged-heap.cc
   source_file_part = caged-heap.cc
   source_name_part = caged-heap
 
-build obj/v8/cppgc_base.stamp: stamp obj/v8/cppgc_base/allocation.o obj/v8/cppgc_base/compaction-worklists.o obj/v8/cppgc_base/compactor.o obj/v8/cppgc_base/concurrent-marker.o obj/v8/cppgc_base/explicit-management.o obj/v8/cppgc_base/free-list.o obj/v8/cppgc_base/gc-info-table.o obj/v8/cppgc_base/gc-info.o obj/v8/cppgc_base/gc-invoker.o obj/v8/cppgc_base/heap-base.o obj/v8/cppgc_base/heap-consistency.o obj/v8/cppgc_base/heap-growing.o obj/v8/cppgc_base/heap-object-header.o obj/v8/cppgc_base/heap-page.o obj/v8/cppgc_base/heap-space.o obj/v8/cppgc_base/heap-state.o obj/v8/cppgc_base/heap-statistics-collector.o obj/v8/cppgc_base/heap.o obj/v8/cppgc_base/incremental-marking-schedule.o obj/v8/cppgc_base/liveness-broker.o obj/v8/cppgc_base/logging.o obj/v8/cppgc_base/marker.o obj/v8/cppgc_base/marking-state.o obj/v8/cppgc_base/marking-verifier.o obj/v8/cppgc_base/marking-visitor.o obj/v8/cppgc_base/marking-worklists.o obj/v8/cppgc_base/member-storage.o obj/v8/cppgc_base/memory.o obj/v8/cppgc_base/name-trait.o obj/v8/cppgc_base/object-allocator.o obj/v8/cppgc_base/object-size-trait.o obj/v8/cppgc_base/page-memory.o obj/v8/cppgc_base/persistent-node.o obj/v8/cppgc_base/platform.o obj/v8/cppgc_base/pointer-policies.o obj/v8/cppgc_base/prefinalizer-handler.o obj/v8/cppgc_base/process-heap-statistics.o obj/v8/cppgc_base/process-heap.o obj/v8/cppgc_base/raw-heap.o obj/v8/cppgc_base/remembered-set.o obj/v8/cppgc_base/source-location.o obj/v8/cppgc_base/stats-collector.o obj/v8/cppgc_base/sweeper.o obj/v8/cppgc_base/testing.o obj/v8/cppgc_base/trace-trait.o obj/v8/cppgc_base/virtual-memory.o obj/v8/cppgc_base/visitor.o obj/v8/cppgc_base/write-barrier.o obj/v8/cppgc_base/caged-heap-local-data.o obj/v8/cppgc_base/caged-heap.o || obj/v8/cppgc_headers.stamp obj/v8/v8_heap_base.stamp ./libv8_libbase.so.TOC ./libv8_libplatform.so.TOC obj/v8/v8_tracing.stamp obj/v8/v8_config_headers.stamp obj/v8/v8_heap_base_headers.stamp ./libthird_party_perfetto_libperfetto.so.TOC
+build obj/v8/cppgc_base.stamp: stamp obj/v8/cppgc_base/allocation.o obj/v8/cppgc_base/compaction-worklists.o obj/v8/cppgc_base/compactor.o obj/v8/cppgc_base/concurrent-marker.o obj/v8/cppgc_base/explicit-management.o obj/v8/cppgc_base/free-list.o obj/v8/cppgc_base/gc-info-table.o obj/v8/cppgc_base/gc-info.o obj/v8/cppgc_base/gc-invoker.o obj/v8/cppgc_base/heap-base.o obj/v8/cppgc_base/heap-consistency.o obj/v8/cppgc_base/heap-growing.o obj/v8/cppgc_base/heap-object-header.o obj/v8/cppgc_base/heap-page.o obj/v8/cppgc_base/heap-space.o obj/v8/cppgc_base/heap-state.o obj/v8/cppgc_base/heap-statistics-collector.o obj/v8/cppgc_base/heap.o obj/v8/cppgc_base/incremental-marking-schedule.o obj/v8/cppgc_base/liveness-broker.o obj/v8/cppgc_base/logging.o obj/v8/cppgc_base/marker.o obj/v8/cppgc_base/marking-state.o obj/v8/cppgc_base/marking-verifier.o obj/v8/cppgc_base/marking-visitor.o obj/v8/cppgc_base/marking-worklists.o obj/v8/cppgc_base/member-storage.o obj/v8/cppgc_base/memory.o obj/v8/cppgc_base/name-trait.o obj/v8/cppgc_base/object-allocator.o obj/v8/cppgc_base/object-size-trait.o obj/v8/cppgc_base/page-memory.o obj/v8/cppgc_base/persistent-node.o obj/v8/cppgc_base/platform.o obj/v8/cppgc_base/pointer-policies.o obj/v8/cppgc_base/prefinalizer-handler.o obj/v8/cppgc_base/process-heap-statistics.o obj/v8/cppgc_base/process-heap.o obj/v8/cppgc_base/raw-heap.o obj/v8/cppgc_base/remembered-set.o obj/v8/cppgc_base/source-location.o obj/v8/cppgc_base/stats-collector.o obj/v8/cppgc_base/sweeper.o obj/v8/cppgc_base/testing.o obj/v8/cppgc_base/trace-trait.o obj/v8/cppgc_base/virtual-memory.o obj/v8/cppgc_base/visitor.o obj/v8/cppgc_base/write-barrier.o obj/v8/cppgc_base/caged-heap-local-data.o obj/v8/cppgc_base/caged-heap.o || obj/v8/cppgc_headers.stamp obj/v8/v8_heap_base.stamp ./libv8_libbase.so.TOC ./libv8_libplatform.so.TOC obj/v8/v8_tracing.stamp obj/v8/v8_config_headers.stamp obj/v8/v8_heap_base_headers.stamp

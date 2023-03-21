@@ -36,6 +36,8 @@ class PERFETTO_EXPORT_COMPONENT BatteryCounters : public ::protozero::CppMessage
     kCurrentUaFieldNumber = 3,
     kCurrentAvgUaFieldNumber = 4,
     kNameFieldNumber = 5,
+    kEnergyCounterUwhFieldNumber = 6,
+    kVoltageUvFieldNumber = 7,
   };
 
   BatteryCounters();
@@ -72,18 +74,28 @@ class PERFETTO_EXPORT_COMPONENT BatteryCounters : public ::protozero::CppMessage
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(5); }
 
+  bool has_energy_counter_uwh() const { return _has_field_[6]; }
+  int64_t energy_counter_uwh() const { return energy_counter_uwh_; }
+  void set_energy_counter_uwh(int64_t value) { energy_counter_uwh_ = value; _has_field_.set(6); }
+
+  bool has_voltage_uv() const { return _has_field_[7]; }
+  int64_t voltage_uv() const { return voltage_uv_; }
+  void set_voltage_uv(int64_t value) { voltage_uv_ = value; _has_field_.set(7); }
+
  private:
   int64_t charge_counter_uah_{};
   float capacity_percent_{};
   int64_t current_ua_{};
   int64_t current_avg_ua_{};
   std::string name_{};
+  int64_t energy_counter_uwh_{};
+  int64_t voltage_uv_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 }  // namespace perfetto

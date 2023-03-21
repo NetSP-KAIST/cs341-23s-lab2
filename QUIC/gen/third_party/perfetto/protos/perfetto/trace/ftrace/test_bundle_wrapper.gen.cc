@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -48,6 +49,7 @@
 #include "protos/perfetto/trace/ftrace/ipi.gen.h"
 #include "protos/perfetto/trace/ftrace/ion.gen.h"
 #include "protos/perfetto/trace/ftrace/i2c.gen.h"
+#include "protos/perfetto/trace/ftrace/hyp.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.gen.h"
 #include "protos/perfetto/trace/ftrace/g2d.gen.h"
@@ -104,14 +106,14 @@ bool TestBundleWrapper::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* before */:
-        field.get(&before_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &before_);
         break;
       case 2 /* bundle */:
         bundle_.emplace_back();
         bundle_.back().ParseFromArray(field.data(), field.size());
         break;
       case 3 /* after */:
-        field.get(&after_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &after_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -122,13 +124,13 @@ bool TestBundleWrapper::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestBundleWrapper::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestBundleWrapper::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -136,7 +138,7 @@ std::vector<uint8_t> TestBundleWrapper::SerializeAsArray() const {
 void TestBundleWrapper::Serialize(::protozero::Message* msg) const {
   // Field 1: before
   if (_has_field_[1]) {
-    msg->AppendString(1, before_);
+    ::protozero::internal::gen_helpers::SerializeString(1, before_, msg);
   }
 
   // Field 2: bundle
@@ -146,10 +148,10 @@ void TestBundleWrapper::Serialize(::protozero::Message* msg) const {
 
   // Field 3: after
   if (_has_field_[3]) {
-    msg->AppendString(3, after_);
+    ::protozero::internal::gen_helpers::SerializeString(3, after_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

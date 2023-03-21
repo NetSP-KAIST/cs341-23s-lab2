@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,13 +61,13 @@ bool BackgroundTracingMetadata::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BackgroundTracingMetadata::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BackgroundTracingMetadata::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -84,10 +85,10 @@ void BackgroundTracingMetadata::Serialize(::protozero::Message* msg) const {
 
   // Field 3: scenario_name_hash
   if (_has_field_[3]) {
-    msg->AppendFixed(3, scenario_name_hash_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, scenario_name_hash_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -102,7 +103,8 @@ bool BackgroundTracingMetadata_TriggerRule::operator==(const BackgroundTracingMe
   return unknown_fields_ == other.unknown_fields_
    && trigger_type_ == other.trigger_type_
    && histogram_rule_ == other.histogram_rule_
-   && named_rule_ == other.named_rule_;
+   && named_rule_ == other.named_rule_
+   && name_hash_ == other.name_hash_;
 }
 
 bool BackgroundTracingMetadata_TriggerRule::ParseFromArray(const void* raw, size_t size) {
@@ -124,6 +126,9 @@ bool BackgroundTracingMetadata_TriggerRule::ParseFromArray(const void* raw, size
       case 3 /* named_rule */:
         (*named_rule_).ParseFromArray(field.data(), field.size());
         break;
+      case 4 /* name_hash */:
+        field.get(&name_hash_);
+        break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
         break;
@@ -133,13 +138,13 @@ bool BackgroundTracingMetadata_TriggerRule::ParseFromArray(const void* raw, size
 }
 
 std::string BackgroundTracingMetadata_TriggerRule::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -147,7 +152,7 @@ std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule::SerializeAsArray() c
 void BackgroundTracingMetadata_TriggerRule::Serialize(::protozero::Message* msg) const {
   // Field 1: trigger_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, trigger_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, trigger_type_, msg);
   }
 
   // Field 2: histogram_rule
@@ -160,7 +165,12 @@ void BackgroundTracingMetadata_TriggerRule::Serialize(::protozero::Message* msg)
     (*named_rule_).Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 4: name_hash
+  if (_has_field_[4]) {
+    ::protozero::internal::gen_helpers::SerializeFixed(4, name_hash_, msg);
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -202,13 +212,13 @@ bool BackgroundTracingMetadata_TriggerRule_NamedRule::ParseFromArray(const void*
 }
 
 std::string BackgroundTracingMetadata_TriggerRule_NamedRule::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule_NamedRule::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -216,15 +226,15 @@ std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule_NamedRule::SerializeA
 void BackgroundTracingMetadata_TriggerRule_NamedRule::Serialize(::protozero::Message* msg) const {
   // Field 1: event_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, event_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, event_type_, msg);
   }
 
   // Field 2: content_trigger_name_hash
   if (_has_field_[2]) {
-    msg->AppendFixed(2, content_trigger_name_hash_);
+    ::protozero::internal::gen_helpers::SerializeFixed(2, content_trigger_name_hash_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -270,13 +280,13 @@ bool BackgroundTracingMetadata_TriggerRule_HistogramRule::ParseFromArray(const v
 }
 
 std::string BackgroundTracingMetadata_TriggerRule_HistogramRule::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule_HistogramRule::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -284,20 +294,20 @@ std::vector<uint8_t> BackgroundTracingMetadata_TriggerRule_HistogramRule::Serial
 void BackgroundTracingMetadata_TriggerRule_HistogramRule::Serialize(::protozero::Message* msg) const {
   // Field 1: histogram_name_hash
   if (_has_field_[1]) {
-    msg->AppendFixed(1, histogram_name_hash_);
+    ::protozero::internal::gen_helpers::SerializeFixed(1, histogram_name_hash_, msg);
   }
 
   // Field 2: histogram_min_trigger
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, histogram_min_trigger_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, histogram_min_trigger_, msg);
   }
 
   // Field 3: histogram_max_trigger
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, histogram_max_trigger_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, histogram_max_trigger_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -332,7 +342,7 @@ bool ChromeMetadataPacket::ParseFromArray(const void* raw, size_t size) {
         field.get(&chrome_version_code_);
         break;
       case 3 /* enabled_categories */:
-        field.get(&enabled_categories_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &enabled_categories_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -343,13 +353,13 @@ bool ChromeMetadataPacket::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeMetadataPacket::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeMetadataPacket::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -362,15 +372,15 @@ void ChromeMetadataPacket::Serialize(::protozero::Message* msg) const {
 
   // Field 2: chrome_version_code
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, chrome_version_code_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, chrome_version_code_, msg);
   }
 
   // Field 3: enabled_categories
   if (_has_field_[3]) {
-    msg->AppendString(3, enabled_categories_);
+    ::protozero::internal::gen_helpers::SerializeString(3, enabled_categories_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

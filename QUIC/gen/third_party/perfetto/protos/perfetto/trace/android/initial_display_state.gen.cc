@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,13 +52,13 @@ bool InitialDisplayState::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InitialDisplayState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InitialDisplayState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> InitialDisplayState::SerializeAsArray() const {
 void InitialDisplayState::Serialize(::protozero::Message* msg) const {
   // Field 1: display_state
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, display_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, display_state_, msg);
   }
 
   // Field 2: brightness
   if (_has_field_[2]) {
-    msg->AppendFixed(2, brightness_);
+    ::protozero::internal::gen_helpers::SerializeFixed(2, brightness_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

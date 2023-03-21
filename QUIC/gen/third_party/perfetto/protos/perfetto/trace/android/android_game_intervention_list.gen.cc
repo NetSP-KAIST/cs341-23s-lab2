@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,13 +61,13 @@ bool AndroidGameInterventionList::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidGameInterventionList::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidGameInterventionList::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -79,15 +80,15 @@ void AndroidGameInterventionList::Serialize(::protozero::Message* msg) const {
 
   // Field 2: parse_error
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, parse_error_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, parse_error_, msg);
   }
 
   // Field 3: read_error
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, read_error_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, read_error_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -121,7 +122,7 @@ bool AndroidGameInterventionList_GamePackageInfo::ParseFromArray(const void* raw
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* uid */:
         field.get(&uid_);
@@ -142,13 +143,13 @@ bool AndroidGameInterventionList_GamePackageInfo::ParseFromArray(const void* raw
 }
 
 std::string AndroidGameInterventionList_GamePackageInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidGameInterventionList_GamePackageInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -156,17 +157,17 @@ std::vector<uint8_t> AndroidGameInterventionList_GamePackageInfo::SerializeAsArr
 void AndroidGameInterventionList_GamePackageInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: uid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, uid_, msg);
   }
 
   // Field 3: current_mode
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, current_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, current_mode_, msg);
   }
 
   // Field 4: game_mode_info
@@ -174,7 +175,7 @@ void AndroidGameInterventionList_GamePackageInfo::Serialize(::protozero::Message
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(4));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -224,13 +225,13 @@ bool AndroidGameInterventionList_GameModeInfo::ParseFromArray(const void* raw, s
 }
 
 std::string AndroidGameInterventionList_GameModeInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidGameInterventionList_GameModeInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -238,25 +239,25 @@ std::vector<uint8_t> AndroidGameInterventionList_GameModeInfo::SerializeAsArray(
 void AndroidGameInterventionList_GameModeInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: mode
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, mode_, msg);
   }
 
   // Field 2: use_angle
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, use_angle_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, use_angle_, msg);
   }
 
   // Field 3: resolution_downscale
   if (_has_field_[3]) {
-    msg->AppendFixed(3, resolution_downscale_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, resolution_downscale_, msg);
   }
 
   // Field 4: fps
   if (_has_field_[4]) {
-    msg->AppendFixed(4, fps_);
+    ::protozero::internal::gen_helpers::SerializeFixed(4, fps_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

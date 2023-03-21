@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -62,15 +63,15 @@ bool FtraceStats::ParseFromArray(const void* raw, size_t size) {
         field.get(&kernel_symbols_mem_kb_);
         break;
       case 5 /* atrace_errors */:
-        field.get(&atrace_errors_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &atrace_errors_);
         break;
       case 6 /* unknown_ftrace_events */:
         unknown_ftrace_events_.emplace_back();
-        field.get(&unknown_ftrace_events_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &unknown_ftrace_events_.back());
         break;
       case 7 /* failed_ftrace_events */:
         failed_ftrace_events_.emplace_back();
-        field.get(&failed_ftrace_events_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &failed_ftrace_events_.back());
         break;
       case 8 /* preserve_ftrace_buffer */:
         field.get(&preserve_ftrace_buffer_);
@@ -84,13 +85,13 @@ bool FtraceStats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FtraceStats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceStats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -98,7 +99,7 @@ std::vector<uint8_t> FtraceStats::SerializeAsArray() const {
 void FtraceStats::Serialize(::protozero::Message* msg) const {
   // Field 1: phase
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, phase_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, phase_, msg);
   }
 
   // Field 2: cpu_stats
@@ -108,35 +109,35 @@ void FtraceStats::Serialize(::protozero::Message* msg) const {
 
   // Field 3: kernel_symbols_parsed
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, kernel_symbols_parsed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, kernel_symbols_parsed_, msg);
   }
 
   // Field 4: kernel_symbols_mem_kb
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kernel_symbols_mem_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kernel_symbols_mem_kb_, msg);
   }
 
   // Field 5: atrace_errors
   if (_has_field_[5]) {
-    msg->AppendString(5, atrace_errors_);
+    ::protozero::internal::gen_helpers::SerializeString(5, atrace_errors_, msg);
   }
 
   // Field 6: unknown_ftrace_events
   for (auto& it : unknown_ftrace_events_) {
-    msg->AppendString(6, it);
+    ::protozero::internal::gen_helpers::SerializeString(6, it, msg);
   }
 
   // Field 7: failed_ftrace_events
   for (auto& it : failed_ftrace_events_) {
-    msg->AppendString(7, it);
+    ::protozero::internal::gen_helpers::SerializeString(7, it, msg);
   }
 
   // Field 8: preserve_ftrace_buffer
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, preserve_ftrace_buffer_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, preserve_ftrace_buffer_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -206,13 +207,13 @@ bool FtraceCpuStats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FtraceCpuStats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceCpuStats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,50 +221,50 @@ std::vector<uint8_t> FtraceCpuStats::SerializeAsArray() const {
 void FtraceCpuStats::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: entries
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, entries_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, entries_, msg);
   }
 
   // Field 3: overrun
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, overrun_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, overrun_, msg);
   }
 
   // Field 4: commit_overrun
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, commit_overrun_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, commit_overrun_, msg);
   }
 
   // Field 5: bytes_read
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, bytes_read_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, bytes_read_, msg);
   }
 
   // Field 6: oldest_event_ts
   if (_has_field_[6]) {
-    msg->AppendFixed(6, oldest_event_ts_);
+    ::protozero::internal::gen_helpers::SerializeFixed(6, oldest_event_ts_, msg);
   }
 
   // Field 7: now_ts
   if (_has_field_[7]) {
-    msg->AppendFixed(7, now_ts_);
+    ::protozero::internal::gen_helpers::SerializeFixed(7, now_ts_, msg);
   }
 
   // Field 8: dropped_events
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, dropped_events_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, dropped_events_, msg);
   }
 
   // Field 9: read_events
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, read_events_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, read_events_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

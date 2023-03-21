@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -67,13 +68,13 @@ bool SmbusReplyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmbusReplyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmbusReplyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -81,35 +82,35 @@ std::vector<uint8_t> SmbusReplyFtraceEvent::SerializeAsArray() const {
 void SmbusReplyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: addr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, addr_, msg);
   }
 
   // Field 3: flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flags_, msg);
   }
 
   // Field 4: command
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, command_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, command_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
   // Field 6: protocol
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, protocol_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, protocol_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -171,13 +172,13 @@ bool SmbusResultFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmbusResultFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmbusResultFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -185,40 +186,40 @@ std::vector<uint8_t> SmbusResultFtraceEvent::SerializeAsArray() const {
 void SmbusResultFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: addr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, addr_, msg);
   }
 
   // Field 3: flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flags_, msg);
   }
 
   // Field 4: read_write
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, read_write_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, read_write_, msg);
   }
 
   // Field 5: command
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, command_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, command_, msg);
   }
 
   // Field 6: res
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, res_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, res_, msg);
   }
 
   // Field 7: protocol
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, protocol_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, protocol_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -276,13 +277,13 @@ bool SmbusWriteFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmbusWriteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmbusWriteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -290,35 +291,35 @@ std::vector<uint8_t> SmbusWriteFtraceEvent::SerializeAsArray() const {
 void SmbusWriteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: addr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, addr_, msg);
   }
 
   // Field 3: flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flags_, msg);
   }
 
   // Field 4: command
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, command_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, command_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
   // Field 6: protocol
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, protocol_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, protocol_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -372,13 +373,13 @@ bool SmbusReadFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmbusReadFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmbusReadFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -386,30 +387,30 @@ std::vector<uint8_t> SmbusReadFtraceEvent::SerializeAsArray() const {
 void SmbusReadFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, flags_, msg);
   }
 
   // Field 3: addr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, addr_, msg);
   }
 
   // Field 4: command
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, command_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, command_, msg);
   }
 
   // Field 5: protocol
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, protocol_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, protocol_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -467,13 +468,13 @@ bool I2cReplyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string I2cReplyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> I2cReplyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -481,35 +482,35 @@ std::vector<uint8_t> I2cReplyFtraceEvent::SerializeAsArray() const {
 void I2cReplyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: msg_nr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, msg_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, msg_nr_, msg);
   }
 
   // Field 3: addr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, addr_, msg);
   }
 
   // Field 4: flags
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, flags_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
   // Field 6: buf
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, buf_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, buf_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -555,13 +556,13 @@ bool I2cResultFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string I2cResultFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> I2cResultFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -569,20 +570,20 @@ std::vector<uint8_t> I2cResultFtraceEvent::SerializeAsArray() const {
 void I2cResultFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: nr_msgs
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, nr_msgs_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, nr_msgs_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -640,13 +641,13 @@ bool I2cWriteFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string I2cWriteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> I2cWriteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -654,35 +655,35 @@ std::vector<uint8_t> I2cWriteFtraceEvent::SerializeAsArray() const {
 void I2cWriteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: msg_nr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, msg_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, msg_nr_, msg);
   }
 
   // Field 3: addr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, addr_, msg);
   }
 
   // Field 4: flags
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, flags_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
   // Field 6: buf
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, buf_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, buf_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -736,13 +737,13 @@ bool I2cReadFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string I2cReadFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> I2cReadFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -750,30 +751,30 @@ std::vector<uint8_t> I2cReadFtraceEvent::SerializeAsArray() const {
 void I2cReadFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: adapter_nr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, adapter_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, adapter_nr_, msg);
   }
 
   // Field 2: msg_nr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, msg_nr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, msg_nr_, msg);
   }
 
   // Field 3: addr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, addr_, msg);
   }
 
   // Field 4: flags
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, flags_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

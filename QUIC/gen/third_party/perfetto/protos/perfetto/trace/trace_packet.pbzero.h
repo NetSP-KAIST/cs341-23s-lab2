@@ -29,6 +29,7 @@ class ChromeMetadataPacket;
 class ClockSnapshot;
 class CpuInfo;
 class DeobfuscationMapping;
+class EntityStateResidency;
 class ExtensionDescriptor;
 class FrameTimelineEvent;
 class FtraceEventBundle;
@@ -44,6 +45,7 @@ class InodeFileMap;
 class InternedData;
 class MemoryTrackerSnapshot;
 class ModuleSymbols;
+class NetworkPacketBundle;
 class NetworkPacketEvent;
 class PackagesList;
 class PerfSample;
@@ -209,6 +211,8 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes statsd_atom() const { return at<84>().as_bytes(); }
   bool has_android_system_property() const { return at<86>().valid(); }
   ::protozero::ConstBytes android_system_property() const { return at<86>().as_bytes(); }
+  bool has_entity_state_residency() const { return at<91>().valid(); }
+  ::protozero::ConstBytes entity_state_residency() const { return at<91>().as_bytes(); }
   bool has_profiled_frame_symbols() const { return at<55>().valid(); }
   ::protozero::ConstBytes profiled_frame_symbols() const { return at<55>().as_bytes(); }
   bool has_module_symbols() const { return at<61>().valid(); }
@@ -231,6 +235,8 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes extension_descriptor() const { return at<72>().as_bytes(); }
   bool has_network_packet() const { return at<88>().valid(); }
   ::protozero::ConstBytes network_packet() const { return at<88>().as_bytes(); }
+  bool has_network_packet_bundle() const { return at<92>().valid(); }
+  ::protozero::ConstBytes network_packet_bundle() const { return at<92>().as_bytes(); }
   bool has_track_event_range_of_interest() const { return at<90>().valid(); }
   ::protozero::ConstBytes track_event_range_of_interest() const { return at<90>().as_bytes(); }
   bool has_for_testing() const { return at<900>().valid(); }
@@ -308,6 +314,7 @@ class TracePacket : public ::protozero::Message {
     kAndroidGameInterventionListFieldNumber = 83,
     kStatsdAtomFieldNumber = 84,
     kAndroidSystemPropertyFieldNumber = 86,
+    kEntityStateResidencyFieldNumber = 91,
     kProfiledFrameSymbolsFieldNumber = 55,
     kModuleSymbolsFieldNumber = 61,
     kDeobfuscationMappingFieldNumber = 64,
@@ -319,6 +326,7 @@ class TracePacket : public ::protozero::Message {
     kCompressedPacketsFieldNumber = 50,
     kExtensionDescriptorFieldNumber = 72,
     kNetworkPacketFieldNumber = 88,
+    kNetworkPacketBundleFieldNumber = 92,
     kTrackEventRangeOfInterestFieldNumber = 90,
     kForTestingFieldNumber = 900,
     kTrustedUidFieldNumber = 3,
@@ -1379,6 +1387,27 @@ class TracePacket : public ::protozero::Message {
   }
 
 
+  using FieldMetadata_EntityStateResidency =
+    ::protozero::proto_utils::FieldMetadata<
+      91,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      EntityStateResidency,
+      TracePacket>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_EntityStateResidency kEntityStateResidency() { return {}; }
+  template <typename T = EntityStateResidency> T* set_entity_state_residency() {
+    return BeginNestedMessage<T>(91);
+  }
+
+
   using FieldMetadata_ProfiledFrameSymbols =
     ::protozero::proto_utils::FieldMetadata<
       55,
@@ -1627,6 +1656,27 @@ class TracePacket : public ::protozero::Message {
   static constexpr FieldMetadata_NetworkPacket kNetworkPacket() { return {}; }
   template <typename T = NetworkPacketEvent> T* set_network_packet() {
     return BeginNestedMessage<T>(88);
+  }
+
+
+  using FieldMetadata_NetworkPacketBundle =
+    ::protozero::proto_utils::FieldMetadata<
+      92,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      NetworkPacketBundle,
+      TracePacket>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NetworkPacketBundle kNetworkPacketBundle() { return {}; }
+  template <typename T = NetworkPacketBundle> T* set_network_packet_bundle() {
+    return BeginNestedMessage<T>(92);
   }
 
 

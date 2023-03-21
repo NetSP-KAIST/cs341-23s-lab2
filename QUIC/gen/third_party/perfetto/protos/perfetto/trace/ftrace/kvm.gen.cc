@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool VgicUpdateIrqPendingFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string VgicUpdateIrqPendingFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VgicUpdateIrqPendingFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> VgicUpdateIrqPendingFtraceEvent::SerializeAsArray() const {
 void VgicUpdateIrqPendingFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irq
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_, msg);
   }
 
   // Field 2: level
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, level_, msg);
   }
 
   // Field 3: vcpu_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vcpu_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vcpu_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -112,7 +113,7 @@ bool TrapRegFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* fn */:
-        field.get(&fn_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &fn_);
         break;
       case 2 /* is_write */:
         field.get(&is_write_);
@@ -132,13 +133,13 @@ bool TrapRegFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrapRegFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrapRegFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -146,25 +147,25 @@ std::vector<uint8_t> TrapRegFtraceEvent::SerializeAsArray() const {
 void TrapRegFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: fn
   if (_has_field_[1]) {
-    msg->AppendString(1, fn_);
+    ::protozero::internal::gen_helpers::SerializeString(1, fn_, msg);
   }
 
   // Field 2: is_write
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, is_write_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, is_write_, msg);
   }
 
   // Field 3: reg
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, reg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, reg_, msg);
   }
 
   // Field 4: write_value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, write_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, write_value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -206,13 +207,13 @@ bool KvmWfxArm64FtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmWfxArm64FtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmWfxArm64FtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,15 +221,15 @@ std::vector<uint8_t> KvmWfxArm64FtraceEvent::SerializeAsArray() const {
 void KvmWfxArm64FtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: is_wfe
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, is_wfe_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, is_wfe_, msg);
   }
 
   // Field 2: vcpu_pc
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -274,13 +275,13 @@ bool KvmVcpuWakeupFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmVcpuWakeupFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmVcpuWakeupFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -288,20 +289,20 @@ std::vector<uint8_t> KvmVcpuWakeupFtraceEvent::SerializeAsArray() const {
 void KvmVcpuWakeupFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ns
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ns_, msg);
   }
 
   // Field 2: valid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, valid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, valid_, msg);
   }
 
   // Field 3: waited
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, waited_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, waited_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -339,13 +340,13 @@ bool KvmUserspaceExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmUserspaceExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmUserspaceExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -353,10 +354,10 @@ std::vector<uint8_t> KvmUserspaceExitFtraceEvent::SerializeAsArray() const {
 void KvmUserspaceExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: reason
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, reason_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -398,13 +399,13 @@ bool KvmUnmapHvaRangeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmUnmapHvaRangeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmUnmapHvaRangeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -412,15 +413,15 @@ std::vector<uint8_t> KvmUnmapHvaRangeFtraceEvent::SerializeAsArray() const {
 void KvmUnmapHvaRangeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: end
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, end_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, end_, msg);
   }
 
   // Field 2: start
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, start_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -466,13 +467,13 @@ bool KvmToggleCacheFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmToggleCacheFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmToggleCacheFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -480,20 +481,20 @@ std::vector<uint8_t> KvmToggleCacheFtraceEvent::SerializeAsArray() const {
 void KvmToggleCacheFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: now
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, now_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, now_, msg);
   }
 
   // Field 2: vcpu_pc
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vcpu_pc_, msg);
   }
 
   // Field 3: was
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, was_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, was_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -539,13 +540,13 @@ bool KvmTimerUpdateIrqFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string KvmTimerUpdateIrqFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTimerUpdateIrqFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -553,20 +554,20 @@ std::vector<uint8_t> KvmTimerUpdateIrqFtraceEvent::SerializeAsArray() const {
 void KvmTimerUpdateIrqFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irq
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_, msg);
   }
 
   // Field 2: level
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, level_, msg);
   }
 
   // Field 3: vcpu_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vcpu_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vcpu_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -612,13 +613,13 @@ bool KvmTimerSaveStateFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string KvmTimerSaveStateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTimerSaveStateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -626,20 +627,20 @@ std::vector<uint8_t> KvmTimerSaveStateFtraceEvent::SerializeAsArray() const {
 void KvmTimerSaveStateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ctl
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ctl_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ctl_, msg);
   }
 
   // Field 2: cval
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, cval_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, cval_, msg);
   }
 
   // Field 3: timer_idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, timer_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, timer_idx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -685,13 +686,13 @@ bool KvmTimerRestoreStateFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string KvmTimerRestoreStateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTimerRestoreStateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -699,20 +700,20 @@ std::vector<uint8_t> KvmTimerRestoreStateFtraceEvent::SerializeAsArray() const {
 void KvmTimerRestoreStateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ctl
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ctl_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ctl_, msg);
   }
 
   // Field 2: cval
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, cval_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, cval_, msg);
   }
 
   // Field 3: timer_idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, timer_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, timer_idx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -750,13 +751,13 @@ bool KvmTimerHrtimerExpireFtraceEvent::ParseFromArray(const void* raw, size_t si
 }
 
 std::string KvmTimerHrtimerExpireFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTimerHrtimerExpireFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -764,10 +765,10 @@ std::vector<uint8_t> KvmTimerHrtimerExpireFtraceEvent::SerializeAsArray() const 
 void KvmTimerHrtimerExpireFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: timer_idx
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, timer_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, timer_idx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -809,13 +810,13 @@ bool KvmTimerEmulateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmTimerEmulateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTimerEmulateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -823,15 +824,15 @@ std::vector<uint8_t> KvmTimerEmulateFtraceEvent::SerializeAsArray() const {
 void KvmTimerEmulateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: should_fire
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, should_fire_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, should_fire_, msg);
   }
 
   // Field 2: timer_idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, timer_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, timer_idx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -869,13 +870,13 @@ bool KvmTestAgeHvaFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmTestAgeHvaFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmTestAgeHvaFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -883,10 +884,10 @@ std::vector<uint8_t> KvmTestAgeHvaFtraceEvent::SerializeAsArray() const {
 void KvmTestAgeHvaFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: hva
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, hva_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, hva_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -938,7 +939,7 @@ bool KvmSysAccessFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&is_write_);
         break;
       case 7 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 8 /* vcpu_pc */:
         field.get(&vcpu_pc_);
@@ -952,13 +953,13 @@ bool KvmSysAccessFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmSysAccessFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmSysAccessFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -966,45 +967,45 @@ std::vector<uint8_t> KvmSysAccessFtraceEvent::SerializeAsArray() const {
 void KvmSysAccessFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: crm
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, crm_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, crm_, msg);
   }
 
   // Field 2: crn
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, crn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, crn_, msg);
   }
 
   // Field 3: op0
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, op0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, op0_, msg);
   }
 
   // Field 4: op1
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, op1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, op1_, msg);
   }
 
   // Field 5: op2
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, op2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, op2_, msg);
   }
 
   // Field 6: is_write
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, is_write_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, is_write_, msg);
   }
 
   // Field 7: name
   if (_has_field_[7]) {
-    msg->AppendString(7, name_);
+    ::protozero::internal::gen_helpers::SerializeString(7, name_, msg);
   }
 
   // Field 8: vcpu_pc
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1046,13 +1047,13 @@ bool KvmSetWayFlushFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmSetWayFlushFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmSetWayFlushFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1060,15 +1061,15 @@ std::vector<uint8_t> KvmSetWayFlushFtraceEvent::SerializeAsArray() const {
 void KvmSetWayFlushFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cache
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cache_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cache_, msg);
   }
 
   // Field 2: vcpu_pc
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1106,13 +1107,13 @@ bool KvmSetSpteHvaFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmSetSpteHvaFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmSetSpteHvaFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1120,10 +1121,10 @@ std::vector<uint8_t> KvmSetSpteHvaFtraceEvent::SerializeAsArray() const {
 void KvmSetSpteHvaFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: hva
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, hva_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, hva_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1169,13 +1170,13 @@ bool KvmSetIrqFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmSetIrqFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmSetIrqFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1183,20 +1184,20 @@ std::vector<uint8_t> KvmSetIrqFtraceEvent::SerializeAsArray() const {
 void KvmSetIrqFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: gsi
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, gsi_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, gsi_, msg);
   }
 
   // Field 2: irq_source_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, irq_source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, irq_source_id_, msg);
   }
 
   // Field 3: level
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, level_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1238,13 +1239,13 @@ bool KvmSetGuestDebugFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmSetGuestDebugFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmSetGuestDebugFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1252,15 +1253,15 @@ std::vector<uint8_t> KvmSetGuestDebugFtraceEvent::SerializeAsArray() const {
 void KvmSetGuestDebugFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: guest_debug
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, guest_debug_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, guest_debug_, msg);
   }
 
   // Field 2: vcpu
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vcpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vcpu_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1306,13 +1307,13 @@ bool KvmMmioEmulateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmMmioEmulateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmMmioEmulateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1320,20 +1321,20 @@ std::vector<uint8_t> KvmMmioEmulateFtraceEvent::SerializeAsArray() const {
 void KvmMmioEmulateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cpsr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpsr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpsr_, msg);
   }
 
   // Field 2: instr
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, instr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, instr_, msg);
   }
 
   // Field 3: vcpu_pc
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1383,13 +1384,13 @@ bool KvmMmioFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmMmioFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmMmioFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1397,25 +1398,25 @@ std::vector<uint8_t> KvmMmioFtraceEvent::SerializeAsArray() const {
 void KvmMmioFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: gpa
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, gpa_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, gpa_, msg);
   }
 
   // Field 2: len
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, len_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: val
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, val_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, val_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1465,13 +1466,13 @@ bool KvmIrqLineFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmIrqLineFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmIrqLineFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1479,25 +1480,25 @@ std::vector<uint8_t> KvmIrqLineFtraceEvent::SerializeAsArray() const {
 void KvmIrqLineFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irq_num
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_num_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_num_, msg);
   }
 
   // Field 2: level
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, level_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: vcpu_idx
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, vcpu_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, vcpu_idx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1543,13 +1544,13 @@ bool KvmHvcArm64FtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmHvcArm64FtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmHvcArm64FtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1557,20 +1558,20 @@ std::vector<uint8_t> KvmHvcArm64FtraceEvent::SerializeAsArray() const {
 void KvmHvcArm64FtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: imm
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, imm_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, imm_, msg);
   }
 
   // Field 2: r0
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, r0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, r0_, msg);
   }
 
   // Field 3: vcpu_pc
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1608,13 +1609,13 @@ bool KvmHandleSysRegFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmHandleSysRegFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmHandleSysRegFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1622,10 +1623,10 @@ std::vector<uint8_t> KvmHandleSysRegFtraceEvent::SerializeAsArray() const {
 void KvmHandleSysRegFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: hsr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, hsr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, hsr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1675,13 +1676,13 @@ bool KvmGuestFaultFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmGuestFaultFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmGuestFaultFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1689,25 +1690,25 @@ std::vector<uint8_t> KvmGuestFaultFtraceEvent::SerializeAsArray() const {
 void KvmGuestFaultFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: hsr
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, hsr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, hsr_, msg);
   }
 
   // Field 2: hxfar
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, hxfar_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, hxfar_, msg);
   }
 
   // Field 3: ipa
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ipa_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ipa_, msg);
   }
 
   // Field 4: vcpu_pc
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1757,13 +1758,13 @@ bool KvmGetTimerMapFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmGetTimerMapFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmGetTimerMapFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1771,25 +1772,25 @@ std::vector<uint8_t> KvmGetTimerMapFtraceEvent::SerializeAsArray() const {
 void KvmGetTimerMapFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: direct_ptimer
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, direct_ptimer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, direct_ptimer_, msg);
   }
 
   // Field 2: direct_vtimer
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, direct_vtimer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, direct_vtimer_, msg);
   }
 
   // Field 3: emul_ptimer
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, emul_ptimer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, emul_ptimer_, msg);
   }
 
   // Field 4: vcpu_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, vcpu_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, vcpu_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1827,13 +1828,13 @@ bool KvmFpuFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmFpuFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmFpuFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1841,10 +1842,10 @@ std::vector<uint8_t> KvmFpuFtraceEvent::SerializeAsArray() const {
 void KvmFpuFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: load
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, load_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, load_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1890,13 +1891,13 @@ bool KvmExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1904,20 +1905,20 @@ std::vector<uint8_t> KvmExitFtraceEvent::SerializeAsArray() const {
 void KvmExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: esr_ec
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, esr_ec_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, esr_ec_, msg);
   }
 
   // Field 2: ret
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ret_, msg);
   }
 
   // Field 3: vcpu_pc
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1955,13 +1956,13 @@ bool KvmEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1969,10 +1970,10 @@ std::vector<uint8_t> KvmEntryFtraceEvent::SerializeAsArray() const {
 void KvmEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: vcpu_pc
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, vcpu_pc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, vcpu_pc_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2014,13 +2015,13 @@ bool KvmArmSetupDebugFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmArmSetupDebugFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmArmSetupDebugFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2028,15 +2029,15 @@ std::vector<uint8_t> KvmArmSetupDebugFtraceEvent::SerializeAsArray() const {
 void KvmArmSetupDebugFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: guest_debug
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, guest_debug_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, guest_debug_, msg);
   }
 
   // Field 2: vcpu
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vcpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vcpu_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2067,7 +2068,7 @@ bool KvmArmSetRegsetFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&len_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -2078,13 +2079,13 @@ bool KvmArmSetRegsetFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmArmSetRegsetFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmArmSetRegsetFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2092,15 +2093,15 @@ std::vector<uint8_t> KvmArmSetRegsetFtraceEvent::SerializeAsArray() const {
 void KvmArmSetRegsetFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: len
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, len_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2128,7 +2129,7 @@ bool KvmArmSetDreg32FtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* value */:
         field.get(&value_);
@@ -2142,13 +2143,13 @@ bool KvmArmSetDreg32FtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmArmSetDreg32FtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmArmSetDreg32FtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2156,15 +2157,15 @@ std::vector<uint8_t> KvmArmSetDreg32FtraceEvent::SerializeAsArray() const {
 void KvmArmSetDreg32FtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2202,13 +2203,13 @@ bool KvmArmClearDebugFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmArmClearDebugFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmArmClearDebugFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2216,10 +2217,10 @@ std::vector<uint8_t> KvmArmClearDebugFtraceEvent::SerializeAsArray() const {
 void KvmArmClearDebugFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: guest_debug
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, guest_debug_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, guest_debug_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2269,13 +2270,13 @@ bool KvmAgePageFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmAgePageFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmAgePageFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2283,25 +2284,25 @@ std::vector<uint8_t> KvmAgePageFtraceEvent::SerializeAsArray() const {
 void KvmAgePageFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: gfn
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, gfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, gfn_, msg);
   }
 
   // Field 2: hva
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, hva_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, hva_, msg);
   }
 
   // Field 3: level
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, level_, msg);
   }
 
   // Field 4: referenced
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, referenced_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, referenced_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2343,13 +2344,13 @@ bool KvmAgeHvaFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmAgeHvaFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmAgeHvaFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2357,15 +2358,15 @@ std::vector<uint8_t> KvmAgeHvaFtraceEvent::SerializeAsArray() const {
 void KvmAgeHvaFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: end
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, end_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, end_, msg);
   }
 
   // Field 2: start
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, start_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2407,13 +2408,13 @@ bool KvmAckIrqFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmAckIrqFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmAckIrqFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2421,15 +2422,15 @@ std::vector<uint8_t> KvmAckIrqFtraceEvent::SerializeAsArray() const {
 void KvmAckIrqFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: irqchip
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irqchip_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irqchip_, msg);
   }
 
   // Field 2: pin
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pin_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pin_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2467,13 +2468,13 @@ bool KvmAccessFaultFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string KvmAccessFaultFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> KvmAccessFaultFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2481,10 +2482,10 @@ std::vector<uint8_t> KvmAccessFaultFtraceEvent::SerializeAsArray() const {
 void KvmAccessFaultFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ipa
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ipa_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ipa_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

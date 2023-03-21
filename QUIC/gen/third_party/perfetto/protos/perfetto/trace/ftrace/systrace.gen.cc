@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,7 +43,7 @@ bool ZeroFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&flag_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* pid */:
         field.get(&pid_);
@@ -59,13 +60,13 @@ bool ZeroFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ZeroFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ZeroFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> ZeroFtraceEvent::SerializeAsArray() const {
 void ZeroFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: flag
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, flag_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, flag_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
   // Field 4: value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

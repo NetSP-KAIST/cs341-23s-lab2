@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,10 +43,10 @@ bool TaskRenameFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&pid_);
         break;
       case 2 /* oldcomm */:
-        field.get(&oldcomm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &oldcomm_);
         break;
       case 3 /* newcomm */:
-        field.get(&newcomm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &newcomm_);
         break;
       case 4 /* oom_score_adj */:
         field.get(&oom_score_adj_);
@@ -59,13 +60,13 @@ bool TaskRenameFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TaskRenameFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TaskRenameFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> TaskRenameFtraceEvent::SerializeAsArray() const {
 void TaskRenameFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: oldcomm
   if (_has_field_[2]) {
-    msg->AppendString(2, oldcomm_);
+    ::protozero::internal::gen_helpers::SerializeString(2, oldcomm_, msg);
   }
 
   // Field 3: newcomm
   if (_has_field_[3]) {
-    msg->AppendString(3, newcomm_);
+    ::protozero::internal::gen_helpers::SerializeString(3, newcomm_, msg);
   }
 
   // Field 4: oom_score_adj
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, oom_score_adj_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, oom_score_adj_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -124,7 +125,7 @@ bool TaskNewtaskFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&pid_);
         break;
       case 2 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 3 /* clone_flags */:
         field.get(&clone_flags_);
@@ -141,13 +142,13 @@ bool TaskNewtaskFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TaskNewtaskFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TaskNewtaskFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -155,25 +156,25 @@ std::vector<uint8_t> TaskNewtaskFtraceEvent::SerializeAsArray() const {
 void TaskNewtaskFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: comm
   if (_has_field_[2]) {
-    msg->AppendString(2, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(2, comm_, msg);
   }
 
   // Field 3: clone_flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, clone_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, clone_flags_, msg);
   }
 
   // Field 4: oom_score_adj
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, oom_score_adj_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, oom_score_adj_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

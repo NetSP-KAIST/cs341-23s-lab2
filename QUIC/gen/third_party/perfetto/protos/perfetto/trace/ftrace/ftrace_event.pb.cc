@@ -503,6 +503,11 @@ class FtraceEvent::_Internal {
   static const ::perfetto::protos::MaliMaliKCPUFENCESIGNALFtraceEvent& mali_mali_kcpu_fence_signal(const FtraceEvent* msg);
   static const ::perfetto::protos::MaliMaliKCPUFENCEWAITSTARTFtraceEvent& mali_mali_kcpu_fence_wait_start(const FtraceEvent* msg);
   static const ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent& mali_mali_kcpu_fence_wait_end(const FtraceEvent* msg);
+  static const ::perfetto::protos::HypEnterFtraceEvent& hyp_enter(const FtraceEvent* msg);
+  static const ::perfetto::protos::HypExitFtraceEvent& hyp_exit(const FtraceEvent* msg);
+  static const ::perfetto::protos::HostHcallFtraceEvent& host_hcall(const FtraceEvent* msg);
+  static const ::perfetto::protos::HostSmcFtraceEvent& host_smc(const FtraceEvent* msg);
+  static const ::perfetto::protos::HostMemAbortFtraceEvent& host_mem_abort(const FtraceEvent* msg);
 };
 
 const ::perfetto::protos::PrintFtraceEvent&
@@ -2320,6 +2325,26 @@ FtraceEvent::_Internal::mali_mali_kcpu_fence_wait_start(const FtraceEvent* msg) 
 const ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent&
 FtraceEvent::_Internal::mali_mali_kcpu_fence_wait_end(const FtraceEvent* msg) {
   return *msg->event_.mali_mali_kcpu_fence_wait_end_;
+}
+const ::perfetto::protos::HypEnterFtraceEvent&
+FtraceEvent::_Internal::hyp_enter(const FtraceEvent* msg) {
+  return *msg->event_.hyp_enter_;
+}
+const ::perfetto::protos::HypExitFtraceEvent&
+FtraceEvent::_Internal::hyp_exit(const FtraceEvent* msg) {
+  return *msg->event_.hyp_exit_;
+}
+const ::perfetto::protos::HostHcallFtraceEvent&
+FtraceEvent::_Internal::host_hcall(const FtraceEvent* msg) {
+  return *msg->event_.host_hcall_;
+}
+const ::perfetto::protos::HostSmcFtraceEvent&
+FtraceEvent::_Internal::host_smc(const FtraceEvent* msg) {
+  return *msg->event_.host_smc_;
+}
+const ::perfetto::protos::HostMemAbortFtraceEvent&
+FtraceEvent::_Internal::host_mem_abort(const FtraceEvent* msg) {
+  return *msg->event_.host_mem_abort_;
 }
 void FtraceEvent::set_allocated_print(::perfetto::protos::PrintFtraceEvent* print) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -13217,6 +13242,126 @@ void FtraceEvent::clear_mali_mali_kcpu_fence_wait_end() {
     clear_has_event();
   }
 }
+void FtraceEvent::set_allocated_hyp_enter(::perfetto::protos::HypEnterFtraceEvent* hyp_enter) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_event();
+  if (hyp_enter) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(hyp_enter));
+    if (message_arena != submessage_arena) {
+      hyp_enter = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, hyp_enter, submessage_arena);
+    }
+    set_has_hyp_enter();
+    event_.hyp_enter_ = hyp_enter;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEvent.hyp_enter)
+}
+void FtraceEvent::clear_hyp_enter() {
+  if (_internal_has_hyp_enter()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete event_.hyp_enter_;
+    }
+    clear_has_event();
+  }
+}
+void FtraceEvent::set_allocated_hyp_exit(::perfetto::protos::HypExitFtraceEvent* hyp_exit) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_event();
+  if (hyp_exit) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(hyp_exit));
+    if (message_arena != submessage_arena) {
+      hyp_exit = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, hyp_exit, submessage_arena);
+    }
+    set_has_hyp_exit();
+    event_.hyp_exit_ = hyp_exit;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEvent.hyp_exit)
+}
+void FtraceEvent::clear_hyp_exit() {
+  if (_internal_has_hyp_exit()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete event_.hyp_exit_;
+    }
+    clear_has_event();
+  }
+}
+void FtraceEvent::set_allocated_host_hcall(::perfetto::protos::HostHcallFtraceEvent* host_hcall) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_event();
+  if (host_hcall) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(host_hcall));
+    if (message_arena != submessage_arena) {
+      host_hcall = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, host_hcall, submessage_arena);
+    }
+    set_has_host_hcall();
+    event_.host_hcall_ = host_hcall;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEvent.host_hcall)
+}
+void FtraceEvent::clear_host_hcall() {
+  if (_internal_has_host_hcall()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete event_.host_hcall_;
+    }
+    clear_has_event();
+  }
+}
+void FtraceEvent::set_allocated_host_smc(::perfetto::protos::HostSmcFtraceEvent* host_smc) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_event();
+  if (host_smc) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(host_smc));
+    if (message_arena != submessage_arena) {
+      host_smc = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, host_smc, submessage_arena);
+    }
+    set_has_host_smc();
+    event_.host_smc_ = host_smc;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEvent.host_smc)
+}
+void FtraceEvent::clear_host_smc() {
+  if (_internal_has_host_smc()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete event_.host_smc_;
+    }
+    clear_has_event();
+  }
+}
+void FtraceEvent::set_allocated_host_mem_abort(::perfetto::protos::HostMemAbortFtraceEvent* host_mem_abort) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_event();
+  if (host_mem_abort) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(host_mem_abort));
+    if (message_arena != submessage_arena) {
+      host_mem_abort = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, host_mem_abort, submessage_arena);
+    }
+    set_has_host_mem_abort();
+    event_.host_mem_abort_ = host_mem_abort;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEvent.host_mem_abort)
+}
+void FtraceEvent::clear_host_mem_abort() {
+  if (_internal_has_host_mem_abort()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete event_.host_mem_abort_;
+    }
+    clear_has_event();
+  }
+}
 FtraceEvent::FtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
@@ -15046,6 +15191,26 @@ FtraceEvent::FtraceEvent(const FtraceEvent& from)
     }
     case kMaliMaliKCPUFENCEWAITEND: {
       _internal_mutable_mali_mali_kcpu_fence_wait_end()->::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent::MergeFrom(from._internal_mali_mali_kcpu_fence_wait_end());
+      break;
+    }
+    case kHypEnter: {
+      _internal_mutable_hyp_enter()->::perfetto::protos::HypEnterFtraceEvent::MergeFrom(from._internal_hyp_enter());
+      break;
+    }
+    case kHypExit: {
+      _internal_mutable_hyp_exit()->::perfetto::protos::HypExitFtraceEvent::MergeFrom(from._internal_hyp_exit());
+      break;
+    }
+    case kHostHcall: {
+      _internal_mutable_host_hcall()->::perfetto::protos::HostHcallFtraceEvent::MergeFrom(from._internal_host_hcall());
+      break;
+    }
+    case kHostSmc: {
+      _internal_mutable_host_smc()->::perfetto::protos::HostSmcFtraceEvent::MergeFrom(from._internal_host_smc());
+      break;
+    }
+    case kHostMemAbort: {
+      _internal_mutable_host_mem_abort()->::perfetto::protos::HostMemAbortFtraceEvent::MergeFrom(from._internal_host_mem_abort());
       break;
     }
     case EVENT_NOT_SET: {
@@ -17807,6 +17972,36 @@ void FtraceEvent::clear_event() {
     case kMaliMaliKCPUFENCEWAITEND: {
       if (GetArenaForAllocation() == nullptr) {
         delete event_.mali_mali_kcpu_fence_wait_end_;
+      }
+      break;
+    }
+    case kHypEnter: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete event_.hyp_enter_;
+      }
+      break;
+    }
+    case kHypExit: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete event_.hyp_exit_;
+      }
+      break;
+    }
+    case kHostHcall: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete event_.host_hcall_;
+      }
+      break;
+    }
+    case kHostSmc: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete event_.host_smc_;
+      }
+      break;
+    }
+    case kHostMemAbort: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete event_.host_mem_abort_;
       }
       break;
     }
@@ -21492,6 +21687,46 @@ const char* FtraceEvent::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
+      // .perfetto.protos.HypEnterFtraceEvent hyp_enter = 476;
+      case 476:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 226)) {
+          ptr = ctx->ParseMessage(_internal_mutable_hyp_enter(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .perfetto.protos.HypExitFtraceEvent hyp_exit = 477;
+      case 477:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 234)) {
+          ptr = ctx->ParseMessage(_internal_mutable_hyp_exit(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .perfetto.protos.HostHcallFtraceEvent host_hcall = 478;
+      case 478:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 242)) {
+          ptr = ctx->ParseMessage(_internal_mutable_host_hcall(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .perfetto.protos.HostSmcFtraceEvent host_smc = 479;
+      case 479:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 250)) {
+          ptr = ctx->ParseMessage(_internal_mutable_host_smc(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .perfetto.protos.HostMemAbortFtraceEvent host_mem_abort = 480;
+      case 480:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 2)) {
+          ptr = ctx->ParseMessage(_internal_mutable_host_mem_abort(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -24258,6 +24493,36 @@ uint8_t* FtraceEvent::_InternalSerialize(
       target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(475, _Internal::mali_mali_kcpu_fence_wait_end(this),
           _Internal::mali_mali_kcpu_fence_wait_end(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kHypEnter: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(476, _Internal::hyp_enter(this),
+          _Internal::hyp_enter(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kHypExit: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(477, _Internal::hyp_exit(this),
+          _Internal::hyp_exit(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kHostHcall: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(478, _Internal::host_hcall(this),
+          _Internal::host_hcall(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kHostSmc: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(479, _Internal::host_smc(this),
+          _Internal::host_smc(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kHostMemAbort: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(480, _Internal::host_mem_abort(this),
+          _Internal::host_mem_abort(this).GetCachedSize(), target, stream);
       break;
     }
     default: ;
@@ -27470,6 +27735,41 @@ size_t FtraceEvent::ByteSizeLong() const {
           *event_.mali_mali_kcpu_fence_wait_end_);
       break;
     }
+    // .perfetto.protos.HypEnterFtraceEvent hyp_enter = 476;
+    case kHypEnter: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *event_.hyp_enter_);
+      break;
+    }
+    // .perfetto.protos.HypExitFtraceEvent hyp_exit = 477;
+    case kHypExit: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *event_.hyp_exit_);
+      break;
+    }
+    // .perfetto.protos.HostHcallFtraceEvent host_hcall = 478;
+    case kHostHcall: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *event_.host_hcall_);
+      break;
+    }
+    // .perfetto.protos.HostSmcFtraceEvent host_smc = 479;
+    case kHostSmc: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *event_.host_smc_);
+      break;
+    }
+    // .perfetto.protos.HostMemAbortFtraceEvent host_mem_abort = 480;
+    case kHostMemAbort: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *event_.host_mem_abort_);
+      break;
+    }
     case EVENT_NOT_SET: {
       break;
     }
@@ -29319,6 +29619,26 @@ void FtraceEvent::MergeFrom(const FtraceEvent& from) {
     }
     case kMaliMaliKCPUFENCEWAITEND: {
       _internal_mutable_mali_mali_kcpu_fence_wait_end()->::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent::MergeFrom(from._internal_mali_mali_kcpu_fence_wait_end());
+      break;
+    }
+    case kHypEnter: {
+      _internal_mutable_hyp_enter()->::perfetto::protos::HypEnterFtraceEvent::MergeFrom(from._internal_hyp_enter());
+      break;
+    }
+    case kHypExit: {
+      _internal_mutable_hyp_exit()->::perfetto::protos::HypExitFtraceEvent::MergeFrom(from._internal_hyp_exit());
+      break;
+    }
+    case kHostHcall: {
+      _internal_mutable_host_hcall()->::perfetto::protos::HostHcallFtraceEvent::MergeFrom(from._internal_host_hcall());
+      break;
+    }
+    case kHostSmc: {
+      _internal_mutable_host_smc()->::perfetto::protos::HostSmcFtraceEvent::MergeFrom(from._internal_host_smc());
+      break;
+    }
+    case kHostMemAbort: {
+      _internal_mutable_host_mem_abort()->::perfetto::protos::HostMemAbortFtraceEvent::MergeFrom(from._internal_host_mem_abort());
       break;
     }
     case EVENT_NOT_SET: {

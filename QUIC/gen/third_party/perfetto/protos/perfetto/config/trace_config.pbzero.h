@@ -193,7 +193,7 @@ const char* TraceConfig_BufferConfig_FillPolicy_Name(::perfetto::protos::pbzero:
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/35, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/36, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -206,6 +206,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes builtin_data_sources() const { return at<20>().as_bytes(); }
   bool has_duration_ms() const { return at<3>().valid(); }
   uint32_t duration_ms() const { return at<3>().as_uint32(); }
+  bool has_prefer_suspend_clock_for_duration() const { return at<36>().valid(); }
+  bool prefer_suspend_clock_for_duration() const { return at<36>().as_bool(); }
   bool has_enable_extra_guardrails() const { return at<4>().valid(); }
   bool enable_extra_guardrails() const { return at<4>().as_bool(); }
   bool has_lockdown_mode() const { return at<5>().valid(); }
@@ -272,6 +274,7 @@ class TraceConfig : public ::protozero::Message {
     kDataSourcesFieldNumber = 2,
     kBuiltinDataSourcesFieldNumber = 20,
     kDurationMsFieldNumber = 3,
+    kPreferSuspendClockForDurationFieldNumber = 36,
     kEnableExtraGuardrailsFieldNumber = 4,
     kLockdownModeFieldNumber = 5,
     kProducersFieldNumber = 6,
@@ -424,6 +427,31 @@ class TraceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PreferSuspendClockForDuration =
+    ::protozero::proto_utils::FieldMetadata<
+      36,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PreferSuspendClockForDuration kPreferSuspendClockForDuration() { return {}; }
+  void set_prefer_suspend_clock_for_duration(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_PreferSuspendClockForDuration::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 

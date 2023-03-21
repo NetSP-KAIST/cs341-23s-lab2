@@ -225,6 +225,7 @@ class AndroidPowerConfig final :
     kBatteryPollMsFieldNumber = 1,
     kCollectPowerRailsFieldNumber = 3,
     kCollectEnergyEstimationBreakdownFieldNumber = 4,
+    kCollectEntityStateResidencyFieldNumber = 5,
   };
   // repeated .perfetto.protos.AndroidPowerConfig.BatteryCounters battery_counters = 2;
   int battery_counters_size() const;
@@ -282,6 +283,19 @@ class AndroidPowerConfig final :
   void _internal_set_collect_energy_estimation_breakdown(bool value);
   public:
 
+  // optional bool collect_entity_state_residency = 5;
+  bool has_collect_entity_state_residency() const;
+  private:
+  bool _internal_has_collect_entity_state_residency() const;
+  public:
+  void clear_collect_entity_state_residency();
+  bool collect_entity_state_residency() const;
+  void set_collect_entity_state_residency(bool value);
+  private:
+  bool _internal_collect_entity_state_residency() const;
+  void _internal_set_collect_entity_state_residency(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.AndroidPowerConfig)
  private:
   class _Internal;
@@ -295,6 +309,7 @@ class AndroidPowerConfig final :
   uint32_t battery_poll_ms_;
   bool collect_power_rails_;
   bool collect_energy_estimation_breakdown_;
+  bool collect_entity_state_residency_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fpower_2fandroid_5fpower_5fconfig_2eproto;
 };
 // ===================================================================
@@ -435,6 +450,34 @@ inline void AndroidPowerConfig::_internal_set_collect_energy_estimation_breakdow
 inline void AndroidPowerConfig::set_collect_energy_estimation_breakdown(bool value) {
   _internal_set_collect_energy_estimation_breakdown(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.AndroidPowerConfig.collect_energy_estimation_breakdown)
+}
+
+// optional bool collect_entity_state_residency = 5;
+inline bool AndroidPowerConfig::_internal_has_collect_entity_state_residency() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool AndroidPowerConfig::has_collect_entity_state_residency() const {
+  return _internal_has_collect_entity_state_residency();
+}
+inline void AndroidPowerConfig::clear_collect_entity_state_residency() {
+  collect_entity_state_residency_ = false;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline bool AndroidPowerConfig::_internal_collect_entity_state_residency() const {
+  return collect_entity_state_residency_;
+}
+inline bool AndroidPowerConfig::collect_entity_state_residency() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.AndroidPowerConfig.collect_entity_state_residency)
+  return _internal_collect_entity_state_residency();
+}
+inline void AndroidPowerConfig::_internal_set_collect_entity_state_residency(bool value) {
+  _has_bits_[0] |= 0x00000008u;
+  collect_entity_state_residency_ = value;
+}
+inline void AndroidPowerConfig::set_collect_entity_state_residency(bool value) {
+  _internal_set_collect_entity_state_residency(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.AndroidPowerConfig.collect_entity_state_residency)
 }
 
 #ifdef __GNUC__

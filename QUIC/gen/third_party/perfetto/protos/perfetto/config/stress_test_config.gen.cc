@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -117,13 +118,13 @@ bool StressTestConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string StressTestConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> StressTestConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -136,32 +137,32 @@ void StressTestConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 2: shmem_size_kb
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, shmem_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, shmem_size_kb_, msg);
   }
 
   // Field 3: shmem_page_size_kb
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, shmem_page_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, shmem_page_size_kb_, msg);
   }
 
   // Field 4: num_processes
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, num_processes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, num_processes_, msg);
   }
 
   // Field 5: num_threads
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, num_threads_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, num_threads_, msg);
   }
 
   // Field 6: max_events
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, max_events_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, max_events_, msg);
   }
 
   // Field 7: nesting
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, nesting_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, nesting_, msg);
   }
 
   // Field 8: steady_state_timings
@@ -171,12 +172,12 @@ void StressTestConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 9: burst_period_ms
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, burst_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, burst_period_ms_, msg);
   }
 
   // Field 10: burst_duration_ms
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, burst_duration_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, burst_duration_ms_, msg);
   }
 
   // Field 11: burst_timings
@@ -184,7 +185,7 @@ void StressTestConfig::Serialize(::protozero::Message* msg) const {
     (*burst_timings_).Serialize(msg->BeginNestedMessage<::protozero::Message>(11));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -238,13 +239,13 @@ bool StressTestConfig_WriterTiming::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string StressTestConfig_WriterTiming::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> StressTestConfig_WriterTiming::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -252,30 +253,30 @@ std::vector<uint8_t> StressTestConfig_WriterTiming::SerializeAsArray() const {
 void StressTestConfig_WriterTiming::Serialize(::protozero::Message* msg) const {
   // Field 1: payload_mean
   if (_has_field_[1]) {
-    msg->AppendFixed(1, payload_mean_);
+    ::protozero::internal::gen_helpers::SerializeFixed(1, payload_mean_, msg);
   }
 
   // Field 2: payload_stddev
   if (_has_field_[2]) {
-    msg->AppendFixed(2, payload_stddev_);
+    ::protozero::internal::gen_helpers::SerializeFixed(2, payload_stddev_, msg);
   }
 
   // Field 3: rate_mean
   if (_has_field_[3]) {
-    msg->AppendFixed(3, rate_mean_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, rate_mean_, msg);
   }
 
   // Field 4: rate_stddev
   if (_has_field_[4]) {
-    msg->AppendFixed(4, rate_stddev_);
+    ::protozero::internal::gen_helpers::SerializeFixed(4, rate_stddev_, msg);
   }
 
   // Field 5: payload_write_time_ms
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, payload_write_time_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, payload_write_time_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

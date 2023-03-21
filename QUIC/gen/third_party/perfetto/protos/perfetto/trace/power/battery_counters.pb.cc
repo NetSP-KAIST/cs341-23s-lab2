@@ -25,6 +25,8 @@ PROTOBUF_CONSTEXPR BatteryCounters::BatteryCounters(
   , charge_counter_uah_(int64_t{0})
   , current_ua_(int64_t{0})
   , current_avg_ua_(int64_t{0})
+  , energy_counter_uwh_(int64_t{0})
+  , voltage_uv_(int64_t{0})
   , capacity_percent_(0){}
 struct BatteryCountersDefaultTypeInternal {
   PROTOBUF_CONSTEXPR BatteryCountersDefaultTypeInternal()
@@ -49,7 +51,7 @@ class BatteryCounters::_Internal {
     (*has_bits)[0] |= 2u;
   }
   static void set_has_capacity_percent(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
+    (*has_bits)[0] |= 64u;
   }
   static void set_has_current_ua(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
@@ -59,6 +61,12 @@ class BatteryCounters::_Internal {
   }
   static void set_has_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_energy_counter_uwh(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_voltage_uv(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
   }
 };
 
@@ -125,7 +133,7 @@ void BatteryCounters::Clear() {
   if (cached_has_bits & 0x00000001u) {
     name_.ClearNonDefaultToEmpty();
   }
-  if (cached_has_bits & 0x0000001eu) {
+  if (cached_has_bits & 0x0000007eu) {
     ::memset(&charge_counter_uah_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&capacity_percent_) -
         reinterpret_cast<char*>(&charge_counter_uah_)) + sizeof(capacity_percent_));
@@ -186,6 +194,24 @@ const char* BatteryCounters::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
+      // optional int64 energy_counter_uwh = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _Internal::set_has_energy_counter_uwh(&has_bits);
+          energy_counter_uwh_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 voltage_uv = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _Internal::set_has_voltage_uv(&has_bits);
+          voltage_uv_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -224,7 +250,7 @@ uint8_t* BatteryCounters::_InternalSerialize(
   }
 
   // optional float capacity_percent = 2;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_capacity_percent(), target);
   }
@@ -247,6 +273,18 @@ uint8_t* BatteryCounters::_InternalSerialize(
         5, this->_internal_name(), target);
   }
 
+  // optional int64 energy_counter_uwh = 6;
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(6, this->_internal_energy_counter_uwh(), target);
+  }
+
+  // optional int64 voltage_uv = 7;
+  if (cached_has_bits & 0x00000020u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(7, this->_internal_voltage_uv(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -264,7 +302,7 @@ size_t BatteryCounters::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000007fu) {
     // optional string name = 5;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -287,8 +325,18 @@ size_t BatteryCounters::ByteSizeLong() const {
       total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_current_avg_ua());
     }
 
-    // optional float capacity_percent = 2;
+    // optional int64 energy_counter_uwh = 6;
     if (cached_has_bits & 0x00000010u) {
+      total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_energy_counter_uwh());
+    }
+
+    // optional int64 voltage_uv = 7;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_voltage_uv());
+    }
+
+    // optional float capacity_percent = 2;
+    if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 4;
     }
 
@@ -314,7 +362,7 @@ void BatteryCounters::MergeFrom(const BatteryCounters& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_name(from._internal_name());
     }
@@ -328,6 +376,12 @@ void BatteryCounters::MergeFrom(const BatteryCounters& from) {
       current_avg_ua_ = from.current_avg_ua_;
     }
     if (cached_has_bits & 0x00000010u) {
+      energy_counter_uwh_ = from.energy_counter_uwh_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      voltage_uv_ = from.voltage_uv_;
+    }
+    if (cached_has_bits & 0x00000040u) {
       capacity_percent_ = from.capacity_percent_;
     }
     _has_bits_[0] |= cached_has_bits;

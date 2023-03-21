@@ -41,8 +41,9 @@ class AndroidLogTable : public macros_internal::MacroTable {
         uint32_t in_utid = {},
         uint32_t in_prio = {},
         base::Optional<StringPool::Id> in_tag = {},
-        StringPool::Id in_msg = {})
-        : macros_internal::RootParentTable::Row(nullptr),
+        StringPool::Id in_msg = {},
+        std::nullptr_t = nullptr)
+        : macros_internal::RootParentTable::Row(),
           ts(std::move(in_ts)),
           utid(std::move(in_utid)),
           prio(std::move(in_prio)),
@@ -58,14 +59,92 @@ class AndroidLogTable : public macros_internal::MacroTable {
   };
   struct IdAndRow {
     uint32_t row;
+    Id id;
   };
   struct ColumnFlag {
     static constexpr uint32_t ts = ColumnType::ts::default_flags();
-      static constexpr uint32_t utid = ColumnType::utid::default_flags();
-      static constexpr uint32_t prio = ColumnType::prio::default_flags();
-      static constexpr uint32_t tag = ColumnType::tag::default_flags();
-      static constexpr uint32_t msg = ColumnType::msg::default_flags();
+    static constexpr uint32_t utid = ColumnType::utid::default_flags();
+    static constexpr uint32_t prio = ColumnType::prio::default_flags();
+    static constexpr uint32_t tag = ColumnType::tag::default_flags();
+    static constexpr uint32_t msg = ColumnType::msg::default_flags();
   };
+
+  class RowNumber;
+  class ConstRowReference;
+  class RowReference;
+
+  class RowNumber : public macros_internal::AbstractRowNumber<
+      AndroidLogTable, ConstRowReference, RowReference> {
+   public:
+    explicit RowNumber(uint32_t row_number)
+        : AbstractRowNumber(row_number) {}
+  };
+  static_assert(std::is_trivially_destructible<RowNumber>::value,
+                "Inheritance used without trivial destruction");
+
+  class ConstRowReference : public macros_internal::AbstractConstRowReference<
+    AndroidLogTable, RowNumber> {
+   public:
+    ConstRowReference(const AndroidLogTable* table, uint32_t row_number)
+        : AbstractConstRowReference(table, row_number) {}
+
+    ColumnType::id::type id() const {
+      return table_->id()[row_number_];
+    }
+    ColumnType::type::type type() const {
+      return table_->type()[row_number_];
+    }
+    ColumnType::ts::type ts() const {
+      return table_->ts()[row_number_];
+    }
+    ColumnType::utid::type utid() const {
+      return table_->utid()[row_number_];
+    }
+    ColumnType::prio::type prio() const {
+      return table_->prio()[row_number_];
+    }
+    ColumnType::tag::type tag() const {
+      return table_->tag()[row_number_];
+    }
+    ColumnType::msg::type msg() const {
+      return table_->msg()[row_number_];
+    }
+  };
+  static_assert(std::is_trivially_destructible<ConstRowReference>::value,
+                "Inheritance used without trivial destruction");
+  class RowReference : public ConstRowReference {
+   public:
+    RowReference(const AndroidLogTable* table, uint32_t row_number)
+        : ConstRowReference(table, row_number) {}
+
+    void set_ts(
+        ColumnType::ts::non_optional_type v) {
+      return mutable_table()->mutable_ts()->Set(row_number_, v);
+    }
+    void set_utid(
+        ColumnType::utid::non_optional_type v) {
+      return mutable_table()->mutable_utid()->Set(row_number_, v);
+    }
+    void set_prio(
+        ColumnType::prio::non_optional_type v) {
+      return mutable_table()->mutable_prio()->Set(row_number_, v);
+    }
+    void set_tag(
+        ColumnType::tag::non_optional_type v) {
+      return mutable_table()->mutable_tag()->Set(row_number_, v);
+    }
+    void set_msg(
+        ColumnType::msg::non_optional_type v) {
+      return mutable_table()->mutable_msg()->Set(row_number_, v);
+    }
+
+   private:
+    AndroidLogTable* mutable_table() const {
+      return const_cast<AndroidLogTable*>(table_);
+    }
+  };
+  static_assert(std::is_trivially_destructible<RowReference>::value,
+                "Inheritance used without trivial destruction");
 
   explicit AndroidLogTable(StringPool* pool)
       : macros_internal::MacroTable(pool, nullptr),
@@ -74,22 +153,22 @@ class AndroidLogTable : public macros_internal::MacroTable {
         prio_(ColumnStorage<ColumnType::prio::stored_type>::Create<false>()),
         tag_(ColumnStorage<ColumnType::tag::stored_type>::Create<false>()),
         msg_(ColumnStorage<ColumnType::msg::stored_type>::Create<false>()) {
-    uint32_t overlay_count = static_cast<uint32_t>(overlays_.size()) - 1;
+    uint32_t overlay_idx = static_cast<uint32_t>(overlays_.size()) - 1;
     columns_.emplace_back("ts", &ts_, ColumnFlag::ts,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("utid", &utid_, ColumnFlag::utid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("prio", &prio_, ColumnFlag::prio,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("tag", &tag_, ColumnFlag::tag,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("msg", &msg_, ColumnFlag::msg,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
   }
   ~AndroidLogTable() override;
 
@@ -104,8 +183,20 @@ class AndroidLogTable : public macros_internal::MacroTable {
     msg_.ShrinkToFit();
   }
 
+  base::Optional<ConstRowReference> FindById(Id find_id) const {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(ConstRowReference(this, *row))
+               : base::nullopt;
+  }
+
+  base::Optional<RowReference> FindById(Id find_id) {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(RowReference(this, *row)) : base::nullopt;
+  }
+
   IdAndRow Insert(const Row& row) {
     uint32_t row_number = row_count();
+    Id id = Id{row_number};
     type_.Append(string_pool_->InternString(row.type()));
     mutable_ts()->Append(std::move(row.ts));
     mutable_utid()->Append(std::move(row.utid));
@@ -113,7 +204,7 @@ class AndroidLogTable : public macros_internal::MacroTable {
     mutable_tag()->Append(std::move(row.tag));
     mutable_msg()->Append(std::move(row.msg));
     UpdateSelfOverlayAfterInsert();
-    return IdAndRow{row_number};
+    return IdAndRow{row_number, std::move(id)};
   }
 
   const IdColumn<AndroidLogTable::Id>& id() const {
@@ -160,6 +251,7 @@ class AndroidLogTable : public macros_internal::MacroTable {
   }
 
  private:
+  
   ColumnStorage<ColumnType::ts::stored_type> ts_;
   ColumnStorage<ColumnType::utid::stored_type> utid_;
   ColumnStorage<ColumnType::prio::stored_type> prio_;

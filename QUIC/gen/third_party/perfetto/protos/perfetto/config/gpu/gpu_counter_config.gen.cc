@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -61,13 +62,13 @@ bool GpuCounterConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GpuCounterConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuCounterConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -75,25 +76,25 @@ std::vector<uint8_t> GpuCounterConfig::SerializeAsArray() const {
 void GpuCounterConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: counter_period_ns
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, counter_period_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, counter_period_ns_, msg);
   }
 
   // Field 2: counter_ids
   for (auto& it : counter_ids_) {
-    msg->AppendVarInt(2, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, it, msg);
   }
 
   // Field 3: instrumented_sampling
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, instrumented_sampling_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, instrumented_sampling_, msg);
   }
 
   // Field 4: fix_gpu_clock
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, fix_gpu_clock_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, fix_gpu_clock_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

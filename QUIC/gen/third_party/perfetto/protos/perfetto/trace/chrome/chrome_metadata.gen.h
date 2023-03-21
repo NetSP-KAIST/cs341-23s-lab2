@@ -112,6 +112,7 @@ class PERFETTO_EXPORT_COMPONENT BackgroundTracingMetadata_TriggerRule : public :
     kTriggerTypeFieldNumber = 1,
     kHistogramRuleFieldNumber = 2,
     kNamedRuleFieldNumber = 3,
+    kNameHashFieldNumber = 4,
   };
 
   BackgroundTracingMetadata_TriggerRule();
@@ -140,16 +141,21 @@ class PERFETTO_EXPORT_COMPONENT BackgroundTracingMetadata_TriggerRule : public :
   const BackgroundTracingMetadata_TriggerRule_NamedRule& named_rule() const { return *named_rule_; }
   BackgroundTracingMetadata_TriggerRule_NamedRule* mutable_named_rule() { _has_field_.set(3); return named_rule_.get(); }
 
+  bool has_name_hash() const { return _has_field_[4]; }
+  uint32_t name_hash() const { return name_hash_; }
+  void set_name_hash(uint32_t value) { name_hash_ = value; _has_field_.set(4); }
+
  private:
   BackgroundTracingMetadata_TriggerRule_TriggerType trigger_type_{};
   ::protozero::CopyablePtr<BackgroundTracingMetadata_TriggerRule_HistogramRule> histogram_rule_;
   ::protozero::CopyablePtr<BackgroundTracingMetadata_TriggerRule_NamedRule> named_rule_;
+  uint32_t name_hash_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<4> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 

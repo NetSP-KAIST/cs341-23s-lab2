@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,13 +48,13 @@ bool NapiGroReceiveExitFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string NapiGroReceiveExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NapiGroReceiveExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -61,10 +62,10 @@ std::vector<uint8_t> NapiGroReceiveExitFtraceEvent::SerializeAsArray() const {
 void NapiGroReceiveExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ret
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -136,7 +137,7 @@ bool NapiGroReceiveEntryFtraceEvent::ParseFromArray(const void* raw, size_t size
         field.get(&mac_header_valid_);
         break;
       case 10 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 11 /* napi_id */:
         field.get(&napi_id_);
@@ -174,13 +175,13 @@ bool NapiGroReceiveEntryFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string NapiGroReceiveEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NapiGroReceiveEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -188,100 +189,100 @@ std::vector<uint8_t> NapiGroReceiveEntryFtraceEvent::SerializeAsArray() const {
 void NapiGroReceiveEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: data_len
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, data_len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, data_len_, msg);
   }
 
   // Field 2: gso_size
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, gso_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, gso_size_, msg);
   }
 
   // Field 3: gso_type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, gso_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, gso_type_, msg);
   }
 
   // Field 4: hash
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, hash_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, hash_, msg);
   }
 
   // Field 5: ip_summed
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, ip_summed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, ip_summed_, msg);
   }
 
   // Field 6: l4_hash
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, l4_hash_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, l4_hash_, msg);
   }
 
   // Field 7: len
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, len_, msg);
   }
 
   // Field 8: mac_header
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, mac_header_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, mac_header_, msg);
   }
 
   // Field 9: mac_header_valid
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, mac_header_valid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, mac_header_valid_, msg);
   }
 
   // Field 10: name
   if (_has_field_[10]) {
-    msg->AppendString(10, name_);
+    ::protozero::internal::gen_helpers::SerializeString(10, name_, msg);
   }
 
   // Field 11: napi_id
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, napi_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, napi_id_, msg);
   }
 
   // Field 12: nr_frags
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, nr_frags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, nr_frags_, msg);
   }
 
   // Field 13: protocol
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, protocol_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, protocol_, msg);
   }
 
   // Field 14: queue_mapping
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, queue_mapping_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, queue_mapping_, msg);
   }
 
   // Field 15: skbaddr
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, skbaddr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, skbaddr_, msg);
   }
 
   // Field 16: truesize
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, truesize_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, truesize_, msg);
   }
 
   // Field 17: vlan_proto
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, vlan_proto_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, vlan_proto_, msg);
   }
 
   // Field 18: vlan_tagged
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, vlan_tagged_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, vlan_tagged_, msg);
   }
 
   // Field 19: vlan_tci
   if (_has_field_[19]) {
-    msg->AppendVarInt(19, vlan_tci_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(19, vlan_tci_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -314,7 +315,7 @@ bool NetDevXmitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&len_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* rc */:
         field.get(&rc_);
@@ -331,13 +332,13 @@ bool NetDevXmitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string NetDevXmitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NetDevXmitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -345,25 +346,25 @@ std::vector<uint8_t> NetDevXmitFtraceEvent::SerializeAsArray() const {
 void NetDevXmitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: len
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, len_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: rc
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, rc_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, rc_, msg);
   }
 
   // Field 4: skbaddr
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, skbaddr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, skbaddr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -395,7 +396,7 @@ bool NetifReceiveSkbFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&len_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* skbaddr */:
         field.get(&skbaddr_);
@@ -409,13 +410,13 @@ bool NetifReceiveSkbFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string NetifReceiveSkbFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NetifReceiveSkbFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -423,20 +424,20 @@ std::vector<uint8_t> NetifReceiveSkbFtraceEvent::SerializeAsArray() const {
 void NetifReceiveSkbFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: len
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, len_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: skbaddr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, skbaddr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, skbaddr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

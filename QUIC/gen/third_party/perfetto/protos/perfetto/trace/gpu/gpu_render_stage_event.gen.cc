@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,10 +43,10 @@ bool InternedGpuRenderStageSpecification::ParseFromArray(const void* raw, size_t
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* description */:
-        field.get(&description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &description_);
         break;
       case 4 /* category */:
         field.get(&category_);
@@ -59,13 +60,13 @@ bool InternedGpuRenderStageSpecification::ParseFromArray(const void* raw, size_t
 }
 
 std::string InternedGpuRenderStageSpecification::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InternedGpuRenderStageSpecification::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> InternedGpuRenderStageSpecification::SerializeAsArray() con
 void InternedGpuRenderStageSpecification::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: description
   if (_has_field_[3]) {
-    msg->AppendString(3, description_);
+    ::protozero::internal::gen_helpers::SerializeString(3, description_, msg);
   }
 
   // Field 4: category
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, category_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, category_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -137,13 +138,13 @@ bool InternedGraphicsContext::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InternedGraphicsContext::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InternedGraphicsContext::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -151,20 +152,20 @@ std::vector<uint8_t> InternedGraphicsContext::SerializeAsArray() const {
 void InternedGraphicsContext::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: api
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, api_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, api_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -265,13 +266,13 @@ bool GpuRenderStageEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GpuRenderStageEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuRenderStageEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -279,42 +280,42 @@ std::vector<uint8_t> GpuRenderStageEvent::SerializeAsArray() const {
 void GpuRenderStageEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: event_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, event_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, event_id_, msg);
   }
 
   // Field 2: duration
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, duration_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, duration_, msg);
   }
 
   // Field 13: hw_queue_iid
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, hw_queue_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, hw_queue_iid_, msg);
   }
 
   // Field 14: stage_iid
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, stage_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, stage_iid_, msg);
   }
 
   // Field 11: gpu_id
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, gpu_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, gpu_id_, msg);
   }
 
   // Field 5: context
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, context_, msg);
   }
 
   // Field 8: render_target_handle
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, render_target_handle_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, render_target_handle_, msg);
   }
 
   // Field 10: submission_id
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, submission_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, submission_id_, msg);
   }
 
   // Field 6: extra_data
@@ -324,17 +325,17 @@ void GpuRenderStageEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 9: render_pass_handle
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, render_pass_handle_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, render_pass_handle_, msg);
   }
 
   // Field 15: render_subpass_index_mask
   for (auto& it : render_subpass_index_mask_) {
-    msg->AppendVarInt(15, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, it, msg);
   }
 
   // Field 12: command_buffer_handle
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, command_buffer_handle_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, command_buffer_handle_, msg);
   }
 
   // Field 7: specifications
@@ -344,15 +345,15 @@ void GpuRenderStageEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 3: hw_queue_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, hw_queue_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, hw_queue_id_, msg);
   }
 
   // Field 4: stage_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, stage_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, stage_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -408,13 +409,13 @@ bool GpuRenderStageEvent_Specifications::ParseFromArray(const void* raw, size_t 
 }
 
 std::string GpuRenderStageEvent_Specifications::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuRenderStageEvent_Specifications::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -435,7 +436,7 @@ void GpuRenderStageEvent_Specifications::Serialize(::protozero::Message* msg) co
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -463,10 +464,10 @@ bool GpuRenderStageEvent_Specifications_Description::ParseFromArray(const void* 
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* description */:
-        field.get(&description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &description_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -477,13 +478,13 @@ bool GpuRenderStageEvent_Specifications_Description::ParseFromArray(const void* 
 }
 
 std::string GpuRenderStageEvent_Specifications_Description::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuRenderStageEvent_Specifications_Description::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -491,15 +492,15 @@ std::vector<uint8_t> GpuRenderStageEvent_Specifications_Description::SerializeAs
 void GpuRenderStageEvent_Specifications_Description::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: description
   if (_has_field_[2]) {
-    msg->AppendString(2, description_);
+    ::protozero::internal::gen_helpers::SerializeString(2, description_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -541,13 +542,13 @@ bool GpuRenderStageEvent_Specifications_ContextSpec::ParseFromArray(const void* 
 }
 
 std::string GpuRenderStageEvent_Specifications_ContextSpec::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuRenderStageEvent_Specifications_ContextSpec::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -555,15 +556,15 @@ std::vector<uint8_t> GpuRenderStageEvent_Specifications_ContextSpec::SerializeAs
 void GpuRenderStageEvent_Specifications_ContextSpec::Serialize(::protozero::Message* msg) const {
   // Field 1: context
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, context_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -591,10 +592,10 @@ bool GpuRenderStageEvent_ExtraData::ParseFromArray(const void* raw, size_t size)
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -605,13 +606,13 @@ bool GpuRenderStageEvent_ExtraData::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string GpuRenderStageEvent_ExtraData::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuRenderStageEvent_ExtraData::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -619,15 +620,15 @@ std::vector<uint8_t> GpuRenderStageEvent_ExtraData::SerializeAsArray() const {
 void GpuRenderStageEvent_ExtraData::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

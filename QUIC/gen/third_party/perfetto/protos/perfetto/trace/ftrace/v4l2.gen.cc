@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -103,13 +104,13 @@ bool Vb2V4l2DqbufFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Vb2V4l2DqbufFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Vb2V4l2DqbufFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -117,80 +118,80 @@ std::vector<uint8_t> Vb2V4l2DqbufFtraceEvent::SerializeAsArray() const {
 void Vb2V4l2DqbufFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: field
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, field_, msg);
   }
 
   // Field 2: flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, flags_, msg);
   }
 
   // Field 3: minor
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, minor_, msg);
   }
 
   // Field 4: sequence
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sequence_, msg);
   }
 
   // Field 5: timecode_flags
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, timecode_flags_, msg);
   }
 
   // Field 6: timecode_frames
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, timecode_frames_, msg);
   }
 
   // Field 7: timecode_hours
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_hours_, msg);
   }
 
   // Field 8: timecode_minutes
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_minutes_, msg);
   }
 
   // Field 9: timecode_seconds
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_seconds_, msg);
   }
 
   // Field 10: timecode_type
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_type_, msg);
   }
 
   // Field 11: timecode_userbits0
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_userbits0_, msg);
   }
 
   // Field 12: timecode_userbits1
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_userbits1_, msg);
   }
 
   // Field 13: timecode_userbits2
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits2_, msg);
   }
 
   // Field 14: timecode_userbits3
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits3_, msg);
   }
 
   // Field 15: timestamp
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -284,13 +285,13 @@ bool Vb2V4l2QbufFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Vb2V4l2QbufFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Vb2V4l2QbufFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -298,80 +299,80 @@ std::vector<uint8_t> Vb2V4l2QbufFtraceEvent::SerializeAsArray() const {
 void Vb2V4l2QbufFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: field
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, field_, msg);
   }
 
   // Field 2: flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, flags_, msg);
   }
 
   // Field 3: minor
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, minor_, msg);
   }
 
   // Field 4: sequence
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sequence_, msg);
   }
 
   // Field 5: timecode_flags
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, timecode_flags_, msg);
   }
 
   // Field 6: timecode_frames
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, timecode_frames_, msg);
   }
 
   // Field 7: timecode_hours
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_hours_, msg);
   }
 
   // Field 8: timecode_minutes
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_minutes_, msg);
   }
 
   // Field 9: timecode_seconds
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_seconds_, msg);
   }
 
   // Field 10: timecode_type
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_type_, msg);
   }
 
   // Field 11: timecode_userbits0
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_userbits0_, msg);
   }
 
   // Field 12: timecode_userbits1
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_userbits1_, msg);
   }
 
   // Field 13: timecode_userbits2
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits2_, msg);
   }
 
   // Field 14: timecode_userbits3
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits3_, msg);
   }
 
   // Field 15: timestamp
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -465,13 +466,13 @@ bool Vb2V4l2BufDoneFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Vb2V4l2BufDoneFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Vb2V4l2BufDoneFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -479,80 +480,80 @@ std::vector<uint8_t> Vb2V4l2BufDoneFtraceEvent::SerializeAsArray() const {
 void Vb2V4l2BufDoneFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: field
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, field_, msg);
   }
 
   // Field 2: flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, flags_, msg);
   }
 
   // Field 3: minor
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, minor_, msg);
   }
 
   // Field 4: sequence
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sequence_, msg);
   }
 
   // Field 5: timecode_flags
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, timecode_flags_, msg);
   }
 
   // Field 6: timecode_frames
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, timecode_frames_, msg);
   }
 
   // Field 7: timecode_hours
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_hours_, msg);
   }
 
   // Field 8: timecode_minutes
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_minutes_, msg);
   }
 
   // Field 9: timecode_seconds
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_seconds_, msg);
   }
 
   // Field 10: timecode_type
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_type_, msg);
   }
 
   // Field 11: timecode_userbits0
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_userbits0_, msg);
   }
 
   // Field 12: timecode_userbits1
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_userbits1_, msg);
   }
 
   // Field 13: timecode_userbits2
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits2_, msg);
   }
 
   // Field 14: timecode_userbits3
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits3_, msg);
   }
 
   // Field 15: timestamp
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -646,13 +647,13 @@ bool Vb2V4l2BufQueueFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Vb2V4l2BufQueueFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Vb2V4l2BufQueueFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -660,80 +661,80 @@ std::vector<uint8_t> Vb2V4l2BufQueueFtraceEvent::SerializeAsArray() const {
 void Vb2V4l2BufQueueFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: field
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, field_, msg);
   }
 
   // Field 2: flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, flags_, msg);
   }
 
   // Field 3: minor
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, minor_, msg);
   }
 
   // Field 4: sequence
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sequence_, msg);
   }
 
   // Field 5: timecode_flags
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, timecode_flags_, msg);
   }
 
   // Field 6: timecode_frames
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, timecode_frames_, msg);
   }
 
   // Field 7: timecode_hours
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_hours_, msg);
   }
 
   // Field 8: timecode_minutes
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_minutes_, msg);
   }
 
   // Field 9: timecode_seconds
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_seconds_, msg);
   }
 
   // Field 10: timecode_type
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_type_, msg);
   }
 
   // Field 11: timecode_userbits0
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_userbits0_, msg);
   }
 
   // Field 12: timecode_userbits1
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_userbits1_, msg);
   }
 
   // Field 13: timecode_userbits2
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits2_, msg);
   }
 
   // Field 14: timecode_userbits3
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits3_, msg);
   }
 
   // Field 15: timestamp
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -839,13 +840,13 @@ bool V4l2DqbufFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string V4l2DqbufFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> V4l2DqbufFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -853,95 +854,95 @@ std::vector<uint8_t> V4l2DqbufFtraceEvent::SerializeAsArray() const {
 void V4l2DqbufFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytesused
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytesused_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytesused_, msg);
   }
 
   // Field 2: field
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, field_, msg);
   }
 
   // Field 3: flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flags_, msg);
   }
 
   // Field 4: index
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, index_, msg);
   }
 
   // Field 5: minor
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, minor_, msg);
   }
 
   // Field 6: sequence
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, sequence_, msg);
   }
 
   // Field 7: timecode_flags
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_flags_, msg);
   }
 
   // Field 8: timecode_frames
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_frames_, msg);
   }
 
   // Field 9: timecode_hours
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_hours_, msg);
   }
 
   // Field 10: timecode_minutes
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_minutes_, msg);
   }
 
   // Field 11: timecode_seconds
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_seconds_, msg);
   }
 
   // Field 12: timecode_type
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_type_, msg);
   }
 
   // Field 13: timecode_userbits0
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits0_, msg);
   }
 
   // Field 14: timecode_userbits1
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits1_, msg);
   }
 
   // Field 15: timecode_userbits2
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timecode_userbits2_, msg);
   }
 
   // Field 16: timecode_userbits3
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, timecode_userbits3_, msg);
   }
 
   // Field 17: timestamp
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, timestamp_, msg);
   }
 
   // Field 18: type
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1047,13 +1048,13 @@ bool V4l2QbufFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string V4l2QbufFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> V4l2QbufFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1061,95 +1062,95 @@ std::vector<uint8_t> V4l2QbufFtraceEvent::SerializeAsArray() const {
 void V4l2QbufFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytesused
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytesused_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytesused_, msg);
   }
 
   // Field 2: field
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, field_, msg);
   }
 
   // Field 3: flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flags_, msg);
   }
 
   // Field 4: index
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, index_, msg);
   }
 
   // Field 5: minor
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, minor_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, minor_, msg);
   }
 
   // Field 6: sequence
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, sequence_, msg);
   }
 
   // Field 7: timecode_flags
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, timecode_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, timecode_flags_, msg);
   }
 
   // Field 8: timecode_frames
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timecode_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timecode_frames_, msg);
   }
 
   // Field 9: timecode_hours
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, timecode_hours_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, timecode_hours_, msg);
   }
 
   // Field 10: timecode_minutes
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, timecode_minutes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, timecode_minutes_, msg);
   }
 
   // Field 11: timecode_seconds
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, timecode_seconds_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, timecode_seconds_, msg);
   }
 
   // Field 12: timecode_type
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, timecode_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, timecode_type_, msg);
   }
 
   // Field 13: timecode_userbits0
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, timecode_userbits0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, timecode_userbits0_, msg);
   }
 
   // Field 14: timecode_userbits1
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, timecode_userbits1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, timecode_userbits1_, msg);
   }
 
   // Field 15: timecode_userbits2
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, timecode_userbits2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, timecode_userbits2_, msg);
   }
 
   // Field 16: timecode_userbits3
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, timecode_userbits3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, timecode_userbits3_, msg);
   }
 
   // Field 17: timestamp
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, timestamp_, msg);
   }
 
   // Field 18: type
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

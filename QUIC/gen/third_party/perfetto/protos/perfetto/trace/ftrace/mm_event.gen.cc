@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -59,13 +60,13 @@ bool MmEventRecordFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string MmEventRecordFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmEventRecordFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> MmEventRecordFtraceEvent::SerializeAsArray() const {
 void MmEventRecordFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: avg_lat
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, avg_lat_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, avg_lat_, msg);
   }
 
   // Field 2: count
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, count_, msg);
   }
 
   // Field 3: max_lat
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, max_lat_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, max_lat_, msg);
   }
 
   // Field 4: type
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

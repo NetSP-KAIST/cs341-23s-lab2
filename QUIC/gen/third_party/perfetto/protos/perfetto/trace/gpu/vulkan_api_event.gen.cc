@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,13 +52,13 @@ bool VulkanApiEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string VulkanApiEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanApiEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,7 +74,7 @@ void VulkanApiEvent::Serialize(::protozero::Message* msg) const {
     (*vk_queue_submit_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -133,13 +134,13 @@ bool VulkanApiEvent_VkQueueSubmit::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string VulkanApiEvent_VkQueueSubmit::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanApiEvent_VkQueueSubmit::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -147,35 +148,35 @@ std::vector<uint8_t> VulkanApiEvent_VkQueueSubmit::SerializeAsArray() const {
 void VulkanApiEvent_VkQueueSubmit::Serialize(::protozero::Message* msg) const {
   // Field 1: duration_ns
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, duration_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, duration_ns_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: tid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, tid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, tid_, msg);
   }
 
   // Field 4: vk_queue
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, vk_queue_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, vk_queue_, msg);
   }
 
   // Field 5: vk_command_buffers
   for (auto& it : vk_command_buffers_) {
-    msg->AppendVarInt(5, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, it, msg);
   }
 
   // Field 6: submission_id
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, submission_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, submission_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -218,7 +219,7 @@ bool VulkanApiEvent_VkDebugUtilsObjectName::ParseFromArray(const void* raw, size
         field.get(&object_);
         break;
       case 5 /* object_name */:
-        field.get(&object_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &object_name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -229,13 +230,13 @@ bool VulkanApiEvent_VkDebugUtilsObjectName::ParseFromArray(const void* raw, size
 }
 
 std::string VulkanApiEvent_VkDebugUtilsObjectName::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanApiEvent_VkDebugUtilsObjectName::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -243,30 +244,30 @@ std::vector<uint8_t> VulkanApiEvent_VkDebugUtilsObjectName::SerializeAsArray() c
 void VulkanApiEvent_VkDebugUtilsObjectName::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: vk_device
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vk_device_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vk_device_, msg);
   }
 
   // Field 3: object_type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, object_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, object_type_, msg);
   }
 
   // Field 4: object
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, object_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, object_, msg);
   }
 
   // Field 5: object_name
   if (_has_field_[5]) {
-    msg->AppendString(5, object_name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, object_name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,7 +61,7 @@ bool CmaAllocInfoFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&err_test_);
         break;
       case 6 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 7 /* nr_mapped */:
         field.get(&nr_mapped_);
@@ -83,13 +84,13 @@ bool CmaAllocInfoFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CmaAllocInfoFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CmaAllocInfoFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -97,55 +98,55 @@ std::vector<uint8_t> CmaAllocInfoFtraceEvent::SerializeAsArray() const {
 void CmaAllocInfoFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: align
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, align_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, align_, msg);
   }
 
   // Field 2: count
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, count_, msg);
   }
 
   // Field 3: err_iso
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, err_iso_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, err_iso_, msg);
   }
 
   // Field 4: err_mig
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, err_mig_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, err_mig_, msg);
   }
 
   // Field 5: err_test
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, err_test_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, err_test_, msg);
   }
 
   // Field 6: name
   if (_has_field_[6]) {
-    msg->AppendString(6, name_);
+    ::protozero::internal::gen_helpers::SerializeString(6, name_, msg);
   }
 
   // Field 7: nr_mapped
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, nr_mapped_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, nr_mapped_, msg);
   }
 
   // Field 8: nr_migrated
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, nr_migrated_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, nr_migrated_, msg);
   }
 
   // Field 9: nr_reclaimed
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, nr_reclaimed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, nr_reclaimed_, msg);
   }
 
   // Field 10: pfn
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, pfn_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -180,7 +181,7 @@ bool CmaAllocStartFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&count_);
         break;
       case 3 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -191,13 +192,13 @@ bool CmaAllocStartFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CmaAllocStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CmaAllocStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -205,20 +206,20 @@ std::vector<uint8_t> CmaAllocStartFtraceEvent::SerializeAsArray() const {
 void CmaAllocStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: align
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, align_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, align_, msg);
   }
 
   // Field 2: count
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, count_, msg);
   }
 
   // Field 3: name
   if (_has_field_[3]) {
-    msg->AppendString(3, name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

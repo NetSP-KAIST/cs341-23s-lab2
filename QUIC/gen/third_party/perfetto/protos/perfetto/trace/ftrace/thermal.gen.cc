@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool CdevUpdateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&target_);
         break;
       case 2 /* type */:
-        field.get(&type_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &type_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -51,13 +52,13 @@ bool CdevUpdateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CdevUpdateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CdevUpdateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> CdevUpdateFtraceEvent::SerializeAsArray() const {
 void CdevUpdateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: target
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, target_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, target_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendString(2, type_);
+    ::protozero::internal::gen_helpers::SerializeString(2, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -112,7 +113,7 @@ bool ThermalTemperatureFtraceEvent::ParseFromArray(const void* raw, size_t size)
         field.get(&temp_prev_);
         break;
       case 4 /* thermal_zone */:
-        field.get(&thermal_zone_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &thermal_zone_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -123,13 +124,13 @@ bool ThermalTemperatureFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string ThermalTemperatureFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ThermalTemperatureFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -137,25 +138,25 @@ std::vector<uint8_t> ThermalTemperatureFtraceEvent::SerializeAsArray() const {
 void ThermalTemperatureFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: temp
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, temp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, temp_, msg);
   }
 
   // Field 3: temp_prev
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, temp_prev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, temp_prev_, msg);
   }
 
   // Field 4: thermal_zone
   if (_has_field_[4]) {
-    msg->AppendString(4, thermal_zone_);
+    ::protozero::internal::gen_helpers::SerializeString(4, thermal_zone_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

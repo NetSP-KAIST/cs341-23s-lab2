@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -138,13 +139,13 @@ bool SysStats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -167,12 +168,12 @@ void SysStats::Serialize(::protozero::Message* msg) const {
 
   // Field 4: num_forks
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, num_forks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, num_forks_, msg);
   }
 
   // Field 5: num_irq_total
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, num_irq_total_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, num_irq_total_, msg);
   }
 
   // Field 6: num_irq
@@ -182,7 +183,7 @@ void SysStats::Serialize(::protozero::Message* msg) const {
 
   // Field 7: num_softirq_total
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, num_softirq_total_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, num_softirq_total_, msg);
   }
 
   // Field 8: num_softirq
@@ -192,7 +193,7 @@ void SysStats::Serialize(::protozero::Message* msg) const {
 
   // Field 9: collection_end_timestamp
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, collection_end_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, collection_end_timestamp_, msg);
   }
 
   // Field 10: devfreq
@@ -202,7 +203,7 @@ void SysStats::Serialize(::protozero::Message* msg) const {
 
   // Field 11: cpufreq_khz
   for (auto& it : cpufreq_khz_) {
-    msg->AppendVarInt(11, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, it, msg);
   }
 
   // Field 12: buddy_info
@@ -215,7 +216,7 @@ void SysStats::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(13));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -250,7 +251,7 @@ bool SysStats_DiskStat::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* device_name */:
-        field.get(&device_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &device_name_);
         break;
       case 2 /* read_sectors */:
         field.get(&read_sectors_);
@@ -285,13 +286,13 @@ bool SysStats_DiskStat::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_DiskStat::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_DiskStat::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -299,50 +300,50 @@ std::vector<uint8_t> SysStats_DiskStat::SerializeAsArray() const {
 void SysStats_DiskStat::Serialize(::protozero::Message* msg) const {
   // Field 1: device_name
   if (_has_field_[1]) {
-    msg->AppendString(1, device_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, device_name_, msg);
   }
 
   // Field 2: read_sectors
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, read_sectors_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, read_sectors_, msg);
   }
 
   // Field 3: read_time_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, read_time_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, read_time_ms_, msg);
   }
 
   // Field 4: write_sectors
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, write_sectors_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, write_sectors_, msg);
   }
 
   // Field 5: write_time_ms
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, write_time_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, write_time_ms_, msg);
   }
 
   // Field 6: discard_sectors
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, discard_sectors_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, discard_sectors_, msg);
   }
 
   // Field 7: discard_time_ms
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, discard_time_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, discard_time_ms_, msg);
   }
 
   // Field 8: flush_count
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, flush_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, flush_count_, msg);
   }
 
   // Field 9: flush_time_ms
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, flush_time_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, flush_time_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -372,10 +373,10 @@ bool SysStats_BuddyInfo::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* node */:
-        field.get(&node_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &node_);
         break;
       case 2 /* zone */:
-        field.get(&zone_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &zone_);
         break;
       case 3 /* order_pages */:
         order_pages_.emplace_back();
@@ -390,13 +391,13 @@ bool SysStats_BuddyInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_BuddyInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_BuddyInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -404,20 +405,20 @@ std::vector<uint8_t> SysStats_BuddyInfo::SerializeAsArray() const {
 void SysStats_BuddyInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: node
   if (_has_field_[1]) {
-    msg->AppendString(1, node_);
+    ::protozero::internal::gen_helpers::SerializeString(1, node_, msg);
   }
 
   // Field 2: zone
   if (_has_field_[2]) {
-    msg->AppendString(2, zone_);
+    ::protozero::internal::gen_helpers::SerializeString(2, zone_, msg);
   }
 
   // Field 3: order_pages
   for (auto& it : order_pages_) {
-    msg->AppendVarInt(3, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -445,7 +446,7 @@ bool SysStats_DevfreqValue::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* key */:
-        field.get(&key_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &key_);
         break;
       case 2 /* value */:
         field.get(&value_);
@@ -459,13 +460,13 @@ bool SysStats_DevfreqValue::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_DevfreqValue::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_DevfreqValue::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -473,15 +474,15 @@ std::vector<uint8_t> SysStats_DevfreqValue::SerializeAsArray() const {
 void SysStats_DevfreqValue::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendString(1, key_);
+    ::protozero::internal::gen_helpers::SerializeString(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -523,13 +524,13 @@ bool SysStats_InterruptCount::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_InterruptCount::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_InterruptCount::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -537,15 +538,15 @@ std::vector<uint8_t> SysStats_InterruptCount::SerializeAsArray() const {
 void SysStats_InterruptCount::Serialize(::protozero::Message* msg) const {
   // Field 1: irq
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, irq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, irq_, msg);
   }
 
   // Field 2: count
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, count_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -611,13 +612,13 @@ bool SysStats_CpuTimes::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_CpuTimes::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_CpuTimes::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -625,45 +626,45 @@ std::vector<uint8_t> SysStats_CpuTimes::SerializeAsArray() const {
 void SysStats_CpuTimes::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_id_, msg);
   }
 
   // Field 2: user_ns
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, user_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, user_ns_, msg);
   }
 
   // Field 3: user_ice_ns
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, user_ice_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, user_ice_ns_, msg);
   }
 
   // Field 4: system_mode_ns
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, system_mode_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, system_mode_ns_, msg);
   }
 
   // Field 5: idle_ns
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, idle_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, idle_ns_, msg);
   }
 
   // Field 6: io_wait_ns
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, io_wait_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, io_wait_ns_, msg);
   }
 
   // Field 7: irq_ns
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, irq_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, irq_ns_, msg);
   }
 
   // Field 8: softirq_ns
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, softirq_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, softirq_ns_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -705,13 +706,13 @@ bool SysStats_VmstatValue::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_VmstatValue::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_VmstatValue::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -719,15 +720,15 @@ std::vector<uint8_t> SysStats_VmstatValue::SerializeAsArray() const {
 void SysStats_VmstatValue::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -769,13 +770,13 @@ bool SysStats_MeminfoValue::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStats_MeminfoValue::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStats_MeminfoValue::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -783,15 +784,15 @@ std::vector<uint8_t> SysStats_MeminfoValue::SerializeAsArray() const {
 void SysStats_MeminfoValue::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

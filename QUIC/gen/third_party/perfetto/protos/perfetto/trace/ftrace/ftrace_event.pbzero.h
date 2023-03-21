@@ -237,6 +237,11 @@ class G2dTracingMarkWriteFtraceEvent;
 class GenericFtraceEvent;
 class GpuFrequencyFtraceEvent;
 class GpuMemTotalFtraceEvent;
+class HostHcallFtraceEvent;
+class HostMemAbortFtraceEvent;
+class HostSmcFtraceEvent;
+class HypEnterFtraceEvent;
+class HypExitFtraceEvent;
 class I2cReadFtraceEvent;
 class I2cReplyFtraceEvent;
 class I2cResultFtraceEvent;
@@ -471,7 +476,7 @@ class WorkqueueExecuteStartFtraceEvent;
 class WorkqueueQueueWorkFtraceEvent;
 class ZeroFtraceEvent;
 
-class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/475, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/480, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1388,6 +1393,16 @@ class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes mali_mali_kcpu_fence_wait_start() const { return at<474>().as_bytes(); }
   bool has_mali_mali_kcpu_fence_wait_end() const { return at<475>().valid(); }
   ::protozero::ConstBytes mali_mali_kcpu_fence_wait_end() const { return at<475>().as_bytes(); }
+  bool has_hyp_enter() const { return at<476>().valid(); }
+  ::protozero::ConstBytes hyp_enter() const { return at<476>().as_bytes(); }
+  bool has_hyp_exit() const { return at<477>().valid(); }
+  ::protozero::ConstBytes hyp_exit() const { return at<477>().as_bytes(); }
+  bool has_host_hcall() const { return at<478>().valid(); }
+  ::protozero::ConstBytes host_hcall() const { return at<478>().as_bytes(); }
+  bool has_host_smc() const { return at<479>().valid(); }
+  ::protozero::ConstBytes host_smc() const { return at<479>().as_bytes(); }
+  bool has_host_mem_abort() const { return at<480>().valid(); }
+  ::protozero::ConstBytes host_mem_abort() const { return at<480>().as_bytes(); }
 };
 
 class FtraceEvent : public ::protozero::Message {
@@ -1850,6 +1865,11 @@ class FtraceEvent : public ::protozero::Message {
     kMaliMaliKCPUFENCESIGNALFieldNumber = 473,
     kMaliMaliKCPUFENCEWAITSTARTFieldNumber = 474,
     kMaliMaliKCPUFENCEWAITENDFieldNumber = 475,
+    kHypEnterFieldNumber = 476,
+    kHypExitFieldNumber = 477,
+    kHostHcallFieldNumber = 478,
+    kHostSmcFieldNumber = 479,
+    kHostMemAbortFieldNumber = 480,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FtraceEvent"; }
 
@@ -11435,6 +11455,111 @@ class FtraceEvent : public ::protozero::Message {
   static constexpr FieldMetadata_MaliMaliKCPUFENCEWAITEND kMaliMaliKCPUFENCEWAITEND() { return {}; }
   template <typename T = MaliMaliKCPUFENCEWAITENDFtraceEvent> T* set_mali_mali_kcpu_fence_wait_end() {
     return BeginNestedMessage<T>(475);
+  }
+
+
+  using FieldMetadata_HypEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      476,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      HypEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_HypEnter kHypEnter() { return {}; }
+  template <typename T = HypEnterFtraceEvent> T* set_hyp_enter() {
+    return BeginNestedMessage<T>(476);
+  }
+
+
+  using FieldMetadata_HypExit =
+    ::protozero::proto_utils::FieldMetadata<
+      477,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      HypExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_HypExit kHypExit() { return {}; }
+  template <typename T = HypExitFtraceEvent> T* set_hyp_exit() {
+    return BeginNestedMessage<T>(477);
+  }
+
+
+  using FieldMetadata_HostHcall =
+    ::protozero::proto_utils::FieldMetadata<
+      478,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      HostHcallFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_HostHcall kHostHcall() { return {}; }
+  template <typename T = HostHcallFtraceEvent> T* set_host_hcall() {
+    return BeginNestedMessage<T>(478);
+  }
+
+
+  using FieldMetadata_HostSmc =
+    ::protozero::proto_utils::FieldMetadata<
+      479,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      HostSmcFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_HostSmc kHostSmc() { return {}; }
+  template <typename T = HostSmcFtraceEvent> T* set_host_smc() {
+    return BeginNestedMessage<T>(479);
+  }
+
+
+  using FieldMetadata_HostMemAbort =
+    ::protozero::proto_utils::FieldMetadata<
+      480,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      HostMemAbortFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_HostMemAbort kHostMemAbort() { return {}; }
+  template <typename T = HostMemAbortFtraceEvent> T* set_host_mem_abort() {
+    return BeginNestedMessage<T>(480);
   }
 
 };

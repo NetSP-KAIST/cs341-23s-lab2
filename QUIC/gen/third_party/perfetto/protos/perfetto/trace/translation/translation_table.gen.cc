@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -52,13 +53,13 @@ bool SliceNameTranslationTable::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SliceNameTranslationTable::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SliceNameTranslationTable::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,7 +70,7 @@ void SliceNameTranslationTable::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -97,10 +98,10 @@ bool SliceNameTranslationTable_RawToDeobfuscatedNameEntry::ParseFromArray(const 
     }
     switch (field.id()) {
       case 1 /* key */:
-        field.get(&key_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &key_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -111,13 +112,13 @@ bool SliceNameTranslationTable_RawToDeobfuscatedNameEntry::ParseFromArray(const 
 }
 
 std::string SliceNameTranslationTable_RawToDeobfuscatedNameEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SliceNameTranslationTable_RawToDeobfuscatedNameEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -125,15 +126,15 @@ std::vector<uint8_t> SliceNameTranslationTable_RawToDeobfuscatedNameEntry::Seria
 void SliceNameTranslationTable_RawToDeobfuscatedNameEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendString(1, key_);
+    ::protozero::internal::gen_helpers::SerializeString(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -185,13 +186,13 @@ bool ChromePerformanceMarkTranslationTable::ParseFromArray(const void* raw, size
 }
 
 std::string ChromePerformanceMarkTranslationTable::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromePerformanceMarkTranslationTable::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -207,7 +208,7 @@ void ChromePerformanceMarkTranslationTable::Serialize(::protozero::Message* msg)
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -238,7 +239,7 @@ bool ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::ParseFromArray(c
         field.get(&key_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -249,13 +250,13 @@ bool ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::ParseFromArray(c
 }
 
 std::string ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -263,15 +264,15 @@ std::vector<uint8_t> ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::
 void ChromePerformanceMarkTranslationTable_MarkHashToNameEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -302,7 +303,7 @@ bool ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::ParseFromArray(c
         field.get(&key_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -313,13 +314,13 @@ bool ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::ParseFromArray(c
 }
 
 std::string ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -327,15 +328,15 @@ std::vector<uint8_t> ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::
 void ChromePerformanceMarkTranslationTable_SiteHashToNameEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -378,13 +379,13 @@ bool ChromeUserEventTranslationTable::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string ChromeUserEventTranslationTable::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeUserEventTranslationTable::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -395,7 +396,7 @@ void ChromeUserEventTranslationTable::Serialize(::protozero::Message* msg) const
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -426,7 +427,7 @@ bool ChromeUserEventTranslationTable_ActionHashToNameEntry::ParseFromArray(const
         field.get(&key_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -437,13 +438,13 @@ bool ChromeUserEventTranslationTable_ActionHashToNameEntry::ParseFromArray(const
 }
 
 std::string ChromeUserEventTranslationTable_ActionHashToNameEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeUserEventTranslationTable_ActionHashToNameEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -451,15 +452,15 @@ std::vector<uint8_t> ChromeUserEventTranslationTable_ActionHashToNameEntry::Seri
 void ChromeUserEventTranslationTable_ActionHashToNameEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -502,13 +503,13 @@ bool ChromeHistorgramTranslationTable::ParseFromArray(const void* raw, size_t si
 }
 
 std::string ChromeHistorgramTranslationTable::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeHistorgramTranslationTable::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -519,7 +520,7 @@ void ChromeHistorgramTranslationTable::Serialize(::protozero::Message* msg) cons
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -550,7 +551,7 @@ bool ChromeHistorgramTranslationTable_HashToNameEntry::ParseFromArray(const void
         field.get(&key_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -561,13 +562,13 @@ bool ChromeHistorgramTranslationTable_HashToNameEntry::ParseFromArray(const void
 }
 
 std::string ChromeHistorgramTranslationTable_HashToNameEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeHistorgramTranslationTable_HashToNameEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -575,15 +576,15 @@ std::vector<uint8_t> ChromeHistorgramTranslationTable_HashToNameEntry::Serialize
 void ChromeHistorgramTranslationTable_HashToNameEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -633,13 +634,13 @@ bool TranslationTable::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TranslationTable::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TranslationTable::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -665,7 +666,7 @@ void TranslationTable::Serialize(::protozero::Message* msg) const {
     (*slice_name_).Serialize(msg->BeginNestedMessage<::protozero::Message>(4));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

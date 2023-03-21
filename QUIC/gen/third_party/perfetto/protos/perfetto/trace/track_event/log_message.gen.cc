@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool LogMessageBody::ParseFromArray(const void* raw, size_t size) {
         field.get(&iid_);
         break;
       case 2 /* body */:
-        field.get(&body_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &body_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -51,13 +52,13 @@ bool LogMessageBody::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string LogMessageBody::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> LogMessageBody::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> LogMessageBody::SerializeAsArray() const {
 void LogMessageBody::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: body
   if (_has_field_[2]) {
-    msg->AppendString(2, body_);
+    ::protozero::internal::gen_helpers::SerializeString(2, body_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -115,13 +116,13 @@ bool LogMessage::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string LogMessage::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> LogMessage::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -129,15 +130,15 @@ std::vector<uint8_t> LogMessage::SerializeAsArray() const {
 void LogMessage::Serialize(::protozero::Message* msg) const {
   // Field 1: source_location_iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, source_location_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, source_location_iid_, msg);
   }
 
   // Field 2: body_iid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, body_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, body_iid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

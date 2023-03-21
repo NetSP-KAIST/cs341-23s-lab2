@@ -1,6 +1,7 @@
 {
   "deps": [
     "cookies_mojom.build_metadata",
+    "mojom_attribution.build_metadata",
     "mojom_ip_address.build_metadata",
     "mojom_network_param.build_metadata",
     "mojom_proxy_config.build_metadata",

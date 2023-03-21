@@ -301,11 +301,6 @@
         "cpp": "::base::Value::List",
         "mojom": "mojo_base.mojom.ListValue",
         "move_only": true
-      },
-      {
-        "cpp": "::base::Value",
-        "mojom": "mojo_base.mojom.DeprecatedDictionaryValue",
-        "move_only": true
       }
     ]
   },

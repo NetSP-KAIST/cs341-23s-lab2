@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -41,10 +42,10 @@ bool GpuLog::ParseFromArray(const void* raw, size_t size) {
         field.get(&severity_);
         break;
       case 2 /* tag */:
-        field.get(&tag_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &tag_);
         break;
       case 3 /* log_message */:
-        field.get(&log_message_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &log_message_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -55,13 +56,13 @@ bool GpuLog::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GpuLog::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuLog::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> GpuLog::SerializeAsArray() const {
 void GpuLog::Serialize(::protozero::Message* msg) const {
   // Field 1: severity
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, severity_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, severity_, msg);
   }
 
   // Field 2: tag
   if (_has_field_[2]) {
-    msg->AppendString(2, tag_);
+    ::protozero::internal::gen_helpers::SerializeString(2, tag_, msg);
   }
 
   // Field 3: log_message
   if (_has_field_[3]) {
-    msg->AppendString(3, log_message_);
+    ::protozero::internal::gen_helpers::SerializeString(3, log_message_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

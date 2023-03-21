@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -43,19 +44,19 @@ bool OneofOptions::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string OneofOptions::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> OneofOptions::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void OneofOptions::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -83,7 +84,7 @@ bool EnumValueDescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* number */:
         field.get(&number_);
@@ -97,13 +98,13 @@ bool EnumValueDescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string EnumValueDescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> EnumValueDescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -111,15 +112,15 @@ std::vector<uint8_t> EnumValueDescriptorProto::SerializeAsArray() const {
 void EnumValueDescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: number
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, number_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -153,7 +154,7 @@ bool EnumDescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* value */:
         value_.emplace_back();
@@ -161,7 +162,7 @@ bool EnumDescriptorProto::ParseFromArray(const void* raw, size_t size) {
         break;
       case 5 /* reserved_name */:
         reserved_name_.emplace_back();
-        field.get(&reserved_name_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reserved_name_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -172,13 +173,13 @@ bool EnumDescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string EnumDescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> EnumDescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -186,7 +187,7 @@ std::vector<uint8_t> EnumDescriptorProto::SerializeAsArray() const {
 void EnumDescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: value
@@ -196,10 +197,10 @@ void EnumDescriptorProto::Serialize(::protozero::Message* msg) const {
 
   // Field 5: reserved_name
   for (auto& it : reserved_name_) {
-    msg->AppendString(5, it);
+    ::protozero::internal::gen_helpers::SerializeString(5, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -227,7 +228,7 @@ bool OneofDescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* options */:
         (*options_).ParseFromArray(field.data(), field.size());
@@ -241,13 +242,13 @@ bool OneofDescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string OneofDescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> OneofDescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -255,7 +256,7 @@ std::vector<uint8_t> OneofDescriptorProto::SerializeAsArray() const {
 void OneofDescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: options
@@ -263,7 +264,7 @@ void OneofDescriptorProto::Serialize(::protozero::Message* msg) const {
     (*options_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -297,7 +298,7 @@ bool FieldDescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* number */:
         field.get(&number_);
@@ -309,13 +310,13 @@ bool FieldDescriptorProto::ParseFromArray(const void* raw, size_t size) {
         field.get(&type_);
         break;
       case 6 /* type_name */:
-        field.get(&type_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &type_name_);
         break;
       case 2 /* extendee */:
-        field.get(&extendee_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &extendee_);
         break;
       case 7 /* default_value */:
-        field.get(&default_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &default_value_);
         break;
       case 9 /* oneof_index */:
         field.get(&oneof_index_);
@@ -329,13 +330,13 @@ bool FieldDescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FieldDescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FieldDescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -343,45 +344,45 @@ std::vector<uint8_t> FieldDescriptorProto::SerializeAsArray() const {
 void FieldDescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 3: number
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, number_, msg);
   }
 
   // Field 4: label
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, label_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, label_, msg);
   }
 
   // Field 5: type
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, type_, msg);
   }
 
   // Field 6: type_name
   if (_has_field_[6]) {
-    msg->AppendString(6, type_name_);
+    ::protozero::internal::gen_helpers::SerializeString(6, type_name_, msg);
   }
 
   // Field 2: extendee
   if (_has_field_[2]) {
-    msg->AppendString(2, extendee_);
+    ::protozero::internal::gen_helpers::SerializeString(2, extendee_, msg);
   }
 
   // Field 7: default_value
   if (_has_field_[7]) {
-    msg->AppendString(7, default_value_);
+    ::protozero::internal::gen_helpers::SerializeString(7, default_value_, msg);
   }
 
   // Field 9: oneof_index
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, oneof_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, oneof_index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -440,7 +441,7 @@ bool DescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* field */:
         field_.emplace_back();
@@ -468,7 +469,7 @@ bool DescriptorProto::ParseFromArray(const void* raw, size_t size) {
         break;
       case 10 /* reserved_name */:
         reserved_name_.emplace_back();
-        field.get(&reserved_name_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reserved_name_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -479,13 +480,13 @@ bool DescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -493,7 +494,7 @@ std::vector<uint8_t> DescriptorProto::SerializeAsArray() const {
 void DescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: field
@@ -528,10 +529,10 @@ void DescriptorProto::Serialize(::protozero::Message* msg) const {
 
   // Field 10: reserved_name
   for (auto& it : reserved_name_) {
-    msg->AppendString(10, it);
+    ::protozero::internal::gen_helpers::SerializeString(10, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -573,13 +574,13 @@ bool DescriptorProto_ReservedRange::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string DescriptorProto_ReservedRange::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DescriptorProto_ReservedRange::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -587,15 +588,15 @@ std::vector<uint8_t> DescriptorProto_ReservedRange::SerializeAsArray() const {
 void DescriptorProto_ReservedRange::Serialize(::protozero::Message* msg) const {
   // Field 1: start
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, start_, msg);
   }
 
   // Field 2: end
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, end_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, end_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -644,14 +645,14 @@ bool FileDescriptorProto::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* package */:
-        field.get(&package_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &package_);
         break;
       case 3 /* dependency */:
         dependency_.emplace_back();
-        field.get(&dependency_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &dependency_.back());
         break;
       case 10 /* public_dependency */:
         public_dependency_.emplace_back();
@@ -682,13 +683,13 @@ bool FileDescriptorProto::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FileDescriptorProto::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FileDescriptorProto::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -696,27 +697,27 @@ std::vector<uint8_t> FileDescriptorProto::SerializeAsArray() const {
 void FileDescriptorProto::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: package
   if (_has_field_[2]) {
-    msg->AppendString(2, package_);
+    ::protozero::internal::gen_helpers::SerializeString(2, package_, msg);
   }
 
   // Field 3: dependency
   for (auto& it : dependency_) {
-    msg->AppendString(3, it);
+    ::protozero::internal::gen_helpers::SerializeString(3, it, msg);
   }
 
   // Field 10: public_dependency
   for (auto& it : public_dependency_) {
-    msg->AppendVarInt(10, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, it, msg);
   }
 
   // Field 11: weak_dependency
   for (auto& it : weak_dependency_) {
-    msg->AppendVarInt(11, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, it, msg);
   }
 
   // Field 4: message_type
@@ -734,7 +735,7 @@ void FileDescriptorProto::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(7));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -777,13 +778,13 @@ bool FileDescriptorSet::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FileDescriptorSet::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FileDescriptorSet::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -794,7 +795,7 @@ void FileDescriptorSet::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

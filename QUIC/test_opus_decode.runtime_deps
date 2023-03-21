@@ -5,7 +5,7 @@
 ../../.vpython3
 ../../build/util/lib/__init__.py
 ../../build/util/lib/results/
-../../testing/location_tags.json
 bin/run_test_opus_decode
 ../../.vpython3
+../../testing/location_tags.json
 ./libc++.so

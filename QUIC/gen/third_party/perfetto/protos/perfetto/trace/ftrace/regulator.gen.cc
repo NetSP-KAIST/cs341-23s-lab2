@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -37,7 +38,7 @@ bool RegulatorSetVoltageCompleteFtraceEvent::ParseFromArray(const void* raw, siz
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* val */:
         field.get(&val_);
@@ -51,13 +52,13 @@ bool RegulatorSetVoltageCompleteFtraceEvent::ParseFromArray(const void* raw, siz
 }
 
 std::string RegulatorSetVoltageCompleteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorSetVoltageCompleteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> RegulatorSetVoltageCompleteFtraceEvent::SerializeAsArray() 
 void RegulatorSetVoltageCompleteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: val
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, val_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, val_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -102,7 +103,7 @@ bool RegulatorSetVoltageFtraceEvent::ParseFromArray(const void* raw, size_t size
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* min */:
         field.get(&min_);
@@ -119,13 +120,13 @@ bool RegulatorSetVoltageFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string RegulatorSetVoltageFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorSetVoltageFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -133,20 +134,20 @@ std::vector<uint8_t> RegulatorSetVoltageFtraceEvent::SerializeAsArray() const {
 void RegulatorSetVoltageFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: min
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, min_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, min_, msg);
   }
 
   // Field 3: max
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, max_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, max_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -173,7 +174,7 @@ bool RegulatorEnableDelayFtraceEvent::ParseFromArray(const void* raw, size_t siz
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -184,13 +185,13 @@ bool RegulatorEnableDelayFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string RegulatorEnableDelayFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorEnableDelayFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -198,10 +199,10 @@ std::vector<uint8_t> RegulatorEnableDelayFtraceEvent::SerializeAsArray() const {
 void RegulatorEnableDelayFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -228,7 +229,7 @@ bool RegulatorEnableCompleteFtraceEvent::ParseFromArray(const void* raw, size_t 
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -239,13 +240,13 @@ bool RegulatorEnableCompleteFtraceEvent::ParseFromArray(const void* raw, size_t 
 }
 
 std::string RegulatorEnableCompleteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorEnableCompleteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -253,10 +254,10 @@ std::vector<uint8_t> RegulatorEnableCompleteFtraceEvent::SerializeAsArray() cons
 void RegulatorEnableCompleteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -283,7 +284,7 @@ bool RegulatorEnableFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -294,13 +295,13 @@ bool RegulatorEnableFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegulatorEnableFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorEnableFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -308,10 +309,10 @@ std::vector<uint8_t> RegulatorEnableFtraceEvent::SerializeAsArray() const {
 void RegulatorEnableFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -338,7 +339,7 @@ bool RegulatorDisableCompleteFtraceEvent::ParseFromArray(const void* raw, size_t
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -349,13 +350,13 @@ bool RegulatorDisableCompleteFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string RegulatorDisableCompleteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorDisableCompleteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -363,10 +364,10 @@ std::vector<uint8_t> RegulatorDisableCompleteFtraceEvent::SerializeAsArray() con
 void RegulatorDisableCompleteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -393,7 +394,7 @@ bool RegulatorDisableFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -404,13 +405,13 @@ bool RegulatorDisableFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegulatorDisableFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegulatorDisableFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -418,10 +419,10 @@ std::vector<uint8_t> RegulatorDisableFtraceEvent::SerializeAsArray() const {
 void RegulatorDisableFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

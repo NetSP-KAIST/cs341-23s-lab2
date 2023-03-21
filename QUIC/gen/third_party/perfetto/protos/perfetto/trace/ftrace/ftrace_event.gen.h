@@ -16,6 +16,11 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class FtraceEvent;
+class HostMemAbortFtraceEvent;
+class HostSmcFtraceEvent;
+class HostHcallFtraceEvent;
+class HypExitFtraceEvent;
+class HypEnterFtraceEvent;
 class MaliMaliKCPUFENCEWAITENDFtraceEvent;
 class MaliMaliKCPUFENCEWAITSTARTFtraceEvent;
 class MaliMaliKCPUFENCESIGNALFtraceEvent;
@@ -942,6 +947,11 @@ class PERFETTO_EXPORT_COMPONENT FtraceEvent : public ::protozero::CppMessageObj 
     kMaliMaliKCPUFENCESIGNALFieldNumber = 473,
     kMaliMaliKCPUFENCEWAITSTARTFieldNumber = 474,
     kMaliMaliKCPUFENCEWAITENDFieldNumber = 475,
+    kHypEnterFieldNumber = 476,
+    kHypExitFieldNumber = 477,
+    kHostHcallFieldNumber = 478,
+    kHostSmcFieldNumber = 479,
+    kHostMemAbortFieldNumber = 480,
   };
 
   FtraceEvent();
@@ -2782,6 +2792,26 @@ class PERFETTO_EXPORT_COMPONENT FtraceEvent : public ::protozero::CppMessageObj 
   const MaliMaliKCPUFENCEWAITENDFtraceEvent& mali_mali_kcpu_fence_wait_end() const { return *mali_mali_kcpu_fence_wait_end_; }
   MaliMaliKCPUFENCEWAITENDFtraceEvent* mutable_mali_mali_kcpu_fence_wait_end() { _has_field_.set(475); return mali_mali_kcpu_fence_wait_end_.get(); }
 
+  bool has_hyp_enter() const { return _has_field_[476]; }
+  const HypEnterFtraceEvent& hyp_enter() const { return *hyp_enter_; }
+  HypEnterFtraceEvent* mutable_hyp_enter() { _has_field_.set(476); return hyp_enter_.get(); }
+
+  bool has_hyp_exit() const { return _has_field_[477]; }
+  const HypExitFtraceEvent& hyp_exit() const { return *hyp_exit_; }
+  HypExitFtraceEvent* mutable_hyp_exit() { _has_field_.set(477); return hyp_exit_.get(); }
+
+  bool has_host_hcall() const { return _has_field_[478]; }
+  const HostHcallFtraceEvent& host_hcall() const { return *host_hcall_; }
+  HostHcallFtraceEvent* mutable_host_hcall() { _has_field_.set(478); return host_hcall_.get(); }
+
+  bool has_host_smc() const { return _has_field_[479]; }
+  const HostSmcFtraceEvent& host_smc() const { return *host_smc_; }
+  HostSmcFtraceEvent* mutable_host_smc() { _has_field_.set(479); return host_smc_.get(); }
+
+  bool has_host_mem_abort() const { return _has_field_[480]; }
+  const HostMemAbortFtraceEvent& host_mem_abort() const { return *host_mem_abort_; }
+  HostMemAbortFtraceEvent* mutable_host_mem_abort() { _has_field_.set(480); return host_mem_abort_.get(); }
+
  private:
   uint64_t timestamp_{};
   uint32_t pid_{};
@@ -3239,12 +3269,17 @@ class PERFETTO_EXPORT_COMPONENT FtraceEvent : public ::protozero::CppMessageObj 
   ::protozero::CopyablePtr<MaliMaliKCPUFENCESIGNALFtraceEvent> mali_mali_kcpu_fence_signal_;
   ::protozero::CopyablePtr<MaliMaliKCPUFENCEWAITSTARTFtraceEvent> mali_mali_kcpu_fence_wait_start_;
   ::protozero::CopyablePtr<MaliMaliKCPUFENCEWAITENDFtraceEvent> mali_mali_kcpu_fence_wait_end_;
+  ::protozero::CopyablePtr<HypEnterFtraceEvent> hyp_enter_;
+  ::protozero::CopyablePtr<HypExitFtraceEvent> hyp_exit_;
+  ::protozero::CopyablePtr<HostHcallFtraceEvent> host_hcall_;
+  ::protozero::CopyablePtr<HostSmcFtraceEvent> host_smc_;
+  ::protozero::CopyablePtr<HostMemAbortFtraceEvent> host_mem_abort_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<476> _has_field_{};
+  std::bitset<481> _has_field_{};
 };
 
 }  // namespace perfetto

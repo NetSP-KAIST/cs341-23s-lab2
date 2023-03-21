@@ -1,3 +1,5 @@
+bin/run_blink_python_tests
+../../.vpython3
 ../../testing/scripts/run_isolated_script_test.py
 ../../build/android/
 ../../build/gn_helpers.py
@@ -30,8 +32,6 @@
 ../../third_party/wpt_tools/
 ../../tools/idl_parser/
 ../../testing/location_tags.json
-bin/run_blink_python_tests
-../../.vpython3
 ../../testing/test_env.py
 ../../testing/xvfb.py
 ../../testing/scripts/common.py

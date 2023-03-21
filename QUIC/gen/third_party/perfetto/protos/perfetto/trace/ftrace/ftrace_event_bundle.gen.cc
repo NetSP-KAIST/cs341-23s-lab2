@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,6 +48,7 @@
 #include "protos/perfetto/trace/ftrace/ipi.gen.h"
 #include "protos/perfetto/trace/ftrace/ion.gen.h"
 #include "protos/perfetto/trace/ftrace/i2c.gen.h"
+#include "protos/perfetto/trace/ftrace/hyp.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.gen.h"
 #include "protos/perfetto/trace/ftrace/g2d.gen.h"
@@ -137,13 +139,13 @@ bool FtraceEventBundle::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FtraceEventBundle::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceEventBundle::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -151,7 +153,7 @@ std::vector<uint8_t> FtraceEventBundle::SerializeAsArray() const {
 void FtraceEventBundle::Serialize(::protozero::Message* msg) const {
   // Field 1: cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cpu_, msg);
   }
 
   // Field 2: event
@@ -161,7 +163,7 @@ void FtraceEventBundle::Serialize(::protozero::Message* msg) const {
 
   // Field 3: lost_events
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, lost_events_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, lost_events_, msg);
   }
 
   // Field 4: compact_sched
@@ -171,20 +173,20 @@ void FtraceEventBundle::Serialize(::protozero::Message* msg) const {
 
   // Field 5: ftrace_clock
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, ftrace_clock_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, ftrace_clock_, msg);
   }
 
   // Field 6: ftrace_timestamp
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, ftrace_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, ftrace_timestamp_, msg);
   }
 
   // Field 7: boot_timestamp
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, boot_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, boot_timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -233,57 +235,47 @@ bool FtraceEventBundle_CompactSched::ParseFromArray(const void* raw, size_t size
     switch (field.id()) {
       case 5 /* intern_table */:
         intern_table_.emplace_back();
-        field.get(&intern_table_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &intern_table_.back());
         break;
       case 1 /* switch_timestamp */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          switch_timestamp_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &switch_timestamp_)) {
+          packed_error = true;}
         break;
       case 2 /* switch_prev_state */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          switch_prev_state_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int64_t>(field, &switch_prev_state_)) {
+          packed_error = true;}
         break;
       case 3 /* switch_next_pid */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          switch_next_pid_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t>(field, &switch_next_pid_)) {
+          packed_error = true;}
         break;
       case 4 /* switch_next_prio */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          switch_next_prio_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t>(field, &switch_next_prio_)) {
+          packed_error = true;}
         break;
       case 6 /* switch_next_comm_index */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          switch_next_comm_index_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t>(field, &switch_next_comm_index_)) {
+          packed_error = true;}
         break;
       case 7 /* waking_timestamp */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          waking_timestamp_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &waking_timestamp_)) {
+          packed_error = true;}
         break;
       case 8 /* waking_pid */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          waking_pid_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t>(field, &waking_pid_)) {
+          packed_error = true;}
         break;
       case 9 /* waking_target_cpu */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          waking_target_cpu_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t>(field, &waking_target_cpu_)) {
+          packed_error = true;}
         break;
       case 10 /* waking_prio */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          waking_prio_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, int32_t>(field, &waking_prio_)) {
+          packed_error = true;}
         break;
       case 11 /* waking_comm_index */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          waking_comm_index_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t>(field, &waking_comm_index_)) {
+          packed_error = true;}
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -294,13 +286,13 @@ bool FtraceEventBundle_CompactSched::ParseFromArray(const void* raw, size_t size
 }
 
 std::string FtraceEventBundle_CompactSched::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceEventBundle_CompactSched::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -308,7 +300,7 @@ std::vector<uint8_t> FtraceEventBundle_CompactSched::SerializeAsArray() const {
 void FtraceEventBundle_CompactSched::Serialize(::protozero::Message* msg) const {
   // Field 5: intern_table
   for (auto& it : intern_table_) {
-    msg->AppendString(5, it);
+    ::protozero::internal::gen_helpers::SerializeString(5, it, msg);
   }
 
   // Field 1: switch_timestamp
@@ -391,7 +383,7 @@ void FtraceEventBundle_CompactSched::Serialize(::protozero::Message* msg) const 
     msg->AppendBytes(11, pack.data(), pack.size());
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

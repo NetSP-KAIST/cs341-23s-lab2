@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -65,13 +66,13 @@ bool AndroidEnergyEstimationBreakdown::ParseFromArray(const void* raw, size_t si
 }
 
 std::string AndroidEnergyEstimationBreakdown::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidEnergyEstimationBreakdown::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -84,12 +85,12 @@ void AndroidEnergyEstimationBreakdown::Serialize(::protozero::Message* msg) cons
 
   // Field 2: energy_consumer_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, energy_consumer_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, energy_consumer_id_, msg);
   }
 
   // Field 3: energy_uws
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, energy_uws_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, energy_uws_, msg);
   }
 
   // Field 4: per_uid_breakdown
@@ -97,7 +98,7 @@ void AndroidEnergyEstimationBreakdown::Serialize(::protozero::Message* msg) cons
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(4));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -139,13 +140,13 @@ bool AndroidEnergyEstimationBreakdown_EnergyUidBreakdown::ParseFromArray(const v
 }
 
 std::string AndroidEnergyEstimationBreakdown_EnergyUidBreakdown::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidEnergyEstimationBreakdown_EnergyUidBreakdown::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -153,15 +154,15 @@ std::vector<uint8_t> AndroidEnergyEstimationBreakdown_EnergyUidBreakdown::Serial
 void AndroidEnergyEstimationBreakdown_EnergyUidBreakdown::Serialize(::protozero::Message* msg) const {
   // Field 1: uid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, uid_, msg);
   }
 
   // Field 2: energy_uws
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, energy_uws_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, energy_uws_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

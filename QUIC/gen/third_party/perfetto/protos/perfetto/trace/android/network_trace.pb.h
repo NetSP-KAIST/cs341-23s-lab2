@@ -44,12 +44,20 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fnetwork_5ftrace_2eproto
 };
 namespace perfetto {
 namespace protos {
+class NetworkPacketBundle;
+struct NetworkPacketBundleDefaultTypeInternal;
+extern NetworkPacketBundleDefaultTypeInternal _NetworkPacketBundle_default_instance_;
+class NetworkPacketContext;
+struct NetworkPacketContextDefaultTypeInternal;
+extern NetworkPacketContextDefaultTypeInternal _NetworkPacketContext_default_instance_;
 class NetworkPacketEvent;
 struct NetworkPacketEventDefaultTypeInternal;
 extern NetworkPacketEventDefaultTypeInternal _NetworkPacketEvent_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::perfetto::protos::NetworkPacketBundle* Arena::CreateMaybeMessage<::perfetto::protos::NetworkPacketBundle>(Arena*);
+template<> ::perfetto::protos::NetworkPacketContext* Arena::CreateMaybeMessage<::perfetto::protos::NetworkPacketContext>(Arena*);
 template<> ::perfetto::protos::NetworkPacketEvent* Arena::CreateMaybeMessage<::perfetto::protos::NetworkPacketEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
@@ -337,6 +345,438 @@ class NetworkPacketEvent final :
   uint32_t tcp_flags_;
   uint32_t local_port_;
   uint32_t remote_port_;
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fnetwork_5ftrace_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NetworkPacketBundle final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.NetworkPacketBundle) */ {
+ public:
+  inline NetworkPacketBundle() : NetworkPacketBundle(nullptr) {}
+  ~NetworkPacketBundle() override;
+  explicit PROTOBUF_CONSTEXPR NetworkPacketBundle(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NetworkPacketBundle(const NetworkPacketBundle& from);
+  NetworkPacketBundle(NetworkPacketBundle&& from) noexcept
+    : NetworkPacketBundle() {
+    *this = ::std::move(from);
+  }
+
+  inline NetworkPacketBundle& operator=(const NetworkPacketBundle& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NetworkPacketBundle& operator=(NetworkPacketBundle&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const NetworkPacketBundle& default_instance() {
+    return *internal_default_instance();
+  }
+  enum PacketContextCase {
+    kIid = 1,
+    kCtx = 2,
+    PACKET_CONTEXT_NOT_SET = 0,
+  };
+
+  static inline const NetworkPacketBundle* internal_default_instance() {
+    return reinterpret_cast<const NetworkPacketBundle*>(
+               &_NetworkPacketBundle_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(NetworkPacketBundle& a, NetworkPacketBundle& b) {
+    a.Swap(&b);
+  }
+  PROTOBUF_NOINLINE void Swap(NetworkPacketBundle* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NetworkPacketBundle* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NetworkPacketBundle* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NetworkPacketBundle>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const NetworkPacketBundle& from);
+  void MergeFrom(const NetworkPacketBundle& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkPacketBundle* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.NetworkPacketBundle";
+  }
+  protected:
+  explicit NetworkPacketBundle(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPacketTimestampsFieldNumber = 3,
+    kPacketLengthsFieldNumber = 4,
+    kTotalDurationFieldNumber = 6,
+    kTotalLengthFieldNumber = 7,
+    kTotalPacketsFieldNumber = 5,
+    kIidFieldNumber = 1,
+    kCtxFieldNumber = 2,
+  };
+  // repeated uint64 packet_timestamps = 3 [packed = true];
+  int packet_timestamps_size() const;
+  private:
+  int _internal_packet_timestamps_size() const;
+  public:
+  void clear_packet_timestamps();
+  private:
+  uint64_t _internal_packet_timestamps(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      _internal_packet_timestamps() const;
+  void _internal_add_packet_timestamps(uint64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      _internal_mutable_packet_timestamps();
+  public:
+  uint64_t packet_timestamps(int index) const;
+  void set_packet_timestamps(int index, uint64_t value);
+  void add_packet_timestamps(uint64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+      packet_timestamps() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+      mutable_packet_timestamps();
+
+  // repeated uint32 packet_lengths = 4 [packed = true];
+  int packet_lengths_size() const;
+  private:
+  int _internal_packet_lengths_size() const;
+  public:
+  void clear_packet_lengths();
+  private:
+  uint32_t _internal_packet_lengths(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+      _internal_packet_lengths() const;
+  void _internal_add_packet_lengths(uint32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+      _internal_mutable_packet_lengths();
+  public:
+  uint32_t packet_lengths(int index) const;
+  void set_packet_lengths(int index, uint32_t value);
+  void add_packet_lengths(uint32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+      packet_lengths() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+      mutable_packet_lengths();
+
+  // optional uint64 total_duration = 6;
+  bool has_total_duration() const;
+  private:
+  bool _internal_has_total_duration() const;
+  public:
+  void clear_total_duration();
+  uint64_t total_duration() const;
+  void set_total_duration(uint64_t value);
+  private:
+  uint64_t _internal_total_duration() const;
+  void _internal_set_total_duration(uint64_t value);
+  public:
+
+  // optional uint64 total_length = 7;
+  bool has_total_length() const;
+  private:
+  bool _internal_has_total_length() const;
+  public:
+  void clear_total_length();
+  uint64_t total_length() const;
+  void set_total_length(uint64_t value);
+  private:
+  uint64_t _internal_total_length() const;
+  void _internal_set_total_length(uint64_t value);
+  public:
+
+  // optional uint32 total_packets = 5;
+  bool has_total_packets() const;
+  private:
+  bool _internal_has_total_packets() const;
+  public:
+  void clear_total_packets();
+  uint32_t total_packets() const;
+  void set_total_packets(uint32_t value);
+  private:
+  uint32_t _internal_total_packets() const;
+  void _internal_set_total_packets(uint32_t value);
+  public:
+
+  // uint64 iid = 1;
+  bool has_iid() const;
+  private:
+  bool _internal_has_iid() const;
+  public:
+  void clear_iid();
+  uint64_t iid() const;
+  void set_iid(uint64_t value);
+  private:
+  uint64_t _internal_iid() const;
+  void _internal_set_iid(uint64_t value);
+  public:
+
+  // .perfetto.protos.NetworkPacketEvent ctx = 2;
+  bool has_ctx() const;
+  private:
+  bool _internal_has_ctx() const;
+  public:
+  void clear_ctx();
+  const ::perfetto::protos::NetworkPacketEvent& ctx() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::NetworkPacketEvent* release_ctx();
+  ::perfetto::protos::NetworkPacketEvent* mutable_ctx();
+  void set_allocated_ctx(::perfetto::protos::NetworkPacketEvent* ctx);
+  private:
+  const ::perfetto::protos::NetworkPacketEvent& _internal_ctx() const;
+  ::perfetto::protos::NetworkPacketEvent* _internal_mutable_ctx();
+  public:
+  void unsafe_arena_set_allocated_ctx(
+      ::perfetto::protos::NetworkPacketEvent* ctx);
+  ::perfetto::protos::NetworkPacketEvent* unsafe_arena_release_ctx();
+
+  void clear_packet_context();
+  PacketContextCase packet_context_case() const;
+  // @@protoc_insertion_point(class_scope:perfetto.protos.NetworkPacketBundle)
+ private:
+  class _Internal;
+  void set_has_iid();
+  void set_has_ctx();
+
+  inline bool has_packet_context() const;
+  inline void clear_has_packet_context();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t > packet_timestamps_;
+  mutable std::atomic<int> _packet_timestamps_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t > packet_lengths_;
+  mutable std::atomic<int> _packet_lengths_cached_byte_size_;
+  uint64_t total_duration_;
+  uint64_t total_length_;
+  uint32_t total_packets_;
+  union PacketContextUnion {
+    constexpr PacketContextUnion() : _constinit_{} {}
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+    uint64_t iid_;
+    ::perfetto::protos::NetworkPacketEvent* ctx_;
+  } packet_context_;
+  uint32_t _oneof_case_[1];
+
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fnetwork_5ftrace_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NetworkPacketContext final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.NetworkPacketContext) */ {
+ public:
+  inline NetworkPacketContext() : NetworkPacketContext(nullptr) {}
+  ~NetworkPacketContext() override;
+  explicit PROTOBUF_CONSTEXPR NetworkPacketContext(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NetworkPacketContext(const NetworkPacketContext& from);
+  NetworkPacketContext(NetworkPacketContext&& from) noexcept
+    : NetworkPacketContext() {
+    *this = ::std::move(from);
+  }
+
+  inline NetworkPacketContext& operator=(const NetworkPacketContext& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NetworkPacketContext& operator=(NetworkPacketContext&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const NetworkPacketContext& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NetworkPacketContext* internal_default_instance() {
+    return reinterpret_cast<const NetworkPacketContext*>(
+               &_NetworkPacketContext_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(NetworkPacketContext& a, NetworkPacketContext& b) {
+    a.Swap(&b);
+  }
+  PROTOBUF_NOINLINE void Swap(NetworkPacketContext* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NetworkPacketContext* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NetworkPacketContext* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NetworkPacketContext>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const NetworkPacketContext& from);
+  void MergeFrom(const NetworkPacketContext& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(NetworkPacketContext* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.NetworkPacketContext";
+  }
+  protected:
+  explicit NetworkPacketContext(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCtxFieldNumber = 2,
+    kIidFieldNumber = 1,
+  };
+  // optional .perfetto.protos.NetworkPacketEvent ctx = 2;
+  bool has_ctx() const;
+  private:
+  bool _internal_has_ctx() const;
+  public:
+  void clear_ctx();
+  const ::perfetto::protos::NetworkPacketEvent& ctx() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::NetworkPacketEvent* release_ctx();
+  ::perfetto::protos::NetworkPacketEvent* mutable_ctx();
+  void set_allocated_ctx(::perfetto::protos::NetworkPacketEvent* ctx);
+  private:
+  const ::perfetto::protos::NetworkPacketEvent& _internal_ctx() const;
+  ::perfetto::protos::NetworkPacketEvent* _internal_mutable_ctx();
+  public:
+  void unsafe_arena_set_allocated_ctx(
+      ::perfetto::protos::NetworkPacketEvent* ctx);
+  ::perfetto::protos::NetworkPacketEvent* unsafe_arena_release_ctx();
+
+  // optional uint64 iid = 1;
+  bool has_iid() const;
+  private:
+  bool _internal_has_iid() const;
+  public:
+  void clear_iid();
+  uint64_t iid() const;
+  void set_iid(uint64_t value);
+  private:
+  uint64_t _internal_iid() const;
+  void _internal_set_iid(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.NetworkPacketContext)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::perfetto::protos::NetworkPacketEvent* ctx_;
+  uint64_t iid_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fnetwork_5ftrace_2eproto;
 };
 // ===================================================================
@@ -643,9 +1083,438 @@ inline void NetworkPacketEvent::set_remote_port(uint32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketEvent.remote_port)
 }
 
+// -------------------------------------------------------------------
+
+// NetworkPacketBundle
+
+// uint64 iid = 1;
+inline bool NetworkPacketBundle::_internal_has_iid() const {
+  return packet_context_case() == kIid;
+}
+inline bool NetworkPacketBundle::has_iid() const {
+  return _internal_has_iid();
+}
+inline void NetworkPacketBundle::set_has_iid() {
+  _oneof_case_[0] = kIid;
+}
+inline void NetworkPacketBundle::clear_iid() {
+  if (_internal_has_iid()) {
+    packet_context_.iid_ = uint64_t{0u};
+    clear_has_packet_context();
+  }
+}
+inline uint64_t NetworkPacketBundle::_internal_iid() const {
+  if (_internal_has_iid()) {
+    return packet_context_.iid_;
+  }
+  return uint64_t{0u};
+}
+inline void NetworkPacketBundle::_internal_set_iid(uint64_t value) {
+  if (!_internal_has_iid()) {
+    clear_packet_context();
+    set_has_iid();
+  }
+  packet_context_.iid_ = value;
+}
+inline uint64_t NetworkPacketBundle::iid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.iid)
+  return _internal_iid();
+}
+inline void NetworkPacketBundle::set_iid(uint64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.iid)
+}
+
+// .perfetto.protos.NetworkPacketEvent ctx = 2;
+inline bool NetworkPacketBundle::_internal_has_ctx() const {
+  return packet_context_case() == kCtx;
+}
+inline bool NetworkPacketBundle::has_ctx() const {
+  return _internal_has_ctx();
+}
+inline void NetworkPacketBundle::set_has_ctx() {
+  _oneof_case_[0] = kCtx;
+}
+inline void NetworkPacketBundle::clear_ctx() {
+  if (_internal_has_ctx()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete packet_context_.ctx_;
+    }
+    clear_has_packet_context();
+  }
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketBundle::release_ctx() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.NetworkPacketBundle.ctx)
+  if (_internal_has_ctx()) {
+    clear_has_packet_context();
+    ::perfetto::protos::NetworkPacketEvent* temp = packet_context_.ctx_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    packet_context_.ctx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::NetworkPacketEvent& NetworkPacketBundle::_internal_ctx() const {
+  return _internal_has_ctx()
+      ? *packet_context_.ctx_
+      : reinterpret_cast< ::perfetto::protos::NetworkPacketEvent&>(::perfetto::protos::_NetworkPacketEvent_default_instance_);
+}
+inline const ::perfetto::protos::NetworkPacketEvent& NetworkPacketBundle::ctx() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.ctx)
+  return _internal_ctx();
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketBundle::unsafe_arena_release_ctx() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.NetworkPacketBundle.ctx)
+  if (_internal_has_ctx()) {
+    clear_has_packet_context();
+    ::perfetto::protos::NetworkPacketEvent* temp = packet_context_.ctx_;
+    packet_context_.ctx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void NetworkPacketBundle::unsafe_arena_set_allocated_ctx(::perfetto::protos::NetworkPacketEvent* ctx) {
+  clear_packet_context();
+  if (ctx) {
+    set_has_ctx();
+    packet_context_.ctx_ = ctx;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.NetworkPacketBundle.ctx)
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketBundle::_internal_mutable_ctx() {
+  if (!_internal_has_ctx()) {
+    clear_packet_context();
+    set_has_ctx();
+    packet_context_.ctx_ = CreateMaybeMessage< ::perfetto::protos::NetworkPacketEvent >(GetArenaForAllocation());
+  }
+  return packet_context_.ctx_;
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketBundle::mutable_ctx() {
+  ::perfetto::protos::NetworkPacketEvent* _msg = _internal_mutable_ctx();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.NetworkPacketBundle.ctx)
+  return _msg;
+}
+
+// repeated uint64 packet_timestamps = 3 [packed = true];
+inline int NetworkPacketBundle::_internal_packet_timestamps_size() const {
+  return packet_timestamps_.size();
+}
+inline int NetworkPacketBundle::packet_timestamps_size() const {
+  return _internal_packet_timestamps_size();
+}
+inline void NetworkPacketBundle::clear_packet_timestamps() {
+  packet_timestamps_.Clear();
+}
+inline uint64_t NetworkPacketBundle::_internal_packet_timestamps(int index) const {
+  return packet_timestamps_.Get(index);
+}
+inline uint64_t NetworkPacketBundle::packet_timestamps(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.packet_timestamps)
+  return _internal_packet_timestamps(index);
+}
+inline void NetworkPacketBundle::set_packet_timestamps(int index, uint64_t value) {
+  packet_timestamps_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.packet_timestamps)
+}
+inline void NetworkPacketBundle::_internal_add_packet_timestamps(uint64_t value) {
+  packet_timestamps_.Add(value);
+}
+inline void NetworkPacketBundle::add_packet_timestamps(uint64_t value) {
+  _internal_add_packet_timestamps(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.NetworkPacketBundle.packet_timestamps)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+NetworkPacketBundle::_internal_packet_timestamps() const {
+  return packet_timestamps_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >&
+NetworkPacketBundle::packet_timestamps() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.NetworkPacketBundle.packet_timestamps)
+  return _internal_packet_timestamps();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+NetworkPacketBundle::_internal_mutable_packet_timestamps() {
+  return &packet_timestamps_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint64_t >*
+NetworkPacketBundle::mutable_packet_timestamps() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.NetworkPacketBundle.packet_timestamps)
+  return _internal_mutable_packet_timestamps();
+}
+
+// repeated uint32 packet_lengths = 4 [packed = true];
+inline int NetworkPacketBundle::_internal_packet_lengths_size() const {
+  return packet_lengths_.size();
+}
+inline int NetworkPacketBundle::packet_lengths_size() const {
+  return _internal_packet_lengths_size();
+}
+inline void NetworkPacketBundle::clear_packet_lengths() {
+  packet_lengths_.Clear();
+}
+inline uint32_t NetworkPacketBundle::_internal_packet_lengths(int index) const {
+  return packet_lengths_.Get(index);
+}
+inline uint32_t NetworkPacketBundle::packet_lengths(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.packet_lengths)
+  return _internal_packet_lengths(index);
+}
+inline void NetworkPacketBundle::set_packet_lengths(int index, uint32_t value) {
+  packet_lengths_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.packet_lengths)
+}
+inline void NetworkPacketBundle::_internal_add_packet_lengths(uint32_t value) {
+  packet_lengths_.Add(value);
+}
+inline void NetworkPacketBundle::add_packet_lengths(uint32_t value) {
+  _internal_add_packet_lengths(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.NetworkPacketBundle.packet_lengths)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+NetworkPacketBundle::_internal_packet_lengths() const {
+  return packet_lengths_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+NetworkPacketBundle::packet_lengths() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.NetworkPacketBundle.packet_lengths)
+  return _internal_packet_lengths();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+NetworkPacketBundle::_internal_mutable_packet_lengths() {
+  return &packet_lengths_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+NetworkPacketBundle::mutable_packet_lengths() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.NetworkPacketBundle.packet_lengths)
+  return _internal_mutable_packet_lengths();
+}
+
+// optional uint32 total_packets = 5;
+inline bool NetworkPacketBundle::_internal_has_total_packets() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool NetworkPacketBundle::has_total_packets() const {
+  return _internal_has_total_packets();
+}
+inline void NetworkPacketBundle::clear_total_packets() {
+  total_packets_ = 0u;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline uint32_t NetworkPacketBundle::_internal_total_packets() const {
+  return total_packets_;
+}
+inline uint32_t NetworkPacketBundle::total_packets() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.total_packets)
+  return _internal_total_packets();
+}
+inline void NetworkPacketBundle::_internal_set_total_packets(uint32_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  total_packets_ = value;
+}
+inline void NetworkPacketBundle::set_total_packets(uint32_t value) {
+  _internal_set_total_packets(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.total_packets)
+}
+
+// optional uint64 total_duration = 6;
+inline bool NetworkPacketBundle::_internal_has_total_duration() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NetworkPacketBundle::has_total_duration() const {
+  return _internal_has_total_duration();
+}
+inline void NetworkPacketBundle::clear_total_duration() {
+  total_duration_ = uint64_t{0u};
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline uint64_t NetworkPacketBundle::_internal_total_duration() const {
+  return total_duration_;
+}
+inline uint64_t NetworkPacketBundle::total_duration() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.total_duration)
+  return _internal_total_duration();
+}
+inline void NetworkPacketBundle::_internal_set_total_duration(uint64_t value) {
+  _has_bits_[0] |= 0x00000001u;
+  total_duration_ = value;
+}
+inline void NetworkPacketBundle::set_total_duration(uint64_t value) {
+  _internal_set_total_duration(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.total_duration)
+}
+
+// optional uint64 total_length = 7;
+inline bool NetworkPacketBundle::_internal_has_total_length() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NetworkPacketBundle::has_total_length() const {
+  return _internal_has_total_length();
+}
+inline void NetworkPacketBundle::clear_total_length() {
+  total_length_ = uint64_t{0u};
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline uint64_t NetworkPacketBundle::_internal_total_length() const {
+  return total_length_;
+}
+inline uint64_t NetworkPacketBundle::total_length() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketBundle.total_length)
+  return _internal_total_length();
+}
+inline void NetworkPacketBundle::_internal_set_total_length(uint64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  total_length_ = value;
+}
+inline void NetworkPacketBundle::set_total_length(uint64_t value) {
+  _internal_set_total_length(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketBundle.total_length)
+}
+
+inline bool NetworkPacketBundle::has_packet_context() const {
+  return packet_context_case() != PACKET_CONTEXT_NOT_SET;
+}
+inline void NetworkPacketBundle::clear_has_packet_context() {
+  _oneof_case_[0] = PACKET_CONTEXT_NOT_SET;
+}
+inline NetworkPacketBundle::PacketContextCase NetworkPacketBundle::packet_context_case() const {
+  return NetworkPacketBundle::PacketContextCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// NetworkPacketContext
+
+// optional uint64 iid = 1;
+inline bool NetworkPacketContext::_internal_has_iid() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NetworkPacketContext::has_iid() const {
+  return _internal_has_iid();
+}
+inline void NetworkPacketContext::clear_iid() {
+  iid_ = uint64_t{0u};
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline uint64_t NetworkPacketContext::_internal_iid() const {
+  return iid_;
+}
+inline uint64_t NetworkPacketContext::iid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketContext.iid)
+  return _internal_iid();
+}
+inline void NetworkPacketContext::_internal_set_iid(uint64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  iid_ = value;
+}
+inline void NetworkPacketContext::set_iid(uint64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketContext.iid)
+}
+
+// optional .perfetto.protos.NetworkPacketEvent ctx = 2;
+inline bool NetworkPacketContext::_internal_has_ctx() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || ctx_ != nullptr);
+  return value;
+}
+inline bool NetworkPacketContext::has_ctx() const {
+  return _internal_has_ctx();
+}
+inline void NetworkPacketContext::clear_ctx() {
+  if (ctx_ != nullptr) ctx_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::perfetto::protos::NetworkPacketEvent& NetworkPacketContext::_internal_ctx() const {
+  const ::perfetto::protos::NetworkPacketEvent* p = ctx_;
+  return p != nullptr ? *p : reinterpret_cast<const ::perfetto::protos::NetworkPacketEvent&>(
+      ::perfetto::protos::_NetworkPacketEvent_default_instance_);
+}
+inline const ::perfetto::protos::NetworkPacketEvent& NetworkPacketContext::ctx() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketContext.ctx)
+  return _internal_ctx();
+}
+inline void NetworkPacketContext::unsafe_arena_set_allocated_ctx(
+    ::perfetto::protos::NetworkPacketEvent* ctx) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(ctx_);
+  }
+  ctx_ = ctx;
+  if (ctx) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.NetworkPacketContext.ctx)
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketContext::release_ctx() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::perfetto::protos::NetworkPacketEvent* temp = ctx_;
+  ctx_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketContext::unsafe_arena_release_ctx() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.NetworkPacketContext.ctx)
+  _has_bits_[0] &= ~0x00000001u;
+  ::perfetto::protos::NetworkPacketEvent* temp = ctx_;
+  ctx_ = nullptr;
+  return temp;
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketContext::_internal_mutable_ctx() {
+  _has_bits_[0] |= 0x00000001u;
+  if (ctx_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perfetto::protos::NetworkPacketEvent>(GetArenaForAllocation());
+    ctx_ = p;
+  }
+  return ctx_;
+}
+inline ::perfetto::protos::NetworkPacketEvent* NetworkPacketContext::mutable_ctx() {
+  ::perfetto::protos::NetworkPacketEvent* _msg = _internal_mutable_ctx();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.NetworkPacketContext.ctx)
+  return _msg;
+}
+inline void NetworkPacketContext::set_allocated_ctx(::perfetto::protos::NetworkPacketEvent* ctx) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete ctx_;
+  }
+  if (ctx) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(ctx);
+    if (message_arena != submessage_arena) {
+      ctx = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, ctx, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  ctx_ = ctx;
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.NetworkPacketContext.ctx)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,7 +48,7 @@ bool JavaHprofConfig::ParseFromArray(const void* raw, size_t size) {
     switch (field.id()) {
       case 1 /* process_cmdline */:
         process_cmdline_.emplace_back();
-        field.get(&process_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &process_cmdline_.back());
         break;
       case 2 /* pid */:
         pid_.emplace_back();
@@ -55,7 +56,7 @@ bool JavaHprofConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 7 /* target_installed_by */:
         target_installed_by_.emplace_back();
-        field.get(&target_installed_by_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &target_installed_by_.back());
         break;
       case 3 /* continuous_dump_config */:
         (*continuous_dump_config_).ParseFromArray(field.data(), field.size());
@@ -68,7 +69,7 @@ bool JavaHprofConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 6 /* ignored_types */:
         ignored_types_.emplace_back();
-        field.get(&ignored_types_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &ignored_types_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -79,13 +80,13 @@ bool JavaHprofConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string JavaHprofConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> JavaHprofConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -93,17 +94,17 @@ std::vector<uint8_t> JavaHprofConfig::SerializeAsArray() const {
 void JavaHprofConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: process_cmdline
   for (auto& it : process_cmdline_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
   // Field 2: pid
   for (auto& it : pid_) {
-    msg->AppendVarInt(2, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, it, msg);
   }
 
   // Field 7: target_installed_by
   for (auto& it : target_installed_by_) {
-    msg->AppendString(7, it);
+    ::protozero::internal::gen_helpers::SerializeString(7, it, msg);
   }
 
   // Field 3: continuous_dump_config
@@ -113,20 +114,20 @@ void JavaHprofConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 4: min_anonymous_memory_kb
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, min_anonymous_memory_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, min_anonymous_memory_kb_, msg);
   }
 
   // Field 5: dump_smaps
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, dump_smaps_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, dump_smaps_, msg);
   }
 
   // Field 6: ignored_types
   for (auto& it : ignored_types_) {
-    msg->AppendString(6, it);
+    ::protozero::internal::gen_helpers::SerializeString(6, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -172,13 +173,13 @@ bool JavaHprofConfig_ContinuousDumpConfig::ParseFromArray(const void* raw, size_
 }
 
 std::string JavaHprofConfig_ContinuousDumpConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> JavaHprofConfig_ContinuousDumpConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -186,20 +187,20 @@ std::vector<uint8_t> JavaHprofConfig_ContinuousDumpConfig::SerializeAsArray() co
 void JavaHprofConfig_ContinuousDumpConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: dump_phase_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dump_phase_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dump_phase_ms_, msg);
   }
 
   // Field 2: dump_interval_ms
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dump_interval_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dump_interval_ms_, msg);
   }
 
   // Field 3: scan_pids_only_on_start
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, scan_pids_only_on_start_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, scan_pids_only_on_start_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

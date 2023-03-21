@@ -170,6 +170,8 @@ class BatteryCounters final :
     kChargeCounterUahFieldNumber = 1,
     kCurrentUaFieldNumber = 3,
     kCurrentAvgUaFieldNumber = 4,
+    kEnergyCounterUwhFieldNumber = 6,
+    kVoltageUvFieldNumber = 7,
     kCapacityPercentFieldNumber = 2,
   };
   // optional string name = 5;
@@ -229,6 +231,32 @@ class BatteryCounters final :
   void _internal_set_current_avg_ua(int64_t value);
   public:
 
+  // optional int64 energy_counter_uwh = 6;
+  bool has_energy_counter_uwh() const;
+  private:
+  bool _internal_has_energy_counter_uwh() const;
+  public:
+  void clear_energy_counter_uwh();
+  int64_t energy_counter_uwh() const;
+  void set_energy_counter_uwh(int64_t value);
+  private:
+  int64_t _internal_energy_counter_uwh() const;
+  void _internal_set_energy_counter_uwh(int64_t value);
+  public:
+
+  // optional int64 voltage_uv = 7;
+  bool has_voltage_uv() const;
+  private:
+  bool _internal_has_voltage_uv() const;
+  public:
+  void clear_voltage_uv();
+  int64_t voltage_uv() const;
+  void set_voltage_uv(int64_t value);
+  private:
+  int64_t _internal_voltage_uv() const;
+  void _internal_set_voltage_uv(int64_t value);
+  public:
+
   // optional float capacity_percent = 2;
   bool has_capacity_percent() const;
   private:
@@ -255,6 +283,8 @@ class BatteryCounters final :
   int64_t charge_counter_uah_;
   int64_t current_ua_;
   int64_t current_avg_ua_;
+  int64_t energy_counter_uwh_;
+  int64_t voltage_uv_;
   float capacity_percent_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fpower_2fbattery_5fcounters_2eproto;
 };
@@ -299,7 +329,7 @@ inline void BatteryCounters::set_charge_counter_uah(int64_t value) {
 
 // optional float capacity_percent = 2;
 inline bool BatteryCounters::_internal_has_capacity_percent() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool BatteryCounters::has_capacity_percent() const {
@@ -307,7 +337,7 @@ inline bool BatteryCounters::has_capacity_percent() const {
 }
 inline void BatteryCounters::clear_capacity_percent() {
   capacity_percent_ = 0;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline float BatteryCounters::_internal_capacity_percent() const {
   return capacity_percent_;
@@ -317,7 +347,7 @@ inline float BatteryCounters::capacity_percent() const {
   return _internal_capacity_percent();
 }
 inline void BatteryCounters::_internal_set_capacity_percent(float value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000040u;
   capacity_percent_ = value;
 }
 inline void BatteryCounters::set_capacity_percent(float value) {
@@ -447,6 +477,62 @@ inline void BatteryCounters::set_allocated_name(std::string* name) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.BatteryCounters.name)
+}
+
+// optional int64 energy_counter_uwh = 6;
+inline bool BatteryCounters::_internal_has_energy_counter_uwh() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool BatteryCounters::has_energy_counter_uwh() const {
+  return _internal_has_energy_counter_uwh();
+}
+inline void BatteryCounters::clear_energy_counter_uwh() {
+  energy_counter_uwh_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline int64_t BatteryCounters::_internal_energy_counter_uwh() const {
+  return energy_counter_uwh_;
+}
+inline int64_t BatteryCounters::energy_counter_uwh() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.BatteryCounters.energy_counter_uwh)
+  return _internal_energy_counter_uwh();
+}
+inline void BatteryCounters::_internal_set_energy_counter_uwh(int64_t value) {
+  _has_bits_[0] |= 0x00000010u;
+  energy_counter_uwh_ = value;
+}
+inline void BatteryCounters::set_energy_counter_uwh(int64_t value) {
+  _internal_set_energy_counter_uwh(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.BatteryCounters.energy_counter_uwh)
+}
+
+// optional int64 voltage_uv = 7;
+inline bool BatteryCounters::_internal_has_voltage_uv() const {
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool BatteryCounters::has_voltage_uv() const {
+  return _internal_has_voltage_uv();
+}
+inline void BatteryCounters::clear_voltage_uv() {
+  voltage_uv_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline int64_t BatteryCounters::_internal_voltage_uv() const {
+  return voltage_uv_;
+}
+inline int64_t BatteryCounters::voltage_uv() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.BatteryCounters.voltage_uv)
+  return _internal_voltage_uv();
+}
+inline void BatteryCounters::_internal_set_voltage_uv(int64_t value) {
+  _has_bits_[0] |= 0x00000020u;
+  voltage_uv_ = value;
+}
+inline void BatteryCounters::set_voltage_uv(int64_t value) {
+  _internal_set_voltage_uv(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.BatteryCounters.voltage_uv)
 }
 
 #ifdef __GNUC__

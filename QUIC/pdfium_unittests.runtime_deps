@@ -22,10 +22,8 @@ icudtl.dat
 ./libv8.so
 ./libv8_libbase.so
 ./libv8_libplatform.so
-./libthird_party_protobuf_protobuf_lite.so
-./libmirclient.so.9
 snapshot_blob.bin
 ./libcppgc.so
-../../testing/location_tags.json
 bin/run_pdfium_unittests
 ../../.vpython3
+../../testing/location_tags.json

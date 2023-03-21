@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,7 +48,7 @@ bool InodeFileMap::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* mount_points */:
         mount_points_.emplace_back();
-        field.get(&mount_points_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &mount_points_.back());
         break;
       case 3 /* entries */:
         entries_.emplace_back();
@@ -62,13 +63,13 @@ bool InodeFileMap::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InodeFileMap::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InodeFileMap::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -76,12 +77,12 @@ std::vector<uint8_t> InodeFileMap::SerializeAsArray() const {
 void InodeFileMap::Serialize(::protozero::Message* msg) const {
   // Field 1: block_device_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, block_device_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, block_device_id_, msg);
   }
 
   // Field 2: mount_points
   for (auto& it : mount_points_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: entries
@@ -89,7 +90,7 @@ void InodeFileMap::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -123,7 +124,7 @@ bool InodeFileMap_Entry::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* paths */:
         paths_.emplace_back();
-        field.get(&paths_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &paths_.back());
         break;
       case 3 /* type */:
         field.get(&type_);
@@ -137,13 +138,13 @@ bool InodeFileMap_Entry::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InodeFileMap_Entry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InodeFileMap_Entry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -151,20 +152,20 @@ std::vector<uint8_t> InodeFileMap_Entry::SerializeAsArray() const {
 void InodeFileMap_Entry::Serialize(::protozero::Message* msg) const {
   // Field 1: inode_number
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, inode_number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, inode_number_, msg);
   }
 
   // Field 2: paths
   for (auto& it : paths_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

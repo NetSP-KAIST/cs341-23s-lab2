@@ -121,6 +121,14 @@ enum QueueName : int32_t;
 }  // namespace perfetto_pbzero_enum_SequenceManagerTask
 using SequenceManagerTask_QueueName = perfetto_pbzero_enum_SequenceManagerTask::QueueName;
 enum ShouldSwapBrowsingInstance : int32_t;
+namespace perfetto_pbzero_enum_TabSwitchMeasurement {
+enum Result : int32_t;
+}  // namespace perfetto_pbzero_enum_TabSwitchMeasurement
+using TabSwitchMeasurement_Result = perfetto_pbzero_enum_TabSwitchMeasurement::Result;
+namespace perfetto_pbzero_enum_TabSwitchMeasurement {
+enum TabState : int32_t;
+}  // namespace perfetto_pbzero_enum_TabSwitchMeasurement
+using TabSwitchMeasurement_TabState = perfetto_pbzero_enum_TabSwitchMeasurement::TabState;
 
 enum ChromeAppState : int32_t {
   APP_STATE_FOREGROUND = 1,
@@ -331,6 +339,72 @@ const char* DeviceThermalState_Name(::perfetto::protos::pbzero::DeviceThermalSta
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
+namespace perfetto_pbzero_enum_TabSwitchMeasurement {
+enum Result : int32_t {
+  RESULT_UNSPECIFIED = 0,
+  RESULT_SUCCESS = 1,
+  RESULT_INCOMPLETE = 2,
+  RESULT_MISSED_TAB_HIDE = 3,
+};
+} // namespace perfetto_pbzero_enum_TabSwitchMeasurement
+using TabSwitchMeasurement_Result = perfetto_pbzero_enum_TabSwitchMeasurement::Result;
+
+
+constexpr TabSwitchMeasurement_Result TabSwitchMeasurement_Result_MIN = TabSwitchMeasurement_Result::RESULT_UNSPECIFIED;
+constexpr TabSwitchMeasurement_Result TabSwitchMeasurement_Result_MAX = TabSwitchMeasurement_Result::RESULT_MISSED_TAB_HIDE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* TabSwitchMeasurement_Result_Name(::perfetto::protos::pbzero::TabSwitchMeasurement_Result value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_Result::RESULT_UNSPECIFIED:
+    return "RESULT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_Result::RESULT_SUCCESS:
+    return "RESULT_SUCCESS";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_Result::RESULT_INCOMPLETE:
+    return "RESULT_INCOMPLETE";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_Result::RESULT_MISSED_TAB_HIDE:
+    return "RESULT_MISSED_TAB_HIDE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_TabSwitchMeasurement {
+enum TabState : int32_t {
+  STATE_UNSPECIFIED = 0,
+  STATE_WITH_SAVED_FRAMES = 1,
+  STATE_LOADED_NO_SAVED_FRAMES = 2,
+  STATE_NOT_LOADED_NO_SAVED_FRAMES = 3,
+};
+} // namespace perfetto_pbzero_enum_TabSwitchMeasurement
+using TabSwitchMeasurement_TabState = perfetto_pbzero_enum_TabSwitchMeasurement::TabState;
+
+
+constexpr TabSwitchMeasurement_TabState TabSwitchMeasurement_TabState_MIN = TabSwitchMeasurement_TabState::STATE_UNSPECIFIED;
+constexpr TabSwitchMeasurement_TabState TabSwitchMeasurement_TabState_MAX = TabSwitchMeasurement_TabState::STATE_NOT_LOADED_NO_SAVED_FRAMES;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* TabSwitchMeasurement_TabState_Name(::perfetto::protos::pbzero::TabSwitchMeasurement_TabState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState::STATE_UNSPECIFIED:
+    return "STATE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState::STATE_WITH_SAVED_FRAMES:
+    return "STATE_WITH_SAVED_FRAMES";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState::STATE_LOADED_NO_SAVED_FRAMES:
+    return "STATE_LOADED_NO_SAVED_FRAMES";
+
+  case ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState::STATE_NOT_LOADED_NO_SAVED_FRAMES:
+    return "STATE_NOT_LOADED_NO_SAVED_FRAMES";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
 namespace perfetto_pbzero_enum_BlinkHighEntropyAPI_JSFunctionArgument {
 enum ArgumentType : int32_t {
   UNKNOWN_TYPE = 0,
@@ -529,7 +603,7 @@ enum SnapshotDifference : int32_t {
   DIFF_NULL = 1,
   DIFF_TINT = 2,
   DIFF_TAB_COUNT = 3,
-  DIFF_OPTIONAL_BUTTON_DATA = 4,
+  DIFF_OPTIONAL_BUTTON = 4,
   DIFF_VISUAL_STATE = 5,
   DIFF_SECURITY_ICON = 6,
   DIFF_SHOWING_UPDATE_BADGE = 7,
@@ -537,16 +611,20 @@ enum SnapshotDifference : int32_t {
   DIFF_PROGRESS = 9,
   DIFF_LOCATION_BAR_WIDTH = 10,
   DIFF_URL_TEXT = 11,
-  DIFF_HOME_BUTTON_COLOR = 12,
+  DIFF_HOME_BUTTON = 12,
   DIFF_TITLE_TEXT = 13,
   DIFF_CCT_ANIMATION = 14,
+  DIFF_BOOKMARK_BUTTON = 15,
+  DIFF_BACK_BUTTON = 16,
+  DIFF_FORWARD_BUTTON = 17,
+  DIFF_RELOAD_BUTTON = 18,
 };
 } // namespace perfetto_pbzero_enum_AndroidToolbar
 using AndroidToolbar_SnapshotDifference = perfetto_pbzero_enum_AndroidToolbar::SnapshotDifference;
 
 
 constexpr AndroidToolbar_SnapshotDifference AndroidToolbar_SnapshotDifference_MIN = AndroidToolbar_SnapshotDifference::DIFF_NONE;
-constexpr AndroidToolbar_SnapshotDifference AndroidToolbar_SnapshotDifference_MAX = AndroidToolbar_SnapshotDifference::DIFF_CCT_ANIMATION;
+constexpr AndroidToolbar_SnapshotDifference AndroidToolbar_SnapshotDifference_MAX = AndroidToolbar_SnapshotDifference::DIFF_RELOAD_BUTTON;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -564,8 +642,8 @@ const char* AndroidToolbar_SnapshotDifference_Name(::perfetto::protos::pbzero::A
   case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_TAB_COUNT:
     return "DIFF_TAB_COUNT";
 
-  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_OPTIONAL_BUTTON_DATA:
-    return "DIFF_OPTIONAL_BUTTON_DATA";
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_OPTIONAL_BUTTON:
+    return "DIFF_OPTIONAL_BUTTON";
 
   case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_VISUAL_STATE:
     return "DIFF_VISUAL_STATE";
@@ -588,14 +666,26 @@ const char* AndroidToolbar_SnapshotDifference_Name(::perfetto::protos::pbzero::A
   case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_URL_TEXT:
     return "DIFF_URL_TEXT";
 
-  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_HOME_BUTTON_COLOR:
-    return "DIFF_HOME_BUTTON_COLOR";
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_HOME_BUTTON:
+    return "DIFF_HOME_BUTTON";
 
   case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_TITLE_TEXT:
     return "DIFF_TITLE_TEXT";
 
   case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_CCT_ANIMATION:
     return "DIFF_CCT_ANIMATION";
+
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_BOOKMARK_BUTTON:
+    return "DIFF_BOOKMARK_BUTTON";
+
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_BACK_BUTTON:
+    return "DIFF_BACK_BUTTON";
+
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_FORWARD_BUTTON:
+    return "DIFF_FORWARD_BUTTON";
+
+  case ::perfetto::protos::pbzero::AndroidToolbar_SnapshotDifference::DIFF_RELOAD_BUTTON:
+    return "DIFF_RELOAD_BUTTON";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -610,13 +700,16 @@ enum Priority : int32_t {
   NORMAL_PRIORITY = 5,
   LOW_PRIORITY = 6,
   BEST_EFFORT_PRIORITY = 7,
+  HIGH_PRIORITY_CONTINUATION = 8,
+  NORMAL_PRIORITY_CONTINUATION = 9,
+  LOW_PRIORITY_CONTINUATION = 10,
 };
 } // namespace perfetto_pbzero_enum_SequenceManagerTask
 using SequenceManagerTask_Priority = perfetto_pbzero_enum_SequenceManagerTask::Priority;
 
 
 constexpr SequenceManagerTask_Priority SequenceManagerTask_Priority_MIN = SequenceManagerTask_Priority::UNKNOWN;
-constexpr SequenceManagerTask_Priority SequenceManagerTask_Priority_MAX = SequenceManagerTask_Priority::BEST_EFFORT_PRIORITY;
+constexpr SequenceManagerTask_Priority SequenceManagerTask_Priority_MAX = SequenceManagerTask_Priority::LOW_PRIORITY_CONTINUATION;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -645,6 +738,15 @@ const char* SequenceManagerTask_Priority_Name(::perfetto::protos::pbzero::Sequen
 
   case ::perfetto::protos::pbzero::SequenceManagerTask_Priority::BEST_EFFORT_PRIORITY:
     return "BEST_EFFORT_PRIORITY";
+
+  case ::perfetto::protos::pbzero::SequenceManagerTask_Priority::HIGH_PRIORITY_CONTINUATION:
+    return "HIGH_PRIORITY_CONTINUATION";
+
+  case ::perfetto::protos::pbzero::SequenceManagerTask_Priority::NORMAL_PRIORITY_CONTINUATION:
+    return "NORMAL_PRIORITY_CONTINUATION";
+
+  case ::perfetto::protos::pbzero::SequenceManagerTask_Priority::LOW_PRIORITY_CONTINUATION:
+    return "LOW_PRIORITY_CONTINUATION";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -1963,13 +2065,14 @@ enum TaskScopeType : int32_t {
   TASK_SCOPE_SCRIPT_EXECUTION = 3,
   TASK_SCOPE_POST_MESSAGE = 4,
   TASK_SCOPE_POP_STATE = 5,
+  TASK_SCOPE_SCHEDULER_POST_TASK = 6,
 };
 } // namespace perfetto_pbzero_enum_BlinkTaskScope
 using BlinkTaskScope_TaskScopeType = perfetto_pbzero_enum_BlinkTaskScope::TaskScopeType;
 
 
 constexpr BlinkTaskScope_TaskScopeType BlinkTaskScope_TaskScopeType_MIN = BlinkTaskScope_TaskScopeType::TASK_SCOPE_UNKNOWN;
-constexpr BlinkTaskScope_TaskScopeType BlinkTaskScope_TaskScopeType_MAX = BlinkTaskScope_TaskScopeType::TASK_SCOPE_POP_STATE;
+constexpr BlinkTaskScope_TaskScopeType BlinkTaskScope_TaskScopeType_MAX = BlinkTaskScope_TaskScopeType::TASK_SCOPE_SCHEDULER_POST_TASK;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -1992,9 +2095,510 @@ const char* BlinkTaskScope_TaskScopeType_Name(::perfetto::protos::pbzero::BlinkT
 
   case ::perfetto::protos::pbzero::BlinkTaskScope_TaskScopeType::TASK_SCOPE_POP_STATE:
     return "TASK_SCOPE_POP_STATE";
+
+  case ::perfetto::protos::pbzero::BlinkTaskScope_TaskScopeType::TASK_SCOPE_SCHEDULER_POST_TASK:
+    return "TASK_SCOPE_SCHEDULER_POST_TASK";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
+
+class ScrollDeltas_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/14, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+ public:
+  ScrollDeltas_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit ScrollDeltas_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit ScrollDeltas_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_trace_id() const { return at<1>().valid(); }
+  int64_t trace_id() const { return at<1>().as_int64(); }
+  bool has_original_delta_x() const { return at<2>().valid(); }
+  float original_delta_x() const { return at<2>().as_float(); }
+  bool has_original_delta_y() const { return at<3>().valid(); }
+  float original_delta_y() const { return at<3>().as_float(); }
+  bool has_coalesced_to_trace_id() const { return at<4>().valid(); }
+  int64_t coalesced_to_trace_id() const { return at<4>().as_int64(); }
+  bool has_provided_to_compositor_delta_x() const { return at<5>().valid(); }
+  float provided_to_compositor_delta_x() const { return at<5>().as_float(); }
+  bool has_provided_to_compositor_delta_y() const { return at<6>().valid(); }
+  float provided_to_compositor_delta_y() const { return at<6>().as_float(); }
+  bool has_visual_offset_x() const { return at<7>().valid(); }
+  int64_t visual_offset_x() const { return at<7>().as_int64(); }
+  bool has_visual_offset_y() const { return at<8>().valid(); }
+  int64_t visual_offset_y() const { return at<8>().as_int64(); }
+  bool has_event_count_in_gpu_frame() const { return at<9>().valid(); }
+  int32_t event_count_in_gpu_frame() const { return at<9>().as_int32(); }
+  bool has_trace_ids_in_gpu_frame() const { return at<10>().valid(); }
+  ::protozero::RepeatedFieldIterator<int64_t> trace_ids_in_gpu_frame() const { return GetRepeated<int64_t>(10); }
+  bool has_original_delta_in_gpu_frame_y() const { return at<11>().valid(); }
+  float original_delta_in_gpu_frame_y() const { return at<11>().as_float(); }
+  bool has_predicted_delta_in_gpu_frame_y() const { return at<12>().valid(); }
+  float predicted_delta_in_gpu_frame_y() const { return at<12>().as_float(); }
+  bool has_segregated_original_deltas_in_gpu_frame_y() const { return at<13>().valid(); }
+  ::protozero::RepeatedFieldIterator<float> segregated_original_deltas_in_gpu_frame_y() const { return GetRepeated<float>(13); }
+  bool has_segregated_predicted_deltas_in_gpu_frame_y() const { return at<14>().valid(); }
+  ::protozero::RepeatedFieldIterator<float> segregated_predicted_deltas_in_gpu_frame_y() const { return GetRepeated<float>(14); }
+};
+
+class ScrollDeltas : public ::protozero::Message {
+ public:
+  using Decoder = ScrollDeltas_Decoder;
+  enum : int32_t {
+    kTraceIdFieldNumber = 1,
+    kOriginalDeltaXFieldNumber = 2,
+    kOriginalDeltaYFieldNumber = 3,
+    kCoalescedToTraceIdFieldNumber = 4,
+    kProvidedToCompositorDeltaXFieldNumber = 5,
+    kProvidedToCompositorDeltaYFieldNumber = 6,
+    kVisualOffsetXFieldNumber = 7,
+    kVisualOffsetYFieldNumber = 8,
+    kEventCountInGpuFrameFieldNumber = 9,
+    kTraceIdsInGpuFrameFieldNumber = 10,
+    kOriginalDeltaInGpuFrameYFieldNumber = 11,
+    kPredictedDeltaInGpuFrameYFieldNumber = 12,
+    kSegregatedOriginalDeltasInGpuFrameYFieldNumber = 13,
+    kSegregatedPredictedDeltasInGpuFrameYFieldNumber = 14,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.ScrollDeltas"; }
+
+
+  using FieldMetadata_TraceId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TraceId kTraceId() { return {}; }
+  void set_trace_id(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TraceId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_OriginalDeltaX =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_OriginalDeltaX kOriginalDeltaX() { return {}; }
+  void set_original_delta_x(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_OriginalDeltaX::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_OriginalDeltaY =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_OriginalDeltaY kOriginalDeltaY() { return {}; }
+  void set_original_delta_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_OriginalDeltaY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CoalescedToTraceId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_CoalescedToTraceId kCoalescedToTraceId() { return {}; }
+  void set_coalesced_to_trace_id(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CoalescedToTraceId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ProvidedToCompositorDeltaX =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ProvidedToCompositorDeltaX kProvidedToCompositorDeltaX() { return {}; }
+  void set_provided_to_compositor_delta_x(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProvidedToCompositorDeltaX::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ProvidedToCompositorDeltaY =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ProvidedToCompositorDeltaY kProvidedToCompositorDeltaY() { return {}; }
+  void set_provided_to_compositor_delta_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProvidedToCompositorDeltaY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_VisualOffsetX =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_VisualOffsetX kVisualOffsetX() { return {}; }
+  void set_visual_offset_x(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_VisualOffsetX::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_VisualOffsetY =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_VisualOffsetY kVisualOffsetY() { return {}; }
+  void set_visual_offset_y(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_VisualOffsetY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_EventCountInGpuFrame =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_EventCountInGpuFrame kEventCountInGpuFrame() { return {}; }
+  void set_event_count_in_gpu_frame(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_EventCountInGpuFrame::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TraceIdsInGpuFrame =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TraceIdsInGpuFrame kTraceIdsInGpuFrame() { return {}; }
+  void add_trace_ids_in_gpu_frame(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TraceIdsInGpuFrame::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_OriginalDeltaInGpuFrameY =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_OriginalDeltaInGpuFrameY kOriginalDeltaInGpuFrameY() { return {}; }
+  void set_original_delta_in_gpu_frame_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_OriginalDeltaInGpuFrameY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PredictedDeltaInGpuFrameY =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PredictedDeltaInGpuFrameY kPredictedDeltaInGpuFrameY() { return {}; }
+  void set_predicted_delta_in_gpu_frame_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_PredictedDeltaInGpuFrameY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SegregatedOriginalDeltasInGpuFrameY =
+    ::protozero::proto_utils::FieldMetadata<
+      13,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_SegregatedOriginalDeltasInGpuFrameY kSegregatedOriginalDeltasInGpuFrameY() { return {}; }
+  void add_segregated_original_deltas_in_gpu_frame_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_SegregatedOriginalDeltasInGpuFrameY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SegregatedPredictedDeltasInGpuFrameY =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      ScrollDeltas>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_SegregatedPredictedDeltasInGpuFrameY kSegregatedPredictedDeltasInGpuFrameY() { return {}; }
+  void add_segregated_predicted_deltas_in_gpu_frame_y(float value) {
+    static constexpr uint32_t field_id = FieldMetadata_SegregatedPredictedDeltasInGpuFrameY::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class TabSwitchMeasurement_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  TabSwitchMeasurement_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TabSwitchMeasurement_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TabSwitchMeasurement_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_result() const { return at<1>().valid(); }
+  int32_t result() const { return at<1>().as_int32(); }
+  bool has_tab_state() const { return at<2>().valid(); }
+  int32_t tab_state() const { return at<2>().as_int32(); }
+};
+
+class TabSwitchMeasurement : public ::protozero::Message {
+ public:
+  using Decoder = TabSwitchMeasurement_Decoder;
+  enum : int32_t {
+    kResultFieldNumber = 1,
+    kTabStateFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.TabSwitchMeasurement"; }
+
+
+  using Result = ::perfetto::protos::pbzero::TabSwitchMeasurement_Result;
+  static inline const char* Result_Name(Result value) {
+    return ::perfetto::protos::pbzero::TabSwitchMeasurement_Result_Name(value);
+  }
+
+  using TabState = ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState;
+  static inline const char* TabState_Name(TabState value) {
+    return ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState_Name(value);
+  }
+  static const Result RESULT_UNSPECIFIED = Result::RESULT_UNSPECIFIED;
+  static const Result RESULT_SUCCESS = Result::RESULT_SUCCESS;
+  static const Result RESULT_INCOMPLETE = Result::RESULT_INCOMPLETE;
+  static const Result RESULT_MISSED_TAB_HIDE = Result::RESULT_MISSED_TAB_HIDE;
+  static const TabState STATE_UNSPECIFIED = TabState::STATE_UNSPECIFIED;
+  static const TabState STATE_WITH_SAVED_FRAMES = TabState::STATE_WITH_SAVED_FRAMES;
+  static const TabState STATE_LOADED_NO_SAVED_FRAMES = TabState::STATE_LOADED_NO_SAVED_FRAMES;
+  static const TabState STATE_NOT_LOADED_NO_SAVED_FRAMES = TabState::STATE_NOT_LOADED_NO_SAVED_FRAMES;
+
+  using FieldMetadata_Result =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::TabSwitchMeasurement_Result,
+      TabSwitchMeasurement>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Result kResult() { return {}; }
+  void set_result(::perfetto::protos::pbzero::TabSwitchMeasurement_Result value) {
+    static constexpr uint32_t field_id = FieldMetadata_Result::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TabState =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::TabSwitchMeasurement_TabState,
+      TabSwitchMeasurement>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TabState kTabState() { return {}; }
+  void set_tab_state(::perfetto::protos::pbzero::TabSwitchMeasurement_TabState value) {
+    static constexpr uint32_t field_id = FieldMetadata_TabState::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class BlinkHighEntropyAPI_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -3046,7 +3650,7 @@ class AndroidToolbar : public ::protozero::Message {
   static const SnapshotDifference DIFF_NULL = SnapshotDifference::DIFF_NULL;
   static const SnapshotDifference DIFF_TINT = SnapshotDifference::DIFF_TINT;
   static const SnapshotDifference DIFF_TAB_COUNT = SnapshotDifference::DIFF_TAB_COUNT;
-  static const SnapshotDifference DIFF_OPTIONAL_BUTTON_DATA = SnapshotDifference::DIFF_OPTIONAL_BUTTON_DATA;
+  static const SnapshotDifference DIFF_OPTIONAL_BUTTON = SnapshotDifference::DIFF_OPTIONAL_BUTTON;
   static const SnapshotDifference DIFF_VISUAL_STATE = SnapshotDifference::DIFF_VISUAL_STATE;
   static const SnapshotDifference DIFF_SECURITY_ICON = SnapshotDifference::DIFF_SECURITY_ICON;
   static const SnapshotDifference DIFF_SHOWING_UPDATE_BADGE = SnapshotDifference::DIFF_SHOWING_UPDATE_BADGE;
@@ -3054,9 +3658,13 @@ class AndroidToolbar : public ::protozero::Message {
   static const SnapshotDifference DIFF_PROGRESS = SnapshotDifference::DIFF_PROGRESS;
   static const SnapshotDifference DIFF_LOCATION_BAR_WIDTH = SnapshotDifference::DIFF_LOCATION_BAR_WIDTH;
   static const SnapshotDifference DIFF_URL_TEXT = SnapshotDifference::DIFF_URL_TEXT;
-  static const SnapshotDifference DIFF_HOME_BUTTON_COLOR = SnapshotDifference::DIFF_HOME_BUTTON_COLOR;
+  static const SnapshotDifference DIFF_HOME_BUTTON = SnapshotDifference::DIFF_HOME_BUTTON;
   static const SnapshotDifference DIFF_TITLE_TEXT = SnapshotDifference::DIFF_TITLE_TEXT;
   static const SnapshotDifference DIFF_CCT_ANIMATION = SnapshotDifference::DIFF_CCT_ANIMATION;
+  static const SnapshotDifference DIFF_BOOKMARK_BUTTON = SnapshotDifference::DIFF_BOOKMARK_BUTTON;
+  static const SnapshotDifference DIFF_BACK_BUTTON = SnapshotDifference::DIFF_BACK_BUTTON;
+  static const SnapshotDifference DIFF_FORWARD_BUTTON = SnapshotDifference::DIFF_FORWARD_BUTTON;
+  static const SnapshotDifference DIFF_RELOAD_BUTTON = SnapshotDifference::DIFF_RELOAD_BUTTON;
 
   using FieldMetadata_BlockCaptureReason =
     ::protozero::proto_utils::FieldMetadata<
@@ -3172,6 +3780,9 @@ class SequenceManagerTask : public ::protozero::Message {
   static const Priority NORMAL_PRIORITY = Priority::NORMAL_PRIORITY;
   static const Priority LOW_PRIORITY = Priority::LOW_PRIORITY;
   static const Priority BEST_EFFORT_PRIORITY = Priority::BEST_EFFORT_PRIORITY;
+  static const Priority HIGH_PRIORITY_CONTINUATION = Priority::HIGH_PRIORITY_CONTINUATION;
+  static const Priority NORMAL_PRIORITY_CONTINUATION = Priority::NORMAL_PRIORITY_CONTINUATION;
+  static const Priority LOW_PRIORITY_CONTINUATION = Priority::LOW_PRIORITY_CONTINUATION;
   static const QueueName UNKNOWN_TQ = QueueName::UNKNOWN_TQ;
   static const QueueName DEFAULT_TQ = QueueName::DEFAULT_TQ;
   static const QueueName TASK_ENVIRONMENT_DEFAULT_TQ = QueueName::TASK_ENVIRONMENT_DEFAULT_TQ;
@@ -6622,7 +7233,7 @@ class ChildProcessLauncherPriority : public ::protozero::Message {
   }
 };
 
-class RenderProcessHostCleanup_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class RenderProcessHostCleanup_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   RenderProcessHostCleanup_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit RenderProcessHostCleanup_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -6635,6 +7246,8 @@ class RenderProcessHostCleanup_Decoder : public ::protozero::TypedProtoDecoder</
   uint32_t shutdown_delay_ref_count() const { return at<3>().as_uint32(); }
   bool has_worker_ref_count() const { return at<4>().valid(); }
   uint32_t worker_ref_count() const { return at<4>().as_uint32(); }
+  bool has_pending_reuse_ref_count() const { return at<5>().valid(); }
+  uint32_t pending_reuse_ref_count() const { return at<5>().as_uint32(); }
 };
 
 class RenderProcessHostCleanup : public ::protozero::Message {
@@ -6645,6 +7258,7 @@ class RenderProcessHostCleanup : public ::protozero::Message {
     kKeepAliveRefCountFieldNumber = 2,
     kShutdownDelayRefCountFieldNumber = 3,
     kWorkerRefCountFieldNumber = 4,
+    kPendingReuseRefCountFieldNumber = 5,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.RenderProcessHostCleanup"; }
 
@@ -6742,6 +7356,31 @@ class RenderProcessHostCleanup : public ::protozero::Message {
   static constexpr FieldMetadata_WorkerRefCount kWorkerRefCount() { return {}; }
   void set_worker_ref_count(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_WorkerRefCount::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PendingReuseRefCount =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      RenderProcessHostCleanup>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PendingReuseRefCount kPendingReuseRefCount() { return {}; }
+  void set_pending_reuse_ref_count(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_PendingReuseRefCount::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -8682,6 +9321,7 @@ class BlinkTaskScope : public ::protozero::Message {
   static const TaskScopeType TASK_SCOPE_SCRIPT_EXECUTION = TaskScopeType::TASK_SCOPE_SCRIPT_EXECUTION;
   static const TaskScopeType TASK_SCOPE_POST_MESSAGE = TaskScopeType::TASK_SCOPE_POST_MESSAGE;
   static const TaskScopeType TASK_SCOPE_POP_STATE = TaskScopeType::TASK_SCOPE_POP_STATE;
+  static const TaskScopeType TASK_SCOPE_SCHEDULER_POST_TASK = TaskScopeType::TASK_SCOPE_SCHEDULER_POST_TASK;
 
   using FieldMetadata_Type =
     ::protozero::proto_utils::FieldMetadata<
@@ -9855,6 +10495,48 @@ class ChromeTrackEvent : public ::perfetto::protos::pbzero::TrackEvent {
   static constexpr FieldMetadata_HighEntropyApi kHighEntropyApi() { return {}; }
   template <typename T = BlinkHighEntropyAPI> T* set_high_entropy_api() {
     return BeginNestedMessage<T>(1045);
+  }
+
+
+  using FieldMetadata_TabSwitchMeasurement =
+    ::protozero::proto_utils::FieldMetadata<
+      1046,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TabSwitchMeasurement,
+      ChromeTrackEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TabSwitchMeasurement kTabSwitchMeasurement() { return {}; }
+  template <typename T = TabSwitchMeasurement> T* set_tab_switch_measurement() {
+    return BeginNestedMessage<T>(1046);
+  }
+
+
+  using FieldMetadata_ScrollDeltas =
+    ::protozero::proto_utils::FieldMetadata<
+      1047,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ScrollDeltas,
+      ChromeTrackEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ScrollDeltas kScrollDeltas() { return {}; }
+  template <typename T = ScrollDeltas> T* set_scroll_deltas() {
+    return BeginNestedMessage<T>(1047);
   }
 
 };

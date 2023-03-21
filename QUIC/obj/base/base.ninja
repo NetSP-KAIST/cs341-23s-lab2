@@ -1,13 +1,13 @@
-defines = -DBASE_IMPLEMENTATION -DUSE_SYMBOLIZE -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DBASE_USE_PERFETTO_CLIENT_LIBRARY=1 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DGLOG_EXPORT= -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+defines = -DBASE_IMPLEMENTATION -DIS_RAW_PTR_IMPL -DUSE_SYMBOLIZE -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DGLOG_EXPORT= -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
 include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
-cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wshorten-64-to-32 -Wimplicit-int-conversion -Wsign-compare -Wsign-conversion -Wtautological-unsigned-zero-compare -Wexit-time-destructors -Wglobal-constructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wshorten-64-to-32 -Wimplicit-int-conversion -Wsign-compare -Wsign-conversion -Wtautological-unsigned-zero-compare -Wexit-time-destructors -Wglobal-constructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
 cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
 cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
 label_name = base
 target_out_dir = obj/base
 target_output_name = libbase
 
-build obj/base/base.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/parsing_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/build/rust/rust_buildflags.stamp obj/third_party/icu/icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/base/base.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
 build obj/base/base/allocator_check.o: cxx ../../base/allocator/allocator_check.cc || obj/base/base.inputdeps.stamp
   source_file_part = allocator_check.cc
   source_name_part = allocator_check
@@ -41,9 +41,6 @@ build obj/base/base/base64url.o: cxx ../../base/base64url.cc || obj/base/base.in
 build obj/base/base/big_endian.o: cxx ../../base/big_endian.cc || obj/base/base.inputdeps.stamp
   source_file_part = big_endian.cc
   source_name_part = big_endian
-build obj/base/base/build_time.o: cxx ../../base/build_time.cc || obj/base/base.inputdeps.stamp
-  source_file_part = build_time.cc
-  source_name_part = build_time
 build obj/base/base/callback_list.o: cxx ../../base/callback_list.cc || obj/base/base.inputdeps.stamp
   source_file_part = callback_list.cc
   source_name_part = callback_list
@@ -68,18 +65,9 @@ build obj/base/base/intrusive_heap.o: cxx ../../base/containers/intrusive_heap.c
 build obj/base/base/linked_list.o: cxx ../../base/containers/linked_list.cc || obj/base/base.inputdeps.stamp
   source_file_part = linked_list.cc
   source_name_part = linked_list
-build obj/base/base/cpu.o: cxx ../../base/cpu.cc || obj/base/base.inputdeps.stamp
-  source_file_part = cpu.cc
-  source_name_part = cpu
 build obj/base/base/cpu_reduction_experiment.o: cxx ../../base/cpu_reduction_experiment.cc || obj/base/base.inputdeps.stamp
   source_file_part = cpu_reduction_experiment.cc
   source_name_part = cpu_reduction_experiment
-build obj/base/base/activity_analyzer.o: cxx ../../base/debug/activity_analyzer.cc || obj/base/base.inputdeps.stamp
-  source_file_part = activity_analyzer.cc
-  source_name_part = activity_analyzer
-build obj/base/base/activity_tracker.o: cxx ../../base/debug/activity_tracker.cc || obj/base/base.inputdeps.stamp
-  source_file_part = activity_tracker.cc
-  source_name_part = activity_tracker
 build obj/base/base/alias.o: cxx ../../base/debug/alias.cc || obj/base/base.inputdeps.stamp
   source_file_part = alias.cc
   source_name_part = alias
@@ -92,9 +80,6 @@ build obj/base/base/asan_service.o: cxx ../../base/debug/asan_service.cc || obj/
 build obj/base/base/buffered_dwarf_reader.o: cxx ../../base/debug/buffered_dwarf_reader.cc || obj/base/base.inputdeps.stamp
   source_file_part = buffered_dwarf_reader.cc
   source_name_part = buffered_dwarf_reader
-build obj/base/base/crash_logging.o: cxx ../../base/debug/crash_logging.cc || obj/base/base.inputdeps.stamp
-  source_file_part = crash_logging.cc
-  source_name_part = crash_logging
 build obj/base/base/debugger.o: cxx ../../base/debug/debugger.cc || obj/base/base.inputdeps.stamp
   source_file_part = debugger.cc
   source_name_part = debugger
@@ -107,9 +92,6 @@ build obj/base/base/dwarf_line_no.o: cxx ../../base/debug/dwarf_line_no.cc || ob
 build obj/base/base/profiler.o: cxx ../../base/debug/profiler.cc || obj/base/base.inputdeps.stamp
   source_file_part = profiler.cc
   source_name_part = profiler
-build obj/base/base/stack_trace.o: cxx ../../base/debug/stack_trace.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_trace.cc
-  source_name_part = stack_trace
 build obj/base/base/task_trace.o: cxx ../../base/debug/task_trace.cc || obj/base/base.inputdeps.stamp
   source_file_part = task_trace.cc
   source_name_part = task_trace
@@ -122,36 +104,15 @@ build obj/base/base/feature_list.o: cxx ../../base/feature_list.cc || obj/base/b
 build obj/base/base/features.o: cxx ../../base/features.cc || obj/base/base.inputdeps.stamp
   source_file_part = features.cc
   source_name_part = features
-build obj/base/base/file_descriptor_store.o: cxx ../../base/file_descriptor_store.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_descriptor_store.cc
-  source_name_part = file_descriptor_store
 build obj/base/base/file.o: cxx ../../base/files/file.cc || obj/base/base.inputdeps.stamp
   source_file_part = file.cc
   source_name_part = file
-build obj/base/base/file_enumerator.o: cxx ../../base/files/file_enumerator.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_enumerator.cc
-  source_name_part = file_enumerator
 build obj/base/base/file_path.o: cxx ../../base/files/file_path.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_path.cc
   source_name_part = file_path
-build obj/base/base/file_path_watcher.o: cxx ../../base/files/file_path_watcher.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_path_watcher.cc
-  source_name_part = file_path_watcher
-build obj/base/base/file_proxy.o: cxx ../../base/files/file_proxy.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_proxy.cc
-  source_name_part = file_proxy
 build obj/base/base/file_tracing.o: cxx ../../base/files/file_tracing.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_tracing.cc
   source_name_part = file_tracing
-build obj/base/base/file_util.o: cxx ../../base/files/file_util.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_util.cc
-  source_name_part = file_util
-build obj/base/base/important_file_writer.o: cxx ../../base/files/important_file_writer.cc || obj/base/base.inputdeps.stamp
-  source_file_part = important_file_writer.cc
-  source_name_part = important_file_writer
-build obj/base/base/important_file_writer_cleaner.o: cxx ../../base/files/important_file_writer_cleaner.cc || obj/base/base.inputdeps.stamp
-  source_file_part = important_file_writer_cleaner.cc
-  source_name_part = important_file_writer_cleaner
 build obj/base/base/memory_mapped_file.o: cxx ../../base/files/memory_mapped_file.cc || obj/base/base.inputdeps.stamp
   source_file_part = memory_mapped_file.cc
   source_name_part = memory_mapped_file
@@ -161,9 +122,6 @@ build obj/base/base/safe_base_name.o: cxx ../../base/files/safe_base_name.cc || 
 build obj/base/base/scoped_file.o: cxx ../../base/files/scoped_file.cc || obj/base/base.inputdeps.stamp
   source_file_part = scoped_file.cc
   source_name_part = scoped_file
-build obj/base/base/scoped_temp_dir.o: cxx ../../base/files/scoped_temp_dir.cc || obj/base/base.inputdeps.stamp
-  source_file_part = scoped_temp_dir.cc
-  source_name_part = scoped_temp_dir
 build obj/base/base/callback_helpers.o: cxx ../../base/functional/callback_helpers.cc || obj/base/base.inputdeps.stamp
   source_file_part = callback_helpers.cc
   source_name_part = callback_helpers
@@ -179,9 +137,6 @@ build obj/base/base/hash.o: cxx ../../base/hash/hash.cc || obj/base/base.inputde
 build obj/base/base/legacy_hash.o: cxx ../../base/hash/legacy_hash.cc || obj/base/base.inputdeps.stamp
   source_file_part = legacy_hash.cc
   source_name_part = legacy_hash
-build obj/base/base/json_file_value_serializer.o: cxx ../../base/json/json_file_value_serializer.cc || obj/base/base.inputdeps.stamp
-  source_file_part = json_file_value_serializer.cc
-  source_name_part = json_file_value_serializer
 build obj/base/base/json_parser.o: cxx ../../base/json/json_parser.cc || obj/base/base.inputdeps.stamp
   source_file_part = json_parser.cc
   source_name_part = json_parser
@@ -218,15 +173,6 @@ build obj/base/base/logging.o: cxx ../../base/logging.cc || obj/base/base.inputd
 build obj/base/base/aligned_memory.o: cxx ../../base/memory/aligned_memory.cc || obj/base/base.inputdeps.stamp
   source_file_part = aligned_memory.cc
   source_name_part = aligned_memory
-build obj/base/base/discardable_memory.o: cxx ../../base/memory/discardable_memory.cc || obj/base/base.inputdeps.stamp
-  source_file_part = discardable_memory.cc
-  source_name_part = discardable_memory
-build obj/base/base/discardable_memory_allocator.o: cxx ../../base/memory/discardable_memory_allocator.cc || obj/base/base.inputdeps.stamp
-  source_file_part = discardable_memory_allocator.cc
-  source_name_part = discardable_memory_allocator
-build obj/base/base/discardable_shared_memory.o: cxx ../../base/memory/discardable_shared_memory.cc || obj/base/base.inputdeps.stamp
-  source_file_part = discardable_shared_memory.cc
-  source_name_part = discardable_shared_memory
 build obj/base/base/memory_pressure_listener.o: cxx ../../base/memory/memory_pressure_listener.cc || obj/base/base.inputdeps.stamp
   source_file_part = memory_pressure_listener.cc
   source_name_part = memory_pressure_listener
@@ -290,9 +236,6 @@ build obj/base/base/message_pump.o: cxx ../../base/message_loop/message_pump.cc 
 build obj/base/base/message_pump_default.o: cxx ../../base/message_loop/message_pump_default.cc || obj/base/base.inputdeps.stamp
   source_file_part = message_pump_default.cc
   source_name_part = message_pump_default
-build obj/base/base/message_pump_glib.o: cxx ../../base/message_loop/message_pump_glib.cc || obj/base/base.inputdeps.stamp
-  source_file_part = message_pump_glib.cc
-  source_name_part = message_pump_glib
 build obj/base/base/work_id_provider.o: cxx ../../base/message_loop/work_id_provider.cc || obj/base/base.inputdeps.stamp
   source_file_part = work_id_provider.cc
   source_name_part = work_id_provider
@@ -365,9 +308,6 @@ build obj/base/base/statistics_recorder.o: cxx ../../base/metrics/statistics_rec
 build obj/base/base/user_metrics.o: cxx ../../base/metrics/user_metrics.cc || obj/base/base.inputdeps.stamp
   source_file_part = user_metrics.cc
   source_name_part = user_metrics
-build obj/base/base/native_library.o: cxx ../../base/native_library.cc || obj/base/base.inputdeps.stamp
-  source_file_part = native_library.cc
-  source_name_part = native_library
 build obj/base/base/observer_list_internal.o: cxx ../../base/observer_list_internal.cc || obj/base/base.inputdeps.stamp
   source_file_part = observer_list_internal.cc
   source_name_part = observer_list_internal
@@ -380,9 +320,6 @@ build obj/base/base/observer_list_types.o: cxx ../../base/observer_list_types.cc
 build obj/base/base/one_shot_event.o: cxx ../../base/one_shot_event.cc || obj/base/base.inputdeps.stamp
   source_file_part = one_shot_event.cc
   source_name_part = one_shot_event
-build obj/base/base/path_service.o: cxx ../../base/path_service.cc || obj/base/base.inputdeps.stamp
-  source_file_part = path_service.cc
-  source_name_part = path_service
 build obj/base/base/pending_task.o: cxx ../../base/pending_task.cc || obj/base/base.inputdeps.stamp
   source_file_part = pending_task.cc
   source_name_part = pending_task
@@ -422,24 +359,9 @@ build obj/base/base/current_process.o: cxx ../../base/process/current_process.cc
 build obj/base/base/environment_internal.o: cxx ../../base/process/environment_internal.cc || obj/base/base.inputdeps.stamp
   source_file_part = environment_internal.cc
   source_name_part = environment_internal
-build obj/base/base/kill.o: cxx ../../base/process/kill.cc || obj/base/base.inputdeps.stamp
-  source_file_part = kill.cc
-  source_name_part = kill
-build obj/base/base/launch.o: cxx ../../base/process/launch.cc || obj/base/base.inputdeps.stamp
-  source_file_part = launch.cc
-  source_name_part = launch
-build obj/base/base/memory.o: cxx ../../base/process/memory.cc || obj/base/base.inputdeps.stamp
-  source_file_part = memory.cc
-  source_name_part = memory
 build obj/base/base/process_handle.o: cxx ../../base/process/process_handle.cc || obj/base/base.inputdeps.stamp
   source_file_part = process_handle.cc
   source_name_part = process_handle
-build obj/base/base/process_iterator.o: cxx ../../base/process/process_iterator.cc || obj/base/base.inputdeps.stamp
-  source_file_part = process_iterator.cc
-  source_name_part = process_iterator
-build obj/base/base/process_metrics.o: cxx ../../base/process/process_metrics.cc || obj/base/base.inputdeps.stamp
-  source_file_part = process_metrics.cc
-  source_name_part = process_metrics
 build obj/base/base/frame.o: cxx ../../base/profiler/frame.cc || obj/base/base.inputdeps.stamp
   source_file_part = frame.cc
   source_name_part = frame
@@ -494,9 +416,6 @@ build obj/base/base/scoped_add_feature_flags.o: cxx ../../base/scoped_add_featur
 build obj/base/base/scoped_environment_variable_override.o: cxx ../../base/scoped_environment_variable_override.cc || obj/base/base.inputdeps.stamp
   source_file_part = scoped_environment_variable_override.cc
   source_name_part = scoped_environment_variable_override
-build obj/base/base/scoped_native_library.o: cxx ../../base/scoped_native_library.cc || obj/base/base.inputdeps.stamp
-  source_file_part = scoped_native_library.cc
-  source_name_part = scoped_native_library
 build obj/base/base/sequence_checker.o: cxx ../../base/sequence_checker.cc || obj/base/base.inputdeps.stamp
   source_file_part = sequence_checker.cc
   source_name_part = sequence_checker
@@ -563,9 +482,6 @@ build obj/base/base/substring_set_matcher.o: cxx ../../base/substring_set_matche
 build obj/base/base/supports_user_data.o: cxx ../../base/supports_user_data.cc || obj/base/base.inputdeps.stamp
   source_file_part = supports_user_data.cc
   source_name_part = supports_user_data
-build obj/base/base/sync_socket.o: cxx ../../base/sync_socket.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sync_socket.cc
-  source_name_part = sync_socket
 build obj/base/base/atomic_flag.o: cxx ../../base/synchronization/atomic_flag.cc || obj/base/base.inputdeps.stamp
   source_file_part = atomic_flag.cc
   source_name_part = atomic_flag
@@ -578,9 +494,6 @@ build obj/base/base/waitable_event.o: cxx ../../base/synchronization/waitable_ev
 build obj/base/base/syslog_logging.o: cxx ../../base/syslog_logging.cc || obj/base/base.inputdeps.stamp
   source_file_part = syslog_logging.cc
   source_name_part = syslog_logging
-build obj/base/base/sys_info.o: cxx ../../base/system/sys_info.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sys_info.cc
-  source_name_part = sys_info
 build obj/base/base/system_monitor.o: cxx ../../base/system/system_monitor.cc || obj/base/base.inputdeps.stamp
   source_file_part = system_monitor.cc
   source_name_part = system_monitor
@@ -731,9 +644,6 @@ build obj/base/base/delayed_task_manager.o: cxx ../../base/task/thread_pool/dela
 build obj/base/base/environment_config.o: cxx ../../base/task/thread_pool/environment_config.cc || obj/base/base.inputdeps.stamp
   source_file_part = environment_config.cc
   source_name_part = environment_config
-build obj/base/base/initialization_util.o: cxx ../../base/task/thread_pool/initialization_util.cc || obj/base/base.inputdeps.stamp
-  source_file_part = initialization_util.cc
-  source_name_part = initialization_util
 build obj/base/base/job_task_source.o: cxx ../../base/task/thread_pool/job_task_source.cc || obj/base/base.inputdeps.stamp
   source_file_part = job_task_source.cc
   source_name_part = job_task_source
@@ -923,42 +833,18 @@ build obj/base/base/vlog.o: cxx ../../base/vlog.cc || obj/base/base.inputdeps.st
 build obj/base/base/debugger_posix.o: cxx ../../base/debug/debugger_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = debugger_posix.cc
   source_name_part = debugger_posix
-build obj/base/base/stack_trace_posix.o: cxx ../../base/debug/stack_trace_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_trace_posix.cc
-  source_name_part = stack_trace_posix
 build obj/base/base/file_descriptor_posix.o: cxx ../../base/file_descriptor_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_descriptor_posix.cc
   source_name_part = file_descriptor_posix
-build obj/base/base/file_descriptor_watcher_posix.o: cxx ../../base/files/file_descriptor_watcher_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_descriptor_watcher_posix.cc
-  source_name_part = file_descriptor_watcher_posix
-build obj/base/base/file_enumerator_posix.o: cxx ../../base/files/file_enumerator_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_enumerator_posix.cc
-  source_name_part = file_enumerator_posix
 build obj/base/base/file_posix.o: cxx ../../base/files/file_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_posix.cc
   source_name_part = file_posix
-build obj/base/base/file_util_posix.o: cxx ../../base/files/file_util_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = file_util_posix.cc
-  source_name_part = file_util_posix
 build obj/base/base/memory_mapped_file_posix.o: cxx ../../base/files/memory_mapped_file_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = memory_mapped_file_posix.cc
   source_name_part = memory_mapped_file_posix
-build obj/base/base/madv_free_discardable_memory_allocator_posix.o: cxx ../../base/memory/madv_free_discardable_memory_allocator_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = madv_free_discardable_memory_allocator_posix.cc
-  source_name_part = madv_free_discardable_memory_allocator_posix
-build obj/base/base/madv_free_discardable_memory_posix.o: cxx ../../base/memory/madv_free_discardable_memory_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = madv_free_discardable_memory_posix.cc
-  source_name_part = madv_free_discardable_memory_posix
-build obj/base/base/page_size_posix.o: cxx ../../base/memory/page_size_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = page_size_posix.cc
-  source_name_part = page_size_posix
 build obj/base/base/watchable_io_message_pump_posix.o: cxx ../../base/message_loop/watchable_io_message_pump_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = watchable_io_message_pump_posix.cc
   source_name_part = watchable_io_message_pump_posix
-build obj/base/base/native_library_posix.o: cxx ../../base/native_library_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = native_library_posix.cc
-  source_name_part = native_library_posix
 build obj/base/base/file_descriptor_shuffle.o: cxx ../../base/posix/file_descriptor_shuffle.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_descriptor_shuffle.cc
   source_name_part = file_descriptor_shuffle
@@ -968,75 +854,27 @@ build obj/base/base/global_descriptors.o: cxx ../../base/posix/global_descriptor
 build obj/base/base/safe_strerror.o: cxx ../../base/posix/safe_strerror.cc || obj/base/base.inputdeps.stamp
   source_file_part = safe_strerror.cc
   source_name_part = safe_strerror
-build obj/base/base/unix_domain_socket.o: cxx ../../base/posix/unix_domain_socket.cc || obj/base/base.inputdeps.stamp
-  source_file_part = unix_domain_socket.cc
-  source_name_part = unix_domain_socket
-build obj/base/base/kill_posix.o: cxx ../../base/process/kill_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = kill_posix.cc
-  source_name_part = kill_posix
-build obj/base/base/launch_posix.o: cxx ../../base/process/launch_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = launch_posix.cc
-  source_name_part = launch_posix
 build obj/base/base/process_handle_posix.o: cxx ../../base/process/process_handle_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = process_handle_posix.cc
   source_name_part = process_handle_posix
-build obj/base/base/process_metrics_posix.o: cxx ../../base/process/process_metrics_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = process_metrics_posix.cc
-  source_name_part = process_metrics_posix
-build obj/base/base/process_posix.o: cxx ../../base/process/process_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = process_posix.cc
-  source_name_part = process_posix
-build obj/base/base/module_cache_posix.o: cxx ../../base/profiler/module_cache_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = module_cache_posix.cc
-  source_name_part = module_cache_posix
-build obj/base/base/rand_util_posix.o: cxx ../../base/rand_util_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = rand_util_posix.cc
-  source_name_part = rand_util_posix
-build obj/base/base/sys_string_conversions_posix.o: cxx ../../base/strings/sys_string_conversions_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sys_string_conversions_posix.cc
-  source_name_part = sys_string_conversions_posix
-build obj/base/base/sync_socket_posix.o: cxx ../../base/sync_socket_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sync_socket_posix.cc
-  source_name_part = sync_socket_posix
 build obj/base/base/condition_variable_posix.o: cxx ../../base/synchronization/condition_variable_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = condition_variable_posix.cc
   source_name_part = condition_variable_posix
 build obj/base/base/lock_impl_posix.o: cxx ../../base/synchronization/lock_impl_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = lock_impl_posix.cc
   source_name_part = lock_impl_posix
-build obj/base/base/waitable_event_posix.o: cxx ../../base/synchronization/waitable_event_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = waitable_event_posix.cc
-  source_name_part = waitable_event_posix
-build obj/base/base/waitable_event_watcher_posix.o: cxx ../../base/synchronization/waitable_event_watcher_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = waitable_event_watcher_posix.cc
-  source_name_part = waitable_event_watcher_posix
-build obj/base/base/sys_info_posix.o: cxx ../../base/system/sys_info_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sys_info_posix.cc
-  source_name_part = sys_info_posix
-build obj/base/base/platform_thread_internal_posix.o: cxx ../../base/threading/platform_thread_internal_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = platform_thread_internal_posix.cc
-  source_name_part = platform_thread_internal_posix
 build obj/base/base/platform_thread_posix.o: cxx ../../base/threading/platform_thread_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = platform_thread_posix.cc
   source_name_part = platform_thread_posix
 build obj/base/base/thread_local_storage_posix.o: cxx ../../base/threading/thread_local_storage_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = thread_local_storage_posix.cc
   source_name_part = thread_local_storage_posix
+build obj/base/base/time_conversion_posix.o: cxx ../../base/time/time_conversion_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = time_conversion_posix.cc
+  source_name_part = time_conversion_posix
 build obj/base/base/hi_res_timer_manager_posix.o: cxx ../../base/timer/hi_res_timer_manager_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = hi_res_timer_manager_posix.cc
   source_name_part = hi_res_timer_manager_posix
-build obj/base/base/stack_base_address_posix.o: cxx ../../base/profiler/stack_base_address_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_base_address_posix.cc
-  source_name_part = stack_base_address_posix
-build obj/base/base/stack_copier_signal.o: cxx ../../base/profiler/stack_copier_signal.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_copier_signal.cc
-  source_name_part = stack_copier_signal
-build obj/base/base/stack_sampler_posix.o: cxx ../../base/profiler/stack_sampler_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_sampler_posix.cc
-  source_name_part = stack_sampler_posix
-build obj/base/base/thread_delegate_posix.o: cxx ../../base/profiler/thread_delegate_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = thread_delegate_posix.cc
-  source_name_part = thread_delegate_posix
 build obj/base/base/proc_maps_linux.o: cxx ../../base/debug/proc_maps_linux.cc || obj/base/base.inputdeps.stamp
   source_file_part = proc_maps_linux.cc
   source_name_part = proc_maps_linux
@@ -1070,21 +908,6 @@ build obj/base/base/thread_type_delegate.o: cxx ../../base/threading/thread_type
 build obj/base/base/file_path_watcher_inotify.o: cxx ../../base/files/file_path_watcher_inotify.cc || obj/base/base.inputdeps.stamp
   source_file_part = file_path_watcher_inotify.cc
   source_name_part = file_path_watcher_inotify
-build obj/base/base/base_paths.o: cxx ../../base/base_paths.cc || obj/base/base.inputdeps.stamp
-  source_file_part = base_paths.cc
-  source_name_part = base_paths
-build obj/base/base/persistent_histogram_storage.o: cxx ../../base/metrics/persistent_histogram_storage.cc || obj/base/base.inputdeps.stamp
-  source_file_part = persistent_histogram_storage.cc
-  source_name_part = persistent_histogram_storage
-build obj/base/base/base_paths_posix.o: cxx ../../base/base_paths_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = base_paths_posix.cc
-  source_name_part = base_paths_posix
-build obj/base/base/elf_reader.o: cxx ../../base/debug/elf_reader.cc || obj/base/base.inputdeps.stamp
-  source_file_part = elf_reader.cc
-  source_name_part = elf_reader
-build obj/base/base/stack_canary_linux.o: cxx ../../base/stack_canary_linux.cc || obj/base/base.inputdeps.stamp
-  source_file_part = stack_canary_linux.cc
-  source_name_part = stack_canary_linux
 build obj/base/base/allocator_shim.o: cxx ../../base/allocator/partition_allocator/shim/allocator_shim.cc || obj/base/base.inputdeps.stamp
   source_file_part = allocator_shim.cc
   source_name_part = allocator_shim
@@ -1100,21 +923,177 @@ build obj/base/base/md5_boringssl.o: cxx ../../base/hash/md5_boringssl.cc || obj
 build obj/base/base/sha1_boringssl.o: cxx ../../base/hash/sha1_boringssl.cc || obj/base/base.inputdeps.stamp
   source_file_part = sha1_boringssl.cc
   source_name_part = sha1_boringssl
+build obj/base/base/base_paths.o: cxx ../../base/base_paths.cc || obj/base/base.inputdeps.stamp
+  source_file_part = base_paths.cc
+  source_name_part = base_paths
+build obj/base/base/cpu.o: cxx ../../base/cpu.cc || obj/base/base.inputdeps.stamp
+  source_file_part = cpu.cc
+  source_name_part = cpu
+build obj/base/base/crash_logging.o: cxx ../../base/debug/crash_logging.cc || obj/base/base.inputdeps.stamp
+  source_file_part = crash_logging.cc
+  source_name_part = crash_logging
+build obj/base/base/stack_trace.o: cxx ../../base/debug/stack_trace.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_trace.cc
+  source_name_part = stack_trace
+build obj/base/base/file_enumerator.o: cxx ../../base/files/file_enumerator.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_enumerator.cc
+  source_name_part = file_enumerator
+build obj/base/base/file_proxy.o: cxx ../../base/files/file_proxy.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_proxy.cc
+  source_name_part = file_proxy
+build obj/base/base/file_util.o: cxx ../../base/files/file_util.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_util.cc
+  source_name_part = file_util
+build obj/base/base/important_file_writer.o: cxx ../../base/files/important_file_writer.cc || obj/base/base.inputdeps.stamp
+  source_file_part = important_file_writer.cc
+  source_name_part = important_file_writer
+build obj/base/base/important_file_writer_cleaner.o: cxx ../../base/files/important_file_writer_cleaner.cc || obj/base/base.inputdeps.stamp
+  source_file_part = important_file_writer_cleaner.cc
+  source_name_part = important_file_writer_cleaner
+build obj/base/base/scoped_temp_dir.o: cxx ../../base/files/scoped_temp_dir.cc || obj/base/base.inputdeps.stamp
+  source_file_part = scoped_temp_dir.cc
+  source_name_part = scoped_temp_dir
+build obj/base/base/json_file_value_serializer.o: cxx ../../base/json/json_file_value_serializer.cc || obj/base/base.inputdeps.stamp
+  source_file_part = json_file_value_serializer.cc
+  source_name_part = json_file_value_serializer
+build obj/base/base/discardable_memory.o: cxx ../../base/memory/discardable_memory.cc || obj/base/base.inputdeps.stamp
+  source_file_part = discardable_memory.cc
+  source_name_part = discardable_memory
+build obj/base/base/discardable_memory_allocator.o: cxx ../../base/memory/discardable_memory_allocator.cc || obj/base/base.inputdeps.stamp
+  source_file_part = discardable_memory_allocator.cc
+  source_name_part = discardable_memory_allocator
+build obj/base/base/persistent_histogram_storage.o: cxx ../../base/metrics/persistent_histogram_storage.cc || obj/base/base.inputdeps.stamp
+  source_file_part = persistent_histogram_storage.cc
+  source_name_part = persistent_histogram_storage
+build obj/base/base/native_library.o: cxx ../../base/native_library.cc || obj/base/base.inputdeps.stamp
+  source_file_part = native_library.cc
+  source_name_part = native_library
+build obj/base/base/path_service.o: cxx ../../base/path_service.cc || obj/base/base.inputdeps.stamp
+  source_file_part = path_service.cc
+  source_name_part = path_service
+build obj/base/base/process_metrics.o: cxx ../../base/process/process_metrics.cc || obj/base/base.inputdeps.stamp
+  source_file_part = process_metrics.cc
+  source_name_part = process_metrics
+build obj/base/base/scoped_native_library.o: cxx ../../base/scoped_native_library.cc || obj/base/base.inputdeps.stamp
+  source_file_part = scoped_native_library.cc
+  source_name_part = scoped_native_library
+build obj/base/base/sys_info.o: cxx ../../base/system/sys_info.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sys_info.cc
+  source_name_part = sys_info
+build obj/base/base/initialization_util.o: cxx ../../base/task/thread_pool/initialization_util.cc || obj/base/base.inputdeps.stamp
+  source_file_part = initialization_util.cc
+  source_name_part = initialization_util
+build obj/base/base/madv_free_discardable_memory_allocator_posix.o: cxx ../../base/memory/madv_free_discardable_memory_allocator_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = madv_free_discardable_memory_allocator_posix.cc
+  source_name_part = madv_free_discardable_memory_allocator_posix
+build obj/base/base/madv_free_discardable_memory_posix.o: cxx ../../base/memory/madv_free_discardable_memory_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = madv_free_discardable_memory_posix.cc
+  source_name_part = madv_free_discardable_memory_posix
+build obj/base/base/unix_domain_socket.o: cxx ../../base/posix/unix_domain_socket.cc || obj/base/base.inputdeps.stamp
+  source_file_part = unix_domain_socket.cc
+  source_name_part = unix_domain_socket
+build obj/base/base/rand_util_posix.o: cxx ../../base/rand_util_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = rand_util_posix.cc
+  source_name_part = rand_util_posix
+build obj/base/base/sys_info_posix.o: cxx ../../base/system/sys_info_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sys_info_posix.cc
+  source_name_part = sys_info_posix
+build obj/base/base/file_descriptor_watcher_posix.o: cxx ../../base/files/file_descriptor_watcher_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_descriptor_watcher_posix.cc
+  source_name_part = file_descriptor_watcher_posix
+build obj/base/base/file_enumerator_posix.o: cxx ../../base/files/file_enumerator_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_enumerator_posix.cc
+  source_name_part = file_enumerator_posix
+build obj/base/base/file_util_posix.o: cxx ../../base/files/file_util_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_util_posix.cc
+  source_name_part = file_util_posix
+build obj/base/base/page_size_posix.o: cxx ../../base/memory/page_size_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = page_size_posix.cc
+  source_name_part = page_size_posix
+build obj/base/base/process_metrics_posix.o: cxx ../../base/process/process_metrics_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = process_metrics_posix.cc
+  source_name_part = process_metrics_posix
+build obj/base/base/sync_socket_posix.o: cxx ../../base/sync_socket_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sync_socket_posix.cc
+  source_name_part = sync_socket_posix
+build obj/base/base/native_library_posix.o: cxx ../../base/native_library_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = native_library_posix.cc
+  source_name_part = native_library_posix
+build obj/base/base/can_lower_nice_to.o: cxx ../../base/posix/can_lower_nice_to.cc || obj/base/base.inputdeps.stamp
+  source_file_part = can_lower_nice_to.cc
+  source_name_part = can_lower_nice_to
+build obj/base/base/launch_posix.o: cxx ../../base/process/launch_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = launch_posix.cc
+  source_name_part = launch_posix
+build obj/base/base/module_cache_posix.o: cxx ../../base/profiler/module_cache_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = module_cache_posix.cc
+  source_name_part = module_cache_posix
+build obj/base/base/stack_base_address_posix.o: cxx ../../base/profiler/stack_base_address_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_base_address_posix.cc
+  source_name_part = stack_base_address_posix
+build obj/base/base/stack_copier_signal.o: cxx ../../base/profiler/stack_copier_signal.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_copier_signal.cc
+  source_name_part = stack_copier_signal
+build obj/base/base/thread_delegate_posix.o: cxx ../../base/profiler/thread_delegate_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = thread_delegate_posix.cc
+  source_name_part = thread_delegate_posix
+build obj/base/base/stack_trace_posix.o: cxx ../../base/debug/stack_trace_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_trace_posix.cc
+  source_name_part = stack_trace_posix
+build obj/base/base/kill_posix.o: cxx ../../base/process/kill_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = kill_posix.cc
+  source_name_part = kill_posix
+build obj/base/base/process_posix.o: cxx ../../base/process/process_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = process_posix.cc
+  source_name_part = process_posix
+build obj/base/base/discardable_shared_memory.o: cxx ../../base/memory/discardable_shared_memory.cc || obj/base/base.inputdeps.stamp
+  source_file_part = discardable_shared_memory.cc
+  source_name_part = discardable_shared_memory
+build obj/base/base/kill.o: cxx ../../base/process/kill.cc || obj/base/base.inputdeps.stamp
+  source_file_part = kill.cc
+  source_name_part = kill
+build obj/base/base/launch.o: cxx ../../base/process/launch.cc || obj/base/base.inputdeps.stamp
+  source_file_part = launch.cc
+  source_name_part = launch
+build obj/base/base/memory.o: cxx ../../base/process/memory.cc || obj/base/base.inputdeps.stamp
+  source_file_part = memory.cc
+  source_name_part = memory
+build obj/base/base/process_iterator.o: cxx ../../base/process/process_iterator.cc || obj/base/base.inputdeps.stamp
+  source_file_part = process_iterator.cc
+  source_name_part = process_iterator
+build obj/base/base/base_paths_posix.o: cxx ../../base/base_paths_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = base_paths_posix.cc
+  source_name_part = base_paths_posix
+build obj/base/base/elf_reader.o: cxx ../../base/debug/elf_reader.cc || obj/base/base.inputdeps.stamp
+  source_file_part = elf_reader.cc
+  source_name_part = elf_reader
+build obj/base/base/stack_canary_linux.o: cxx ../../base/stack_canary_linux.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_canary_linux.cc
+  source_name_part = stack_canary_linux
 build obj/base/base/partition_alloc_features.o: cxx ../../base/allocator/partition_alloc_features.cc || obj/base/base.inputdeps.stamp
   source_file_part = partition_alloc_features.cc
   source_name_part = partition_alloc_features
 build obj/base/base/partition_alloc_support.o: cxx ../../base/allocator/partition_alloc_support.cc || obj/base/base.inputdeps.stamp
   source_file_part = partition_alloc_support.cc
   source_name_part = partition_alloc_support
+build obj/base/base/file_descriptor_store.o: cxx ../../base/file_descriptor_store.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_descriptor_store.cc
+  source_name_part = file_descriptor_store
+build obj/base/base/sys_info_linux.o: cxx ../../base/system/sys_info_linux.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sys_info_linux.cc
+  source_name_part = sys_info_linux
 build obj/base/base/mime_util_xdg.o: cxx ../../base/nix/mime_util_xdg.cc || obj/base/base.inputdeps.stamp
   source_file_part = mime_util_xdg.cc
   source_name_part = mime_util_xdg
 build obj/base/base/xdg_util.o: cxx ../../base/nix/xdg_util.cc || obj/base/base.inputdeps.stamp
   source_file_part = xdg_util.cc
   source_name_part = xdg_util
-build obj/base/base/sys_info_linux.o: cxx ../../base/system/sys_info_linux.cc || obj/base/base.inputdeps.stamp
-  source_file_part = sys_info_linux.cc
-  source_name_part = sys_info_linux
+build obj/base/base/file_path_watcher.o: cxx ../../base/files/file_path_watcher.cc || obj/base/base.inputdeps.stamp
+  source_file_part = file_path_watcher.cc
+  source_name_part = file_path_watcher
+build obj/base/base/sync_socket.o: cxx ../../base/sync_socket.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sync_socket.cc
+  source_name_part = sync_socket
 build obj/base/base/message_pump_libevent.o: cxx ../../base/message_loop/message_pump_libevent.cc || obj/base/base.inputdeps.stamp
   source_file_part = message_pump_libevent.cc
   source_name_part = message_pump_libevent
@@ -1127,9 +1106,18 @@ build obj/base/base/platform_shared_memory_mapper_posix.o: cxx ../../base/memory
 build obj/base/base/platform_shared_memory_region_posix.o: cxx ../../base/memory/platform_shared_memory_region_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = platform_shared_memory_region_posix.cc
   source_name_part = platform_shared_memory_region_posix
-build obj/base/base/time_conversion_posix.o: cxx ../../base/time/time_conversion_posix.cc || obj/base/base.inputdeps.stamp
-  source_file_part = time_conversion_posix.cc
-  source_name_part = time_conversion_posix
+build obj/base/base/sys_string_conversions_posix.o: cxx ../../base/strings/sys_string_conversions_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = sys_string_conversions_posix.cc
+  source_name_part = sys_string_conversions_posix
+build obj/base/base/waitable_event_posix.o: cxx ../../base/synchronization/waitable_event_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = waitable_event_posix.cc
+  source_name_part = waitable_event_posix
+build obj/base/base/waitable_event_watcher_posix.o: cxx ../../base/synchronization/waitable_event_watcher_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = waitable_event_watcher_posix.cc
+  source_name_part = waitable_event_watcher_posix
+build obj/base/base/platform_thread_internal_posix.o: cxx ../../base/threading/platform_thread_internal_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = platform_thread_internal_posix.cc
+  source_name_part = platform_thread_internal_posix
 build obj/base/base/time_exploded_posix.o: cxx ../../base/time/time_exploded_posix.cc || obj/base/base.inputdeps.stamp
   source_file_part = time_exploded_posix.cc
   source_name_part = time_exploded_posix
@@ -1139,12 +1127,15 @@ build obj/base/base/time_now_posix.o: cxx ../../base/time/time_now_posix.cc || o
 build obj/base/base/time_exploded_icu.o: cxx ../../base/time/time_exploded_icu.cc || obj/base/base.inputdeps.stamp
   source_file_part = time_exploded_icu.cc
   source_name_part = time_exploded_icu
-build obj/base/base/can_lower_nice_to.o: cxx ../../base/posix/can_lower_nice_to.cc || obj/base/base.inputdeps.stamp
-  source_file_part = can_lower_nice_to.cc
-  source_name_part = can_lower_nice_to
+build obj/base/base/stack_sampler_posix.o: cxx ../../base/profiler/stack_sampler_posix.cc || obj/base/base.inputdeps.stamp
+  source_file_part = stack_sampler_posix.cc
+  source_name_part = stack_sampler_posix
 build obj/base/base/power_monitor_device_source_stub.o: cxx ../../base/power_monitor/power_monitor_device_source_stub.cc || obj/base/base.inputdeps.stamp
   source_file_part = power_monitor_device_source_stub.cc
   source_name_part = power_monitor_device_source_stub
+build obj/base/base/message_pump_glib.o: cxx ../../base/message_loop/message_pump_glib.cc || obj/base/base.inputdeps.stamp
+  source_file_part = message_pump_glib.cc
+  source_name_part = message_pump_glib
 build obj/base/base/builtin_categories.o: cxx ../../base/trace_event/builtin_categories.cc || obj/base/base.inputdeps.stamp
   source_file_part = builtin_categories.cc
   source_name_part = builtin_categories
@@ -1233,7 +1224,7 @@ build obj/base/base/tracing_tls.o: cxx ../../base/tracing/tracing_tls.cc || obj/
   source_file_part = tracing_tls.cc
   source_name_part = tracing_tls
 
-build ./libbase.so ./libbase.so.TOC: solink obj/base/base/allocator_check.o obj/base/base/allocator_extension.o obj/base/base/dispatcher.o obj/base/base/dispatch_data.o obj/base/base/reentry_guard.o obj/base/base/tls.o obj/base/base/at_exit.o obj/base/base/barrier_closure.o obj/base/base/base64.o obj/base/base/base64url.o obj/base/base/big_endian.o obj/base/base/build_time.o obj/base/base/callback_list.o obj/base/base/check.o obj/base/base/check_is_test.o obj/base/base/check_op.o obj/base/base/command_line.o obj/base/base/flat_tree.o obj/base/base/intrusive_heap.o obj/base/base/linked_list.o obj/base/base/cpu.o obj/base/base/cpu_reduction_experiment.o obj/base/base/activity_analyzer.o obj/base/base/activity_tracker.o obj/base/base/alias.o obj/base/base/asan_invalid_access.o obj/base/base/asan_service.o obj/base/base/buffered_dwarf_reader.o obj/base/base/crash_logging.o obj/base/base/debugger.o obj/base/base/dump_without_crashing.o obj/base/base/dwarf_line_no.o obj/base/base/profiler.o obj/base/base/stack_trace.o obj/base/base/task_trace.o obj/base/base/environment.o obj/base/base/feature_list.o obj/base/base/features.o obj/base/base/file_descriptor_store.o obj/base/base/file.o obj/base/base/file_enumerator.o obj/base/base/file_path.o obj/base/base/file_path_watcher.o obj/base/base/file_proxy.o obj/base/base/file_tracing.o obj/base/base/file_util.o obj/base/base/important_file_writer.o obj/base/base/important_file_writer_cleaner.o obj/base/base/memory_mapped_file.o obj/base/base/safe_base_name.o obj/base/base/scoped_file.o obj/base/base/scoped_temp_dir.o obj/base/base/callback_helpers.o obj/base/base/callback_internal.o obj/base/base/guid.o obj/base/base/hash.o obj/base/base/legacy_hash.o obj/base/base/json_file_value_serializer.o obj/base/base/json_parser.o obj/base/base/json_reader.o obj/base/base/json_string_value_serializer.o obj/base/base/json_value_converter.o obj/base/base/json_writer.o obj/base/base/string_escape.o obj/base/base/values_util.o obj/base/base/lazy_instance_helpers.o obj/base/base/linux_util.o obj/base/base/location.o obj/base/base/logging.o obj/base/base/aligned_memory.o obj/base/base/discardable_memory.o obj/base/base/discardable_memory_allocator.o obj/base/base/discardable_shared_memory.o obj/base/base/memory_pressure_listener.o obj/base/base/memory_pressure_monitor.o obj/base/base/nonscannable_memory.o obj/base/base/platform_shared_memory_handle.o obj/base/base/platform_shared_memory_region.o obj/base/base/raw_ptr_asan_bound_arg_tracker.o obj/base/base/raw_ptr_asan_hooks.o obj/base/base/raw_ptr_asan_service.o obj/base/base/read_only_shared_memory_region.o obj/base/base/ref_counted.o obj/base/base/ref_counted_memory.o obj/base/base/shared_memory_mapper.o obj/base/base/shared_memory_mapping.o obj/base/base/shared_memory_security_policy.o obj/base/base/shared_memory_tracker.o obj/base/base/unsafe_shared_memory_pool.o obj/base/base/unsafe_shared_memory_region.o obj/base/base/weak_ptr.o obj/base/base/writable_shared_memory_region.o obj/base/base/message_pump.o obj/base/base/message_pump_default.o obj/base/base/message_pump_glib.o obj/base/base/work_id_provider.o obj/base/base/bucket_ranges.o obj/base/base/crc32.o obj/base/base/dummy_histogram.o obj/base/base/field_trial.o obj/base/base/field_trial_param_associator.o obj/base/base/field_trial_params.o obj/base/base/histogram.o obj/base/base/histogram_base.o obj/base/base/histogram_delta_serialization.o obj/base/base/histogram_functions.o obj/base/base/histogram_samples.o obj/base/base/histogram_snapshot_manager.o obj/base/base/metrics_hashes.o obj/base/base/persistent_histogram_allocator.o obj/base/base/persistent_memory_allocator.o obj/base/base/persistent_sample_map.o obj/base/base/ranges_manager.o obj/base/base/sample_map.o obj/base/base/sample_vector.o obj/base/base/single_sample_metrics.o obj/base/base/sparse_histogram.o obj/base/base/statistics_recorder.o obj/base/base/user_metrics.o obj/base/base/native_library.o obj/base/base/observer_list_internal.o obj/base/base/observer_list_threadsafe.o obj/base/base/observer_list_types.o obj/base/base/one_shot_event.o obj/base/base/path_service.o obj/base/base/pending_task.o obj/base/base/pickle.o obj/base/base/battery_level_provider.o obj/base/base/battery_state_sampler.o obj/base/base/moving_average.o obj/base/base/power_monitor.o obj/base/base/power_monitor_device_source.o obj/base/base/power_monitor_features.o obj/base/base/power_monitor_source.o obj/base/base/sampling_event_source.o obj/base/base/timer_sampling_event_source.o obj/base/base/current_process.o obj/base/base/environment_internal.o obj/base/base/kill.o obj/base/base/launch.o obj/base/base/memory.o obj/base/base/process_handle.o obj/base/base/process_iterator.o obj/base/base/process_metrics.o obj/base/base/frame.o obj/base/base/metadata_recorder.o obj/base/base/module_cache.o obj/base/base/sample_metadata.o obj/base/base/sampling_profiler_thread_token.o obj/base/base/stack_buffer.o obj/base/base/stack_copier.o obj/base/base/stack_copier_suspend.o obj/base/base/stack_sampler.o obj/base/base/stack_sampling_profiler.o obj/base/base/unwinder.o obj/base/base/rand_util.o obj/base/base/run_loop.o obj/base/base/lock_free_address_hash_set.o obj/base/base/poisson_allocation_sampler.o obj/base/base/sampling_heap_profiler.o obj/base/base/scoped_add_feature_flags.o obj/base/base/scoped_environment_variable_override.o obj/base/base/scoped_native_library.o obj/base/base/sequence_checker.o obj/base/base/sequence_checker_impl.o obj/base/base/sequence_token.o obj/base/base/abseil_string_conversions.o obj/base/base/abseil_string_number_conversions.o obj/base/base/escape.o obj/base/base/latin1_string_conversions.o obj/base/base/pattern.o obj/base/base/safe_sprintf.o obj/base/base/strcat.o obj/base/base/string_number_conversions.o obj/base/base/string_piece.o obj/base/base/string_split.o obj/base/base/string_util.o obj/base/base/string_util_constants.o obj/base/base/stringprintf.o obj/base/base/utf_offset_string_conversions.o obj/base/base/utf_string_conversion_utils.o obj/base/base/utf_string_conversions.o obj/base/base/matcher_string_pattern.o obj/base/base/substring_set_matcher.o obj/base/base/supports_user_data.o obj/base/base/sync_socket.o obj/base/base/atomic_flag.o obj/base/base/lock.o obj/base/base/waitable_event.o obj/base/base/syslog_logging.o obj/base/base/sys_info.o obj/base/base/system_monitor.o obj/base/base/cancelable_task_tracker.o obj/base/base/checked_lock_impl.o obj/base/base/lazy_now.o obj/base/base/operations_controller.o obj/base/base/scoped_defer_task_posting.o obj/base/base/task_annotator.o obj/base/base/current_thread.o obj/base/base/default_delayed_task_handle_delegate.o obj/base/base/deferred_sequenced_task_runner.o obj/base/base/delayed_task_handle.o obj/base/base/lazy_thread_pool_task_runner.o obj/base/base/post_job.o obj/base/base/scoped_set_task_priority_for_current_thread.o obj/base/base/associated_thread_id.o obj/base/base/atomic_flag_set.o obj/base/base/delayed_task_handle_delegate.o obj/base/base/enqueue_order_generator.o obj/base/base/fence.o obj/base/base/hierarchical_timing_wheel.o obj/base/base/sequence_manager.o obj/base/base/sequence_manager_impl.o obj/base/base/sequenced_task_source.o obj/base/base/task_order.o obj/base/base/task_queue.o obj/base/base/task_queue_impl.o obj/base/base/task_queue_selector.o obj/base/base/tasks.o obj/base/base/thread_controller.o obj/base/base/thread_controller_impl.o obj/base/base/thread_controller_power_monitor.o obj/base/base/thread_controller_with_message_pump_impl.o obj/base/base/time_domain.o obj/base/base/timing_wheel.o obj/base/base/wake_up_queue.o obj/base/base/work_deduplicator.o obj/base/base/work_queue.o obj/base/base/work_queue_sets.o obj/base/base/sequenced_task_runner.o obj/base/base/simple_task_executor.o obj/base/base/single_thread_task_executor.o obj/base/base/single_thread_task_runner.o obj/base/base/task_executor.o obj/base/base/task_features.o obj/base/base/task_runner.o obj/base/base/task_traits.o obj/base/base/thread_pool.o obj/base/base/delayed_priority_queue.o obj/base/base/delayed_task_manager.o obj/base/base/environment_config.o obj/base/base/initialization_util.o obj/base/base/job_task_source.o obj/base/base/pooled_parallel_task_runner.o obj/base/base/pooled_sequenced_task_runner.o obj/base/base/pooled_single_thread_task_runner_manager.o obj/base/base/pooled_task_runner_delegate.o obj/base/base/priority_queue.o obj/base/base/sequence.o obj/base/base/service_thread.o obj/base/base/task.o obj/base/base/task_source.o obj/base/base/task_source_sort_key.o obj/base/base/task_tracker.o obj/base/base/thread_group.o obj/base/base/thread_group_impl.o obj/base/base/thread_pool_impl.o obj/base/base/thread_pool_instance.o obj/base/base/worker_thread.o obj/base/base/worker_thread_set.o obj/base/base/city.o obj/base/base/city_v103.o obj/base/base/prtime.o obj/base/base/superfasthash.o obj/base/base/hang_watcher.o obj/base/base/platform_thread.o obj/base/base/platform_thread_ref.o obj/base/base/post_task_and_reply_impl.o obj/base/base/scoped_blocking_call.o obj/base/base/scoped_blocking_call_internal.o obj/base/base/scoped_thread_priority.o obj/base/base/sequence_local_storage_map.o obj/base/base/sequence_local_storage_slot.o obj/base/base/simple_thread.o obj/base/base/thread.o obj/base/base/thread_checker.o obj/base/base/thread_checker_impl.o obj/base/base/thread_collision_warner.o obj/base/base/thread_id_name_manager.o obj/base/base/thread_local_storage.o obj/base/base/thread_restrictions.o obj/base/base/watchdog.o obj/base/base/clock.o obj/base/base/default_clock.o obj/base/base/default_tick_clock.o obj/base/base/tick_clock.o obj/base/base/time.o obj/base/base/time_delta_from_string.o obj/base/base/time_override.o obj/base/base/time_to_iso8601.o obj/base/base/elapsed_timer.o obj/base/base/lap_timer.o obj/base/base/timer.o obj/base/base/wall_clock_timer.o obj/base/base/token.o obj/base/base/heap_profiler_allocation_context.o obj/base/base/heap_profiler_allocation_context_tracker.o obj/base/base/memory_allocator_dump_guid.o obj/base/base/trace_id_helper.o obj/base/base/unguessable_token.o obj/base/base/value_iterators.o obj/base/base/values.o obj/base/base/version.o obj/base/base/vlog.o obj/base/base/debugger_posix.o obj/base/base/stack_trace_posix.o obj/base/base/file_descriptor_posix.o obj/base/base/file_descriptor_watcher_posix.o obj/base/base/file_enumerator_posix.o obj/base/base/file_posix.o obj/base/base/file_util_posix.o obj/base/base/memory_mapped_file_posix.o obj/base/base/madv_free_discardable_memory_allocator_posix.o obj/base/base/madv_free_discardable_memory_posix.o obj/base/base/page_size_posix.o obj/base/base/watchable_io_message_pump_posix.o obj/base/base/native_library_posix.o obj/base/base/file_descriptor_shuffle.o obj/base/base/global_descriptors.o obj/base/base/safe_strerror.o obj/base/base/unix_domain_socket.o obj/base/base/kill_posix.o obj/base/base/launch_posix.o obj/base/base/process_handle_posix.o obj/base/base/process_metrics_posix.o obj/base/base/process_posix.o obj/base/base/module_cache_posix.o obj/base/base/rand_util_posix.o obj/base/base/sys_string_conversions_posix.o obj/base/base/sync_socket_posix.o obj/base/base/condition_variable_posix.o obj/base/base/lock_impl_posix.o obj/base/base/waitable_event_posix.o obj/base/base/waitable_event_watcher_posix.o obj/base/base/sys_info_posix.o obj/base/base/platform_thread_internal_posix.o obj/base/base/platform_thread_posix.o obj/base/base/thread_local_storage_posix.o obj/base/base/hi_res_timer_manager_posix.o obj/base/base/stack_base_address_posix.o obj/base/base/stack_copier_signal.o obj/base/base/stack_sampler_posix.o obj/base/base/thread_delegate_posix.o obj/base/base/proc_maps_linux.o obj/base/base/scoped_file_linux.o obj/base/base/internal_linux.o obj/base/base/memory_linux.o obj/base/base/process_handle_linux.o obj/base/base/process_iterator_linux.o obj/base/base/process_linux.o obj/base/base/process_metrics_linux.o obj/base/base/platform_thread_linux.o obj/base/base/thread_type_delegate.o obj/base/base/file_path_watcher_inotify.o obj/base/base/base_paths.o obj/base/base/persistent_histogram_storage.o obj/base/base/base_paths_posix.o obj/base/base/elf_reader.o obj/base/base/stack_canary_linux.o obj/base/base/allocator_shim.o obj/base/base/allocator_shim_default_dispatch_to_partition_alloc.o obj/base/base/allocator_shim_default_dispatch_to_glibc.o obj/base/base/md5_boringssl.o obj/base/base/sha1_boringssl.o obj/base/base/partition_alloc_features.o obj/base/base/partition_alloc_support.o obj/base/base/mime_util_xdg.o obj/base/base/xdg_util.o obj/base/base/sys_info_linux.o obj/base/base/message_pump_libevent.o obj/base/base/message_pump_epoll.o obj/base/base/platform_shared_memory_mapper_posix.o obj/base/base/platform_shared_memory_region_posix.o obj/base/base/time_conversion_posix.o obj/base/base/time_exploded_posix.o obj/base/base/time_now_posix.o obj/base/base/time_exploded_icu.o obj/base/base/can_lower_nice_to.o obj/base/base/power_monitor_device_source_stub.o obj/base/base/builtin_categories.o obj/base/base/category_registry.o obj/base/base/interned_args_helper.o obj/base/base/log_message.o obj/base/base/malloc_dump_provider.o obj/base/base/memory_allocator_dump.o obj/base/base/memory_dump_manager.o obj/base/base/memory_dump_provider_info.o obj/base/base/memory_dump_request_args.o obj/base/base/memory_dump_scheduler.o obj/base/base/memory_infra_background_allowlist.o obj/base/base/memory_pressure_level_proto.o obj/base/base/memory_usage_estimator.o obj/base/base/process_memory_dump.o obj/base/base/trace_arguments.o obj/base/base/trace_buffer.o obj/base/base/trace_config.o obj/base/base/trace_config_category_filter.o obj/base/base/trace_event_impl.o obj/base/base/trace_event_memory_overhead.o obj/base/base/trace_log.o obj/base/base/trace_log_constants.o obj/base/base/traced_value.o obj/base/base/tracing_agent.o obj/base/base/typed_macros_internal.o obj/base/base/perfetto_platform.o obj/base/base/perfetto_task_runner.o obj/base/base/trace_time.o obj/base/base/tracing_tls.o obj/base/tracing/protos/chrome_track_event_zero/chrome_track_event.pbzero.o obj/base/libbase_static.a obj/base/third_party/double_conversion/libdouble_conversion.a obj/base/third_party/dynamic_annotations/libdynamic_annotations.a obj/third_party/modp_b64/libmodp_b64.a obj/base/third_party/symbolize/libsymbolize.a obj/base/third_party/xdg_mime/libxdg_mime.a obj/base/third_party/xdg_user_dirs/libxdg_user_dirs.a obj/third_party/libevent/libevent.a | ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC ./libc++.so.TOC || obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/parsing_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/partition_allocator/buildflags.stamp obj/base/numerics/base_numerics.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/rust/rust_buildflags.stamp obj/base/allocator/partition_allocator/raw_ptr.stamp obj/base/tracing/protos/chrome_track_event_zero.stamp obj/base/message_pump_buildflags.stamp obj/base/allocator/buildflags.stamp obj/build/branding_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/third_party/icu/icuuc.stamp obj/base/tracing/protos/chrome_track_event.stamp obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp obj/build/config/shared_library_deps.stamp obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp
+build ./libbase.so ./libbase.so.TOC: solink obj/base/base/allocator_check.o obj/base/base/allocator_extension.o obj/base/base/dispatcher.o obj/base/base/dispatch_data.o obj/base/base/reentry_guard.o obj/base/base/tls.o obj/base/base/at_exit.o obj/base/base/barrier_closure.o obj/base/base/base64.o obj/base/base/base64url.o obj/base/base/big_endian.o obj/base/base/callback_list.o obj/base/base/check.o obj/base/base/check_is_test.o obj/base/base/check_op.o obj/base/base/command_line.o obj/base/base/flat_tree.o obj/base/base/intrusive_heap.o obj/base/base/linked_list.o obj/base/base/cpu_reduction_experiment.o obj/base/base/alias.o obj/base/base/asan_invalid_access.o obj/base/base/asan_service.o obj/base/base/buffered_dwarf_reader.o obj/base/base/debugger.o obj/base/base/dump_without_crashing.o obj/base/base/dwarf_line_no.o obj/base/base/profiler.o obj/base/base/task_trace.o obj/base/base/environment.o obj/base/base/feature_list.o obj/base/base/features.o obj/base/base/file.o obj/base/base/file_path.o obj/base/base/file_tracing.o obj/base/base/memory_mapped_file.o obj/base/base/safe_base_name.o obj/base/base/scoped_file.o obj/base/base/callback_helpers.o obj/base/base/callback_internal.o obj/base/base/guid.o obj/base/base/hash.o obj/base/base/legacy_hash.o obj/base/base/json_parser.o obj/base/base/json_reader.o obj/base/base/json_string_value_serializer.o obj/base/base/json_value_converter.o obj/base/base/json_writer.o obj/base/base/string_escape.o obj/base/base/values_util.o obj/base/base/lazy_instance_helpers.o obj/base/base/linux_util.o obj/base/base/location.o obj/base/base/logging.o obj/base/base/aligned_memory.o obj/base/base/memory_pressure_listener.o obj/base/base/memory_pressure_monitor.o obj/base/base/nonscannable_memory.o obj/base/base/platform_shared_memory_handle.o obj/base/base/platform_shared_memory_region.o obj/base/base/raw_ptr_asan_bound_arg_tracker.o obj/base/base/raw_ptr_asan_hooks.o obj/base/base/raw_ptr_asan_service.o obj/base/base/read_only_shared_memory_region.o obj/base/base/ref_counted.o obj/base/base/ref_counted_memory.o obj/base/base/shared_memory_mapper.o obj/base/base/shared_memory_mapping.o obj/base/base/shared_memory_security_policy.o obj/base/base/shared_memory_tracker.o obj/base/base/unsafe_shared_memory_pool.o obj/base/base/unsafe_shared_memory_region.o obj/base/base/weak_ptr.o obj/base/base/writable_shared_memory_region.o obj/base/base/message_pump.o obj/base/base/message_pump_default.o obj/base/base/work_id_provider.o obj/base/base/bucket_ranges.o obj/base/base/crc32.o obj/base/base/dummy_histogram.o obj/base/base/field_trial.o obj/base/base/field_trial_param_associator.o obj/base/base/field_trial_params.o obj/base/base/histogram.o obj/base/base/histogram_base.o obj/base/base/histogram_delta_serialization.o obj/base/base/histogram_functions.o obj/base/base/histogram_samples.o obj/base/base/histogram_snapshot_manager.o obj/base/base/metrics_hashes.o obj/base/base/persistent_histogram_allocator.o obj/base/base/persistent_memory_allocator.o obj/base/base/persistent_sample_map.o obj/base/base/ranges_manager.o obj/base/base/sample_map.o obj/base/base/sample_vector.o obj/base/base/single_sample_metrics.o obj/base/base/sparse_histogram.o obj/base/base/statistics_recorder.o obj/base/base/user_metrics.o obj/base/base/observer_list_internal.o obj/base/base/observer_list_threadsafe.o obj/base/base/observer_list_types.o obj/base/base/one_shot_event.o obj/base/base/pending_task.o obj/base/base/pickle.o obj/base/base/battery_level_provider.o obj/base/base/battery_state_sampler.o obj/base/base/moving_average.o obj/base/base/power_monitor.o obj/base/base/power_monitor_device_source.o obj/base/base/power_monitor_features.o obj/base/base/power_monitor_source.o obj/base/base/sampling_event_source.o obj/base/base/timer_sampling_event_source.o obj/base/base/current_process.o obj/base/base/environment_internal.o obj/base/base/process_handle.o obj/base/base/frame.o obj/base/base/metadata_recorder.o obj/base/base/module_cache.o obj/base/base/sample_metadata.o obj/base/base/sampling_profiler_thread_token.o obj/base/base/stack_buffer.o obj/base/base/stack_copier.o obj/base/base/stack_copier_suspend.o obj/base/base/stack_sampler.o obj/base/base/stack_sampling_profiler.o obj/base/base/unwinder.o obj/base/base/rand_util.o obj/base/base/run_loop.o obj/base/base/lock_free_address_hash_set.o obj/base/base/poisson_allocation_sampler.o obj/base/base/sampling_heap_profiler.o obj/base/base/scoped_add_feature_flags.o obj/base/base/scoped_environment_variable_override.o obj/base/base/sequence_checker.o obj/base/base/sequence_checker_impl.o obj/base/base/sequence_token.o obj/base/base/abseil_string_conversions.o obj/base/base/abseil_string_number_conversions.o obj/base/base/escape.o obj/base/base/latin1_string_conversions.o obj/base/base/pattern.o obj/base/base/safe_sprintf.o obj/base/base/strcat.o obj/base/base/string_number_conversions.o obj/base/base/string_piece.o obj/base/base/string_split.o obj/base/base/string_util.o obj/base/base/string_util_constants.o obj/base/base/stringprintf.o obj/base/base/utf_offset_string_conversions.o obj/base/base/utf_string_conversion_utils.o obj/base/base/utf_string_conversions.o obj/base/base/matcher_string_pattern.o obj/base/base/substring_set_matcher.o obj/base/base/supports_user_data.o obj/base/base/atomic_flag.o obj/base/base/lock.o obj/base/base/waitable_event.o obj/base/base/syslog_logging.o obj/base/base/system_monitor.o obj/base/base/cancelable_task_tracker.o obj/base/base/checked_lock_impl.o obj/base/base/lazy_now.o obj/base/base/operations_controller.o obj/base/base/scoped_defer_task_posting.o obj/base/base/task_annotator.o obj/base/base/current_thread.o obj/base/base/default_delayed_task_handle_delegate.o obj/base/base/deferred_sequenced_task_runner.o obj/base/base/delayed_task_handle.o obj/base/base/lazy_thread_pool_task_runner.o obj/base/base/post_job.o obj/base/base/scoped_set_task_priority_for_current_thread.o obj/base/base/associated_thread_id.o obj/base/base/atomic_flag_set.o obj/base/base/delayed_task_handle_delegate.o obj/base/base/enqueue_order_generator.o obj/base/base/fence.o obj/base/base/hierarchical_timing_wheel.o obj/base/base/sequence_manager.o obj/base/base/sequence_manager_impl.o obj/base/base/sequenced_task_source.o obj/base/base/task_order.o obj/base/base/task_queue.o obj/base/base/task_queue_impl.o obj/base/base/task_queue_selector.o obj/base/base/tasks.o obj/base/base/thread_controller.o obj/base/base/thread_controller_impl.o obj/base/base/thread_controller_power_monitor.o obj/base/base/thread_controller_with_message_pump_impl.o obj/base/base/time_domain.o obj/base/base/timing_wheel.o obj/base/base/wake_up_queue.o obj/base/base/work_deduplicator.o obj/base/base/work_queue.o obj/base/base/work_queue_sets.o obj/base/base/sequenced_task_runner.o obj/base/base/simple_task_executor.o obj/base/base/single_thread_task_executor.o obj/base/base/single_thread_task_runner.o obj/base/base/task_executor.o obj/base/base/task_features.o obj/base/base/task_runner.o obj/base/base/task_traits.o obj/base/base/thread_pool.o obj/base/base/delayed_priority_queue.o obj/base/base/delayed_task_manager.o obj/base/base/environment_config.o obj/base/base/job_task_source.o obj/base/base/pooled_parallel_task_runner.o obj/base/base/pooled_sequenced_task_runner.o obj/base/base/pooled_single_thread_task_runner_manager.o obj/base/base/pooled_task_runner_delegate.o obj/base/base/priority_queue.o obj/base/base/sequence.o obj/base/base/service_thread.o obj/base/base/task.o obj/base/base/task_source.o obj/base/base/task_source_sort_key.o obj/base/base/task_tracker.o obj/base/base/thread_group.o obj/base/base/thread_group_impl.o obj/base/base/thread_pool_impl.o obj/base/base/thread_pool_instance.o obj/base/base/worker_thread.o obj/base/base/worker_thread_set.o obj/base/base/city.o obj/base/base/city_v103.o obj/base/base/prtime.o obj/base/base/superfasthash.o obj/base/base/hang_watcher.o obj/base/base/platform_thread.o obj/base/base/platform_thread_ref.o obj/base/base/post_task_and_reply_impl.o obj/base/base/scoped_blocking_call.o obj/base/base/scoped_blocking_call_internal.o obj/base/base/scoped_thread_priority.o obj/base/base/sequence_local_storage_map.o obj/base/base/sequence_local_storage_slot.o obj/base/base/simple_thread.o obj/base/base/thread.o obj/base/base/thread_checker.o obj/base/base/thread_checker_impl.o obj/base/base/thread_collision_warner.o obj/base/base/thread_id_name_manager.o obj/base/base/thread_local_storage.o obj/base/base/thread_restrictions.o obj/base/base/watchdog.o obj/base/base/clock.o obj/base/base/default_clock.o obj/base/base/default_tick_clock.o obj/base/base/tick_clock.o obj/base/base/time.o obj/base/base/time_delta_from_string.o obj/base/base/time_override.o obj/base/base/time_to_iso8601.o obj/base/base/elapsed_timer.o obj/base/base/lap_timer.o obj/base/base/timer.o obj/base/base/wall_clock_timer.o obj/base/base/token.o obj/base/base/heap_profiler_allocation_context.o obj/base/base/heap_profiler_allocation_context_tracker.o obj/base/base/memory_allocator_dump_guid.o obj/base/base/trace_id_helper.o obj/base/base/unguessable_token.o obj/base/base/value_iterators.o obj/base/base/values.o obj/base/base/version.o obj/base/base/vlog.o obj/base/base/debugger_posix.o obj/base/base/file_descriptor_posix.o obj/base/base/file_posix.o obj/base/base/memory_mapped_file_posix.o obj/base/base/watchable_io_message_pump_posix.o obj/base/base/file_descriptor_shuffle.o obj/base/base/global_descriptors.o obj/base/base/safe_strerror.o obj/base/base/process_handle_posix.o obj/base/base/condition_variable_posix.o obj/base/base/lock_impl_posix.o obj/base/base/platform_thread_posix.o obj/base/base/thread_local_storage_posix.o obj/base/base/time_conversion_posix.o obj/base/base/hi_res_timer_manager_posix.o obj/base/base/proc_maps_linux.o obj/base/base/scoped_file_linux.o obj/base/base/internal_linux.o obj/base/base/memory_linux.o obj/base/base/process_handle_linux.o obj/base/base/process_iterator_linux.o obj/base/base/process_linux.o obj/base/base/process_metrics_linux.o obj/base/base/platform_thread_linux.o obj/base/base/thread_type_delegate.o obj/base/base/file_path_watcher_inotify.o obj/base/base/allocator_shim.o obj/base/base/allocator_shim_default_dispatch_to_partition_alloc.o obj/base/base/allocator_shim_default_dispatch_to_glibc.o obj/base/base/md5_boringssl.o obj/base/base/sha1_boringssl.o obj/base/base/base_paths.o obj/base/base/cpu.o obj/base/base/crash_logging.o obj/base/base/stack_trace.o obj/base/base/file_enumerator.o obj/base/base/file_proxy.o obj/base/base/file_util.o obj/base/base/important_file_writer.o obj/base/base/important_file_writer_cleaner.o obj/base/base/scoped_temp_dir.o obj/base/base/json_file_value_serializer.o obj/base/base/discardable_memory.o obj/base/base/discardable_memory_allocator.o obj/base/base/persistent_histogram_storage.o obj/base/base/native_library.o obj/base/base/path_service.o obj/base/base/process_metrics.o obj/base/base/scoped_native_library.o obj/base/base/sys_info.o obj/base/base/initialization_util.o obj/base/base/madv_free_discardable_memory_allocator_posix.o obj/base/base/madv_free_discardable_memory_posix.o obj/base/base/unix_domain_socket.o obj/base/base/rand_util_posix.o obj/base/base/sys_info_posix.o obj/base/base/file_descriptor_watcher_posix.o obj/base/base/file_enumerator_posix.o obj/base/base/file_util_posix.o obj/base/base/page_size_posix.o obj/base/base/process_metrics_posix.o obj/base/base/sync_socket_posix.o obj/base/base/native_library_posix.o obj/base/base/can_lower_nice_to.o obj/base/base/launch_posix.o obj/base/base/module_cache_posix.o obj/base/base/stack_base_address_posix.o obj/base/base/stack_copier_signal.o obj/base/base/thread_delegate_posix.o obj/base/base/stack_trace_posix.o obj/base/base/kill_posix.o obj/base/base/process_posix.o obj/base/base/discardable_shared_memory.o obj/base/base/kill.o obj/base/base/launch.o obj/base/base/memory.o obj/base/base/process_iterator.o obj/base/base/base_paths_posix.o obj/base/base/elf_reader.o obj/base/base/stack_canary_linux.o obj/base/base/partition_alloc_features.o obj/base/base/partition_alloc_support.o obj/base/base/file_descriptor_store.o obj/base/base/sys_info_linux.o obj/base/base/mime_util_xdg.o obj/base/base/xdg_util.o obj/base/base/file_path_watcher.o obj/base/base/sync_socket.o obj/base/base/message_pump_libevent.o obj/base/base/message_pump_epoll.o obj/base/base/platform_shared_memory_mapper_posix.o obj/base/base/platform_shared_memory_region_posix.o obj/base/base/sys_string_conversions_posix.o obj/base/base/waitable_event_posix.o obj/base/base/waitable_event_watcher_posix.o obj/base/base/platform_thread_internal_posix.o obj/base/base/time_exploded_posix.o obj/base/base/time_now_posix.o obj/base/base/time_exploded_icu.o obj/base/base/stack_sampler_posix.o obj/base/base/power_monitor_device_source_stub.o obj/base/base/message_pump_glib.o obj/base/base/builtin_categories.o obj/base/base/category_registry.o obj/base/base/interned_args_helper.o obj/base/base/log_message.o obj/base/base/malloc_dump_provider.o obj/base/base/memory_allocator_dump.o obj/base/base/memory_dump_manager.o obj/base/base/memory_dump_provider_info.o obj/base/base/memory_dump_request_args.o obj/base/base/memory_dump_scheduler.o obj/base/base/memory_infra_background_allowlist.o obj/base/base/memory_pressure_level_proto.o obj/base/base/memory_usage_estimator.o obj/base/base/process_memory_dump.o obj/base/base/trace_arguments.o obj/base/base/trace_buffer.o obj/base/base/trace_config.o obj/base/base/trace_config_category_filter.o obj/base/base/trace_event_impl.o obj/base/base/trace_event_memory_overhead.o obj/base/base/trace_log.o obj/base/base/trace_log_constants.o obj/base/base/traced_value.o obj/base/base/tracing_agent.o obj/base/base/typed_macros_internal.o obj/base/base/perfetto_platform.o obj/base/base/perfetto_task_runner.o obj/base/base/trace_time.o obj/base/base/tracing_tls.o obj/base/tracing/protos/chrome_track_event_zero/chrome_track_event.pbzero.o obj/base/libbase_static.a obj/base/third_party/double_conversion/libdouble_conversion.a obj/base/third_party/dynamic_annotations/libdynamic_annotations.a obj/third_party/modp_b64/libmodp_b64.a obj/base/third_party/symbolize/libsymbolize.a obj/base/third_party/xdg_mime/libxdg_mime.a obj/base/third_party/xdg_user_dirs/libxdg_user_dirs.a obj/third_party/libevent/libevent.a | ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC ./libc++.so.TOC || obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/partition_allocator/buildflags.stamp obj/base/numerics/base_numerics.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/raw_ptr.stamp obj/base/tracing/protos/chrome_track_event_zero.stamp obj/base/message_pump_buildflags.stamp obj/base/allocator/buildflags.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/third_party/icu/icuuc.stamp obj/base/tracing/protos/chrome_track_event.stamp obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp obj/build/config/shared_library_deps.stamp obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp obj/third_party/perfetto/include/perfetto/public/protozero.stamp
   ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
   libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0
   frameworks =

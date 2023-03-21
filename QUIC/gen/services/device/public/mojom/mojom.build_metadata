@@ -27,7 +27,6 @@
     "../../../../../../../services/device/public/mojom/screen_orientation.mojom",
     "../../../../../../../services/device/public/mojom/screen_orientation_lock_types.mojom",
     "../../../../../../../services/device/public/mojom/serial.mojom",
-    "../../../../../../../services/device/public/mojom/smart_card.mojom",
     "../../../../../../../services/device/public/mojom/time_zone_monitor.mojom",
     "../../../../../../../services/device/public/mojom/vibration_manager.mojom",
     "../../../../../../../services/device/public/mojom/wake_lock.mojom",

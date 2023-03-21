@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -65,13 +66,13 @@ bool ProcessTree::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessTree::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessTree::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,10 +90,10 @@ void ProcessTree::Serialize(::protozero::Message* msg) const {
 
   // Field 3: collection_end_timestamp
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, collection_end_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, collection_end_timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -129,7 +130,7 @@ bool ProcessTree_Thread::ParseFromArray(const void* raw, size_t size) {
         field.get(&tgid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 4 /* nstid */:
         nstid_.emplace_back();
@@ -144,13 +145,13 @@ bool ProcessTree_Thread::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessTree_Thread::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessTree_Thread::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -158,25 +159,25 @@ std::vector<uint8_t> ProcessTree_Thread::SerializeAsArray() const {
 void ProcessTree_Thread::Serialize(::protozero::Message* msg) const {
   // Field 1: tid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, tid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, tid_, msg);
   }
 
   // Field 3: tgid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, tgid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 4: nstid
   for (auto& it : nstid_) {
-    msg->AppendVarInt(4, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -221,7 +222,7 @@ bool ProcessTree_Process::ParseFromArray(const void* raw, size_t size) {
         break;
       case 3 /* cmdline */:
         cmdline_.emplace_back();
-        field.get(&cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_.back());
         break;
       case 4 /* threads_deprecated */:
         threads_deprecated_.emplace_back();
@@ -243,13 +244,13 @@ bool ProcessTree_Process::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessTree_Process::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessTree_Process::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -257,17 +258,17 @@ std::vector<uint8_t> ProcessTree_Process::SerializeAsArray() const {
 void ProcessTree_Process::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: ppid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ppid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ppid_, msg);
   }
 
   // Field 3: cmdline
   for (auto& it : cmdline_) {
-    msg->AppendString(3, it);
+    ::protozero::internal::gen_helpers::SerializeString(3, it, msg);
   }
 
   // Field 4: threads_deprecated
@@ -277,15 +278,15 @@ void ProcessTree_Process::Serialize(::protozero::Message* msg) const {
 
   // Field 5: uid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, uid_, msg);
   }
 
   // Field 6: nspid
   for (auto& it : nspid_) {
-    msg->AppendVarInt(6, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

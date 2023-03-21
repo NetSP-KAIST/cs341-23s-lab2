@@ -17,5 +17,22 @@
         "move_only": true
       }
     ]
+  },
+  {
+    "traits_deps": [
+      "//ui/ozone/platform/wayland:common"
+    ],
+    "traits_headers": [
+      "ui/ozone/platform/wayland/mojom/wayland_presentation_info_mojom_traits.h"
+    ],
+    "traits_sources": [
+      "wayland_presentation_info_mojom_traits.cc"
+    ],
+    "types": [
+      {
+        "cpp": "::wl::WaylandPresentationInfo",
+        "mojom": "wl.mojom.WaylandPresentationInfo"
+      }
+    ]
   }
 ]

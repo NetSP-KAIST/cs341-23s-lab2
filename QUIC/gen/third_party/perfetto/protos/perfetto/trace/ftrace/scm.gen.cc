@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -43,19 +44,19 @@ bool ScmCallEndFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ScmCallEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ScmCallEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void ScmCallEndFtraceEvent::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -101,13 +102,13 @@ bool ScmCallStartFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ScmCallStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ScmCallStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -115,20 +116,20 @@ std::vector<uint8_t> ScmCallStartFtraceEvent::SerializeAsArray() const {
 void ScmCallStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: arginfo
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, arginfo_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, arginfo_, msg);
   }
 
   // Field 2: x0
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, x0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, x0_, msg);
   }
 
   // Field 3: x5
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, x5_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, x5_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

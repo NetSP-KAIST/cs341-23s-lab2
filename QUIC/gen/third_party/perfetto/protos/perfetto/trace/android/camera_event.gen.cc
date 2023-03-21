@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,13 +52,13 @@ bool AndroidCameraSessionStats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidCameraSessionStats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraSessionStats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,7 +66,7 @@ std::vector<uint8_t> AndroidCameraSessionStats::SerializeAsArray() const {
 void AndroidCameraSessionStats::Serialize(::protozero::Message* msg) const {
   // Field 1: session_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, session_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, session_id_, msg);
   }
 
   // Field 2: graph
@@ -73,7 +74,7 @@ void AndroidCameraSessionStats::Serialize(::protozero::Message* msg) const {
     (*graph_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -125,13 +126,13 @@ bool AndroidCameraSessionStats_CameraGraph::ParseFromArray(const void* raw, size
 }
 
 std::string AndroidCameraSessionStats_CameraGraph::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraSessionStats_CameraGraph::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -147,7 +148,7 @@ void AndroidCameraSessionStats_CameraGraph::Serialize(::protozero::Message* msg)
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -205,13 +206,13 @@ bool AndroidCameraSessionStats_CameraGraph_CameraEdge::ParseFromArray(const void
 }
 
 std::string AndroidCameraSessionStats_CameraGraph_CameraEdge::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraSessionStats_CameraGraph_CameraEdge::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -219,35 +220,35 @@ std::vector<uint8_t> AndroidCameraSessionStats_CameraGraph_CameraEdge::Serialize
 void AndroidCameraSessionStats_CameraGraph_CameraEdge::Serialize(::protozero::Message* msg) const {
   // Field 1: output_node_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, output_node_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, output_node_id_, msg);
   }
 
   // Field 2: output_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, output_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, output_id_, msg);
   }
 
   // Field 3: input_node_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, input_node_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, input_node_id_, msg);
   }
 
   // Field 4: input_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, input_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, input_id_, msg);
   }
 
   // Field 5: vendor_data_version
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, vendor_data_version_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, vendor_data_version_, msg);
   }
 
   // Field 6: vendor_data
   if (_has_field_[6]) {
-    msg->AppendString(6, vendor_data_);
+    ::protozero::internal::gen_helpers::SerializeString(6, vendor_data_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -305,13 +306,13 @@ bool AndroidCameraSessionStats_CameraGraph_CameraNode::ParseFromArray(const void
 }
 
 std::string AndroidCameraSessionStats_CameraGraph_CameraNode::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraSessionStats_CameraGraph_CameraNode::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -319,30 +320,30 @@ std::vector<uint8_t> AndroidCameraSessionStats_CameraGraph_CameraNode::Serialize
 void AndroidCameraSessionStats_CameraGraph_CameraNode::Serialize(::protozero::Message* msg) const {
   // Field 1: node_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, node_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, node_id_, msg);
   }
 
   // Field 2: input_ids
   for (auto& it : input_ids_) {
-    msg->AppendVarInt(2, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, it, msg);
   }
 
   // Field 3: output_ids
   for (auto& it : output_ids_) {
-    msg->AppendVarInt(3, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, it, msg);
   }
 
   // Field 4: vendor_data_version
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, vendor_data_version_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, vendor_data_version_, msg);
   }
 
   // Field 5: vendor_data
   if (_has_field_[5]) {
-    msg->AppendString(5, vendor_data_);
+    ::protozero::internal::gen_helpers::SerializeString(5, vendor_data_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -445,13 +446,13 @@ bool AndroidCameraFrameEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidCameraFrameEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraFrameEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -459,67 +460,67 @@ std::vector<uint8_t> AndroidCameraFrameEvent::SerializeAsArray() const {
 void AndroidCameraFrameEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: session_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, session_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, session_id_, msg);
   }
 
   // Field 2: camera_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, camera_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, camera_id_, msg);
   }
 
   // Field 3: frame_number
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, frame_number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, frame_number_, msg);
   }
 
   // Field 4: request_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, request_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, request_id_, msg);
   }
 
   // Field 5: request_received_ns
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, request_received_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, request_received_ns_, msg);
   }
 
   // Field 6: request_processing_started_ns
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, request_processing_started_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, request_processing_started_ns_, msg);
   }
 
   // Field 7: start_of_exposure_ns
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, start_of_exposure_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, start_of_exposure_ns_, msg);
   }
 
   // Field 8: start_of_frame_ns
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, start_of_frame_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, start_of_frame_ns_, msg);
   }
 
   // Field 9: responses_all_sent_ns
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, responses_all_sent_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, responses_all_sent_ns_, msg);
   }
 
   // Field 10: capture_result_status
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, capture_result_status_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, capture_result_status_, msg);
   }
 
   // Field 11: skipped_sensor_frames
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, skipped_sensor_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, skipped_sensor_frames_, msg);
   }
 
   // Field 12: capture_intent
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, capture_intent_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, capture_intent_, msg);
   }
 
   // Field 13: num_streams
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, num_streams_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, num_streams_, msg);
   }
 
   // Field 14: node_processing_details
@@ -529,15 +530,15 @@ void AndroidCameraFrameEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 15: vendor_data_version
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, vendor_data_version_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, vendor_data_version_, msg);
   }
 
   // Field 16: vendor_data
   if (_has_field_[16]) {
-    msg->AppendString(16, vendor_data_);
+    ::protozero::internal::gen_helpers::SerializeString(16, vendor_data_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -587,13 +588,13 @@ bool AndroidCameraFrameEvent_CameraNodeProcessingDetails::ParseFromArray(const v
 }
 
 std::string AndroidCameraFrameEvent_CameraNodeProcessingDetails::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidCameraFrameEvent_CameraNodeProcessingDetails::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -601,25 +602,25 @@ std::vector<uint8_t> AndroidCameraFrameEvent_CameraNodeProcessingDetails::Serial
 void AndroidCameraFrameEvent_CameraNodeProcessingDetails::Serialize(::protozero::Message* msg) const {
   // Field 1: node_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, node_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, node_id_, msg);
   }
 
   // Field 2: start_processing_ns
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, start_processing_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, start_processing_ns_, msg);
   }
 
   // Field 3: end_processing_ns
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, end_processing_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, end_processing_ns_, msg);
   }
 
   // Field 4: scheduling_latency_ns
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, scheduling_latency_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, scheduling_latency_ns_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -50,6 +50,7 @@
 #include "protos/perfetto/trace/ftrace/g2d.pb.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.pb.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.pb.h"
+#include "protos/perfetto/trace/ftrace/hyp.pb.h"
 #include "protos/perfetto/trace/ftrace/i2c.pb.h"
 #include "protos/perfetto/trace/ftrace/ion.pb.h"
 #include "protos/perfetto/trace/ftrace/ipi.pb.h"
@@ -612,6 +613,11 @@ class FtraceEvent final :
     kMaliMaliKCPUFENCESIGNAL = 473,
     kMaliMaliKCPUFENCEWAITSTART = 474,
     kMaliMaliKCPUFENCEWAITEND = 475,
+    kHypEnter = 476,
+    kHypExit = 477,
+    kHostHcall = 478,
+    kHostSmc = 479,
+    kHostMemAbort = 480,
     EVENT_NOT_SET = 0,
   };
 
@@ -1140,6 +1146,11 @@ class FtraceEvent final :
     kMaliMaliKCPUFENCESIGNALFieldNumber = 473,
     kMaliMaliKCPUFENCEWAITSTARTFieldNumber = 474,
     kMaliMaliKCPUFENCEWAITENDFieldNumber = 475,
+    kHypEnterFieldNumber = 476,
+    kHypExitFieldNumber = 477,
+    kHostHcallFieldNumber = 478,
+    kHostSmcFieldNumber = 479,
+    kHostMemAbortFieldNumber = 480,
   };
   // optional uint64 timestamp = 1;
   bool has_timestamp() const;
@@ -9339,6 +9350,96 @@ class FtraceEvent final :
       ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* mali_mali_kcpu_fence_wait_end);
   ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* unsafe_arena_release_mali_mali_kcpu_fence_wait_end();
 
+  // .perfetto.protos.HypEnterFtraceEvent hyp_enter = 476;
+  bool has_hyp_enter() const;
+  private:
+  bool _internal_has_hyp_enter() const;
+  public:
+  void clear_hyp_enter();
+  const ::perfetto::protos::HypEnterFtraceEvent& hyp_enter() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::HypEnterFtraceEvent* release_hyp_enter();
+  ::perfetto::protos::HypEnterFtraceEvent* mutable_hyp_enter();
+  void set_allocated_hyp_enter(::perfetto::protos::HypEnterFtraceEvent* hyp_enter);
+  private:
+  const ::perfetto::protos::HypEnterFtraceEvent& _internal_hyp_enter() const;
+  ::perfetto::protos::HypEnterFtraceEvent* _internal_mutable_hyp_enter();
+  public:
+  void unsafe_arena_set_allocated_hyp_enter(
+      ::perfetto::protos::HypEnterFtraceEvent* hyp_enter);
+  ::perfetto::protos::HypEnterFtraceEvent* unsafe_arena_release_hyp_enter();
+
+  // .perfetto.protos.HypExitFtraceEvent hyp_exit = 477;
+  bool has_hyp_exit() const;
+  private:
+  bool _internal_has_hyp_exit() const;
+  public:
+  void clear_hyp_exit();
+  const ::perfetto::protos::HypExitFtraceEvent& hyp_exit() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::HypExitFtraceEvent* release_hyp_exit();
+  ::perfetto::protos::HypExitFtraceEvent* mutable_hyp_exit();
+  void set_allocated_hyp_exit(::perfetto::protos::HypExitFtraceEvent* hyp_exit);
+  private:
+  const ::perfetto::protos::HypExitFtraceEvent& _internal_hyp_exit() const;
+  ::perfetto::protos::HypExitFtraceEvent* _internal_mutable_hyp_exit();
+  public:
+  void unsafe_arena_set_allocated_hyp_exit(
+      ::perfetto::protos::HypExitFtraceEvent* hyp_exit);
+  ::perfetto::protos::HypExitFtraceEvent* unsafe_arena_release_hyp_exit();
+
+  // .perfetto.protos.HostHcallFtraceEvent host_hcall = 478;
+  bool has_host_hcall() const;
+  private:
+  bool _internal_has_host_hcall() const;
+  public:
+  void clear_host_hcall();
+  const ::perfetto::protos::HostHcallFtraceEvent& host_hcall() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::HostHcallFtraceEvent* release_host_hcall();
+  ::perfetto::protos::HostHcallFtraceEvent* mutable_host_hcall();
+  void set_allocated_host_hcall(::perfetto::protos::HostHcallFtraceEvent* host_hcall);
+  private:
+  const ::perfetto::protos::HostHcallFtraceEvent& _internal_host_hcall() const;
+  ::perfetto::protos::HostHcallFtraceEvent* _internal_mutable_host_hcall();
+  public:
+  void unsafe_arena_set_allocated_host_hcall(
+      ::perfetto::protos::HostHcallFtraceEvent* host_hcall);
+  ::perfetto::protos::HostHcallFtraceEvent* unsafe_arena_release_host_hcall();
+
+  // .perfetto.protos.HostSmcFtraceEvent host_smc = 479;
+  bool has_host_smc() const;
+  private:
+  bool _internal_has_host_smc() const;
+  public:
+  void clear_host_smc();
+  const ::perfetto::protos::HostSmcFtraceEvent& host_smc() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::HostSmcFtraceEvent* release_host_smc();
+  ::perfetto::protos::HostSmcFtraceEvent* mutable_host_smc();
+  void set_allocated_host_smc(::perfetto::protos::HostSmcFtraceEvent* host_smc);
+  private:
+  const ::perfetto::protos::HostSmcFtraceEvent& _internal_host_smc() const;
+  ::perfetto::protos::HostSmcFtraceEvent* _internal_mutable_host_smc();
+  public:
+  void unsafe_arena_set_allocated_host_smc(
+      ::perfetto::protos::HostSmcFtraceEvent* host_smc);
+  ::perfetto::protos::HostSmcFtraceEvent* unsafe_arena_release_host_smc();
+
+  // .perfetto.protos.HostMemAbortFtraceEvent host_mem_abort = 480;
+  bool has_host_mem_abort() const;
+  private:
+  bool _internal_has_host_mem_abort() const;
+  public:
+  void clear_host_mem_abort();
+  const ::perfetto::protos::HostMemAbortFtraceEvent& host_mem_abort() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::HostMemAbortFtraceEvent* release_host_mem_abort();
+  ::perfetto::protos::HostMemAbortFtraceEvent* mutable_host_mem_abort();
+  void set_allocated_host_mem_abort(::perfetto::protos::HostMemAbortFtraceEvent* host_mem_abort);
+  private:
+  const ::perfetto::protos::HostMemAbortFtraceEvent& _internal_host_mem_abort() const;
+  ::perfetto::protos::HostMemAbortFtraceEvent* _internal_mutable_host_mem_abort();
+  public:
+  void unsafe_arena_set_allocated_host_mem_abort(
+      ::perfetto::protos::HostMemAbortFtraceEvent* host_mem_abort);
+  ::perfetto::protos::HostMemAbortFtraceEvent* unsafe_arena_release_host_mem_abort();
+
   void clear_event();
   EventCase event_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEvent)
@@ -9798,6 +9899,11 @@ class FtraceEvent final :
   void set_has_mali_mali_kcpu_fence_signal();
   void set_has_mali_mali_kcpu_fence_wait_start();
   void set_has_mali_mali_kcpu_fence_wait_end();
+  void set_has_hyp_enter();
+  void set_has_hyp_exit();
+  void set_has_host_hcall();
+  void set_has_host_smc();
+  void set_has_host_mem_abort();
 
   inline bool has_event() const;
   inline void clear_has_event();
@@ -10266,6 +10372,11 @@ class FtraceEvent final :
     ::perfetto::protos::MaliMaliKCPUFENCESIGNALFtraceEvent* mali_mali_kcpu_fence_signal_;
     ::perfetto::protos::MaliMaliKCPUFENCEWAITSTARTFtraceEvent* mali_mali_kcpu_fence_wait_start_;
     ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* mali_mali_kcpu_fence_wait_end_;
+    ::perfetto::protos::HypEnterFtraceEvent* hyp_enter_;
+    ::perfetto::protos::HypExitFtraceEvent* hyp_exit_;
+    ::perfetto::protos::HostHcallFtraceEvent* host_hcall_;
+    ::perfetto::protos::HostSmcFtraceEvent* host_smc_;
+    ::perfetto::protos::HostMemAbortFtraceEvent* host_mem_abort_;
   } event_;
   uint32_t _oneof_case_[1];
 
@@ -40299,6 +40410,336 @@ inline ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* FtraceEvent::_in
 inline ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* FtraceEvent::mutable_mali_mali_kcpu_fence_wait_end() {
   ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* _msg = _internal_mutable_mali_mali_kcpu_fence_wait_end();
   // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_KCPU_FENCE_WAIT_END)
+  return _msg;
+}
+
+// .perfetto.protos.HypEnterFtraceEvent hyp_enter = 476;
+inline bool FtraceEvent::_internal_has_hyp_enter() const {
+  return event_case() == kHypEnter;
+}
+inline bool FtraceEvent::has_hyp_enter() const {
+  return _internal_has_hyp_enter();
+}
+inline void FtraceEvent::set_has_hyp_enter() {
+  _oneof_case_[0] = kHypEnter;
+}
+inline ::perfetto::protos::HypEnterFtraceEvent* FtraceEvent::release_hyp_enter() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.hyp_enter)
+  if (_internal_has_hyp_enter()) {
+    clear_has_event();
+    ::perfetto::protos::HypEnterFtraceEvent* temp = event_.hyp_enter_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    event_.hyp_enter_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::HypEnterFtraceEvent& FtraceEvent::_internal_hyp_enter() const {
+  return _internal_has_hyp_enter()
+      ? *event_.hyp_enter_
+      : reinterpret_cast< ::perfetto::protos::HypEnterFtraceEvent&>(::perfetto::protos::_HypEnterFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::HypEnterFtraceEvent& FtraceEvent::hyp_enter() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.hyp_enter)
+  return _internal_hyp_enter();
+}
+inline ::perfetto::protos::HypEnterFtraceEvent* FtraceEvent::unsafe_arena_release_hyp_enter() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.hyp_enter)
+  if (_internal_has_hyp_enter()) {
+    clear_has_event();
+    ::perfetto::protos::HypEnterFtraceEvent* temp = event_.hyp_enter_;
+    event_.hyp_enter_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_hyp_enter(::perfetto::protos::HypEnterFtraceEvent* hyp_enter) {
+  clear_event();
+  if (hyp_enter) {
+    set_has_hyp_enter();
+    event_.hyp_enter_ = hyp_enter;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.hyp_enter)
+}
+inline ::perfetto::protos::HypEnterFtraceEvent* FtraceEvent::_internal_mutable_hyp_enter() {
+  if (!_internal_has_hyp_enter()) {
+    clear_event();
+    set_has_hyp_enter();
+    event_.hyp_enter_ = CreateMaybeMessage< ::perfetto::protos::HypEnterFtraceEvent >(GetArenaForAllocation());
+  }
+  return event_.hyp_enter_;
+}
+inline ::perfetto::protos::HypEnterFtraceEvent* FtraceEvent::mutable_hyp_enter() {
+  ::perfetto::protos::HypEnterFtraceEvent* _msg = _internal_mutable_hyp_enter();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.hyp_enter)
+  return _msg;
+}
+
+// .perfetto.protos.HypExitFtraceEvent hyp_exit = 477;
+inline bool FtraceEvent::_internal_has_hyp_exit() const {
+  return event_case() == kHypExit;
+}
+inline bool FtraceEvent::has_hyp_exit() const {
+  return _internal_has_hyp_exit();
+}
+inline void FtraceEvent::set_has_hyp_exit() {
+  _oneof_case_[0] = kHypExit;
+}
+inline ::perfetto::protos::HypExitFtraceEvent* FtraceEvent::release_hyp_exit() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.hyp_exit)
+  if (_internal_has_hyp_exit()) {
+    clear_has_event();
+    ::perfetto::protos::HypExitFtraceEvent* temp = event_.hyp_exit_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    event_.hyp_exit_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::HypExitFtraceEvent& FtraceEvent::_internal_hyp_exit() const {
+  return _internal_has_hyp_exit()
+      ? *event_.hyp_exit_
+      : reinterpret_cast< ::perfetto::protos::HypExitFtraceEvent&>(::perfetto::protos::_HypExitFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::HypExitFtraceEvent& FtraceEvent::hyp_exit() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.hyp_exit)
+  return _internal_hyp_exit();
+}
+inline ::perfetto::protos::HypExitFtraceEvent* FtraceEvent::unsafe_arena_release_hyp_exit() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.hyp_exit)
+  if (_internal_has_hyp_exit()) {
+    clear_has_event();
+    ::perfetto::protos::HypExitFtraceEvent* temp = event_.hyp_exit_;
+    event_.hyp_exit_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_hyp_exit(::perfetto::protos::HypExitFtraceEvent* hyp_exit) {
+  clear_event();
+  if (hyp_exit) {
+    set_has_hyp_exit();
+    event_.hyp_exit_ = hyp_exit;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.hyp_exit)
+}
+inline ::perfetto::protos::HypExitFtraceEvent* FtraceEvent::_internal_mutable_hyp_exit() {
+  if (!_internal_has_hyp_exit()) {
+    clear_event();
+    set_has_hyp_exit();
+    event_.hyp_exit_ = CreateMaybeMessage< ::perfetto::protos::HypExitFtraceEvent >(GetArenaForAllocation());
+  }
+  return event_.hyp_exit_;
+}
+inline ::perfetto::protos::HypExitFtraceEvent* FtraceEvent::mutable_hyp_exit() {
+  ::perfetto::protos::HypExitFtraceEvent* _msg = _internal_mutable_hyp_exit();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.hyp_exit)
+  return _msg;
+}
+
+// .perfetto.protos.HostHcallFtraceEvent host_hcall = 478;
+inline bool FtraceEvent::_internal_has_host_hcall() const {
+  return event_case() == kHostHcall;
+}
+inline bool FtraceEvent::has_host_hcall() const {
+  return _internal_has_host_hcall();
+}
+inline void FtraceEvent::set_has_host_hcall() {
+  _oneof_case_[0] = kHostHcall;
+}
+inline ::perfetto::protos::HostHcallFtraceEvent* FtraceEvent::release_host_hcall() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.host_hcall)
+  if (_internal_has_host_hcall()) {
+    clear_has_event();
+    ::perfetto::protos::HostHcallFtraceEvent* temp = event_.host_hcall_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    event_.host_hcall_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::HostHcallFtraceEvent& FtraceEvent::_internal_host_hcall() const {
+  return _internal_has_host_hcall()
+      ? *event_.host_hcall_
+      : reinterpret_cast< ::perfetto::protos::HostHcallFtraceEvent&>(::perfetto::protos::_HostHcallFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::HostHcallFtraceEvent& FtraceEvent::host_hcall() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.host_hcall)
+  return _internal_host_hcall();
+}
+inline ::perfetto::protos::HostHcallFtraceEvent* FtraceEvent::unsafe_arena_release_host_hcall() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.host_hcall)
+  if (_internal_has_host_hcall()) {
+    clear_has_event();
+    ::perfetto::protos::HostHcallFtraceEvent* temp = event_.host_hcall_;
+    event_.host_hcall_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_host_hcall(::perfetto::protos::HostHcallFtraceEvent* host_hcall) {
+  clear_event();
+  if (host_hcall) {
+    set_has_host_hcall();
+    event_.host_hcall_ = host_hcall;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.host_hcall)
+}
+inline ::perfetto::protos::HostHcallFtraceEvent* FtraceEvent::_internal_mutable_host_hcall() {
+  if (!_internal_has_host_hcall()) {
+    clear_event();
+    set_has_host_hcall();
+    event_.host_hcall_ = CreateMaybeMessage< ::perfetto::protos::HostHcallFtraceEvent >(GetArenaForAllocation());
+  }
+  return event_.host_hcall_;
+}
+inline ::perfetto::protos::HostHcallFtraceEvent* FtraceEvent::mutable_host_hcall() {
+  ::perfetto::protos::HostHcallFtraceEvent* _msg = _internal_mutable_host_hcall();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.host_hcall)
+  return _msg;
+}
+
+// .perfetto.protos.HostSmcFtraceEvent host_smc = 479;
+inline bool FtraceEvent::_internal_has_host_smc() const {
+  return event_case() == kHostSmc;
+}
+inline bool FtraceEvent::has_host_smc() const {
+  return _internal_has_host_smc();
+}
+inline void FtraceEvent::set_has_host_smc() {
+  _oneof_case_[0] = kHostSmc;
+}
+inline ::perfetto::protos::HostSmcFtraceEvent* FtraceEvent::release_host_smc() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.host_smc)
+  if (_internal_has_host_smc()) {
+    clear_has_event();
+    ::perfetto::protos::HostSmcFtraceEvent* temp = event_.host_smc_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    event_.host_smc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::HostSmcFtraceEvent& FtraceEvent::_internal_host_smc() const {
+  return _internal_has_host_smc()
+      ? *event_.host_smc_
+      : reinterpret_cast< ::perfetto::protos::HostSmcFtraceEvent&>(::perfetto::protos::_HostSmcFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::HostSmcFtraceEvent& FtraceEvent::host_smc() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.host_smc)
+  return _internal_host_smc();
+}
+inline ::perfetto::protos::HostSmcFtraceEvent* FtraceEvent::unsafe_arena_release_host_smc() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.host_smc)
+  if (_internal_has_host_smc()) {
+    clear_has_event();
+    ::perfetto::protos::HostSmcFtraceEvent* temp = event_.host_smc_;
+    event_.host_smc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_host_smc(::perfetto::protos::HostSmcFtraceEvent* host_smc) {
+  clear_event();
+  if (host_smc) {
+    set_has_host_smc();
+    event_.host_smc_ = host_smc;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.host_smc)
+}
+inline ::perfetto::protos::HostSmcFtraceEvent* FtraceEvent::_internal_mutable_host_smc() {
+  if (!_internal_has_host_smc()) {
+    clear_event();
+    set_has_host_smc();
+    event_.host_smc_ = CreateMaybeMessage< ::perfetto::protos::HostSmcFtraceEvent >(GetArenaForAllocation());
+  }
+  return event_.host_smc_;
+}
+inline ::perfetto::protos::HostSmcFtraceEvent* FtraceEvent::mutable_host_smc() {
+  ::perfetto::protos::HostSmcFtraceEvent* _msg = _internal_mutable_host_smc();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.host_smc)
+  return _msg;
+}
+
+// .perfetto.protos.HostMemAbortFtraceEvent host_mem_abort = 480;
+inline bool FtraceEvent::_internal_has_host_mem_abort() const {
+  return event_case() == kHostMemAbort;
+}
+inline bool FtraceEvent::has_host_mem_abort() const {
+  return _internal_has_host_mem_abort();
+}
+inline void FtraceEvent::set_has_host_mem_abort() {
+  _oneof_case_[0] = kHostMemAbort;
+}
+inline ::perfetto::protos::HostMemAbortFtraceEvent* FtraceEvent::release_host_mem_abort() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.host_mem_abort)
+  if (_internal_has_host_mem_abort()) {
+    clear_has_event();
+    ::perfetto::protos::HostMemAbortFtraceEvent* temp = event_.host_mem_abort_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    event_.host_mem_abort_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::HostMemAbortFtraceEvent& FtraceEvent::_internal_host_mem_abort() const {
+  return _internal_has_host_mem_abort()
+      ? *event_.host_mem_abort_
+      : reinterpret_cast< ::perfetto::protos::HostMemAbortFtraceEvent&>(::perfetto::protos::_HostMemAbortFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::HostMemAbortFtraceEvent& FtraceEvent::host_mem_abort() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.host_mem_abort)
+  return _internal_host_mem_abort();
+}
+inline ::perfetto::protos::HostMemAbortFtraceEvent* FtraceEvent::unsafe_arena_release_host_mem_abort() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.host_mem_abort)
+  if (_internal_has_host_mem_abort()) {
+    clear_has_event();
+    ::perfetto::protos::HostMemAbortFtraceEvent* temp = event_.host_mem_abort_;
+    event_.host_mem_abort_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_host_mem_abort(::perfetto::protos::HostMemAbortFtraceEvent* host_mem_abort) {
+  clear_event();
+  if (host_mem_abort) {
+    set_has_host_mem_abort();
+    event_.host_mem_abort_ = host_mem_abort;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.host_mem_abort)
+}
+inline ::perfetto::protos::HostMemAbortFtraceEvent* FtraceEvent::_internal_mutable_host_mem_abort() {
+  if (!_internal_has_host_mem_abort()) {
+    clear_event();
+    set_has_host_mem_abort();
+    event_.host_mem_abort_ = CreateMaybeMessage< ::perfetto::protos::HostMemAbortFtraceEvent >(GetArenaForAllocation());
+  }
+  return event_.host_mem_abort_;
+}
+inline ::perfetto::protos::HostMemAbortFtraceEvent* FtraceEvent::mutable_host_mem_abort() {
+  ::perfetto::protos::HostMemAbortFtraceEvent* _msg = _internal_mutable_host_mem_abort();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.host_mem_abort)
   return _msg;
 }
 

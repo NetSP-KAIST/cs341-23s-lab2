@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,13 +52,13 @@ bool VulkanMemoryConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string VulkanMemoryConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanMemoryConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> VulkanMemoryConfig::SerializeAsArray() const {
 void VulkanMemoryConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: track_driver_memory_usage
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, track_driver_memory_usage_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, track_driver_memory_usage_, msg);
   }
 
   // Field 2: track_device_memory_usage
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, track_device_memory_usage_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, track_device_memory_usage_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

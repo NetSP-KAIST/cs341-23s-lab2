@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -61,13 +62,13 @@ bool PowerRails::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PowerRails::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PowerRails::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -83,7 +84,7 @@ void PowerRails::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -129,13 +130,13 @@ bool PowerRails_EnergyData::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PowerRails_EnergyData::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PowerRails_EnergyData::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -143,20 +144,20 @@ std::vector<uint8_t> PowerRails_EnergyData::SerializeAsArray() const {
 void PowerRails_EnergyData::Serialize(::protozero::Message* msg) const {
   // Field 1: index
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, index_, msg);
   }
 
   // Field 2: timestamp_ms
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, timestamp_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, timestamp_ms_, msg);
   }
 
   // Field 3: energy
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, energy_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, energy_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -189,10 +190,10 @@ bool PowerRails_RailDescriptor::ParseFromArray(const void* raw, size_t size) {
         field.get(&index_);
         break;
       case 2 /* rail_name */:
-        field.get(&rail_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &rail_name_);
         break;
       case 3 /* subsys_name */:
-        field.get(&subsys_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &subsys_name_);
         break;
       case 4 /* sampling_rate */:
         field.get(&sampling_rate_);
@@ -206,13 +207,13 @@ bool PowerRails_RailDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PowerRails_RailDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PowerRails_RailDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,25 +221,25 @@ std::vector<uint8_t> PowerRails_RailDescriptor::SerializeAsArray() const {
 void PowerRails_RailDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: index
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, index_, msg);
   }
 
   // Field 2: rail_name
   if (_has_field_[2]) {
-    msg->AppendString(2, rail_name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, rail_name_, msg);
   }
 
   // Field 3: subsys_name
   if (_has_field_[3]) {
-    msg->AppendString(3, subsys_name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, subsys_name_, msg);
   }
 
   // Field 4: sampling_rate
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sampling_rate_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sampling_rate_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

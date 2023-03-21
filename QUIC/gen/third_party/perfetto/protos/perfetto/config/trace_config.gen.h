@@ -115,6 +115,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
     kDataSourcesFieldNumber = 2,
     kBuiltinDataSourcesFieldNumber = 20,
     kDurationMsFieldNumber = 3,
+    kPreferSuspendClockForDurationFieldNumber = 36,
     kEnableExtraGuardrailsFieldNumber = 4,
     kLockdownModeFieldNumber = 5,
     kProducersFieldNumber = 6,
@@ -178,6 +179,10 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   bool has_duration_ms() const { return _has_field_[3]; }
   uint32_t duration_ms() const { return duration_ms_; }
   void set_duration_ms(uint32_t value) { duration_ms_ = value; _has_field_.set(3); }
+
+  bool has_prefer_suspend_clock_for_duration() const { return _has_field_[36]; }
+  bool prefer_suspend_clock_for_duration() const { return prefer_suspend_clock_for_duration_; }
+  void set_prefer_suspend_clock_for_duration(bool value) { prefer_suspend_clock_for_duration_ = value; _has_field_.set(36); }
 
   bool has_enable_extra_guardrails() const { return _has_field_[4]; }
   bool enable_extra_guardrails() const { return enable_extra_guardrails_; }
@@ -301,6 +306,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   std::vector<TraceConfig_DataSource> data_sources_;
   ::protozero::CopyablePtr<TraceConfig_BuiltinDataSource> builtin_data_sources_;
   uint32_t duration_ms_{};
+  bool prefer_suspend_clock_for_duration_{};
   bool enable_extra_guardrails_{};
   TraceConfig_LockdownModeOperation lockdown_mode_{};
   std::vector<TraceConfig_ProducerConfig> producers_;
@@ -334,7 +340,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<36> _has_field_{};
+  std::bitset<37> _has_field_{};
 };
 
 

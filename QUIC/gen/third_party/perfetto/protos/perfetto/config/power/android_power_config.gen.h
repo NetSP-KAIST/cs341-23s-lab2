@@ -51,6 +51,7 @@ class PERFETTO_EXPORT_COMPONENT AndroidPowerConfig : public ::protozero::CppMess
     kBatteryCountersFieldNumber = 2,
     kCollectPowerRailsFieldNumber = 3,
     kCollectEnergyEstimationBreakdownFieldNumber = 4,
+    kCollectEntityStateResidencyFieldNumber = 5,
   };
 
   AndroidPowerConfig();
@@ -86,17 +87,22 @@ class PERFETTO_EXPORT_COMPONENT AndroidPowerConfig : public ::protozero::CppMess
   bool collect_energy_estimation_breakdown() const { return collect_energy_estimation_breakdown_; }
   void set_collect_energy_estimation_breakdown(bool value) { collect_energy_estimation_breakdown_ = value; _has_field_.set(4); }
 
+  bool has_collect_entity_state_residency() const { return _has_field_[5]; }
+  bool collect_entity_state_residency() const { return collect_entity_state_residency_; }
+  void set_collect_entity_state_residency(bool value) { collect_entity_state_residency_ = value; _has_field_.set(5); }
+
  private:
   uint32_t battery_poll_ms_{};
   std::vector<AndroidPowerConfig_BatteryCounters> battery_counters_;
   bool collect_power_rails_{};
   bool collect_energy_estimation_breakdown_{};
+  bool collect_entity_state_residency_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<6> _has_field_{};
 };
 
 }  // namespace perfetto

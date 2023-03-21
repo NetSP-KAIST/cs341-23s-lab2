@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -90,7 +91,7 @@ bool ChromeFrameReporter::ParseFromArray(const void* raw, size_t size) {
         break;
       case 14 /* high_latency_contribution_stage */:
         high_latency_contribution_stage_.emplace_back();
-        field.get(&high_latency_contribution_stage_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &high_latency_contribution_stage_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -101,13 +102,13 @@ bool ChromeFrameReporter::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeFrameReporter::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeFrameReporter::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -115,75 +116,75 @@ std::vector<uint8_t> ChromeFrameReporter::SerializeAsArray() const {
 void ChromeFrameReporter::Serialize(::protozero::Message* msg) const {
   // Field 1: state
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, state_, msg);
   }
 
   // Field 2: reason
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, reason_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, reason_, msg);
   }
 
   // Field 3: frame_source
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, frame_source_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, frame_source_, msg);
   }
 
   // Field 4: frame_sequence
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, frame_sequence_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, frame_sequence_, msg);
   }
 
   // Field 5: affects_smoothness
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, affects_smoothness_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, affects_smoothness_, msg);
   }
 
   // Field 6: scroll_state
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, scroll_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, scroll_state_, msg);
   }
 
   // Field 7: has_main_animation
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, has_main_animation_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, has_main_animation_, msg);
   }
 
   // Field 8: has_compositor_animation
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, has_compositor_animation_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, has_compositor_animation_, msg);
   }
 
   // Field 9: has_smooth_input_main
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, has_smooth_input_main_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, has_smooth_input_main_, msg);
   }
 
   // Field 10: has_missing_content
   if (_has_field_[10]) {
-    msg->AppendTinyVarInt(10, has_missing_content_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(10, has_missing_content_, msg);
   }
 
   // Field 11: layer_tree_host_id
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, layer_tree_host_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, layer_tree_host_id_, msg);
   }
 
   // Field 12: has_high_latency
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, has_high_latency_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, has_high_latency_, msg);
   }
 
   // Field 13: frame_type
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, frame_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, frame_type_, msg);
   }
 
   // Field 14: high_latency_contribution_stage
   for (auto& it : high_latency_contribution_stage_) {
-    msg->AppendString(14, it);
+    ::protozero::internal::gen_helpers::SerializeString(14, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool FastrpcDmaStatFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FastrpcDmaStatFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FastrpcDmaStatFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> FastrpcDmaStatFtraceEvent::SerializeAsArray() const {
 void FastrpcDmaStatFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cid_, msg);
   }
 
   // Field 2: len
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, len_, msg);
   }
 
   // Field 3: total_allocated
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, total_allocated_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, total_allocated_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

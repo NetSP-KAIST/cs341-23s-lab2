@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -77,13 +78,13 @@ bool TracePacketDefaults::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TracePacketDefaults::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TracePacketDefaults::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -91,7 +92,7 @@ std::vector<uint8_t> TracePacketDefaults::SerializeAsArray() const {
 void TracePacketDefaults::Serialize(::protozero::Message* msg) const {
   // Field 58: timestamp_clock_id
   if (_has_field_[58]) {
-    msg->AppendVarInt(58, timestamp_clock_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(58, timestamp_clock_id_, msg);
   }
 
   // Field 11: track_event_defaults
@@ -104,7 +105,7 @@ void TracePacketDefaults::Serialize(::protozero::Message* msg) const {
     (*perf_sample_defaults_).Serialize(msg->BeginNestedMessage<::protozero::Message>(12));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

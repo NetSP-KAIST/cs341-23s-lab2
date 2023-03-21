@@ -48,10 +48,11 @@ PROTOBUF_CONSTEXPR DataSourceConfig::DataSourceConfig(
   , target_buffer_(0u)
   , trace_duration_ms_(0u)
   , tracing_session_id_(uint64_t{0u})
-  , enable_extra_guardrails_(false)
   , stop_timeout_ms_(0u)
   , session_initiator_(0)
-{}
+
+  , prefer_suspend_clock_for_duration_(false)
+  , enable_extra_guardrails_(false){}
 struct DataSourceConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DataSourceConfigDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -138,14 +139,17 @@ class DataSourceConfig::_Internal {
   static void set_has_trace_duration_ms(HasBits* has_bits) {
     (*has_bits)[0] |= 33554432u;
   }
-  static void set_has_stop_timeout_ms(HasBits* has_bits) {
-    (*has_bits)[0] |= 268435456u;
+  static void set_has_prefer_suspend_clock_for_duration(HasBits* has_bits) {
+    (*has_bits)[0] |= 536870912u;
   }
-  static void set_has_enable_extra_guardrails(HasBits* has_bits) {
+  static void set_has_stop_timeout_ms(HasBits* has_bits) {
     (*has_bits)[0] |= 134217728u;
   }
+  static void set_has_enable_extra_guardrails(HasBits* has_bits) {
+    (*has_bits)[0] |= 1073741824u;
+  }
   static void set_has_session_initiator(HasBits* has_bits) {
-    (*has_bits)[0] |= 536870912u;
+    (*has_bits)[0] |= 268435456u;
   }
   static void set_has_tracing_session_id(HasBits* has_bits) {
     (*has_bits)[0] |= 67108864u;
@@ -556,8 +560,8 @@ DataSourceConfig::DataSourceConfig(const DataSourceConfig& from)
     for_testing_ = nullptr;
   }
   ::memcpy(&target_buffer_, &from.target_buffer_,
-    static_cast<size_t>(reinterpret_cast<char*>(&session_initiator_) -
-    reinterpret_cast<char*>(&target_buffer_)) + sizeof(session_initiator_));
+    static_cast<size_t>(reinterpret_cast<char*>(&enable_extra_guardrails_) -
+    reinterpret_cast<char*>(&target_buffer_)) + sizeof(enable_extra_guardrails_));
   // @@protoc_insertion_point(copy_constructor:perfetto.protos.DataSourceConfig)
 }
 
@@ -572,8 +576,8 @@ legacy_config_.InitDefault();
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&ftrace_config_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&session_initiator_) -
-    reinterpret_cast<char*>(&ftrace_config_)) + sizeof(session_initiator_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&enable_extra_guardrails_) -
+    reinterpret_cast<char*>(&ftrace_config_)) + sizeof(enable_extra_guardrails_));
 }
 
 DataSourceConfig::~DataSourceConfig() {
@@ -724,10 +728,10 @@ void DataSourceConfig::Clear() {
       for_testing_->Clear();
     }
   }
-  if (cached_has_bits & 0x3f000000u) {
+  if (cached_has_bits & 0x7f000000u) {
     ::memset(&target_buffer_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&session_initiator_) -
-        reinterpret_cast<char*>(&target_buffer_)) + sizeof(session_initiator_));
+        reinterpret_cast<char*>(&enable_extra_guardrails_) -
+        reinterpret_cast<char*>(&target_buffer_)) + sizeof(enable_extra_guardrails_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
@@ -975,6 +979,15 @@ const char* DataSourceConfig::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
+      // optional bool prefer_suspend_clock_for_duration = 122;
+      case 122:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 208)) {
+          _Internal::set_has_prefer_suspend_clock_for_duration(&has_bits);
+          prefer_suspend_clock_for_duration_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       // optional string legacy_config = 1000;
       case 1000:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
@@ -1048,19 +1061,19 @@ uint8_t* DataSourceConfig::_InternalSerialize(
   }
 
   // optional bool enable_extra_guardrails = 6;
-  if (cached_has_bits & 0x08000000u) {
+  if (cached_has_bits & 0x40000000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(6, this->_internal_enable_extra_guardrails(), target);
   }
 
   // optional uint32 stop_timeout_ms = 7;
-  if (cached_has_bits & 0x10000000u) {
+  if (cached_has_bits & 0x08000000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_stop_timeout_ms(), target);
   }
 
   // optional .perfetto.protos.DataSourceConfig.SessionInitiator session_initiator = 8;
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
       8, this->_internal_session_initiator(), target);
@@ -1211,6 +1224,12 @@ uint8_t* DataSourceConfig::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(120, _Internal::network_packet_trace_config(this),
         _Internal::network_packet_trace_config(this).GetCachedSize(), target, stream);
+  }
+
+  // optional bool prefer_suspend_clock_for_duration = 122;
+  if (cached_has_bits & 0x20000000u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(122, this->_internal_prefer_suspend_clock_for_duration(), target);
   }
 
   // optional string legacy_config = 1000;
@@ -1417,7 +1436,7 @@ size_t DataSourceConfig::ByteSizeLong() const {
     }
 
   }
-  if (cached_has_bits & 0x3f000000u) {
+  if (cached_has_bits & 0x7f000000u) {
     // optional uint32 target_buffer = 2;
     if (cached_has_bits & 0x01000000u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_target_buffer());
@@ -1433,20 +1452,25 @@ size_t DataSourceConfig::ByteSizeLong() const {
       total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_tracing_session_id());
     }
 
-    // optional bool enable_extra_guardrails = 6;
-    if (cached_has_bits & 0x08000000u) {
-      total_size += 1 + 1;
-    }
-
     // optional uint32 stop_timeout_ms = 7;
-    if (cached_has_bits & 0x10000000u) {
+    if (cached_has_bits & 0x08000000u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_stop_timeout_ms());
     }
 
     // optional .perfetto.protos.DataSourceConfig.SessionInitiator session_initiator = 8;
-    if (cached_has_bits & 0x20000000u) {
+    if (cached_has_bits & 0x10000000u) {
       total_size += 1 +
         ::_pbi::WireFormatLite::EnumSize(this->_internal_session_initiator());
+    }
+
+    // optional bool prefer_suspend_clock_for_duration = 122;
+    if (cached_has_bits & 0x20000000u) {
+      total_size += 2 + 1;
+    }
+
+    // optional bool enable_extra_guardrails = 6;
+    if (cached_has_bits & 0x40000000u) {
+      total_size += 1 + 1;
     }
 
   }
@@ -1549,7 +1573,7 @@ void DataSourceConfig::MergeFrom(const DataSourceConfig& from) {
       _internal_mutable_for_testing()->::perfetto::protos::TestConfig::MergeFrom(from._internal_for_testing());
     }
   }
-  if (cached_has_bits & 0x3f000000u) {
+  if (cached_has_bits & 0x7f000000u) {
     if (cached_has_bits & 0x01000000u) {
       target_buffer_ = from.target_buffer_;
     }
@@ -1560,13 +1584,16 @@ void DataSourceConfig::MergeFrom(const DataSourceConfig& from) {
       tracing_session_id_ = from.tracing_session_id_;
     }
     if (cached_has_bits & 0x08000000u) {
-      enable_extra_guardrails_ = from.enable_extra_guardrails_;
-    }
-    if (cached_has_bits & 0x10000000u) {
       stop_timeout_ms_ = from.stop_timeout_ms_;
     }
-    if (cached_has_bits & 0x20000000u) {
+    if (cached_has_bits & 0x10000000u) {
       session_initiator_ = from.session_initiator_;
+    }
+    if (cached_has_bits & 0x20000000u) {
+      prefer_suspend_clock_for_duration_ = from.prefer_suspend_clock_for_duration_;
+    }
+    if (cached_has_bits & 0x40000000u) {
+      enable_extra_guardrails_ = from.enable_extra_guardrails_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1599,8 +1626,8 @@ void DataSourceConfig::InternalSwap(DataSourceConfig* other) {
       &other->legacy_config_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DataSourceConfig, session_initiator_)
-      + sizeof(DataSourceConfig::session_initiator_)
+      PROTOBUF_FIELD_OFFSET(DataSourceConfig, enable_extra_guardrails_)
+      + sizeof(DataSourceConfig::enable_extra_guardrails_)
       - PROTOBUF_FIELD_OFFSET(DataSourceConfig, ftrace_config_)>(
           reinterpret_cast<char*>(&ftrace_config_),
           reinterpret_cast<char*>(&other->ftrace_config_));

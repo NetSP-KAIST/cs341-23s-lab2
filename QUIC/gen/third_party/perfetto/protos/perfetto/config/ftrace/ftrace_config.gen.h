@@ -67,6 +67,7 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
     kFunctionGraphRootsFieldNumber = 21,
     kPreserveFtraceBufferFieldNumber = 23,
     kUseMonotonicRawClockFieldNumber = 24,
+    kInstanceNameFieldNumber = 25,
   };
 
   FtraceConfig();
@@ -173,6 +174,10 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   bool use_monotonic_raw_clock() const { return use_monotonic_raw_clock_; }
   void set_use_monotonic_raw_clock(bool value) { use_monotonic_raw_clock_ = value; _has_field_.set(24); }
 
+  bool has_instance_name() const { return _has_field_[25]; }
+  const std::string& instance_name() const { return instance_name_; }
+  void set_instance_name(const std::string& value) { instance_name_ = value; _has_field_.set(25); }
+
  private:
   std::vector<std::string> ftrace_events_;
   std::vector<std::string> atrace_categories_;
@@ -192,12 +197,13 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   std::vector<std::string> function_graph_roots_;
   bool preserve_ftrace_buffer_{};
   bool use_monotonic_raw_clock_{};
+  std::string instance_name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<25> _has_field_{};
+  std::bitset<26> _has_field_{};
 };
 
 

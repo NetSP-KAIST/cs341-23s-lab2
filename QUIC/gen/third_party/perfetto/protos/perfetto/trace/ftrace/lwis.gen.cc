@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool LwisTracingMarkWriteFtraceEvent::ParseFromArray(const void* raw, size_t siz
     }
     switch (field.id()) {
       case 1 /* lwis_name */:
-        field.get(&lwis_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &lwis_name_);
         break;
       case 2 /* type */:
         field.get(&type_);
@@ -49,7 +50,7 @@ bool LwisTracingMarkWriteFtraceEvent::ParseFromArray(const void* raw, size_t siz
         field.get(&pid_);
         break;
       case 4 /* func_name */:
-        field.get(&func_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &func_name_);
         break;
       case 5 /* value */:
         field.get(&value_);
@@ -63,13 +64,13 @@ bool LwisTracingMarkWriteFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string LwisTracingMarkWriteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> LwisTracingMarkWriteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> LwisTracingMarkWriteFtraceEvent::SerializeAsArray() const {
 void LwisTracingMarkWriteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: lwis_name
   if (_has_field_[1]) {
-    msg->AppendString(1, lwis_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, lwis_name_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
   // Field 4: func_name
   if (_has_field_[4]) {
-    msg->AppendString(4, func_name_);
+    ::protozero::internal::gen_helpers::SerializeString(4, func_name_, msg);
   }
 
   // Field 5: value
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

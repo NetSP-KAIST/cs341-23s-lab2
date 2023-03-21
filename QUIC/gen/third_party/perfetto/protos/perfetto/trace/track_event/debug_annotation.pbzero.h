@@ -208,7 +208,7 @@ class DebugAnnotationName : public ::protozero::Message {
   }
 };
 
-class DebugAnnotation_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/16, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class DebugAnnotation_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/17, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   DebugAnnotation_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit DebugAnnotation_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -225,14 +225,16 @@ class DebugAnnotation_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   int64_t int_value() const { return at<4>().as_int64(); }
   bool has_double_value() const { return at<5>().valid(); }
   double double_value() const { return at<5>().as_double(); }
-  bool has_string_value() const { return at<6>().valid(); }
-  ::protozero::ConstChars string_value() const { return at<6>().as_string(); }
   bool has_pointer_value() const { return at<7>().valid(); }
   uint64_t pointer_value() const { return at<7>().as_uint64(); }
   bool has_nested_value() const { return at<8>().valid(); }
   ::protozero::ConstBytes nested_value() const { return at<8>().as_bytes(); }
   bool has_legacy_json_value() const { return at<9>().valid(); }
   ::protozero::ConstChars legacy_json_value() const { return at<9>().as_string(); }
+  bool has_string_value() const { return at<6>().valid(); }
+  ::protozero::ConstChars string_value() const { return at<6>().as_string(); }
+  bool has_string_value_iid() const { return at<17>().valid(); }
+  uint64_t string_value_iid() const { return at<17>().as_uint64(); }
   bool has_proto_type_name() const { return at<16>().valid(); }
   ::protozero::ConstChars proto_type_name() const { return at<16>().as_string(); }
   bool has_proto_type_name_iid() const { return at<13>().valid(); }
@@ -255,10 +257,11 @@ class DebugAnnotation : public ::protozero::Message {
     kUintValueFieldNumber = 3,
     kIntValueFieldNumber = 4,
     kDoubleValueFieldNumber = 5,
-    kStringValueFieldNumber = 6,
     kPointerValueFieldNumber = 7,
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
+    kStringValueFieldNumber = 6,
+    kStringValueIidFieldNumber = 17,
     kProtoTypeNameFieldNumber = 16,
     kProtoTypeNameIidFieldNumber = 13,
     kProtoValueFieldNumber = 14,
@@ -425,37 +428,6 @@ class DebugAnnotation : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
-  using FieldMetadata_StringValue =
-    ::protozero::proto_utils::FieldMetadata<
-      6,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kString,
-      std::string,
-      DebugAnnotation>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StringValue kStringValue() { return {}; }
-  void set_string_value(const char* data, size_t size) {
-    AppendBytes(FieldMetadata_StringValue::kFieldId, data, size);
-  }
-  void set_string_value(::protozero::ConstChars chars) {
-    AppendBytes(FieldMetadata_StringValue::kFieldId, chars.data, chars.size);
-  }
-  void set_string_value(std::string value) {
-    static constexpr uint32_t field_id = FieldMetadata_StringValue::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kString>
-        ::Append(*this, field_id, value);
-  }
-
   using FieldMetadata_PointerValue =
     ::protozero::proto_utils::FieldMetadata<
       7,
@@ -530,6 +502,62 @@ class DebugAnnotation : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_StringValue =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DebugAnnotation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_StringValue kStringValue() { return {}; }
+  void set_string_value(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_StringValue::kFieldId, data, size);
+  }
+  void set_string_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StringValue::kFieldId, chars.data, chars.size);
+  }
+  void set_string_value(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_StringValue::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_StringValueIid =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      DebugAnnotation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_StringValueIid kStringValueIid() { return {}; }
+  void set_string_value_iid(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_StringValueIid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
         ::Append(*this, field_id, value);
   }
 

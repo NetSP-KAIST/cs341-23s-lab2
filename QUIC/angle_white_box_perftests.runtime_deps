@@ -55,6 +55,6 @@ angledata/VkICD_mock_icd.json
 ./libchrome_zlib.so
 ./libthird_party_protobuf_protobuf_lite.so
 ./libmirclient.so.9
-../../testing/location_tags.json
 bin/run_angle_white_box_perftests
 ../../.vpython3
+../../testing/location_tags.json

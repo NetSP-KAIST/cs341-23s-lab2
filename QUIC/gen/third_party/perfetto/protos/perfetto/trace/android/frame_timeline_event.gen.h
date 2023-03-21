@@ -47,6 +47,7 @@ enum FrameTimelineEvent_JankType : int {
   FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING = 128,
   FrameTimelineEvent_JankType_JANK_UNKNOWN = 256,
   FrameTimelineEvent_JankType_JANK_SF_STUFFING = 512,
+  FrameTimelineEvent_JankType_JANK_DROPPED = 1024,
 };
 enum FrameTimelineEvent_PresentType : int {
   FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED = 0,
@@ -82,8 +83,9 @@ class PERFETTO_EXPORT_COMPONENT FrameTimelineEvent : public ::protozero::CppMess
   static constexpr auto JANK_BUFFER_STUFFING = FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING;
   static constexpr auto JANK_UNKNOWN = FrameTimelineEvent_JankType_JANK_UNKNOWN;
   static constexpr auto JANK_SF_STUFFING = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
+  static constexpr auto JANK_DROPPED = FrameTimelineEvent_JankType_JANK_DROPPED;
   static constexpr auto JankType_MIN = FrameTimelineEvent_JankType_JANK_UNSPECIFIED;
-  static constexpr auto JankType_MAX = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
+  static constexpr auto JankType_MAX = FrameTimelineEvent_JankType_JANK_DROPPED;
   using PresentType = FrameTimelineEvent_PresentType;
   static constexpr auto PRESENT_UNSPECIFIED = FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED;
   static constexpr auto PRESENT_ON_TIME = FrameTimelineEvent_PresentType_PRESENT_ON_TIME;

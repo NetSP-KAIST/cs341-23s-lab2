@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -43,7 +44,7 @@ bool DataSourceDescriptor::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 7 /* id */:
         field.get(&id_);
@@ -58,13 +59,13 @@ bool DataSourceDescriptor::ParseFromArray(const void* raw, size_t size) {
         field.get(&handles_incremental_state_clear_);
         break;
       case 5 /* gpu_counter_descriptor */:
-        gpu_counter_descriptor_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &gpu_counter_descriptor_);
         break;
       case 6 /* track_event_descriptor */:
-        track_event_descriptor_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &track_event_descriptor_);
         break;
       case 8 /* ftrace_descriptor */:
-        ftrace_descriptor_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &ftrace_descriptor_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -75,13 +76,13 @@ bool DataSourceDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DataSourceDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DataSourceDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,27 +90,27 @@ std::vector<uint8_t> DataSourceDescriptor::SerializeAsArray() const {
 void DataSourceDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 7: id
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, id_, msg);
   }
 
   // Field 2: will_notify_on_stop
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, will_notify_on_stop_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, will_notify_on_stop_, msg);
   }
 
   // Field 3: will_notify_on_start
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, will_notify_on_start_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, will_notify_on_start_, msg);
   }
 
   // Field 4: handles_incremental_state_clear
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, handles_incremental_state_clear_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, handles_incremental_state_clear_, msg);
   }
 
   // Field 5: gpu_counter_descriptor
@@ -127,7 +128,7 @@ void DataSourceDescriptor::Serialize(::protozero::Message* msg) const {
     msg->AppendString(8, ftrace_descriptor_);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

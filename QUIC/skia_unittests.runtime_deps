@@ -54,7 +54,7 @@ test_fonts/Tinos-Regular.ttf
 ./libthird_party_perfetto_perfetto_test_support.so
 ./libthird_party_protobuf_protobuf_lite.so
 ./libmirclient.so.9
-fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-7
+fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9
 etc/fonts/fonts.conf
 ./libmojo_core_embedder_internal.so
 ./libmojo_core_embedder_features.so
@@ -95,6 +95,6 @@ etc/fonts/fonts.conf
 ./libmojo_base_shared_typemap_traits.so
 ./libmojo_base_typemap_traits.so
 ./libskia_shared_typemap_traits.so
-../../testing/location_tags.json
 bin/run_skia_unittests
 ../../.vpython3
+../../testing/location_tags.json

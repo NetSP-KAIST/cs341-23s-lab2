@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -102,13 +103,13 @@ bool HeapGraph::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HeapGraph::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapGraph::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -116,7 +117,7 @@ std::vector<uint8_t> HeapGraph::SerializeAsArray() const {
 void HeapGraph::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: objects
@@ -146,15 +147,15 @@ void HeapGraph::Serialize(::protozero::Message* msg) const {
 
   // Field 5: continued
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, continued_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, continued_, msg);
   }
 
   // Field 6: index
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -195,7 +196,7 @@ bool HeapGraphType::ParseFromArray(const void* raw, size_t size) {
         field.get(&location_id_);
         break;
       case 3 /* class_name */:
-        field.get(&class_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &class_name_);
         break;
       case 4 /* object_size */:
         field.get(&object_size_);
@@ -204,9 +205,8 @@ bool HeapGraphType::ParseFromArray(const void* raw, size_t size) {
         field.get(&superclass_id_);
         break;
       case 6 /* reference_field_id */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          reference_field_id_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &reference_field_id_)) {
+          packed_error = true;}
         break;
       case 7 /* kind */:
         field.get(&kind_);
@@ -223,13 +223,13 @@ bool HeapGraphType::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HeapGraphType::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapGraphType::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -237,27 +237,27 @@ std::vector<uint8_t> HeapGraphType::SerializeAsArray() const {
 void HeapGraphType::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: location_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, location_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, location_id_, msg);
   }
 
   // Field 3: class_name
   if (_has_field_[3]) {
-    msg->AppendString(3, class_name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, class_name_, msg);
   }
 
   // Field 4: object_size
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, object_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, object_size_, msg);
   }
 
   // Field 5: superclass_id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, superclass_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, superclass_id_, msg);
   }
 
   // Field 6: reference_field_id
@@ -270,15 +270,15 @@ void HeapGraphType::Serialize(::protozero::Message* msg) const {
 
   // Field 7: kind
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, kind_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, kind_, msg);
   }
 
   // Field 8: classloader_id
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, classloader_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, classloader_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -307,9 +307,8 @@ bool HeapGraphRoot::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* object_ids */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          object_ids_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &object_ids_)) {
+          packed_error = true;}
         break;
       case 2 /* root_type */:
         field.get(&root_type_);
@@ -323,13 +322,13 @@ bool HeapGraphRoot::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HeapGraphRoot::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapGraphRoot::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -345,10 +344,10 @@ void HeapGraphRoot::Serialize(::protozero::Message* msg) const {
 
   // Field 2: root_type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, root_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, root_type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -399,14 +398,12 @@ bool HeapGraphObject::ParseFromArray(const void* raw, size_t size) {
         field.get(&reference_field_id_base_);
         break;
       case 4 /* reference_field_id */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          reference_field_id_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &reference_field_id_)) {
+          packed_error = true;}
         break;
       case 5 /* reference_object_id */:
-        for (::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> rep(field.data(), field.size(), &packed_error); rep; ++rep) {
-          reference_object_id_.emplace_back(*rep);
-        }
+        if (!::protozero::internal::gen_helpers::DeserializePackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(field, &reference_object_id_)) {
+          packed_error = true;}
         break;
       case 8 /* native_allocation_registry_size_field */:
         field.get(&native_allocation_registry_size_field_);
@@ -420,13 +417,13 @@ bool HeapGraphObject::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HeapGraphObject::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapGraphObject::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -434,27 +431,27 @@ std::vector<uint8_t> HeapGraphObject::SerializeAsArray() const {
 void HeapGraphObject::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 7: id_delta
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, id_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, id_delta_, msg);
   }
 
   // Field 2: type_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_id_, msg);
   }
 
   // Field 3: self_size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, self_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, self_size_, msg);
   }
 
   // Field 6: reference_field_id_base
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, reference_field_id_base_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, reference_field_id_base_, msg);
   }
 
   // Field 4: reference_field_id
@@ -475,10 +472,10 @@ void HeapGraphObject::Serialize(::protozero::Message* msg) const {
 
   // Field 8: native_allocation_registry_size_field
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, native_allocation_registry_size_field_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, native_allocation_registry_size_field_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

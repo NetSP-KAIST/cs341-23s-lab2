@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -44,7 +45,7 @@ bool SignalGenerateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&code_);
         break;
       case 2 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 3 /* group */:
         field.get(&group_);
@@ -67,13 +68,13 @@ bool SignalGenerateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SignalGenerateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SignalGenerateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -81,35 +82,35 @@ std::vector<uint8_t> SignalGenerateFtraceEvent::SerializeAsArray() const {
 void SignalGenerateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: code
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, code_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, code_, msg);
   }
 
   // Field 2: comm
   if (_has_field_[2]) {
-    msg->AppendString(2, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(2, comm_, msg);
   }
 
   // Field 3: group
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, group_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, group_, msg);
   }
 
   // Field 4: pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pid_, msg);
   }
 
   // Field 5: result
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, result_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, result_, msg);
   }
 
   // Field 6: sig
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, sig_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, sig_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -155,13 +156,13 @@ bool SignalDeliverFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SignalDeliverFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SignalDeliverFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -169,20 +170,20 @@ std::vector<uint8_t> SignalDeliverFtraceEvent::SerializeAsArray() const {
 void SignalDeliverFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: code
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, code_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, code_, msg);
   }
 
   // Field 2: sa_flags
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, sa_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, sa_flags_, msg);
   }
 
   // Field 3: sig
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, sig_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, sig_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

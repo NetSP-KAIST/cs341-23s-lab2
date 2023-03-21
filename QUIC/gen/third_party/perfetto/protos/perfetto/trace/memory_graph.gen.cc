@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,13 +61,13 @@ bool MemoryTrackerSnapshot::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string MemoryTrackerSnapshot::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MemoryTrackerSnapshot::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -74,12 +75,12 @@ std::vector<uint8_t> MemoryTrackerSnapshot::SerializeAsArray() const {
 void MemoryTrackerSnapshot::Serialize(::protozero::Message* msg) const {
   // Field 1: global_dump_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, global_dump_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, global_dump_id_, msg);
   }
 
   // Field 2: level_of_detail
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, level_of_detail_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, level_of_detail_, msg);
   }
 
   // Field 3: process_memory_dumps
@@ -87,7 +88,7 @@ void MemoryTrackerSnapshot::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -143,13 +144,13 @@ bool MemoryTrackerSnapshot_ProcessSnapshot::ParseFromArray(const void* raw, size
 }
 
 std::string MemoryTrackerSnapshot_ProcessSnapshot::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -157,7 +158,7 @@ std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot::SerializeAsArray() c
 void MemoryTrackerSnapshot_ProcessSnapshot::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: allocator_dumps
@@ -170,7 +171,7 @@ void MemoryTrackerSnapshot_ProcessSnapshot::Serialize(::protozero::Message* msg)
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -220,13 +221,13 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge::ParseFromArray(const void
 }
 
 std::string MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -234,25 +235,25 @@ std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge::Serialize
 void MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge::Serialize(::protozero::Message* msg) const {
   // Field 1: source_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, source_id_, msg);
   }
 
   // Field 2: target_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, target_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, target_id_, msg);
   }
 
   // Field 3: importance
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, importance_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, importance_, msg);
   }
 
   // Field 4: overridable
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, overridable_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, overridable_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -290,7 +291,7 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::ParseFromArray(const void
         field.get(&id_);
         break;
       case 2 /* absolute_name */:
-        field.get(&absolute_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &absolute_name_);
         break;
       case 3 /* weak */:
         field.get(&weak_);
@@ -311,13 +312,13 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::ParseFromArray(const void
 }
 
 std::string MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -325,22 +326,22 @@ std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::Serialize
 void MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: absolute_name
   if (_has_field_[2]) {
-    msg->AppendString(2, absolute_name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, absolute_name_, msg);
   }
 
   // Field 3: weak
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, weak_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, weak_, msg);
   }
 
   // Field 4: size_bytes
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, size_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, size_bytes_, msg);
   }
 
   // Field 5: entries
@@ -348,7 +349,7 @@ void MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode::Serialize(::protozero::Me
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(5));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -378,7 +379,7 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::ParseFrom
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* units */:
         field.get(&units_);
@@ -387,7 +388,7 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::ParseFrom
         field.get(&value_uint64_);
         break;
       case 4 /* value_string */:
-        field.get(&value_string_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_string_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -398,13 +399,13 @@ bool MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::ParseFrom
 }
 
 std::string MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -412,25 +413,25 @@ std::vector<uint8_t> MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNode
 void MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: units
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, units_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, units_, msg);
   }
 
   // Field 3: value_uint64
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, value_uint64_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, value_uint64_, msg);
   }
 
   // Field 4: value_string
   if (_has_field_[4]) {
-    msg->AppendString(4, value_string_);
+    ::protozero::internal::gen_helpers::SerializeString(4, value_string_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

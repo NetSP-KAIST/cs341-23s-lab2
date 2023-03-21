@@ -23,7 +23,6 @@ _ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6appendEPKc U
 strlen@GLIBC_2.2.5 U
 _ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6insertEmPKcm U
 memset@GLIBC_2.2.5 U
-abort@GLIBC_2.2.5 U
 _ZnwmSt11align_val_t U
 _Znwm U
 _ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE25__init_copy_ctor_externalEPKcm U

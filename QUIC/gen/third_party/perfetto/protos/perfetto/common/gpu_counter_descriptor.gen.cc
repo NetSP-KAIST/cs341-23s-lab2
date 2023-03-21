@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -73,13 +74,13 @@ bool GpuCounterDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GpuCounterDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuCounterDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -97,20 +98,20 @@ void GpuCounterDescriptor::Serialize(::protozero::Message* msg) const {
 
   // Field 3: min_sampling_period_ns
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, min_sampling_period_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, min_sampling_period_ns_, msg);
   }
 
   // Field 4: max_sampling_period_ns
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, max_sampling_period_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, max_sampling_period_ns_, msg);
   }
 
   // Field 5: supports_instrumented_sampling
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, supports_instrumented_sampling_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, supports_instrumented_sampling_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -148,10 +149,10 @@ bool GpuCounterDescriptor_GpuCounterBlock::ParseFromArray(const void* raw, size_
         field.get(&block_capacity_);
         break;
       case 3 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 4 /* description */:
-        field.get(&description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &description_);
         break;
       case 5 /* counter_ids */:
         counter_ids_.emplace_back();
@@ -166,13 +167,13 @@ bool GpuCounterDescriptor_GpuCounterBlock::ParseFromArray(const void* raw, size_
 }
 
 std::string GpuCounterDescriptor_GpuCounterBlock::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuCounterDescriptor_GpuCounterBlock::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -180,30 +181,30 @@ std::vector<uint8_t> GpuCounterDescriptor_GpuCounterBlock::SerializeAsArray() co
 void GpuCounterDescriptor_GpuCounterBlock::Serialize(::protozero::Message* msg) const {
   // Field 1: block_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, block_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, block_id_, msg);
   }
 
   // Field 2: block_capacity
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, block_capacity_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, block_capacity_, msg);
   }
 
   // Field 3: name
   if (_has_field_[3]) {
-    msg->AppendString(3, name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, name_, msg);
   }
 
   // Field 4: description
   if (_has_field_[4]) {
-    msg->AppendString(4, description_);
+    ::protozero::internal::gen_helpers::SerializeString(4, description_, msg);
   }
 
   // Field 5: counter_ids
   for (auto& it : counter_ids_) {
-    msg->AppendVarInt(5, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -244,10 +245,10 @@ bool GpuCounterDescriptor_GpuCounterSpec::ParseFromArray(const void* raw, size_t
         field.get(&counter_id_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* description */:
-        field.get(&description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &description_);
         break;
       case 5 /* int_peak_value */:
         field.get(&int_peak_value_);
@@ -279,13 +280,13 @@ bool GpuCounterDescriptor_GpuCounterSpec::ParseFromArray(const void* raw, size_t
 }
 
 std::string GpuCounterDescriptor_GpuCounterSpec::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GpuCounterDescriptor_GpuCounterSpec::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -293,50 +294,50 @@ std::vector<uint8_t> GpuCounterDescriptor_GpuCounterSpec::SerializeAsArray() con
 void GpuCounterDescriptor_GpuCounterSpec::Serialize(::protozero::Message* msg) const {
   // Field 1: counter_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, counter_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, counter_id_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: description
   if (_has_field_[3]) {
-    msg->AppendString(3, description_);
+    ::protozero::internal::gen_helpers::SerializeString(3, description_, msg);
   }
 
   // Field 5: int_peak_value
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, int_peak_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, int_peak_value_, msg);
   }
 
   // Field 6: double_peak_value
   if (_has_field_[6]) {
-    msg->AppendFixed(6, double_peak_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(6, double_peak_value_, msg);
   }
 
   // Field 7: numerator_units
   for (auto& it : numerator_units_) {
-    msg->AppendVarInt(7, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, it, msg);
   }
 
   // Field 8: denominator_units
   for (auto& it : denominator_units_) {
-    msg->AppendVarInt(8, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, it, msg);
   }
 
   // Field 9: select_by_default
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, select_by_default_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, select_by_default_, msg);
   }
 
   // Field 10: groups
   for (auto& it : groups_) {
-    msg->AppendVarInt(10, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

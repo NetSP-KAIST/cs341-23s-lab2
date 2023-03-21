@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,7 +61,7 @@ bool TestExtensionChild::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* child_field_for_testing */:
-        field.get(&child_field_for_testing_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &child_field_for_testing_);
         break;
       case 99 /* debug_annotations */:
         debug_annotations_.emplace_back();
@@ -75,13 +76,13 @@ bool TestExtensionChild::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestExtensionChild::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestExtensionChild::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,7 +90,7 @@ std::vector<uint8_t> TestExtensionChild::SerializeAsArray() const {
 void TestExtensionChild::Serialize(::protozero::Message* msg) const {
   // Field 1: child_field_for_testing
   if (_has_field_[1]) {
-    msg->AppendString(1, child_field_for_testing_);
+    ::protozero::internal::gen_helpers::SerializeString(1, child_field_for_testing_, msg);
   }
 
   // Field 99: debug_annotations
@@ -97,7 +98,7 @@ void TestExtensionChild::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(99));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -131,19 +132,19 @@ bool TestExtension::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestExtension::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestExtension::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void TestExtension::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -90,13 +91,13 @@ bool SysStatsConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SysStatsConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SysStatsConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -104,55 +105,55 @@ std::vector<uint8_t> SysStatsConfig::SerializeAsArray() const {
 void SysStatsConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: meminfo_period_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, meminfo_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, meminfo_period_ms_, msg);
   }
 
   // Field 2: meminfo_counters
   for (auto& it : meminfo_counters_) {
-    msg->AppendVarInt(2, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, it, msg);
   }
 
   // Field 3: vmstat_period_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vmstat_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vmstat_period_ms_, msg);
   }
 
   // Field 4: vmstat_counters
   for (auto& it : vmstat_counters_) {
-    msg->AppendVarInt(4, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, it, msg);
   }
 
   // Field 5: stat_period_ms
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, stat_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, stat_period_ms_, msg);
   }
 
   // Field 6: stat_counters
   for (auto& it : stat_counters_) {
-    msg->AppendVarInt(6, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, it, msg);
   }
 
   // Field 7: devfreq_period_ms
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, devfreq_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, devfreq_period_ms_, msg);
   }
 
   // Field 8: cpufreq_period_ms
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, cpufreq_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, cpufreq_period_ms_, msg);
   }
 
   // Field 9: buddyinfo_period_ms
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, buddyinfo_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, buddyinfo_period_ms_, msg);
   }
 
   // Field 10: diskstat_period_ms
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, diskstat_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, diskstat_period_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

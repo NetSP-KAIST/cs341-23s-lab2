@@ -4,7 +4,9 @@
 ../../third_party/perfetto/src/trace_processor/stdlib/android/startup/startups.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/android/battery.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/android/binder.sql
+../../third_party/perfetto/src/trace_processor/stdlib/android/monitor_contention.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/android/process_metadata.sql
+../../third_party/perfetto/src/trace_processor/stdlib/android/slices.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/chrome/cpu_powerups.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/common/counters.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/common/metadata.sql
@@ -12,3 +14,5 @@
 ../../third_party/perfetto/src/trace_processor/stdlib/common/slices.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/common/timestamps.sql
 ../../third_party/perfetto/src/trace_processor/stdlib/experimental/android_broadcast.sql
+../../third_party/perfetto/src/trace_processor/stdlib/experimental/proto_path.sql
+../../third_party/perfetto/src/trace_processor/stdlib/pkvm/hypervisor.sql

@@ -1,9 +1,11 @@
 {
   "deps": [
     "mojo_bindings.build_metadata",
+    "store_source_result_mojom.build_metadata",
     "../../../components/attribution_reporting/mojom.build_metadata",
     "../../../components/attribution_reporting/registration_mojom.build_metadata",
-    "../../../services/network/public/mojom/mojom_schemeful_site.build_metadata",
+    "../../../components/attribution_reporting/source_type_mojom.build_metadata",
+    "../../../services/network/public/mojom/mojom_attribution.build_metadata",
     "../../../url/mojom/url_mojom_origin.build_metadata"
   ],
   "sources": [

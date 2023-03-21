@@ -21,7 +21,12 @@ namespace perfetto {
 namespace protos {
 PROTOBUF_CONSTEXPR NetworkPacketTraceConfig::NetworkPacketTraceConfig(
     ::_pbi::ConstantInitialized)
-  : poll_ms_(0u){}
+  : poll_ms_(0u)
+  , aggregation_threshold_(0u)
+  , intern_limit_(0u)
+  , drop_local_port_(false)
+  , drop_remote_port_(false)
+  , drop_tcp_flags_(false){}
 struct NetworkPacketTraceConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR NetworkPacketTraceConfigDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -44,6 +49,21 @@ class NetworkPacketTraceConfig::_Internal {
   static void set_has_poll_ms(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
+  static void set_has_aggregation_threshold(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_intern_limit(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_drop_local_port(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_drop_remote_port(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_drop_tcp_flags(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
 };
 
 NetworkPacketTraceConfig::NetworkPacketTraceConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -56,12 +76,17 @@ NetworkPacketTraceConfig::NetworkPacketTraceConfig(const NetworkPacketTraceConfi
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  poll_ms_ = from.poll_ms_;
+  ::memcpy(&poll_ms_, &from.poll_ms_,
+    static_cast<size_t>(reinterpret_cast<char*>(&drop_tcp_flags_) -
+    reinterpret_cast<char*>(&poll_ms_)) + sizeof(drop_tcp_flags_));
   // @@protoc_insertion_point(copy_constructor:perfetto.protos.NetworkPacketTraceConfig)
 }
 
 inline void NetworkPacketTraceConfig::SharedCtor() {
-poll_ms_ = 0u;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&poll_ms_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&drop_tcp_flags_) -
+    reinterpret_cast<char*>(&poll_ms_)) + sizeof(drop_tcp_flags_));
 }
 
 NetworkPacketTraceConfig::~NetworkPacketTraceConfig() {
@@ -87,7 +112,12 @@ void NetworkPacketTraceConfig::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  poll_ms_ = 0u;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    ::memset(&poll_ms_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&drop_tcp_flags_) -
+        reinterpret_cast<char*>(&poll_ms_)) + sizeof(drop_tcp_flags_));
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
 }
@@ -104,6 +134,51 @@ const char* NetworkPacketTraceConfig::_InternalParse(const char* ptr, ::_pbi::Pa
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_poll_ms(&has_bits);
           poll_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 aggregation_threshold = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_aggregation_threshold(&has_bits);
+          aggregation_threshold_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 intern_limit = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _Internal::set_has_intern_limit(&has_bits);
+          intern_limit_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional bool drop_local_port = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _Internal::set_has_drop_local_port(&has_bits);
+          drop_local_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional bool drop_remote_port = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _Internal::set_has_drop_remote_port(&has_bits);
+          drop_remote_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional bool drop_tcp_flags = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _Internal::set_has_drop_tcp_flags(&has_bits);
+          drop_tcp_flags_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -145,6 +220,36 @@ uint8_t* NetworkPacketTraceConfig::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_poll_ms(), target);
   }
 
+  // optional uint32 aggregation_threshold = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_aggregation_threshold(), target);
+  }
+
+  // optional uint32 intern_limit = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_intern_limit(), target);
+  }
+
+  // optional bool drop_local_port = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_drop_local_port(), target);
+  }
+
+  // optional bool drop_remote_port = 5;
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_drop_remote_port(), target);
+  }
+
+  // optional bool drop_tcp_flags = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(6, this->_internal_drop_tcp_flags(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -161,12 +266,39 @@ size_t NetworkPacketTraceConfig::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional uint32 poll_ms = 1;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_poll_ms());
-  }
+  if (cached_has_bits & 0x0000003fu) {
+    // optional uint32 poll_ms = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_poll_ms());
+    }
 
+    // optional uint32 aggregation_threshold = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_aggregation_threshold());
+    }
+
+    // optional uint32 intern_limit = 3;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_intern_limit());
+    }
+
+    // optional bool drop_local_port = 4;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool drop_remote_port = 5;
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool drop_tcp_flags = 6;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 + 1;
+    }
+
+  }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
   }
@@ -187,8 +319,27 @@ void NetworkPacketTraceConfig::MergeFrom(const NetworkPacketTraceConfig& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_poll_ms()) {
-    _internal_set_poll_ms(from._internal_poll_ms());
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    if (cached_has_bits & 0x00000001u) {
+      poll_ms_ = from.poll_ms_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      aggregation_threshold_ = from.aggregation_threshold_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      intern_limit_ = from.intern_limit_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      drop_local_port_ = from.drop_local_port_;
+    }
+    if (cached_has_bits & 0x00000010u) {
+      drop_remote_port_ = from.drop_remote_port_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      drop_tcp_flags_ = from.drop_tcp_flags_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
@@ -208,7 +359,12 @@ void NetworkPacketTraceConfig::InternalSwap(NetworkPacketTraceConfig* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(poll_ms_, other->poll_ms_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NetworkPacketTraceConfig, drop_tcp_flags_)
+      + sizeof(NetworkPacketTraceConfig::drop_tcp_flags_)
+      - PROTOBUF_FIELD_OFFSET(NetworkPacketTraceConfig, poll_ms_)>(
+          reinterpret_cast<char*>(&poll_ms_),
+          reinterpret_cast<char*>(&other->poll_ms_));
 }
 
 std::string NetworkPacketTraceConfig::GetTypeName() const {

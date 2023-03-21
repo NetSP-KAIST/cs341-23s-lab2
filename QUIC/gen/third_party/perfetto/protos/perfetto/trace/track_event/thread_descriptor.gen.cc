@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,7 +50,7 @@ bool ThreadDescriptor::ParseFromArray(const void* raw, size_t size) {
         field.get(&tid_);
         break;
       case 5 /* thread_name */:
-        field.get(&thread_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &thread_name_);
         break;
       case 4 /* chrome_thread_type */:
         field.get(&chrome_thread_type_);
@@ -75,13 +76,13 @@ bool ThreadDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ThreadDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ThreadDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,45 +90,45 @@ std::vector<uint8_t> ThreadDescriptor::SerializeAsArray() const {
 void ThreadDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: tid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, tid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, tid_, msg);
   }
 
   // Field 5: thread_name
   if (_has_field_[5]) {
-    msg->AppendString(5, thread_name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, thread_name_, msg);
   }
 
   // Field 4: chrome_thread_type
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, chrome_thread_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, chrome_thread_type_, msg);
   }
 
   // Field 6: reference_timestamp_us
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, reference_timestamp_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, reference_timestamp_us_, msg);
   }
 
   // Field 7: reference_thread_time_us
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, reference_thread_time_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, reference_thread_time_us_, msg);
   }
 
   // Field 8: reference_thread_instruction_count
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, reference_thread_instruction_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, reference_thread_instruction_count_, msg);
   }
 
   // Field 3: legacy_sort_index
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, legacy_sort_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, legacy_sort_index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

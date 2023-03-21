@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,13 +48,13 @@ bool GraphicsFrameEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GraphicsFrameEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GraphicsFrameEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -64,7 +65,7 @@ void GraphicsFrameEvent::Serialize(::protozero::Message* msg) const {
     (*buffer_event_).Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -101,7 +102,7 @@ bool GraphicsFrameEvent_BufferEvent::ParseFromArray(const void* raw, size_t size
         field.get(&type_);
         break;
       case 3 /* layer_name */:
-        field.get(&layer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &layer_name_);
         break;
       case 4 /* duration_ns */:
         field.get(&duration_ns_);
@@ -118,13 +119,13 @@ bool GraphicsFrameEvent_BufferEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string GraphicsFrameEvent_BufferEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GraphicsFrameEvent_BufferEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -132,30 +133,30 @@ std::vector<uint8_t> GraphicsFrameEvent_BufferEvent::SerializeAsArray() const {
 void GraphicsFrameEvent_BufferEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: frame_number
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, frame_number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, frame_number_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_, msg);
   }
 
   // Field 3: layer_name
   if (_has_field_[3]) {
-    msg->AppendString(3, layer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, layer_name_, msg);
   }
 
   // Field 4: duration_ns
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, duration_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, duration_ns_, msg);
   }
 
   // Field 5: buffer_id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, buffer_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, buffer_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

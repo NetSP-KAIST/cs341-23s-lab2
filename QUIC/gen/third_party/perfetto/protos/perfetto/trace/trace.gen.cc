@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -61,6 +62,7 @@
 #include "protos/perfetto/trace/statsd/statsd_atom.gen.h"
 #include "protos/perfetto/trace/power/power_rails.gen.h"
 #include "protos/perfetto/trace/power/battery_counters.gen.h"
+#include "protos/perfetto/trace/power/android_entity_state_residency.gen.h"
 #include "protos/perfetto/trace/power/android_energy_estimation_breakdown.gen.h"
 #include "protos/perfetto/common/android_energy_consumer_descriptor.gen.h"
 #include "protos/perfetto/trace/perfetto/tracing_service_event.gen.h"
@@ -68,6 +70,7 @@
 #include "protos/perfetto/trace/memory_graph.gen.h"
 #include "protos/perfetto/trace/interned_data/interned_data.gen.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.gen.h"
+#include "protos/perfetto/trace/android/network_trace.gen.h"
 #include "protos/perfetto/trace/gpu/vulkan_api_event.gen.h"
 #include "protos/perfetto/trace/gpu/vulkan_memory_event.gen.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.gen.h"
@@ -115,6 +118,7 @@
 #include "protos/perfetto/trace/ftrace/ipi.gen.h"
 #include "protos/perfetto/trace/ftrace/ion.gen.h"
 #include "protos/perfetto/trace/ftrace/i2c.gen.h"
+#include "protos/perfetto/trace/ftrace/hyp.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.gen.h"
 #include "protos/perfetto/trace/ftrace/g2d.gen.h"
@@ -227,13 +231,13 @@ bool Trace::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Trace::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Trace::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -244,7 +248,7 @@ void Trace::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

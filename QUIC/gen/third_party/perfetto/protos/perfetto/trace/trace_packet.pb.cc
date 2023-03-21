@@ -166,6 +166,7 @@ class TracePacket::_Internal {
   static const ::perfetto::protos::AndroidGameInterventionList& android_game_intervention_list(const TracePacket* msg);
   static const ::perfetto::protos::StatsdAtom& statsd_atom(const TracePacket* msg);
   static const ::perfetto::protos::AndroidSystemProperty& android_system_property(const TracePacket* msg);
+  static const ::perfetto::protos::EntityStateResidency& entity_state_residency(const TracePacket* msg);
   static const ::perfetto::protos::ProfiledFrameSymbols& profiled_frame_symbols(const TracePacket* msg);
   static const ::perfetto::protos::ModuleSymbols& module_symbols(const TracePacket* msg);
   static const ::perfetto::protos::DeobfuscationMapping& deobfuscation_mapping(const TracePacket* msg);
@@ -175,6 +176,7 @@ class TracePacket::_Internal {
   static const ::perfetto::protos::FtraceEventBundle& ftrace_events(const TracePacket* msg);
   static const ::perfetto::protos::ExtensionDescriptor& extension_descriptor(const TracePacket* msg);
   static const ::perfetto::protos::NetworkPacketEvent& network_packet(const TracePacket* msg);
+  static const ::perfetto::protos::NetworkPacketBundle& network_packet_bundle(const TracePacket* msg);
   static const ::perfetto::protos::TrackEventRangeOfInterest& track_event_range_of_interest(const TracePacket* msg);
   static const ::perfetto::protos::TestEvent& for_testing(const TracePacket* msg);
   static void set_has_trusted_pid(HasBits* has_bits) {
@@ -390,6 +392,10 @@ const ::perfetto::protos::AndroidSystemProperty&
 TracePacket::_Internal::android_system_property(const TracePacket* msg) {
   return *msg->data_.android_system_property_;
 }
+const ::perfetto::protos::EntityStateResidency&
+TracePacket::_Internal::entity_state_residency(const TracePacket* msg) {
+  return *msg->data_.entity_state_residency_;
+}
 const ::perfetto::protos::ProfiledFrameSymbols&
 TracePacket::_Internal::profiled_frame_symbols(const TracePacket* msg) {
   return *msg->data_.profiled_frame_symbols_;
@@ -425,6 +431,10 @@ TracePacket::_Internal::extension_descriptor(const TracePacket* msg) {
 const ::perfetto::protos::NetworkPacketEvent&
 TracePacket::_Internal::network_packet(const TracePacket* msg) {
   return *msg->data_.network_packet_;
+}
+const ::perfetto::protos::NetworkPacketBundle&
+TracePacket::_Internal::network_packet_bundle(const TracePacket* msg) {
+  return *msg->data_.network_packet_bundle_;
 }
 const ::perfetto::protos::TrackEventRangeOfInterest&
 TracePacket::_Internal::track_event_range_of_interest(const TracePacket* msg) {
@@ -1570,6 +1580,30 @@ void TracePacket::clear_android_system_property() {
     clear_has_data();
   }
 }
+void TracePacket::set_allocated_entity_state_residency(::perfetto::protos::EntityStateResidency* entity_state_residency) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_data();
+  if (entity_state_residency) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(entity_state_residency));
+    if (message_arena != submessage_arena) {
+      entity_state_residency = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, entity_state_residency, submessage_arena);
+    }
+    set_has_entity_state_residency();
+    data_.entity_state_residency_ = entity_state_residency;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracePacket.entity_state_residency)
+}
+void TracePacket::clear_entity_state_residency() {
+  if (_internal_has_entity_state_residency()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete data_.entity_state_residency_;
+    }
+    clear_has_data();
+  }
+}
 void TracePacket::set_allocated_profiled_frame_symbols(::perfetto::protos::ProfiledFrameSymbols* profiled_frame_symbols) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_data();
@@ -1782,6 +1816,30 @@ void TracePacket::clear_network_packet() {
   if (_internal_has_network_packet()) {
     if (GetArenaForAllocation() == nullptr) {
       delete data_.network_packet_;
+    }
+    clear_has_data();
+  }
+}
+void TracePacket::set_allocated_network_packet_bundle(::perfetto::protos::NetworkPacketBundle* network_packet_bundle) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_data();
+  if (network_packet_bundle) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(network_packet_bundle));
+    if (message_arena != submessage_arena) {
+      network_packet_bundle = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, network_packet_bundle, submessage_arena);
+    }
+    set_has_network_packet_bundle();
+    data_.network_packet_bundle_ = network_packet_bundle;
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracePacket.network_packet_bundle)
+}
+void TracePacket::clear_network_packet_bundle() {
+  if (_internal_has_network_packet_bundle()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete data_.network_packet_bundle_;
     }
     clear_has_data();
   }
@@ -2055,6 +2113,10 @@ TracePacket::TracePacket(const TracePacket& from)
       _internal_mutable_android_system_property()->::perfetto::protos::AndroidSystemProperty::MergeFrom(from._internal_android_system_property());
       break;
     }
+    case kEntityStateResidency: {
+      _internal_mutable_entity_state_residency()->::perfetto::protos::EntityStateResidency::MergeFrom(from._internal_entity_state_residency());
+      break;
+    }
     case kProfiledFrameSymbols: {
       _internal_mutable_profiled_frame_symbols()->::perfetto::protos::ProfiledFrameSymbols::MergeFrom(from._internal_profiled_frame_symbols());
       break;
@@ -2097,6 +2159,10 @@ TracePacket::TracePacket(const TracePacket& from)
     }
     case kNetworkPacket: {
       _internal_mutable_network_packet()->::perfetto::protos::NetworkPacketEvent::MergeFrom(from._internal_network_packet());
+      break;
+    }
+    case kNetworkPacketBundle: {
+      _internal_mutable_network_packet_bundle()->::perfetto::protos::NetworkPacketBundle::MergeFrom(from._internal_network_packet_bundle());
       break;
     }
     case kTrackEventRangeOfInterest: {
@@ -2457,6 +2523,12 @@ void TracePacket::clear_data() {
       }
       break;
     }
+    case kEntityStateResidency: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete data_.entity_state_residency_;
+      }
+      break;
+    }
     case kProfiledFrameSymbols: {
       if (GetArenaForAllocation() == nullptr) {
         delete data_.profiled_frame_symbols_;
@@ -2516,6 +2588,12 @@ void TracePacket::clear_data() {
     case kNetworkPacket: {
       if (GetArenaForAllocation() == nullptr) {
         delete data_.network_packet_;
+      }
+      break;
+    }
+    case kNetworkPacketBundle: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete data_.network_packet_bundle_;
       }
       break;
     }
@@ -3173,6 +3251,22 @@ const char* TracePacket::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
+      // .perfetto.protos.EntityStateResidency entity_state_residency = 91;
+      case 91:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 218)) {
+          ptr = ctx->ParseMessage(_internal_mutable_entity_state_residency(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .perfetto.protos.NetworkPacketBundle network_packet_bundle = 92;
+      case 92:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 226)) {
+          ptr = ctx->ParseMessage(_internal_mutable_network_packet_bundle(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       // .perfetto.protos.TestEvent for_testing = 900;
       case 900:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
@@ -3653,6 +3747,18 @@ uint8_t* TracePacket::_InternalSerialize(
           _Internal::track_event_range_of_interest(this).GetCachedSize(), target, stream);
       break;
     }
+    case kEntityStateResidency: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(91, _Internal::entity_state_residency(this),
+          _Internal::entity_state_residency(this).GetCachedSize(), target, stream);
+      break;
+    }
+    case kNetworkPacketBundle: {
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(92, _Internal::network_packet_bundle(this),
+          _Internal::network_packet_bundle(this).GetCachedSize(), target, stream);
+      break;
+    }
     case kForTesting: {
       target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(900, _Internal::for_testing(this),
@@ -4063,6 +4169,13 @@ size_t TracePacket::ByteSizeLong() const {
           *data_.android_system_property_);
       break;
     }
+    // .perfetto.protos.EntityStateResidency entity_state_residency = 91;
+    case kEntityStateResidency: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *data_.entity_state_residency_);
+      break;
+    }
     // .perfetto.protos.ProfiledFrameSymbols profiled_frame_symbols = 55;
     case kProfiledFrameSymbols: {
       total_size += 2 +
@@ -4138,6 +4251,13 @@ size_t TracePacket::ByteSizeLong() const {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *data_.network_packet_);
+      break;
+    }
+    // .perfetto.protos.NetworkPacketBundle network_packet_bundle = 92;
+    case kNetworkPacketBundle: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *data_.network_packet_bundle_);
       break;
     }
     // .perfetto.protos.TrackEventRangeOfInterest track_event_range_of_interest = 90;
@@ -4418,6 +4538,10 @@ void TracePacket::MergeFrom(const TracePacket& from) {
       _internal_mutable_android_system_property()->::perfetto::protos::AndroidSystemProperty::MergeFrom(from._internal_android_system_property());
       break;
     }
+    case kEntityStateResidency: {
+      _internal_mutable_entity_state_residency()->::perfetto::protos::EntityStateResidency::MergeFrom(from._internal_entity_state_residency());
+      break;
+    }
     case kProfiledFrameSymbols: {
       _internal_mutable_profiled_frame_symbols()->::perfetto::protos::ProfiledFrameSymbols::MergeFrom(from._internal_profiled_frame_symbols());
       break;
@@ -4460,6 +4584,10 @@ void TracePacket::MergeFrom(const TracePacket& from) {
     }
     case kNetworkPacket: {
       _internal_mutable_network_packet()->::perfetto::protos::NetworkPacketEvent::MergeFrom(from._internal_network_packet());
+      break;
+    }
+    case kNetworkPacketBundle: {
+      _internal_mutable_network_packet_bundle()->::perfetto::protos::NetworkPacketBundle::MergeFrom(from._internal_network_packet_bundle());
       break;
     }
     case kTrackEventRangeOfInterest: {
@@ -4651,6 +4779,9 @@ bool TracePacket::IsInitialized() const {
     case kAndroidSystemProperty: {
       break;
     }
+    case kEntityStateResidency: {
+      break;
+    }
     case kProfiledFrameSymbols: {
       break;
     }
@@ -4685,6 +4816,9 @@ bool TracePacket::IsInitialized() const {
       break;
     }
     case kNetworkPacket: {
+      break;
+    }
+    case kNetworkPacketBundle: {
       break;
     }
     case kTrackEventRangeOfInterest: {

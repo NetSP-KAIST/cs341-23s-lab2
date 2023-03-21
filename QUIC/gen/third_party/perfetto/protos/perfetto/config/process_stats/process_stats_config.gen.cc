@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -69,13 +70,13 @@ bool ProcessStatsConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessStatsConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessStatsConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -83,35 +84,35 @@ std::vector<uint8_t> ProcessStatsConfig::SerializeAsArray() const {
 void ProcessStatsConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: quirks
   for (auto& it : quirks_) {
-    msg->AppendVarInt(1, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, it, msg);
   }
 
   // Field 2: scan_all_processes_on_start
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, scan_all_processes_on_start_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, scan_all_processes_on_start_, msg);
   }
 
   // Field 3: record_thread_names
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, record_thread_names_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, record_thread_names_, msg);
   }
 
   // Field 4: proc_stats_poll_ms
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, proc_stats_poll_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, proc_stats_poll_ms_, msg);
   }
 
   // Field 6: proc_stats_cache_ttl_ms
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, proc_stats_cache_ttl_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, proc_stats_cache_ttl_ms_, msg);
   }
 
   // Field 9: resolve_process_fds
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, resolve_process_fds_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, resolve_process_fds_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

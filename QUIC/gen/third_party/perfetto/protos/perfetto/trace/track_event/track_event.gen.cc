@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -58,7 +59,7 @@ bool EventName::ParseFromArray(const void* raw, size_t size) {
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -69,13 +70,13 @@ bool EventName::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string EventName::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> EventName::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -83,15 +84,15 @@ std::vector<uint8_t> EventName::SerializeAsArray() const {
 void EventName::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -122,7 +123,7 @@ bool EventCategory::ParseFromArray(const void* raw, size_t size) {
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -133,13 +134,13 @@ bool EventCategory::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string EventCategory::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> EventCategory::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -147,15 +148,15 @@ std::vector<uint8_t> EventCategory::SerializeAsArray() const {
 void EventCategory::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -205,13 +206,13 @@ bool TrackEventDefaults::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackEventDefaults::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackEventDefaults::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -219,20 +220,20 @@ std::vector<uint8_t> TrackEventDefaults::SerializeAsArray() const {
 void TrackEventDefaults::Serialize(::protozero::Message* msg) const {
   // Field 11: track_uuid
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, track_uuid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, track_uuid_, msg);
   }
 
   // Field 31: extra_counter_track_uuids
   for (auto& it : extra_counter_track_uuids_) {
-    msg->AppendVarInt(31, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(31, it, msg);
   }
 
   // Field 45: extra_double_counter_track_uuids
   for (auto& it : extra_double_counter_track_uuids_) {
-    msg->AppendVarInt(45, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(45, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -319,13 +320,13 @@ bool TrackEvent::ParseFromArray(const void* raw, size_t size) {
         break;
       case 22 /* categories */:
         categories_.emplace_back();
-        field.get(&categories_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &categories_.back());
         break;
       case 10 /* name_iid */:
         field.get(&name_iid_);
         break;
       case 23 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 9 /* type */:
         field.get(&type_);
@@ -459,13 +460,13 @@ bool TrackEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -473,82 +474,82 @@ std::vector<uint8_t> TrackEvent::SerializeAsArray() const {
 void TrackEvent::Serialize(::protozero::Message* msg) const {
   // Field 3: category_iids
   for (auto& it : category_iids_) {
-    msg->AppendVarInt(3, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, it, msg);
   }
 
   // Field 22: categories
   for (auto& it : categories_) {
-    msg->AppendString(22, it);
+    ::protozero::internal::gen_helpers::SerializeString(22, it, msg);
   }
 
   // Field 10: name_iid
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, name_iid_, msg);
   }
 
   // Field 23: name
   if (_has_field_[23]) {
-    msg->AppendString(23, name_);
+    ::protozero::internal::gen_helpers::SerializeString(23, name_, msg);
   }
 
   // Field 9: type
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, type_, msg);
   }
 
   // Field 11: track_uuid
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, track_uuid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, track_uuid_, msg);
   }
 
   // Field 30: counter_value
   if (_has_field_[30]) {
-    msg->AppendVarInt(30, counter_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(30, counter_value_, msg);
   }
 
   // Field 44: double_counter_value
   if (_has_field_[44]) {
-    msg->AppendFixed(44, double_counter_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(44, double_counter_value_, msg);
   }
 
   // Field 31: extra_counter_track_uuids
   for (auto& it : extra_counter_track_uuids_) {
-    msg->AppendVarInt(31, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(31, it, msg);
   }
 
   // Field 12: extra_counter_values
   for (auto& it : extra_counter_values_) {
-    msg->AppendVarInt(12, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, it, msg);
   }
 
   // Field 45: extra_double_counter_track_uuids
   for (auto& it : extra_double_counter_track_uuids_) {
-    msg->AppendVarInt(45, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(45, it, msg);
   }
 
   // Field 46: extra_double_counter_values
   for (auto& it : extra_double_counter_values_) {
-    msg->AppendFixed(46, it);
+    ::protozero::internal::gen_helpers::SerializeFixed(46, it, msg);
   }
 
   // Field 36: flow_ids_old
   for (auto& it : flow_ids_old_) {
-    msg->AppendVarInt(36, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(36, it, msg);
   }
 
   // Field 47: flow_ids
   for (auto& it : flow_ids_) {
-    msg->AppendFixed(47, it);
+    ::protozero::internal::gen_helpers::SerializeFixed(47, it, msg);
   }
 
   // Field 42: terminating_flow_ids_old
   for (auto& it : terminating_flow_ids_old_) {
-    msg->AppendVarInt(42, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(42, it, msg);
   }
 
   // Field 48: terminating_flow_ids
   for (auto& it : terminating_flow_ids_) {
-    msg->AppendFixed(48, it);
+    ::protozero::internal::gen_helpers::SerializeFixed(48, it, msg);
   }
 
   // Field 4: debug_annotations
@@ -633,7 +634,7 @@ void TrackEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 34: source_location_iid
   if (_has_field_[34]) {
-    msg->AppendVarInt(34, source_location_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(34, source_location_iid_, msg);
   }
 
   // Field 35: chrome_message_pump
@@ -648,32 +649,32 @@ void TrackEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 1: timestamp_delta_us
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, timestamp_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, timestamp_delta_us_, msg);
   }
 
   // Field 16: timestamp_absolute_us
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, timestamp_absolute_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, timestamp_absolute_us_, msg);
   }
 
   // Field 2: thread_time_delta_us
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, thread_time_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, thread_time_delta_us_, msg);
   }
 
   // Field 17: thread_time_absolute_us
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, thread_time_absolute_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, thread_time_absolute_us_, msg);
   }
 
   // Field 8: thread_instruction_count_delta
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, thread_instruction_count_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, thread_instruction_count_delta_, msg);
   }
 
   // Field 20: thread_instruction_count_absolute
   if (_has_field_[20]) {
-    msg->AppendVarInt(20, thread_instruction_count_absolute_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(20, thread_instruction_count_absolute_, msg);
   }
 
   // Field 6: legacy_event
@@ -681,7 +682,7 @@ void TrackEvent::Serialize(::protozero::Message* msg) const {
     (*legacy_event_).Serialize(msg->BeginNestedMessage<::protozero::Message>(6));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -747,7 +748,7 @@ bool TrackEvent_LegacyEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&global_id_);
         break;
       case 7 /* id_scope */:
-        field.get(&id_scope_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &id_scope_);
         break;
       case 9 /* use_async_tts */:
         field.get(&use_async_tts_);
@@ -779,13 +780,13 @@ bool TrackEvent_LegacyEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackEvent_LegacyEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackEvent_LegacyEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -793,85 +794,85 @@ std::vector<uint8_t> TrackEvent_LegacyEvent::SerializeAsArray() const {
 void TrackEvent_LegacyEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name_iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, name_iid_, msg);
   }
 
   // Field 2: phase
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, phase_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, phase_, msg);
   }
 
   // Field 3: duration_us
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, duration_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, duration_us_, msg);
   }
 
   // Field 4: thread_duration_us
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, thread_duration_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, thread_duration_us_, msg);
   }
 
   // Field 15: thread_instruction_delta
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, thread_instruction_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, thread_instruction_delta_, msg);
   }
 
   // Field 6: unscoped_id
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, unscoped_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, unscoped_id_, msg);
   }
 
   // Field 10: local_id
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, local_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, local_id_, msg);
   }
 
   // Field 11: global_id
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, global_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, global_id_, msg);
   }
 
   // Field 7: id_scope
   if (_has_field_[7]) {
-    msg->AppendString(7, id_scope_);
+    ::protozero::internal::gen_helpers::SerializeString(7, id_scope_, msg);
   }
 
   // Field 9: use_async_tts
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, use_async_tts_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, use_async_tts_, msg);
   }
 
   // Field 8: bind_id
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, bind_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, bind_id_, msg);
   }
 
   // Field 12: bind_to_enclosing
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, bind_to_enclosing_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, bind_to_enclosing_, msg);
   }
 
   // Field 13: flow_direction
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, flow_direction_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, flow_direction_, msg);
   }
 
   // Field 14: instant_event_scope
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, instant_event_scope_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, instant_event_scope_, msg);
   }
 
   // Field 18: pid_override
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, pid_override_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, pid_override_, msg);
   }
 
   // Field 19: tid_override
   if (_has_field_[19]) {
-    msg->AppendVarInt(19, tid_override_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(19, tid_override_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

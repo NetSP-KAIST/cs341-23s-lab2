@@ -77,6 +77,7 @@ PROTOBUF_CONSTEXPR FtraceConfig::FtraceConfig(
   , syscall_events_()
   , function_filters_()
   , function_graph_roots_()
+  , instance_name_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , compact_sched_(nullptr)
   , print_filter_(nullptr)
   , buffer_size_kb_(0u)
@@ -1088,42 +1089,45 @@ class FtraceConfig::_Internal {
  public:
   using HasBits = decltype(std::declval<FtraceConfig>()._has_bits_);
   static void set_has_buffer_size_kb(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 8u;
   }
   static void set_has_drain_period_ms(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
+    (*has_bits)[0] |= 16u;
   }
   static const ::perfetto::protos::FtraceConfig_CompactSchedConfig& compact_sched(const FtraceConfig* msg);
   static void set_has_compact_sched(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
+    (*has_bits)[0] |= 2u;
   }
   static const ::perfetto::protos::FtraceConfig_PrintFilter& print_filter(const FtraceConfig* msg);
   static void set_has_print_filter(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 4u;
   }
   static void set_has_symbolize_ksyms(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
-  }
-  static void set_has_ksyms_mem_policy(HasBits* has_bits) {
-    (*has_bits)[0] |= 256u;
-  }
-  static void set_has_initialize_ksyms_synchronously_for_testing(HasBits* has_bits) {
     (*has_bits)[0] |= 32u;
   }
-  static void set_has_throttle_rss_stat(HasBits* has_bits) {
-    (*has_bits)[0] |= 64u;
-  }
-  static void set_has_disable_generic_events(HasBits* has_bits) {
-    (*has_bits)[0] |= 128u;
-  }
-  static void set_has_enable_function_graph(HasBits* has_bits) {
+  static void set_has_ksyms_mem_policy(HasBits* has_bits) {
     (*has_bits)[0] |= 512u;
   }
-  static void set_has_preserve_ftrace_buffer(HasBits* has_bits) {
+  static void set_has_initialize_ksyms_synchronously_for_testing(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_throttle_rss_stat(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static void set_has_disable_generic_events(HasBits* has_bits) {
+    (*has_bits)[0] |= 256u;
+  }
+  static void set_has_enable_function_graph(HasBits* has_bits) {
     (*has_bits)[0] |= 1024u;
   }
-  static void set_has_use_monotonic_raw_clock(HasBits* has_bits) {
+  static void set_has_preserve_ftrace_buffer(HasBits* has_bits) {
     (*has_bits)[0] |= 2048u;
+  }
+  static void set_has_use_monotonic_raw_clock(HasBits* has_bits) {
+    (*has_bits)[0] |= 4096u;
+  }
+  static void set_has_instance_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
   }
 };
 
@@ -1157,6 +1161,14 @@ FtraceConfig::FtraceConfig(const FtraceConfig& from)
       function_filters_(from.function_filters_),
       function_graph_roots_(from.function_graph_roots_) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
+  instance_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    instance_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_instance_name()) {
+    instance_name_.Set(from._internal_instance_name(), 
+      GetArenaForAllocation());
+  }
   if (from._internal_has_compact_sched()) {
     compact_sched_ = new ::perfetto::protos::FtraceConfig_CompactSchedConfig(*from.compact_sched_);
   } else {
@@ -1174,6 +1186,10 @@ FtraceConfig::FtraceConfig(const FtraceConfig& from)
 }
 
 inline void FtraceConfig::SharedCtor() {
+instance_name_.InitDefault();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  instance_name_.Set("", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&compact_sched_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&use_monotonic_raw_clock_) -
@@ -1191,6 +1207,7 @@ FtraceConfig::~FtraceConfig() {
 
 inline void FtraceConfig::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  instance_name_.Destroy();
   if (this != internal_default_instance()) delete compact_sched_;
   if (this != internal_default_instance()) delete print_filter_;
 }
@@ -1212,25 +1229,28 @@ void FtraceConfig::Clear() {
   function_filters_.Clear();
   function_graph_roots_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
+      instance_name_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
       GOOGLE_DCHECK(compact_sched_ != nullptr);
       compact_sched_->Clear();
     }
-    if (cached_has_bits & 0x00000002u) {
+    if (cached_has_bits & 0x00000004u) {
       GOOGLE_DCHECK(print_filter_ != nullptr);
       print_filter_->Clear();
     }
   }
-  if (cached_has_bits & 0x000000fcu) {
+  if (cached_has_bits & 0x000000f8u) {
     ::memset(&buffer_size_kb_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&disable_generic_events_) -
-        reinterpret_cast<char*>(&buffer_size_kb_)) + sizeof(disable_generic_events_));
+        reinterpret_cast<char*>(&throttle_rss_stat_) -
+        reinterpret_cast<char*>(&buffer_size_kb_)) + sizeof(throttle_rss_stat_));
   }
-  if (cached_has_bits & 0x00000f00u) {
-    ::memset(&ksyms_mem_policy_, 0, static_cast<size_t>(
+  if (cached_has_bits & 0x00001f00u) {
+    ::memset(&disable_generic_events_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&use_monotonic_raw_clock_) -
-        reinterpret_cast<char*>(&ksyms_mem_policy_)) + sizeof(use_monotonic_raw_clock_));
+        reinterpret_cast<char*>(&disable_generic_events_)) + sizeof(use_monotonic_raw_clock_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
@@ -1437,6 +1457,15 @@ const char* FtraceConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
+      // optional string instance_name = 25;
+      case 25:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 202)) {
+          auto str = _internal_mutable_instance_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1487,50 +1516,50 @@ uint8_t* FtraceConfig::_InternalSerialize(
 
   cached_has_bits = _has_bits_[0];
   // optional uint32 buffer_size_kb = 10;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(10, this->_internal_buffer_size_kb(), target);
   }
 
   // optional uint32 drain_period_ms = 11;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(11, this->_internal_drain_period_ms(), target);
   }
 
   // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(12, _Internal::compact_sched(this),
         _Internal::compact_sched(this).GetCachedSize(), target, stream);
   }
 
   // optional bool symbolize_ksyms = 13;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(13, this->_internal_symbolize_ksyms(), target);
   }
 
   // optional bool initialize_ksyms_synchronously_for_testing = 14 [deprecated = true];
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(14, this->_internal_initialize_ksyms_synchronously_for_testing(), target);
   }
 
   // optional bool throttle_rss_stat = 15;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(15, this->_internal_throttle_rss_stat(), target);
   }
 
   // optional bool disable_generic_events = 16;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(16, this->_internal_disable_generic_events(), target);
   }
 
   // optional .perfetto.protos.FtraceConfig.KsymsMemPolicy ksyms_mem_policy = 17;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
       17, this->_internal_ksyms_mem_policy(), target);
@@ -1543,7 +1572,7 @@ uint8_t* FtraceConfig::_InternalSerialize(
   }
 
   // optional bool enable_function_graph = 19;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000400u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(19, this->_internal_enable_function_graph(), target);
   }
@@ -1561,22 +1590,28 @@ uint8_t* FtraceConfig::_InternalSerialize(
   }
 
   // optional .perfetto.protos.FtraceConfig.PrintFilter print_filter = 22;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(22, _Internal::print_filter(this),
         _Internal::print_filter(this).GetCachedSize(), target, stream);
   }
 
   // optional bool preserve_ftrace_buffer = 23;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000800u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(23, this->_internal_preserve_ftrace_buffer(), target);
   }
 
   // optional bool use_monotonic_raw_clock = 24;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00001000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(24, this->_internal_use_monotonic_raw_clock(), target);
+  }
+
+  // optional string instance_name = 25;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->WriteStringMaybeAliased(
+        25, this->_internal_instance_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1645,70 +1680,77 @@ size_t FtraceConfig::ByteSizeLong() const {
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
-    // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
+    // optional string instance_name = 25;
     if (cached_has_bits & 0x00000001u) {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_instance_name());
+    }
+
+    // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *compact_sched_);
     }
 
     // optional .perfetto.protos.FtraceConfig.PrintFilter print_filter = 22;
-    if (cached_has_bits & 0x00000002u) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *print_filter_);
     }
 
     // optional uint32 buffer_size_kb = 10;
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000008u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_buffer_size_kb());
     }
 
     // optional uint32 drain_period_ms = 11;
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_drain_period_ms());
     }
 
     // optional bool symbolize_ksyms = 13;
-    if (cached_has_bits & 0x00000010u) {
-      total_size += 1 + 1;
-    }
-
-    // optional bool initialize_ksyms_synchronously_for_testing = 14 [deprecated = true];
     if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 1;
     }
 
-    // optional bool throttle_rss_stat = 15;
+    // optional bool initialize_ksyms_synchronously_for_testing = 14 [deprecated = true];
     if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 1;
     }
 
-    // optional bool disable_generic_events = 16;
+    // optional bool throttle_rss_stat = 15;
     if (cached_has_bits & 0x00000080u) {
-      total_size += 2 + 1;
+      total_size += 1 + 1;
     }
 
   }
-  if (cached_has_bits & 0x00000f00u) {
-    // optional .perfetto.protos.FtraceConfig.KsymsMemPolicy ksyms_mem_policy = 17;
+  if (cached_has_bits & 0x00001f00u) {
+    // optional bool disable_generic_events = 16;
     if (cached_has_bits & 0x00000100u) {
+      total_size += 2 + 1;
+    }
+
+    // optional .perfetto.protos.FtraceConfig.KsymsMemPolicy ksyms_mem_policy = 17;
+    if (cached_has_bits & 0x00000200u) {
       total_size += 2 +
         ::_pbi::WireFormatLite::EnumSize(this->_internal_ksyms_mem_policy());
     }
 
     // optional bool enable_function_graph = 19;
-    if (cached_has_bits & 0x00000200u) {
-      total_size += 2 + 1;
-    }
-
-    // optional bool preserve_ftrace_buffer = 23;
     if (cached_has_bits & 0x00000400u) {
       total_size += 2 + 1;
     }
 
-    // optional bool use_monotonic_raw_clock = 24;
+    // optional bool preserve_ftrace_buffer = 23;
     if (cached_has_bits & 0x00000800u) {
+      total_size += 2 + 1;
+    }
+
+    // optional bool use_monotonic_raw_clock = 24;
+    if (cached_has_bits & 0x00001000u) {
       total_size += 2 + 1;
     }
 
@@ -1742,42 +1784,45 @@ void FtraceConfig::MergeFrom(const FtraceConfig& from) {
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_compact_sched()->::perfetto::protos::FtraceConfig_CompactSchedConfig::MergeFrom(from._internal_compact_sched());
+      _internal_set_instance_name(from._internal_instance_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_print_filter()->::perfetto::protos::FtraceConfig_PrintFilter::MergeFrom(from._internal_print_filter());
+      _internal_mutable_compact_sched()->::perfetto::protos::FtraceConfig_CompactSchedConfig::MergeFrom(from._internal_compact_sched());
     }
     if (cached_has_bits & 0x00000004u) {
-      buffer_size_kb_ = from.buffer_size_kb_;
+      _internal_mutable_print_filter()->::perfetto::protos::FtraceConfig_PrintFilter::MergeFrom(from._internal_print_filter());
     }
     if (cached_has_bits & 0x00000008u) {
-      drain_period_ms_ = from.drain_period_ms_;
+      buffer_size_kb_ = from.buffer_size_kb_;
     }
     if (cached_has_bits & 0x00000010u) {
-      symbolize_ksyms_ = from.symbolize_ksyms_;
+      drain_period_ms_ = from.drain_period_ms_;
     }
     if (cached_has_bits & 0x00000020u) {
-      initialize_ksyms_synchronously_for_testing_ = from.initialize_ksyms_synchronously_for_testing_;
+      symbolize_ksyms_ = from.symbolize_ksyms_;
     }
     if (cached_has_bits & 0x00000040u) {
-      throttle_rss_stat_ = from.throttle_rss_stat_;
+      initialize_ksyms_synchronously_for_testing_ = from.initialize_ksyms_synchronously_for_testing_;
     }
     if (cached_has_bits & 0x00000080u) {
-      disable_generic_events_ = from.disable_generic_events_;
+      throttle_rss_stat_ = from.throttle_rss_stat_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x00000f00u) {
+  if (cached_has_bits & 0x00001f00u) {
     if (cached_has_bits & 0x00000100u) {
-      ksyms_mem_policy_ = from.ksyms_mem_policy_;
+      disable_generic_events_ = from.disable_generic_events_;
     }
     if (cached_has_bits & 0x00000200u) {
-      enable_function_graph_ = from.enable_function_graph_;
+      ksyms_mem_policy_ = from.ksyms_mem_policy_;
     }
     if (cached_has_bits & 0x00000400u) {
-      preserve_ftrace_buffer_ = from.preserve_ftrace_buffer_;
+      enable_function_graph_ = from.enable_function_graph_;
     }
     if (cached_has_bits & 0x00000800u) {
+      preserve_ftrace_buffer_ = from.preserve_ftrace_buffer_;
+    }
+    if (cached_has_bits & 0x00001000u) {
       use_monotonic_raw_clock_ = from.use_monotonic_raw_clock_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1798,6 +1843,8 @@ bool FtraceConfig::IsInitialized() const {
 
 void FtraceConfig::InternalSwap(FtraceConfig* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ftrace_events_.InternalSwap(&other->ftrace_events_);
@@ -1806,6 +1853,10 @@ void FtraceConfig::InternalSwap(FtraceConfig* other) {
   syscall_events_.InternalSwap(&other->syscall_events_);
   function_filters_.InternalSwap(&other->function_filters_);
   function_graph_roots_.InternalSwap(&other->function_graph_roots_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &instance_name_, lhs_arena,
+      &other->instance_name_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(FtraceConfig, use_monotonic_raw_clock_)
       + sizeof(FtraceConfig::use_monotonic_raw_clock_)

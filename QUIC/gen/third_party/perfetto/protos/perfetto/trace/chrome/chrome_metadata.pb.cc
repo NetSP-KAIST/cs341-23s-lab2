@@ -66,7 +66,8 @@ PROTOBUF_CONSTEXPR BackgroundTracingMetadata_TriggerRule::BackgroundTracingMetad
   : histogram_rule_(nullptr)
   , named_rule_(nullptr)
   , trigger_type_(0)
-{}
+
+  , name_hash_(0u){}
 struct BackgroundTracingMetadata_TriggerRuleDefaultTypeInternal {
   PROTOBUF_CONSTEXPR BackgroundTracingMetadata_TriggerRuleDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -1033,6 +1034,9 @@ class BackgroundTracingMetadata_TriggerRule::_Internal {
   static void set_has_named_rule(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
+  static void set_has_name_hash(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
 };
 
 const ::perfetto::protos::BackgroundTracingMetadata_TriggerRule_HistogramRule&
@@ -1063,15 +1067,17 @@ BackgroundTracingMetadata_TriggerRule::BackgroundTracingMetadata_TriggerRule(con
   } else {
     named_rule_ = nullptr;
   }
-  trigger_type_ = from.trigger_type_;
+  ::memcpy(&trigger_type_, &from.trigger_type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&name_hash_) -
+    reinterpret_cast<char*>(&trigger_type_)) + sizeof(name_hash_));
   // @@protoc_insertion_point(copy_constructor:perfetto.protos.BackgroundTracingMetadata.TriggerRule)
 }
 
 inline void BackgroundTracingMetadata_TriggerRule::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&histogram_rule_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&trigger_type_) -
-    reinterpret_cast<char*>(&histogram_rule_)) + sizeof(trigger_type_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&name_hash_) -
+    reinterpret_cast<char*>(&histogram_rule_)) + sizeof(name_hash_));
 }
 
 BackgroundTracingMetadata_TriggerRule::~BackgroundTracingMetadata_TriggerRule() {
@@ -1110,7 +1116,11 @@ void BackgroundTracingMetadata_TriggerRule::Clear() {
       named_rule_->Clear();
     }
   }
-  trigger_type_ = 0;
+  if (cached_has_bits & 0x0000000cu) {
+    ::memset(&trigger_type_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&name_hash_) -
+        reinterpret_cast<char*>(&trigger_type_)) + sizeof(name_hash_));
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
 }
@@ -1148,6 +1158,15 @@ const char* BackgroundTracingMetadata_TriggerRule::_InternalParse(const char* pt
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_named_rule(), ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional fixed32 name_hash = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _Internal::set_has_name_hash(&has_bits);
+          name_hash_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint32_t>(ptr);
+          ptr += sizeof(uint32_t);
         } else
           goto handle_unusual;
         continue;
@@ -1203,6 +1222,12 @@ uint8_t* BackgroundTracingMetadata_TriggerRule::_InternalSerialize(
         _Internal::named_rule(this).GetCachedSize(), target, stream);
   }
 
+  // optional fixed32 name_hash = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFixed32ToArray(4, this->_internal_name_hash(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -1220,7 +1245,7 @@ size_t BackgroundTracingMetadata_TriggerRule::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional .perfetto.protos.BackgroundTracingMetadata.TriggerRule.HistogramRule histogram_rule = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -1239,6 +1264,11 @@ size_t BackgroundTracingMetadata_TriggerRule::ByteSizeLong() const {
     if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::_pbi::WireFormatLite::EnumSize(this->_internal_trigger_type());
+    }
+
+    // optional fixed32 name_hash = 4;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 + 4;
     }
 
   }
@@ -1263,7 +1293,7 @@ void BackgroundTracingMetadata_TriggerRule::MergeFrom(const BackgroundTracingMet
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_mutable_histogram_rule()->::perfetto::protos::BackgroundTracingMetadata_TriggerRule_HistogramRule::MergeFrom(from._internal_histogram_rule());
     }
@@ -1272,6 +1302,9 @@ void BackgroundTracingMetadata_TriggerRule::MergeFrom(const BackgroundTracingMet
     }
     if (cached_has_bits & 0x00000004u) {
       trigger_type_ = from.trigger_type_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      name_hash_ = from.name_hash_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1294,8 +1327,8 @@ void BackgroundTracingMetadata_TriggerRule::InternalSwap(BackgroundTracingMetada
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(BackgroundTracingMetadata_TriggerRule, trigger_type_)
-      + sizeof(BackgroundTracingMetadata_TriggerRule::trigger_type_)
+      PROTOBUF_FIELD_OFFSET(BackgroundTracingMetadata_TriggerRule, name_hash_)
+      + sizeof(BackgroundTracingMetadata_TriggerRule::name_hash_)
       - PROTOBUF_FIELD_OFFSET(BackgroundTracingMetadata_TriggerRule, histogram_rule_)>(
           reinterpret_cast<char*>(&histogram_rule_),
           reinterpret_cast<char*>(&other->histogram_rule_));

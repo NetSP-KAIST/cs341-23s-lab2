@@ -16,6 +16,6 @@ check_seed_corpus_archive.py
 ./libthird_party_icu_icui18n.so
 ./libicuuc.so
 icudtl.dat
-../../testing/location_tags.json
 bin/run_libfuzzer_tests
 ../../.vpython3
+../../testing/location_tags.json

@@ -888,6 +888,7 @@ class FtraceConfig final :
     kSyscallEventsFieldNumber = 18,
     kFunctionFiltersFieldNumber = 20,
     kFunctionGraphRootsFieldNumber = 21,
+    kInstanceNameFieldNumber = 25,
     kCompactSchedFieldNumber = 12,
     kPrintFilterFieldNumber = 22,
     kBufferSizeKbFieldNumber = 10,
@@ -1043,6 +1044,24 @@ class FtraceConfig final :
   private:
   const std::string& _internal_function_graph_roots(int index) const;
   std::string* _internal_add_function_graph_roots();
+  public:
+
+  // optional string instance_name = 25;
+  bool has_instance_name() const;
+  private:
+  bool _internal_has_instance_name() const;
+  public:
+  void clear_instance_name();
+  const std::string& instance_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_instance_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_instance_name();
+  PROTOBUF_NODISCARD std::string* release_instance_name();
+  void set_allocated_instance_name(std::string* instance_name);
+  private:
+  const std::string& _internal_instance_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_instance_name(const std::string& value);
+  std::string* _internal_mutable_instance_name();
   public:
 
   // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
@@ -1226,6 +1245,7 @@ class FtraceConfig final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> syscall_events_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> function_filters_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> function_graph_roots_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_name_;
   ::perfetto::protos::FtraceConfig_CompactSchedConfig* compact_sched_;
   ::perfetto::protos::FtraceConfig_PrintFilter* print_filter_;
   uint32_t buffer_size_kb_;
@@ -1886,7 +1906,7 @@ FtraceConfig::mutable_atrace_apps() {
 
 // optional uint32 buffer_size_kb = 10;
 inline bool FtraceConfig::_internal_has_buffer_size_kb() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_buffer_size_kb() const {
@@ -1894,7 +1914,7 @@ inline bool FtraceConfig::has_buffer_size_kb() const {
 }
 inline void FtraceConfig::clear_buffer_size_kb() {
   buffer_size_kb_ = 0u;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline uint32_t FtraceConfig::_internal_buffer_size_kb() const {
   return buffer_size_kb_;
@@ -1904,7 +1924,7 @@ inline uint32_t FtraceConfig::buffer_size_kb() const {
   return _internal_buffer_size_kb();
 }
 inline void FtraceConfig::_internal_set_buffer_size_kb(uint32_t value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   buffer_size_kb_ = value;
 }
 inline void FtraceConfig::set_buffer_size_kb(uint32_t value) {
@@ -1914,7 +1934,7 @@ inline void FtraceConfig::set_buffer_size_kb(uint32_t value) {
 
 // optional uint32 drain_period_ms = 11;
 inline bool FtraceConfig::_internal_has_drain_period_ms() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_drain_period_ms() const {
@@ -1922,7 +1942,7 @@ inline bool FtraceConfig::has_drain_period_ms() const {
 }
 inline void FtraceConfig::clear_drain_period_ms() {
   drain_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline uint32_t FtraceConfig::_internal_drain_period_ms() const {
   return drain_period_ms_;
@@ -1932,7 +1952,7 @@ inline uint32_t FtraceConfig::drain_period_ms() const {
   return _internal_drain_period_ms();
 }
 inline void FtraceConfig::_internal_set_drain_period_ms(uint32_t value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   drain_period_ms_ = value;
 }
 inline void FtraceConfig::set_drain_period_ms(uint32_t value) {
@@ -1942,7 +1962,7 @@ inline void FtraceConfig::set_drain_period_ms(uint32_t value) {
 
 // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
 inline bool FtraceConfig::_internal_has_compact_sched() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || compact_sched_ != nullptr);
   return value;
 }
@@ -1951,7 +1971,7 @@ inline bool FtraceConfig::has_compact_sched() const {
 }
 inline void FtraceConfig::clear_compact_sched() {
   if (compact_sched_ != nullptr) compact_sched_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline const ::perfetto::protos::FtraceConfig_CompactSchedConfig& FtraceConfig::_internal_compact_sched() const {
   const ::perfetto::protos::FtraceConfig_CompactSchedConfig* p = compact_sched_;
@@ -1969,14 +1989,14 @@ inline void FtraceConfig::unsafe_arena_set_allocated_compact_sched(
   }
   compact_sched_ = compact_sched;
   if (compact_sched) {
-    _has_bits_[0] |= 0x00000001u;
+    _has_bits_[0] |= 0x00000002u;
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    _has_bits_[0] &= ~0x00000002u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceConfig.compact_sched)
 }
 inline ::perfetto::protos::FtraceConfig_CompactSchedConfig* FtraceConfig::release_compact_sched() {
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::FtraceConfig_CompactSchedConfig* temp = compact_sched_;
   compact_sched_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -1992,13 +2012,13 @@ inline ::perfetto::protos::FtraceConfig_CompactSchedConfig* FtraceConfig::releas
 }
 inline ::perfetto::protos::FtraceConfig_CompactSchedConfig* FtraceConfig::unsafe_arena_release_compact_sched() {
   // @@protoc_insertion_point(field_release:perfetto.protos.FtraceConfig.compact_sched)
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::FtraceConfig_CompactSchedConfig* temp = compact_sched_;
   compact_sched_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::FtraceConfig_CompactSchedConfig* FtraceConfig::_internal_mutable_compact_sched() {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   if (compact_sched_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::FtraceConfig_CompactSchedConfig>(GetArenaForAllocation());
     compact_sched_ = p;
@@ -2022,9 +2042,9 @@ inline void FtraceConfig::set_allocated_compact_sched(::perfetto::protos::Ftrace
       compact_sched = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, compact_sched, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000001u;
+    _has_bits_[0] |= 0x00000002u;
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    _has_bits_[0] &= ~0x00000002u;
   }
   compact_sched_ = compact_sched;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceConfig.compact_sched)
@@ -2032,7 +2052,7 @@ inline void FtraceConfig::set_allocated_compact_sched(::perfetto::protos::Ftrace
 
 // optional .perfetto.protos.FtraceConfig.PrintFilter print_filter = 22;
 inline bool FtraceConfig::_internal_has_print_filter() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || print_filter_ != nullptr);
   return value;
 }
@@ -2041,7 +2061,7 @@ inline bool FtraceConfig::has_print_filter() const {
 }
 inline void FtraceConfig::clear_print_filter() {
   if (print_filter_ != nullptr) print_filter_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline const ::perfetto::protos::FtraceConfig_PrintFilter& FtraceConfig::_internal_print_filter() const {
   const ::perfetto::protos::FtraceConfig_PrintFilter* p = print_filter_;
@@ -2059,14 +2079,14 @@ inline void FtraceConfig::unsafe_arena_set_allocated_print_filter(
   }
   print_filter_ = print_filter;
   if (print_filter) {
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000004u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000004u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceConfig.print_filter)
 }
 inline ::perfetto::protos::FtraceConfig_PrintFilter* FtraceConfig::release_print_filter() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::perfetto::protos::FtraceConfig_PrintFilter* temp = print_filter_;
   print_filter_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -2082,13 +2102,13 @@ inline ::perfetto::protos::FtraceConfig_PrintFilter* FtraceConfig::release_print
 }
 inline ::perfetto::protos::FtraceConfig_PrintFilter* FtraceConfig::unsafe_arena_release_print_filter() {
   // @@protoc_insertion_point(field_release:perfetto.protos.FtraceConfig.print_filter)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::perfetto::protos::FtraceConfig_PrintFilter* temp = print_filter_;
   print_filter_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::FtraceConfig_PrintFilter* FtraceConfig::_internal_mutable_print_filter() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   if (print_filter_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::FtraceConfig_PrintFilter>(GetArenaForAllocation());
     print_filter_ = p;
@@ -2112,9 +2132,9 @@ inline void FtraceConfig::set_allocated_print_filter(::perfetto::protos::FtraceC
       print_filter = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, print_filter, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000004u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000004u;
   }
   print_filter_ = print_filter;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceConfig.print_filter)
@@ -2122,7 +2142,7 @@ inline void FtraceConfig::set_allocated_print_filter(::perfetto::protos::FtraceC
 
 // optional bool symbolize_ksyms = 13;
 inline bool FtraceConfig::_internal_has_symbolize_ksyms() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_symbolize_ksyms() const {
@@ -2130,7 +2150,7 @@ inline bool FtraceConfig::has_symbolize_ksyms() const {
 }
 inline void FtraceConfig::clear_symbolize_ksyms() {
   symbolize_ksyms_ = false;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline bool FtraceConfig::_internal_symbolize_ksyms() const {
   return symbolize_ksyms_;
@@ -2140,7 +2160,7 @@ inline bool FtraceConfig::symbolize_ksyms() const {
   return _internal_symbolize_ksyms();
 }
 inline void FtraceConfig::_internal_set_symbolize_ksyms(bool value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   symbolize_ksyms_ = value;
 }
 inline void FtraceConfig::set_symbolize_ksyms(bool value) {
@@ -2150,7 +2170,7 @@ inline void FtraceConfig::set_symbolize_ksyms(bool value) {
 
 // optional .perfetto.protos.FtraceConfig.KsymsMemPolicy ksyms_mem_policy = 17;
 inline bool FtraceConfig::_internal_has_ksyms_mem_policy() const {
-  bool value = (_has_bits_[0] & 0x00000100u) != 0;
+  bool value = (_has_bits_[0] & 0x00000200u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_ksyms_mem_policy() const {
@@ -2158,7 +2178,7 @@ inline bool FtraceConfig::has_ksyms_mem_policy() const {
 }
 inline void FtraceConfig::clear_ksyms_mem_policy() {
   ksyms_mem_policy_ = 0;
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::perfetto::protos::FtraceConfig_KsymsMemPolicy FtraceConfig::_internal_ksyms_mem_policy() const {
   return static_cast< ::perfetto::protos::FtraceConfig_KsymsMemPolicy >(ksyms_mem_policy_);
@@ -2169,7 +2189,7 @@ inline ::perfetto::protos::FtraceConfig_KsymsMemPolicy FtraceConfig::ksyms_mem_p
 }
 inline void FtraceConfig::_internal_set_ksyms_mem_policy(::perfetto::protos::FtraceConfig_KsymsMemPolicy value) {
   assert(::perfetto::protos::FtraceConfig_KsymsMemPolicy_IsValid(value));
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
   ksyms_mem_policy_ = value;
 }
 inline void FtraceConfig::set_ksyms_mem_policy(::perfetto::protos::FtraceConfig_KsymsMemPolicy value) {
@@ -2179,7 +2199,7 @@ inline void FtraceConfig::set_ksyms_mem_policy(::perfetto::protos::FtraceConfig_
 
 // optional bool initialize_ksyms_synchronously_for_testing = 14 [deprecated = true];
 inline bool FtraceConfig::_internal_has_initialize_ksyms_synchronously_for_testing() const {
-  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_initialize_ksyms_synchronously_for_testing() const {
@@ -2187,7 +2207,7 @@ inline bool FtraceConfig::has_initialize_ksyms_synchronously_for_testing() const
 }
 inline void FtraceConfig::clear_initialize_ksyms_synchronously_for_testing() {
   initialize_ksyms_synchronously_for_testing_ = false;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline bool FtraceConfig::_internal_initialize_ksyms_synchronously_for_testing() const {
   return initialize_ksyms_synchronously_for_testing_;
@@ -2197,7 +2217,7 @@ inline bool FtraceConfig::initialize_ksyms_synchronously_for_testing() const {
   return _internal_initialize_ksyms_synchronously_for_testing();
 }
 inline void FtraceConfig::_internal_set_initialize_ksyms_synchronously_for_testing(bool value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
   initialize_ksyms_synchronously_for_testing_ = value;
 }
 inline void FtraceConfig::set_initialize_ksyms_synchronously_for_testing(bool value) {
@@ -2207,7 +2227,7 @@ inline void FtraceConfig::set_initialize_ksyms_synchronously_for_testing(bool va
 
 // optional bool throttle_rss_stat = 15;
 inline bool FtraceConfig::_internal_has_throttle_rss_stat() const {
-  bool value = (_has_bits_[0] & 0x00000040u) != 0;
+  bool value = (_has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_throttle_rss_stat() const {
@@ -2215,7 +2235,7 @@ inline bool FtraceConfig::has_throttle_rss_stat() const {
 }
 inline void FtraceConfig::clear_throttle_rss_stat() {
   throttle_rss_stat_ = false;
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline bool FtraceConfig::_internal_throttle_rss_stat() const {
   return throttle_rss_stat_;
@@ -2225,7 +2245,7 @@ inline bool FtraceConfig::throttle_rss_stat() const {
   return _internal_throttle_rss_stat();
 }
 inline void FtraceConfig::_internal_set_throttle_rss_stat(bool value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
   throttle_rss_stat_ = value;
 }
 inline void FtraceConfig::set_throttle_rss_stat(bool value) {
@@ -2235,7 +2255,7 @@ inline void FtraceConfig::set_throttle_rss_stat(bool value) {
 
 // optional bool disable_generic_events = 16;
 inline bool FtraceConfig::_internal_has_disable_generic_events() const {
-  bool value = (_has_bits_[0] & 0x00000080u) != 0;
+  bool value = (_has_bits_[0] & 0x00000100u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_disable_generic_events() const {
@@ -2243,7 +2263,7 @@ inline bool FtraceConfig::has_disable_generic_events() const {
 }
 inline void FtraceConfig::clear_disable_generic_events() {
   disable_generic_events_ = false;
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline bool FtraceConfig::_internal_disable_generic_events() const {
   return disable_generic_events_;
@@ -2253,7 +2273,7 @@ inline bool FtraceConfig::disable_generic_events() const {
   return _internal_disable_generic_events();
 }
 inline void FtraceConfig::_internal_set_disable_generic_events(bool value) {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
   disable_generic_events_ = value;
 }
 inline void FtraceConfig::set_disable_generic_events(bool value) {
@@ -2338,7 +2358,7 @@ FtraceConfig::mutable_syscall_events() {
 
 // optional bool enable_function_graph = 19;
 inline bool FtraceConfig::_internal_has_enable_function_graph() const {
-  bool value = (_has_bits_[0] & 0x00000200u) != 0;
+  bool value = (_has_bits_[0] & 0x00000400u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_enable_function_graph() const {
@@ -2346,7 +2366,7 @@ inline bool FtraceConfig::has_enable_function_graph() const {
 }
 inline void FtraceConfig::clear_enable_function_graph() {
   enable_function_graph_ = false;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline bool FtraceConfig::_internal_enable_function_graph() const {
   return enable_function_graph_;
@@ -2356,7 +2376,7 @@ inline bool FtraceConfig::enable_function_graph() const {
   return _internal_enable_function_graph();
 }
 inline void FtraceConfig::_internal_set_enable_function_graph(bool value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
   enable_function_graph_ = value;
 }
 inline void FtraceConfig::set_enable_function_graph(bool value) {
@@ -2516,7 +2536,7 @@ FtraceConfig::mutable_function_graph_roots() {
 
 // optional bool preserve_ftrace_buffer = 23;
 inline bool FtraceConfig::_internal_has_preserve_ftrace_buffer() const {
-  bool value = (_has_bits_[0] & 0x00000400u) != 0;
+  bool value = (_has_bits_[0] & 0x00000800u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_preserve_ftrace_buffer() const {
@@ -2524,7 +2544,7 @@ inline bool FtraceConfig::has_preserve_ftrace_buffer() const {
 }
 inline void FtraceConfig::clear_preserve_ftrace_buffer() {
   preserve_ftrace_buffer_ = false;
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline bool FtraceConfig::_internal_preserve_ftrace_buffer() const {
   return preserve_ftrace_buffer_;
@@ -2534,7 +2554,7 @@ inline bool FtraceConfig::preserve_ftrace_buffer() const {
   return _internal_preserve_ftrace_buffer();
 }
 inline void FtraceConfig::_internal_set_preserve_ftrace_buffer(bool value) {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
   preserve_ftrace_buffer_ = value;
 }
 inline void FtraceConfig::set_preserve_ftrace_buffer(bool value) {
@@ -2544,7 +2564,7 @@ inline void FtraceConfig::set_preserve_ftrace_buffer(bool value) {
 
 // optional bool use_monotonic_raw_clock = 24;
 inline bool FtraceConfig::_internal_has_use_monotonic_raw_clock() const {
-  bool value = (_has_bits_[0] & 0x00000800u) != 0;
+  bool value = (_has_bits_[0] & 0x00001000u) != 0;
   return value;
 }
 inline bool FtraceConfig::has_use_monotonic_raw_clock() const {
@@ -2552,7 +2572,7 @@ inline bool FtraceConfig::has_use_monotonic_raw_clock() const {
 }
 inline void FtraceConfig::clear_use_monotonic_raw_clock() {
   use_monotonic_raw_clock_ = false;
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline bool FtraceConfig::_internal_use_monotonic_raw_clock() const {
   return use_monotonic_raw_clock_;
@@ -2562,12 +2582,80 @@ inline bool FtraceConfig::use_monotonic_raw_clock() const {
   return _internal_use_monotonic_raw_clock();
 }
 inline void FtraceConfig::_internal_set_use_monotonic_raw_clock(bool value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
   use_monotonic_raw_clock_ = value;
 }
 inline void FtraceConfig::set_use_monotonic_raw_clock(bool value) {
   _internal_set_use_monotonic_raw_clock(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.use_monotonic_raw_clock)
+}
+
+// optional string instance_name = 25;
+inline bool FtraceConfig::_internal_has_instance_name() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool FtraceConfig::has_instance_name() const {
+  return _internal_has_instance_name();
+}
+inline void FtraceConfig::clear_instance_name() {
+  instance_name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& FtraceConfig::instance_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceConfig.instance_name)
+  return _internal_instance_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void FtraceConfig::set_instance_name(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000001u;
+ instance_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.instance_name)
+}
+inline std::string* FtraceConfig::mutable_instance_name() {
+  std::string* _s = _internal_mutable_instance_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceConfig.instance_name)
+  return _s;
+}
+inline const std::string& FtraceConfig::_internal_instance_name() const {
+  return instance_name_.Get();
+}
+inline void FtraceConfig::_internal_set_instance_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  instance_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* FtraceConfig::_internal_mutable_instance_name() {
+  _has_bits_[0] |= 0x00000001u;
+  return instance_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* FtraceConfig::release_instance_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceConfig.instance_name)
+  if (!_internal_has_instance_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  auto* p = instance_name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (instance_name_.IsDefault()) {
+    instance_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void FtraceConfig::set_allocated_instance_name(std::string* instance_name) {
+  if (instance_name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  instance_name_.SetAllocated(instance_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (instance_name_.IsDefault()) {
+    instance_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceConfig.instance_name)
 }
 
 #ifdef __GNUC__

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -75,13 +76,13 @@ bool VirtioVideoResourceQueueDoneFtraceEvent::ParseFromArray(const void* raw, si
 }
 
 std::string VirtioVideoResourceQueueDoneFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioVideoResourceQueueDoneFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,45 +90,45 @@ std::vector<uint8_t> VirtioVideoResourceQueueDoneFtraceEvent::SerializeAsArray()
 void VirtioVideoResourceQueueDoneFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: data_size0
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, data_size0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, data_size0_, msg);
   }
 
   // Field 2: data_size1
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, data_size1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, data_size1_, msg);
   }
 
   // Field 3: data_size2
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, data_size2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, data_size2_, msg);
   }
 
   // Field 4: data_size3
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, data_size3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, data_size3_, msg);
   }
 
   // Field 5: queue_type
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, queue_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, queue_type_, msg);
   }
 
   // Field 6: resource_id
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, resource_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, resource_id_, msg);
   }
 
   // Field 7: stream_id
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, stream_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, stream_id_, msg);
   }
 
   // Field 8: timestamp
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -193,13 +194,13 @@ bool VirtioVideoResourceQueueFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string VirtioVideoResourceQueueFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioVideoResourceQueueFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -207,45 +208,45 @@ std::vector<uint8_t> VirtioVideoResourceQueueFtraceEvent::SerializeAsArray() con
 void VirtioVideoResourceQueueFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: data_size0
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, data_size0_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, data_size0_, msg);
   }
 
   // Field 2: data_size1
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, data_size1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, data_size1_, msg);
   }
 
   // Field 3: data_size2
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, data_size2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, data_size2_, msg);
   }
 
   // Field 4: data_size3
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, data_size3_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, data_size3_, msg);
   }
 
   // Field 5: queue_type
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, queue_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, queue_type_, msg);
   }
 
   // Field 6: resource_id
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, resource_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, resource_id_, msg);
   }
 
   // Field 7: stream_id
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, stream_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, stream_id_, msg);
   }
 
   // Field 8: timestamp
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -287,13 +288,13 @@ bool VirtioVideoCmdDoneFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string VirtioVideoCmdDoneFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioVideoCmdDoneFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -301,15 +302,15 @@ std::vector<uint8_t> VirtioVideoCmdDoneFtraceEvent::SerializeAsArray() const {
 void VirtioVideoCmdDoneFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: stream_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, stream_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, stream_id_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -351,13 +352,13 @@ bool VirtioVideoCmdFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string VirtioVideoCmdFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioVideoCmdFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -365,15 +366,15 @@ std::vector<uint8_t> VirtioVideoCmdFtraceEvent::SerializeAsArray() const {
 void VirtioVideoCmdFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: stream_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, stream_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, stream_id_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

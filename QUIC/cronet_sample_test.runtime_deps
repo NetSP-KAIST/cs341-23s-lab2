@@ -14,6 +14,6 @@
 ./libthird_party_icu_icui18n.so
 ./libicuuc.so
 icudtl.dat
-../../testing/location_tags.json
 bin/run_cronet_sample_test
 ../../.vpython3
+../../testing/location_tags.json

@@ -23,6 +23,6 @@ vk_swiftshader_icd.json
 icudtl.dat
 ./libthird_party_protobuf_protobuf_lite.so
 ./libmirclient.so.9
-../../testing/location_tags.json
 bin/run_test_utils_unittest_helper
 ../../.vpython3
+../../testing/location_tags.json

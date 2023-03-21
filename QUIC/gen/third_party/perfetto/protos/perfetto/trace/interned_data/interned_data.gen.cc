@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -32,6 +33,7 @@
 #include "protos/perfetto/trace/track_event/debug_annotation.gen.h"
 #include "protos/perfetto/trace/track_event/chrome_histogram_sample.gen.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.gen.h"
+#include "protos/perfetto/trace/android/network_trace.gen.h"
 
 namespace perfetto {
 namespace protos {
@@ -65,7 +67,9 @@ bool InternedData::operator==(const InternedData& other) const {
    && vulkan_memory_keys_ == other.vulkan_memory_keys_
    && graphics_contexts_ == other.graphics_contexts_
    && gpu_specifications_ == other.gpu_specifications_
-   && kernel_symbols_ == other.kernel_symbols_;
+   && kernel_symbols_ == other.kernel_symbols_
+   && debug_annotation_string_values_ == other.debug_annotation_string_values_
+   && packet_context_ == other.packet_context_;
 }
 
 int InternedData::event_categories_size() const { return static_cast<int>(event_categories_.size()); }
@@ -128,6 +132,12 @@ InternedGpuRenderStageSpecification* InternedData::add_gpu_specifications() { gp
 int InternedData::kernel_symbols_size() const { return static_cast<int>(kernel_symbols_.size()); }
 void InternedData::clear_kernel_symbols() { kernel_symbols_.clear(); }
 InternedString* InternedData::add_kernel_symbols() { kernel_symbols_.emplace_back(); return &kernel_symbols_.back(); }
+int InternedData::debug_annotation_string_values_size() const { return static_cast<int>(debug_annotation_string_values_.size()); }
+void InternedData::clear_debug_annotation_string_values() { debug_annotation_string_values_.clear(); }
+InternedString* InternedData::add_debug_annotation_string_values() { debug_annotation_string_values_.emplace_back(); return &debug_annotation_string_values_.back(); }
+int InternedData::packet_context_size() const { return static_cast<int>(packet_context_.size()); }
+void InternedData::clear_packet_context() { packet_context_.clear(); }
+NetworkPacketContext* InternedData::add_packet_context() { packet_context_.emplace_back(); return &packet_context_.back(); }
 bool InternedData::ParseFromArray(const void* raw, size_t size) {
   event_categories_.clear();
   event_names_.clear();
@@ -149,6 +159,8 @@ bool InternedData::ParseFromArray(const void* raw, size_t size) {
   graphics_contexts_.clear();
   gpu_specifications_.clear();
   kernel_symbols_.clear();
+  debug_annotation_string_values_.clear();
+  packet_context_.clear();
   unknown_fields_.clear();
   bool packed_error = false;
 
@@ -238,6 +250,14 @@ bool InternedData::ParseFromArray(const void* raw, size_t size) {
         kernel_symbols_.emplace_back();
         kernel_symbols_.back().ParseFromArray(field.data(), field.size());
         break;
+      case 29 /* debug_annotation_string_values */:
+        debug_annotation_string_values_.emplace_back();
+        debug_annotation_string_values_.back().ParseFromArray(field.data(), field.size());
+        break;
+      case 30 /* packet_context */:
+        packet_context_.emplace_back();
+        packet_context_.back().ParseFromArray(field.data(), field.size());
+        break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
         break;
@@ -247,13 +267,13 @@ bool InternedData::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InternedData::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InternedData::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -359,7 +379,17 @@ void InternedData::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(26));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 29: debug_annotation_string_values
+  for (auto& it : debug_annotation_string_values_) {
+    it.Serialize(msg->BeginNestedMessage<::protozero::Message>(29));
+  }
+
+  // Field 30: packet_context
+  for (auto& it : packet_context_) {
+    it.Serialize(msg->BeginNestedMessage<::protozero::Message>(30));
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

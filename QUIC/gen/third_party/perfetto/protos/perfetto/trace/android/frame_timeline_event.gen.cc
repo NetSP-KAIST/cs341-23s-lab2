@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -63,13 +64,13 @@ bool FrameTimelineEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FrameTimelineEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -100,7 +101,7 @@ void FrameTimelineEvent::Serialize(::protozero::Message* msg) const {
     (*frame_end_).Serialize(msg->BeginNestedMessage<::protozero::Message>(5));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -138,13 +139,13 @@ bool FrameTimelineEvent_FrameEnd::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FrameTimelineEvent_FrameEnd::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent_FrameEnd::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -152,10 +153,10 @@ std::vector<uint8_t> FrameTimelineEvent_FrameEnd::SerializeAsArray() const {
 void FrameTimelineEvent_FrameEnd::Serialize(::protozero::Message* msg) const {
   // Field 1: cookie
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cookie_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cookie_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -204,7 +205,7 @@ bool FrameTimelineEvent_ActualSurfaceFrameStart::ParseFromArray(const void* raw,
         field.get(&pid_);
         break;
       case 5 /* layer_name */:
-        field.get(&layer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &layer_name_);
         break;
       case 6 /* present_type */:
         field.get(&present_type_);
@@ -233,13 +234,13 @@ bool FrameTimelineEvent_ActualSurfaceFrameStart::ParseFromArray(const void* raw,
 }
 
 std::string FrameTimelineEvent_ActualSurfaceFrameStart::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent_ActualSurfaceFrameStart::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -247,60 +248,60 @@ std::vector<uint8_t> FrameTimelineEvent_ActualSurfaceFrameStart::SerializeAsArra
 void FrameTimelineEvent_ActualSurfaceFrameStart::Serialize(::protozero::Message* msg) const {
   // Field 1: cookie
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cookie_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cookie_, msg);
   }
 
   // Field 2: token
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, token_, msg);
   }
 
   // Field 3: display_frame_token
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, display_frame_token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, display_frame_token_, msg);
   }
 
   // Field 4: pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pid_, msg);
   }
 
   // Field 5: layer_name
   if (_has_field_[5]) {
-    msg->AppendString(5, layer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, layer_name_, msg);
   }
 
   // Field 6: present_type
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, present_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, present_type_, msg);
   }
 
   // Field 7: on_time_finish
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, on_time_finish_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, on_time_finish_, msg);
   }
 
   // Field 8: gpu_composition
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, gpu_composition_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, gpu_composition_, msg);
   }
 
   // Field 9: jank_type
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, jank_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, jank_type_, msg);
   }
 
   // Field 10: prediction_type
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, prediction_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, prediction_type_, msg);
   }
 
   // Field 11: is_buffer
   if (_has_field_[11]) {
-    msg->AppendTinyVarInt(11, is_buffer_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(11, is_buffer_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -343,7 +344,7 @@ bool FrameTimelineEvent_ExpectedSurfaceFrameStart::ParseFromArray(const void* ra
         field.get(&pid_);
         break;
       case 5 /* layer_name */:
-        field.get(&layer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &layer_name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -354,13 +355,13 @@ bool FrameTimelineEvent_ExpectedSurfaceFrameStart::ParseFromArray(const void* ra
 }
 
 std::string FrameTimelineEvent_ExpectedSurfaceFrameStart::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent_ExpectedSurfaceFrameStart::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -368,30 +369,30 @@ std::vector<uint8_t> FrameTimelineEvent_ExpectedSurfaceFrameStart::SerializeAsAr
 void FrameTimelineEvent_ExpectedSurfaceFrameStart::Serialize(::protozero::Message* msg) const {
   // Field 1: cookie
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cookie_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cookie_, msg);
   }
 
   // Field 2: token
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, token_, msg);
   }
 
   // Field 3: display_frame_token
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, display_frame_token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, display_frame_token_, msg);
   }
 
   // Field 4: pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pid_, msg);
   }
 
   // Field 5: layer_name
   if (_has_field_[5]) {
-    msg->AppendString(5, layer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, layer_name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -457,13 +458,13 @@ bool FrameTimelineEvent_ActualDisplayFrameStart::ParseFromArray(const void* raw,
 }
 
 std::string FrameTimelineEvent_ActualDisplayFrameStart::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent_ActualDisplayFrameStart::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -471,45 +472,45 @@ std::vector<uint8_t> FrameTimelineEvent_ActualDisplayFrameStart::SerializeAsArra
 void FrameTimelineEvent_ActualDisplayFrameStart::Serialize(::protozero::Message* msg) const {
   // Field 1: cookie
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cookie_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cookie_, msg);
   }
 
   // Field 2: token
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, token_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
   // Field 4: present_type
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, present_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, present_type_, msg);
   }
 
   // Field 5: on_time_finish
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, on_time_finish_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, on_time_finish_, msg);
   }
 
   // Field 6: gpu_composition
   if (_has_field_[6]) {
-    msg->AppendTinyVarInt(6, gpu_composition_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, gpu_composition_, msg);
   }
 
   // Field 7: jank_type
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, jank_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, jank_type_, msg);
   }
 
   // Field 8: prediction_type
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, prediction_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, prediction_type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -555,13 +556,13 @@ bool FrameTimelineEvent_ExpectedDisplayFrameStart::ParseFromArray(const void* ra
 }
 
 std::string FrameTimelineEvent_ExpectedDisplayFrameStart::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FrameTimelineEvent_ExpectedDisplayFrameStart::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -569,20 +570,20 @@ std::vector<uint8_t> FrameTimelineEvent_ExpectedDisplayFrameStart::SerializeAsAr
 void FrameTimelineEvent_ExpectedDisplayFrameStart::Serialize(::protozero::Message* msg) const {
   // Field 1: cookie
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cookie_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cookie_, msg);
   }
 
   // Field 2: token
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, token_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, token_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

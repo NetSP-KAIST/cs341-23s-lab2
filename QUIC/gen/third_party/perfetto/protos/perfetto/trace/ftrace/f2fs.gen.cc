@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -155,13 +156,13 @@ bool F2fsIostatLatencyFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string F2fsIostatLatencyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsIostatLatencyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -169,145 +170,145 @@ std::vector<uint8_t> F2fsIostatLatencyFtraceEvent::SerializeAsArray() const {
 void F2fsIostatLatencyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: d_rd_avg
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, d_rd_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, d_rd_avg_, msg);
   }
 
   // Field 2: d_rd_cnt
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, d_rd_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, d_rd_cnt_, msg);
   }
 
   // Field 3: d_rd_peak
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, d_rd_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, d_rd_peak_, msg);
   }
 
   // Field 4: d_wr_as_avg
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, d_wr_as_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, d_wr_as_avg_, msg);
   }
 
   // Field 5: d_wr_as_cnt
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, d_wr_as_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, d_wr_as_cnt_, msg);
   }
 
   // Field 6: d_wr_as_peak
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, d_wr_as_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, d_wr_as_peak_, msg);
   }
 
   // Field 7: d_wr_s_avg
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, d_wr_s_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, d_wr_s_avg_, msg);
   }
 
   // Field 8: d_wr_s_cnt
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, d_wr_s_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, d_wr_s_cnt_, msg);
   }
 
   // Field 9: d_wr_s_peak
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, d_wr_s_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, d_wr_s_peak_, msg);
   }
 
   // Field 10: dev
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, dev_, msg);
   }
 
   // Field 11: m_rd_avg
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, m_rd_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, m_rd_avg_, msg);
   }
 
   // Field 12: m_rd_cnt
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, m_rd_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, m_rd_cnt_, msg);
   }
 
   // Field 13: m_rd_peak
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, m_rd_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, m_rd_peak_, msg);
   }
 
   // Field 14: m_wr_as_avg
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, m_wr_as_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, m_wr_as_avg_, msg);
   }
 
   // Field 15: m_wr_as_cnt
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, m_wr_as_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, m_wr_as_cnt_, msg);
   }
 
   // Field 16: m_wr_as_peak
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, m_wr_as_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, m_wr_as_peak_, msg);
   }
 
   // Field 17: m_wr_s_avg
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, m_wr_s_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, m_wr_s_avg_, msg);
   }
 
   // Field 18: m_wr_s_cnt
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, m_wr_s_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, m_wr_s_cnt_, msg);
   }
 
   // Field 19: m_wr_s_peak
   if (_has_field_[19]) {
-    msg->AppendVarInt(19, m_wr_s_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(19, m_wr_s_peak_, msg);
   }
 
   // Field 20: n_rd_avg
   if (_has_field_[20]) {
-    msg->AppendVarInt(20, n_rd_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(20, n_rd_avg_, msg);
   }
 
   // Field 21: n_rd_cnt
   if (_has_field_[21]) {
-    msg->AppendVarInt(21, n_rd_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(21, n_rd_cnt_, msg);
   }
 
   // Field 22: n_rd_peak
   if (_has_field_[22]) {
-    msg->AppendVarInt(22, n_rd_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(22, n_rd_peak_, msg);
   }
 
   // Field 23: n_wr_as_avg
   if (_has_field_[23]) {
-    msg->AppendVarInt(23, n_wr_as_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(23, n_wr_as_avg_, msg);
   }
 
   // Field 24: n_wr_as_cnt
   if (_has_field_[24]) {
-    msg->AppendVarInt(24, n_wr_as_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(24, n_wr_as_cnt_, msg);
   }
 
   // Field 25: n_wr_as_peak
   if (_has_field_[25]) {
-    msg->AppendVarInt(25, n_wr_as_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(25, n_wr_as_peak_, msg);
   }
 
   // Field 26: n_wr_s_avg
   if (_has_field_[26]) {
-    msg->AppendVarInt(26, n_wr_s_avg_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(26, n_wr_s_avg_, msg);
   }
 
   // Field 27: n_wr_s_cnt
   if (_has_field_[27]) {
-    msg->AppendVarInt(27, n_wr_s_cnt_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(27, n_wr_s_cnt_, msg);
   }
 
   // Field 28: n_wr_s_peak
   if (_has_field_[28]) {
-    msg->AppendVarInt(28, n_wr_s_peak_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(28, n_wr_s_peak_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -433,13 +434,13 @@ bool F2fsIostatFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsIostatFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsIostatFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -447,120 +448,120 @@ std::vector<uint8_t> F2fsIostatFtraceEvent::SerializeAsArray() const {
 void F2fsIostatFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: app_bio
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, app_bio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, app_bio_, msg);
   }
 
   // Field 2: app_brio
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, app_brio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, app_brio_, msg);
   }
 
   // Field 3: app_dio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, app_dio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, app_dio_, msg);
   }
 
   // Field 4: app_drio
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, app_drio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, app_drio_, msg);
   }
 
   // Field 5: app_mio
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, app_mio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, app_mio_, msg);
   }
 
   // Field 6: app_mrio
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, app_mrio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, app_mrio_, msg);
   }
 
   // Field 7: app_rio
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, app_rio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, app_rio_, msg);
   }
 
   // Field 8: app_wio
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, app_wio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, app_wio_, msg);
   }
 
   // Field 9: dev
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, dev_, msg);
   }
 
   // Field 10: fs_cdrio
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, fs_cdrio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, fs_cdrio_, msg);
   }
 
   // Field 11: fs_cp_dio
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, fs_cp_dio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, fs_cp_dio_, msg);
   }
 
   // Field 12: fs_cp_mio
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, fs_cp_mio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, fs_cp_mio_, msg);
   }
 
   // Field 13: fs_cp_nio
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, fs_cp_nio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, fs_cp_nio_, msg);
   }
 
   // Field 14: fs_dio
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, fs_dio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, fs_dio_, msg);
   }
 
   // Field 15: fs_discard
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, fs_discard_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, fs_discard_, msg);
   }
 
   // Field 16: fs_drio
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, fs_drio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, fs_drio_, msg);
   }
 
   // Field 17: fs_gc_dio
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, fs_gc_dio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, fs_gc_dio_, msg);
   }
 
   // Field 18: fs_gc_nio
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, fs_gc_nio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, fs_gc_nio_, msg);
   }
 
   // Field 19: fs_gdrio
   if (_has_field_[19]) {
-    msg->AppendVarInt(19, fs_gdrio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(19, fs_gdrio_, msg);
   }
 
   // Field 20: fs_mio
   if (_has_field_[20]) {
-    msg->AppendVarInt(20, fs_mio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(20, fs_mio_, msg);
   }
 
   // Field 21: fs_mrio
   if (_has_field_[21]) {
-    msg->AppendVarInt(21, fs_mrio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(21, fs_mrio_, msg);
   }
 
   // Field 22: fs_nio
   if (_has_field_[22]) {
-    msg->AppendVarInt(22, fs_nio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(22, fs_nio_, msg);
   }
 
   // Field 23: fs_nrio
   if (_has_field_[23]) {
-    msg->AppendVarInt(23, fs_nrio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(23, fs_nrio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -614,13 +615,13 @@ bool F2fsWriteEndFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsWriteEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsWriteEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -628,30 +629,30 @@ std::vector<uint8_t> F2fsWriteEndFtraceEvent::SerializeAsArray() const {
 void F2fsWriteEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pos
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pos_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pos_, msg);
   }
 
   // Field 4: len
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, len_, msg);
   }
 
   // Field 5: copied
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, copied_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, copied_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -687,7 +688,7 @@ bool F2fsWriteCheckpointFtraceEvent::ParseFromArray(const void* raw, size_t size
         field.get(&is_umount_);
         break;
       case 3 /* msg */:
-        field.get(&msg_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &msg_);
         break;
       case 4 /* reason */:
         field.get(&reason_);
@@ -701,13 +702,13 @@ bool F2fsWriteCheckpointFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string F2fsWriteCheckpointFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsWriteCheckpointFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -715,25 +716,25 @@ std::vector<uint8_t> F2fsWriteCheckpointFtraceEvent::SerializeAsArray() const {
 void F2fsWriteCheckpointFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: is_umount
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, is_umount_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, is_umount_, msg);
   }
 
   // Field 3: msg
   if (_has_field_[3]) {
-    msg->AppendString(3, msg_);
+    ::protozero::internal::gen_helpers::SerializeString(3, msg_, msg);
   }
 
   // Field 4: reason
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, reason_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -787,13 +788,13 @@ bool F2fsWriteBeginFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsWriteBeginFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsWriteBeginFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -801,30 +802,30 @@ std::vector<uint8_t> F2fsWriteBeginFtraceEvent::SerializeAsArray() const {
 void F2fsWriteBeginFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pos
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pos_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pos_, msg);
   }
 
   // Field 4: len
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, len_, msg);
   }
 
   // Field 5: flags
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, flags_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -886,13 +887,13 @@ bool F2fsVmPageMkwriteFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string F2fsVmPageMkwriteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsVmPageMkwriteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -900,40 +901,40 @@ std::vector<uint8_t> F2fsVmPageMkwriteFtraceEvent::SerializeAsArray() const {
 void F2fsVmPageMkwriteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: dir
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, dir_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, dir_, msg);
   }
 
   // Field 5: index
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, index_, msg);
   }
 
   // Field 6: dirty
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dirty_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dirty_, msg);
   }
 
   // Field 7: uptodate
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, uptodate_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, uptodate_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -979,13 +980,13 @@ bool F2fsUnlinkExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsUnlinkExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsUnlinkExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -993,20 +994,20 @@ std::vector<uint8_t> F2fsUnlinkExitFtraceEvent::SerializeAsArray() const {
 void F2fsUnlinkExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1049,7 +1050,7 @@ bool F2fsUnlinkEnterFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&blocks_);
         break;
       case 5 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -1060,13 +1061,13 @@ bool F2fsUnlinkEnterFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsUnlinkEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsUnlinkEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1074,30 +1075,30 @@ std::vector<uint8_t> F2fsUnlinkEnterFtraceEvent::SerializeAsArray() const {
 void F2fsUnlinkEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, size_, msg);
   }
 
   // Field 4: blocks
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blocks_, msg);
   }
 
   // Field 5: name
   if (_has_field_[5]) {
-    msg->AppendString(5, name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1151,13 +1152,13 @@ bool F2fsTruncatePartialNodesFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string F2fsTruncatePartialNodesFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncatePartialNodesFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1165,30 +1166,30 @@ std::vector<uint8_t> F2fsTruncatePartialNodesFtraceEvent::SerializeAsArray() con
 void F2fsTruncatePartialNodesFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: nid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nid_, msg);
   }
 
   // Field 4: depth
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, depth_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, depth_, msg);
   }
 
   // Field 5: err
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, err_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, err_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1234,13 +1235,13 @@ bool F2fsTruncateNodesExitFtraceEvent::ParseFromArray(const void* raw, size_t si
 }
 
 std::string F2fsTruncateNodesExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateNodesExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1248,20 +1249,20 @@ std::vector<uint8_t> F2fsTruncateNodesExitFtraceEvent::SerializeAsArray() const 
 void F2fsTruncateNodesExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1311,13 +1312,13 @@ bool F2fsTruncateNodesEnterFtraceEvent::ParseFromArray(const void* raw, size_t s
 }
 
 std::string F2fsTruncateNodesEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateNodesEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1325,25 +1326,25 @@ std::vector<uint8_t> F2fsTruncateNodesEnterFtraceEvent::SerializeAsArray() const
 void F2fsTruncateNodesEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: nid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nid_, msg);
   }
 
   // Field 4: blk_addr
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blk_addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blk_addr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1393,13 +1394,13 @@ bool F2fsTruncateNodeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsTruncateNodeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateNodeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1407,25 +1408,25 @@ std::vector<uint8_t> F2fsTruncateNodeFtraceEvent::SerializeAsArray() const {
 void F2fsTruncateNodeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: nid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nid_, msg);
   }
 
   // Field 4: blk_addr
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blk_addr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blk_addr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1471,13 +1472,13 @@ bool F2fsTruncateInodeBlocksExitFtraceEvent::ParseFromArray(const void* raw, siz
 }
 
 std::string F2fsTruncateInodeBlocksExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateInodeBlocksExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1485,20 +1486,20 @@ std::vector<uint8_t> F2fsTruncateInodeBlocksExitFtraceEvent::SerializeAsArray() 
 void F2fsTruncateInodeBlocksExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1552,13 +1553,13 @@ bool F2fsTruncateInodeBlocksEnterFtraceEvent::ParseFromArray(const void* raw, si
 }
 
 std::string F2fsTruncateInodeBlocksEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateInodeBlocksEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1566,30 +1567,30 @@ std::vector<uint8_t> F2fsTruncateInodeBlocksEnterFtraceEvent::SerializeAsArray()
 void F2fsTruncateInodeBlocksEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, size_, msg);
   }
 
   // Field 4: blocks
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blocks_, msg);
   }
 
   // Field 5: from
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, from_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, from_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1643,13 +1644,13 @@ bool F2fsTruncateDataBlocksRangeFtraceEvent::ParseFromArray(const void* raw, siz
 }
 
 std::string F2fsTruncateDataBlocksRangeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateDataBlocksRangeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1657,30 +1658,30 @@ std::vector<uint8_t> F2fsTruncateDataBlocksRangeFtraceEvent::SerializeAsArray() 
 void F2fsTruncateDataBlocksRangeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: nid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nid_, msg);
   }
 
   // Field 4: ofs
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, ofs_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, ofs_, msg);
   }
 
   // Field 5: free
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, free_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, free_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1726,13 +1727,13 @@ bool F2fsTruncateBlocksExitFtraceEvent::ParseFromArray(const void* raw, size_t s
 }
 
 std::string F2fsTruncateBlocksExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateBlocksExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1740,20 +1741,20 @@ std::vector<uint8_t> F2fsTruncateBlocksExitFtraceEvent::SerializeAsArray() const
 void F2fsTruncateBlocksExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1807,13 +1808,13 @@ bool F2fsTruncateBlocksEnterFtraceEvent::ParseFromArray(const void* raw, size_t 
 }
 
 std::string F2fsTruncateBlocksEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateBlocksEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1821,30 +1822,30 @@ std::vector<uint8_t> F2fsTruncateBlocksEnterFtraceEvent::SerializeAsArray() cons
 void F2fsTruncateBlocksEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, size_, msg);
   }
 
   // Field 4: blocks
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blocks_, msg);
   }
 
   // Field 5: from
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, from_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, from_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1910,13 +1911,13 @@ bool F2fsTruncateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsTruncateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsTruncateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1924,45 +1925,45 @@ std::vector<uint8_t> F2fsTruncateFtraceEvent::SerializeAsArray() const {
 void F2fsTruncateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pino
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pino_, msg);
   }
 
   // Field 4: mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, mode_, msg);
   }
 
   // Field 5: size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, size_, msg);
   }
 
   // Field 6: nlink
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, nlink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, nlink_, msg);
   }
 
   // Field 7: blocks
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, blocks_, msg);
   }
 
   // Field 8: advise
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, advise_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, advise_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2008,13 +2009,13 @@ bool F2fsSyncFsFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsSyncFsFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsSyncFsFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2022,20 +2023,20 @@ std::vector<uint8_t> F2fsSyncFsFtraceEvent::SerializeAsArray() const {
 void F2fsSyncFsFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: dirty
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dirty_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dirty_, msg);
   }
 
   // Field 3: wait
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, wait_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, wait_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2093,13 +2094,13 @@ bool F2fsSyncFileExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsSyncFileExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsSyncFileExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2107,35 +2108,35 @@ std::vector<uint8_t> F2fsSyncFileExitFtraceEvent::SerializeAsArray() const {
 void F2fsSyncFileExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: need_cp
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, need_cp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, need_cp_, msg);
   }
 
   // Field 4: datasync
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, datasync_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, datasync_, msg);
   }
 
   // Field 5: ret
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, ret_, msg);
   }
 
   // Field 6: cp_reason
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, cp_reason_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, cp_reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2201,13 +2202,13 @@ bool F2fsSyncFileEnterFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string F2fsSyncFileEnterFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsSyncFileEnterFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2215,45 +2216,45 @@ std::vector<uint8_t> F2fsSyncFileEnterFtraceEvent::SerializeAsArray() const {
 void F2fsSyncFileEnterFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pino
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pino_, msg);
   }
 
   // Field 4: mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, mode_, msg);
   }
 
   // Field 5: size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, size_, msg);
   }
 
   // Field 6: nlink
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, nlink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, nlink_, msg);
   }
 
   // Field 7: blocks
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, blocks_, msg);
   }
 
   // Field 8: advise
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, advise_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, advise_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2307,13 +2308,13 @@ bool F2fsSubmitWritePageFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string F2fsSubmitWritePageFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsSubmitWritePageFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2321,30 +2322,30 @@ std::vector<uint8_t> F2fsSubmitWritePageFtraceEvent::SerializeAsArray() const {
 void F2fsSubmitWritePageFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: index
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, index_, msg);
   }
 
   // Field 5: block
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, block_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, block_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2406,13 +2407,13 @@ bool F2fsSetPageDirtyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsSetPageDirtyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsSetPageDirtyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2420,40 +2421,40 @@ std::vector<uint8_t> F2fsSetPageDirtyFtraceEvent::SerializeAsArray() const {
 void F2fsSetPageDirtyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: dir
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, dir_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, dir_, msg);
   }
 
   // Field 5: index
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, index_, msg);
   }
 
   // Field 6: dirty
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dirty_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dirty_, msg);
   }
 
   // Field 7: uptodate
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, uptodate_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, uptodate_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2499,13 +2500,13 @@ bool F2fsReserveNewBlockFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string F2fsReserveNewBlockFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsReserveNewBlockFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2513,20 +2514,20 @@ std::vector<uint8_t> F2fsReserveNewBlockFtraceEvent::SerializeAsArray() const {
 void F2fsReserveNewBlockFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: nid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, nid_, msg);
   }
 
   // Field 3: ofs_in_node
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ofs_in_node_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ofs_in_node_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2592,13 +2593,13 @@ bool F2fsReadpageFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsReadpageFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsReadpageFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2606,45 +2607,45 @@ std::vector<uint8_t> F2fsReadpageFtraceEvent::SerializeAsArray() const {
 void F2fsReadpageFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: index
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, index_, msg);
   }
 
   // Field 4: blkaddr
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, blkaddr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, blkaddr_, msg);
   }
 
   // Field 5: type
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, type_, msg);
   }
 
   // Field 6: dir
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dir_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dir_, msg);
   }
 
   // Field 7: dirty
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, dirty_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, dirty_, msg);
   }
 
   // Field 8: uptodate
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, uptodate_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, uptodate_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2690,13 +2691,13 @@ bool F2fsNewInodeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsNewInodeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsNewInodeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2704,20 +2705,20 @@ std::vector<uint8_t> F2fsNewInodeFtraceEvent::SerializeAsArray() const {
 void F2fsNewInodeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2763,13 +2764,13 @@ bool F2fsIgetExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsIgetExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsIgetExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2777,20 +2778,20 @@ std::vector<uint8_t> F2fsIgetExitFtraceEvent::SerializeAsArray() const {
 void F2fsIgetExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: ret
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2856,13 +2857,13 @@ bool F2fsIgetFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsIgetFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsIgetFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -2870,45 +2871,45 @@ std::vector<uint8_t> F2fsIgetFtraceEvent::SerializeAsArray() const {
 void F2fsIgetFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pino
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pino_, msg);
   }
 
   // Field 4: mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, mode_, msg);
   }
 
   // Field 5: size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, size_, msg);
   }
 
   // Field 6: nlink
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, nlink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, nlink_, msg);
   }
 
   // Field 7: blocks
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, blocks_, msg);
   }
 
   // Field 8: advise
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, advise_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, advise_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -2986,13 +2987,13 @@ bool F2fsGetVictimFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsGetVictimFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsGetVictimFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -3000,60 +3001,60 @@ std::vector<uint8_t> F2fsGetVictimFtraceEvent::SerializeAsArray() const {
 void F2fsGetVictimFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: type
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, type_, msg);
   }
 
   // Field 3: gc_type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, gc_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, gc_type_, msg);
   }
 
   // Field 4: alloc_mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, alloc_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, alloc_mode_, msg);
   }
 
   // Field 5: gc_mode
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, gc_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, gc_mode_, msg);
   }
 
   // Field 6: victim
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, victim_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, victim_, msg);
   }
 
   // Field 7: ofs_unit
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, ofs_unit_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, ofs_unit_, msg);
   }
 
   // Field 8: pre_victim
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, pre_victim_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, pre_victim_, msg);
   }
 
   // Field 9: prefree
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, prefree_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, prefree_, msg);
   }
 
   // Field 10: free
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, free_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, free_, msg);
   }
 
   // Field 11: cost
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, cost_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, cost_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -3111,13 +3112,13 @@ bool F2fsGetDataBlockFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsGetDataBlockFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsGetDataBlockFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -3125,35 +3126,35 @@ std::vector<uint8_t> F2fsGetDataBlockFtraceEvent::SerializeAsArray() const {
 void F2fsGetDataBlockFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: iblock
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, iblock_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, iblock_, msg);
   }
 
   // Field 4: bh_start
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, bh_start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, bh_start_, msg);
   }
 
   // Field 5: bh_size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, bh_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, bh_size_, msg);
   }
 
   // Field 6: ret
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -3219,13 +3220,13 @@ bool F2fsFallocateFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsFallocateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsFallocateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -3233,45 +3234,45 @@ std::vector<uint8_t> F2fsFallocateFtraceEvent::SerializeAsArray() const {
 void F2fsFallocateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: mode
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, mode_, msg);
   }
 
   // Field 4: offset
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, offset_, msg);
   }
 
   // Field 5: len
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, len_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, len_, msg);
   }
 
   // Field 6: size
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, size_, msg);
   }
 
   // Field 7: blocks
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, blocks_, msg);
   }
 
   // Field 8: ret
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -3337,13 +3338,13 @@ bool F2fsEvictInodeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsEvictInodeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsEvictInodeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -3351,45 +3352,45 @@ std::vector<uint8_t> F2fsEvictInodeFtraceEvent::SerializeAsArray() const {
 void F2fsEvictInodeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: pino
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pino_, msg);
   }
 
   // Field 4: mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, mode_, msg);
   }
 
   // Field 5: size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, size_, msg);
   }
 
   // Field 6: nlink
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, nlink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, nlink_, msg);
   }
 
   // Field 7: blocks
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, blocks_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, blocks_, msg);
   }
 
   // Field 8: advise
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, advise_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, advise_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -3443,13 +3444,13 @@ bool F2fsDoSubmitBioFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string F2fsDoSubmitBioFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> F2fsDoSubmitBioFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -3457,30 +3458,30 @@ std::vector<uint8_t> F2fsDoSubmitBioFtraceEvent::SerializeAsArray() const {
 void F2fsDoSubmitBioFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dev
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dev_, msg);
   }
 
   // Field 2: btype
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, btype_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, btype_, msg);
   }
 
   // Field 3: sync
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, sync_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, sync_, msg);
   }
 
   // Field 4: sector
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, sector_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, sector_, msg);
   }
 
   // Field 5: size
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, size_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -26,7 +27,9 @@ bool BatteryCounters::operator==(const BatteryCounters& other) const {
    && capacity_percent_ == other.capacity_percent_
    && current_ua_ == other.current_ua_
    && current_avg_ua_ == other.current_avg_ua_
-   && name_ == other.name_;
+   && name_ == other.name_
+   && energy_counter_uwh_ == other.energy_counter_uwh_
+   && voltage_uv_ == other.voltage_uv_;
 }
 
 bool BatteryCounters::ParseFromArray(const void* raw, size_t size) {
@@ -52,7 +55,13 @@ bool BatteryCounters::ParseFromArray(const void* raw, size_t size) {
         field.get(&current_avg_ua_);
         break;
       case 5 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
+        break;
+      case 6 /* energy_counter_uwh */:
+        field.get(&energy_counter_uwh_);
+        break;
+      case 7 /* voltage_uv */:
+        field.get(&voltage_uv_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -63,13 +72,13 @@ bool BatteryCounters::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BatteryCounters::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BatteryCounters::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +86,40 @@ std::vector<uint8_t> BatteryCounters::SerializeAsArray() const {
 void BatteryCounters::Serialize(::protozero::Message* msg) const {
   // Field 1: charge_counter_uah
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, charge_counter_uah_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, charge_counter_uah_, msg);
   }
 
   // Field 2: capacity_percent
   if (_has_field_[2]) {
-    msg->AppendFixed(2, capacity_percent_);
+    ::protozero::internal::gen_helpers::SerializeFixed(2, capacity_percent_, msg);
   }
 
   // Field 3: current_ua
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, current_ua_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, current_ua_, msg);
   }
 
   // Field 4: current_avg_ua
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, current_avg_ua_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, current_avg_ua_, msg);
   }
 
   // Field 5: name
   if (_has_field_[5]) {
-    msg->AppendString(5, name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 6: energy_counter_uwh
+  if (_has_field_[6]) {
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, energy_counter_uwh_, msg);
+  }
+
+  // Field 7: voltage_uv
+  if (_has_field_[7]) {
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, voltage_uv_, msg);
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

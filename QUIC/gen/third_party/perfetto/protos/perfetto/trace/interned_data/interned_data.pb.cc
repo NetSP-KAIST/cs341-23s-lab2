@@ -40,7 +40,9 @@ PROTOBUF_CONSTEXPR InternedData::InternedData(
   , histogram_names_()
   , kernel_symbols_()
   , debug_annotation_value_type_names_()
-  , unsymbolized_source_locations_(){}
+  , unsymbolized_source_locations_()
+  , debug_annotation_string_values_()
+  , packet_context_(){}
 struct InternedDataDefaultTypeInternal {
   PROTOBUF_CONSTEXPR InternedDataDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -121,6 +123,12 @@ void InternedData::clear_gpu_specifications() {
 void InternedData::clear_kernel_symbols() {
   kernel_symbols_.Clear();
 }
+void InternedData::clear_debug_annotation_string_values() {
+  debug_annotation_string_values_.Clear();
+}
+void InternedData::clear_packet_context() {
+  packet_context_.Clear();
+}
 InternedData::InternedData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned),
@@ -143,7 +151,9 @@ InternedData::InternedData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   histogram_names_(arena),
   kernel_symbols_(arena),
   debug_annotation_value_type_names_(arena),
-  unsymbolized_source_locations_(arena) {
+  unsymbolized_source_locations_(arena),
+  debug_annotation_string_values_(arena),
+  packet_context_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:perfetto.protos.InternedData)
 }
@@ -168,7 +178,9 @@ InternedData::InternedData(const InternedData& from)
       histogram_names_(from.histogram_names_),
       kernel_symbols_(from.kernel_symbols_),
       debug_annotation_value_type_names_(from.debug_annotation_value_type_names_),
-      unsymbolized_source_locations_(from.unsymbolized_source_locations_) {
+      unsymbolized_source_locations_(from.unsymbolized_source_locations_),
+      debug_annotation_string_values_(from.debug_annotation_string_values_),
+      packet_context_(from.packet_context_) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:perfetto.protos.InternedData)
 }
@@ -219,6 +231,8 @@ void InternedData::Clear() {
   kernel_symbols_.Clear();
   debug_annotation_value_type_names_.Clear();
   unsymbolized_source_locations_.Clear();
+  debug_annotation_string_values_.Clear();
+  packet_context_.Clear();
   _internal_metadata_.Clear<std::string>();
 }
 
@@ -488,6 +502,32 @@ const char* InternedData::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
+      // repeated .perfetto.protos.InternedString debug_annotation_string_values = 29;
+      case 29:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 234)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_debug_annotation_string_values(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<234>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .perfetto.protos.NetworkPacketContext packet_context = 30;
+      case 30:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 242)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_packet_context(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<242>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -677,6 +717,22 @@ uint8_t* InternedData::_InternalSerialize(
         InternalWriteMessage(28, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // repeated .perfetto.protos.InternedString debug_annotation_string_values = 29;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_debug_annotation_string_values_size()); i < n; i++) {
+    const auto& repfield = this->_internal_debug_annotation_string_values(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(29, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .perfetto.protos.NetworkPacketContext packet_context = 30;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_packet_context_size()); i < n; i++) {
+    const auto& repfield = this->_internal_packet_context(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(30, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -833,6 +889,20 @@ size_t InternedData::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  // repeated .perfetto.protos.InternedString debug_annotation_string_values = 29;
+  total_size += 2UL * this->_internal_debug_annotation_string_values_size();
+  for (const auto& msg : this->debug_annotation_string_values_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .perfetto.protos.NetworkPacketContext packet_context = 30;
+  total_size += 2UL * this->_internal_packet_context_size();
+  for (const auto& msg : this->packet_context_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
   }
@@ -873,6 +943,8 @@ void InternedData::MergeFrom(const InternedData& from) {
   kernel_symbols_.MergeFrom(from.kernel_symbols_);
   debug_annotation_value_type_names_.MergeFrom(from.debug_annotation_value_type_names_);
   unsymbolized_source_locations_.MergeFrom(from.unsymbolized_source_locations_);
+  debug_annotation_string_values_.MergeFrom(from.debug_annotation_string_values_);
+  packet_context_.MergeFrom(from.packet_context_);
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
@@ -910,6 +982,8 @@ void InternedData::InternalSwap(InternedData* other) {
   kernel_symbols_.InternalSwap(&other->kernel_symbols_);
   debug_annotation_value_type_names_.InternalSwap(&other->debug_annotation_value_type_names_);
   unsymbolized_source_locations_.InternalSwap(&other->unsymbolized_source_locations_);
+  debug_annotation_string_values_.InternalSwap(&other->debug_annotation_string_values_);
+  packet_context_.InternalSwap(&other->packet_context_);
 }
 
 std::string InternedData::GetTypeName() const {

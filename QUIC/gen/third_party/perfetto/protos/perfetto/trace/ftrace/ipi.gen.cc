@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool IpiRaiseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&target_cpus_);
         break;
       case 2 /* reason */:
-        field.get(&reason_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reason_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -51,13 +52,13 @@ bool IpiRaiseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IpiRaiseFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IpiRaiseFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> IpiRaiseFtraceEvent::SerializeAsArray() const {
 void IpiRaiseFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: target_cpus
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, target_cpus_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, target_cpus_, msg);
   }
 
   // Field 2: reason
   if (_has_field_[2]) {
-    msg->AppendString(2, reason_);
+    ::protozero::internal::gen_helpers::SerializeString(2, reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -100,7 +101,7 @@ bool IpiExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* reason */:
-        field.get(&reason_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reason_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -111,13 +112,13 @@ bool IpiExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IpiExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IpiExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -125,10 +126,10 @@ std::vector<uint8_t> IpiExitFtraceEvent::SerializeAsArray() const {
 void IpiExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: reason
   if (_has_field_[1]) {
-    msg->AppendString(1, reason_);
+    ::protozero::internal::gen_helpers::SerializeString(1, reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -155,7 +156,7 @@ bool IpiEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* reason */:
-        field.get(&reason_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reason_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -166,13 +167,13 @@ bool IpiEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string IpiEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> IpiEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -180,10 +181,10 @@ std::vector<uint8_t> IpiEntryFtraceEvent::SerializeAsArray() const {
 void IpiEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: reason
   if (_has_field_[1]) {
-    msg->AppendString(1, reason_);
+    ::protozero::internal::gen_helpers::SerializeString(1, reason_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

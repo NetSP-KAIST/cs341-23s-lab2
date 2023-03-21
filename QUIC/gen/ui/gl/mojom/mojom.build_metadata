@@ -3,6 +3,7 @@
     "../../../mojo/public/mojom/base/base.build_metadata"
   ],
   "sources": [
+    "../../../../../../ui/gl/mojom/gl_implementation.mojom",
     "../../../../../../ui/gl/mojom/gpu_preference.mojom"
   ]
 }

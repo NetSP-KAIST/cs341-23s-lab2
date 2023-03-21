@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -77,7 +78,7 @@ bool HeapprofdConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* process_cmdline */:
         process_cmdline_.emplace_back();
-        field.get(&process_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &process_cmdline_.back());
         break;
       case 4 /* pid */:
         pid_.emplace_back();
@@ -85,15 +86,15 @@ bool HeapprofdConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 26 /* target_installed_by */:
         target_installed_by_.emplace_back();
-        field.get(&target_installed_by_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &target_installed_by_.back());
         break;
       case 20 /* heaps */:
         heaps_.emplace_back();
-        field.get(&heaps_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &heaps_.back());
         break;
       case 27 /* exclude_heaps */:
         exclude_heaps_.emplace_back();
-        field.get(&exclude_heaps_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &exclude_heaps_.back());
         break;
       case 23 /* stream_allocations */:
         field.get(&stream_allocations_);
@@ -119,7 +120,7 @@ bool HeapprofdConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 7 /* skip_symbol_prefix */:
         skip_symbol_prefix_.emplace_back();
-        field.get(&skip_symbol_prefix_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &skip_symbol_prefix_.back());
         break;
       case 6 /* continuous_dump_config */:
         (*continuous_dump_config_).ParseFromArray(field.data(), field.size());
@@ -157,13 +158,13 @@ bool HeapprofdConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HeapprofdConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapprofdConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -171,82 +172,82 @@ std::vector<uint8_t> HeapprofdConfig::SerializeAsArray() const {
 void HeapprofdConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: sampling_interval_bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, sampling_interval_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, sampling_interval_bytes_, msg);
   }
 
   // Field 24: adaptive_sampling_shmem_threshold
   if (_has_field_[24]) {
-    msg->AppendVarInt(24, adaptive_sampling_shmem_threshold_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(24, adaptive_sampling_shmem_threshold_, msg);
   }
 
   // Field 25: adaptive_sampling_max_sampling_interval_bytes
   if (_has_field_[25]) {
-    msg->AppendVarInt(25, adaptive_sampling_max_sampling_interval_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(25, adaptive_sampling_max_sampling_interval_bytes_, msg);
   }
 
   // Field 2: process_cmdline
   for (auto& it : process_cmdline_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 4: pid
   for (auto& it : pid_) {
-    msg->AppendVarInt(4, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, it, msg);
   }
 
   // Field 26: target_installed_by
   for (auto& it : target_installed_by_) {
-    msg->AppendString(26, it);
+    ::protozero::internal::gen_helpers::SerializeString(26, it, msg);
   }
 
   // Field 20: heaps
   for (auto& it : heaps_) {
-    msg->AppendString(20, it);
+    ::protozero::internal::gen_helpers::SerializeString(20, it, msg);
   }
 
   // Field 27: exclude_heaps
   for (auto& it : exclude_heaps_) {
-    msg->AppendString(27, it);
+    ::protozero::internal::gen_helpers::SerializeString(27, it, msg);
   }
 
   // Field 23: stream_allocations
   if (_has_field_[23]) {
-    msg->AppendTinyVarInt(23, stream_allocations_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(23, stream_allocations_, msg);
   }
 
   // Field 22: heap_sampling_intervals
   for (auto& it : heap_sampling_intervals_) {
-    msg->AppendVarInt(22, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(22, it, msg);
   }
 
   // Field 21: all_heaps
   if (_has_field_[21]) {
-    msg->AppendTinyVarInt(21, all_heaps_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(21, all_heaps_, msg);
   }
 
   // Field 5: all
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, all_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, all_, msg);
   }
 
   // Field 15: min_anonymous_memory_kb
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, min_anonymous_memory_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, min_anonymous_memory_kb_, msg);
   }
 
   // Field 16: max_heapprofd_memory_kb
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, max_heapprofd_memory_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, max_heapprofd_memory_kb_, msg);
   }
 
   // Field 17: max_heapprofd_cpu_secs
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, max_heapprofd_cpu_secs_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, max_heapprofd_cpu_secs_, msg);
   }
 
   // Field 7: skip_symbol_prefix
   for (auto& it : skip_symbol_prefix_) {
-    msg->AppendString(7, it);
+    ::protozero::internal::gen_helpers::SerializeString(7, it, msg);
   }
 
   // Field 6: continuous_dump_config
@@ -256,45 +257,45 @@ void HeapprofdConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 8: shmem_size_bytes
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, shmem_size_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, shmem_size_bytes_, msg);
   }
 
   // Field 9: block_client
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, block_client_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, block_client_, msg);
   }
 
   // Field 14: block_client_timeout_us
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, block_client_timeout_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, block_client_timeout_us_, msg);
   }
 
   // Field 10: no_startup
   if (_has_field_[10]) {
-    msg->AppendTinyVarInt(10, no_startup_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(10, no_startup_, msg);
   }
 
   // Field 11: no_running
   if (_has_field_[11]) {
-    msg->AppendTinyVarInt(11, no_running_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(11, no_running_, msg);
   }
 
   // Field 13: dump_at_max
   if (_has_field_[13]) {
-    msg->AppendTinyVarInt(13, dump_at_max_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(13, dump_at_max_, msg);
   }
 
   // Field 18: disable_fork_teardown
   if (_has_field_[18]) {
-    msg->AppendTinyVarInt(18, disable_fork_teardown_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(18, disable_fork_teardown_, msg);
   }
 
   // Field 19: disable_vfork_detection
   if (_has_field_[19]) {
-    msg->AppendTinyVarInt(19, disable_vfork_detection_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(19, disable_vfork_detection_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -336,13 +337,13 @@ bool HeapprofdConfig_ContinuousDumpConfig::ParseFromArray(const void* raw, size_
 }
 
 std::string HeapprofdConfig_ContinuousDumpConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HeapprofdConfig_ContinuousDumpConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -350,15 +351,15 @@ std::vector<uint8_t> HeapprofdConfig_ContinuousDumpConfig::SerializeAsArray() co
 void HeapprofdConfig_ContinuousDumpConfig::Serialize(::protozero::Message* msg) const {
   // Field 5: dump_phase_ms
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, dump_phase_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, dump_phase_ms_, msg);
   }
 
   // Field 6: dump_interval_ms
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dump_interval_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dump_interval_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

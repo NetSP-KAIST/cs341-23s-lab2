@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -63,13 +64,13 @@ bool MaliMaliKCPUFENCEWAITENDFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string MaliMaliKCPUFENCEWAITENDFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUFENCEWAITENDFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> MaliMaliKCPUFENCEWAITENDFtraceEvent::SerializeAsArray() con
 void MaliMaliKCPUFENCEWAITENDFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: info_val1
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, info_val1_, msg);
   }
 
   // Field 2: info_val2
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val2_, msg);
   }
 
   // Field 3: kctx_tgid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, kctx_tgid_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -154,13 +155,13 @@ bool MaliMaliKCPUFENCEWAITSTARTFtraceEvent::ParseFromArray(const void* raw, size
 }
 
 std::string MaliMaliKCPUFENCEWAITSTARTFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUFENCEWAITSTARTFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -168,30 +169,30 @@ std::vector<uint8_t> MaliMaliKCPUFENCEWAITSTARTFtraceEvent::SerializeAsArray() c
 void MaliMaliKCPUFENCEWAITSTARTFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: info_val1
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, info_val1_, msg);
   }
 
   // Field 2: info_val2
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val2_, msg);
   }
 
   // Field 3: kctx_tgid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, kctx_tgid_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -245,13 +246,13 @@ bool MaliMaliKCPUFENCESIGNALFtraceEvent::ParseFromArray(const void* raw, size_t 
 }
 
 std::string MaliMaliKCPUFENCESIGNALFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUFENCESIGNALFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -259,30 +260,30 @@ std::vector<uint8_t> MaliMaliKCPUFENCESIGNALFtraceEvent::SerializeAsArray() cons
 void MaliMaliKCPUFENCESIGNALFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: info_val1
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, info_val1_, msg);
   }
 
   // Field 2: info_val2
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val2_, msg);
   }
 
   // Field 3: kctx_tgid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, kctx_tgid_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -336,13 +337,13 @@ bool MaliMaliKCPUCQSWAITENDFtraceEvent::ParseFromArray(const void* raw, size_t s
 }
 
 std::string MaliMaliKCPUCQSWAITENDFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUCQSWAITENDFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -350,30 +351,30 @@ std::vector<uint8_t> MaliMaliKCPUCQSWAITENDFtraceEvent::SerializeAsArray() const
 void MaliMaliKCPUCQSWAITENDFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: info_val1
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val1_, msg);
   }
 
   // Field 3: info_val2
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, info_val2_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: kctx_tgid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, kctx_tgid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -427,13 +428,13 @@ bool MaliMaliKCPUCQSWAITSTARTFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string MaliMaliKCPUCQSWAITSTARTFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUCQSWAITSTARTFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -441,30 +442,30 @@ std::vector<uint8_t> MaliMaliKCPUCQSWAITSTARTFtraceEvent::SerializeAsArray() con
 void MaliMaliKCPUCQSWAITSTARTFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: info_val1
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val1_, msg);
   }
 
   // Field 3: info_val2
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, info_val2_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: kctx_tgid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, kctx_tgid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -518,13 +519,13 @@ bool MaliMaliKCPUCQSSETFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string MaliMaliKCPUCQSSETFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliMaliKCPUCQSSETFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -532,30 +533,30 @@ std::vector<uint8_t> MaliMaliKCPUCQSSETFtraceEvent::SerializeAsArray() const {
 void MaliMaliKCPUCQSSETFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, id_, msg);
   }
 
   // Field 2: info_val1
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, info_val1_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, info_val1_, msg);
   }
 
   // Field 3: info_val2
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, info_val2_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, info_val2_, msg);
   }
 
   // Field 4: kctx_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, kctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, kctx_id_, msg);
   }
 
   // Field 5: kctx_tgid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, kctx_tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, kctx_tgid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -585,7 +586,7 @@ bool MaliTracingMarkWriteFtraceEvent::ParseFromArray(const void* raw, size_t siz
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -605,13 +606,13 @@ bool MaliTracingMarkWriteFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string MaliTracingMarkWriteFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MaliTracingMarkWriteFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -619,25 +620,25 @@ std::vector<uint8_t> MaliTracingMarkWriteFtraceEvent::SerializeAsArray() const {
 void MaliTracingMarkWriteFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
   // Field 4: value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -51,20 +52,20 @@ bool ChromeBenchmarkMetadata::ParseFromArray(const void* raw, size_t size) {
         field.get(&story_run_time_us_);
         break;
       case 3 /* benchmark_name */:
-        field.get(&benchmark_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &benchmark_name_);
         break;
       case 4 /* benchmark_description */:
-        field.get(&benchmark_description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &benchmark_description_);
         break;
       case 5 /* label */:
-        field.get(&label_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &label_);
         break;
       case 6 /* story_name */:
-        field.get(&story_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &story_name_);
         break;
       case 7 /* story_tags */:
         story_tags_.emplace_back();
-        field.get(&story_tags_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &story_tags_.back());
         break;
       case 8 /* story_run_index */:
         field.get(&story_run_index_);
@@ -81,13 +82,13 @@ bool ChromeBenchmarkMetadata::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeBenchmarkMetadata::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeBenchmarkMetadata::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -95,50 +96,50 @@ std::vector<uint8_t> ChromeBenchmarkMetadata::SerializeAsArray() const {
 void ChromeBenchmarkMetadata::Serialize(::protozero::Message* msg) const {
   // Field 1: benchmark_start_time_us
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, benchmark_start_time_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, benchmark_start_time_us_, msg);
   }
 
   // Field 2: story_run_time_us
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, story_run_time_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, story_run_time_us_, msg);
   }
 
   // Field 3: benchmark_name
   if (_has_field_[3]) {
-    msg->AppendString(3, benchmark_name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, benchmark_name_, msg);
   }
 
   // Field 4: benchmark_description
   if (_has_field_[4]) {
-    msg->AppendString(4, benchmark_description_);
+    ::protozero::internal::gen_helpers::SerializeString(4, benchmark_description_, msg);
   }
 
   // Field 5: label
   if (_has_field_[5]) {
-    msg->AppendString(5, label_);
+    ::protozero::internal::gen_helpers::SerializeString(5, label_, msg);
   }
 
   // Field 6: story_name
   if (_has_field_[6]) {
-    msg->AppendString(6, story_name_);
+    ::protozero::internal::gen_helpers::SerializeString(6, story_name_, msg);
   }
 
   // Field 7: story_tags
   for (auto& it : story_tags_) {
-    msg->AppendString(7, it);
+    ::protozero::internal::gen_helpers::SerializeString(7, it, msg);
   }
 
   // Field 8: story_run_index
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, story_run_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, story_run_index_, msg);
   }
 
   // Field 9: had_failures
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, had_failures_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, had_failures_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

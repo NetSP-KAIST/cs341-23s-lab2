@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -71,13 +72,13 @@ bool MmShrinkSlabEndFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string MmShrinkSlabEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmShrinkSlabEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -85,40 +86,40 @@ std::vector<uint8_t> MmShrinkSlabEndFtraceEvent::SerializeAsArray() const {
 void MmShrinkSlabEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: new_scan
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, new_scan_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, new_scan_, msg);
   }
 
   // Field 2: retval
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, retval_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, retval_, msg);
   }
 
   // Field 3: shr
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, shr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, shr_, msg);
   }
 
   // Field 4: shrink
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, shrink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, shrink_, msg);
   }
 
   // Field 5: total_scan
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, total_scan_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, total_scan_, msg);
   }
 
   // Field 6: unused_scan
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, unused_scan_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, unused_scan_, msg);
   }
 
   // Field 7: nid
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, nid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -196,13 +197,13 @@ bool MmShrinkSlabStartFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string MmShrinkSlabStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmShrinkSlabStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -210,60 +211,60 @@ std::vector<uint8_t> MmShrinkSlabStartFtraceEvent::SerializeAsArray() const {
 void MmShrinkSlabStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cache_items
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cache_items_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cache_items_, msg);
   }
 
   // Field 2: delta
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, delta_, msg);
   }
 
   // Field 3: gfp_flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, gfp_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, gfp_flags_, msg);
   }
 
   // Field 4: lru_pgs
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, lru_pgs_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, lru_pgs_, msg);
   }
 
   // Field 5: nr_objects_to_shrink
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, nr_objects_to_shrink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, nr_objects_to_shrink_, msg);
   }
 
   // Field 6: pgs_scanned
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, pgs_scanned_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, pgs_scanned_, msg);
   }
 
   // Field 7: shr
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, shr_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, shr_, msg);
   }
 
   // Field 8: shrink
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, shrink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, shrink_, msg);
   }
 
   // Field 9: total_scan
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, total_scan_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, total_scan_, msg);
   }
 
   // Field 10: nid
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, nid_, msg);
   }
 
   // Field 11: priority
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, priority_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, priority_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -301,13 +302,13 @@ bool MmVmscanKswapdSleepFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string MmVmscanKswapdSleepFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmVmscanKswapdSleepFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -315,10 +316,10 @@ std::vector<uint8_t> MmVmscanKswapdSleepFtraceEvent::SerializeAsArray() const {
 void MmVmscanKswapdSleepFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -364,13 +365,13 @@ bool MmVmscanKswapdWakeFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string MmVmscanKswapdWakeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmVmscanKswapdWakeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -378,20 +379,20 @@ std::vector<uint8_t> MmVmscanKswapdWakeFtraceEvent::SerializeAsArray() const {
 void MmVmscanKswapdWakeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: order
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, order_, msg);
   }
 
   // Field 3: zid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, zid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, zid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -429,13 +430,13 @@ bool MmVmscanDirectReclaimEndFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string MmVmscanDirectReclaimEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmVmscanDirectReclaimEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -443,10 +444,10 @@ std::vector<uint8_t> MmVmscanDirectReclaimEndFtraceEvent::SerializeAsArray() con
 void MmVmscanDirectReclaimEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nr_reclaimed
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nr_reclaimed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nr_reclaimed_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -492,13 +493,13 @@ bool MmVmscanDirectReclaimBeginFtraceEvent::ParseFromArray(const void* raw, size
 }
 
 std::string MmVmscanDirectReclaimBeginFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmVmscanDirectReclaimBeginFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -506,20 +507,20 @@ std::vector<uint8_t> MmVmscanDirectReclaimBeginFtraceEvent::SerializeAsArray() c
 void MmVmscanDirectReclaimBeginFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: order
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, order_, msg);
   }
 
   // Field 2: may_writepage
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, may_writepage_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, may_writepage_, msg);
   }
 
   // Field 3: gfp_flags
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, gfp_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, gfp_flags_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

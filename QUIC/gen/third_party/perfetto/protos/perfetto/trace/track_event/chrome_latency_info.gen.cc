@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -76,13 +77,13 @@ bool ChromeLatencyInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeLatencyInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeLatencyInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -90,17 +91,17 @@ std::vector<uint8_t> ChromeLatencyInfo::SerializeAsArray() const {
 void ChromeLatencyInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: trace_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, trace_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, trace_id_, msg);
   }
 
   // Field 2: step
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, step_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, step_, msg);
   }
 
   // Field 3: frame_tree_node_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, frame_tree_node_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, frame_tree_node_id_, msg);
   }
 
   // Field 4: component_info
@@ -110,20 +111,20 @@ void ChromeLatencyInfo::Serialize(::protozero::Message* msg) const {
 
   // Field 5: is_coalesced
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, is_coalesced_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, is_coalesced_, msg);
   }
 
   // Field 6: gesture_scroll_id
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, gesture_scroll_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, gesture_scroll_id_, msg);
   }
 
   // Field 7: touch_id
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, touch_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, touch_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -165,13 +166,13 @@ bool ChromeLatencyInfo_ComponentInfo::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string ChromeLatencyInfo_ComponentInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeLatencyInfo_ComponentInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -179,15 +180,15 @@ std::vector<uint8_t> ChromeLatencyInfo_ComponentInfo::SerializeAsArray() const {
 void ChromeLatencyInfo_ComponentInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: component_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, component_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, component_type_, msg);
   }
 
   // Field 2: time_us
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, time_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, time_us_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

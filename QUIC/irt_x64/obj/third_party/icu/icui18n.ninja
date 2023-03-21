@@ -1,4 +1,4 @@
-defines = -DU_I18N_IMPLEMENTATION -DDCHECK_ALWAYS_ON=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -DHAVE_DLOPEN=0 -DUCONFIG_ONLY_HTML_CONVERSION=1 -DUCONFIG_USE_WINDOWS_LCID_MAPPING_API=0 -DU_CHARSET_IS_UTF8=1 -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DU_STATIC_IMPLEMENTATION -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+defines = -DU_I18N_IMPLEMENTATION -DDCHECK_ALWAYS_ON=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -DHAVE_DLOPEN=0 -DUCONFIG_ONLY_HTML_CONVERSION=1 -DUCONFIG_USE_WINDOWS_LCID_MAPPING_API=0 -DU_CHARSET_IS_UTF8=1 -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DU_STATIC_IMPLEMENTATION -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
 include_dirs = -I../.. -Iirt_x64/gen -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
 cflags = -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -fasynchronous-unwind-tables -fomit-frame-pointer -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -no-canonical-prefixes -Os -ffunction-sections -fdata-sections -fno-omit-frame-pointer -g2 -Xclang -fuse-ctor-homing -fvisibility=hidden -Werror -Wno-unused-variable -Wno-c++11-narrowing -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-parentheses -Wno-unused-function -Wno-unused-variable -Wno-ambiguous-reversed-operator -Wno-deprecated-declarations
 cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -fno-exceptions -fvisibility-inlines-hidden -frtti
@@ -7,7 +7,7 @@ root_out_dir = irt_x64
 target_out_dir = irt_x64/obj/third_party/icu
 target_output_name = libicui18n
 
-build irt_x64/obj/third_party/icu/icui18n.inputdeps.stamp: irt_x64_stamp ./tls_edit irt_x64/obj/third_party/icu/icudata.stamp
+build irt_x64/obj/third_party/icu/icui18n.inputdeps.stamp: irt_x64_stamp ./tls_edit irt_x64/obj/third_party/icu/copy_icudata.stamp
 build irt_x64/obj/third_party/icu/icui18n/alphaindex.o: irt_x64_cxx ../../third_party/icu/source/i18n/alphaindex.cpp || irt_x64/obj/third_party/icu/icui18n.inputdeps.stamp
   source_file_part = alphaindex.cpp
   source_name_part = alphaindex

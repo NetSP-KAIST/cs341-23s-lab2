@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class NetworkPacketEvent;
 enum TrafficDirection : int32_t;
 
 enum TrafficDirection : int32_t {
@@ -42,6 +43,274 @@ const char* TrafficDirection_Name(::perfetto::protos::pbzero::TrafficDirection v
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
+
+class NetworkPacketContext_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  NetworkPacketContext_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit NetworkPacketContext_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit NetworkPacketContext_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_iid() const { return at<1>().valid(); }
+  uint64_t iid() const { return at<1>().as_uint64(); }
+  bool has_ctx() const { return at<2>().valid(); }
+  ::protozero::ConstBytes ctx() const { return at<2>().as_bytes(); }
+};
+
+class NetworkPacketContext : public ::protozero::Message {
+ public:
+  using Decoder = NetworkPacketContext_Decoder;
+  enum : int32_t {
+    kIidFieldNumber = 1,
+    kCtxFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.NetworkPacketContext"; }
+
+
+  using FieldMetadata_Iid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      NetworkPacketContext>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Iid kIid() { return {}; }
+  void set_iid(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Ctx =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      NetworkPacketEvent,
+      NetworkPacketContext>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Ctx kCtx() { return {}; }
+  template <typename T = NetworkPacketEvent> T* set_ctx() {
+    return BeginNestedMessage<T>(2);
+  }
+
+};
+
+class NetworkPacketBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  NetworkPacketBundle_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit NetworkPacketBundle_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit NetworkPacketBundle_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_iid() const { return at<1>().valid(); }
+  uint64_t iid() const { return at<1>().as_uint64(); }
+  bool has_ctx() const { return at<2>().valid(); }
+  ::protozero::ConstBytes ctx() const { return at<2>().as_bytes(); }
+  bool has_packet_timestamps() const { return at<3>().valid(); }
+  ::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> packet_timestamps(bool* parse_error_ptr) const { return GetPackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(3, parse_error_ptr); }
+  bool has_packet_lengths() const { return at<4>().valid(); }
+  ::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t> packet_lengths(bool* parse_error_ptr) const { return GetPackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint32_t>(4, parse_error_ptr); }
+  bool has_total_packets() const { return at<5>().valid(); }
+  uint32_t total_packets() const { return at<5>().as_uint32(); }
+  bool has_total_duration() const { return at<6>().valid(); }
+  uint64_t total_duration() const { return at<6>().as_uint64(); }
+  bool has_total_length() const { return at<7>().valid(); }
+  uint64_t total_length() const { return at<7>().as_uint64(); }
+};
+
+class NetworkPacketBundle : public ::protozero::Message {
+ public:
+  using Decoder = NetworkPacketBundle_Decoder;
+  enum : int32_t {
+    kIidFieldNumber = 1,
+    kCtxFieldNumber = 2,
+    kPacketTimestampsFieldNumber = 3,
+    kPacketLengthsFieldNumber = 4,
+    kTotalPacketsFieldNumber = 5,
+    kTotalDurationFieldNumber = 6,
+    kTotalLengthFieldNumber = 7,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.NetworkPacketBundle"; }
+
+
+  using FieldMetadata_Iid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Iid kIid() { return {}; }
+  void set_iid(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Ctx =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      NetworkPacketEvent,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Ctx kCtx() { return {}; }
+  template <typename T = NetworkPacketEvent> T* set_ctx() {
+    return BeginNestedMessage<T>(2);
+  }
+
+
+  using FieldMetadata_PacketTimestamps =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PacketTimestamps kPacketTimestamps() { return {}; }
+  void set_packet_timestamps(const ::protozero::PackedVarInt& packed_buffer) {
+    AppendBytes(FieldMetadata_PacketTimestamps::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
+  }
+
+  using FieldMetadata_PacketLengths =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PacketLengths kPacketLengths() { return {}; }
+  void set_packet_lengths(const ::protozero::PackedVarInt& packed_buffer) {
+    AppendBytes(FieldMetadata_PacketLengths::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
+  }
+
+  using FieldMetadata_TotalPackets =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TotalPackets kTotalPackets() { return {}; }
+  void set_total_packets(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TotalPackets::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TotalDuration =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TotalDuration kTotalDuration() { return {}; }
+  void set_total_duration(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TotalDuration::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TotalLength =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      NetworkPacketBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TotalLength kTotalLength() { return {}; }
+  void set_total_length(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TotalLength::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class NetworkPacketEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:

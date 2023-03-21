@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,13 +61,13 @@ bool PackagesList::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PackagesList::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PackagesList::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -79,15 +80,15 @@ void PackagesList::Serialize(::protozero::Message* msg) const {
 
   // Field 2: parse_error
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, parse_error_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, parse_error_, msg);
   }
 
   // Field 3: read_error
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, read_error_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, read_error_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -118,7 +119,7 @@ bool PackagesList_PackageInfo::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* uid */:
         field.get(&uid_);
@@ -141,13 +142,13 @@ bool PackagesList_PackageInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PackagesList_PackageInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PackagesList_PackageInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -155,30 +156,30 @@ std::vector<uint8_t> PackagesList_PackageInfo::SerializeAsArray() const {
 void PackagesList_PackageInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: uid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, uid_, msg);
   }
 
   // Field 3: debuggable
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, debuggable_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, debuggable_, msg);
   }
 
   // Field 4: profileable_from_shell
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, profileable_from_shell_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, profileable_from_shell_, msg);
   }
 
   // Field 5: version_code
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, version_code_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, version_code_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

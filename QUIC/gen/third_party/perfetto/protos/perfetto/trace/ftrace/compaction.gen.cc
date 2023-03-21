@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -59,13 +60,13 @@ bool MmCompactionWakeupKcompactdFtraceEvent::ParseFromArray(const void* raw, siz
 }
 
 std::string MmCompactionWakeupKcompactdFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionWakeupKcompactdFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> MmCompactionWakeupKcompactdFtraceEvent::SerializeAsArray() 
 void MmCompactionWakeupKcompactdFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: order
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, order_, msg);
   }
 
   // Field 3: classzone_idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, classzone_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, classzone_idx_, msg);
   }
 
   // Field 4: highest_zoneidx
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, highest_zoneidx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, highest_zoneidx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -141,13 +142,13 @@ bool MmCompactionTryToCompactPagesFtraceEvent::ParseFromArray(const void* raw, s
 }
 
 std::string MmCompactionTryToCompactPagesFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionTryToCompactPagesFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -155,25 +156,25 @@ std::vector<uint8_t> MmCompactionTryToCompactPagesFtraceEvent::SerializeAsArray(
 void MmCompactionTryToCompactPagesFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: order
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, order_, msg);
   }
 
   // Field 2: gfp_mask
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, gfp_mask_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, gfp_mask_, msg);
   }
 
   // Field 3: mode
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, mode_, msg);
   }
 
   // Field 4: prio
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, prio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -223,13 +224,13 @@ bool MmCompactionSuitableFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string MmCompactionSuitableFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionSuitableFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -237,25 +238,25 @@ std::vector<uint8_t> MmCompactionSuitableFtraceEvent::SerializeAsArray() const {
 void MmCompactionSuitableFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: order
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, order_, msg);
   }
 
   // Field 4: ret
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -297,13 +298,13 @@ bool MmCompactionMigratepagesFtraceEvent::ParseFromArray(const void* raw, size_t
 }
 
 std::string MmCompactionMigratepagesFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionMigratepagesFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -311,15 +312,15 @@ std::vector<uint8_t> MmCompactionMigratepagesFtraceEvent::SerializeAsArray() con
 void MmCompactionMigratepagesFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nr_migrated
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nr_migrated_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nr_migrated_, msg);
   }
 
   // Field 2: nr_failed
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, nr_failed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, nr_failed_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -369,13 +370,13 @@ bool MmCompactionKcompactdWakeFtraceEvent::ParseFromArray(const void* raw, size_
 }
 
 std::string MmCompactionKcompactdWakeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionKcompactdWakeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -383,25 +384,25 @@ std::vector<uint8_t> MmCompactionKcompactdWakeFtraceEvent::SerializeAsArray() co
 void MmCompactionKcompactdWakeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: order
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, order_, msg);
   }
 
   // Field 3: classzone_idx
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, classzone_idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, classzone_idx_, msg);
   }
 
   // Field 4: highest_zoneidx
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, highest_zoneidx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, highest_zoneidx_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -439,13 +440,13 @@ bool MmCompactionKcompactdSleepFtraceEvent::ParseFromArray(const void* raw, size
 }
 
 std::string MmCompactionKcompactdSleepFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionKcompactdSleepFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -453,10 +454,10 @@ std::vector<uint8_t> MmCompactionKcompactdSleepFtraceEvent::SerializeAsArray() c
 void MmCompactionKcompactdSleepFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -506,13 +507,13 @@ bool MmCompactionIsolateMigratepagesFtraceEvent::ParseFromArray(const void* raw,
 }
 
 std::string MmCompactionIsolateMigratepagesFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionIsolateMigratepagesFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -520,25 +521,25 @@ std::vector<uint8_t> MmCompactionIsolateMigratepagesFtraceEvent::SerializeAsArra
 void MmCompactionIsolateMigratepagesFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: start_pfn
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, start_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, start_pfn_, msg);
   }
 
   // Field 2: end_pfn
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, end_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, end_pfn_, msg);
   }
 
   // Field 3: nr_scanned
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nr_scanned_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nr_scanned_, msg);
   }
 
   // Field 4: nr_taken
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, nr_taken_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, nr_taken_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -588,13 +589,13 @@ bool MmCompactionIsolateFreepagesFtraceEvent::ParseFromArray(const void* raw, si
 }
 
 std::string MmCompactionIsolateFreepagesFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionIsolateFreepagesFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -602,25 +603,25 @@ std::vector<uint8_t> MmCompactionIsolateFreepagesFtraceEvent::SerializeAsArray()
 void MmCompactionIsolateFreepagesFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: start_pfn
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, start_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, start_pfn_, msg);
   }
 
   // Field 2: end_pfn
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, end_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, end_pfn_, msg);
   }
 
   // Field 3: nr_scanned
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, nr_scanned_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, nr_scanned_, msg);
   }
 
   // Field 4: nr_taken
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, nr_taken_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, nr_taken_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -670,13 +671,13 @@ bool MmCompactionFinishedFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string MmCompactionFinishedFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionFinishedFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -684,25 +685,25 @@ std::vector<uint8_t> MmCompactionFinishedFtraceEvent::SerializeAsArray() const {
 void MmCompactionFinishedFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: order
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, order_, msg);
   }
 
   // Field 4: ret
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, ret_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, ret_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -760,13 +761,13 @@ bool MmCompactionEndFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string MmCompactionEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -774,35 +775,35 @@ std::vector<uint8_t> MmCompactionEndFtraceEvent::SerializeAsArray() const {
 void MmCompactionEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: zone_start
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, zone_start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, zone_start_, msg);
   }
 
   // Field 2: migrate_pfn
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, migrate_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, migrate_pfn_, msg);
   }
 
   // Field 3: free_pfn
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, free_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, free_pfn_, msg);
   }
 
   // Field 4: zone_end
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, zone_end_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, zone_end_, msg);
   }
 
   // Field 5: sync
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, sync_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, sync_, msg);
   }
 
   // Field 6: status
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, status_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, status_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -860,13 +861,13 @@ bool MmCompactionDeferResetFtraceEvent::ParseFromArray(const void* raw, size_t s
 }
 
 std::string MmCompactionDeferResetFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionDeferResetFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -874,35 +875,35 @@ std::vector<uint8_t> MmCompactionDeferResetFtraceEvent::SerializeAsArray() const
 void MmCompactionDeferResetFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: order
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, order_, msg);
   }
 
   // Field 4: considered
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, considered_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, considered_, msg);
   }
 
   // Field 5: defer_shift
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, defer_shift_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, defer_shift_, msg);
   }
 
   // Field 6: order_failed
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, order_failed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, order_failed_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -960,13 +961,13 @@ bool MmCompactionDeferredFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string MmCompactionDeferredFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionDeferredFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -974,35 +975,35 @@ std::vector<uint8_t> MmCompactionDeferredFtraceEvent::SerializeAsArray() const {
 void MmCompactionDeferredFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: order
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, order_, msg);
   }
 
   // Field 4: considered
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, considered_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, considered_, msg);
   }
 
   // Field 5: defer_shift
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, defer_shift_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, defer_shift_, msg);
   }
 
   // Field 6: order_failed
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, order_failed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, order_failed_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1060,13 +1061,13 @@ bool MmCompactionDeferCompactionFtraceEvent::ParseFromArray(const void* raw, siz
 }
 
 std::string MmCompactionDeferCompactionFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionDeferCompactionFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1074,35 +1075,35 @@ std::vector<uint8_t> MmCompactionDeferCompactionFtraceEvent::SerializeAsArray() 
 void MmCompactionDeferCompactionFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: nid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nid_, msg);
   }
 
   // Field 2: idx
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, idx_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, idx_, msg);
   }
 
   // Field 3: order
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, order_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, order_, msg);
   }
 
   // Field 4: considered
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, considered_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, considered_, msg);
   }
 
   // Field 5: defer_shift
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, defer_shift_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, defer_shift_, msg);
   }
 
   // Field 6: order_failed
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, order_failed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, order_failed_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1156,13 +1157,13 @@ bool MmCompactionBeginFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string MmCompactionBeginFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MmCompactionBeginFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1170,30 +1171,30 @@ std::vector<uint8_t> MmCompactionBeginFtraceEvent::SerializeAsArray() const {
 void MmCompactionBeginFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: zone_start
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, zone_start_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, zone_start_, msg);
   }
 
   // Field 2: migrate_pfn
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, migrate_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, migrate_pfn_, msg);
   }
 
   // Field 3: free_pfn
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, free_pfn_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, free_pfn_, msg);
   }
 
   // Field 4: zone_end
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, zone_end_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, zone_end_, msg);
   }
 
   // Field 5: sync
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, sync_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, sync_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

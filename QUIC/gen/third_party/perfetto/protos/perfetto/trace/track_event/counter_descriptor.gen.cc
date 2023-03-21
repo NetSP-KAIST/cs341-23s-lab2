@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -46,13 +47,13 @@ bool CounterDescriptor::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* categories */:
         categories_.emplace_back();
-        field.get(&categories_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &categories_.back());
         break;
       case 3 /* unit */:
         field.get(&unit_);
         break;
       case 6 /* unit_name */:
-        field.get(&unit_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &unit_name_);
         break;
       case 4 /* unit_multiplier */:
         field.get(&unit_multiplier_);
@@ -69,13 +70,13 @@ bool CounterDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CounterDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CounterDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -83,35 +84,35 @@ std::vector<uint8_t> CounterDescriptor::SerializeAsArray() const {
 void CounterDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, type_, msg);
   }
 
   // Field 2: categories
   for (auto& it : categories_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: unit
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, unit_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, unit_, msg);
   }
 
   // Field 6: unit_name
   if (_has_field_[6]) {
-    msg->AppendString(6, unit_name_);
+    ::protozero::internal::gen_helpers::SerializeString(6, unit_name_, msg);
   }
 
   // Field 4: unit_multiplier
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, unit_multiplier_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, unit_multiplier_, msg);
   }
 
   // Field 5: is_incremental
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, is_incremental_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, is_incremental_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

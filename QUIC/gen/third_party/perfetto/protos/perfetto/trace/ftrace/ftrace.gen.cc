@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -63,13 +64,13 @@ bool FuncgraphExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FuncgraphExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FuncgraphExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> FuncgraphExitFtraceEvent::SerializeAsArray() const {
 void FuncgraphExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: calltime
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, calltime_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, calltime_, msg);
   }
 
   // Field 2: depth
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, depth_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, depth_, msg);
   }
 
   // Field 3: func
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, func_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, func_, msg);
   }
 
   // Field 4: overrun
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, overrun_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, overrun_, msg);
   }
 
   // Field 5: rettime
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, rettime_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, rettime_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -142,13 +143,13 @@ bool FuncgraphEntryFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FuncgraphEntryFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FuncgraphEntryFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -156,15 +157,15 @@ std::vector<uint8_t> FuncgraphEntryFtraceEvent::SerializeAsArray() const {
 void FuncgraphEntryFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: depth
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, depth_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, depth_, msg);
   }
 
   // Field 2: func
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, func_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, func_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -195,7 +196,7 @@ bool PrintFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&ip_);
         break;
       case 2 /* buf */:
-        field.get(&buf_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &buf_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -206,13 +207,13 @@ bool PrintFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PrintFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PrintFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,15 +221,15 @@ std::vector<uint8_t> PrintFtraceEvent::SerializeAsArray() const {
 void PrintFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ip
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ip_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ip_, msg);
   }
 
   // Field 2: buf
   if (_has_field_[2]) {
-    msg->AppendString(2, buf_);
+    ::protozero::internal::gen_helpers::SerializeString(2, buf_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

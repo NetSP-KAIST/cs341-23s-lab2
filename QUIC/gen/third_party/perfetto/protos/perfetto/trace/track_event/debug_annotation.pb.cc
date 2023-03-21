@@ -666,10 +666,6 @@ DebugAnnotation::DebugAnnotation(const DebugAnnotation& from)
       _internal_set_double_value(from._internal_double_value());
       break;
     }
-    case kStringValue: {
-      _internal_set_string_value(from._internal_string_value());
-      break;
-    }
     case kPointerValue: {
       _internal_set_pointer_value(from._internal_pointer_value());
       break;
@@ -680,6 +676,14 @@ DebugAnnotation::DebugAnnotation(const DebugAnnotation& from)
     }
     case kLegacyJsonValue: {
       _internal_set_legacy_json_value(from._internal_legacy_json_value());
+      break;
+    }
+    case kStringValue: {
+      _internal_set_string_value(from._internal_string_value());
+      break;
+    }
+    case kStringValueIid: {
+      _internal_set_string_value_iid(from._internal_string_value_iid());
       break;
     }
     case VALUE_NOT_SET: {
@@ -777,10 +781,6 @@ void DebugAnnotation::clear_value() {
       // No need to clear
       break;
     }
-    case kStringValue: {
-      value_.string_value_.Destroy();
-      break;
-    }
     case kPointerValue: {
       // No need to clear
       break;
@@ -793,6 +793,14 @@ void DebugAnnotation::clear_value() {
     }
     case kLegacyJsonValue: {
       value_.legacy_json_value_.Destroy();
+      break;
+    }
+    case kStringValue: {
+      value_.string_value_.Destroy();
+      break;
+    }
+    case kStringValueIid: {
+      // No need to clear
       break;
     }
     case VALUE_NOT_SET: {
@@ -982,6 +990,14 @@ const char* DebugAnnotation::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
+      // uint64 string_value_iid = 17;
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 136)) {
+          _internal_set_string_value_iid(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1103,6 +1119,12 @@ uint8_t* DebugAnnotation::_InternalSerialize(
         16, this->_internal_proto_type_name(), target);
   }
 
+  // uint64 string_value_iid = 17;
+  if (_internal_has_string_value_iid()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(17, this->_internal_string_value_iid(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -1179,13 +1201,6 @@ size_t DebugAnnotation::ByteSizeLong() const {
       total_size += 1 + 8;
       break;
     }
-    // string string_value = 6;
-    case kStringValue: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_string_value());
-      break;
-    }
     // uint64 pointer_value = 7;
     case kPointerValue: {
       total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_pointer_value());
@@ -1203,6 +1218,20 @@ size_t DebugAnnotation::ByteSizeLong() const {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
           this->_internal_legacy_json_value());
+      break;
+    }
+    // string string_value = 6;
+    case kStringValue: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_string_value());
+      break;
+    }
+    // uint64 string_value_iid = 17;
+    case kStringValueIid: {
+      total_size += 2 +
+        ::_pbi::WireFormatLite::UInt64Size(
+          this->_internal_string_value_iid());
       break;
     }
     case VALUE_NOT_SET: {
@@ -1281,10 +1310,6 @@ void DebugAnnotation::MergeFrom(const DebugAnnotation& from) {
       _internal_set_double_value(from._internal_double_value());
       break;
     }
-    case kStringValue: {
-      _internal_set_string_value(from._internal_string_value());
-      break;
-    }
     case kPointerValue: {
       _internal_set_pointer_value(from._internal_pointer_value());
       break;
@@ -1295,6 +1320,14 @@ void DebugAnnotation::MergeFrom(const DebugAnnotation& from) {
     }
     case kLegacyJsonValue: {
       _internal_set_legacy_json_value(from._internal_legacy_json_value());
+      break;
+    }
+    case kStringValue: {
+      _internal_set_string_value(from._internal_string_value());
+      break;
+    }
+    case kStringValueIid: {
+      _internal_set_string_value_iid(from._internal_string_value_iid());
       break;
     }
     case VALUE_NOT_SET: {

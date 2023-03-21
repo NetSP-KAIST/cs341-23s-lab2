@@ -167,6 +167,11 @@ class NetworkPacketTraceConfig final :
 
   enum : int {
     kPollMsFieldNumber = 1,
+    kAggregationThresholdFieldNumber = 2,
+    kInternLimitFieldNumber = 3,
+    kDropLocalPortFieldNumber = 4,
+    kDropRemotePortFieldNumber = 5,
+    kDropTcpFlagsFieldNumber = 6,
   };
   // optional uint32 poll_ms = 1;
   bool has_poll_ms() const;
@@ -181,6 +186,71 @@ class NetworkPacketTraceConfig final :
   void _internal_set_poll_ms(uint32_t value);
   public:
 
+  // optional uint32 aggregation_threshold = 2;
+  bool has_aggregation_threshold() const;
+  private:
+  bool _internal_has_aggregation_threshold() const;
+  public:
+  void clear_aggregation_threshold();
+  uint32_t aggregation_threshold() const;
+  void set_aggregation_threshold(uint32_t value);
+  private:
+  uint32_t _internal_aggregation_threshold() const;
+  void _internal_set_aggregation_threshold(uint32_t value);
+  public:
+
+  // optional uint32 intern_limit = 3;
+  bool has_intern_limit() const;
+  private:
+  bool _internal_has_intern_limit() const;
+  public:
+  void clear_intern_limit();
+  uint32_t intern_limit() const;
+  void set_intern_limit(uint32_t value);
+  private:
+  uint32_t _internal_intern_limit() const;
+  void _internal_set_intern_limit(uint32_t value);
+  public:
+
+  // optional bool drop_local_port = 4;
+  bool has_drop_local_port() const;
+  private:
+  bool _internal_has_drop_local_port() const;
+  public:
+  void clear_drop_local_port();
+  bool drop_local_port() const;
+  void set_drop_local_port(bool value);
+  private:
+  bool _internal_drop_local_port() const;
+  void _internal_set_drop_local_port(bool value);
+  public:
+
+  // optional bool drop_remote_port = 5;
+  bool has_drop_remote_port() const;
+  private:
+  bool _internal_has_drop_remote_port() const;
+  public:
+  void clear_drop_remote_port();
+  bool drop_remote_port() const;
+  void set_drop_remote_port(bool value);
+  private:
+  bool _internal_drop_remote_port() const;
+  void _internal_set_drop_remote_port(bool value);
+  public:
+
+  // optional bool drop_tcp_flags = 6;
+  bool has_drop_tcp_flags() const;
+  private:
+  bool _internal_has_drop_tcp_flags() const;
+  public:
+  void clear_drop_tcp_flags();
+  bool drop_tcp_flags() const;
+  void set_drop_tcp_flags(bool value);
+  private:
+  bool _internal_drop_tcp_flags() const;
+  void _internal_set_drop_tcp_flags(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.NetworkPacketTraceConfig)
  private:
   class _Internal;
@@ -191,6 +261,11 @@ class NetworkPacketTraceConfig final :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   uint32_t poll_ms_;
+  uint32_t aggregation_threshold_;
+  uint32_t intern_limit_;
+  bool drop_local_port_;
+  bool drop_remote_port_;
+  bool drop_tcp_flags_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fandroid_2fnetwork_5ftrace_5fconfig_2eproto;
 };
 // ===================================================================
@@ -230,6 +305,146 @@ inline void NetworkPacketTraceConfig::_internal_set_poll_ms(uint32_t value) {
 inline void NetworkPacketTraceConfig::set_poll_ms(uint32_t value) {
   _internal_set_poll_ms(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.poll_ms)
+}
+
+// optional uint32 aggregation_threshold = 2;
+inline bool NetworkPacketTraceConfig::_internal_has_aggregation_threshold() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NetworkPacketTraceConfig::has_aggregation_threshold() const {
+  return _internal_has_aggregation_threshold();
+}
+inline void NetworkPacketTraceConfig::clear_aggregation_threshold() {
+  aggregation_threshold_ = 0u;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline uint32_t NetworkPacketTraceConfig::_internal_aggregation_threshold() const {
+  return aggregation_threshold_;
+}
+inline uint32_t NetworkPacketTraceConfig::aggregation_threshold() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketTraceConfig.aggregation_threshold)
+  return _internal_aggregation_threshold();
+}
+inline void NetworkPacketTraceConfig::_internal_set_aggregation_threshold(uint32_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  aggregation_threshold_ = value;
+}
+inline void NetworkPacketTraceConfig::set_aggregation_threshold(uint32_t value) {
+  _internal_set_aggregation_threshold(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.aggregation_threshold)
+}
+
+// optional uint32 intern_limit = 3;
+inline bool NetworkPacketTraceConfig::_internal_has_intern_limit() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool NetworkPacketTraceConfig::has_intern_limit() const {
+  return _internal_has_intern_limit();
+}
+inline void NetworkPacketTraceConfig::clear_intern_limit() {
+  intern_limit_ = 0u;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline uint32_t NetworkPacketTraceConfig::_internal_intern_limit() const {
+  return intern_limit_;
+}
+inline uint32_t NetworkPacketTraceConfig::intern_limit() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketTraceConfig.intern_limit)
+  return _internal_intern_limit();
+}
+inline void NetworkPacketTraceConfig::_internal_set_intern_limit(uint32_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  intern_limit_ = value;
+}
+inline void NetworkPacketTraceConfig::set_intern_limit(uint32_t value) {
+  _internal_set_intern_limit(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.intern_limit)
+}
+
+// optional bool drop_local_port = 4;
+inline bool NetworkPacketTraceConfig::_internal_has_drop_local_port() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool NetworkPacketTraceConfig::has_drop_local_port() const {
+  return _internal_has_drop_local_port();
+}
+inline void NetworkPacketTraceConfig::clear_drop_local_port() {
+  drop_local_port_ = false;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline bool NetworkPacketTraceConfig::_internal_drop_local_port() const {
+  return drop_local_port_;
+}
+inline bool NetworkPacketTraceConfig::drop_local_port() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketTraceConfig.drop_local_port)
+  return _internal_drop_local_port();
+}
+inline void NetworkPacketTraceConfig::_internal_set_drop_local_port(bool value) {
+  _has_bits_[0] |= 0x00000008u;
+  drop_local_port_ = value;
+}
+inline void NetworkPacketTraceConfig::set_drop_local_port(bool value) {
+  _internal_set_drop_local_port(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.drop_local_port)
+}
+
+// optional bool drop_remote_port = 5;
+inline bool NetworkPacketTraceConfig::_internal_has_drop_remote_port() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool NetworkPacketTraceConfig::has_drop_remote_port() const {
+  return _internal_has_drop_remote_port();
+}
+inline void NetworkPacketTraceConfig::clear_drop_remote_port() {
+  drop_remote_port_ = false;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline bool NetworkPacketTraceConfig::_internal_drop_remote_port() const {
+  return drop_remote_port_;
+}
+inline bool NetworkPacketTraceConfig::drop_remote_port() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketTraceConfig.drop_remote_port)
+  return _internal_drop_remote_port();
+}
+inline void NetworkPacketTraceConfig::_internal_set_drop_remote_port(bool value) {
+  _has_bits_[0] |= 0x00000010u;
+  drop_remote_port_ = value;
+}
+inline void NetworkPacketTraceConfig::set_drop_remote_port(bool value) {
+  _internal_set_drop_remote_port(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.drop_remote_port)
+}
+
+// optional bool drop_tcp_flags = 6;
+inline bool NetworkPacketTraceConfig::_internal_has_drop_tcp_flags() const {
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool NetworkPacketTraceConfig::has_drop_tcp_flags() const {
+  return _internal_has_drop_tcp_flags();
+}
+inline void NetworkPacketTraceConfig::clear_drop_tcp_flags() {
+  drop_tcp_flags_ = false;
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline bool NetworkPacketTraceConfig::_internal_drop_tcp_flags() const {
+  return drop_tcp_flags_;
+}
+inline bool NetworkPacketTraceConfig::drop_tcp_flags() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketTraceConfig.drop_tcp_flags)
+  return _internal_drop_tcp_flags();
+}
+inline void NetworkPacketTraceConfig::_internal_set_drop_tcp_flags(bool value) {
+  _has_bits_[0] |= 0x00000020u;
+  drop_tcp_flags_ = value;
+}
+inline void NetworkPacketTraceConfig::set_drop_tcp_flags(bool value) {
+  _internal_set_drop_tcp_flags(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketTraceConfig.drop_tcp_flags)
 }
 
 #ifdef __GNUC__

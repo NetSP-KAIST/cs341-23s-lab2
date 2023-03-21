@@ -16,7 +16,7 @@ ubrk_open_72 U
 _ZN7logging10CheckError6streamEv U
 ubrk_next_72 U
 ubrk_getRuleStatus_72 U
-_ZN4base16BasicStringPieceIDsNSt2Cr11char_traitsIDsEEEC1EPKDsNS_8internal14CheckedNumericImEE U
+_ZN4base16BasicStringPieceIDsNSt2Cr11char_traitsIDsEEEC1EPKDsm U
 ubrk_isBoundary_72 U
 _ZNK4base16BasicStringPieceIDsNSt2Cr11char_traitsIDsEEEcvNS1_12basic_stringIDsS3_NS1_9allocatorIDsEEEEEv U
 _ZN7logging10CheckError6DCheckEPKciS2_ U
@@ -24,7 +24,6 @@ _ZN7logging10CheckErrorD1Ev U
 _ZNK4base16BasicStringPieceIDsNSt2Cr11char_traitsIDsEEE6substrEmm U
 memset@GLIBC_2.2.5 U
 _ZNSt2Cr22__libcpp_verbose_abortEPKcz U
-abort@GLIBC_2.2.5 U
 _ZnwmSt11align_val_t U
 _Znwm U
 memmove@GLIBC_2.2.5 U
@@ -38,7 +37,7 @@ _ZN7logging13CheckOpResult16CreateLogMessageEbPKciS2_PcS3_ U
 _ZN4base4LockC1Ev U
 _ZNK4base4Lock14AssertAcquiredEv U
 _ZN4base4Lock18CheckUnheldAndMarkEv U
-_ZN4base8internal8LockImpl24LockInternalWithTrackingEv U
+_ZN4base8internal8LockImpl12LockInternalEv U
 pthread_mutex_trylock@GLIBC_2.2.5 U
 _ZN4base8internal21dcheck_trylock_resultEi U
 _ZN4base4Lock18CheckHeldAndUnmarkEv U
@@ -118,7 +117,6 @@ _ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6appendEPKcm U
 _ZN6icu_728ByteSink15GetAppendBufferEiiPciPi U
 _ZN6icu_728ByteSink5FlushEv U
 udata_setFileAccess_72 U
-utrace_setFunctions_72 U
 utrace_setLevel_72 U
 _ZN7logging15CheckOpValueStrEi U
 _ZN7logging22ShouldCreateLogMessageEi U
@@ -133,12 +131,6 @@ _ZN4base4FileC1EOS0_ U
 _ZN4base16MemoryMappedFile10InitializeENS_4FileERKNS0_6RegionENS0_6AccessE U
 _ZN4base16MemoryMappedFileD1Ev U
 _ZN6icu_728TimeZone13createDefaultEv U
-_ZN4base14HashMetricNameENS_16BasicStringPieceIcNSt2Cr11char_traitsIcEEEE U
-_ZN4base18UmaHistogramSparseEPKci U
-strcmp@GLIBC_2.2.5 U
-_ZN4base23UmaHistogramExactLinearEPKcii U
-_ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1ERKS5_mmRKS4_ U
-memchr@GLIBC_2.2.5 U
 _ZN4base8FilePathC1Ev U
 _ZN4base11PathService3GetEiPNS_8FilePathE U
 _ZN4base16BasicStringPieceIcNSt2Cr11char_traitsIcEEEC1EPKc U
@@ -180,6 +172,7 @@ _ZN6icu_726Locale10getDefaultEv U
 _ZN4base12ToLowerASCIIENS_16BasicStringPieceIcNSt2Cr11char_traitsIcEEEE U
 _ZN6icu_726Locale15createCanonicalEPKc U
 _ZN6icu_726LocaleD1Ev U
+_ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1ERKS5_mmRKS4_ U
 _ZNSt2Cr12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9push_backEc U
 _ZN6icu_726LocaleC1EPKcS2_S2_S2_ U
 _ZN6icu_726Locale10setDefaultERKS0_R10UErrorCode U
@@ -244,6 +237,8 @@ fprintf@GLIBC_2.2.5 U
 strncpy@GLIBC_2.2.5 U
 strchr@GLIBC_2.2.5 U
 memrchr@GLIBC_2.2.5 U
+memchr@GLIBC_2.2.5 U
+strcmp@GLIBC_2.2.5 U
 snprintf@GLIBC_2.2.5 U
 qsort@GLIBC_2.2.5 U
 printf@GLIBC_2.2.5 U

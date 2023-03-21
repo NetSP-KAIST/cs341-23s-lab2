@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -22,7 +23,12 @@ NetworkPacketTraceConfig& NetworkPacketTraceConfig::operator=(NetworkPacketTrace
 
 bool NetworkPacketTraceConfig::operator==(const NetworkPacketTraceConfig& other) const {
   return unknown_fields_ == other.unknown_fields_
-   && poll_ms_ == other.poll_ms_;
+   && poll_ms_ == other.poll_ms_
+   && aggregation_threshold_ == other.aggregation_threshold_
+   && intern_limit_ == other.intern_limit_
+   && drop_local_port_ == other.drop_local_port_
+   && drop_remote_port_ == other.drop_remote_port_
+   && drop_tcp_flags_ == other.drop_tcp_flags_;
 }
 
 bool NetworkPacketTraceConfig::ParseFromArray(const void* raw, size_t size) {
@@ -38,6 +44,21 @@ bool NetworkPacketTraceConfig::ParseFromArray(const void* raw, size_t size) {
       case 1 /* poll_ms */:
         field.get(&poll_ms_);
         break;
+      case 2 /* aggregation_threshold */:
+        field.get(&aggregation_threshold_);
+        break;
+      case 3 /* intern_limit */:
+        field.get(&intern_limit_);
+        break;
+      case 4 /* drop_local_port */:
+        field.get(&drop_local_port_);
+        break;
+      case 5 /* drop_remote_port */:
+        field.get(&drop_remote_port_);
+        break;
+      case 6 /* drop_tcp_flags */:
+        field.get(&drop_tcp_flags_);
+        break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
         break;
@@ -47,13 +68,13 @@ bool NetworkPacketTraceConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string NetworkPacketTraceConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NetworkPacketTraceConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -61,10 +82,35 @@ std::vector<uint8_t> NetworkPacketTraceConfig::SerializeAsArray() const {
 void NetworkPacketTraceConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: poll_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, poll_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, poll_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 2: aggregation_threshold
+  if (_has_field_[2]) {
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, aggregation_threshold_, msg);
+  }
+
+  // Field 3: intern_limit
+  if (_has_field_[3]) {
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, intern_limit_, msg);
+  }
+
+  // Field 4: drop_local_port
+  if (_has_field_[4]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, drop_local_port_, msg);
+  }
+
+  // Field 5: drop_remote_port
+  if (_has_field_[5]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, drop_remote_port_, msg);
+  }
+
+  // Field 6: drop_tcp_flags
+  if (_has_field_[6]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, drop_tcp_flags_, msg);
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

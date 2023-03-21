@@ -129,10 +129,11 @@ class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessage
     kUintValueFieldNumber = 3,
     kIntValueFieldNumber = 4,
     kDoubleValueFieldNumber = 5,
-    kStringValueFieldNumber = 6,
     kPointerValueFieldNumber = 7,
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
+    kStringValueFieldNumber = 6,
+    kStringValueIidFieldNumber = 17,
     kProtoTypeNameFieldNumber = 16,
     kProtoTypeNameIidFieldNumber = 13,
     kProtoValueFieldNumber = 14,
@@ -178,10 +179,6 @@ class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessage
   double double_value() const { return double_value_; }
   void set_double_value(double value) { double_value_ = value; _has_field_.set(5); }
 
-  bool has_string_value() const { return _has_field_[6]; }
-  const std::string& string_value() const { return string_value_; }
-  void set_string_value(const std::string& value) { string_value_ = value; _has_field_.set(6); }
-
   bool has_pointer_value() const { return _has_field_[7]; }
   uint64_t pointer_value() const { return pointer_value_; }
   void set_pointer_value(uint64_t value) { pointer_value_ = value; _has_field_.set(7); }
@@ -193,6 +190,14 @@ class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessage
   bool has_legacy_json_value() const { return _has_field_[9]; }
   const std::string& legacy_json_value() const { return legacy_json_value_; }
   void set_legacy_json_value(const std::string& value) { legacy_json_value_ = value; _has_field_.set(9); }
+
+  bool has_string_value() const { return _has_field_[6]; }
+  const std::string& string_value() const { return string_value_; }
+  void set_string_value(const std::string& value) { string_value_ = value; _has_field_.set(6); }
+
+  bool has_string_value_iid() const { return _has_field_[17]; }
+  uint64_t string_value_iid() const { return string_value_iid_; }
+  void set_string_value_iid(uint64_t value) { string_value_iid_ = value; _has_field_.set(17); }
 
   bool has_proto_type_name() const { return _has_field_[16]; }
   const std::string& proto_type_name() const { return proto_type_name_; }
@@ -226,10 +231,11 @@ class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessage
   uint64_t uint_value_{};
   int64_t int_value_{};
   double double_value_{};
-  std::string string_value_{};
   uint64_t pointer_value_{};
   ::protozero::CopyablePtr<DebugAnnotation_NestedValue> nested_value_;
   std::string legacy_json_value_{};
+  std::string string_value_{};
+  uint64_t string_value_iid_{};
   std::string proto_type_name_{};
   uint64_t proto_type_name_iid_{};
   std::string proto_value_{};
@@ -240,7 +246,7 @@ class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessage
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<17> _has_field_{};
+  std::bitset<18> _has_field_{};
 };
 
 

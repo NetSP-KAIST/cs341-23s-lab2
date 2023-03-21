@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool DebugAnnotationValueTypeName::ParseFromArray(const void* raw, size_t size) 
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -51,13 +52,13 @@ bool DebugAnnotationValueTypeName::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string DebugAnnotationValueTypeName::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DebugAnnotationValueTypeName::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -65,15 +66,15 @@ std::vector<uint8_t> DebugAnnotationValueTypeName::SerializeAsArray() const {
 void DebugAnnotationValueTypeName::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -104,7 +105,7 @@ bool DebugAnnotationName::ParseFromArray(const void* raw, size_t size) {
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -115,13 +116,13 @@ bool DebugAnnotationName::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DebugAnnotationName::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DebugAnnotationName::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -129,15 +130,15 @@ std::vector<uint8_t> DebugAnnotationName::SerializeAsArray() const {
 void DebugAnnotationName::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -156,10 +157,11 @@ bool DebugAnnotation::operator==(const DebugAnnotation& other) const {
    && uint_value_ == other.uint_value_
    && int_value_ == other.int_value_
    && double_value_ == other.double_value_
-   && string_value_ == other.string_value_
    && pointer_value_ == other.pointer_value_
    && nested_value_ == other.nested_value_
    && legacy_json_value_ == other.legacy_json_value_
+   && string_value_ == other.string_value_
+   && string_value_iid_ == other.string_value_iid_
    && proto_type_name_ == other.proto_type_name_
    && proto_type_name_iid_ == other.proto_type_name_iid_
    && proto_value_ == other.proto_value_
@@ -189,7 +191,7 @@ bool DebugAnnotation::ParseFromArray(const void* raw, size_t size) {
         field.get(&name_iid_);
         break;
       case 10 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* bool_value */:
         field.get(&bool_value_);
@@ -203,9 +205,6 @@ bool DebugAnnotation::ParseFromArray(const void* raw, size_t size) {
       case 5 /* double_value */:
         field.get(&double_value_);
         break;
-      case 6 /* string_value */:
-        field.get(&string_value_);
-        break;
       case 7 /* pointer_value */:
         field.get(&pointer_value_);
         break;
@@ -213,10 +212,16 @@ bool DebugAnnotation::ParseFromArray(const void* raw, size_t size) {
         (*nested_value_).ParseFromArray(field.data(), field.size());
         break;
       case 9 /* legacy_json_value */:
-        field.get(&legacy_json_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &legacy_json_value_);
+        break;
+      case 6 /* string_value */:
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
+        break;
+      case 17 /* string_value_iid */:
+        field.get(&string_value_iid_);
         break;
       case 16 /* proto_type_name */:
-        field.get(&proto_type_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &proto_type_name_);
         break;
       case 13 /* proto_type_name_iid */:
         field.get(&proto_type_name_iid_);
@@ -241,13 +246,13 @@ bool DebugAnnotation::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DebugAnnotation::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DebugAnnotation::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -255,42 +260,37 @@ std::vector<uint8_t> DebugAnnotation::SerializeAsArray() const {
 void DebugAnnotation::Serialize(::protozero::Message* msg) const {
   // Field 1: name_iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, name_iid_, msg);
   }
 
   // Field 10: name
   if (_has_field_[10]) {
-    msg->AppendString(10, name_);
+    ::protozero::internal::gen_helpers::SerializeString(10, name_, msg);
   }
 
   // Field 2: bool_value
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, bool_value_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, bool_value_, msg);
   }
 
   // Field 3: uint_value
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, uint_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, uint_value_, msg);
   }
 
   // Field 4: int_value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, int_value_, msg);
   }
 
   // Field 5: double_value
   if (_has_field_[5]) {
-    msg->AppendFixed(5, double_value_);
-  }
-
-  // Field 6: string_value
-  if (_has_field_[6]) {
-    msg->AppendString(6, string_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(5, double_value_, msg);
   }
 
   // Field 7: pointer_value
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, pointer_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, pointer_value_, msg);
   }
 
   // Field 8: nested_value
@@ -300,22 +300,32 @@ void DebugAnnotation::Serialize(::protozero::Message* msg) const {
 
   // Field 9: legacy_json_value
   if (_has_field_[9]) {
-    msg->AppendString(9, legacy_json_value_);
+    ::protozero::internal::gen_helpers::SerializeString(9, legacy_json_value_, msg);
+  }
+
+  // Field 6: string_value
+  if (_has_field_[6]) {
+    ::protozero::internal::gen_helpers::SerializeString(6, string_value_, msg);
+  }
+
+  // Field 17: string_value_iid
+  if (_has_field_[17]) {
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, string_value_iid_, msg);
   }
 
   // Field 16: proto_type_name
   if (_has_field_[16]) {
-    msg->AppendString(16, proto_type_name_);
+    ::protozero::internal::gen_helpers::SerializeString(16, proto_type_name_, msg);
   }
 
   // Field 13: proto_type_name_iid
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, proto_type_name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, proto_type_name_iid_, msg);
   }
 
   // Field 14: proto_value
   if (_has_field_[14]) {
-    msg->AppendString(14, proto_value_);
+    ::protozero::internal::gen_helpers::SerializeString(14, proto_value_, msg);
   }
 
   // Field 11: dict_entries
@@ -328,7 +338,7 @@ void DebugAnnotation::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(12));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -375,7 +385,7 @@ bool DebugAnnotation_NestedValue::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* dict_keys */:
         dict_keys_.emplace_back();
-        field.get(&dict_keys_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &dict_keys_.back());
         break;
       case 3 /* dict_values */:
         dict_values_.emplace_back();
@@ -395,7 +405,7 @@ bool DebugAnnotation_NestedValue::ParseFromArray(const void* raw, size_t size) {
         field.get(&bool_value_);
         break;
       case 8 /* string_value */:
-        field.get(&string_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -406,13 +416,13 @@ bool DebugAnnotation_NestedValue::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DebugAnnotation_NestedValue::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DebugAnnotation_NestedValue::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -420,12 +430,12 @@ std::vector<uint8_t> DebugAnnotation_NestedValue::SerializeAsArray() const {
 void DebugAnnotation_NestedValue::Serialize(::protozero::Message* msg) const {
   // Field 1: nested_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nested_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nested_type_, msg);
   }
 
   // Field 2: dict_keys
   for (auto& it : dict_keys_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: dict_values
@@ -440,25 +450,25 @@ void DebugAnnotation_NestedValue::Serialize(::protozero::Message* msg) const {
 
   // Field 5: int_value
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, int_value_, msg);
   }
 
   // Field 6: double_value
   if (_has_field_[6]) {
-    msg->AppendFixed(6, double_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(6, double_value_, msg);
   }
 
   // Field 7: bool_value
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, bool_value_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, bool_value_, msg);
   }
 
   // Field 8: string_value
   if (_has_field_[8]) {
-    msg->AppendString(8, string_value_);
+    ::protozero::internal::gen_helpers::SerializeString(8, string_value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

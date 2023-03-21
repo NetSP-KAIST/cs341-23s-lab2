@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -38,7 +39,7 @@ bool AndroidGameInterventionListConfig::ParseFromArray(const void* raw, size_t s
     switch (field.id()) {
       case 1 /* package_name_filter */:
         package_name_filter_.emplace_back();
-        field.get(&package_name_filter_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &package_name_filter_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -49,13 +50,13 @@ bool AndroidGameInterventionListConfig::ParseFromArray(const void* raw, size_t s
 }
 
 std::string AndroidGameInterventionListConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidGameInterventionListConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -63,10 +64,10 @@ std::vector<uint8_t> AndroidGameInterventionListConfig::SerializeAsArray() const
 void AndroidGameInterventionListConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: package_name_filter
   for (auto& it : package_name_filter_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

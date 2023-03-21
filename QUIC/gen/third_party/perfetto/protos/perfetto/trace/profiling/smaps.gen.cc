@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -56,13 +57,13 @@ bool SmapsPacket::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmapsPacket::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmapsPacket::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -70,7 +71,7 @@ std::vector<uint8_t> SmapsPacket::SerializeAsArray() const {
 void SmapsPacket::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: entries
@@ -78,7 +79,7 @@ void SmapsPacket::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -119,7 +120,7 @@ bool SmapsEntry::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       case 2 /* size_kb */:
         field.get(&size_kb_);
@@ -131,7 +132,7 @@ bool SmapsEntry::ParseFromArray(const void* raw, size_t size) {
         field.get(&swap_kb_);
         break;
       case 5 /* file_name */:
-        field.get(&file_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &file_name_);
         break;
       case 6 /* start_address */:
         field.get(&start_address_);
@@ -140,10 +141,10 @@ bool SmapsEntry::ParseFromArray(const void* raw, size_t size) {
         field.get(&module_timestamp_);
         break;
       case 8 /* module_debugid */:
-        field.get(&module_debugid_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &module_debugid_);
         break;
       case 9 /* module_debug_path */:
-        field.get(&module_debug_path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &module_debug_path_);
         break;
       case 10 /* protection_flags */:
         field.get(&protection_flags_);
@@ -172,13 +173,13 @@ bool SmapsEntry::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SmapsEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SmapsEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -186,80 +187,80 @@ std::vector<uint8_t> SmapsEntry::SerializeAsArray() const {
 void SmapsEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: path
   if (_has_field_[1]) {
-    msg->AppendString(1, path_);
+    ::protozero::internal::gen_helpers::SerializeString(1, path_, msg);
   }
 
   // Field 2: size_kb
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, size_kb_, msg);
   }
 
   // Field 3: private_dirty_kb
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, private_dirty_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, private_dirty_kb_, msg);
   }
 
   // Field 4: swap_kb
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, swap_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, swap_kb_, msg);
   }
 
   // Field 5: file_name
   if (_has_field_[5]) {
-    msg->AppendString(5, file_name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, file_name_, msg);
   }
 
   // Field 6: start_address
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, start_address_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, start_address_, msg);
   }
 
   // Field 7: module_timestamp
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, module_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, module_timestamp_, msg);
   }
 
   // Field 8: module_debugid
   if (_has_field_[8]) {
-    msg->AppendString(8, module_debugid_);
+    ::protozero::internal::gen_helpers::SerializeString(8, module_debugid_, msg);
   }
 
   // Field 9: module_debug_path
   if (_has_field_[9]) {
-    msg->AppendString(9, module_debug_path_);
+    ::protozero::internal::gen_helpers::SerializeString(9, module_debug_path_, msg);
   }
 
   // Field 10: protection_flags
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, protection_flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, protection_flags_, msg);
   }
 
   // Field 11: private_clean_resident_kb
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, private_clean_resident_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, private_clean_resident_kb_, msg);
   }
 
   // Field 12: shared_dirty_resident_kb
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, shared_dirty_resident_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, shared_dirty_resident_kb_, msg);
   }
 
   // Field 13: shared_clean_resident_kb
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, shared_clean_resident_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, shared_clean_resident_kb_, msg);
   }
 
   // Field 14: locked_kb
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, locked_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, locked_kb_, msg);
   }
 
   // Field 15: proportional_resident_kb
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, proportional_resident_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, proportional_resident_kb_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,13 +43,13 @@ bool ChromeMojoEventInfo::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* watcher_notify_interface_tag */:
-        field.get(&watcher_notify_interface_tag_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &watcher_notify_interface_tag_);
         break;
       case 2 /* ipc_hash */:
         field.get(&ipc_hash_);
         break;
       case 3 /* mojo_interface_tag */:
-        field.get(&mojo_interface_tag_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &mojo_interface_tag_);
         break;
       case 4 /* mojo_interface_method_iid */:
         field.get(&mojo_interface_method_iid_);
@@ -71,13 +72,13 @@ bool ChromeMojoEventInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeMojoEventInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeMojoEventInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -85,40 +86,40 @@ std::vector<uint8_t> ChromeMojoEventInfo::SerializeAsArray() const {
 void ChromeMojoEventInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: watcher_notify_interface_tag
   if (_has_field_[1]) {
-    msg->AppendString(1, watcher_notify_interface_tag_);
+    ::protozero::internal::gen_helpers::SerializeString(1, watcher_notify_interface_tag_, msg);
   }
 
   // Field 2: ipc_hash
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ipc_hash_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ipc_hash_, msg);
   }
 
   // Field 3: mojo_interface_tag
   if (_has_field_[3]) {
-    msg->AppendString(3, mojo_interface_tag_);
+    ::protozero::internal::gen_helpers::SerializeString(3, mojo_interface_tag_, msg);
   }
 
   // Field 4: mojo_interface_method_iid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, mojo_interface_method_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, mojo_interface_method_iid_, msg);
   }
 
   // Field 5: is_reply
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, is_reply_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, is_reply_, msg);
   }
 
   // Field 6: payload_size
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, payload_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, payload_size_, msg);
   }
 
   // Field 7: data_num_bytes
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, data_num_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, data_num_bytes_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

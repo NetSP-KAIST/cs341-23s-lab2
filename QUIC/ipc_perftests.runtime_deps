@@ -17,7 +17,7 @@
 ./libicuuc.so
 icudtl.dat
 ./libmojo_public_system_cpp.so
-./libmojo_public_system.so
+./libmojo_core_embedder.so
 ./libmojo_cpp_platform.so
 ./libnet.so
 ./libthird_party_protobuf_protobuf_lite.so
@@ -28,6 +28,10 @@ icudtl.dat
 ./liburl.so
 ./libbase_i18n.so
 ./libchrome_zlib.so
+./libmojo_core_embedder_features.so
+./libmojo_core_embedder_internal.so
+./libmojo_core_ports.so
+./libmojo_public_system.so
 ./libipc_mojom.so
 ./libipc_mojom_shared.so
 ./libmojo_public_cpp_bindings.so
@@ -37,10 +41,6 @@ icudtl.dat
 ./libmojo_base_mojom_shared.so
 ./libmojo_base_mojom.so
 ./libmojo_base_lib.so
-./libmojo_core_embedder.so
-./libmojo_core_embedder_features.so
-./libmojo_core_embedder_internal.so
-./libmojo_core_ports.so
 ./libmojo_base_shared_typemap_traits.so
 ./libmojo_base_typemap_traits.so
 ./libtracing_cpp.so
@@ -80,10 +80,10 @@ test_fonts/Tinos-Bold.ttf
 test_fonts/Tinos-BoldItalic.ttf
 test_fonts/Tinos-Italic.ttf
 test_fonts/Tinos-Regular.ttf
-fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-7
+fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9
 etc/fonts/fonts.conf
 ./libthird_party_fontconfig.so
 ./libthird_party_freetype_harfbuzz.so
-../../testing/location_tags.json
 bin/run_ipc_perftests
 ../../.vpython3
+../../testing/location_tags.json

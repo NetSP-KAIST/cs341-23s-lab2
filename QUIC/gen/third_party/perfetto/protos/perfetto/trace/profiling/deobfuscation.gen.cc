@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,7 +43,7 @@ bool DeobfuscationMapping::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* package_name */:
-        field.get(&package_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &package_name_);
         break;
       case 2 /* version_code */:
         field.get(&version_code_);
@@ -60,13 +61,13 @@ bool DeobfuscationMapping::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DeobfuscationMapping::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DeobfuscationMapping::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -74,12 +75,12 @@ std::vector<uint8_t> DeobfuscationMapping::SerializeAsArray() const {
 void DeobfuscationMapping::Serialize(::protozero::Message* msg) const {
   // Field 1: package_name
   if (_has_field_[1]) {
-    msg->AppendString(1, package_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, package_name_, msg);
   }
 
   // Field 2: version_code
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, version_code_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, version_code_, msg);
   }
 
   // Field 3: obfuscated_classes
@@ -87,7 +88,7 @@ void DeobfuscationMapping::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -125,10 +126,10 @@ bool ObfuscatedClass::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* obfuscated_name */:
-        field.get(&obfuscated_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &obfuscated_name_);
         break;
       case 2 /* deobfuscated_name */:
-        field.get(&deobfuscated_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &deobfuscated_name_);
         break;
       case 3 /* obfuscated_members */:
         obfuscated_members_.emplace_back();
@@ -147,13 +148,13 @@ bool ObfuscatedClass::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ObfuscatedClass::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ObfuscatedClass::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -161,12 +162,12 @@ std::vector<uint8_t> ObfuscatedClass::SerializeAsArray() const {
 void ObfuscatedClass::Serialize(::protozero::Message* msg) const {
   // Field 1: obfuscated_name
   if (_has_field_[1]) {
-    msg->AppendString(1, obfuscated_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, obfuscated_name_, msg);
   }
 
   // Field 2: deobfuscated_name
   if (_has_field_[2]) {
-    msg->AppendString(2, deobfuscated_name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, deobfuscated_name_, msg);
   }
 
   // Field 3: obfuscated_members
@@ -179,7 +180,7 @@ void ObfuscatedClass::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(4));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -207,10 +208,10 @@ bool ObfuscatedMember::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* obfuscated_name */:
-        field.get(&obfuscated_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &obfuscated_name_);
         break;
       case 2 /* deobfuscated_name */:
-        field.get(&deobfuscated_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &deobfuscated_name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -221,13 +222,13 @@ bool ObfuscatedMember::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ObfuscatedMember::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ObfuscatedMember::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -235,15 +236,15 @@ std::vector<uint8_t> ObfuscatedMember::SerializeAsArray() const {
 void ObfuscatedMember::Serialize(::protozero::Message* msg) const {
   // Field 1: obfuscated_name
   if (_has_field_[1]) {
-    msg->AppendString(1, obfuscated_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, obfuscated_name_, msg);
   }
 
   // Field 2: deobfuscated_name
   if (_has_field_[2]) {
-    msg->AppendString(2, deobfuscated_name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, deobfuscated_name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

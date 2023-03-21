@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -60,13 +61,13 @@ bool PerfettoMetatrace::ParseFromArray(const void* raw, size_t size) {
         field.get(&counter_id_);
         break;
       case 8 /* event_name */:
-        field.get(&event_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &event_name_);
         break;
       case 11 /* event_name_iid */:
         field.get(&event_name_iid_);
         break;
       case 9 /* counter_name */:
-        field.get(&counter_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &counter_name_);
         break;
       case 3 /* event_duration_ns */:
         field.get(&event_duration_ns_);
@@ -97,13 +98,13 @@ bool PerfettoMetatrace::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfettoMetatrace::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfettoMetatrace::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -111,47 +112,47 @@ std::vector<uint8_t> PerfettoMetatrace::SerializeAsArray() const {
 void PerfettoMetatrace::Serialize(::protozero::Message* msg) const {
   // Field 1: event_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, event_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, event_id_, msg);
   }
 
   // Field 2: counter_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, counter_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, counter_id_, msg);
   }
 
   // Field 8: event_name
   if (_has_field_[8]) {
-    msg->AppendString(8, event_name_);
+    ::protozero::internal::gen_helpers::SerializeString(8, event_name_, msg);
   }
 
   // Field 11: event_name_iid
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, event_name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, event_name_iid_, msg);
   }
 
   // Field 9: counter_name
   if (_has_field_[9]) {
-    msg->AppendString(9, counter_name_);
+    ::protozero::internal::gen_helpers::SerializeString(9, counter_name_, msg);
   }
 
   // Field 3: event_duration_ns
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, event_duration_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, event_duration_ns_, msg);
   }
 
   // Field 4: counter_value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, counter_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, counter_value_, msg);
   }
 
   // Field 5: thread_id
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, thread_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, thread_id_, msg);
   }
 
   // Field 6: has_overruns
   if (_has_field_[6]) {
-    msg->AppendTinyVarInt(6, has_overruns_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, has_overruns_, msg);
   }
 
   // Field 7: args
@@ -164,7 +165,7 @@ void PerfettoMetatrace::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(10));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -195,7 +196,7 @@ bool PerfettoMetatrace_InternedString::ParseFromArray(const void* raw, size_t si
         field.get(&iid_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -206,13 +207,13 @@ bool PerfettoMetatrace_InternedString::ParseFromArray(const void* raw, size_t si
 }
 
 std::string PerfettoMetatrace_InternedString::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfettoMetatrace_InternedString::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,15 +221,15 @@ std::vector<uint8_t> PerfettoMetatrace_InternedString::SerializeAsArray() const 
 void PerfettoMetatrace_InternedString::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -258,13 +259,13 @@ bool PerfettoMetatrace_Arg::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* key */:
-        field.get(&key_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &key_);
         break;
       case 3 /* key_iid */:
         field.get(&key_iid_);
         break;
       case 2 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       case 4 /* value_iid */:
         field.get(&value_iid_);
@@ -278,13 +279,13 @@ bool PerfettoMetatrace_Arg::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfettoMetatrace_Arg::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfettoMetatrace_Arg::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -292,25 +293,25 @@ std::vector<uint8_t> PerfettoMetatrace_Arg::SerializeAsArray() const {
 void PerfettoMetatrace_Arg::Serialize(::protozero::Message* msg) const {
   // Field 1: key
   if (_has_field_[1]) {
-    msg->AppendString(1, key_);
+    ::protozero::internal::gen_helpers::SerializeString(1, key_, msg);
   }
 
   // Field 3: key_iid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, key_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, key_iid_, msg);
   }
 
   // Field 2: value
   if (_has_field_[2]) {
-    msg->AppendString(2, value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, value_, msg);
   }
 
   // Field 4: value_iid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, value_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, value_iid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

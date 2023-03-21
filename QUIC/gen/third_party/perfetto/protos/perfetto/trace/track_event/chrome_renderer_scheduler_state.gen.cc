@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool ChromeRendererSchedulerState::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string ChromeRendererSchedulerState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeRendererSchedulerState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> ChromeRendererSchedulerState::SerializeAsArray() const {
 void ChromeRendererSchedulerState::Serialize(::protozero::Message* msg) const {
   // Field 1: rail_mode
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, rail_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, rail_mode_, msg);
   }
 
   // Field 2: is_backgrounded
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, is_backgrounded_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, is_backgrounded_, msg);
   }
 
   // Field 3: is_hidden
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, is_hidden_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, is_hidden_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

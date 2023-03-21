@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool LowmemoryKillFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -63,13 +64,13 @@ bool LowmemoryKillFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string LowmemoryKillFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> LowmemoryKillFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> LowmemoryKillFtraceEvent::SerializeAsArray() const {
 void LowmemoryKillFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: pagecache_size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pagecache_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pagecache_size_, msg);
   }
 
   // Field 4: pagecache_limit
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pagecache_limit_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pagecache_limit_, msg);
   }
 
   // Field 5: free
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, free_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, free_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

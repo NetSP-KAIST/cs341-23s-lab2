@@ -69,20 +69,6 @@
   },
   {
     "traits_headers": [
-      "extensions/common/mojom/activation_sequence_mojom_traits.h"
-    ],
-    "traits_sources": [
-      "//extensions/common/mojom/activation_sequence_mojom_traits.cc"
-    ],
-    "types": [
-      {
-        "cpp": "::extensions::ActivationSequence",
-        "mojom": "extensions.mojom.ActivationSequence"
-      }
-    ]
-  },
-  {
-    "traits_headers": [
       "extensions/common/mojom/stack_frame_mojom_traits.h"
     ],
     "traits_sources": [

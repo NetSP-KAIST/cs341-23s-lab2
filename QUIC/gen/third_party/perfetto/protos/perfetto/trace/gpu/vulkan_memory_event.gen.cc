@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -104,13 +105,13 @@ bool VulkanMemoryEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string VulkanMemoryEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanMemoryEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -118,42 +119,42 @@ std::vector<uint8_t> VulkanMemoryEvent::SerializeAsArray() const {
 void VulkanMemoryEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: source
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, source_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, source_, msg);
   }
 
   // Field 2: operation
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, operation_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, operation_, msg);
   }
 
   // Field 3: timestamp
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, timestamp_, msg);
   }
 
   // Field 4: pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pid_, msg);
   }
 
   // Field 5: memory_address
   if (_has_field_[5]) {
-    msg->AppendFixed(5, memory_address_);
+    ::protozero::internal::gen_helpers::SerializeFixed(5, memory_address_, msg);
   }
 
   // Field 6: memory_size
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, memory_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, memory_size_, msg);
   }
 
   // Field 7: caller_iid
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, caller_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, caller_iid_, msg);
   }
 
   // Field 8: allocation_scope
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, allocation_scope_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, allocation_scope_, msg);
   }
 
   // Field 9: annotations
@@ -163,30 +164,30 @@ void VulkanMemoryEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 16: device
   if (_has_field_[16]) {
-    msg->AppendFixed(16, device_);
+    ::protozero::internal::gen_helpers::SerializeFixed(16, device_, msg);
   }
 
   // Field 17: device_memory
   if (_has_field_[17]) {
-    msg->AppendFixed(17, device_memory_);
+    ::protozero::internal::gen_helpers::SerializeFixed(17, device_memory_, msg);
   }
 
   // Field 18: memory_type
   if (_has_field_[18]) {
-    msg->AppendVarInt(18, memory_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(18, memory_type_, msg);
   }
 
   // Field 19: heap
   if (_has_field_[19]) {
-    msg->AppendVarInt(19, heap_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(19, heap_, msg);
   }
 
   // Field 20: object_handle
   if (_has_field_[20]) {
-    msg->AppendFixed(20, object_handle_);
+    ::protozero::internal::gen_helpers::SerializeFixed(20, object_handle_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -236,13 +237,13 @@ bool VulkanMemoryEventAnnotation::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string VulkanMemoryEventAnnotation::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VulkanMemoryEventAnnotation::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -250,25 +251,25 @@ std::vector<uint8_t> VulkanMemoryEventAnnotation::SerializeAsArray() const {
 void VulkanMemoryEventAnnotation::Serialize(::protozero::Message* msg) const {
   // Field 1: key_iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, key_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, key_iid_, msg);
   }
 
   // Field 2: int_value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, int_value_, msg);
   }
 
   // Field 3: double_value
   if (_has_field_[3]) {
-    msg->AppendFixed(3, double_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, double_value_, msg);
   }
 
   // Field 4: string_iid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, string_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, string_iid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

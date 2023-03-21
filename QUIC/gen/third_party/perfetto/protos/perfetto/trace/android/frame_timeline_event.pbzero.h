@@ -43,13 +43,14 @@ enum JankType : int32_t {
   JANK_BUFFER_STUFFING = 128,
   JANK_UNKNOWN = 256,
   JANK_SF_STUFFING = 512,
+  JANK_DROPPED = 1024,
 };
 } // namespace perfetto_pbzero_enum_FrameTimelineEvent
 using FrameTimelineEvent_JankType = perfetto_pbzero_enum_FrameTimelineEvent::JankType;
 
 
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MIN = FrameTimelineEvent_JankType::JANK_UNSPECIFIED;
-constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType::JANK_SF_STUFFING;
+constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType::JANK_DROPPED;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -87,6 +88,9 @@ const char* FrameTimelineEvent_JankType_Name(::perfetto::protos::pbzero::FrameTi
 
   case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_SF_STUFFING:
     return "JANK_SF_STUFFING";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_DROPPED:
+    return "JANK_DROPPED";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -225,6 +229,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   static const JankType JANK_BUFFER_STUFFING = JankType::JANK_BUFFER_STUFFING;
   static const JankType JANK_UNKNOWN = JankType::JANK_UNKNOWN;
   static const JankType JANK_SF_STUFFING = JankType::JANK_SF_STUFFING;
+  static const JankType JANK_DROPPED = JankType::JANK_DROPPED;
   static const PresentType PRESENT_UNSPECIFIED = PresentType::PRESENT_UNSPECIFIED;
   static const PresentType PRESENT_ON_TIME = PresentType::PRESENT_ON_TIME;
   static const PresentType PRESENT_LATE = PresentType::PRESENT_LATE;

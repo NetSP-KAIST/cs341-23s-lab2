@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool UiState::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string UiState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UiState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,12 +70,12 @@ std::vector<uint8_t> UiState::SerializeAsArray() const {
 void UiState::Serialize(::protozero::Message* msg) const {
   // Field 1: timeline_start_ts
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, timeline_start_ts_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, timeline_start_ts_, msg);
   }
 
   // Field 2: timeline_end_ts
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, timeline_end_ts_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, timeline_end_ts_, msg);
   }
 
   // Field 3: highlight_process
@@ -82,7 +83,7 @@ void UiState::Serialize(::protozero::Message* msg) const {
     (*highlight_process_).Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -113,7 +114,7 @@ bool UiState_HighlightProcess::ParseFromArray(const void* raw, size_t size) {
         field.get(&pid_);
         break;
       case 2 /* cmdline */:
-        field.get(&cmdline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -124,13 +125,13 @@ bool UiState_HighlightProcess::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string UiState_HighlightProcess::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UiState_HighlightProcess::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -138,15 +139,15 @@ std::vector<uint8_t> UiState_HighlightProcess::SerializeAsArray() const {
 void UiState_HighlightProcess::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: cmdline
   if (_has_field_[2]) {
-    msg->AppendString(2, cmdline_);
+    ::protozero::internal::gen_helpers::SerializeString(2, cmdline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

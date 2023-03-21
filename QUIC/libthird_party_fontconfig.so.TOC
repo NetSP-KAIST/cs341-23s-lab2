@@ -29,7 +29,6 @@ printf@GLIBC_2.2.5 U
 strdup@GLIBC_2.2.5 U
 read@GLIBC_2.2.5 U
 munmap@GLIBC_2.2.5 U
-__assert_fail@GLIBC_2.2.5 U
 mmap64@GLIBC_2.2.5 U
 posix_fadvise64@GLIBC_2.2.5 U
 getenv@GLIBC_2.2.5 U
@@ -50,10 +49,9 @@ pthread_mutex_destroy@GLIBC_2.2.5 U
 pthread_mutex_lock@GLIBC_2.2.5 U
 pthread_mutex_unlock@GLIBC_2.2.5 U
 memchr@GLIBC_2.2.5 U
-realpath@GLIBC_2.3 U
 strncmp@GLIBC_2.2.5 U
-calloc@GLIBC_2.2.5 U
 strchr@GLIBC_2.2.5 U
+calloc@GLIBC_2.2.5 U
 strncpy@GLIBC_2.2.5 U
 dgettext@GLIBC_2.2.5 U
 realloc@GLIBC_2.2.5 U
@@ -98,12 +96,14 @@ FT_Select_Size U
 FT_Get_Advance U
 strstr@GLIBC_2.2.5 U
 FT_Load_Sfnt_Table U
+__assert_fail@GLIBC_2.2.5 U
 sprintf@GLIBC_2.2.5 U
-abort@GLIBC_2.2.5 U
 strtod@GLIBC_2.2.5 U
 __isoc99_sscanf@GLIBC_2.7 U
+abort@GLIBC_2.2.5 U
 fstatfs64@GLIBC_2.2.5 U
 getcwd@GLIBC_2.2.5 U
+realpath@GLIBC_2.3 U
 strerror_r@GLIBC_2.2.5 U
 symlink@GLIBC_2.2.5 U
 localeconv@GLIBC_2.2.5 U
@@ -371,6 +371,7 @@ FcLangSetGetLangs T
 FcPatternGetDouble T
 FcCharSetMerge T
 FcLangSetHash T
+FcNameGetConstantFor T
 FcPatternGetMatrix T
 FcUtf16Len T
 FcStrListDone T

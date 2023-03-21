@@ -24,7 +24,8 @@ PROTOBUF_CONSTEXPR AndroidPowerConfig::AndroidPowerConfig(
   : battery_counters_()
   , battery_poll_ms_(0u)
   , collect_power_rails_(false)
-  , collect_energy_estimation_breakdown_(false){}
+  , collect_energy_estimation_breakdown_(false)
+  , collect_entity_state_residency_(false){}
 struct AndroidPowerConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR AndroidPowerConfigDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -126,6 +127,9 @@ class AndroidPowerConfig::_Internal {
   static void set_has_collect_energy_estimation_breakdown(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
+  static void set_has_collect_entity_state_residency(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
 };
 
 AndroidPowerConfig::AndroidPowerConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -141,16 +145,16 @@ AndroidPowerConfig::AndroidPowerConfig(const AndroidPowerConfig& from)
       battery_counters_(from.battery_counters_) {
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   ::memcpy(&battery_poll_ms_, &from.battery_poll_ms_,
-    static_cast<size_t>(reinterpret_cast<char*>(&collect_energy_estimation_breakdown_) -
-    reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_energy_estimation_breakdown_));
+    static_cast<size_t>(reinterpret_cast<char*>(&collect_entity_state_residency_) -
+    reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_entity_state_residency_));
   // @@protoc_insertion_point(copy_constructor:perfetto.protos.AndroidPowerConfig)
 }
 
 inline void AndroidPowerConfig::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&battery_poll_ms_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&collect_energy_estimation_breakdown_) -
-    reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_energy_estimation_breakdown_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&collect_entity_state_residency_) -
+    reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_entity_state_residency_));
 }
 
 AndroidPowerConfig::~AndroidPowerConfig() {
@@ -178,10 +182,10 @@ void AndroidPowerConfig::Clear() {
 
   battery_counters_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&battery_poll_ms_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&collect_energy_estimation_breakdown_) -
-        reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_energy_estimation_breakdown_));
+        reinterpret_cast<char*>(&collect_entity_state_residency_) -
+        reinterpret_cast<char*>(&battery_poll_ms_)) + sizeof(collect_entity_state_residency_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
@@ -242,6 +246,15 @@ const char* AndroidPowerConfig::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
+      // optional bool collect_entity_state_residency = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _Internal::set_has_collect_entity_state_residency(&has_bits);
+          collect_entity_state_residency_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -298,6 +311,12 @@ uint8_t* AndroidPowerConfig::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_collect_energy_estimation_breakdown(), target);
   }
 
+  // optional bool collect_entity_state_residency = 5;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_collect_entity_state_residency(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
         static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
@@ -325,7 +344,7 @@ size_t AndroidPowerConfig::ByteSizeLong() const {
   }
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional uint32 battery_poll_ms = 1;
     if (cached_has_bits & 0x00000001u) {
       total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_battery_poll_ms());
@@ -338,6 +357,11 @@ size_t AndroidPowerConfig::ByteSizeLong() const {
 
     // optional bool collect_energy_estimation_breakdown = 4;
     if (cached_has_bits & 0x00000004u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool collect_entity_state_residency = 5;
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 1;
     }
 
@@ -364,7 +388,7 @@ void AndroidPowerConfig::MergeFrom(const AndroidPowerConfig& from) {
 
   battery_counters_.MergeFrom(from.battery_counters_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       battery_poll_ms_ = from.battery_poll_ms_;
     }
@@ -373,6 +397,9 @@ void AndroidPowerConfig::MergeFrom(const AndroidPowerConfig& from) {
     }
     if (cached_has_bits & 0x00000004u) {
       collect_energy_estimation_breakdown_ = from.collect_energy_estimation_breakdown_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      collect_entity_state_residency_ = from.collect_entity_state_residency_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -396,8 +423,8 @@ void AndroidPowerConfig::InternalSwap(AndroidPowerConfig* other) {
   swap(_has_bits_[0], other->_has_bits_[0]);
   battery_counters_.InternalSwap(&other->battery_counters_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AndroidPowerConfig, collect_energy_estimation_breakdown_)
-      + sizeof(AndroidPowerConfig::collect_energy_estimation_breakdown_)
+      PROTOBUF_FIELD_OFFSET(AndroidPowerConfig, collect_entity_state_residency_)
+      + sizeof(AndroidPowerConfig::collect_entity_state_residency_)
       - PROTOBUF_FIELD_OFFSET(AndroidPowerConfig, battery_poll_ms_)>(
           reinterpret_cast<char*>(&battery_poll_ms_),
           reinterpret_cast<char*>(&other->battery_poll_ms_));

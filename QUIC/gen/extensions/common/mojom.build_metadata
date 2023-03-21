@@ -7,7 +7,6 @@
     "../../url/mojom/url_mojom_gurl.build_metadata"
   ],
   "sources": [
-    "../../../../../extensions/common/mojom/activation_sequence.mojom",
     "../../../../../extensions/common/mojom/api_permission_id.mojom",
     "../../../../../extensions/common/mojom/app_window.mojom",
     "../../../../../extensions/common/mojom/automation_query.mojom",
@@ -29,6 +28,7 @@
     "../../../../../extensions/common/mojom/renderer.mojom",
     "../../../../../extensions/common/mojom/renderer_host.mojom",
     "../../../../../extensions/common/mojom/run_location.mojom",
+    "../../../../../extensions/common/mojom/service_worker_host.mojom",
     "../../../../../extensions/common/mojom/stack_frame.mojom",
     "../../../../../extensions/common/mojom/url_pattern_set.mojom",
     "../../../../../extensions/common/mojom/view_type.mojom"

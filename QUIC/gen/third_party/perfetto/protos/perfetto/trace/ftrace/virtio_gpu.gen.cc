@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -56,7 +57,7 @@ bool VirtioGpuCmdResponseFtraceEvent::ParseFromArray(const void* raw, size_t siz
         field.get(&flags_);
         break;
       case 5 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 6 /* num_free */:
         field.get(&num_free_);
@@ -79,13 +80,13 @@ bool VirtioGpuCmdResponseFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string VirtioGpuCmdResponseFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioGpuCmdResponseFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -93,50 +94,50 @@ std::vector<uint8_t> VirtioGpuCmdResponseFtraceEvent::SerializeAsArray() const {
 void VirtioGpuCmdResponseFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ctx_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ctx_id_, msg);
   }
 
   // Field 2: dev
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dev_, msg);
   }
 
   // Field 3: fence_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, fence_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, fence_id_, msg);
   }
 
   // Field 4: flags
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, flags_, msg);
   }
 
   // Field 5: name
   if (_has_field_[5]) {
-    msg->AppendString(5, name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, name_, msg);
   }
 
   // Field 6: num_free
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, num_free_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, num_free_, msg);
   }
 
   // Field 7: seqno
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, seqno_, msg);
   }
 
   // Field 8: type
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, type_, msg);
   }
 
   // Field 9: vq
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, vq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, vq_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -183,7 +184,7 @@ bool VirtioGpuCmdQueueFtraceEvent::ParseFromArray(const void* raw, size_t size) 
         field.get(&flags_);
         break;
       case 5 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 6 /* num_free */:
         field.get(&num_free_);
@@ -206,13 +207,13 @@ bool VirtioGpuCmdQueueFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string VirtioGpuCmdQueueFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> VirtioGpuCmdQueueFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -220,50 +221,50 @@ std::vector<uint8_t> VirtioGpuCmdQueueFtraceEvent::SerializeAsArray() const {
 void VirtioGpuCmdQueueFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: ctx_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, ctx_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, ctx_id_, msg);
   }
 
   // Field 2: dev
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dev_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dev_, msg);
   }
 
   // Field 3: fence_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, fence_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, fence_id_, msg);
   }
 
   // Field 4: flags
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, flags_, msg);
   }
 
   // Field 5: name
   if (_has_field_[5]) {
-    msg->AppendString(5, name_);
+    ::protozero::internal::gen_helpers::SerializeString(5, name_, msg);
   }
 
   // Field 6: num_free
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, num_free_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, num_free_, msg);
   }
 
   // Field 7: seqno
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, seqno_, msg);
   }
 
   // Field 8: type
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, type_, msg);
   }
 
   // Field 9: vq
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, vq_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, vq_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

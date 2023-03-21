@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -44,13 +45,13 @@ bool SystemInfo::ParseFromArray(const void* raw, size_t size) {
         (*utsname_).ParseFromArray(field.data(), field.size());
         break;
       case 2 /* android_build_fingerprint */:
-        field.get(&android_build_fingerprint_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_build_fingerprint_);
         break;
       case 3 /* hz */:
         field.get(&hz_);
         break;
       case 4 /* tracing_service_version */:
-        field.get(&tracing_service_version_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &tracing_service_version_);
         break;
       case 5 /* android_sdk_version */:
         field.get(&android_sdk_version_);
@@ -67,13 +68,13 @@ bool SystemInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SystemInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SystemInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -86,30 +87,30 @@ void SystemInfo::Serialize(::protozero::Message* msg) const {
 
   // Field 2: android_build_fingerprint
   if (_has_field_[2]) {
-    msg->AppendString(2, android_build_fingerprint_);
+    ::protozero::internal::gen_helpers::SerializeString(2, android_build_fingerprint_, msg);
   }
 
   // Field 3: hz
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, hz_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, hz_, msg);
   }
 
   // Field 4: tracing_service_version
   if (_has_field_[4]) {
-    msg->AppendString(4, tracing_service_version_);
+    ::protozero::internal::gen_helpers::SerializeString(4, tracing_service_version_, msg);
   }
 
   // Field 5: android_sdk_version
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, android_sdk_version_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, android_sdk_version_, msg);
   }
 
   // Field 6: page_size
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, page_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, page_size_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -139,16 +140,16 @@ bool Utsname::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* sysname */:
-        field.get(&sysname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &sysname_);
         break;
       case 2 /* version */:
-        field.get(&version_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &version_);
         break;
       case 3 /* release */:
-        field.get(&release_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &release_);
         break;
       case 4 /* machine */:
-        field.get(&machine_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &machine_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -159,13 +160,13 @@ bool Utsname::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string Utsname::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> Utsname::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -173,25 +174,25 @@ std::vector<uint8_t> Utsname::SerializeAsArray() const {
 void Utsname::Serialize(::protozero::Message* msg) const {
   // Field 1: sysname
   if (_has_field_[1]) {
-    msg->AppendString(1, sysname_);
+    ::protozero::internal::gen_helpers::SerializeString(1, sysname_, msg);
   }
 
   // Field 2: version
   if (_has_field_[2]) {
-    msg->AppendString(2, version_);
+    ::protozero::internal::gen_helpers::SerializeString(2, version_, msg);
   }
 
   // Field 3: release
   if (_has_field_[3]) {
-    msg->AppendString(3, release_);
+    ::protozero::internal::gen_helpers::SerializeString(3, release_, msg);
   }
 
   // Field 4: machine
   if (_has_field_[4]) {
-    msg->AppendString(4, machine_);
+    ::protozero::internal::gen_helpers::SerializeString(4, machine_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

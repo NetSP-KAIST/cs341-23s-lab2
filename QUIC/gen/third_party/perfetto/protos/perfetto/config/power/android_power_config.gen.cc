@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -25,7 +26,8 @@ bool AndroidPowerConfig::operator==(const AndroidPowerConfig& other) const {
    && battery_poll_ms_ == other.battery_poll_ms_
    && battery_counters_ == other.battery_counters_
    && collect_power_rails_ == other.collect_power_rails_
-   && collect_energy_estimation_breakdown_ == other.collect_energy_estimation_breakdown_;
+   && collect_energy_estimation_breakdown_ == other.collect_energy_estimation_breakdown_
+   && collect_entity_state_residency_ == other.collect_entity_state_residency_;
 }
 
 bool AndroidPowerConfig::ParseFromArray(const void* raw, size_t size) {
@@ -52,6 +54,9 @@ bool AndroidPowerConfig::ParseFromArray(const void* raw, size_t size) {
       case 4 /* collect_energy_estimation_breakdown */:
         field.get(&collect_energy_estimation_breakdown_);
         break;
+      case 5 /* collect_entity_state_residency */:
+        field.get(&collect_entity_state_residency_);
+        break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
         break;
@@ -61,13 +66,13 @@ bool AndroidPowerConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidPowerConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidPowerConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -75,25 +80,30 @@ std::vector<uint8_t> AndroidPowerConfig::SerializeAsArray() const {
 void AndroidPowerConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: battery_poll_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, battery_poll_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, battery_poll_ms_, msg);
   }
 
   // Field 2: battery_counters
   for (auto& it : battery_counters_) {
-    msg->AppendVarInt(2, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, it, msg);
   }
 
   // Field 3: collect_power_rails
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, collect_power_rails_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, collect_power_rails_, msg);
   }
 
   // Field 4: collect_energy_estimation_breakdown
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, collect_energy_estimation_breakdown_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, collect_energy_estimation_breakdown_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 5: collect_entity_state_residency
+  if (_has_field_[5]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, collect_entity_state_residency_, msg);
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

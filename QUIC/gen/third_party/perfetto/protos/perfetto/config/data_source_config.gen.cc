@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -30,6 +31,7 @@ bool DataSourceConfig::operator==(const DataSourceConfig& other) const {
    && name_ == other.name_
    && target_buffer_ == other.target_buffer_
    && trace_duration_ms_ == other.trace_duration_ms_
+   && prefer_suspend_clock_for_duration_ == other.prefer_suspend_clock_for_duration_
    && stop_timeout_ms_ == other.stop_timeout_ms_
    && enable_extra_guardrails_ == other.enable_extra_guardrails_
    && session_initiator_ == other.session_initiator_
@@ -70,13 +72,16 @@ bool DataSourceConfig::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* target_buffer */:
         field.get(&target_buffer_);
         break;
       case 3 /* trace_duration_ms */:
         field.get(&trace_duration_ms_);
+        break;
+      case 122 /* prefer_suspend_clock_for_duration */:
+        field.get(&prefer_suspend_clock_for_duration_);
         break;
       case 7 /* stop_timeout_ms */:
         field.get(&stop_timeout_ms_);
@@ -91,55 +96,55 @@ bool DataSourceConfig::ParseFromArray(const void* raw, size_t size) {
         field.get(&tracing_session_id_);
         break;
       case 100 /* ftrace_config */:
-        ftrace_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &ftrace_config_);
         break;
       case 102 /* inode_file_config */:
-        inode_file_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &inode_file_config_);
         break;
       case 103 /* process_stats_config */:
-        process_stats_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &process_stats_config_);
         break;
       case 104 /* sys_stats_config */:
-        sys_stats_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &sys_stats_config_);
         break;
       case 105 /* heapprofd_config */:
-        heapprofd_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &heapprofd_config_);
         break;
       case 110 /* java_hprof_config */:
-        java_hprof_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &java_hprof_config_);
         break;
       case 106 /* android_power_config */:
-        android_power_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_power_config_);
         break;
       case 107 /* android_log_config */:
-        android_log_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_log_config_);
         break;
       case 108 /* gpu_counter_config */:
-        gpu_counter_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &gpu_counter_config_);
         break;
       case 116 /* android_game_intervention_list_config */:
-        android_game_intervention_list_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_game_intervention_list_config_);
         break;
       case 109 /* packages_list_config */:
-        packages_list_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &packages_list_config_);
         break;
       case 111 /* perf_event_config */:
-        perf_event_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &perf_event_config_);
         break;
       case 112 /* vulkan_memory_config */:
-        vulkan_memory_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &vulkan_memory_config_);
         break;
       case 113 /* track_event_config */:
-        track_event_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &track_event_config_);
         break;
       case 114 /* android_polled_state_config */:
-        android_polled_state_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_polled_state_config_);
         break;
       case 118 /* android_system_property_config */:
-        android_system_property_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &android_system_property_config_);
         break;
       case 117 /* statsd_tracing_config */:
-        statsd_tracing_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &statsd_tracing_config_);
         break;
       case 119 /* system_info_config */:
         (*system_info_config_).ParseFromArray(field.data(), field.size());
@@ -151,10 +156,10 @@ bool DataSourceConfig::ParseFromArray(const void* raw, size_t size) {
         (*interceptor_config_).ParseFromArray(field.data(), field.size());
         break;
       case 120 /* network_packet_trace_config */:
-        network_packet_trace_config_ = field.as_std_string();
+        ::protozero::internal::gen_helpers::DeserializeString(field, &network_packet_trace_config_);
         break;
       case 1000 /* legacy_config */:
-        field.get(&legacy_config_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &legacy_config_);
         break;
       case 1001 /* for_testing */:
         (*for_testing_).ParseFromArray(field.data(), field.size());
@@ -168,13 +173,13 @@ bool DataSourceConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DataSourceConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DataSourceConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -182,37 +187,42 @@ std::vector<uint8_t> DataSourceConfig::SerializeAsArray() const {
 void DataSourceConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: target_buffer
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, target_buffer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, target_buffer_, msg);
   }
 
   // Field 3: trace_duration_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, trace_duration_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, trace_duration_ms_, msg);
+  }
+
+  // Field 122: prefer_suspend_clock_for_duration
+  if (_has_field_[122]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(122, prefer_suspend_clock_for_duration_, msg);
   }
 
   // Field 7: stop_timeout_ms
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, stop_timeout_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, stop_timeout_ms_, msg);
   }
 
   // Field 6: enable_extra_guardrails
   if (_has_field_[6]) {
-    msg->AppendTinyVarInt(6, enable_extra_guardrails_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, enable_extra_guardrails_, msg);
   }
 
   // Field 8: session_initiator
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, session_initiator_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, session_initiator_, msg);
   }
 
   // Field 4: tracing_session_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, tracing_session_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, tracing_session_id_, msg);
   }
 
   // Field 100: ftrace_config
@@ -322,7 +332,7 @@ void DataSourceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 1000: legacy_config
   if (_has_field_[1000]) {
-    msg->AppendString(1000, legacy_config_);
+    ::protozero::internal::gen_helpers::SerializeString(1000, legacy_config_, msg);
   }
 
   // Field 1001: for_testing
@@ -330,7 +340,7 @@ void DataSourceConfig::Serialize(::protozero::Message* msg) const {
     (*for_testing_).Serialize(msg->BeginNestedMessage<::protozero::Message>(1001));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

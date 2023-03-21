@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -83,7 +84,7 @@ bool PerfEventConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 18 /* target_installed_by */:
         target_installed_by_.emplace_back();
-        field.get(&target_installed_by_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &target_installed_by_.back());
         break;
       case 1 /* all_cpus */:
         field.get(&all_cpus_);
@@ -100,7 +101,7 @@ bool PerfEventConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 5 /* target_cmdline */:
         target_cmdline_.emplace_back();
-        field.get(&target_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &target_cmdline_.back());
         break;
       case 6 /* exclude_pid */:
         exclude_pid_.emplace_back();
@@ -108,7 +109,7 @@ bool PerfEventConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 7 /* exclude_cmdline */:
         exclude_cmdline_.emplace_back();
-        field.get(&exclude_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &exclude_cmdline_.back());
         break;
       case 11 /* additional_cmdline_count */:
         field.get(&additional_cmdline_count_);
@@ -122,13 +123,13 @@ bool PerfEventConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEventConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEventConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -146,80 +147,80 @@ void PerfEventConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 8: ring_buffer_read_period_ms
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, ring_buffer_read_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, ring_buffer_read_period_ms_, msg);
   }
 
   // Field 3: ring_buffer_pages
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ring_buffer_pages_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ring_buffer_pages_, msg);
   }
 
   // Field 17: max_enqueued_footprint_kb
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, max_enqueued_footprint_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, max_enqueued_footprint_kb_, msg);
   }
 
   // Field 13: max_daemon_memory_kb
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, max_daemon_memory_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, max_daemon_memory_kb_, msg);
   }
 
   // Field 9: remote_descriptor_timeout_ms
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, remote_descriptor_timeout_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, remote_descriptor_timeout_ms_, msg);
   }
 
   // Field 10: unwind_state_clear_period_ms
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, unwind_state_clear_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, unwind_state_clear_period_ms_, msg);
   }
 
   // Field 18: target_installed_by
   for (auto& it : target_installed_by_) {
-    msg->AppendString(18, it);
+    ::protozero::internal::gen_helpers::SerializeString(18, it, msg);
   }
 
   // Field 1: all_cpus
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, all_cpus_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, all_cpus_, msg);
   }
 
   // Field 2: sampling_frequency
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, sampling_frequency_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, sampling_frequency_, msg);
   }
 
   // Field 12: kernel_frames
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, kernel_frames_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, kernel_frames_, msg);
   }
 
   // Field 4: target_pid
   for (auto& it : target_pid_) {
-    msg->AppendVarInt(4, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, it, msg);
   }
 
   // Field 5: target_cmdline
   for (auto& it : target_cmdline_) {
-    msg->AppendString(5, it);
+    ::protozero::internal::gen_helpers::SerializeString(5, it, msg);
   }
 
   // Field 6: exclude_pid
   for (auto& it : exclude_pid_) {
-    msg->AppendVarInt(6, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, it, msg);
   }
 
   // Field 7: exclude_cmdline
   for (auto& it : exclude_cmdline_) {
-    msg->AppendString(7, it);
+    ::protozero::internal::gen_helpers::SerializeString(7, it, msg);
   }
 
   // Field 11: additional_cmdline_count
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, additional_cmdline_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, additional_cmdline_count_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -265,13 +266,13 @@ bool PerfEventConfig_CallstackSampling::ParseFromArray(const void* raw, size_t s
 }
 
 std::string PerfEventConfig_CallstackSampling::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEventConfig_CallstackSampling::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -284,15 +285,15 @@ void PerfEventConfig_CallstackSampling::Serialize(::protozero::Message* msg) con
 
   // Field 2: kernel_frames
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, kernel_frames_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, kernel_frames_, msg);
   }
 
   // Field 3: user_frames
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, user_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, user_frames_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -333,7 +334,7 @@ bool PerfEventConfig_Scope::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* target_cmdline */:
         target_cmdline_.emplace_back();
-        field.get(&target_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &target_cmdline_.back());
         break;
       case 3 /* exclude_pid */:
         exclude_pid_.emplace_back();
@@ -341,7 +342,7 @@ bool PerfEventConfig_Scope::ParseFromArray(const void* raw, size_t size) {
         break;
       case 4 /* exclude_cmdline */:
         exclude_cmdline_.emplace_back();
-        field.get(&exclude_cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &exclude_cmdline_.back());
         break;
       case 5 /* additional_cmdline_count */:
         field.get(&additional_cmdline_count_);
@@ -358,13 +359,13 @@ bool PerfEventConfig_Scope::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string PerfEventConfig_Scope::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> PerfEventConfig_Scope::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -372,35 +373,35 @@ std::vector<uint8_t> PerfEventConfig_Scope::SerializeAsArray() const {
 void PerfEventConfig_Scope::Serialize(::protozero::Message* msg) const {
   // Field 1: target_pid
   for (auto& it : target_pid_) {
-    msg->AppendVarInt(1, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, it, msg);
   }
 
   // Field 2: target_cmdline
   for (auto& it : target_cmdline_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: exclude_pid
   for (auto& it : exclude_pid_) {
-    msg->AppendVarInt(3, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, it, msg);
   }
 
   // Field 4: exclude_cmdline
   for (auto& it : exclude_cmdline_) {
-    msg->AppendString(4, it);
+    ::protozero::internal::gen_helpers::SerializeString(4, it, msg);
   }
 
   // Field 5: additional_cmdline_count
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, additional_cmdline_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, additional_cmdline_count_, msg);
   }
 
   // Field 6: process_shard_count
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, process_shard_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, process_shard_count_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

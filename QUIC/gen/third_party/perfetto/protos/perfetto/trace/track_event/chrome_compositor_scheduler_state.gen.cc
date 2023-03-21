@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -72,13 +73,13 @@ bool CompositorTimingHistory::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CompositorTimingHistory::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CompositorTimingHistory::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -86,40 +87,40 @@ std::vector<uint8_t> CompositorTimingHistory::SerializeAsArray() const {
 void CompositorTimingHistory::Serialize(::protozero::Message* msg) const {
   // Field 1: begin_main_frame_queue_critical_estimate_delta_us
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, begin_main_frame_queue_critical_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, begin_main_frame_queue_critical_estimate_delta_us_, msg);
   }
 
   // Field 2: begin_main_frame_queue_not_critical_estimate_delta_us
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, begin_main_frame_queue_not_critical_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, begin_main_frame_queue_not_critical_estimate_delta_us_, msg);
   }
 
   // Field 3: begin_main_frame_start_to_ready_to_commit_estimate_delta_us
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, begin_main_frame_start_to_ready_to_commit_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, begin_main_frame_start_to_ready_to_commit_estimate_delta_us_, msg);
   }
 
   // Field 4: commit_to_ready_to_activate_estimate_delta_us
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, commit_to_ready_to_activate_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, commit_to_ready_to_activate_estimate_delta_us_, msg);
   }
 
   // Field 5: prepare_tiles_estimate_delta_us
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, prepare_tiles_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, prepare_tiles_estimate_delta_us_, msg);
   }
 
   // Field 6: activate_estimate_delta_us
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, activate_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, activate_estimate_delta_us_, msg);
   }
 
   // Field 7: draw_estimate_delta_us
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, draw_estimate_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, draw_estimate_delta_us_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -169,13 +170,13 @@ bool BeginFrameSourceState::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BeginFrameSourceState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BeginFrameSourceState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -183,17 +184,17 @@ std::vector<uint8_t> BeginFrameSourceState::SerializeAsArray() const {
 void BeginFrameSourceState::Serialize(::protozero::Message* msg) const {
   // Field 1: source_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, source_id_, msg);
   }
 
   // Field 2: paused
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, paused_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, paused_, msg);
   }
 
   // Field 3: num_observers
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, num_observers_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, num_observers_, msg);
   }
 
   // Field 4: last_begin_frame_args
@@ -201,7 +202,7 @@ void BeginFrameSourceState::Serialize(::protozero::Message* msg) const {
     (*last_begin_frame_args_).Serialize(msg->BeginNestedMessage<::protozero::Message>(4));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -279,13 +280,13 @@ bool BeginFrameArgs::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BeginFrameArgs::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BeginFrameArgs::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -293,47 +294,47 @@ std::vector<uint8_t> BeginFrameArgs::SerializeAsArray() const {
 void BeginFrameArgs::Serialize(::protozero::Message* msg) const {
   // Field 1: type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, type_, msg);
   }
 
   // Field 2: source_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, source_id_, msg);
   }
 
   // Field 3: sequence_number
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, sequence_number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, sequence_number_, msg);
   }
 
   // Field 4: frame_time_us
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, frame_time_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, frame_time_us_, msg);
   }
 
   // Field 5: deadline_us
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, deadline_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, deadline_us_, msg);
   }
 
   // Field 6: interval_delta_us
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, interval_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, interval_delta_us_, msg);
   }
 
   // Field 7: on_critical_path
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, on_critical_path_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, on_critical_path_, msg);
   }
 
   // Field 8: animate_only
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, animate_only_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, animate_only_, msg);
   }
 
   // Field 9: source_location_iid
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, source_location_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, source_location_iid_, msg);
   }
 
   // Field 10: source_location
@@ -343,10 +344,10 @@ void BeginFrameArgs::Serialize(::protozero::Message* msg) const {
 
   // Field 12: frames_throttled_since_last
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, frames_throttled_since_last_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, frames_throttled_since_last_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -388,13 +389,13 @@ bool BeginFrameObserverState::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BeginFrameObserverState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BeginFrameObserverState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -402,7 +403,7 @@ std::vector<uint8_t> BeginFrameObserverState::SerializeAsArray() const {
 void BeginFrameObserverState::Serialize(::protozero::Message* msg) const {
   // Field 1: dropped_begin_frame_args
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dropped_begin_frame_args_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dropped_begin_frame_args_, msg);
   }
 
   // Field 2: last_begin_frame_args
@@ -410,7 +411,7 @@ void BeginFrameObserverState::Serialize(::protozero::Message* msg) const {
     (*last_begin_frame_args_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -468,13 +469,13 @@ bool BeginImplFrameArgs::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string BeginImplFrameArgs::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BeginImplFrameArgs::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -482,17 +483,17 @@ std::vector<uint8_t> BeginImplFrameArgs::SerializeAsArray() const {
 void BeginImplFrameArgs::Serialize(::protozero::Message* msg) const {
   // Field 1: updated_at_us
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, updated_at_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, updated_at_us_, msg);
   }
 
   // Field 2: finished_at_us
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, finished_at_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, finished_at_us_, msg);
   }
 
   // Field 3: state
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, state_, msg);
   }
 
   // Field 4: current_args
@@ -510,7 +511,7 @@ void BeginImplFrameArgs::Serialize(::protozero::Message* msg) const {
     (*timestamps_in_us_).Serialize(msg->BeginNestedMessage<::protozero::Message>(6));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -572,13 +573,13 @@ bool BeginImplFrameArgs_TimestampsInUs::ParseFromArray(const void* raw, size_t s
 }
 
 std::string BeginImplFrameArgs_TimestampsInUs::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> BeginImplFrameArgs_TimestampsInUs::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -586,40 +587,40 @@ std::vector<uint8_t> BeginImplFrameArgs_TimestampsInUs::SerializeAsArray() const
 void BeginImplFrameArgs_TimestampsInUs::Serialize(::protozero::Message* msg) const {
   // Field 1: interval_delta
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, interval_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, interval_delta_, msg);
   }
 
   // Field 2: now_to_deadline_delta
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, now_to_deadline_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, now_to_deadline_delta_, msg);
   }
 
   // Field 3: frame_time_to_now_delta
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, frame_time_to_now_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, frame_time_to_now_delta_, msg);
   }
 
   // Field 4: frame_time_to_deadline_delta
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, frame_time_to_deadline_delta_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, frame_time_to_deadline_delta_, msg);
   }
 
   // Field 5: now
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, now_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, now_, msg);
   }
 
   // Field 6: frame_time
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, frame_time_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, frame_time_, msg);
   }
 
   // Field 7: deadline
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, deadline_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, deadline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -661,13 +662,13 @@ bool ChromeCompositorStateMachine::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string ChromeCompositorStateMachine::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeCompositorStateMachine::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -683,7 +684,7 @@ void ChromeCompositorStateMachine::Serialize(::protozero::Message* msg) const {
     (*minor_state_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -897,13 +898,13 @@ bool ChromeCompositorStateMachine_MinorState::ParseFromArray(const void* raw, si
 }
 
 std::string ChromeCompositorStateMachine_MinorState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeCompositorStateMachine_MinorState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -911,230 +912,230 @@ std::vector<uint8_t> ChromeCompositorStateMachine_MinorState::SerializeAsArray()
 void ChromeCompositorStateMachine_MinorState::Serialize(::protozero::Message* msg) const {
   // Field 1: commit_count
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, commit_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, commit_count_, msg);
   }
 
   // Field 2: current_frame_number
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, current_frame_number_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, current_frame_number_, msg);
   }
 
   // Field 3: last_frame_number_submit_performed
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, last_frame_number_submit_performed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, last_frame_number_submit_performed_, msg);
   }
 
   // Field 4: last_frame_number_draw_performed
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, last_frame_number_draw_performed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, last_frame_number_draw_performed_, msg);
   }
 
   // Field 5: last_frame_number_begin_main_frame_sent
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, last_frame_number_begin_main_frame_sent_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, last_frame_number_begin_main_frame_sent_, msg);
   }
 
   // Field 6: did_draw
   if (_has_field_[6]) {
-    msg->AppendTinyVarInt(6, did_draw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, did_draw_, msg);
   }
 
   // Field 7: did_send_begin_main_frame_for_current_frame
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, did_send_begin_main_frame_for_current_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, did_send_begin_main_frame_for_current_frame_, msg);
   }
 
   // Field 8: did_notify_begin_main_frame_not_expected_until
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, did_notify_begin_main_frame_not_expected_until_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, did_notify_begin_main_frame_not_expected_until_, msg);
   }
 
   // Field 9: did_notify_begin_main_frame_not_expected_soon
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, did_notify_begin_main_frame_not_expected_soon_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, did_notify_begin_main_frame_not_expected_soon_, msg);
   }
 
   // Field 10: wants_begin_main_frame_not_expected
   if (_has_field_[10]) {
-    msg->AppendTinyVarInt(10, wants_begin_main_frame_not_expected_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(10, wants_begin_main_frame_not_expected_, msg);
   }
 
   // Field 11: did_commit_during_frame
   if (_has_field_[11]) {
-    msg->AppendTinyVarInt(11, did_commit_during_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(11, did_commit_during_frame_, msg);
   }
 
   // Field 12: did_invalidate_layer_tree_frame_sink
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, did_invalidate_layer_tree_frame_sink_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, did_invalidate_layer_tree_frame_sink_, msg);
   }
 
   // Field 13: did_perform_impl_side_invalidaion
   if (_has_field_[13]) {
-    msg->AppendTinyVarInt(13, did_perform_impl_side_invalidaion_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(13, did_perform_impl_side_invalidaion_, msg);
   }
 
   // Field 14: did_prepare_tiles
   if (_has_field_[14]) {
-    msg->AppendTinyVarInt(14, did_prepare_tiles_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(14, did_prepare_tiles_, msg);
   }
 
   // Field 15: consecutive_checkerboard_animations
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, consecutive_checkerboard_animations_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, consecutive_checkerboard_animations_, msg);
   }
 
   // Field 16: pending_submit_frames
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, pending_submit_frames_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, pending_submit_frames_, msg);
   }
 
   // Field 17: submit_frames_with_current_layer_tree_frame_sink
   if (_has_field_[17]) {
-    msg->AppendVarInt(17, submit_frames_with_current_layer_tree_frame_sink_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(17, submit_frames_with_current_layer_tree_frame_sink_, msg);
   }
 
   // Field 18: needs_redraw
   if (_has_field_[18]) {
-    msg->AppendTinyVarInt(18, needs_redraw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(18, needs_redraw_, msg);
   }
 
   // Field 19: needs_prepare_tiles
   if (_has_field_[19]) {
-    msg->AppendTinyVarInt(19, needs_prepare_tiles_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(19, needs_prepare_tiles_, msg);
   }
 
   // Field 20: needs_begin_main_frame
   if (_has_field_[20]) {
-    msg->AppendTinyVarInt(20, needs_begin_main_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(20, needs_begin_main_frame_, msg);
   }
 
   // Field 21: needs_one_begin_impl_frame
   if (_has_field_[21]) {
-    msg->AppendTinyVarInt(21, needs_one_begin_impl_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(21, needs_one_begin_impl_frame_, msg);
   }
 
   // Field 22: visible
   if (_has_field_[22]) {
-    msg->AppendTinyVarInt(22, visible_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(22, visible_, msg);
   }
 
   // Field 23: begin_frame_source_paused
   if (_has_field_[23]) {
-    msg->AppendTinyVarInt(23, begin_frame_source_paused_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(23, begin_frame_source_paused_, msg);
   }
 
   // Field 24: can_draw
   if (_has_field_[24]) {
-    msg->AppendTinyVarInt(24, can_draw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(24, can_draw_, msg);
   }
 
   // Field 25: resourceless_draw
   if (_has_field_[25]) {
-    msg->AppendTinyVarInt(25, resourceless_draw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(25, resourceless_draw_, msg);
   }
 
   // Field 26: has_pending_tree
   if (_has_field_[26]) {
-    msg->AppendTinyVarInt(26, has_pending_tree_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(26, has_pending_tree_, msg);
   }
 
   // Field 27: pending_tree_is_ready_for_activation
   if (_has_field_[27]) {
-    msg->AppendTinyVarInt(27, pending_tree_is_ready_for_activation_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(27, pending_tree_is_ready_for_activation_, msg);
   }
 
   // Field 28: active_tree_needs_first_draw
   if (_has_field_[28]) {
-    msg->AppendTinyVarInt(28, active_tree_needs_first_draw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(28, active_tree_needs_first_draw_, msg);
   }
 
   // Field 29: active_tree_is_ready_to_draw
   if (_has_field_[29]) {
-    msg->AppendTinyVarInt(29, active_tree_is_ready_to_draw_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(29, active_tree_is_ready_to_draw_, msg);
   }
 
   // Field 30: did_create_and_initialize_first_layer_tree_frame_sink
   if (_has_field_[30]) {
-    msg->AppendTinyVarInt(30, did_create_and_initialize_first_layer_tree_frame_sink_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(30, did_create_and_initialize_first_layer_tree_frame_sink_, msg);
   }
 
   // Field 31: tree_priority
   if (_has_field_[31]) {
-    msg->AppendVarInt(31, tree_priority_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(31, tree_priority_, msg);
   }
 
   // Field 32: scroll_handler_state
   if (_has_field_[32]) {
-    msg->AppendVarInt(32, scroll_handler_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(32, scroll_handler_state_, msg);
   }
 
   // Field 33: critical_begin_main_frame_to_activate_is_fast
   if (_has_field_[33]) {
-    msg->AppendTinyVarInt(33, critical_begin_main_frame_to_activate_is_fast_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(33, critical_begin_main_frame_to_activate_is_fast_, msg);
   }
 
   // Field 34: main_thread_missed_last_deadline
   if (_has_field_[34]) {
-    msg->AppendTinyVarInt(34, main_thread_missed_last_deadline_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(34, main_thread_missed_last_deadline_, msg);
   }
 
   // Field 36: video_needs_begin_frames
   if (_has_field_[36]) {
-    msg->AppendTinyVarInt(36, video_needs_begin_frames_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(36, video_needs_begin_frames_, msg);
   }
 
   // Field 37: defer_begin_main_frame
   if (_has_field_[37]) {
-    msg->AppendTinyVarInt(37, defer_begin_main_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(37, defer_begin_main_frame_, msg);
   }
 
   // Field 38: last_commit_had_no_updates
   if (_has_field_[38]) {
-    msg->AppendTinyVarInt(38, last_commit_had_no_updates_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(38, last_commit_had_no_updates_, msg);
   }
 
   // Field 39: did_draw_in_last_frame
   if (_has_field_[39]) {
-    msg->AppendTinyVarInt(39, did_draw_in_last_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(39, did_draw_in_last_frame_, msg);
   }
 
   // Field 40: did_submit_in_last_frame
   if (_has_field_[40]) {
-    msg->AppendTinyVarInt(40, did_submit_in_last_frame_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(40, did_submit_in_last_frame_, msg);
   }
 
   // Field 41: needs_impl_side_invalidation
   if (_has_field_[41]) {
-    msg->AppendTinyVarInt(41, needs_impl_side_invalidation_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(41, needs_impl_side_invalidation_, msg);
   }
 
   // Field 42: current_pending_tree_is_impl_side
   if (_has_field_[42]) {
-    msg->AppendTinyVarInt(42, current_pending_tree_is_impl_side_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(42, current_pending_tree_is_impl_side_, msg);
   }
 
   // Field 43: previous_pending_tree_was_impl_side
   if (_has_field_[43]) {
-    msg->AppendTinyVarInt(43, previous_pending_tree_was_impl_side_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(43, previous_pending_tree_was_impl_side_, msg);
   }
 
   // Field 44: processing_animation_worklets_for_active_tree
   if (_has_field_[44]) {
-    msg->AppendTinyVarInt(44, processing_animation_worklets_for_active_tree_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(44, processing_animation_worklets_for_active_tree_, msg);
   }
 
   // Field 45: processing_animation_worklets_for_pending_tree
   if (_has_field_[45]) {
-    msg->AppendTinyVarInt(45, processing_animation_worklets_for_pending_tree_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(45, processing_animation_worklets_for_pending_tree_, msg);
   }
 
   // Field 46: processing_paint_worklets_for_pending_tree
   if (_has_field_[46]) {
-    msg->AppendTinyVarInt(46, processing_paint_worklets_for_pending_tree_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(46, processing_paint_worklets_for_pending_tree_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1188,13 +1189,13 @@ bool ChromeCompositorStateMachine_MajorState::ParseFromArray(const void* raw, si
 }
 
 std::string ChromeCompositorStateMachine_MajorState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeCompositorStateMachine_MajorState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1202,30 +1203,30 @@ std::vector<uint8_t> ChromeCompositorStateMachine_MajorState::SerializeAsArray()
 void ChromeCompositorStateMachine_MajorState::Serialize(::protozero::Message* msg) const {
   // Field 1: next_action
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, next_action_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, next_action_, msg);
   }
 
   // Field 2: begin_impl_frame_state
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, begin_impl_frame_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, begin_impl_frame_state_, msg);
   }
 
   // Field 3: begin_main_frame_state
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, begin_main_frame_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, begin_main_frame_state_, msg);
   }
 
   // Field 4: layer_tree_frame_sink_state
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, layer_tree_frame_sink_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, layer_tree_frame_sink_state_, msg);
   }
 
   // Field 5: forced_redraw_state
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, forced_redraw_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, forced_redraw_state_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1323,13 +1324,13 @@ bool ChromeCompositorSchedulerState::ParseFromArray(const void* raw, size_t size
 }
 
 std::string ChromeCompositorSchedulerState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeCompositorSchedulerState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1342,57 +1343,57 @@ void ChromeCompositorSchedulerState::Serialize(::protozero::Message* msg) const 
 
   // Field 2: observing_begin_frame_source
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, observing_begin_frame_source_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, observing_begin_frame_source_, msg);
   }
 
   // Field 3: begin_impl_frame_deadline_task
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, begin_impl_frame_deadline_task_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, begin_impl_frame_deadline_task_, msg);
   }
 
   // Field 4: pending_begin_frame_task
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, pending_begin_frame_task_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, pending_begin_frame_task_, msg);
   }
 
   // Field 5: skipped_last_frame_missed_exceeded_deadline
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, skipped_last_frame_missed_exceeded_deadline_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, skipped_last_frame_missed_exceeded_deadline_, msg);
   }
 
   // Field 7: inside_action
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, inside_action_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, inside_action_, msg);
   }
 
   // Field 8: deadline_mode
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, deadline_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, deadline_mode_, msg);
   }
 
   // Field 9: deadline_us
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, deadline_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, deadline_us_, msg);
   }
 
   // Field 10: deadline_scheduled_at_us
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, deadline_scheduled_at_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, deadline_scheduled_at_us_, msg);
   }
 
   // Field 11: now_us
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, now_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, now_us_, msg);
   }
 
   // Field 12: now_to_deadline_delta_us
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, now_to_deadline_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, now_to_deadline_delta_us_, msg);
   }
 
   // Field 13: now_to_deadline_scheduled_at_delta_us
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, now_to_deadline_scheduled_at_delta_us_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, now_to_deadline_scheduled_at_delta_us_, msg);
   }
 
   // Field 14: begin_impl_frame_args
@@ -1415,7 +1416,7 @@ void ChromeCompositorSchedulerState::Serialize(::protozero::Message* msg) const 
     (*compositor_timing_history_).Serialize(msg->BeginNestedMessage<::protozero::Message>(17));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

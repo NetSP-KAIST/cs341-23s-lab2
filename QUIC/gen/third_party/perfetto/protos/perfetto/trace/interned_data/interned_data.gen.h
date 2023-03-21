@@ -16,6 +16,8 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class InternedData;
+class NetworkPacketContext;
+class NetworkPacketEvent;
 class InternedString;
 class InternedGpuRenderStageSpecification;
 class InternedGraphicsContext;
@@ -31,6 +33,7 @@ class DebugAnnotationValueTypeName;
 class DebugAnnotationName;
 class EventName;
 class EventCategory;
+enum TrafficDirection : int;
 enum InternedGpuRenderStageSpecification_RenderStageCategory : int;
 enum InternedGraphicsContext_Api : int;
 }  // namespace perfetto
@@ -68,6 +71,8 @@ class PERFETTO_EXPORT_COMPONENT InternedData : public ::protozero::CppMessageObj
     kGraphicsContextsFieldNumber = 23,
     kGpuSpecificationsFieldNumber = 24,
     kKernelSymbolsFieldNumber = 26,
+    kDebugAnnotationStringValuesFieldNumber = 29,
+    kPacketContextFieldNumber = 30,
   };
 
   InternedData();
@@ -204,6 +209,18 @@ class PERFETTO_EXPORT_COMPONENT InternedData : public ::protozero::CppMessageObj
   void clear_kernel_symbols();
   InternedString* add_kernel_symbols();
 
+  const std::vector<InternedString>& debug_annotation_string_values() const { return debug_annotation_string_values_; }
+  std::vector<InternedString>* mutable_debug_annotation_string_values() { return &debug_annotation_string_values_; }
+  int debug_annotation_string_values_size() const;
+  void clear_debug_annotation_string_values();
+  InternedString* add_debug_annotation_string_values();
+
+  const std::vector<NetworkPacketContext>& packet_context() const { return packet_context_; }
+  std::vector<NetworkPacketContext>* mutable_packet_context() { return &packet_context_; }
+  int packet_context_size() const;
+  void clear_packet_context();
+  NetworkPacketContext* add_packet_context();
+
  private:
   std::vector<EventCategory> event_categories_;
   std::vector<EventName> event_names_;
@@ -225,12 +242,14 @@ class PERFETTO_EXPORT_COMPONENT InternedData : public ::protozero::CppMessageObj
   std::vector<InternedGraphicsContext> graphics_contexts_;
   std::vector<InternedGpuRenderStageSpecification> gpu_specifications_;
   std::vector<InternedString> kernel_symbols_;
+  std::vector<InternedString> debug_annotation_string_values_;
+  std::vector<NetworkPacketContext> packet_context_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<29> _has_field_{};
+  std::bitset<31> _has_field_{};
 };
 
 }  // namespace perfetto

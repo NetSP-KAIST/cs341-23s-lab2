@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,19 +50,19 @@ bool TrackEventConfig::ParseFromArray(const void* raw, size_t size) {
     switch (field.id()) {
       case 1 /* disabled_categories */:
         disabled_categories_.emplace_back();
-        field.get(&disabled_categories_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &disabled_categories_.back());
         break;
       case 2 /* enabled_categories */:
         enabled_categories_.emplace_back();
-        field.get(&enabled_categories_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &enabled_categories_.back());
         break;
       case 3 /* disabled_tags */:
         disabled_tags_.emplace_back();
-        field.get(&disabled_tags_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &disabled_tags_.back());
         break;
       case 4 /* enabled_tags */:
         enabled_tags_.emplace_back();
-        field.get(&enabled_tags_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &enabled_tags_.back());
         break;
       case 5 /* disable_incremental_timestamps */:
         field.get(&disable_incremental_timestamps_);
@@ -87,13 +88,13 @@ bool TrackEventConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackEventConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackEventConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -101,50 +102,50 @@ std::vector<uint8_t> TrackEventConfig::SerializeAsArray() const {
 void TrackEventConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: disabled_categories
   for (auto& it : disabled_categories_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
   // Field 2: enabled_categories
   for (auto& it : enabled_categories_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: disabled_tags
   for (auto& it : disabled_tags_) {
-    msg->AppendString(3, it);
+    ::protozero::internal::gen_helpers::SerializeString(3, it, msg);
   }
 
   // Field 4: enabled_tags
   for (auto& it : enabled_tags_) {
-    msg->AppendString(4, it);
+    ::protozero::internal::gen_helpers::SerializeString(4, it, msg);
   }
 
   // Field 5: disable_incremental_timestamps
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, disable_incremental_timestamps_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, disable_incremental_timestamps_, msg);
   }
 
   // Field 6: timestamp_unit_multiplier
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, timestamp_unit_multiplier_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, timestamp_unit_multiplier_, msg);
   }
 
   // Field 7: filter_debug_annotations
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, filter_debug_annotations_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, filter_debug_annotations_, msg);
   }
 
   // Field 8: enable_thread_time_sampling
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, enable_thread_time_sampling_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, enable_thread_time_sampling_, msg);
   }
 
   // Field 9: filter_dynamic_event_names
   if (_has_field_[9]) {
-    msg->AppendTinyVarInt(9, filter_dynamic_event_names_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(9, filter_dynamic_event_names_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

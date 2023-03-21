@@ -32,6 +32,11 @@ class PERFETTO_EXPORT_COMPONENT NetworkPacketTraceConfig : public ::protozero::C
  public:
   enum FieldNumbers {
     kPollMsFieldNumber = 1,
+    kAggregationThresholdFieldNumber = 2,
+    kInternLimitFieldNumber = 3,
+    kDropLocalPortFieldNumber = 4,
+    kDropRemotePortFieldNumber = 5,
+    kDropTcpFlagsFieldNumber = 6,
   };
 
   NetworkPacketTraceConfig();
@@ -52,14 +57,39 @@ class PERFETTO_EXPORT_COMPONENT NetworkPacketTraceConfig : public ::protozero::C
   uint32_t poll_ms() const { return poll_ms_; }
   void set_poll_ms(uint32_t value) { poll_ms_ = value; _has_field_.set(1); }
 
+  bool has_aggregation_threshold() const { return _has_field_[2]; }
+  uint32_t aggregation_threshold() const { return aggregation_threshold_; }
+  void set_aggregation_threshold(uint32_t value) { aggregation_threshold_ = value; _has_field_.set(2); }
+
+  bool has_intern_limit() const { return _has_field_[3]; }
+  uint32_t intern_limit() const { return intern_limit_; }
+  void set_intern_limit(uint32_t value) { intern_limit_ = value; _has_field_.set(3); }
+
+  bool has_drop_local_port() const { return _has_field_[4]; }
+  bool drop_local_port() const { return drop_local_port_; }
+  void set_drop_local_port(bool value) { drop_local_port_ = value; _has_field_.set(4); }
+
+  bool has_drop_remote_port() const { return _has_field_[5]; }
+  bool drop_remote_port() const { return drop_remote_port_; }
+  void set_drop_remote_port(bool value) { drop_remote_port_ = value; _has_field_.set(5); }
+
+  bool has_drop_tcp_flags() const { return _has_field_[6]; }
+  bool drop_tcp_flags() const { return drop_tcp_flags_; }
+  void set_drop_tcp_flags(bool value) { drop_tcp_flags_ = value; _has_field_.set(6); }
+
  private:
   uint32_t poll_ms_{};
+  uint32_t aggregation_threshold_{};
+  uint32_t intern_limit_{};
+  bool drop_local_port_{};
+  bool drop_remote_port_{};
+  bool drop_tcp_flags_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<7> _has_field_{};
 };
 
 }  // namespace perfetto

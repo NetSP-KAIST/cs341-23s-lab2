@@ -439,10 +439,11 @@ class DebugAnnotation final :
     kUintValue = 3,
     kIntValue = 4,
     kDoubleValue = 5,
-    kStringValue = 6,
     kPointerValue = 7,
     kNestedValue = 8,
     kLegacyJsonValue = 9,
+    kStringValue = 6,
+    kStringValueIid = 17,
     VALUE_NOT_SET = 0,
   };
 
@@ -532,10 +533,11 @@ class DebugAnnotation final :
     kUintValueFieldNumber = 3,
     kIntValueFieldNumber = 4,
     kDoubleValueFieldNumber = 5,
-    kStringValueFieldNumber = 6,
     kPointerValueFieldNumber = 7,
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
+    kStringValueFieldNumber = 6,
+    kStringValueIidFieldNumber = 17,
     kProtoTypeNameFieldNumber = 16,
     kProtoTypeNameIidFieldNumber = 13,
   };
@@ -676,24 +678,6 @@ class DebugAnnotation final :
   void _internal_set_double_value(double value);
   public:
 
-  // string string_value = 6;
-  bool has_string_value() const;
-  private:
-  bool _internal_has_string_value() const;
-  public:
-  void clear_string_value();
-  const std::string& string_value() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_string_value(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_string_value();
-  PROTOBUF_NODISCARD std::string* release_string_value();
-  void set_allocated_string_value(std::string* string_value);
-  private:
-  const std::string& _internal_string_value() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_string_value(const std::string& value);
-  std::string* _internal_mutable_string_value();
-  public:
-
   // uint64 pointer_value = 7;
   bool has_pointer_value() const;
   private:
@@ -743,6 +727,37 @@ class DebugAnnotation final :
   std::string* _internal_mutable_legacy_json_value();
   public:
 
+  // string string_value = 6;
+  bool has_string_value() const;
+  private:
+  bool _internal_has_string_value() const;
+  public:
+  void clear_string_value();
+  const std::string& string_value() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_string_value(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_string_value();
+  PROTOBUF_NODISCARD std::string* release_string_value();
+  void set_allocated_string_value(std::string* string_value);
+  private:
+  const std::string& _internal_string_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_string_value(const std::string& value);
+  std::string* _internal_mutable_string_value();
+  public:
+
+  // uint64 string_value_iid = 17;
+  bool has_string_value_iid() const;
+  private:
+  bool _internal_has_string_value_iid() const;
+  public:
+  void clear_string_value_iid();
+  uint64_t string_value_iid() const;
+  void set_string_value_iid(uint64_t value);
+  private:
+  uint64_t _internal_string_value_iid() const;
+  void _internal_set_string_value_iid(uint64_t value);
+  public:
+
   // string proto_type_name = 16;
   bool has_proto_type_name() const;
   private:
@@ -789,10 +804,11 @@ class DebugAnnotation final :
   void set_has_uint_value();
   void set_has_int_value();
   void set_has_double_value();
-  void set_has_string_value();
   void set_has_pointer_value();
   void set_has_nested_value();
   void set_has_legacy_json_value();
+  void set_has_string_value();
+  void set_has_string_value_iid();
   void set_has_proto_type_name();
   void set_has_proto_type_name_iid();
 
@@ -826,10 +842,11 @@ class DebugAnnotation final :
     uint64_t uint_value_;
     int64_t int_value_;
     double double_value_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr string_value_;
     uint64_t pointer_value_;
     ::perfetto::protos::DebugAnnotation_NestedValue* nested_value_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr legacy_json_value_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr string_value_;
+    uint64_t string_value_iid_;
   } value_;
   union ProtoTypeDescriptorUnion {
     constexpr ProtoTypeDescriptorUnion() : _constinit_{} {}
@@ -1777,83 +1794,6 @@ inline void DebugAnnotation::set_double_value(double value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.DebugAnnotation.double_value)
 }
 
-// string string_value = 6;
-inline bool DebugAnnotation::_internal_has_string_value() const {
-  return value_case() == kStringValue;
-}
-inline bool DebugAnnotation::has_string_value() const {
-  return _internal_has_string_value();
-}
-inline void DebugAnnotation::set_has_string_value() {
-  _oneof_case_[1] = kStringValue;
-}
-inline void DebugAnnotation::clear_string_value() {
-  if (_internal_has_string_value()) {
-    value_.string_value_.Destroy();
-    clear_has_value();
-  }
-}
-inline const std::string& DebugAnnotation::string_value() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.DebugAnnotation.string_value)
-  return _internal_string_value();
-}
-template <typename ArgT0, typename... ArgT>
-inline void DebugAnnotation::set_string_value(ArgT0&& arg0, ArgT... args) {
-  if (!_internal_has_string_value()) {
-    clear_value();
-    set_has_string_value();
-    value_.string_value_.InitDefault();
-  }
-  value_.string_value_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:perfetto.protos.DebugAnnotation.string_value)
-}
-inline std::string* DebugAnnotation::mutable_string_value() {
-  std::string* _s = _internal_mutable_string_value();
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.DebugAnnotation.string_value)
-  return _s;
-}
-inline const std::string& DebugAnnotation::_internal_string_value() const {
-  if (_internal_has_string_value()) {
-    return value_.string_value_.Get();
-  }
-  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
-}
-inline void DebugAnnotation::_internal_set_string_value(const std::string& value) {
-  if (!_internal_has_string_value()) {
-    clear_value();
-    set_has_string_value();
-    value_.string_value_.InitDefault();
-  }
-  value_.string_value_.Set(value, GetArenaForAllocation());
-}
-inline std::string* DebugAnnotation::_internal_mutable_string_value() {
-  if (!_internal_has_string_value()) {
-    clear_value();
-    set_has_string_value();
-    value_.string_value_.InitDefault();
-  }
-  return value_.string_value_.Mutable(      GetArenaForAllocation());
-}
-inline std::string* DebugAnnotation::release_string_value() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.DebugAnnotation.string_value)
-  if (_internal_has_string_value()) {
-    clear_has_value();
-    return value_.string_value_.Release();
-  } else {
-    return nullptr;
-  }
-}
-inline void DebugAnnotation::set_allocated_string_value(std::string* string_value) {
-  if (has_value()) {
-    clear_value();
-  }
-  if (string_value != nullptr) {
-    set_has_string_value();
-    value_.string_value_.InitAllocated(string_value, GetArenaForAllocation());
-  }
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DebugAnnotation.string_value)
-}
-
 // uint64 pointer_value = 7;
 inline bool DebugAnnotation::_internal_has_pointer_value() const {
   return value_case() == kPointerValue;
@@ -2041,6 +1981,121 @@ inline void DebugAnnotation::set_allocated_legacy_json_value(std::string* legacy
     value_.legacy_json_value_.InitAllocated(legacy_json_value, GetArenaForAllocation());
   }
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DebugAnnotation.legacy_json_value)
+}
+
+// string string_value = 6;
+inline bool DebugAnnotation::_internal_has_string_value() const {
+  return value_case() == kStringValue;
+}
+inline bool DebugAnnotation::has_string_value() const {
+  return _internal_has_string_value();
+}
+inline void DebugAnnotation::set_has_string_value() {
+  _oneof_case_[1] = kStringValue;
+}
+inline void DebugAnnotation::clear_string_value() {
+  if (_internal_has_string_value()) {
+    value_.string_value_.Destroy();
+    clear_has_value();
+  }
+}
+inline const std::string& DebugAnnotation::string_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DebugAnnotation.string_value)
+  return _internal_string_value();
+}
+template <typename ArgT0, typename... ArgT>
+inline void DebugAnnotation::set_string_value(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_string_value()) {
+    clear_value();
+    set_has_string_value();
+    value_.string_value_.InitDefault();
+  }
+  value_.string_value_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DebugAnnotation.string_value)
+}
+inline std::string* DebugAnnotation::mutable_string_value() {
+  std::string* _s = _internal_mutable_string_value();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DebugAnnotation.string_value)
+  return _s;
+}
+inline const std::string& DebugAnnotation::_internal_string_value() const {
+  if (_internal_has_string_value()) {
+    return value_.string_value_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void DebugAnnotation::_internal_set_string_value(const std::string& value) {
+  if (!_internal_has_string_value()) {
+    clear_value();
+    set_has_string_value();
+    value_.string_value_.InitDefault();
+  }
+  value_.string_value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DebugAnnotation::_internal_mutable_string_value() {
+  if (!_internal_has_string_value()) {
+    clear_value();
+    set_has_string_value();
+    value_.string_value_.InitDefault();
+  }
+  return value_.string_value_.Mutable(      GetArenaForAllocation());
+}
+inline std::string* DebugAnnotation::release_string_value() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DebugAnnotation.string_value)
+  if (_internal_has_string_value()) {
+    clear_has_value();
+    return value_.string_value_.Release();
+  } else {
+    return nullptr;
+  }
+}
+inline void DebugAnnotation::set_allocated_string_value(std::string* string_value) {
+  if (has_value()) {
+    clear_value();
+  }
+  if (string_value != nullptr) {
+    set_has_string_value();
+    value_.string_value_.InitAllocated(string_value, GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DebugAnnotation.string_value)
+}
+
+// uint64 string_value_iid = 17;
+inline bool DebugAnnotation::_internal_has_string_value_iid() const {
+  return value_case() == kStringValueIid;
+}
+inline bool DebugAnnotation::has_string_value_iid() const {
+  return _internal_has_string_value_iid();
+}
+inline void DebugAnnotation::set_has_string_value_iid() {
+  _oneof_case_[1] = kStringValueIid;
+}
+inline void DebugAnnotation::clear_string_value_iid() {
+  if (_internal_has_string_value_iid()) {
+    value_.string_value_iid_ = uint64_t{0u};
+    clear_has_value();
+  }
+}
+inline uint64_t DebugAnnotation::_internal_string_value_iid() const {
+  if (_internal_has_string_value_iid()) {
+    return value_.string_value_iid_;
+  }
+  return uint64_t{0u};
+}
+inline void DebugAnnotation::_internal_set_string_value_iid(uint64_t value) {
+  if (!_internal_has_string_value_iid()) {
+    clear_value();
+    set_has_string_value_iid();
+  }
+  value_.string_value_iid_ = value;
+}
+inline uint64_t DebugAnnotation::string_value_iid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DebugAnnotation.string_value_iid)
+  return _internal_string_value_iid();
+}
+inline void DebugAnnotation::set_string_value_iid(uint64_t value) {
+  _internal_set_string_value_iid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DebugAnnotation.string_value_iid)
 }
 
 // string proto_type_name = 16;

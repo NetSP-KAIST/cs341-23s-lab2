@@ -4,7 +4,7 @@
     "media_controller.build_metadata",
     "media_route_provider_id.build_metadata",
     "route_request_result_code.build_metadata",
-    "../../../mirroring/mojom/host.build_metadata",
+    "../../../mirroring/mojom/common.build_metadata",
     "../../../../media/mojo/mojom/remoting.build_metadata",
     "../../../../mojo/public/mojom/base/base.build_metadata",
     "../../../../services/network/public/mojom/mojom_ip_address.build_metadata",

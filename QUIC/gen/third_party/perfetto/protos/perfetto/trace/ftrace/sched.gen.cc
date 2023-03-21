@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -103,13 +104,13 @@ bool SchedCpuUtilCfsFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedCpuUtilCfsFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedCpuUtilCfsFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -117,80 +118,80 @@ std::vector<uint8_t> SchedCpuUtilCfsFtraceEvent::SerializeAsArray() const {
 void SchedCpuUtilCfsFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: active
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, active_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, active_, msg);
   }
 
   // Field 2: capacity
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, capacity_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, capacity_, msg);
   }
 
   // Field 3: capacity_orig
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, capacity_orig_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, capacity_orig_, msg);
   }
 
   // Field 4: cpu
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, cpu_, msg);
   }
 
   // Field 5: cpu_importance
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, cpu_importance_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, cpu_importance_, msg);
   }
 
   // Field 6: cpu_util
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, cpu_util_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, cpu_util_, msg);
   }
 
   // Field 7: exit_lat
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, exit_lat_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, exit_lat_, msg);
   }
 
   // Field 8: group_capacity
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, group_capacity_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, group_capacity_, msg);
   }
 
   // Field 9: grp_overutilized
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, grp_overutilized_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, grp_overutilized_, msg);
   }
 
   // Field 10: idle_cpu
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, idle_cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, idle_cpu_, msg);
   }
 
   // Field 11: nr_running
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, nr_running_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, nr_running_, msg);
   }
 
   // Field 12: spare_cap
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, spare_cap_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, spare_cap_, msg);
   }
 
   // Field 13: task_fits
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, task_fits_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, task_fits_, msg);
   }
 
   // Field 14: wake_group_util
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, wake_group_util_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, wake_group_util_, msg);
   }
 
   // Field 15: wake_util
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, wake_util_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, wake_util_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -220,7 +221,7 @@ bool SchedPiSetprioFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* newprio */:
         field.get(&newprio_);
@@ -240,13 +241,13 @@ bool SchedPiSetprioFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedPiSetprioFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedPiSetprioFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -254,25 +255,25 @@ std::vector<uint8_t> SchedPiSetprioFtraceEvent::SerializeAsArray() const {
 void SchedPiSetprioFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: newprio
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, newprio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, newprio_, msg);
   }
 
   // Field 3: oldprio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, oldprio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, oldprio_, msg);
   }
 
   // Field 4: pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -301,7 +302,7 @@ bool SchedProcessWaitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -318,13 +319,13 @@ bool SchedProcessWaitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessWaitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessWaitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -332,20 +333,20 @@ std::vector<uint8_t> SchedProcessWaitFtraceEvent::SerializeAsArray() const {
 void SchedProcessWaitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -373,7 +374,7 @@ bool SchedProcessHangFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -387,13 +388,13 @@ bool SchedProcessHangFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessHangFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessHangFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -401,15 +402,15 @@ std::vector<uint8_t> SchedProcessHangFtraceEvent::SerializeAsArray() const {
 void SchedProcessHangFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -438,7 +439,7 @@ bool SchedProcessFreeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -455,13 +456,13 @@ bool SchedProcessFreeFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessFreeFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessFreeFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -469,20 +470,20 @@ std::vector<uint8_t> SchedProcessFreeFtraceEvent::SerializeAsArray() const {
 void SchedProcessFreeFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -512,13 +513,13 @@ bool SchedProcessForkFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* parent_comm */:
-        field.get(&parent_comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &parent_comm_);
         break;
       case 2 /* parent_pid */:
         field.get(&parent_pid_);
         break;
       case 3 /* child_comm */:
-        field.get(&child_comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &child_comm_);
         break;
       case 4 /* child_pid */:
         field.get(&child_pid_);
@@ -532,13 +533,13 @@ bool SchedProcessForkFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessForkFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessForkFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -546,25 +547,25 @@ std::vector<uint8_t> SchedProcessForkFtraceEvent::SerializeAsArray() const {
 void SchedProcessForkFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: parent_comm
   if (_has_field_[1]) {
-    msg->AppendString(1, parent_comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, parent_comm_, msg);
   }
 
   // Field 2: parent_pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, parent_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, parent_pid_, msg);
   }
 
   // Field 3: child_comm
   if (_has_field_[3]) {
-    msg->AppendString(3, child_comm_);
+    ::protozero::internal::gen_helpers::SerializeString(3, child_comm_, msg);
   }
 
   // Field 4: child_pid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, child_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, child_pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -594,7 +595,7 @@ bool SchedProcessExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -614,13 +615,13 @@ bool SchedProcessExitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessExitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessExitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -628,25 +629,25 @@ std::vector<uint8_t> SchedProcessExitFtraceEvent::SerializeAsArray() const {
 void SchedProcessExitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: tgid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, tgid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, tgid_, msg);
   }
 
   // Field 4: prio
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, prio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -675,7 +676,7 @@ bool SchedProcessExecFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* filename */:
-        field.get(&filename_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &filename_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -692,13 +693,13 @@ bool SchedProcessExecFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedProcessExecFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedProcessExecFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -706,20 +707,20 @@ std::vector<uint8_t> SchedProcessExecFtraceEvent::SerializeAsArray() const {
 void SchedProcessExecFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: filename
   if (_has_field_[1]) {
-    msg->AppendString(1, filename_);
+    ::protozero::internal::gen_helpers::SerializeString(1, filename_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: old_pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, old_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, old_pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -750,7 +751,7 @@ bool SchedWakeupNewFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -773,13 +774,13 @@ bool SchedWakeupNewFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedWakeupNewFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedWakeupNewFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -787,30 +788,30 @@ std::vector<uint8_t> SchedWakeupNewFtraceEvent::SerializeAsArray() const {
 void SchedWakeupNewFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prio_, msg);
   }
 
   // Field 4: success
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, success_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, success_, msg);
   }
 
   // Field 5: target_cpu
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, target_cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, target_cpu_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -841,7 +842,7 @@ bool SchedWakingFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -864,13 +865,13 @@ bool SchedWakingFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedWakingFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedWakingFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -878,30 +879,30 @@ std::vector<uint8_t> SchedWakingFtraceEvent::SerializeAsArray() const {
 void SchedWakingFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prio_, msg);
   }
 
   // Field 4: success
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, success_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, success_, msg);
   }
 
   // Field 5: target_cpu
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, target_cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, target_cpu_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -947,13 +948,13 @@ bool SchedCpuHotplugFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedCpuHotplugFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedCpuHotplugFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -961,20 +962,20 @@ std::vector<uint8_t> SchedCpuHotplugFtraceEvent::SerializeAsArray() const {
 void SchedCpuHotplugFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: affected_cpu
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, affected_cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, affected_cpu_, msg);
   }
 
   // Field 2: error
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, error_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, error_, msg);
   }
 
   // Field 3: status
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, status_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, status_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1020,13 +1021,13 @@ bool SchedBlockedReasonFtraceEvent::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string SchedBlockedReasonFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedBlockedReasonFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1034,20 +1035,20 @@ std::vector<uint8_t> SchedBlockedReasonFtraceEvent::SerializeAsArray() const {
 void SchedBlockedReasonFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: caller
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, caller_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, caller_, msg);
   }
 
   // Field 3: io_wait
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, io_wait_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, io_wait_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1078,7 +1079,7 @@ bool SchedWakeupFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* pid */:
         field.get(&pid_);
@@ -1101,13 +1102,13 @@ bool SchedWakeupFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedWakeupFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedWakeupFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1115,30 +1116,30 @@ std::vector<uint8_t> SchedWakeupFtraceEvent::SerializeAsArray() const {
 void SchedWakeupFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prio_, msg);
   }
 
   // Field 4: success
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, success_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, success_, msg);
   }
 
   // Field 5: target_cpu
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, target_cpu_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, target_cpu_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1171,7 +1172,7 @@ bool SchedSwitchFtraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* prev_comm */:
-        field.get(&prev_comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &prev_comm_);
         break;
       case 2 /* prev_pid */:
         field.get(&prev_pid_);
@@ -1183,7 +1184,7 @@ bool SchedSwitchFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&prev_state_);
         break;
       case 5 /* next_comm */:
-        field.get(&next_comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &next_comm_);
         break;
       case 6 /* next_pid */:
         field.get(&next_pid_);
@@ -1200,13 +1201,13 @@ bool SchedSwitchFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SchedSwitchFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SchedSwitchFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1214,40 +1215,40 @@ std::vector<uint8_t> SchedSwitchFtraceEvent::SerializeAsArray() const {
 void SchedSwitchFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: prev_comm
   if (_has_field_[1]) {
-    msg->AppendString(1, prev_comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, prev_comm_, msg);
   }
 
   // Field 2: prev_pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, prev_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, prev_pid_, msg);
   }
 
   // Field 3: prev_prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, prev_prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, prev_prio_, msg);
   }
 
   // Field 4: prev_state
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, prev_state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, prev_state_, msg);
   }
 
   // Field 5: next_comm
   if (_has_field_[5]) {
-    msg->AppendString(5, next_comm_);
+    ::protozero::internal::gen_helpers::SerializeString(5, next_comm_, msg);
   }
 
   // Field 6: next_pid
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, next_pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, next_pid_, msg);
   }
 
   // Field 7: next_prio
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, next_prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, next_prio_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

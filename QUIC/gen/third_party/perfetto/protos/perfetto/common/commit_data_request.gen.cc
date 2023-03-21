@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -65,13 +66,13 @@ bool CommitDataRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CommitDataRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CommitDataRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -89,10 +90,10 @@ void CommitDataRequest::Serialize(::protozero::Message* msg) const {
 
   // Field 3: flush_request_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, flush_request_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, flush_request_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -151,13 +152,13 @@ bool CommitDataRequest_ChunkToPatch::ParseFromArray(const void* raw, size_t size
 }
 
 std::string CommitDataRequest_ChunkToPatch::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CommitDataRequest_ChunkToPatch::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -165,17 +166,17 @@ std::vector<uint8_t> CommitDataRequest_ChunkToPatch::SerializeAsArray() const {
 void CommitDataRequest_ChunkToPatch::Serialize(::protozero::Message* msg) const {
   // Field 1: target_buffer
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, target_buffer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, target_buffer_, msg);
   }
 
   // Field 2: writer_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, writer_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, writer_id_, msg);
   }
 
   // Field 3: chunk_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, chunk_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, chunk_id_, msg);
   }
 
   // Field 4: patches
@@ -185,10 +186,10 @@ void CommitDataRequest_ChunkToPatch::Serialize(::protozero::Message* msg) const 
 
   // Field 5: has_more_patches
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, has_more_patches_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, has_more_patches_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -230,13 +231,13 @@ bool CommitDataRequest_ChunkToPatch_Patch::ParseFromArray(const void* raw, size_
 }
 
 std::string CommitDataRequest_ChunkToPatch_Patch::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CommitDataRequest_ChunkToPatch_Patch::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -244,15 +245,15 @@ std::vector<uint8_t> CommitDataRequest_ChunkToPatch_Patch::SerializeAsArray() co
 void CommitDataRequest_ChunkToPatch_Patch::Serialize(::protozero::Message* msg) const {
   // Field 1: offset
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, offset_, msg);
   }
 
   // Field 2: data
   if (_has_field_[2]) {
-    msg->AppendString(2, data_);
+    ::protozero::internal::gen_helpers::SerializeString(2, data_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -298,13 +299,13 @@ bool CommitDataRequest_ChunksToMove::ParseFromArray(const void* raw, size_t size
 }
 
 std::string CommitDataRequest_ChunksToMove::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CommitDataRequest_ChunksToMove::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -312,20 +313,20 @@ std::vector<uint8_t> CommitDataRequest_ChunksToMove::SerializeAsArray() const {
 void CommitDataRequest_ChunksToMove::Serialize(::protozero::Message* msg) const {
   // Field 1: page
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, page_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, page_, msg);
   }
 
   // Field 2: chunk
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, chunk_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, chunk_, msg);
   }
 
   // Field 3: target_buffer
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, target_buffer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, target_buffer_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -47,13 +48,13 @@ bool MarkVictimFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string MarkVictimFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> MarkVictimFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -61,10 +62,10 @@ std::vector<uint8_t> MarkVictimFtraceEvent::SerializeAsArray() const {
 void MarkVictimFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -93,7 +94,7 @@ bool OomScoreAdjUpdateFtraceEvent::ParseFromArray(const void* raw, size_t size) 
     }
     switch (field.id()) {
       case 1 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 2 /* oom_score_adj */:
         field.get(&oom_score_adj_);
@@ -110,13 +111,13 @@ bool OomScoreAdjUpdateFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string OomScoreAdjUpdateFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> OomScoreAdjUpdateFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -124,20 +125,20 @@ std::vector<uint8_t> OomScoreAdjUpdateFtraceEvent::SerializeAsArray() const {
 void OomScoreAdjUpdateFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: comm
   if (_has_field_[1]) {
-    msg->AppendString(1, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(1, comm_, msg);
   }
 
   // Field 2: oom_score_adj
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, oom_score_adj_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, oom_score_adj_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

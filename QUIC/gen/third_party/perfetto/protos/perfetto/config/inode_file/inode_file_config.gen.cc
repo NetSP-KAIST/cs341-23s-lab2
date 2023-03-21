@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -59,7 +60,7 @@ bool InodeFileConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 5 /* scan_mount_points */:
         scan_mount_points_.emplace_back();
-        field.get(&scan_mount_points_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &scan_mount_points_.back());
         break;
       case 6 /* mount_point_mapping */:
         mount_point_mapping_.emplace_back();
@@ -74,13 +75,13 @@ bool InodeFileConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InodeFileConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InodeFileConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -88,27 +89,27 @@ std::vector<uint8_t> InodeFileConfig::SerializeAsArray() const {
 void InodeFileConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: scan_interval_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, scan_interval_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, scan_interval_ms_, msg);
   }
 
   // Field 2: scan_delay_ms
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, scan_delay_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, scan_delay_ms_, msg);
   }
 
   // Field 3: scan_batch_size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, scan_batch_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, scan_batch_size_, msg);
   }
 
   // Field 4: do_not_scan
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, do_not_scan_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, do_not_scan_, msg);
   }
 
   // Field 5: scan_mount_points
   for (auto& it : scan_mount_points_) {
-    msg->AppendString(5, it);
+    ::protozero::internal::gen_helpers::SerializeString(5, it, msg);
   }
 
   // Field 6: mount_point_mapping
@@ -116,7 +117,7 @@ void InodeFileConfig::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(6));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -145,11 +146,11 @@ bool InodeFileConfig_MountPointMappingEntry::ParseFromArray(const void* raw, siz
     }
     switch (field.id()) {
       case 1 /* mountpoint */:
-        field.get(&mountpoint_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &mountpoint_);
         break;
       case 2 /* scan_roots */:
         scan_roots_.emplace_back();
-        field.get(&scan_roots_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &scan_roots_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -160,13 +161,13 @@ bool InodeFileConfig_MountPointMappingEntry::ParseFromArray(const void* raw, siz
 }
 
 std::string InodeFileConfig_MountPointMappingEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InodeFileConfig_MountPointMappingEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -174,15 +175,15 @@ std::vector<uint8_t> InodeFileConfig_MountPointMappingEntry::SerializeAsArray() 
 void InodeFileConfig_MountPointMappingEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: mountpoint
   if (_has_field_[1]) {
-    msg->AppendString(1, mountpoint_);
+    ::protozero::internal::gen_helpers::SerializeString(1, mountpoint_, msg);
   }
 
   // Field 2: scan_roots
   for (auto& it : scan_roots_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

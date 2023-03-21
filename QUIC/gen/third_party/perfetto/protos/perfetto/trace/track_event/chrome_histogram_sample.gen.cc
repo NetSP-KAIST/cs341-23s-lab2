@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,7 +43,7 @@ bool ChromeHistogramSample::ParseFromArray(const void* raw, size_t size) {
         field.get(&name_hash_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* sample */:
         field.get(&sample_);
@@ -59,13 +60,13 @@ bool ChromeHistogramSample::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeHistogramSample::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeHistogramSample::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> ChromeHistogramSample::SerializeAsArray() const {
 void ChromeHistogramSample::Serialize(::protozero::Message* msg) const {
   // Field 1: name_hash
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, name_hash_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, name_hash_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: sample
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, sample_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, sample_, msg);
   }
 
   // Field 4: name_iid
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, name_iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, name_iid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -122,7 +123,7 @@ bool HistogramName::ParseFromArray(const void* raw, size_t size) {
         field.get(&iid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -133,13 +134,13 @@ bool HistogramName::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string HistogramName::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> HistogramName::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -147,15 +148,15 @@ std::vector<uint8_t> HistogramName::SerializeAsArray() const {
 void HistogramName::Serialize(::protozero::Message* msg) const {
   // Field 1: iid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, iid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, iid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

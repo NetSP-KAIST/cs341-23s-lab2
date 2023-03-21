@@ -57,7 +57,7 @@ test_fonts/Tinos-Bold.ttf
 test_fonts/Tinos-BoldItalic.ttf
 test_fonts/Tinos-Italic.ttf
 test_fonts/Tinos-Regular.ttf
-fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-7
+fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9
 etc/fonts/fonts.conf
 ./libthird_party_fontconfig.so
 ./libthird_party_freetype_harfbuzz.so
@@ -68,6 +68,6 @@ etc/fonts/fonts.conf
 ../../net/data/ssl/
 ../../net/data/url_request_unittest/
 ../../net/data/websocket/
-../../testing/location_tags.json
 bin/run_cronet_unittests
 ../../.vpython3
+../../testing/location_tags.json

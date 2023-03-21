@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,7 +50,7 @@ bool AndroidLogConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 4 /* filter_tags */:
         filter_tags_.emplace_back();
-        field.get(&filter_tags_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &filter_tags_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -60,13 +61,13 @@ bool AndroidLogConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidLogConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidLogConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -74,20 +75,20 @@ std::vector<uint8_t> AndroidLogConfig::SerializeAsArray() const {
 void AndroidLogConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: log_ids
   for (auto& it : log_ids_) {
-    msg->AppendVarInt(1, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, it, msg);
   }
 
   // Field 3: min_prio
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, min_prio_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, min_prio_, msg);
   }
 
   // Field 4: filter_tags
   for (auto& it : filter_tags_) {
-    msg->AppendString(4, it);
+    ::protozero::internal::gen_helpers::SerializeString(4, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

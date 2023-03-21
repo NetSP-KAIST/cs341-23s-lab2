@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -67,13 +68,13 @@ bool TestConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -81,27 +82,27 @@ std::vector<uint8_t> TestConfig::SerializeAsArray() const {
 void TestConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: message_count
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, message_count_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, message_count_, msg);
   }
 
   // Field 2: max_messages_per_second
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, max_messages_per_second_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, max_messages_per_second_, msg);
   }
 
   // Field 3: seed
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, seed_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, seed_, msg);
   }
 
   // Field 4: message_size
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, message_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, message_size_, msg);
   }
 
   // Field 5: send_batch_on_register
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, send_batch_on_register_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, send_batch_on_register_, msg);
   }
 
   // Field 6: dummy_fields
@@ -109,7 +110,7 @@ void TestConfig::Serialize(::protozero::Message* msg) const {
     (*dummy_fields_).Serialize(msg->BeginNestedMessage<::protozero::Message>(6));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -185,7 +186,7 @@ bool TestConfig_DummyFields::ParseFromArray(const void* raw, size_t size) {
         field.get_signed(&field_sint32_);
         break;
       case 13 /* field_string */:
-        field.get(&field_string_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &field_string_);
         break;
       case 14 /* field_bytes */:
         field.get(&field_bytes_);
@@ -199,13 +200,13 @@ bool TestConfig_DummyFields::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestConfig_DummyFields::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestConfig_DummyFields::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -213,75 +214,75 @@ std::vector<uint8_t> TestConfig_DummyFields::SerializeAsArray() const {
 void TestConfig_DummyFields::Serialize(::protozero::Message* msg) const {
   // Field 1: field_uint32
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, field_uint32_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, field_uint32_, msg);
   }
 
   // Field 2: field_int32
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, field_int32_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, field_int32_, msg);
   }
 
   // Field 3: field_uint64
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, field_uint64_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, field_uint64_, msg);
   }
 
   // Field 4: field_int64
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, field_int64_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, field_int64_, msg);
   }
 
   // Field 5: field_fixed64
   if (_has_field_[5]) {
-    msg->AppendFixed(5, field_fixed64_);
+    ::protozero::internal::gen_helpers::SerializeFixed(5, field_fixed64_, msg);
   }
 
   // Field 6: field_sfixed64
   if (_has_field_[6]) {
-    msg->AppendFixed(6, field_sfixed64_);
+    ::protozero::internal::gen_helpers::SerializeFixed(6, field_sfixed64_, msg);
   }
 
   // Field 7: field_fixed32
   if (_has_field_[7]) {
-    msg->AppendFixed(7, field_fixed32_);
+    ::protozero::internal::gen_helpers::SerializeFixed(7, field_fixed32_, msg);
   }
 
   // Field 8: field_sfixed32
   if (_has_field_[8]) {
-    msg->AppendFixed(8, field_sfixed32_);
+    ::protozero::internal::gen_helpers::SerializeFixed(8, field_sfixed32_, msg);
   }
 
   // Field 9: field_double
   if (_has_field_[9]) {
-    msg->AppendFixed(9, field_double_);
+    ::protozero::internal::gen_helpers::SerializeFixed(9, field_double_, msg);
   }
 
   // Field 10: field_float
   if (_has_field_[10]) {
-    msg->AppendFixed(10, field_float_);
+    ::protozero::internal::gen_helpers::SerializeFixed(10, field_float_, msg);
   }
 
   // Field 11: field_sint64
   if (_has_field_[11]) {
-    msg->AppendSignedVarInt(11, field_sint64_);
+    ::protozero::internal::gen_helpers::SerializeSignedVarInt(11, field_sint64_, msg);
   }
 
   // Field 12: field_sint32
   if (_has_field_[12]) {
-    msg->AppendSignedVarInt(12, field_sint32_);
+    ::protozero::internal::gen_helpers::SerializeSignedVarInt(12, field_sint32_, msg);
   }
 
   // Field 13: field_string
   if (_has_field_[13]) {
-    msg->AppendString(13, field_string_);
+    ::protozero::internal::gen_helpers::SerializeString(13, field_string_, msg);
   }
 
   // Field 14: field_bytes
   if (_has_field_[14]) {
-    msg->AppendString(14, field_bytes_);
+    ::protozero::internal::gen_helpers::SerializeString(14, field_bytes_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

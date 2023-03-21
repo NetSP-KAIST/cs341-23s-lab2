@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -52,13 +53,13 @@ bool FtraceDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FtraceDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,7 +70,7 @@ void FtraceDescriptor::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -97,10 +98,10 @@ bool FtraceDescriptor_AtraceCategory::ParseFromArray(const void* raw, size_t siz
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* description */:
-        field.get(&description_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &description_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -111,13 +112,13 @@ bool FtraceDescriptor_AtraceCategory::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string FtraceDescriptor_AtraceCategory::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceDescriptor_AtraceCategory::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -125,15 +126,15 @@ std::vector<uint8_t> FtraceDescriptor_AtraceCategory::SerializeAsArray() const {
 void FtraceDescriptor_AtraceCategory::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: description
   if (_has_field_[2]) {
-    msg->AppendString(2, description_);
+    ::protozero::internal::gen_helpers::SerializeString(2, description_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

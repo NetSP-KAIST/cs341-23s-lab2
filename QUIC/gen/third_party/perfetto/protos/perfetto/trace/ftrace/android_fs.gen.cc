@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,7 +41,7 @@ bool AndroidFsFsyncStartFtraceEvent::ParseFromArray(const void* raw, size_t size
     }
     switch (field.id()) {
       case 1 /* cmdline */:
-        field.get(&cmdline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_);
         break;
       case 2 /* i_size */:
         field.get(&i_size_);
@@ -49,7 +50,7 @@ bool AndroidFsFsyncStartFtraceEvent::ParseFromArray(const void* raw, size_t size
         field.get(&ino_);
         break;
       case 4 /* pathbuf */:
-        field.get(&pathbuf_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &pathbuf_);
         break;
       case 5 /* pid */:
         field.get(&pid_);
@@ -63,13 +64,13 @@ bool AndroidFsFsyncStartFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string AndroidFsFsyncStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsFsyncStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -77,30 +78,30 @@ std::vector<uint8_t> AndroidFsFsyncStartFtraceEvent::SerializeAsArray() const {
 void AndroidFsFsyncStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cmdline
   if (_has_field_[1]) {
-    msg->AppendString(1, cmdline_);
+    ::protozero::internal::gen_helpers::SerializeString(1, cmdline_, msg);
   }
 
   // Field 2: i_size
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, i_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, i_size_, msg);
   }
 
   // Field 3: ino
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, ino_, msg);
   }
 
   // Field 4: pathbuf
   if (_has_field_[4]) {
-    msg->AppendString(4, pathbuf_);
+    ::protozero::internal::gen_helpers::SerializeString(4, pathbuf_, msg);
   }
 
   // Field 5: pid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -146,13 +147,13 @@ bool AndroidFsFsyncEndFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string AndroidFsFsyncEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsFsyncEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -160,20 +161,20 @@ std::vector<uint8_t> AndroidFsFsyncEndFtraceEvent::SerializeAsArray() const {
 void AndroidFsFsyncEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytes_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: offset
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, offset_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -209,7 +210,7 @@ bool AndroidFsDatawriteStartFtraceEvent::ParseFromArray(const void* raw, size_t 
         field.get(&bytes_);
         break;
       case 2 /* cmdline */:
-        field.get(&cmdline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_);
         break;
       case 3 /* i_size */:
         field.get(&i_size_);
@@ -221,7 +222,7 @@ bool AndroidFsDatawriteStartFtraceEvent::ParseFromArray(const void* raw, size_t 
         field.get(&offset_);
         break;
       case 6 /* pathbuf */:
-        field.get(&pathbuf_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &pathbuf_);
         break;
       case 7 /* pid */:
         field.get(&pid_);
@@ -235,13 +236,13 @@ bool AndroidFsDatawriteStartFtraceEvent::ParseFromArray(const void* raw, size_t 
 }
 
 std::string AndroidFsDatawriteStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsDatawriteStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -249,40 +250,40 @@ std::vector<uint8_t> AndroidFsDatawriteStartFtraceEvent::SerializeAsArray() cons
 void AndroidFsDatawriteStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytes_, msg);
   }
 
   // Field 2: cmdline
   if (_has_field_[2]) {
-    msg->AppendString(2, cmdline_);
+    ::protozero::internal::gen_helpers::SerializeString(2, cmdline_, msg);
   }
 
   // Field 3: i_size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, i_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, i_size_, msg);
   }
 
   // Field 4: ino
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, ino_, msg);
   }
 
   // Field 5: offset
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, offset_, msg);
   }
 
   // Field 6: pathbuf
   if (_has_field_[6]) {
-    msg->AppendString(6, pathbuf_);
+    ::protozero::internal::gen_helpers::SerializeString(6, pathbuf_, msg);
   }
 
   // Field 7: pid
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -328,13 +329,13 @@ bool AndroidFsDatawriteEndFtraceEvent::ParseFromArray(const void* raw, size_t si
 }
 
 std::string AndroidFsDatawriteEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsDatawriteEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -342,20 +343,20 @@ std::vector<uint8_t> AndroidFsDatawriteEndFtraceEvent::SerializeAsArray() const 
 void AndroidFsDatawriteEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytes_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: offset
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, offset_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -391,7 +392,7 @@ bool AndroidFsDatareadStartFtraceEvent::ParseFromArray(const void* raw, size_t s
         field.get(&bytes_);
         break;
       case 2 /* cmdline */:
-        field.get(&cmdline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_);
         break;
       case 3 /* i_size */:
         field.get(&i_size_);
@@ -403,7 +404,7 @@ bool AndroidFsDatareadStartFtraceEvent::ParseFromArray(const void* raw, size_t s
         field.get(&offset_);
         break;
       case 6 /* pathbuf */:
-        field.get(&pathbuf_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &pathbuf_);
         break;
       case 7 /* pid */:
         field.get(&pid_);
@@ -417,13 +418,13 @@ bool AndroidFsDatareadStartFtraceEvent::ParseFromArray(const void* raw, size_t s
 }
 
 std::string AndroidFsDatareadStartFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsDatareadStartFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -431,40 +432,40 @@ std::vector<uint8_t> AndroidFsDatareadStartFtraceEvent::SerializeAsArray() const
 void AndroidFsDatareadStartFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytes_, msg);
   }
 
   // Field 2: cmdline
   if (_has_field_[2]) {
-    msg->AppendString(2, cmdline_);
+    ::protozero::internal::gen_helpers::SerializeString(2, cmdline_, msg);
   }
 
   // Field 3: i_size
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, i_size_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, i_size_, msg);
   }
 
   // Field 4: ino
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, ino_, msg);
   }
 
   // Field 5: offset
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, offset_, msg);
   }
 
   // Field 6: pathbuf
   if (_has_field_[6]) {
-    msg->AppendString(6, pathbuf_);
+    ::protozero::internal::gen_helpers::SerializeString(6, pathbuf_, msg);
   }
 
   // Field 7: pid
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, pid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -510,13 +511,13 @@ bool AndroidFsDatareadEndFtraceEvent::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string AndroidFsDatareadEndFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidFsDatareadEndFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -524,20 +525,20 @@ std::vector<uint8_t> AndroidFsDatareadEndFtraceEvent::SerializeAsArray() const {
 void AndroidFsDatareadEndFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, bytes_, msg);
   }
 
   // Field 2: ino
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ino_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ino_, msg);
   }
 
   // Field 3: offset
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, offset_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, offset_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

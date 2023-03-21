@@ -53,8 +53,9 @@ class ProcessTable : public macros_internal::MacroTable {
         base::Optional<uint32_t> in_uid = {},
         base::Optional<uint32_t> in_android_appid = {},
         base::Optional<StringPool::Id> in_cmdline = {},
-        uint32_t in_arg_set_id = {})
-        : macros_internal::RootParentTable::Row(nullptr),
+        uint32_t in_arg_set_id = {},
+        std::nullptr_t = nullptr)
+        : macros_internal::RootParentTable::Row(),
           pid(std::move(in_pid)),
           name(std::move(in_name)),
           start_ts(std::move(in_start_ts)),
@@ -78,18 +79,124 @@ class ProcessTable : public macros_internal::MacroTable {
   };
   struct IdAndRow {
     uint32_t row;
+    Id id;
   };
   struct ColumnFlag {
     static constexpr uint32_t pid = ColumnType::pid::default_flags();
-      static constexpr uint32_t name = ColumnType::name::default_flags();
-      static constexpr uint32_t start_ts = ColumnType::start_ts::default_flags();
-      static constexpr uint32_t end_ts = ColumnType::end_ts::default_flags();
-      static constexpr uint32_t parent_upid = ColumnType::parent_upid::default_flags();
-      static constexpr uint32_t uid = ColumnType::uid::default_flags();
-      static constexpr uint32_t android_appid = ColumnType::android_appid::default_flags();
-      static constexpr uint32_t cmdline = ColumnType::cmdline::default_flags();
-      static constexpr uint32_t arg_set_id = ColumnType::arg_set_id::default_flags();
+    static constexpr uint32_t name = ColumnType::name::default_flags();
+    static constexpr uint32_t start_ts = ColumnType::start_ts::default_flags();
+    static constexpr uint32_t end_ts = ColumnType::end_ts::default_flags();
+    static constexpr uint32_t parent_upid = ColumnType::parent_upid::default_flags();
+    static constexpr uint32_t uid = ColumnType::uid::default_flags();
+    static constexpr uint32_t android_appid = ColumnType::android_appid::default_flags();
+    static constexpr uint32_t cmdline = ColumnType::cmdline::default_flags();
+    static constexpr uint32_t arg_set_id = ColumnType::arg_set_id::default_flags();
   };
+
+  class RowNumber;
+  class ConstRowReference;
+  class RowReference;
+
+  class RowNumber : public macros_internal::AbstractRowNumber<
+      ProcessTable, ConstRowReference, RowReference> {
+   public:
+    explicit RowNumber(uint32_t row_number)
+        : AbstractRowNumber(row_number) {}
+  };
+  static_assert(std::is_trivially_destructible<RowNumber>::value,
+                "Inheritance used without trivial destruction");
+
+  class ConstRowReference : public macros_internal::AbstractConstRowReference<
+    ProcessTable, RowNumber> {
+   public:
+    ConstRowReference(const ProcessTable* table, uint32_t row_number)
+        : AbstractConstRowReference(table, row_number) {}
+
+    ColumnType::id::type id() const {
+      return table_->id()[row_number_];
+    }
+    ColumnType::type::type type() const {
+      return table_->type()[row_number_];
+    }
+    ColumnType::pid::type pid() const {
+      return table_->pid()[row_number_];
+    }
+    ColumnType::name::type name() const {
+      return table_->name()[row_number_];
+    }
+    ColumnType::start_ts::type start_ts() const {
+      return table_->start_ts()[row_number_];
+    }
+    ColumnType::end_ts::type end_ts() const {
+      return table_->end_ts()[row_number_];
+    }
+    ColumnType::parent_upid::type parent_upid() const {
+      return table_->parent_upid()[row_number_];
+    }
+    ColumnType::uid::type uid() const {
+      return table_->uid()[row_number_];
+    }
+    ColumnType::android_appid::type android_appid() const {
+      return table_->android_appid()[row_number_];
+    }
+    ColumnType::cmdline::type cmdline() const {
+      return table_->cmdline()[row_number_];
+    }
+    ColumnType::arg_set_id::type arg_set_id() const {
+      return table_->arg_set_id()[row_number_];
+    }
+  };
+  static_assert(std::is_trivially_destructible<ConstRowReference>::value,
+                "Inheritance used without trivial destruction");
+  class RowReference : public ConstRowReference {
+   public:
+    RowReference(const ProcessTable* table, uint32_t row_number)
+        : ConstRowReference(table, row_number) {}
+
+    void set_pid(
+        ColumnType::pid::non_optional_type v) {
+      return mutable_table()->mutable_pid()->Set(row_number_, v);
+    }
+    void set_name(
+        ColumnType::name::non_optional_type v) {
+      return mutable_table()->mutable_name()->Set(row_number_, v);
+    }
+    void set_start_ts(
+        ColumnType::start_ts::non_optional_type v) {
+      return mutable_table()->mutable_start_ts()->Set(row_number_, v);
+    }
+    void set_end_ts(
+        ColumnType::end_ts::non_optional_type v) {
+      return mutable_table()->mutable_end_ts()->Set(row_number_, v);
+    }
+    void set_parent_upid(
+        ColumnType::parent_upid::non_optional_type v) {
+      return mutable_table()->mutable_parent_upid()->Set(row_number_, v);
+    }
+    void set_uid(
+        ColumnType::uid::non_optional_type v) {
+      return mutable_table()->mutable_uid()->Set(row_number_, v);
+    }
+    void set_android_appid(
+        ColumnType::android_appid::non_optional_type v) {
+      return mutable_table()->mutable_android_appid()->Set(row_number_, v);
+    }
+    void set_cmdline(
+        ColumnType::cmdline::non_optional_type v) {
+      return mutable_table()->mutable_cmdline()->Set(row_number_, v);
+    }
+    void set_arg_set_id(
+        ColumnType::arg_set_id::non_optional_type v) {
+      return mutable_table()->mutable_arg_set_id()->Set(row_number_, v);
+    }
+
+   private:
+    ProcessTable* mutable_table() const {
+      return const_cast<ProcessTable*>(table_);
+    }
+  };
+  static_assert(std::is_trivially_destructible<RowReference>::value,
+                "Inheritance used without trivial destruction");
 
   explicit ProcessTable(StringPool* pool)
       : macros_internal::MacroTable(pool, nullptr),
@@ -102,34 +209,34 @@ class ProcessTable : public macros_internal::MacroTable {
         android_appid_(ColumnStorage<ColumnType::android_appid::stored_type>::Create<false>()),
         cmdline_(ColumnStorage<ColumnType::cmdline::stored_type>::Create<false>()),
         arg_set_id_(ColumnStorage<ColumnType::arg_set_id::stored_type>::Create<false>()) {
-    uint32_t overlay_count = static_cast<uint32_t>(overlays_.size()) - 1;
+    uint32_t overlay_idx = static_cast<uint32_t>(overlays_.size()) - 1;
     columns_.emplace_back("pid", &pid_, ColumnFlag::pid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("name", &name_, ColumnFlag::name,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("start_ts", &start_ts_, ColumnFlag::start_ts,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("end_ts", &end_ts_, ColumnFlag::end_ts,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("parent_upid", &parent_upid_, ColumnFlag::parent_upid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("uid", &uid_, ColumnFlag::uid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("android_appid", &android_appid_, ColumnFlag::android_appid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("cmdline", &cmdline_, ColumnFlag::cmdline,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("arg_set_id", &arg_set_id_, ColumnFlag::arg_set_id,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
   }
   ~ProcessTable() override;
 
@@ -148,8 +255,20 @@ class ProcessTable : public macros_internal::MacroTable {
     arg_set_id_.ShrinkToFit();
   }
 
+  base::Optional<ConstRowReference> FindById(Id find_id) const {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(ConstRowReference(this, *row))
+               : base::nullopt;
+  }
+
+  base::Optional<RowReference> FindById(Id find_id) {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(RowReference(this, *row)) : base::nullopt;
+  }
+
   IdAndRow Insert(const Row& row) {
     uint32_t row_number = row_count();
+    Id id = Id{row_number};
     type_.Append(string_pool_->InternString(row.type()));
     mutable_pid()->Append(std::move(row.pid));
     mutable_name()->Append(std::move(row.name));
@@ -161,7 +280,7 @@ class ProcessTable : public macros_internal::MacroTable {
     mutable_cmdline()->Append(std::move(row.cmdline));
     mutable_arg_set_id()->Append(std::move(row.arg_set_id));
     UpdateSelfOverlayAfterInsert();
-    return IdAndRow{row_number};
+    return IdAndRow{row_number, std::move(id)};
   }
 
   const IdColumn<ProcessTable::Id>& id() const {
@@ -236,6 +355,7 @@ class ProcessTable : public macros_internal::MacroTable {
   }
 
  private:
+  
   ColumnStorage<ColumnType::pid::stored_type> pid_;
   ColumnStorage<ColumnType::name::stored_type> name_;
   ColumnStorage<ColumnType::start_ts::stored_type> start_ts_;
@@ -283,8 +403,9 @@ class ThreadTable : public macros_internal::MacroTable {
         base::Optional<int64_t> in_start_ts = {},
         base::Optional<int64_t> in_end_ts = {},
         base::Optional<uint32_t> in_upid = {},
-        base::Optional<uint32_t> in_is_main_thread = {})
-        : macros_internal::RootParentTable::Row(nullptr),
+        base::Optional<uint32_t> in_is_main_thread = {},
+        std::nullptr_t = nullptr)
+        : macros_internal::RootParentTable::Row(),
           tid(std::move(in_tid)),
           name(std::move(in_name)),
           start_ts(std::move(in_start_ts)),
@@ -302,15 +423,100 @@ class ThreadTable : public macros_internal::MacroTable {
   };
   struct IdAndRow {
     uint32_t row;
+    Id id;
   };
   struct ColumnFlag {
     static constexpr uint32_t tid = ColumnType::tid::default_flags();
-      static constexpr uint32_t name = ColumnType::name::default_flags();
-      static constexpr uint32_t start_ts = ColumnType::start_ts::default_flags();
-      static constexpr uint32_t end_ts = ColumnType::end_ts::default_flags();
-      static constexpr uint32_t upid = ColumnType::upid::default_flags();
-      static constexpr uint32_t is_main_thread = ColumnType::is_main_thread::default_flags();
+    static constexpr uint32_t name = ColumnType::name::default_flags();
+    static constexpr uint32_t start_ts = ColumnType::start_ts::default_flags();
+    static constexpr uint32_t end_ts = ColumnType::end_ts::default_flags();
+    static constexpr uint32_t upid = ColumnType::upid::default_flags();
+    static constexpr uint32_t is_main_thread = ColumnType::is_main_thread::default_flags();
   };
+
+  class RowNumber;
+  class ConstRowReference;
+  class RowReference;
+
+  class RowNumber : public macros_internal::AbstractRowNumber<
+      ThreadTable, ConstRowReference, RowReference> {
+   public:
+    explicit RowNumber(uint32_t row_number)
+        : AbstractRowNumber(row_number) {}
+  };
+  static_assert(std::is_trivially_destructible<RowNumber>::value,
+                "Inheritance used without trivial destruction");
+
+  class ConstRowReference : public macros_internal::AbstractConstRowReference<
+    ThreadTable, RowNumber> {
+   public:
+    ConstRowReference(const ThreadTable* table, uint32_t row_number)
+        : AbstractConstRowReference(table, row_number) {}
+
+    ColumnType::id::type id() const {
+      return table_->id()[row_number_];
+    }
+    ColumnType::type::type type() const {
+      return table_->type()[row_number_];
+    }
+    ColumnType::tid::type tid() const {
+      return table_->tid()[row_number_];
+    }
+    ColumnType::name::type name() const {
+      return table_->name()[row_number_];
+    }
+    ColumnType::start_ts::type start_ts() const {
+      return table_->start_ts()[row_number_];
+    }
+    ColumnType::end_ts::type end_ts() const {
+      return table_->end_ts()[row_number_];
+    }
+    ColumnType::upid::type upid() const {
+      return table_->upid()[row_number_];
+    }
+    ColumnType::is_main_thread::type is_main_thread() const {
+      return table_->is_main_thread()[row_number_];
+    }
+  };
+  static_assert(std::is_trivially_destructible<ConstRowReference>::value,
+                "Inheritance used without trivial destruction");
+  class RowReference : public ConstRowReference {
+   public:
+    RowReference(const ThreadTable* table, uint32_t row_number)
+        : ConstRowReference(table, row_number) {}
+
+    void set_tid(
+        ColumnType::tid::non_optional_type v) {
+      return mutable_table()->mutable_tid()->Set(row_number_, v);
+    }
+    void set_name(
+        ColumnType::name::non_optional_type v) {
+      return mutable_table()->mutable_name()->Set(row_number_, v);
+    }
+    void set_start_ts(
+        ColumnType::start_ts::non_optional_type v) {
+      return mutable_table()->mutable_start_ts()->Set(row_number_, v);
+    }
+    void set_end_ts(
+        ColumnType::end_ts::non_optional_type v) {
+      return mutable_table()->mutable_end_ts()->Set(row_number_, v);
+    }
+    void set_upid(
+        ColumnType::upid::non_optional_type v) {
+      return mutable_table()->mutable_upid()->Set(row_number_, v);
+    }
+    void set_is_main_thread(
+        ColumnType::is_main_thread::non_optional_type v) {
+      return mutable_table()->mutable_is_main_thread()->Set(row_number_, v);
+    }
+
+   private:
+    ThreadTable* mutable_table() const {
+      return const_cast<ThreadTable*>(table_);
+    }
+  };
+  static_assert(std::is_trivially_destructible<RowReference>::value,
+                "Inheritance used without trivial destruction");
 
   explicit ThreadTable(StringPool* pool)
       : macros_internal::MacroTable(pool, nullptr),
@@ -320,25 +526,25 @@ class ThreadTable : public macros_internal::MacroTable {
         end_ts_(ColumnStorage<ColumnType::end_ts::stored_type>::Create<false>()),
         upid_(ColumnStorage<ColumnType::upid::stored_type>::Create<false>()),
         is_main_thread_(ColumnStorage<ColumnType::is_main_thread::stored_type>::Create<false>()) {
-    uint32_t overlay_count = static_cast<uint32_t>(overlays_.size()) - 1;
+    uint32_t overlay_idx = static_cast<uint32_t>(overlays_.size()) - 1;
     columns_.emplace_back("tid", &tid_, ColumnFlag::tid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("name", &name_, ColumnFlag::name,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("start_ts", &start_ts_, ColumnFlag::start_ts,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("end_ts", &end_ts_, ColumnFlag::end_ts,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("upid", &upid_, ColumnFlag::upid,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
     columns_.emplace_back("is_main_thread", &is_main_thread_, ColumnFlag::is_main_thread,
                           this, static_cast<uint32_t>(columns_.size()),
-                          overlay_count);
+                          overlay_idx);
   }
   ~ThreadTable() override;
 
@@ -354,8 +560,20 @@ class ThreadTable : public macros_internal::MacroTable {
     is_main_thread_.ShrinkToFit();
   }
 
+  base::Optional<ConstRowReference> FindById(Id find_id) const {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(ConstRowReference(this, *row))
+               : base::nullopt;
+  }
+
+  base::Optional<RowReference> FindById(Id find_id) {
+    base::Optional<uint32_t> row = id().IndexOf(find_id);
+    return row ? base::make_optional(RowReference(this, *row)) : base::nullopt;
+  }
+
   IdAndRow Insert(const Row& row) {
     uint32_t row_number = row_count();
+    Id id = Id{row_number};
     type_.Append(string_pool_->InternString(row.type()));
     mutable_tid()->Append(std::move(row.tid));
     mutable_name()->Append(std::move(row.name));
@@ -364,7 +582,7 @@ class ThreadTable : public macros_internal::MacroTable {
     mutable_upid()->Append(std::move(row.upid));
     mutable_is_main_thread()->Append(std::move(row.is_main_thread));
     UpdateSelfOverlayAfterInsert();
-    return IdAndRow{row_number};
+    return IdAndRow{row_number, std::move(id)};
   }
 
   const IdColumn<ThreadTable::Id>& id() const {
@@ -418,6 +636,7 @@ class ThreadTable : public macros_internal::MacroTable {
   }
 
  private:
+  
   ColumnStorage<ColumnType::tid::stored_type> tid_;
   ColumnStorage<ColumnType::name::stored_type> name_;
   ColumnStorage<ColumnType::start_ts::stored_type> start_ts_;

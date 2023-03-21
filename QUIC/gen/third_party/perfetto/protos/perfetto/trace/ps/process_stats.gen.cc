@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -56,13 +57,13 @@ bool ProcessStats::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessStats::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessStats::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -75,10 +76,10 @@ void ProcessStats::Serialize(::protozero::Message* msg) const {
 
   // Field 2: collection_end_timestamp
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, collection_end_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, collection_end_timestamp_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -182,13 +183,13 @@ bool ProcessStats_Process::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessStats_Process::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessStats_Process::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -196,52 +197,52 @@ std::vector<uint8_t> ProcessStats_Process::SerializeAsArray() const {
 void ProcessStats_Process::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: vm_size_kb
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, vm_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, vm_size_kb_, msg);
   }
 
   // Field 3: vm_rss_kb
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, vm_rss_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, vm_rss_kb_, msg);
   }
 
   // Field 4: rss_anon_kb
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, rss_anon_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, rss_anon_kb_, msg);
   }
 
   // Field 5: rss_file_kb
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, rss_file_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, rss_file_kb_, msg);
   }
 
   // Field 6: rss_shmem_kb
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, rss_shmem_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, rss_shmem_kb_, msg);
   }
 
   // Field 7: vm_swap_kb
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, vm_swap_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, vm_swap_kb_, msg);
   }
 
   // Field 8: vm_locked_kb
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, vm_locked_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, vm_locked_kb_, msg);
   }
 
   // Field 9: vm_hwm_kb
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, vm_hwm_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, vm_hwm_kb_, msg);
   }
 
   // Field 10: oom_score_adj
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, oom_score_adj_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, oom_score_adj_, msg);
   }
 
   // Field 11: threads
@@ -251,17 +252,17 @@ void ProcessStats_Process::Serialize(::protozero::Message* msg) const {
 
   // Field 12: is_peak_rss_resettable
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, is_peak_rss_resettable_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, is_peak_rss_resettable_, msg);
   }
 
   // Field 13: chrome_private_footprint_kb
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, chrome_private_footprint_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, chrome_private_footprint_kb_, msg);
   }
 
   // Field 14: chrome_peak_resident_set_kb
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, chrome_peak_resident_set_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, chrome_peak_resident_set_kb_, msg);
   }
 
   // Field 15: fds
@@ -269,7 +270,7 @@ void ProcessStats_Process::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(15));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -300,7 +301,7 @@ bool ProcessStats_FDInfo::ParseFromArray(const void* raw, size_t size) {
         field.get(&fd_);
         break;
       case 2 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -311,13 +312,13 @@ bool ProcessStats_FDInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessStats_FDInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessStats_FDInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -325,15 +326,15 @@ std::vector<uint8_t> ProcessStats_FDInfo::SerializeAsArray() const {
 void ProcessStats_FDInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: fd
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, fd_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, fd_, msg);
   }
 
   // Field 2: path
   if (_has_field_[2]) {
-    msg->AppendString(2, path_);
+    ::protozero::internal::gen_helpers::SerializeString(2, path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -371,13 +372,13 @@ bool ProcessStats_Thread::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessStats_Thread::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessStats_Thread::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -385,10 +386,10 @@ std::vector<uint8_t> ProcessStats_Thread::SerializeAsArray() const {
 void ProcessStats_Thread::Serialize(::protozero::Message* msg) const {
   // Field 1: tid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, tid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, tid_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

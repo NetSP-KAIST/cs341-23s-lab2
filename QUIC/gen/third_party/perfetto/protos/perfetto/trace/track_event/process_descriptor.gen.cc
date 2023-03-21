@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,10 +50,10 @@ bool ProcessDescriptor::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* cmdline */:
         cmdline_.emplace_back();
-        field.get(&cmdline_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cmdline_.back());
         break;
       case 6 /* process_name */:
-        field.get(&process_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &process_name_);
         break;
       case 5 /* process_priority */:
         field.get(&process_priority_);
@@ -68,7 +69,7 @@ bool ProcessDescriptor::ParseFromArray(const void* raw, size_t size) {
         break;
       case 8 /* process_labels */:
         process_labels_.emplace_back();
-        field.get(&process_labels_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &process_labels_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -79,13 +80,13 @@ bool ProcessDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ProcessDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ProcessDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -93,45 +94,45 @@ std::vector<uint8_t> ProcessDescriptor::SerializeAsArray() const {
 void ProcessDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: pid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, pid_, msg);
   }
 
   // Field 2: cmdline
   for (auto& it : cmdline_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 6: process_name
   if (_has_field_[6]) {
-    msg->AppendString(6, process_name_);
+    ::protozero::internal::gen_helpers::SerializeString(6, process_name_, msg);
   }
 
   // Field 5: process_priority
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, process_priority_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, process_priority_, msg);
   }
 
   // Field 7: start_timestamp_ns
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, start_timestamp_ns_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, start_timestamp_ns_, msg);
   }
 
   // Field 4: chrome_process_type
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, chrome_process_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, chrome_process_type_, msg);
   }
 
   // Field 3: legacy_sort_index
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, legacy_sort_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, legacy_sort_index_, msg);
   }
 
   // Field 8: process_labels
   for (auto& it : process_labels_) {
-    msg->AppendString(8, it);
+    ::protozero::internal::gen_helpers::SerializeString(8, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

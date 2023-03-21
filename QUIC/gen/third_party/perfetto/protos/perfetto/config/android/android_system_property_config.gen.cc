@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,7 +43,7 @@ bool AndroidSystemPropertyConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* property_name */:
         property_name_.emplace_back();
-        field.get(&property_name_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &property_name_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -53,13 +54,13 @@ bool AndroidSystemPropertyConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string AndroidSystemPropertyConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> AndroidSystemPropertyConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -67,15 +68,15 @@ std::vector<uint8_t> AndroidSystemPropertyConfig::SerializeAsArray() const {
 void AndroidSystemPropertyConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: poll_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, poll_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, poll_ms_, msg);
   }
 
   // Field 2: property_name
   for (auto& it : property_name_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

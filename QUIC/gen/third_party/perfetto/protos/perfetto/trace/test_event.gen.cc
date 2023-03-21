@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -41,7 +42,7 @@ bool TestEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* str */:
-        field.get(&str_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &str_);
         break;
       case 2 /* seq_value */:
         field.get(&seq_value_);
@@ -64,13 +65,13 @@ bool TestEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -78,22 +79,22 @@ std::vector<uint8_t> TestEvent::SerializeAsArray() const {
 void TestEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: str
   if (_has_field_[1]) {
-    msg->AppendString(1, str_);
+    ::protozero::internal::gen_helpers::SerializeString(1, str_, msg);
   }
 
   // Field 2: seq_value
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, seq_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, seq_value_, msg);
   }
 
   // Field 3: counter
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, counter_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, counter_, msg);
   }
 
   // Field 4: is_last
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, is_last_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, is_last_, msg);
   }
 
   // Field 5: payload
@@ -101,7 +102,7 @@ void TestEvent::Serialize(::protozero::Message* msg) const {
     (*payload_).Serialize(msg->BeginNestedMessage<::protozero::Message>(5));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -145,14 +146,14 @@ bool TestEvent_TestPayload::ParseFromArray(const void* raw, size_t size) {
     switch (field.id()) {
       case 1 /* str */:
         str_.emplace_back();
-        field.get(&str_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &str_.back());
         break;
       case 2 /* nested */:
         nested_.emplace_back();
         nested_.back().ParseFromArray(field.data(), field.size());
         break;
       case 4 /* single_string */:
-        field.get(&single_string_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &single_string_);
         break;
       case 5 /* single_int */:
         field.get(&single_int_);
@@ -177,13 +178,13 @@ bool TestEvent_TestPayload::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TestEvent_TestPayload::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TestEvent_TestPayload::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -191,7 +192,7 @@ std::vector<uint8_t> TestEvent_TestPayload::SerializeAsArray() const {
 void TestEvent_TestPayload::Serialize(::protozero::Message* msg) const {
   // Field 1: str
   for (auto& it : str_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
   // Field 2: nested
@@ -201,22 +202,22 @@ void TestEvent_TestPayload::Serialize(::protozero::Message* msg) const {
 
   // Field 4: single_string
   if (_has_field_[4]) {
-    msg->AppendString(4, single_string_);
+    ::protozero::internal::gen_helpers::SerializeString(4, single_string_, msg);
   }
 
   // Field 5: single_int
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, single_int_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, single_int_, msg);
   }
 
   // Field 6: repeated_ints
   for (auto& it : repeated_ints_) {
-    msg->AppendVarInt(6, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, it, msg);
   }
 
   // Field 3: remaining_nesting_depth
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, remaining_nesting_depth_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, remaining_nesting_depth_, msg);
   }
 
   // Field 7: debug_annotations
@@ -224,7 +225,7 @@ void TestEvent_TestPayload::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(7));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -54,7 +55,7 @@ bool TrackDescriptor::ParseFromArray(const void* raw, size_t size) {
         field.get(&parent_uuid_);
         break;
       case 2 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 3 /* process */:
         (*process_).ParseFromArray(field.data(), field.size());
@@ -80,13 +81,13 @@ bool TrackDescriptor::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TrackDescriptor::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TrackDescriptor::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -94,17 +95,17 @@ std::vector<uint8_t> TrackDescriptor::SerializeAsArray() const {
 void TrackDescriptor::Serialize(::protozero::Message* msg) const {
   // Field 1: uuid
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, uuid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, uuid_, msg);
   }
 
   // Field 5: parent_uuid
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, parent_uuid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, parent_uuid_, msg);
   }
 
   // Field 2: name
   if (_has_field_[2]) {
-    msg->AppendString(2, name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, name_, msg);
   }
 
   // Field 3: process
@@ -132,7 +133,7 @@ void TrackDescriptor::Serialize(::protozero::Message* msg) const {
     (*counter_).Serialize(msg->BeginNestedMessage<::protozero::Message>(8));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

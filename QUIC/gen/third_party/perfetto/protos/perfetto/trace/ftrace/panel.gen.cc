@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool DsiTxFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DsiTxFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DsiTxFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> DsiTxFtraceEvent::SerializeAsArray() const {
 void DsiTxFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: last
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, last_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, last_, msg);
   }
 
   // Field 2: tx_buf
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, tx_buf_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, tx_buf_, msg);
   }
 
   // Field 3: type
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, type_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -124,13 +125,13 @@ bool DsiRxFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DsiRxFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DsiRxFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -138,15 +139,15 @@ std::vector<uint8_t> DsiRxFtraceEvent::SerializeAsArray() const {
 void DsiRxFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: cmd
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, cmd_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, cmd_, msg);
   }
 
   // Field 2: rx_buf
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, rx_buf_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, rx_buf_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -188,13 +189,13 @@ bool DsiCmdFifoStatusFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string DsiCmdFifoStatusFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> DsiCmdFifoStatusFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -202,15 +203,15 @@ std::vector<uint8_t> DsiCmdFifoStatusFtraceEvent::SerializeAsArray() const {
 void DsiCmdFifoStatusFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: header
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, header_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, header_, msg);
   }
 
   // Field 2: payload
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, payload_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, payload_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

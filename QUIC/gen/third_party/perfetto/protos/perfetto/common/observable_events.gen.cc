@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -56,13 +57,13 @@ bool ObservableEvents::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ObservableEvents::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ObservableEvents::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -75,10 +76,10 @@ void ObservableEvents::Serialize(::protozero::Message* msg) const {
 
   // Field 2: all_data_sources_started
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, all_data_sources_started_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, all_data_sources_started_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -107,10 +108,10 @@ bool ObservableEvents_DataSourceInstanceStateChange::ParseFromArray(const void* 
     }
     switch (field.id()) {
       case 1 /* producer_name */:
-        field.get(&producer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_);
         break;
       case 2 /* data_source_name */:
-        field.get(&data_source_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &data_source_name_);
         break;
       case 3 /* state */:
         field.get(&state_);
@@ -124,13 +125,13 @@ bool ObservableEvents_DataSourceInstanceStateChange::ParseFromArray(const void* 
 }
 
 std::string ObservableEvents_DataSourceInstanceStateChange::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ObservableEvents_DataSourceInstanceStateChange::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -138,20 +139,20 @@ std::vector<uint8_t> ObservableEvents_DataSourceInstanceStateChange::SerializeAs
 void ObservableEvents_DataSourceInstanceStateChange::Serialize(::protozero::Message* msg) const {
   // Field 1: producer_name
   if (_has_field_[1]) {
-    msg->AppendString(1, producer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, producer_name_, msg);
   }
 
   // Field 2: data_source_name
   if (_has_field_[2]) {
-    msg->AppendString(2, data_source_name_);
+    ::protozero::internal::gen_helpers::SerializeString(2, data_source_name_, msg);
   }
 
   // Field 3: state
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, state_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, state_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

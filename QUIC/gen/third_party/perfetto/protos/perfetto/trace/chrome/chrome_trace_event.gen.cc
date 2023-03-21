@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -66,7 +67,7 @@ bool ChromeEventBundle::ParseFromArray(const void* raw, size_t size) {
         break;
       case 4 /* legacy_ftrace_output */:
         legacy_ftrace_output_.emplace_back();
-        field.get(&legacy_ftrace_output_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &legacy_ftrace_output_.back());
         break;
       case 5 /* legacy_json_trace */:
         legacy_json_trace_.emplace_back();
@@ -85,13 +86,13 @@ bool ChromeEventBundle::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeEventBundle::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeEventBundle::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -109,7 +110,7 @@ void ChromeEventBundle::Serialize(::protozero::Message* msg) const {
 
   // Field 4: legacy_ftrace_output
   for (auto& it : legacy_ftrace_output_) {
-    msg->AppendString(4, it);
+    ::protozero::internal::gen_helpers::SerializeString(4, it, msg);
   }
 
   // Field 5: legacy_json_trace
@@ -122,7 +123,7 @@ void ChromeEventBundle::Serialize(::protozero::Message* msg) const {
     it.Serialize(msg->BeginNestedMessage<::protozero::Message>(3));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -150,7 +151,7 @@ bool ChromeStringTableEntry::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* value */:
-        field.get(&value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &value_);
         break;
       case 2 /* index */:
         field.get(&index_);
@@ -164,13 +165,13 @@ bool ChromeStringTableEntry::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeStringTableEntry::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeStringTableEntry::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -178,15 +179,15 @@ std::vector<uint8_t> ChromeStringTableEntry::SerializeAsArray() const {
 void ChromeStringTableEntry::Serialize(::protozero::Message* msg) const {
   // Field 1: value
   if (_has_field_[1]) {
-    msg->AppendString(1, value_);
+    ::protozero::internal::gen_helpers::SerializeString(1, value_, msg);
   }
 
   // Field 2: index
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -217,7 +218,7 @@ bool ChromeLegacyJsonTrace::ParseFromArray(const void* raw, size_t size) {
         field.get(&type_);
         break;
       case 2 /* data */:
-        field.get(&data_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &data_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -228,13 +229,13 @@ bool ChromeLegacyJsonTrace::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeLegacyJsonTrace::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeLegacyJsonTrace::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -242,15 +243,15 @@ std::vector<uint8_t> ChromeLegacyJsonTrace::SerializeAsArray() const {
 void ChromeLegacyJsonTrace::Serialize(::protozero::Message* msg) const {
   // Field 1: type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, type_, msg);
   }
 
   // Field 2: data
   if (_has_field_[2]) {
-    msg->AppendString(2, data_);
+    ::protozero::internal::gen_helpers::SerializeString(2, data_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -281,10 +282,10 @@ bool ChromeMetadata::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* string_value */:
-        field.get(&string_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
         break;
       case 3 /* bool_value */:
         field.get(&bool_value_);
@@ -293,7 +294,7 @@ bool ChromeMetadata::ParseFromArray(const void* raw, size_t size) {
         field.get(&int_value_);
         break;
       case 5 /* json_value */:
-        field.get(&json_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &json_value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -304,13 +305,13 @@ bool ChromeMetadata::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeMetadata::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeMetadata::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -318,30 +319,30 @@ std::vector<uint8_t> ChromeMetadata::SerializeAsArray() const {
 void ChromeMetadata::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: string_value
   if (_has_field_[2]) {
-    msg->AppendString(2, string_value_);
+    ::protozero::internal::gen_helpers::SerializeString(2, string_value_, msg);
   }
 
   // Field 3: bool_value
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, bool_value_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, bool_value_, msg);
   }
 
   // Field 4: int_value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, int_value_, msg);
   }
 
   // Field 5: json_value
   if (_has_field_[5]) {
-    msg->AppendString(5, json_value_);
+    ::protozero::internal::gen_helpers::SerializeString(5, json_value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -387,7 +388,7 @@ bool ChromeTraceEvent::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* timestamp */:
         field.get(&timestamp_);
@@ -405,7 +406,7 @@ bool ChromeTraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&thread_duration_);
         break;
       case 7 /* scope */:
-        field.get(&scope_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &scope_);
         break;
       case 8 /* id */:
         field.get(&id_);
@@ -414,7 +415,7 @@ bool ChromeTraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&flags_);
         break;
       case 10 /* category_group_name */:
-        field.get(&category_group_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &category_group_name_);
         break;
       case 11 /* process_id */:
         field.get(&process_id_);
@@ -444,13 +445,13 @@ bool ChromeTraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeTraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeTraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -458,67 +459,67 @@ std::vector<uint8_t> ChromeTraceEvent::SerializeAsArray() const {
 void ChromeTraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: timestamp
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, timestamp_, msg);
   }
 
   // Field 3: phase
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, phase_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, phase_, msg);
   }
 
   // Field 4: thread_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, thread_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, thread_id_, msg);
   }
 
   // Field 5: duration
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, duration_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, duration_, msg);
   }
 
   // Field 6: thread_duration
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, thread_duration_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, thread_duration_, msg);
   }
 
   // Field 7: scope
   if (_has_field_[7]) {
-    msg->AppendString(7, scope_);
+    ::protozero::internal::gen_helpers::SerializeString(7, scope_, msg);
   }
 
   // Field 8: id
   if (_has_field_[8]) {
-    msg->AppendVarInt(8, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(8, id_, msg);
   }
 
   // Field 9: flags
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, flags_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, flags_, msg);
   }
 
   // Field 10: category_group_name
   if (_has_field_[10]) {
-    msg->AppendString(10, category_group_name_);
+    ::protozero::internal::gen_helpers::SerializeString(10, category_group_name_, msg);
   }
 
   // Field 11: process_id
   if (_has_field_[11]) {
-    msg->AppendVarInt(11, process_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(11, process_id_, msg);
   }
 
   // Field 12: thread_timestamp
   if (_has_field_[12]) {
-    msg->AppendVarInt(12, thread_timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(12, thread_timestamp_, msg);
   }
 
   // Field 13: bind_id
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, bind_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, bind_id_, msg);
   }
 
   // Field 14: args
@@ -528,15 +529,15 @@ void ChromeTraceEvent::Serialize(::protozero::Message* msg) const {
 
   // Field 15: name_index
   if (_has_field_[15]) {
-    msg->AppendVarInt(15, name_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(15, name_index_, msg);
   }
 
   // Field 16: category_group_name_index
   if (_has_field_[16]) {
-    msg->AppendVarInt(16, category_group_name_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(16, category_group_name_index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -572,7 +573,7 @@ bool ChromeTraceEvent_Arg::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* bool_value */:
         field.get(&bool_value_);
@@ -587,13 +588,13 @@ bool ChromeTraceEvent_Arg::ParseFromArray(const void* raw, size_t size) {
         field.get(&double_value_);
         break;
       case 6 /* string_value */:
-        field.get(&string_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
         break;
       case 7 /* pointer_value */:
         field.get(&pointer_value_);
         break;
       case 8 /* json_value */:
-        field.get(&json_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &json_value_);
         break;
       case 10 /* traced_value */:
         (*traced_value_).ParseFromArray(field.data(), field.size());
@@ -610,13 +611,13 @@ bool ChromeTraceEvent_Arg::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeTraceEvent_Arg::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeTraceEvent_Arg::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -624,42 +625,42 @@ std::vector<uint8_t> ChromeTraceEvent_Arg::SerializeAsArray() const {
 void ChromeTraceEvent_Arg::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: bool_value
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, bool_value_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, bool_value_, msg);
   }
 
   // Field 3: uint_value
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, uint_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, uint_value_, msg);
   }
 
   // Field 4: int_value
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, int_value_, msg);
   }
 
   // Field 5: double_value
   if (_has_field_[5]) {
-    msg->AppendFixed(5, double_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(5, double_value_, msg);
   }
 
   // Field 6: string_value
   if (_has_field_[6]) {
-    msg->AppendString(6, string_value_);
+    ::protozero::internal::gen_helpers::SerializeString(6, string_value_, msg);
   }
 
   // Field 7: pointer_value
   if (_has_field_[7]) {
-    msg->AppendVarInt(7, pointer_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(7, pointer_value_, msg);
   }
 
   // Field 8: json_value
   if (_has_field_[8]) {
-    msg->AppendString(8, json_value_);
+    ::protozero::internal::gen_helpers::SerializeString(8, json_value_, msg);
   }
 
   // Field 10: traced_value
@@ -669,10 +670,10 @@ void ChromeTraceEvent_Arg::Serialize(::protozero::Message* msg) const {
 
   // Field 9: name_index
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, name_index_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, name_index_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -719,7 +720,7 @@ bool ChromeTracedValue::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* dict_keys */:
         dict_keys_.emplace_back();
-        field.get(&dict_keys_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &dict_keys_.back());
         break;
       case 3 /* dict_values */:
         dict_values_.emplace_back();
@@ -739,7 +740,7 @@ bool ChromeTracedValue::ParseFromArray(const void* raw, size_t size) {
         field.get(&bool_value_);
         break;
       case 8 /* string_value */:
-        field.get(&string_value_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &string_value_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -750,13 +751,13 @@ bool ChromeTracedValue::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeTracedValue::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeTracedValue::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -764,12 +765,12 @@ std::vector<uint8_t> ChromeTracedValue::SerializeAsArray() const {
 void ChromeTracedValue::Serialize(::protozero::Message* msg) const {
   // Field 1: nested_type
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, nested_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, nested_type_, msg);
   }
 
   // Field 2: dict_keys
   for (auto& it : dict_keys_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: dict_values
@@ -784,25 +785,25 @@ void ChromeTracedValue::Serialize(::protozero::Message* msg) const {
 
   // Field 5: int_value
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, int_value_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, int_value_, msg);
   }
 
   // Field 6: double_value
   if (_has_field_[6]) {
-    msg->AppendFixed(6, double_value_);
+    ::protozero::internal::gen_helpers::SerializeFixed(6, double_value_, msg);
   }
 
   // Field 7: bool_value
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, bool_value_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, bool_value_, msg);
   }
 
   // Field 8: string_value
   if (_has_field_[8]) {
-    msg->AppendString(8, string_value_);
+    ::protozero::internal::gen_helpers::SerializeString(8, string_value_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

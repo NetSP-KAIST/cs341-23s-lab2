@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -76,19 +77,19 @@ bool SyncResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SyncResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SyncResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void SyncResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -122,19 +123,19 @@ bool SyncRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string SyncRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> SyncRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void SyncRequest::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -192,13 +193,13 @@ bool GetAsyncCommandResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GetAsyncCommandResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -234,7 +235,7 @@ void GetAsyncCommandResponse::Serialize(::protozero::Message* msg) const {
     (*clear_incremental_state_).Serialize(msg->BeginNestedMessage<::protozero::Message>(7));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -274,13 +275,13 @@ bool GetAsyncCommandResponse_ClearIncrementalState::ParseFromArray(const void* r
 }
 
 std::string GetAsyncCommandResponse_ClearIncrementalState::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_ClearIncrementalState::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -288,10 +289,10 @@ std::vector<uint8_t> GetAsyncCommandResponse_ClearIncrementalState::SerializeAsA
 void GetAsyncCommandResponse_ClearIncrementalState::Serialize(::protozero::Message* msg) const {
   // Field 1: data_source_ids
   for (auto& it : data_source_ids_) {
-    msg->AppendVarInt(1, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -335,13 +336,13 @@ bool GetAsyncCommandResponse_Flush::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string GetAsyncCommandResponse_Flush::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_Flush::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -349,15 +350,15 @@ std::vector<uint8_t> GetAsyncCommandResponse_Flush::SerializeAsArray() const {
 void GetAsyncCommandResponse_Flush::Serialize(::protozero::Message* msg) const {
   // Field 1: data_source_ids
   for (auto& it : data_source_ids_) {
-    msg->AppendVarInt(1, it);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, it, msg);
   }
 
   // Field 2: request_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, request_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, request_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -395,13 +396,13 @@ bool GetAsyncCommandResponse_StopDataSource::ParseFromArray(const void* raw, siz
 }
 
 std::string GetAsyncCommandResponse_StopDataSource::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_StopDataSource::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -409,10 +410,10 @@ std::vector<uint8_t> GetAsyncCommandResponse_StopDataSource::SerializeAsArray() 
 void GetAsyncCommandResponse_StopDataSource::Serialize(::protozero::Message* msg) const {
   // Field 1: instance_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, instance_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, instance_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -454,13 +455,13 @@ bool GetAsyncCommandResponse_StartDataSource::ParseFromArray(const void* raw, si
 }
 
 std::string GetAsyncCommandResponse_StartDataSource::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_StartDataSource::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -468,7 +469,7 @@ std::vector<uint8_t> GetAsyncCommandResponse_StartDataSource::SerializeAsArray()
 void GetAsyncCommandResponse_StartDataSource::Serialize(::protozero::Message* msg) const {
   // Field 1: new_instance_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, new_instance_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, new_instance_id_, msg);
   }
 
   // Field 2: config
@@ -476,7 +477,7 @@ void GetAsyncCommandResponse_StartDataSource::Serialize(::protozero::Message* ms
     (*config_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -518,13 +519,13 @@ bool GetAsyncCommandResponse_SetupDataSource::ParseFromArray(const void* raw, si
 }
 
 std::string GetAsyncCommandResponse_SetupDataSource::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_SetupDataSource::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -532,7 +533,7 @@ std::vector<uint8_t> GetAsyncCommandResponse_SetupDataSource::SerializeAsArray()
 void GetAsyncCommandResponse_SetupDataSource::Serialize(::protozero::Message* msg) const {
   // Field 1: new_instance_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, new_instance_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, new_instance_id_, msg);
   }
 
   // Field 2: config
@@ -540,7 +541,7 @@ void GetAsyncCommandResponse_SetupDataSource::Serialize(::protozero::Message* ms
     (*config_).Serialize(msg->BeginNestedMessage<::protozero::Message>(2));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -571,7 +572,7 @@ bool GetAsyncCommandResponse_SetupTracing::ParseFromArray(const void* raw, size_
         field.get(&shared_buffer_page_size_kb_);
         break;
       case 2 /* shm_key_windows */:
-        field.get(&shm_key_windows_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &shm_key_windows_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -582,13 +583,13 @@ bool GetAsyncCommandResponse_SetupTracing::ParseFromArray(const void* raw, size_
 }
 
 std::string GetAsyncCommandResponse_SetupTracing::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandResponse_SetupTracing::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -596,15 +597,15 @@ std::vector<uint8_t> GetAsyncCommandResponse_SetupTracing::SerializeAsArray() co
 void GetAsyncCommandResponse_SetupTracing::Serialize(::protozero::Message* msg) const {
   // Field 1: shared_buffer_page_size_kb
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, shared_buffer_page_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, shared_buffer_page_size_kb_, msg);
   }
 
   // Field 2: shm_key_windows
   if (_has_field_[2]) {
-    msg->AppendString(2, shm_key_windows_);
+    ::protozero::internal::gen_helpers::SerializeString(2, shm_key_windows_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -638,19 +639,19 @@ bool GetAsyncCommandRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string GetAsyncCommandRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> GetAsyncCommandRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void GetAsyncCommandRequest::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -684,19 +685,19 @@ bool ActivateTriggersResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ActivateTriggersResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ActivateTriggersResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void ActivateTriggersResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -725,7 +726,7 @@ bool ActivateTriggersRequest::ParseFromArray(const void* raw, size_t size) {
     switch (field.id()) {
       case 1 /* trigger_names */:
         trigger_names_.emplace_back();
-        field.get(&trigger_names_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &trigger_names_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -736,13 +737,13 @@ bool ActivateTriggersRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ActivateTriggersRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ActivateTriggersRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -750,10 +751,10 @@ std::vector<uint8_t> ActivateTriggersRequest::SerializeAsArray() const {
 void ActivateTriggersRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: trigger_names
   for (auto& it : trigger_names_) {
-    msg->AppendString(1, it);
+    ::protozero::internal::gen_helpers::SerializeString(1, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -787,19 +788,19 @@ bool NotifyDataSourceStoppedResponse::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string NotifyDataSourceStoppedResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NotifyDataSourceStoppedResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void NotifyDataSourceStoppedResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -837,13 +838,13 @@ bool NotifyDataSourceStoppedRequest::ParseFromArray(const void* raw, size_t size
 }
 
 std::string NotifyDataSourceStoppedRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NotifyDataSourceStoppedRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -851,10 +852,10 @@ std::vector<uint8_t> NotifyDataSourceStoppedRequest::SerializeAsArray() const {
 void NotifyDataSourceStoppedRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: data_source_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, data_source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, data_source_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -888,19 +889,19 @@ bool NotifyDataSourceStartedResponse::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string NotifyDataSourceStartedResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NotifyDataSourceStartedResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void NotifyDataSourceStartedResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -938,13 +939,13 @@ bool NotifyDataSourceStartedRequest::ParseFromArray(const void* raw, size_t size
 }
 
 std::string NotifyDataSourceStartedRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> NotifyDataSourceStartedRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -952,10 +953,10 @@ std::vector<uint8_t> NotifyDataSourceStartedRequest::SerializeAsArray() const {
 void NotifyDataSourceStartedRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: data_source_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, data_source_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, data_source_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -989,19 +990,19 @@ bool CommitDataResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CommitDataResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CommitDataResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void CommitDataResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1035,19 +1036,19 @@ bool UnregisterTraceWriterResponse::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string UnregisterTraceWriterResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UnregisterTraceWriterResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void UnregisterTraceWriterResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1085,13 +1086,13 @@ bool UnregisterTraceWriterRequest::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string UnregisterTraceWriterRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UnregisterTraceWriterRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1099,10 +1100,10 @@ std::vector<uint8_t> UnregisterTraceWriterRequest::SerializeAsArray() const {
 void UnregisterTraceWriterRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: trace_writer_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, trace_writer_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, trace_writer_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1136,19 +1137,19 @@ bool RegisterTraceWriterResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegisterTraceWriterResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegisterTraceWriterResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void RegisterTraceWriterResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1190,13 +1191,13 @@ bool RegisterTraceWriterRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegisterTraceWriterRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegisterTraceWriterRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1204,15 +1205,15 @@ std::vector<uint8_t> RegisterTraceWriterRequest::SerializeAsArray() const {
 void RegisterTraceWriterRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: trace_writer_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, trace_writer_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, trace_writer_id_, msg);
   }
 
   // Field 2: target_buffer
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, target_buffer_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, target_buffer_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1246,19 +1247,19 @@ bool UnregisterDataSourceResponse::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string UnregisterDataSourceResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UnregisterDataSourceResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void UnregisterDataSourceResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1285,7 +1286,7 @@ bool UnregisterDataSourceRequest::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* data_source_name */:
-        field.get(&data_source_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &data_source_name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -1296,13 +1297,13 @@ bool UnregisterDataSourceRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string UnregisterDataSourceRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UnregisterDataSourceRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1310,10 +1311,10 @@ std::vector<uint8_t> UnregisterDataSourceRequest::SerializeAsArray() const {
 void UnregisterDataSourceRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: data_source_name
   if (_has_field_[1]) {
-    msg->AppendString(1, data_source_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, data_source_name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1347,19 +1348,19 @@ bool UpdateDataSourceResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string UpdateDataSourceResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UpdateDataSourceResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
 
 void UpdateDataSourceResponse::Serialize(::protozero::Message* msg) const {
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1397,13 +1398,13 @@ bool UpdateDataSourceRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string UpdateDataSourceRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> UpdateDataSourceRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1414,7 +1415,7 @@ void UpdateDataSourceRequest::Serialize(::protozero::Message* msg) const {
     (*data_source_descriptor_).Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1441,7 +1442,7 @@ bool RegisterDataSourceResponse::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* error */:
-        field.get(&error_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &error_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -1452,13 +1453,13 @@ bool RegisterDataSourceResponse::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegisterDataSourceResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegisterDataSourceResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1466,10 +1467,10 @@ std::vector<uint8_t> RegisterDataSourceResponse::SerializeAsArray() const {
 void RegisterDataSourceResponse::Serialize(::protozero::Message* msg) const {
   // Field 1: error
   if (_has_field_[1]) {
-    msg->AppendString(1, error_);
+    ::protozero::internal::gen_helpers::SerializeString(1, error_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1507,13 +1508,13 @@ bool RegisterDataSourceRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string RegisterDataSourceRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> RegisterDataSourceRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1524,7 +1525,7 @@ void RegisterDataSourceRequest::Serialize(::protozero::Message* msg) const {
     (*data_source_descriptor_).Serialize(msg->BeginNestedMessage<::protozero::Message>(1));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1566,13 +1567,13 @@ bool InitializeConnectionResponse::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string InitializeConnectionResponse::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InitializeConnectionResponse::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1580,15 +1581,15 @@ std::vector<uint8_t> InitializeConnectionResponse::SerializeAsArray() const {
 void InitializeConnectionResponse::Serialize(::protozero::Message* msg) const {
   // Field 1: using_shmem_provided_by_producer
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, using_shmem_provided_by_producer_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, using_shmem_provided_by_producer_, msg);
   }
 
   // Field 2: direct_smb_patching_supported
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, direct_smb_patching_supported_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, direct_smb_patching_supported_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1627,7 +1628,7 @@ bool InitializeConnectionRequest::ParseFromArray(const void* raw, size_t size) {
         field.get(&shared_memory_size_hint_bytes_);
         break;
       case 3 /* producer_name */:
-        field.get(&producer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_);
         break;
       case 4 /* smb_scraping_mode */:
         field.get(&smb_scraping_mode_);
@@ -1636,10 +1637,10 @@ bool InitializeConnectionRequest::ParseFromArray(const void* raw, size_t size) {
         field.get(&producer_provided_shmem_);
         break;
       case 8 /* sdk_version */:
-        field.get(&sdk_version_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &sdk_version_);
         break;
       case 7 /* shm_key_windows */:
-        field.get(&shm_key_windows_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &shm_key_windows_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -1650,13 +1651,13 @@ bool InitializeConnectionRequest::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string InitializeConnectionRequest::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> InitializeConnectionRequest::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1664,40 +1665,40 @@ std::vector<uint8_t> InitializeConnectionRequest::SerializeAsArray() const {
 void InitializeConnectionRequest::Serialize(::protozero::Message* msg) const {
   // Field 1: shared_memory_page_size_hint_bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, shared_memory_page_size_hint_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, shared_memory_page_size_hint_bytes_, msg);
   }
 
   // Field 2: shared_memory_size_hint_bytes
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, shared_memory_size_hint_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, shared_memory_size_hint_bytes_, msg);
   }
 
   // Field 3: producer_name
   if (_has_field_[3]) {
-    msg->AppendString(3, producer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, producer_name_, msg);
   }
 
   // Field 4: smb_scraping_mode
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, smb_scraping_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, smb_scraping_mode_, msg);
   }
 
   // Field 6: producer_provided_shmem
   if (_has_field_[6]) {
-    msg->AppendTinyVarInt(6, producer_provided_shmem_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(6, producer_provided_shmem_, msg);
   }
 
   // Field 8: sdk_version
   if (_has_field_[8]) {
-    msg->AppendString(8, sdk_version_);
+    ::protozero::internal::gen_helpers::SerializeString(8, sdk_version_, msg);
   }
 
   // Field 7: shm_key_windows
   if (_has_field_[7]) {
-    msg->AppendString(7, shm_key_windows_);
+    ::protozero::internal::gen_helpers::SerializeString(7, shm_key_windows_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

@@ -1,5 +1,6 @@
 {
   "deps": [
+    "../../../../../components/history_clusters/public/mojom/mojo_bindings.build_metadata",
     "../../../../../mojo/public/mojom/base/base.build_metadata",
     "../../../../base/mojom/mojom.build_metadata",
     "../../../../gfx/geometry/mojom/mojom.build_metadata",

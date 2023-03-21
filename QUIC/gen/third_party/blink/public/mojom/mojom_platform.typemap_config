@@ -92,6 +92,20 @@
     ],
     "types": [
       {
+        "cpp": "::blink::AuctionConfig::MaybePromiseDirectFromSellerSignals",
+        "mojom": "blink.mojom.AuctionAdConfigMaybePromiseDirectFromSellerSignals"
+      }
+    ]
+  },
+  {
+    "traits_headers": [
+      "third_party/blink/public/common/interest_group/auction_config_mojom_traits.h"
+    ],
+    "traits_public_deps": [
+      "//url/mojom:mojom_traits"
+    ],
+    "types": [
+      {
         "cpp": "::blink::AuctionConfig::NonSharedParams",
         "mojom": "blink.mojom.AuctionAdConfigNonSharedParams"
       }
@@ -191,15 +205,19 @@
   },
   {
     "traits_headers": [
-      "third_party/blink/public/common/interest_group/interest_group_mojom_traits.h"
+      "third_party/blink/public/common/interest_group/ad_display_size_mojom_traits.h"
     ],
     "traits_public_deps": [
       "//url/mojom:mojom_traits"
     ],
     "types": [
       {
-        "cpp": "::blink::InterestGroup",
-        "mojom": "blink.mojom.InterestGroup"
+        "cpp": "::blink::AdSize",
+        "mojom": "blink.mojom.AdSize"
+      },
+      {
+        "cpp": "::blink::AdDescriptor",
+        "mojom": "blink.mojom.AdDescriptor"
       }
     ]
   },
@@ -211,6 +229,10 @@
       "//url/mojom:mojom_traits"
     ],
     "types": [
+      {
+        "cpp": "::blink::InterestGroup",
+        "mojom": "blink.mojom.InterestGroup"
+      },
       {
         "cpp": "::blink::InterestGroup::Ad",
         "mojom": "blink.mojom.InterestGroupAd"
@@ -615,10 +637,6 @@
         "mojom": "blink.mojom.ReportingDestination"
       },
       {
-        "cpp": "::blink::FencedFrame::FencedFrameReporting",
-        "mojom": "blink.mojom.FencedFrameReporting"
-      },
-      {
         "cpp": "::blink::FencedFrame::DeprecatedFencedFrameMode",
         "mojom": "blink.mojom.DeprecatedFencedFrameMode"
       },
@@ -645,10 +663,6 @@
       {
         "cpp": "::blink::FencedFrame::RedactedFencedFrameProperty<::blink::FencedFrame::SharedStorageBudgetMetadata>",
         "mojom": "blink.mojom.PotentiallyOpaqueSharedStorageBudgetMetadata"
-      },
-      {
-        "cpp": "::blink::FencedFrame::RedactedFencedFrameProperty<::blink::FencedFrame::FencedFrameReporting>",
-        "mojom": "blink.mojom.PotentiallyOpaqueReportingMetadata"
       },
       {
         "cpp": "::blink::FencedFrame::RedactedFencedFrameConfig",

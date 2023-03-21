@@ -17,13 +17,23 @@ namespace protos {
 namespace pbzero {
 
 
-class NetworkPacketTraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class NetworkPacketTraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   NetworkPacketTraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit NetworkPacketTraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit NetworkPacketTraceConfig_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_poll_ms() const { return at<1>().valid(); }
   uint32_t poll_ms() const { return at<1>().as_uint32(); }
+  bool has_aggregation_threshold() const { return at<2>().valid(); }
+  uint32_t aggregation_threshold() const { return at<2>().as_uint32(); }
+  bool has_intern_limit() const { return at<3>().valid(); }
+  uint32_t intern_limit() const { return at<3>().as_uint32(); }
+  bool has_drop_local_port() const { return at<4>().valid(); }
+  bool drop_local_port() const { return at<4>().as_bool(); }
+  bool has_drop_remote_port() const { return at<5>().valid(); }
+  bool drop_remote_port() const { return at<5>().as_bool(); }
+  bool has_drop_tcp_flags() const { return at<6>().valid(); }
+  bool drop_tcp_flags() const { return at<6>().as_bool(); }
 };
 
 class NetworkPacketTraceConfig : public ::protozero::Message {
@@ -31,6 +41,11 @@ class NetworkPacketTraceConfig : public ::protozero::Message {
   using Decoder = NetworkPacketTraceConfig_Decoder;
   enum : int32_t {
     kPollMsFieldNumber = 1,
+    kAggregationThresholdFieldNumber = 2,
+    kInternLimitFieldNumber = 3,
+    kDropLocalPortFieldNumber = 4,
+    kDropRemotePortFieldNumber = 5,
+    kDropTcpFlagsFieldNumber = 6,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.NetworkPacketTraceConfig"; }
 
@@ -57,6 +72,131 @@ class NetworkPacketTraceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AggregationThreshold =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketTraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AggregationThreshold kAggregationThreshold() { return {}; }
+  void set_aggregation_threshold(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AggregationThreshold::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InternLimit =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketTraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_InternLimit kInternLimit() { return {}; }
+  void set_intern_limit(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InternLimit::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DropLocalPort =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      NetworkPacketTraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DropLocalPort kDropLocalPort() { return {}; }
+  void set_drop_local_port(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_DropLocalPort::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DropRemotePort =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      NetworkPacketTraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DropRemotePort kDropRemotePort() { return {}; }
+  void set_drop_remote_port(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_DropRemotePort::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DropTcpFlags =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      NetworkPacketTraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DropTcpFlags kDropTcpFlags() { return {}; }
+  void set_drop_tcp_flags(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_DropTcpFlags::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };

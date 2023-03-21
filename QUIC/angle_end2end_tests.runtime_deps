@@ -38,6 +38,6 @@ icudtl.dat
 ./libangle_util.so
 ./libthird_party_protobuf_protobuf_lite.so
 ./libmirclient.so.9
-../../testing/location_tags.json
 bin/run_angle_end2end_tests
 ../../.vpython3
+../../testing/location_tags.json

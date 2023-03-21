@@ -7,7 +7,7 @@
 ../../.vpython3
 ../../build/util/lib/__init__.py
 ../../build/util/lib/results/
-../../testing/location_tags.json
 bin/run_flatbuffers_unittests
 ../../.vpython3
+../../testing/location_tags.json
 ./libc++.so

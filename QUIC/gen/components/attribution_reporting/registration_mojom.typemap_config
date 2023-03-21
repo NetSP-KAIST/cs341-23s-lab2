@@ -38,9 +38,9 @@
         "move_only": true
       },
       {
-        "cpp": "::attribution_reporting::Filters",
-        "forward_declaration": "namespace attribution_reporting { class Filters; }",
-        "mojom": "attribution_reporting.mojom.Filters"
+        "cpp": "::attribution_reporting::FilterPair",
+        "forward_declaration": "namespace attribution_reporting { struct FilterPair; }",
+        "mojom": "attribution_reporting.mojom.FilterPair"
       },
       {
         "cpp": "::attribution_reporting::EventTriggerData",
@@ -53,16 +53,20 @@
         "mojom": "attribution_reporting.mojom.AggregatableTriggerData"
       },
       {
-        "cpp": "::attribution_reporting::TriggerAttestation",
-        "forward_declaration": "namespace attribution_reporting { class TriggerAttestation; }",
-        "mojom": "attribution_reporting.mojom.TriggerAttestation",
-        "move_only": true
+        "cpp": "::attribution_reporting::AggregatableDedupKey",
+        "forward_declaration": "namespace attribution_reporting { struct AggregatableDedupKey; }",
+        "mojom": "attribution_reporting.mojom.AggregatableDedupKey"
       },
       {
         "cpp": "::attribution_reporting::TriggerRegistration",
         "forward_declaration": "namespace attribution_reporting { struct TriggerRegistration; }",
         "mojom": "attribution_reporting.mojom.TriggerRegistration",
         "move_only": true
+      },
+      {
+        "cpp": "::attribution_reporting::DestinationSet",
+        "forward_declaration": "namespace attribution_reporting { class DestinationSet; }",
+        "mojom": "attribution_reporting.mojom.DestinationSet"
       }
     ]
   }

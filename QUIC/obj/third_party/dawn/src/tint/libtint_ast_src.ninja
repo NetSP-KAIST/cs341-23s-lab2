@@ -1,6 +1,6 @@
-defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-16-init-17653-g39da55e8-2\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=31cf778cc264a5baf99a0f1f240d7aceb206065f -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DTINT_BUILD_SPV_READER=0 -DTINT_BUILD_SPV_WRITER=1 -DTINT_BUILD_WGSL_READER=1 -DTINT_BUILD_WGSL_WRITER=1 -DTINT_BUILD_MSL_WRITER=1 -DTINT_BUILD_HLSL_WRITER=1 -DTINT_BUILD_GLSL_WRITER=1
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DTINT_BUILD_SPV_READER=0 -DTINT_BUILD_SPV_WRITER=1 -DTINT_BUILD_WGSL_READER=1 -DTINT_BUILD_WGSL_WRITER=1 -DTINT_BUILD_MSL_WRITER=1 -DTINT_BUILD_HLSL_WRITER=1 -DTINT_BUILD_GLSL_WRITER=1 -DTINT_BUILD_SYNTAX_TREE_WRITER=0
 include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/dawn/src/tint -I../../third_party/dawn -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/spirv-tools/src -I../../third_party/vulkan-deps/spirv-tools/src/include -I../../third_party/dawn/include
-cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
 cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
 label_name = libtint_ast_src
 target_out_dir = obj/third_party/dawn/src/tint
@@ -13,15 +13,9 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/accessor_expression.o: cxx .
 build obj/third_party/dawn/src/tint/libtint_ast_src/alias.o: cxx ../../third_party/dawn/src/tint/ast/alias.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = alias.cc
   source_name_part = alias
-build obj/third_party/dawn/src/tint/libtint_ast_src/array.o: cxx ../../third_party/dawn/src/tint/ast/array.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = array.cc
-  source_name_part = array
 build obj/third_party/dawn/src/tint/libtint_ast_src/assignment_statement.o: cxx ../../third_party/dawn/src/tint/ast/assignment_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = assignment_statement.cc
   source_name_part = assignment_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/atomic.o: cxx ../../third_party/dawn/src/tint/ast/atomic.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = atomic.cc
-  source_name_part = atomic
 build obj/third_party/dawn/src/tint/libtint_ast_src/attribute.o: cxx ../../third_party/dawn/src/tint/ast/attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = attribute.cc
   source_name_part = attribute
@@ -37,9 +31,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/bitcast_expression.o: cxx ..
 build obj/third_party/dawn/src/tint/libtint_ast_src/block_statement.o: cxx ../../third_party/dawn/src/tint/ast/block_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = block_statement.cc
   source_name_part = block_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/bool.o: cxx ../../third_party/dawn/src/tint/ast/bool.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = bool.cc
-  source_name_part = bool
 build obj/third_party/dawn/src/tint/libtint_ast_src/bool_literal_expression.o: cxx ../../third_party/dawn/src/tint/ast/bool_literal_expression.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = bool_literal_expression.cc
   source_name_part = bool_literal_expression
@@ -52,9 +43,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/break_statement.o: cxx ../..
 build obj/third_party/dawn/src/tint/libtint_ast_src/builtin_attribute.o: cxx ../../third_party/dawn/src/tint/ast/builtin_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = builtin_attribute.cc
   source_name_part = builtin_attribute
-build obj/third_party/dawn/src/tint/libtint_ast_src/builtin_value.o: cxx ../../third_party/dawn/src/tint/ast/builtin_value.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = builtin_value.cc
-  source_name_part = builtin_value
 build obj/third_party/dawn/src/tint/libtint_ast_src/call_expression.o: cxx ../../third_party/dawn/src/tint/ast/call_expression.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = call_expression.cc
   source_name_part = call_expression
@@ -79,12 +67,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/const_assert.o: cxx ../../th
 build obj/third_party/dawn/src/tint/libtint_ast_src/continue_statement.o: cxx ../../third_party/dawn/src/tint/ast/continue_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = continue_statement.cc
   source_name_part = continue_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/depth_multisampled_texture.o: cxx ../../third_party/dawn/src/tint/ast/depth_multisampled_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = depth_multisampled_texture.cc
-  source_name_part = depth_multisampled_texture
-build obj/third_party/dawn/src/tint/libtint_ast_src/depth_texture.o: cxx ../../third_party/dawn/src/tint/ast/depth_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = depth_texture.cc
-  source_name_part = depth_texture
 build obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_attribute.o: cxx ../../third_party/dawn/src/tint/ast/diagnostic_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = diagnostic_attribute.cc
   source_name_part = diagnostic_attribute
@@ -109,15 +91,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/expression.o: cxx ../../thir
 build obj/third_party/dawn/src/tint/libtint_ast_src/extension.o: cxx ../../third_party/dawn/src/tint/ast/extension.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = extension.cc
   source_name_part = extension
-build obj/third_party/dawn/src/tint/libtint_ast_src/external_texture.o: cxx ../../third_party/dawn/src/tint/ast/external_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = external_texture.cc
-  source_name_part = external_texture
-build obj/third_party/dawn/src/tint/libtint_ast_src/f16.o: cxx ../../third_party/dawn/src/tint/ast/f16.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = f16.cc
-  source_name_part = f16
-build obj/third_party/dawn/src/tint/libtint_ast_src/f32.o: cxx ../../third_party/dawn/src/tint/ast/f32.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = f32.cc
-  source_name_part = f32
 build obj/third_party/dawn/src/tint/libtint_ast_src/float_literal_expression.o: cxx ../../third_party/dawn/src/tint/ast/float_literal_expression.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = float_literal_expression.cc
   source_name_part = float_literal_expression
@@ -130,9 +103,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/function.o: cxx ../../third_
 build obj/third_party/dawn/src/tint/libtint_ast_src/group_attribute.o: cxx ../../third_party/dawn/src/tint/ast/group_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = group_attribute.cc
   source_name_part = group_attribute
-build obj/third_party/dawn/src/tint/libtint_ast_src/i32.o: cxx ../../third_party/dawn/src/tint/ast/i32.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = i32.cc
-  source_name_part = i32
 build obj/third_party/dawn/src/tint/libtint_ast_src/id_attribute.o: cxx ../../third_party/dawn/src/tint/ast/id_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = id_attribute.cc
   source_name_part = id_attribute
@@ -175,18 +145,15 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/location_attribute.o: cxx ..
 build obj/third_party/dawn/src/tint/libtint_ast_src/loop_statement.o: cxx ../../third_party/dawn/src/tint/ast/loop_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = loop_statement.cc
   source_name_part = loop_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/matrix.o: cxx ../../third_party/dawn/src/tint/ast/matrix.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = matrix.cc
-  source_name_part = matrix
 build obj/third_party/dawn/src/tint/libtint_ast_src/member_accessor_expression.o: cxx ../../third_party/dawn/src/tint/ast/member_accessor_expression.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = member_accessor_expression.cc
   source_name_part = member_accessor_expression
 build obj/third_party/dawn/src/tint/libtint_ast_src/module.o: cxx ../../third_party/dawn/src/tint/ast/module.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = module.cc
   source_name_part = module
-build obj/third_party/dawn/src/tint/libtint_ast_src/multisampled_texture.o: cxx ../../third_party/dawn/src/tint/ast/multisampled_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = multisampled_texture.cc
-  source_name_part = multisampled_texture
+build obj/third_party/dawn/src/tint/libtint_ast_src/must_use_attribute.o: cxx ../../third_party/dawn/src/tint/ast/must_use_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
+  source_file_part = must_use_attribute.cc
+  source_name_part = must_use_attribute
 build obj/third_party/dawn/src/tint/libtint_ast_src/node.o: cxx ../../third_party/dawn/src/tint/ast/node.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = node.cc
   source_name_part = node
@@ -202,27 +169,15 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/phony_expression.o: cxx ../.
 build obj/third_party/dawn/src/tint/libtint_ast_src/pipeline_stage.o: cxx ../../third_party/dawn/src/tint/ast/pipeline_stage.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = pipeline_stage.cc
   source_name_part = pipeline_stage
-build obj/third_party/dawn/src/tint/libtint_ast_src/pointer.o: cxx ../../third_party/dawn/src/tint/ast/pointer.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = pointer.cc
-  source_name_part = pointer
 build obj/third_party/dawn/src/tint/libtint_ast_src/return_statement.o: cxx ../../third_party/dawn/src/tint/ast/return_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = return_statement.cc
   source_name_part = return_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/sampled_texture.o: cxx ../../third_party/dawn/src/tint/ast/sampled_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = sampled_texture.cc
-  source_name_part = sampled_texture
-build obj/third_party/dawn/src/tint/libtint_ast_src/sampler.o: cxx ../../third_party/dawn/src/tint/ast/sampler.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = sampler.cc
-  source_name_part = sampler
 build obj/third_party/dawn/src/tint/libtint_ast_src/stage_attribute.o: cxx ../../third_party/dawn/src/tint/ast/stage_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = stage_attribute.cc
   source_name_part = stage_attribute
 build obj/third_party/dawn/src/tint/libtint_ast_src/statement.o: cxx ../../third_party/dawn/src/tint/ast/statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = statement.cc
   source_name_part = statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/storage_texture.o: cxx ../../third_party/dawn/src/tint/ast/storage_texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = storage_texture.cc
-  source_name_part = storage_texture
 build obj/third_party/dawn/src/tint/libtint_ast_src/stride_attribute.o: cxx ../../third_party/dawn/src/tint/ast/stride_attribute.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = stride_attribute.cc
   source_name_part = stride_attribute
@@ -247,21 +202,12 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/switch_statement.o: cxx ../.
 build obj/third_party/dawn/src/tint/libtint_ast_src/templated_identifier.o: cxx ../../third_party/dawn/src/tint/ast/templated_identifier.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = templated_identifier.cc
   source_name_part = templated_identifier
-build obj/third_party/dawn/src/tint/libtint_ast_src/texture.o: cxx ../../third_party/dawn/src/tint/ast/texture.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = texture.cc
-  source_name_part = texture
 build obj/third_party/dawn/src/tint/libtint_ast_src/type.o: cxx ../../third_party/dawn/src/tint/ast/type.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = type.cc
   source_name_part = type
 build obj/third_party/dawn/src/tint/libtint_ast_src/type_decl.o: cxx ../../third_party/dawn/src/tint/ast/type_decl.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = type_decl.cc
   source_name_part = type_decl
-build obj/third_party/dawn/src/tint/libtint_ast_src/type_name.o: cxx ../../third_party/dawn/src/tint/ast/type_name.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = type_name.cc
-  source_name_part = type_name
-build obj/third_party/dawn/src/tint/libtint_ast_src/u32.o: cxx ../../third_party/dawn/src/tint/ast/u32.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = u32.cc
-  source_name_part = u32
 build obj/third_party/dawn/src/tint/libtint_ast_src/unary_op.o: cxx ../../third_party/dawn/src/tint/ast/unary_op.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = unary_op.cc
   source_name_part = unary_op
@@ -277,12 +223,6 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/variable.o: cxx ../../third_
 build obj/third_party/dawn/src/tint/libtint_ast_src/variable_decl_statement.o: cxx ../../third_party/dawn/src/tint/ast/variable_decl_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = variable_decl_statement.cc
   source_name_part = variable_decl_statement
-build obj/third_party/dawn/src/tint/libtint_ast_src/vector.o: cxx ../../third_party/dawn/src/tint/ast/vector.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = vector.cc
-  source_name_part = vector
-build obj/third_party/dawn/src/tint/libtint_ast_src/void.o: cxx ../../third_party/dawn/src/tint/ast/void.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
-  source_file_part = void.cc
-  source_name_part = void
 build obj/third_party/dawn/src/tint/libtint_ast_src/while_statement.o: cxx ../../third_party/dawn/src/tint/ast/while_statement.cc || obj/third_party/dawn/src/tint/libtint_ast_src.inputdeps.stamp
   source_file_part = while_statement.cc
   source_name_part = while_statement
@@ -290,4 +230,4 @@ build obj/third_party/dawn/src/tint/libtint_ast_src/workgroup_attribute.o: cxx .
   source_file_part = workgroup_attribute.cc
   source_name_part = workgroup_attribute
 
-build obj/third_party/dawn/src/tint/libtint_ast_src.stamp: stamp obj/third_party/dawn/src/tint/libtint_ast_src/accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/alias.o obj/third_party/dawn/src/tint/libtint_ast_src/array.o obj/third_party/dawn/src/tint/libtint_ast_src/assignment_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/atomic.o obj/third_party/dawn/src/tint/libtint_ast_src/attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/binary_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/binding_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/bitcast_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/block_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/bool.o obj/third_party/dawn/src/tint/libtint_ast_src/bool_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/break_if_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/break_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/builtin_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/builtin_value.o obj/third_party/dawn/src/tint/libtint_ast_src/call_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/call_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/case_selector.o obj/third_party/dawn/src/tint/libtint_ast_src/case_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/compound_assignment_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/const.o obj/third_party/dawn/src/tint/libtint_ast_src/const_assert.o obj/third_party/dawn/src/tint/libtint_ast_src/continue_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/depth_multisampled_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/depth_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_control.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_directive.o obj/third_party/dawn/src/tint/libtint_ast_src/disable_validation_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/discard_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/enable.o obj/third_party/dawn/src/tint/libtint_ast_src/expression.o obj/third_party/dawn/src/tint/libtint_ast_src/extension.o obj/third_party/dawn/src/tint/libtint_ast_src/external_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/f16.o obj/third_party/dawn/src/tint/libtint_ast_src/f32.o obj/third_party/dawn/src/tint/libtint_ast_src/float_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/for_loop_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/function.o obj/third_party/dawn/src/tint/libtint_ast_src/group_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/i32.o obj/third_party/dawn/src/tint/libtint_ast_src/id_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/identifier.o obj/third_party/dawn/src/tint/libtint_ast_src/identifier_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/if_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/increment_decrement_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/index_accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/int_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/internal_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/interpolate_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/invariant_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/let.o obj/third_party/dawn/src/tint/libtint_ast_src/literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/location_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/loop_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/matrix.o obj/third_party/dawn/src/tint/libtint_ast_src/member_accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/module.o obj/third_party/dawn/src/tint/libtint_ast_src/multisampled_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/node.o obj/third_party/dawn/src/tint/libtint_ast_src/override.o obj/third_party/dawn/src/tint/libtint_ast_src/parameter.o obj/third_party/dawn/src/tint/libtint_ast_src/phony_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/pipeline_stage.o obj/third_party/dawn/src/tint/libtint_ast_src/pointer.o obj/third_party/dawn/src/tint/libtint_ast_src/return_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/sampled_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/sampler.o obj/third_party/dawn/src/tint/libtint_ast_src/stage_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/statement.o obj/third_party/dawn/src/tint/libtint_ast_src/storage_texture.o obj/third_party/dawn/src/tint/libtint_ast_src/stride_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_align_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_offset_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_size_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/switch_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/templated_identifier.o obj/third_party/dawn/src/tint/libtint_ast_src/texture.o obj/third_party/dawn/src/tint/libtint_ast_src/type.o obj/third_party/dawn/src/tint/libtint_ast_src/type_decl.o obj/third_party/dawn/src/tint/libtint_ast_src/type_name.o obj/third_party/dawn/src/tint/libtint_ast_src/u32.o obj/third_party/dawn/src/tint/libtint_ast_src/unary_op.o obj/third_party/dawn/src/tint/libtint_ast_src/unary_op_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/var.o obj/third_party/dawn/src/tint/libtint_ast_src/variable.o obj/third_party/dawn/src/tint/libtint_ast_src/variable_decl_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/vector.o obj/third_party/dawn/src/tint/libtint_ast_src/void.o obj/third_party/dawn/src/tint/libtint_ast_src/while_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/workgroup_attribute.o || obj/third_party/dawn/src/tint/libtint_base_src.stamp obj/third_party/dawn/src/tint/libtint_syntax_tree_src.stamp obj/third_party/dawn/src/tint/libtint_type_src.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/dawn/src/tint/libtint_text_src.stamp obj/third_party/dawn/src/tint/libtint_constant_src.stamp
+build obj/third_party/dawn/src/tint/libtint_ast_src.stamp: stamp obj/third_party/dawn/src/tint/libtint_ast_src/accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/alias.o obj/third_party/dawn/src/tint/libtint_ast_src/assignment_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/binary_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/binding_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/bitcast_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/block_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/bool_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/break_if_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/break_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/builtin_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/call_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/call_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/case_selector.o obj/third_party/dawn/src/tint/libtint_ast_src/case_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/compound_assignment_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/const.o obj/third_party/dawn/src/tint/libtint_ast_src/const_assert.o obj/third_party/dawn/src/tint/libtint_ast_src/continue_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_control.o obj/third_party/dawn/src/tint/libtint_ast_src/diagnostic_directive.o obj/third_party/dawn/src/tint/libtint_ast_src/disable_validation_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/discard_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/enable.o obj/third_party/dawn/src/tint/libtint_ast_src/expression.o obj/third_party/dawn/src/tint/libtint_ast_src/extension.o obj/third_party/dawn/src/tint/libtint_ast_src/float_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/for_loop_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/function.o obj/third_party/dawn/src/tint/libtint_ast_src/group_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/id_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/identifier.o obj/third_party/dawn/src/tint/libtint_ast_src/identifier_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/if_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/increment_decrement_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/index_accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/int_literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/internal_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/interpolate_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/invariant_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/let.o obj/third_party/dawn/src/tint/libtint_ast_src/literal_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/location_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/loop_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/member_accessor_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/module.o obj/third_party/dawn/src/tint/libtint_ast_src/must_use_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/node.o obj/third_party/dawn/src/tint/libtint_ast_src/override.o obj/third_party/dawn/src/tint/libtint_ast_src/parameter.o obj/third_party/dawn/src/tint/libtint_ast_src/phony_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/pipeline_stage.o obj/third_party/dawn/src/tint/libtint_ast_src/return_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/stage_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/statement.o obj/third_party/dawn/src/tint/libtint_ast_src/stride_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_align_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_offset_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/struct_member_size_attribute.o obj/third_party/dawn/src/tint/libtint_ast_src/switch_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/templated_identifier.o obj/third_party/dawn/src/tint/libtint_ast_src/type.o obj/third_party/dawn/src/tint/libtint_ast_src/type_decl.o obj/third_party/dawn/src/tint/libtint_ast_src/unary_op.o obj/third_party/dawn/src/tint/libtint_ast_src/unary_op_expression.o obj/third_party/dawn/src/tint/libtint_ast_src/var.o obj/third_party/dawn/src/tint/libtint_ast_src/variable.o obj/third_party/dawn/src/tint/libtint_ast_src/variable_decl_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/while_statement.o obj/third_party/dawn/src/tint/libtint_ast_src/workgroup_attribute.o || obj/third_party/dawn/src/tint/libtint_ast_hdrs.stamp obj/third_party/dawn/src/tint/libtint_base_src.stamp obj/third_party/dawn/src/tint/libtint_builtins_src.stamp obj/third_party/dawn/src/tint/libtint_program_src.stamp obj/third_party/dawn/src/tint/libtint_type_src.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/dawn/src/tint/libtint_text_src.stamp obj/third_party/dawn/src/tint/libtint_clone_context_hdrs.stamp obj/third_party/dawn/src/tint/libtint_constant_src.stamp obj/third_party/dawn/src/tint/libtint_sem_src.stamp

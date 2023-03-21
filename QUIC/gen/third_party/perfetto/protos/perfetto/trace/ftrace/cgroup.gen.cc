@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -44,7 +45,7 @@ bool CgroupSetupRootFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&ss_mask_);
         break;
       case 3 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -55,13 +56,13 @@ bool CgroupSetupRootFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupSetupRootFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupSetupRootFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> CgroupSetupRootFtraceEvent::SerializeAsArray() const {
 void CgroupSetupRootFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: ss_mask
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ss_mask_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ss_mask_, msg);
   }
 
   // Field 3: name
   if (_has_field_[3]) {
-    msg->AppendString(3, name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -119,13 +120,13 @@ bool CgroupRenameFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&id_);
         break;
       case 3 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 4 /* level */:
         field.get(&level_);
         break;
       case 5 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -136,13 +137,13 @@ bool CgroupRenameFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupRenameFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupRenameFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -150,30 +151,30 @@ std::vector<uint8_t> CgroupRenameFtraceEvent::SerializeAsArray() const {
 void CgroupRenameFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, id_, msg);
   }
 
   // Field 3: cname
   if (_has_field_[3]) {
-    msg->AppendString(3, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(3, cname_, msg);
   }
 
   // Field 4: level
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, level_, msg);
   }
 
   // Field 5: path
   if (_has_field_[5]) {
-    msg->AppendString(5, path_);
+    ::protozero::internal::gen_helpers::SerializeString(5, path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -210,13 +211,13 @@ bool CgroupReleaseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&id_);
         break;
       case 3 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 4 /* level */:
         field.get(&level_);
         break;
       case 5 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -227,13 +228,13 @@ bool CgroupReleaseFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupReleaseFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupReleaseFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -241,30 +242,30 @@ std::vector<uint8_t> CgroupReleaseFtraceEvent::SerializeAsArray() const {
 void CgroupReleaseFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, id_, msg);
   }
 
   // Field 3: cname
   if (_has_field_[3]) {
-    msg->AppendString(3, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(3, cname_, msg);
   }
 
   // Field 4: level
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, level_, msg);
   }
 
   // Field 5: path
   if (_has_field_[5]) {
-    msg->AppendString(5, path_);
+    ::protozero::internal::gen_helpers::SerializeString(5, path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -299,7 +300,7 @@ bool CgroupDestroyRootFtraceEvent::ParseFromArray(const void* raw, size_t size) 
         field.get(&ss_mask_);
         break;
       case 3 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -310,13 +311,13 @@ bool CgroupDestroyRootFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string CgroupDestroyRootFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupDestroyRootFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -324,20 +325,20 @@ std::vector<uint8_t> CgroupDestroyRootFtraceEvent::SerializeAsArray() const {
 void CgroupDestroyRootFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: ss_mask
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ss_mask_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ss_mask_, msg);
   }
 
   // Field 3: name
   if (_has_field_[3]) {
-    msg->AppendString(3, name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -379,16 +380,16 @@ bool CgroupTransferTasksFtraceEvent::ParseFromArray(const void* raw, size_t size
         field.get(&pid_);
         break;
       case 4 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 5 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 6 /* dst_level */:
         field.get(&dst_level_);
         break;
       case 7 /* dst_path */:
-        field.get(&dst_path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &dst_path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -399,13 +400,13 @@ bool CgroupTransferTasksFtraceEvent::ParseFromArray(const void* raw, size_t size
 }
 
 std::string CgroupTransferTasksFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupTransferTasksFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -413,40 +414,40 @@ std::vector<uint8_t> CgroupTransferTasksFtraceEvent::SerializeAsArray() const {
 void CgroupTransferTasksFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dst_root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dst_root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dst_root_, msg);
   }
 
   // Field 2: dst_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dst_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dst_id_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
   // Field 4: comm
   if (_has_field_[4]) {
-    msg->AppendString(4, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(4, comm_, msg);
   }
 
   // Field 5: cname
   if (_has_field_[5]) {
-    msg->AppendString(5, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(5, cname_, msg);
   }
 
   // Field 6: dst_level
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dst_level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dst_level_, msg);
   }
 
   // Field 7: dst_path
   if (_has_field_[7]) {
-    msg->AppendString(7, dst_path_);
+    ::protozero::internal::gen_helpers::SerializeString(7, dst_path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -483,13 +484,13 @@ bool CgroupRmdirFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&id_);
         break;
       case 3 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 4 /* level */:
         field.get(&level_);
         break;
       case 5 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -500,13 +501,13 @@ bool CgroupRmdirFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupRmdirFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupRmdirFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -514,30 +515,30 @@ std::vector<uint8_t> CgroupRmdirFtraceEvent::SerializeAsArray() const {
 void CgroupRmdirFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, id_, msg);
   }
 
   // Field 3: cname
   if (_has_field_[3]) {
-    msg->AppendString(3, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(3, cname_, msg);
   }
 
   // Field 4: level
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, level_, msg);
   }
 
   // Field 5: path
   if (_has_field_[5]) {
-    msg->AppendString(5, path_);
+    ::protozero::internal::gen_helpers::SerializeString(5, path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -572,7 +573,7 @@ bool CgroupRemountFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&ss_mask_);
         break;
       case 3 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -583,13 +584,13 @@ bool CgroupRemountFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupRemountFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupRemountFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -597,20 +598,20 @@ std::vector<uint8_t> CgroupRemountFtraceEvent::SerializeAsArray() const {
 void CgroupRemountFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: ss_mask
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, ss_mask_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, ss_mask_, msg);
   }
 
   // Field 3: name
   if (_has_field_[3]) {
-    msg->AppendString(3, name_);
+    ::protozero::internal::gen_helpers::SerializeString(3, name_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -647,13 +648,13 @@ bool CgroupMkdirFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&id_);
         break;
       case 3 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 4 /* level */:
         field.get(&level_);
         break;
       case 5 /* path */:
-        field.get(&path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -664,13 +665,13 @@ bool CgroupMkdirFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupMkdirFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupMkdirFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -678,30 +679,30 @@ std::vector<uint8_t> CgroupMkdirFtraceEvent::SerializeAsArray() const {
 void CgroupMkdirFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, root_, msg);
   }
 
   // Field 2: id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, id_, msg);
   }
 
   // Field 3: cname
   if (_has_field_[3]) {
-    msg->AppendString(3, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(3, cname_, msg);
   }
 
   // Field 4: level
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, level_, msg);
   }
 
   // Field 5: path
   if (_has_field_[5]) {
-    msg->AppendString(5, path_);
+    ::protozero::internal::gen_helpers::SerializeString(5, path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -743,16 +744,16 @@ bool CgroupAttachTaskFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&pid_);
         break;
       case 4 /* comm */:
-        field.get(&comm_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &comm_);
         break;
       case 5 /* cname */:
-        field.get(&cname_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &cname_);
         break;
       case 6 /* dst_level */:
         field.get(&dst_level_);
         break;
       case 7 /* dst_path */:
-        field.get(&dst_path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &dst_path_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -763,13 +764,13 @@ bool CgroupAttachTaskFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string CgroupAttachTaskFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> CgroupAttachTaskFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -777,40 +778,40 @@ std::vector<uint8_t> CgroupAttachTaskFtraceEvent::SerializeAsArray() const {
 void CgroupAttachTaskFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: dst_root
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dst_root_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dst_root_, msg);
   }
 
   // Field 2: dst_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, dst_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, dst_id_, msg);
   }
 
   // Field 3: pid
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, pid_, msg);
   }
 
   // Field 4: comm
   if (_has_field_[4]) {
-    msg->AppendString(4, comm_);
+    ::protozero::internal::gen_helpers::SerializeString(4, comm_, msg);
   }
 
   // Field 5: cname
   if (_has_field_[5]) {
-    msg->AppendString(5, cname_);
+    ::protozero::internal::gen_helpers::SerializeString(5, cname_, msg);
   }
 
   // Field 6: dst_level
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, dst_level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, dst_level_, msg);
   }
 
   // Field 7: dst_path
   if (_has_field_[7]) {
-    msg->AppendString(7, dst_path_);
+    ::protozero::internal::gen_helpers::SerializeString(7, dst_path_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

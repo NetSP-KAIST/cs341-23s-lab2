@@ -23,6 +23,8 @@ class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
 class TrackEventDefaults;
 class InternedData;
+class NetworkPacketContext;
+class NetworkPacketEvent;
 class InternedString;
 class InternedGpuRenderStageSpecification;
 class InternedGraphicsContext;
@@ -43,7 +45,7 @@ class TestEvent_TestPayload;
 class DebugAnnotation;
 class DebugAnnotation_NestedValue;
 class TrackEventRangeOfInterest;
-class NetworkPacketEvent;
+class NetworkPacketBundle;
 class ExtensionDescriptor;
 class FileDescriptorSet;
 class FileDescriptorProto;
@@ -57,6 +59,11 @@ class OneofOptions;
 class FtraceEventBundle;
 class FtraceEventBundle_CompactSched;
 class FtraceEvent;
+class HostMemAbortFtraceEvent;
+class HostSmcFtraceEvent;
+class HostHcallFtraceEvent;
+class HypExitFtraceEvent;
+class HypEnterFtraceEvent;
 class MaliMaliKCPUFENCEWAITENDFtraceEvent;
 class MaliMaliKCPUFENCEWAITSTARTFtraceEvent;
 class MaliMaliKCPUFENCESIGNALFtraceEvent;
@@ -524,6 +531,9 @@ class ObfuscatedMember;
 class ModuleSymbols;
 class AddressSymbols;
 class Line;
+class EntityStateResidency;
+class EntityStateResidency_StateResidency;
+class EntityStateResidency_PowerEntityState;
 class AndroidSystemProperty;
 class AndroidSystemProperty_PropertyValue;
 class StatsdAtom;
@@ -709,10 +719,10 @@ class ProcessTree_Process;
 enum TracePacket_SequenceFlags : int;
 enum PerfEvents_Counter : int;
 enum PerfEvents_PerfClock : int;
+enum TrafficDirection : int;
 enum InternedGpuRenderStageSpecification_RenderStageCategory : int;
 enum InternedGraphicsContext_Api : int;
 enum DebugAnnotation_NestedValue_NestedType : int;
-enum TrafficDirection : int;
 enum FieldDescriptorProto_Type : int;
 enum FieldDescriptorProto_Label : int;
 enum FtraceClock : int;
@@ -859,6 +869,7 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
     kAndroidGameInterventionListFieldNumber = 83,
     kStatsdAtomFieldNumber = 84,
     kAndroidSystemPropertyFieldNumber = 86,
+    kEntityStateResidencyFieldNumber = 91,
     kProfiledFrameSymbolsFieldNumber = 55,
     kModuleSymbolsFieldNumber = 61,
     kDeobfuscationMappingFieldNumber = 64,
@@ -870,6 +881,7 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
     kCompressedPacketsFieldNumber = 50,
     kExtensionDescriptorFieldNumber = 72,
     kNetworkPacketFieldNumber = 88,
+    kNetworkPacketBundleFieldNumber = 92,
     kTrackEventRangeOfInterestFieldNumber = 90,
     kForTestingFieldNumber = 900,
     kTrustedUidFieldNumber = 3,
@@ -1093,6 +1105,10 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
   const AndroidSystemProperty& android_system_property() const { return *android_system_property_; }
   AndroidSystemProperty* mutable_android_system_property() { _has_field_.set(86); return android_system_property_.get(); }
 
+  bool has_entity_state_residency() const { return _has_field_[91]; }
+  const EntityStateResidency& entity_state_residency() const { return *entity_state_residency_; }
+  EntityStateResidency* mutable_entity_state_residency() { _has_field_.set(91); return entity_state_residency_.get(); }
+
   bool has_profiled_frame_symbols() const { return _has_field_[55]; }
   const ProfiledFrameSymbols& profiled_frame_symbols() const { return *profiled_frame_symbols_; }
   ProfiledFrameSymbols* mutable_profiled_frame_symbols() { _has_field_.set(55); return profiled_frame_symbols_.get(); }
@@ -1138,6 +1154,10 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
   bool has_network_packet() const { return _has_field_[88]; }
   const NetworkPacketEvent& network_packet() const { return *network_packet_; }
   NetworkPacketEvent* mutable_network_packet() { _has_field_.set(88); return network_packet_.get(); }
+
+  bool has_network_packet_bundle() const { return _has_field_[92]; }
+  const NetworkPacketBundle& network_packet_bundle() const { return *network_packet_bundle_; }
+  NetworkPacketBundle* mutable_network_packet_bundle() { _has_field_.set(92); return network_packet_bundle_.get(); }
 
   bool has_track_event_range_of_interest() const { return _has_field_[90]; }
   const TrackEventRangeOfInterest& track_event_range_of_interest() const { return *track_event_range_of_interest_; }
@@ -1233,6 +1253,7 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
   ::protozero::CopyablePtr<AndroidGameInterventionList> android_game_intervention_list_;
   ::protozero::CopyablePtr<StatsdAtom> statsd_atom_;
   ::protozero::CopyablePtr<AndroidSystemProperty> android_system_property_;
+  ::protozero::CopyablePtr<EntityStateResidency> entity_state_residency_;
   ::protozero::CopyablePtr<ProfiledFrameSymbols> profiled_frame_symbols_;
   ::protozero::CopyablePtr<ModuleSymbols> module_symbols_;
   ::protozero::CopyablePtr<DeobfuscationMapping> deobfuscation_mapping_;
@@ -1244,6 +1265,7 @@ class PERFETTO_EXPORT_COMPONENT TracePacket : public ::protozero::CppMessageObj 
   std::string compressed_packets_{};
   ::protozero::CopyablePtr<ExtensionDescriptor> extension_descriptor_;
   ::protozero::CopyablePtr<NetworkPacketEvent> network_packet_;
+  ::protozero::CopyablePtr<NetworkPacketBundle> network_packet_bundle_;
   ::protozero::CopyablePtr<TrackEventRangeOfInterest> track_event_range_of_interest_;
   ::protozero::CopyablePtr<TestEvent> for_testing_;
   int32_t trusted_uid_{};

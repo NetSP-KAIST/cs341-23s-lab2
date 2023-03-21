@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -46,6 +47,7 @@
 #include "protos/perfetto/trace/ftrace/ipi.gen.h"
 #include "protos/perfetto/trace/ftrace/ion.gen.h"
 #include "protos/perfetto/trace/ftrace/i2c.gen.h"
+#include "protos/perfetto/trace/ftrace/hyp.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.gen.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.gen.h"
 #include "protos/perfetto/trace/ftrace/g2d.gen.h"
@@ -537,7 +539,12 @@ bool FtraceEvent::operator==(const FtraceEvent& other) const {
    && mali_mali_kcpu_cqs_wait_end_ == other.mali_mali_kcpu_cqs_wait_end_
    && mali_mali_kcpu_fence_signal_ == other.mali_mali_kcpu_fence_signal_
    && mali_mali_kcpu_fence_wait_start_ == other.mali_mali_kcpu_fence_wait_start_
-   && mali_mali_kcpu_fence_wait_end_ == other.mali_mali_kcpu_fence_wait_end_;
+   && mali_mali_kcpu_fence_wait_end_ == other.mali_mali_kcpu_fence_wait_end_
+   && hyp_enter_ == other.hyp_enter_
+   && hyp_exit_ == other.hyp_exit_
+   && host_hcall_ == other.host_hcall_
+   && host_smc_ == other.host_smc_
+   && host_mem_abort_ == other.host_mem_abort_;
 }
 
 bool FtraceEvent::ParseFromArray(const void* raw, size_t size) {
@@ -1918,6 +1925,21 @@ bool FtraceEvent::ParseFromArray(const void* raw, size_t size) {
       case 475 /* mali_mali_kcpu_fence_wait_end */:
         (*mali_mali_kcpu_fence_wait_end_).ParseFromArray(field.data(), field.size());
         break;
+      case 476 /* hyp_enter */:
+        (*hyp_enter_).ParseFromArray(field.data(), field.size());
+        break;
+      case 477 /* hyp_exit */:
+        (*hyp_exit_).ParseFromArray(field.data(), field.size());
+        break;
+      case 478 /* host_hcall */:
+        (*host_hcall_).ParseFromArray(field.data(), field.size());
+        break;
+      case 479 /* host_smc */:
+        (*host_smc_).ParseFromArray(field.data(), field.size());
+        break;
+      case 480 /* host_mem_abort */:
+        (*host_mem_abort_).ParseFromArray(field.data(), field.size());
+        break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
         break;
@@ -1927,13 +1949,13 @@ bool FtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1941,12 +1963,12 @@ std::vector<uint8_t> FtraceEvent::SerializeAsArray() const {
 void FtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: timestamp
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, timestamp_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, timestamp_, msg);
   }
 
   // Field 2: pid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, pid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, pid_, msg);
   }
 
   // Field 3: print
@@ -4219,7 +4241,32 @@ void FtraceEvent::Serialize(::protozero::Message* msg) const {
     (*mali_mali_kcpu_fence_wait_end_).Serialize(msg->BeginNestedMessage<::protozero::Message>(475));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  // Field 476: hyp_enter
+  if (_has_field_[476]) {
+    (*hyp_enter_).Serialize(msg->BeginNestedMessage<::protozero::Message>(476));
+  }
+
+  // Field 477: hyp_exit
+  if (_has_field_[477]) {
+    (*hyp_exit_).Serialize(msg->BeginNestedMessage<::protozero::Message>(477));
+  }
+
+  // Field 478: host_hcall
+  if (_has_field_[478]) {
+    (*host_hcall_).Serialize(msg->BeginNestedMessage<::protozero::Message>(478));
+  }
+
+  // Field 479: host_smc
+  if (_has_field_[479]) {
+    (*host_smc_).Serialize(msg->BeginNestedMessage<::protozero::Message>(479));
+  }
+
+  // Field 480: host_mem_abort
+  if (_has_field_[480]) {
+    (*host_mem_abort_).Serialize(msg->BeginNestedMessage<::protozero::Message>(480));
+  }
+
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

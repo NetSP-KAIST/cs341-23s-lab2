@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,6 +56,7 @@ bool TraceConfig::operator==(const TraceConfig& other) const {
    && data_sources_ == other.data_sources_
    && builtin_data_sources_ == other.builtin_data_sources_
    && duration_ms_ == other.duration_ms_
+   && prefer_suspend_clock_for_duration_ == other.prefer_suspend_clock_for_duration_
    && enable_extra_guardrails_ == other.enable_extra_guardrails_
    && lockdown_mode_ == other.lockdown_mode_
    && producers_ == other.producers_
@@ -122,6 +124,9 @@ bool TraceConfig::ParseFromArray(const void* raw, size_t size) {
       case 3 /* duration_ms */:
         field.get(&duration_ms_);
         break;
+      case 36 /* prefer_suspend_clock_for_duration */:
+        field.get(&prefer_suspend_clock_for_duration_);
+        break;
       case 4 /* enable_extra_guardrails */:
         field.get(&enable_extra_guardrails_);
         break;
@@ -139,7 +144,7 @@ bool TraceConfig::ParseFromArray(const void* raw, size_t size) {
         field.get(&write_into_file_);
         break;
       case 29 /* output_path */:
-        field.get(&output_path_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &output_path_);
         break;
       case 9 /* file_write_period_ms */:
         field.get(&file_write_period_ms_);
@@ -173,7 +178,7 @@ bool TraceConfig::ParseFromArray(const void* raw, size_t size) {
         break;
       case 18 /* activate_triggers */:
         activate_triggers_.emplace_back();
-        field.get(&activate_triggers_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &activate_triggers_.back());
         break;
       case 21 /* incremental_state_config */:
         (*incremental_state_config_).ParseFromArray(field.data(), field.size());
@@ -182,7 +187,7 @@ bool TraceConfig::ParseFromArray(const void* raw, size_t size) {
         field.get(&allow_user_build_tracing_);
         break;
       case 22 /* unique_session_name */:
-        field.get(&unique_session_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &unique_session_name_);
         break;
       case 24 /* compression_type */:
         field.get(&compression_type_);
@@ -217,13 +222,13 @@ bool TraceConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -246,17 +251,22 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 3: duration_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, duration_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, duration_ms_, msg);
+  }
+
+  // Field 36: prefer_suspend_clock_for_duration
+  if (_has_field_[36]) {
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(36, prefer_suspend_clock_for_duration_, msg);
   }
 
   // Field 4: enable_extra_guardrails
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, enable_extra_guardrails_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, enable_extra_guardrails_, msg);
   }
 
   // Field 5: lockdown_mode
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, lockdown_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, lockdown_mode_, msg);
   }
 
   // Field 6: producers
@@ -271,22 +281,22 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 8: write_into_file
   if (_has_field_[8]) {
-    msg->AppendTinyVarInt(8, write_into_file_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(8, write_into_file_, msg);
   }
 
   // Field 29: output_path
   if (_has_field_[29]) {
-    msg->AppendString(29, output_path_);
+    ::protozero::internal::gen_helpers::SerializeString(29, output_path_, msg);
   }
 
   // Field 9: file_write_period_ms
   if (_has_field_[9]) {
-    msg->AppendVarInt(9, file_write_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(9, file_write_period_ms_, msg);
   }
 
   // Field 10: max_file_size_bytes
   if (_has_field_[10]) {
-    msg->AppendVarInt(10, max_file_size_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(10, max_file_size_bytes_, msg);
   }
 
   // Field 11: guardrail_overrides
@@ -296,32 +306,32 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 12: deferred_start
   if (_has_field_[12]) {
-    msg->AppendTinyVarInt(12, deferred_start_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(12, deferred_start_, msg);
   }
 
   // Field 13: flush_period_ms
   if (_has_field_[13]) {
-    msg->AppendVarInt(13, flush_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(13, flush_period_ms_, msg);
   }
 
   // Field 14: flush_timeout_ms
   if (_has_field_[14]) {
-    msg->AppendVarInt(14, flush_timeout_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(14, flush_timeout_ms_, msg);
   }
 
   // Field 23: data_source_stop_timeout_ms
   if (_has_field_[23]) {
-    msg->AppendVarInt(23, data_source_stop_timeout_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(23, data_source_stop_timeout_ms_, msg);
   }
 
   // Field 16: notify_traceur
   if (_has_field_[16]) {
-    msg->AppendTinyVarInt(16, notify_traceur_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(16, notify_traceur_, msg);
   }
 
   // Field 30: bugreport_score
   if (_has_field_[30]) {
-    msg->AppendVarInt(30, bugreport_score_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(30, bugreport_score_, msg);
   }
 
   // Field 17: trigger_config
@@ -331,7 +341,7 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 18: activate_triggers
   for (auto& it : activate_triggers_) {
-    msg->AppendString(18, it);
+    ::protozero::internal::gen_helpers::SerializeString(18, it, msg);
   }
 
   // Field 21: incremental_state_config
@@ -341,17 +351,17 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 19: allow_user_build_tracing
   if (_has_field_[19]) {
-    msg->AppendTinyVarInt(19, allow_user_build_tracing_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(19, allow_user_build_tracing_, msg);
   }
 
   // Field 22: unique_session_name
   if (_has_field_[22]) {
-    msg->AppendString(22, unique_session_name_);
+    ::protozero::internal::gen_helpers::SerializeString(22, unique_session_name_, msg);
   }
 
   // Field 24: compression_type
   if (_has_field_[24]) {
-    msg->AppendVarInt(24, compression_type_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(24, compression_type_, msg);
   }
 
   // Field 25: incident_report_config
@@ -361,17 +371,17 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 31: statsd_logging
   if (_has_field_[31]) {
-    msg->AppendVarInt(31, statsd_logging_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(31, statsd_logging_, msg);
   }
 
   // Field 27: trace_uuid_msb
   if (_has_field_[27]) {
-    msg->AppendVarInt(27, trace_uuid_msb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(27, trace_uuid_msb_, msg);
   }
 
   // Field 28: trace_uuid_lsb
   if (_has_field_[28]) {
-    msg->AppendVarInt(28, trace_uuid_lsb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(28, trace_uuid_lsb_, msg);
   }
 
   // Field 33: trace_filter
@@ -389,7 +399,7 @@ void TraceConfig::Serialize(::protozero::Message* msg) const {
     (*cmd_trace_start_delay_).Serialize(msg->BeginNestedMessage<::protozero::Message>(35));
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -431,13 +441,13 @@ bool TraceConfig_CmdTraceStartDelay::ParseFromArray(const void* raw, size_t size
 }
 
 std::string TraceConfig_CmdTraceStartDelay::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_CmdTraceStartDelay::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -445,15 +455,15 @@ std::vector<uint8_t> TraceConfig_CmdTraceStartDelay::SerializeAsArray() const {
 void TraceConfig_CmdTraceStartDelay::Serialize(::protozero::Message* msg) const {
   // Field 1: min_delay_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, min_delay_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, min_delay_ms_, msg);
   }
 
   // Field 2: max_delay_ms
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, max_delay_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, max_delay_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -483,10 +493,10 @@ bool TraceConfig_AndroidReportConfig::ParseFromArray(const void* raw, size_t siz
     }
     switch (field.id()) {
       case 1 /* reporter_service_package */:
-        field.get(&reporter_service_package_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reporter_service_package_);
         break;
       case 2 /* reporter_service_class */:
-        field.get(&reporter_service_class_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &reporter_service_class_);
         break;
       case 3 /* skip_report */:
         field.get(&skip_report_);
@@ -503,13 +513,13 @@ bool TraceConfig_AndroidReportConfig::ParseFromArray(const void* raw, size_t siz
 }
 
 std::string TraceConfig_AndroidReportConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_AndroidReportConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -517,25 +527,25 @@ std::vector<uint8_t> TraceConfig_AndroidReportConfig::SerializeAsArray() const {
 void TraceConfig_AndroidReportConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: reporter_service_package
   if (_has_field_[1]) {
-    msg->AppendString(1, reporter_service_package_);
+    ::protozero::internal::gen_helpers::SerializeString(1, reporter_service_package_, msg);
   }
 
   // Field 2: reporter_service_class
   if (_has_field_[2]) {
-    msg->AppendString(2, reporter_service_class_);
+    ::protozero::internal::gen_helpers::SerializeString(2, reporter_service_class_, msg);
   }
 
   // Field 3: skip_report
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, skip_report_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, skip_report_, msg);
   }
 
   // Field 4: use_pipe_in_framework_for_testing
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, use_pipe_in_framework_for_testing_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, use_pipe_in_framework_for_testing_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -573,13 +583,13 @@ bool TraceConfig_TraceFilter::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_TraceFilter::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_TraceFilter::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -587,10 +597,10 @@ std::vector<uint8_t> TraceConfig_TraceFilter::SerializeAsArray() const {
 void TraceConfig_TraceFilter::Serialize(::protozero::Message* msg) const {
   // Field 1: bytecode
   if (_has_field_[1]) {
-    msg->AppendString(1, bytecode_);
+    ::protozero::internal::gen_helpers::SerializeString(1, bytecode_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -621,10 +631,10 @@ bool TraceConfig_IncidentReportConfig::ParseFromArray(const void* raw, size_t si
     }
     switch (field.id()) {
       case 1 /* destination_package */:
-        field.get(&destination_package_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &destination_package_);
         break;
       case 2 /* destination_class */:
-        field.get(&destination_class_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &destination_class_);
         break;
       case 3 /* privacy_level */:
         field.get(&privacy_level_);
@@ -644,13 +654,13 @@ bool TraceConfig_IncidentReportConfig::ParseFromArray(const void* raw, size_t si
 }
 
 std::string TraceConfig_IncidentReportConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_IncidentReportConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -658,30 +668,30 @@ std::vector<uint8_t> TraceConfig_IncidentReportConfig::SerializeAsArray() const 
 void TraceConfig_IncidentReportConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: destination_package
   if (_has_field_[1]) {
-    msg->AppendString(1, destination_package_);
+    ::protozero::internal::gen_helpers::SerializeString(1, destination_package_, msg);
   }
 
   // Field 2: destination_class
   if (_has_field_[2]) {
-    msg->AppendString(2, destination_class_);
+    ::protozero::internal::gen_helpers::SerializeString(2, destination_class_, msg);
   }
 
   // Field 3: privacy_level
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, privacy_level_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, privacy_level_, msg);
   }
 
   // Field 5: skip_incidentd
   if (_has_field_[5]) {
-    msg->AppendTinyVarInt(5, skip_incidentd_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(5, skip_incidentd_, msg);
   }
 
   // Field 4: skip_dropbox
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, skip_dropbox_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, skip_dropbox_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -719,13 +729,13 @@ bool TraceConfig_IncrementalStateConfig::ParseFromArray(const void* raw, size_t 
 }
 
 std::string TraceConfig_IncrementalStateConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_IncrementalStateConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -733,10 +743,10 @@ std::vector<uint8_t> TraceConfig_IncrementalStateConfig::SerializeAsArray() cons
 void TraceConfig_IncrementalStateConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: clear_period_ms
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, clear_period_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, clear_period_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -787,13 +797,13 @@ bool TraceConfig_TriggerConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_TriggerConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_TriggerConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -801,7 +811,7 @@ std::vector<uint8_t> TraceConfig_TriggerConfig::SerializeAsArray() const {
 void TraceConfig_TriggerConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: trigger_mode
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, trigger_mode_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, trigger_mode_, msg);
   }
 
   // Field 2: triggers
@@ -811,10 +821,10 @@ void TraceConfig_TriggerConfig::Serialize(::protozero::Message* msg) const {
 
   // Field 3: trigger_timeout_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, trigger_timeout_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, trigger_timeout_ms_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -845,10 +855,10 @@ bool TraceConfig_TriggerConfig_Trigger::ParseFromArray(const void* raw, size_t s
     }
     switch (field.id()) {
       case 1 /* name */:
-        field.get(&name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &name_);
         break;
       case 2 /* producer_name_regex */:
-        field.get(&producer_name_regex_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_regex_);
         break;
       case 3 /* stop_delay_ms */:
         field.get(&stop_delay_ms_);
@@ -868,13 +878,13 @@ bool TraceConfig_TriggerConfig_Trigger::ParseFromArray(const void* raw, size_t s
 }
 
 std::string TraceConfig_TriggerConfig_Trigger::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_TriggerConfig_Trigger::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -882,30 +892,30 @@ std::vector<uint8_t> TraceConfig_TriggerConfig_Trigger::SerializeAsArray() const
 void TraceConfig_TriggerConfig_Trigger::Serialize(::protozero::Message* msg) const {
   // Field 1: name
   if (_has_field_[1]) {
-    msg->AppendString(1, name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, name_, msg);
   }
 
   // Field 2: producer_name_regex
   if (_has_field_[2]) {
-    msg->AppendString(2, producer_name_regex_);
+    ::protozero::internal::gen_helpers::SerializeString(2, producer_name_regex_, msg);
   }
 
   // Field 3: stop_delay_ms
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, stop_delay_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, stop_delay_ms_, msg);
   }
 
   // Field 4: max_per_24_h
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, max_per_24_h_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, max_per_24_h_, msg);
   }
 
   // Field 5: skip_probability
   if (_has_field_[5]) {
-    msg->AppendFixed(5, skip_probability_);
+    ::protozero::internal::gen_helpers::SerializeFixed(5, skip_probability_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -947,13 +957,13 @@ bool TraceConfig_GuardrailOverrides::ParseFromArray(const void* raw, size_t size
 }
 
 std::string TraceConfig_GuardrailOverrides::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_GuardrailOverrides::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -961,15 +971,15 @@ std::vector<uint8_t> TraceConfig_GuardrailOverrides::SerializeAsArray() const {
 void TraceConfig_GuardrailOverrides::Serialize(::protozero::Message* msg) const {
   // Field 1: max_upload_per_day_bytes
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, max_upload_per_day_bytes_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, max_upload_per_day_bytes_, msg);
   }
 
   // Field 2: max_tracing_buffer_size_kb
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, max_tracing_buffer_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, max_tracing_buffer_size_kb_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1019,13 +1029,13 @@ bool TraceConfig_StatsdMetadata::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_StatsdMetadata::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_StatsdMetadata::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1033,25 +1043,25 @@ std::vector<uint8_t> TraceConfig_StatsdMetadata::SerializeAsArray() const {
 void TraceConfig_StatsdMetadata::Serialize(::protozero::Message* msg) const {
   // Field 1: triggering_alert_id
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, triggering_alert_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, triggering_alert_id_, msg);
   }
 
   // Field 2: triggering_config_uid
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, triggering_config_uid_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, triggering_config_uid_, msg);
   }
 
   // Field 3: triggering_config_id
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, triggering_config_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, triggering_config_id_, msg);
   }
 
   // Field 4: triggering_subscription_id
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, triggering_subscription_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, triggering_subscription_id_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1080,7 +1090,7 @@ bool TraceConfig_ProducerConfig::ParseFromArray(const void* raw, size_t size) {
     }
     switch (field.id()) {
       case 1 /* producer_name */:
-        field.get(&producer_name_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_);
         break;
       case 2 /* shm_size_kb */:
         field.get(&shm_size_kb_);
@@ -1097,13 +1107,13 @@ bool TraceConfig_ProducerConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_ProducerConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_ProducerConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1111,20 +1121,20 @@ std::vector<uint8_t> TraceConfig_ProducerConfig::SerializeAsArray() const {
 void TraceConfig_ProducerConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: producer_name
   if (_has_field_[1]) {
-    msg->AppendString(1, producer_name_);
+    ::protozero::internal::gen_helpers::SerializeString(1, producer_name_, msg);
   }
 
   // Field 2: shm_size_kb
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, shm_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, shm_size_kb_, msg);
   }
 
   // Field 3: page_size_kb
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, page_size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, page_size_kb_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1186,13 +1196,13 @@ bool TraceConfig_BuiltinDataSource::ParseFromArray(const void* raw, size_t size)
 }
 
 std::string TraceConfig_BuiltinDataSource::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_BuiltinDataSource::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1200,40 +1210,40 @@ std::vector<uint8_t> TraceConfig_BuiltinDataSource::SerializeAsArray() const {
 void TraceConfig_BuiltinDataSource::Serialize(::protozero::Message* msg) const {
   // Field 1: disable_clock_snapshotting
   if (_has_field_[1]) {
-    msg->AppendTinyVarInt(1, disable_clock_snapshotting_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(1, disable_clock_snapshotting_, msg);
   }
 
   // Field 2: disable_trace_config
   if (_has_field_[2]) {
-    msg->AppendTinyVarInt(2, disable_trace_config_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(2, disable_trace_config_, msg);
   }
 
   // Field 3: disable_system_info
   if (_has_field_[3]) {
-    msg->AppendTinyVarInt(3, disable_system_info_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(3, disable_system_info_, msg);
   }
 
   // Field 4: disable_service_events
   if (_has_field_[4]) {
-    msg->AppendTinyVarInt(4, disable_service_events_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(4, disable_service_events_, msg);
   }
 
   // Field 5: primary_trace_clock
   if (_has_field_[5]) {
-    msg->AppendVarInt(5, primary_trace_clock_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(5, primary_trace_clock_, msg);
   }
 
   // Field 6: snapshot_interval_ms
   if (_has_field_[6]) {
-    msg->AppendVarInt(6, snapshot_interval_ms_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(6, snapshot_interval_ms_, msg);
   }
 
   // Field 7: prefer_suspend_clock_for_snapshot
   if (_has_field_[7]) {
-    msg->AppendTinyVarInt(7, prefer_suspend_clock_for_snapshot_);
+    ::protozero::internal::gen_helpers::SerializeTinyVarInt(7, prefer_suspend_clock_for_snapshot_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1268,11 +1278,11 @@ bool TraceConfig_DataSource::ParseFromArray(const void* raw, size_t size) {
         break;
       case 2 /* producer_name_filter */:
         producer_name_filter_.emplace_back();
-        field.get(&producer_name_filter_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_filter_.back());
         break;
       case 3 /* producer_name_regex_filter */:
         producer_name_regex_filter_.emplace_back();
-        field.get(&producer_name_regex_filter_.back());
+        ::protozero::internal::gen_helpers::DeserializeString(field, &producer_name_regex_filter_.back());
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -1283,13 +1293,13 @@ bool TraceConfig_DataSource::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_DataSource::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_DataSource::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1302,15 +1312,15 @@ void TraceConfig_DataSource::Serialize(::protozero::Message* msg) const {
 
   // Field 2: producer_name_filter
   for (auto& it : producer_name_filter_) {
-    msg->AppendString(2, it);
+    ::protozero::internal::gen_helpers::SerializeString(2, it, msg);
   }
 
   // Field 3: producer_name_regex_filter
   for (auto& it : producer_name_regex_filter_) {
-    msg->AppendString(3, it);
+    ::protozero::internal::gen_helpers::SerializeString(3, it, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -1352,13 +1362,13 @@ bool TraceConfig_BufferConfig::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string TraceConfig_BufferConfig::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> TraceConfig_BufferConfig::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -1366,15 +1376,15 @@ std::vector<uint8_t> TraceConfig_BufferConfig::SerializeAsArray() const {
 void TraceConfig_BufferConfig::Serialize(::protozero::Message* msg) const {
   // Field 1: size_kb
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, size_kb_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, size_kb_, msg);
   }
 
   // Field 4: fill_policy
   if (_has_field_[4]) {
-    msg->AppendVarInt(4, fill_policy_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(4, fill_policy_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

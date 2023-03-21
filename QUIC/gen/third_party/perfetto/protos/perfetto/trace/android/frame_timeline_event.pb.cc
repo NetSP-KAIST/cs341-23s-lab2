@@ -135,18 +135,20 @@ bool FrameTimelineEvent_JankType_IsValid(int value) {
     case 128:
     case 256:
     case 512:
+    case 1024:
       return true;
     default:
       return false;
   }
 }
 
-static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> FrameTimelineEvent_JankType_strings[11] = {};
+static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> FrameTimelineEvent_JankType_strings[12] = {};
 
 static const char FrameTimelineEvent_JankType_names[] =
   "JANK_APP_DEADLINE_MISSED"
   "JANK_BUFFER_STUFFING"
   "JANK_DISPLAY_HAL"
+  "JANK_DROPPED"
   "JANK_NONE"
   "JANK_PREDICTION_ERROR"
   "JANK_SF_CPU_DEADLINE_MISSED"
@@ -160,28 +162,30 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::EnumEntry FrameTimelineEvent_Jan
   { {FrameTimelineEvent_JankType_names + 0, 24}, 64 },
   { {FrameTimelineEvent_JankType_names + 24, 20}, 128 },
   { {FrameTimelineEvent_JankType_names + 44, 16}, 8 },
-  { {FrameTimelineEvent_JankType_names + 60, 9}, 1 },
-  { {FrameTimelineEvent_JankType_names + 69, 21}, 4 },
-  { {FrameTimelineEvent_JankType_names + 90, 27}, 16 },
-  { {FrameTimelineEvent_JankType_names + 117, 27}, 32 },
-  { {FrameTimelineEvent_JankType_names + 144, 18}, 2 },
-  { {FrameTimelineEvent_JankType_names + 162, 16}, 512 },
-  { {FrameTimelineEvent_JankType_names + 178, 12}, 256 },
-  { {FrameTimelineEvent_JankType_names + 190, 16}, 0 },
+  { {FrameTimelineEvent_JankType_names + 60, 12}, 1024 },
+  { {FrameTimelineEvent_JankType_names + 72, 9}, 1 },
+  { {FrameTimelineEvent_JankType_names + 81, 21}, 4 },
+  { {FrameTimelineEvent_JankType_names + 102, 27}, 16 },
+  { {FrameTimelineEvent_JankType_names + 129, 27}, 32 },
+  { {FrameTimelineEvent_JankType_names + 156, 18}, 2 },
+  { {FrameTimelineEvent_JankType_names + 174, 16}, 512 },
+  { {FrameTimelineEvent_JankType_names + 190, 12}, 256 },
+  { {FrameTimelineEvent_JankType_names + 202, 16}, 0 },
 };
 
 static const int FrameTimelineEvent_JankType_entries_by_number[] = {
-  10, // 0 -> JANK_UNSPECIFIED
-  3, // 1 -> JANK_NONE
-  7, // 2 -> JANK_SF_SCHEDULING
-  4, // 4 -> JANK_PREDICTION_ERROR
+  11, // 0 -> JANK_UNSPECIFIED
+  4, // 1 -> JANK_NONE
+  8, // 2 -> JANK_SF_SCHEDULING
+  5, // 4 -> JANK_PREDICTION_ERROR
   2, // 8 -> JANK_DISPLAY_HAL
-  5, // 16 -> JANK_SF_CPU_DEADLINE_MISSED
-  6, // 32 -> JANK_SF_GPU_DEADLINE_MISSED
+  6, // 16 -> JANK_SF_CPU_DEADLINE_MISSED
+  7, // 32 -> JANK_SF_GPU_DEADLINE_MISSED
   0, // 64 -> JANK_APP_DEADLINE_MISSED
   1, // 128 -> JANK_BUFFER_STUFFING
-  9, // 256 -> JANK_UNKNOWN
-  8, // 512 -> JANK_SF_STUFFING
+  10, // 256 -> JANK_UNKNOWN
+  9, // 512 -> JANK_SF_STUFFING
+  3, // 1024 -> JANK_DROPPED
 };
 
 const std::string& FrameTimelineEvent_JankType_Name(
@@ -190,12 +194,12 @@ const std::string& FrameTimelineEvent_JankType_Name(
       ::PROTOBUF_NAMESPACE_ID::internal::InitializeEnumStrings(
           FrameTimelineEvent_JankType_entries,
           FrameTimelineEvent_JankType_entries_by_number,
-          11, FrameTimelineEvent_JankType_strings);
+          12, FrameTimelineEvent_JankType_strings);
   (void) dummy;
   int idx = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumName(
       FrameTimelineEvent_JankType_entries,
       FrameTimelineEvent_JankType_entries_by_number,
-      11, value);
+      12, value);
   return idx == -1 ? ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString() :
                      FrameTimelineEvent_JankType_strings[idx].get();
 }
@@ -203,7 +207,7 @@ bool FrameTimelineEvent_JankType_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, FrameTimelineEvent_JankType* value) {
   int int_value;
   bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
-      FrameTimelineEvent_JankType_entries, 11, name, &int_value);
+      FrameTimelineEvent_JankType_entries, 12, name, &int_value);
   if (success) {
     *value = static_cast<FrameTimelineEvent_JankType>(int_value);
   }
@@ -221,6 +225,7 @@ constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JANK_APP_DEADLINE_MISS
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JANK_BUFFER_STUFFING;
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JANK_UNKNOWN;
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JANK_SF_STUFFING;
+constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JANK_DROPPED;
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JankType_MIN;
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent::JankType_MAX;
 constexpr int FrameTimelineEvent::JankType_ARRAYSIZE;

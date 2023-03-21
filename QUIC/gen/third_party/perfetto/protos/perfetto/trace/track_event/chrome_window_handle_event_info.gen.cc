@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -55,13 +56,13 @@ bool ChromeWindowHandleEventInfo::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string ChromeWindowHandleEventInfo::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> ChromeWindowHandleEventInfo::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -69,20 +70,20 @@ std::vector<uint8_t> ChromeWindowHandleEventInfo::SerializeAsArray() const {
 void ChromeWindowHandleEventInfo::Serialize(::protozero::Message* msg) const {
   // Field 1: dpi
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, dpi_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, dpi_, msg);
   }
 
   // Field 2: message_id
   if (_has_field_[2]) {
-    msg->AppendVarInt(2, message_id_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(2, message_id_, msg);
   }
 
   // Field 3: hwnd_ptr
   if (_has_field_[3]) {
-    msg->AppendFixed(3, hwnd_ptr_);
+    ::protozero::internal::gen_helpers::SerializeFixed(3, hwnd_ptr_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto

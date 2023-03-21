@@ -28,6 +28,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include "protos/perfetto/trace/android/network_trace.pb.h"
 #include "protos/perfetto/trace/gpu/gpu_render_stage_event.pb.h"
 #include "protos/perfetto/trace/track_event/chrome_histogram_sample.pb.h"
 #include "protos/perfetto/trace/track_event/debug_annotation.pb.h"
@@ -193,6 +194,8 @@ class InternedData final :
     kKernelSymbolsFieldNumber = 26,
     kDebugAnnotationValueTypeNamesFieldNumber = 27,
     kUnsymbolizedSourceLocationsFieldNumber = 28,
+    kDebugAnnotationStringValuesFieldNumber = 29,
+    kPacketContextFieldNumber = 30,
   };
   // repeated .perfetto.protos.EventCategory event_categories = 1;
   int event_categories_size() const;
@@ -554,6 +557,42 @@ class InternedData final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UnsymbolizedSourceLocation >&
       unsymbolized_source_locations() const;
 
+  // repeated .perfetto.protos.InternedString debug_annotation_string_values = 29;
+  int debug_annotation_string_values_size() const;
+  private:
+  int _internal_debug_annotation_string_values_size() const;
+  public:
+  void clear_debug_annotation_string_values();
+  ::perfetto::protos::InternedString* mutable_debug_annotation_string_values(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString >*
+      mutable_debug_annotation_string_values();
+  private:
+  const ::perfetto::protos::InternedString& _internal_debug_annotation_string_values(int index) const;
+  ::perfetto::protos::InternedString* _internal_add_debug_annotation_string_values();
+  public:
+  const ::perfetto::protos::InternedString& debug_annotation_string_values(int index) const;
+  ::perfetto::protos::InternedString* add_debug_annotation_string_values();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString >&
+      debug_annotation_string_values() const;
+
+  // repeated .perfetto.protos.NetworkPacketContext packet_context = 30;
+  int packet_context_size() const;
+  private:
+  int _internal_packet_context_size() const;
+  public:
+  void clear_packet_context();
+  ::perfetto::protos::NetworkPacketContext* mutable_packet_context(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::NetworkPacketContext >*
+      mutable_packet_context();
+  private:
+  const ::perfetto::protos::NetworkPacketContext& _internal_packet_context(int index) const;
+  ::perfetto::protos::NetworkPacketContext* _internal_add_packet_context();
+  public:
+  const ::perfetto::protos::NetworkPacketContext& packet_context(int index) const;
+  ::perfetto::protos::NetworkPacketContext* add_packet_context();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::NetworkPacketContext >&
+      packet_context() const;
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.InternedData)
  private:
   class _Internal;
@@ -581,6 +620,8 @@ class InternedData final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString > kernel_symbols_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotationValueTypeName > debug_annotation_value_type_names_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UnsymbolizedSourceLocation > unsymbolized_source_locations_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString > debug_annotation_string_values_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::NetworkPacketContext > packet_context_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2finterned_5fdata_2finterned_5fdata_2eproto;
 };
@@ -1333,6 +1374,80 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::Inte
 InternedData::kernel_symbols() const {
   // @@protoc_insertion_point(field_list:perfetto.protos.InternedData.kernel_symbols)
   return kernel_symbols_;
+}
+
+// repeated .perfetto.protos.InternedString debug_annotation_string_values = 29;
+inline int InternedData::_internal_debug_annotation_string_values_size() const {
+  return debug_annotation_string_values_.size();
+}
+inline int InternedData::debug_annotation_string_values_size() const {
+  return _internal_debug_annotation_string_values_size();
+}
+inline ::perfetto::protos::InternedString* InternedData::mutable_debug_annotation_string_values(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.InternedData.debug_annotation_string_values)
+  return debug_annotation_string_values_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString >*
+InternedData::mutable_debug_annotation_string_values() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.InternedData.debug_annotation_string_values)
+  return &debug_annotation_string_values_;
+}
+inline const ::perfetto::protos::InternedString& InternedData::_internal_debug_annotation_string_values(int index) const {
+  return debug_annotation_string_values_.Get(index);
+}
+inline const ::perfetto::protos::InternedString& InternedData::debug_annotation_string_values(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.InternedData.debug_annotation_string_values)
+  return _internal_debug_annotation_string_values(index);
+}
+inline ::perfetto::protos::InternedString* InternedData::_internal_add_debug_annotation_string_values() {
+  return debug_annotation_string_values_.Add();
+}
+inline ::perfetto::protos::InternedString* InternedData::add_debug_annotation_string_values() {
+  ::perfetto::protos::InternedString* _add = _internal_add_debug_annotation_string_values();
+  // @@protoc_insertion_point(field_add:perfetto.protos.InternedData.debug_annotation_string_values)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::InternedString >&
+InternedData::debug_annotation_string_values() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.InternedData.debug_annotation_string_values)
+  return debug_annotation_string_values_;
+}
+
+// repeated .perfetto.protos.NetworkPacketContext packet_context = 30;
+inline int InternedData::_internal_packet_context_size() const {
+  return packet_context_.size();
+}
+inline int InternedData::packet_context_size() const {
+  return _internal_packet_context_size();
+}
+inline ::perfetto::protos::NetworkPacketContext* InternedData::mutable_packet_context(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.InternedData.packet_context)
+  return packet_context_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::NetworkPacketContext >*
+InternedData::mutable_packet_context() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.InternedData.packet_context)
+  return &packet_context_;
+}
+inline const ::perfetto::protos::NetworkPacketContext& InternedData::_internal_packet_context(int index) const {
+  return packet_context_.Get(index);
+}
+inline const ::perfetto::protos::NetworkPacketContext& InternedData::packet_context(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.InternedData.packet_context)
+  return _internal_packet_context(index);
+}
+inline ::perfetto::protos::NetworkPacketContext* InternedData::_internal_add_packet_context() {
+  return packet_context_.Add();
+}
+inline ::perfetto::protos::NetworkPacketContext* InternedData::add_packet_context() {
+  ::perfetto::protos::NetworkPacketContext* _add = _internal_add_packet_context();
+  // @@protoc_insertion_point(field_add:perfetto.protos.InternedData.packet_context)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::NetworkPacketContext >&
+InternedData::packet_context() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.InternedData.packet_context)
+  return packet_context_;
 }
 
 #ifdef __GNUC__

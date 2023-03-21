@@ -1,3 +1,4 @@
+#include "perfetto/protozero/gen_field_helpers.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -42,13 +43,13 @@ bool FenceSignaledFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&context_);
         break;
       case 2 /* driver */:
-        field.get(&driver_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &driver_);
         break;
       case 3 /* seqno */:
         field.get(&seqno_);
         break;
       case 4 /* timeline */:
-        field.get(&timeline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &timeline_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -59,13 +60,13 @@ bool FenceSignaledFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FenceSignaledFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FenceSignaledFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -73,25 +74,25 @@ std::vector<uint8_t> FenceSignaledFtraceEvent::SerializeAsArray() const {
 void FenceSignaledFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: context
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, context_, msg);
   }
 
   // Field 2: driver
   if (_has_field_[2]) {
-    msg->AppendString(2, driver_);
+    ::protozero::internal::gen_helpers::SerializeString(2, driver_, msg);
   }
 
   // Field 3: seqno
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, seqno_, msg);
   }
 
   // Field 4: timeline
   if (_has_field_[4]) {
-    msg->AppendString(4, timeline_);
+    ::protozero::internal::gen_helpers::SerializeString(4, timeline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -124,13 +125,13 @@ bool FenceEnableSignalFtraceEvent::ParseFromArray(const void* raw, size_t size) 
         field.get(&context_);
         break;
       case 2 /* driver */:
-        field.get(&driver_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &driver_);
         break;
       case 3 /* seqno */:
         field.get(&seqno_);
         break;
       case 4 /* timeline */:
-        field.get(&timeline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &timeline_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -141,13 +142,13 @@ bool FenceEnableSignalFtraceEvent::ParseFromArray(const void* raw, size_t size) 
 }
 
 std::string FenceEnableSignalFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FenceEnableSignalFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -155,25 +156,25 @@ std::vector<uint8_t> FenceEnableSignalFtraceEvent::SerializeAsArray() const {
 void FenceEnableSignalFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: context
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, context_, msg);
   }
 
   // Field 2: driver
   if (_has_field_[2]) {
-    msg->AppendString(2, driver_);
+    ::protozero::internal::gen_helpers::SerializeString(2, driver_, msg);
   }
 
   // Field 3: seqno
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, seqno_, msg);
   }
 
   // Field 4: timeline
   if (_has_field_[4]) {
-    msg->AppendString(4, timeline_);
+    ::protozero::internal::gen_helpers::SerializeString(4, timeline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -206,13 +207,13 @@ bool FenceDestroyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&context_);
         break;
       case 2 /* driver */:
-        field.get(&driver_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &driver_);
         break;
       case 3 /* seqno */:
         field.get(&seqno_);
         break;
       case 4 /* timeline */:
-        field.get(&timeline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &timeline_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -223,13 +224,13 @@ bool FenceDestroyFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FenceDestroyFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FenceDestroyFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -237,25 +238,25 @@ std::vector<uint8_t> FenceDestroyFtraceEvent::SerializeAsArray() const {
 void FenceDestroyFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: context
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, context_, msg);
   }
 
   // Field 2: driver
   if (_has_field_[2]) {
-    msg->AppendString(2, driver_);
+    ::protozero::internal::gen_helpers::SerializeString(2, driver_, msg);
   }
 
   // Field 3: seqno
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, seqno_, msg);
   }
 
   // Field 4: timeline
   if (_has_field_[4]) {
-    msg->AppendString(4, timeline_);
+    ::protozero::internal::gen_helpers::SerializeString(4, timeline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 
@@ -288,13 +289,13 @@ bool FenceInitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
         field.get(&context_);
         break;
       case 2 /* driver */:
-        field.get(&driver_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &driver_);
         break;
       case 3 /* seqno */:
         field.get(&seqno_);
         break;
       case 4 /* timeline */:
-        field.get(&timeline_);
+        ::protozero::internal::gen_helpers::DeserializeString(field, &timeline_);
         break;
       default:
         field.SerializeAndAppendTo(&unknown_fields_);
@@ -305,13 +306,13 @@ bool FenceInitFtraceEvent::ParseFromArray(const void* raw, size_t size) {
 }
 
 std::string FenceInitFtraceEvent::SerializeAsString() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsString();
 }
 
 std::vector<uint8_t> FenceInitFtraceEvent::SerializeAsArray() const {
-  ::protozero::HeapBuffered<::protozero::Message> msg;
+  ::protozero::internal::gen_helpers::MessageSerializer msg;
   Serialize(msg.get());
   return msg.SerializeAsArray();
 }
@@ -319,25 +320,25 @@ std::vector<uint8_t> FenceInitFtraceEvent::SerializeAsArray() const {
 void FenceInitFtraceEvent::Serialize(::protozero::Message* msg) const {
   // Field 1: context
   if (_has_field_[1]) {
-    msg->AppendVarInt(1, context_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(1, context_, msg);
   }
 
   // Field 2: driver
   if (_has_field_[2]) {
-    msg->AppendString(2, driver_);
+    ::protozero::internal::gen_helpers::SerializeString(2, driver_, msg);
   }
 
   // Field 3: seqno
   if (_has_field_[3]) {
-    msg->AppendVarInt(3, seqno_);
+    ::protozero::internal::gen_helpers::SerializeVarInt(3, seqno_, msg);
   }
 
   // Field 4: timeline
   if (_has_field_[4]) {
-    msg->AppendString(4, timeline_);
+    ::protozero::internal::gen_helpers::SerializeString(4, timeline_, msg);
   }
 
-  msg->AppendRawProtoBytes(unknown_fields_.data(), unknown_fields_.size());
+  protozero::internal::gen_helpers::SerializeUnknownFields(unknown_fields_, msg);
 }
 
 }  // namespace perfetto
