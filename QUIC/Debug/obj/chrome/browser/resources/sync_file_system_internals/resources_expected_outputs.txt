@@ -1,0 +1,4 @@
+gen/chrome/grit/sync_file_system_internals_resources.h
+gen/chrome/grit/sync_file_system_internals_resources_map.cc
+gen/chrome/grit/sync_file_system_internals_resources_map.h
+gen/chrome/sync_file_system_internals_resources.pak

@@ -1,0 +1,146 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCPPGC_VERIFY_HEAP -DENABLE_DISASSEMBLER -DV8_TYPED_ARRAY_MAX_SIZE_IN_HEAP=64 -DOBJECT_PRINT -DVERIFY_HEAP -DV8_TRACE_MAPS -DV8_ENABLE_ALLOCATION_TIMEOUT -DV8_ENABLE_FORCE_SLOW_PATH -DV8_ENABLE_DOUBLE_CONST_STORE_CHECK -DV8_INTL_SUPPORT -DENABLE_HANDLE_ZAPPING -DV8_CODE_COMMENTS -DV8_ENABLE_DEBUG_CODE -DV8_ENABLE_HEAP_SNAPSHOT_VERIFY -DV8_SNAPSHOT_NATIVE_CODE_COUNTERS -DV8_USE_EXTERNAL_STARTUP_DATA -DV8_ATOMIC_OBJECT_FIELD_WRITES -DV8_ENABLE_LAZY_SOURCE_POSITIONS -DV8_SHARED_RO_HEAP -DV8_WIN64_UNWINDING_INFO -DV8_ENABLE_REGEXP_INTERPRETER_THREADED_DISPATCH -DV8_SHORT_BUILTIN_CALLS -DV8_EXTERNAL_CODE_SPACE -DV8_ENABLE_MAGLEV -DV8_ENABLE_TURBOFAN -DV8_ENABLE_WEBASSEMBLY -DV8_ALLOCATION_FOLDING -DV8_ALLOCATION_SITE_TRACKING -DV8_ADVANCED_BIGINT_ALGORITHMS -DV8_STATIC_ROOTS -DV8_USE_ZLIB -DV8_USE_LIBM_TRIG_FUNCTIONS -DV8_ENABLE_WASM_SIMD256_REVEC -DV8_ENABLE_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_SLIM_WRITE_BARRIER -DV8_TARGET_ARCH_X64 -DV8_HAVE_TARGET_OS -DV8_TARGET_OS_LINUX -DDEBUG -DV8_RUNTIME_CALL_STATS -DBUILDING_V8_SHARED -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DUSING_V8_BASE_SHARED -DUSING_V8_PLATFORM_SHARED
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../v8 -I../../v8/include -Igen/v8 -Igen/v8/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wmissing-field-initializers -Wunreachable-code -Wctad-maybe-unsupported -Wno-shadow -Wshorten-64-to-32 -O3 -fdata-sections -ffunction-sections -fno-unique-section-names -Wexit-time-destructors
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = v8_initializers
+target_out_dir = obj/v8
+target_output_name = v8_initializers
+
+build obj/v8/v8_initializers.inputdeps.stamp: stamp obj/third_party/icu/copy_icudata.stamp obj/v8/generate_bytecode_builtins_list.stamp obj/v8/run_gen-regexp-special-case.stamp obj/v8/run_torque.stamp obj/v8/src/inspector/protocol_generated_sources.stamp
+build obj/v8/v8_initializers/builtins-array-gen.o: cxx ../../v8/src/builtins/builtins-array-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-array-gen.cc
+  source_name_part = builtins-array-gen
+build obj/v8/v8_initializers/builtins-async-function-gen.o: cxx ../../v8/src/builtins/builtins-async-function-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-async-function-gen.cc
+  source_name_part = builtins-async-function-gen
+build obj/v8/v8_initializers/builtins-async-gen.o: cxx ../../v8/src/builtins/builtins-async-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-async-gen.cc
+  source_name_part = builtins-async-gen
+build obj/v8/v8_initializers/builtins-async-generator-gen.o: cxx ../../v8/src/builtins/builtins-async-generator-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-async-generator-gen.cc
+  source_name_part = builtins-async-generator-gen
+build obj/v8/v8_initializers/builtins-async-iterator-gen.o: cxx ../../v8/src/builtins/builtins-async-iterator-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-async-iterator-gen.cc
+  source_name_part = builtins-async-iterator-gen
+build obj/v8/v8_initializers/builtins-bigint-gen.o: cxx ../../v8/src/builtins/builtins-bigint-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-bigint-gen.cc
+  source_name_part = builtins-bigint-gen
+build obj/v8/v8_initializers/builtins-call-gen.o: cxx ../../v8/src/builtins/builtins-call-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-call-gen.cc
+  source_name_part = builtins-call-gen
+build obj/v8/v8_initializers/builtins-collections-gen.o: cxx ../../v8/src/builtins/builtins-collections-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-collections-gen.cc
+  source_name_part = builtins-collections-gen
+build obj/v8/v8_initializers/builtins-constructor-gen.o: cxx ../../v8/src/builtins/builtins-constructor-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-constructor-gen.cc
+  source_name_part = builtins-constructor-gen
+build obj/v8/v8_initializers/builtins-conversion-gen.o: cxx ../../v8/src/builtins/builtins-conversion-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-conversion-gen.cc
+  source_name_part = builtins-conversion-gen
+build obj/v8/v8_initializers/builtins-date-gen.o: cxx ../../v8/src/builtins/builtins-date-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-date-gen.cc
+  source_name_part = builtins-date-gen
+build obj/v8/v8_initializers/builtins-generator-gen.o: cxx ../../v8/src/builtins/builtins-generator-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-generator-gen.cc
+  source_name_part = builtins-generator-gen
+build obj/v8/v8_initializers/builtins-global-gen.o: cxx ../../v8/src/builtins/builtins-global-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-global-gen.cc
+  source_name_part = builtins-global-gen
+build obj/v8/v8_initializers/builtins-handler-gen.o: cxx ../../v8/src/builtins/builtins-handler-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-handler-gen.cc
+  source_name_part = builtins-handler-gen
+build obj/v8/v8_initializers/builtins-ic-gen.o: cxx ../../v8/src/builtins/builtins-ic-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-ic-gen.cc
+  source_name_part = builtins-ic-gen
+build obj/v8/v8_initializers/builtins-internal-gen.o: cxx ../../v8/src/builtins/builtins-internal-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-internal-gen.cc
+  source_name_part = builtins-internal-gen
+build obj/v8/v8_initializers/builtins-interpreter-gen.o: cxx ../../v8/src/builtins/builtins-interpreter-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-interpreter-gen.cc
+  source_name_part = builtins-interpreter-gen
+build obj/v8/v8_initializers/builtins-intl-gen.o: cxx ../../v8/src/builtins/builtins-intl-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-intl-gen.cc
+  source_name_part = builtins-intl-gen
+build obj/v8/v8_initializers/builtins-iterator-gen.o: cxx ../../v8/src/builtins/builtins-iterator-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-iterator-gen.cc
+  source_name_part = builtins-iterator-gen
+build obj/v8/v8_initializers/builtins-lazy-gen.o: cxx ../../v8/src/builtins/builtins-lazy-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-lazy-gen.cc
+  source_name_part = builtins-lazy-gen
+build obj/v8/v8_initializers/builtins-microtask-queue-gen.o: cxx ../../v8/src/builtins/builtins-microtask-queue-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-microtask-queue-gen.cc
+  source_name_part = builtins-microtask-queue-gen
+build obj/v8/v8_initializers/builtins-number-gen.o: cxx ../../v8/src/builtins/builtins-number-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-number-gen.cc
+  source_name_part = builtins-number-gen
+build obj/v8/v8_initializers/builtins-object-gen.o: cxx ../../v8/src/builtins/builtins-object-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-object-gen.cc
+  source_name_part = builtins-object-gen
+build obj/v8/v8_initializers/builtins-promise-gen.o: cxx ../../v8/src/builtins/builtins-promise-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-promise-gen.cc
+  source_name_part = builtins-promise-gen
+build obj/v8/v8_initializers/builtins-proxy-gen.o: cxx ../../v8/src/builtins/builtins-proxy-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-proxy-gen.cc
+  source_name_part = builtins-proxy-gen
+build obj/v8/v8_initializers/builtins-regexp-gen.o: cxx ../../v8/src/builtins/builtins-regexp-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-regexp-gen.cc
+  source_name_part = builtins-regexp-gen
+build obj/v8/v8_initializers/builtins-shadow-realm-gen.o: cxx ../../v8/src/builtins/builtins-shadow-realm-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-shadow-realm-gen.cc
+  source_name_part = builtins-shadow-realm-gen
+build obj/v8/v8_initializers/builtins-sharedarraybuffer-gen.o: cxx ../../v8/src/builtins/builtins-sharedarraybuffer-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-sharedarraybuffer-gen.cc
+  source_name_part = builtins-sharedarraybuffer-gen
+build obj/v8/v8_initializers/builtins-string-gen.o: cxx ../../v8/src/builtins/builtins-string-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-string-gen.cc
+  source_name_part = builtins-string-gen
+build obj/v8/v8_initializers/builtins-temporal-gen.o: cxx ../../v8/src/builtins/builtins-temporal-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-temporal-gen.cc
+  source_name_part = builtins-temporal-gen
+build obj/v8/v8_initializers/builtins-typed-array-gen.o: cxx ../../v8/src/builtins/builtins-typed-array-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-typed-array-gen.cc
+  source_name_part = builtins-typed-array-gen
+build obj/v8/v8_initializers/growable-fixed-array-gen.o: cxx ../../v8/src/builtins/growable-fixed-array-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = growable-fixed-array-gen.cc
+  source_name_part = growable-fixed-array-gen
+build obj/v8/v8_initializers/profile-data-reader.o: cxx ../../v8/src/builtins/profile-data-reader.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = profile-data-reader.cc
+  source_name_part = profile-data-reader
+build obj/v8/v8_initializers/setup-builtins-internal.o: cxx ../../v8/src/builtins/setup-builtins-internal.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = setup-builtins-internal.cc
+  source_name_part = setup-builtins-internal
+build obj/v8/v8_initializers/code-stub-assembler.o: cxx ../../v8/src/codegen/code-stub-assembler.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = code-stub-assembler.cc
+  source_name_part = code-stub-assembler
+build obj/v8/v8_initializers/setup-heap-internal.o: cxx ../../v8/src/heap/setup-heap-internal.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = setup-heap-internal.cc
+  source_name_part = setup-heap-internal
+build obj/v8/v8_initializers/accessor-assembler.o: cxx ../../v8/src/ic/accessor-assembler.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = accessor-assembler.cc
+  source_name_part = accessor-assembler
+build obj/v8/v8_initializers/binary-op-assembler.o: cxx ../../v8/src/ic/binary-op-assembler.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = binary-op-assembler.cc
+  source_name_part = binary-op-assembler
+build obj/v8/v8_initializers/keyed-store-generic.o: cxx ../../v8/src/ic/keyed-store-generic.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = keyed-store-generic.cc
+  source_name_part = keyed-store-generic
+build obj/v8/v8_initializers/unary-op-assembler.o: cxx ../../v8/src/ic/unary-op-assembler.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = unary-op-assembler.cc
+  source_name_part = unary-op-assembler
+build obj/v8/v8_initializers/interpreter-assembler.o: cxx ../../v8/src/interpreter/interpreter-assembler.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = interpreter-assembler.cc
+  source_name_part = interpreter-assembler
+build obj/v8/v8_initializers/interpreter-generator.o: cxx ../../v8/src/interpreter/interpreter-generator.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = interpreter-generator.cc
+  source_name_part = interpreter-generator
+build obj/v8/v8_initializers/interpreter-intrinsics-generator.o: cxx ../../v8/src/interpreter/interpreter-intrinsics-generator.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = interpreter-intrinsics-generator.cc
+  source_name_part = interpreter-intrinsics-generator
+build obj/v8/v8_initializers/builtins-wasm-gen.o: cxx ../../v8/src/builtins/builtins-wasm-gen.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-wasm-gen.cc
+  source_name_part = builtins-wasm-gen
+build obj/v8/v8_initializers/builtins-x64.o: cxx ../../v8/src/builtins/x64/builtins-x64.cc || obj/v8/v8_initializers.inputdeps.stamp
+  source_file_part = builtins-x64.cc
+  source_name_part = builtins-x64
+
+build obj/v8/v8_initializers.stamp: stamp obj/v8/v8_initializers/builtins-array-gen.o obj/v8/v8_initializers/builtins-async-function-gen.o obj/v8/v8_initializers/builtins-async-gen.o obj/v8/v8_initializers/builtins-async-generator-gen.o obj/v8/v8_initializers/builtins-async-iterator-gen.o obj/v8/v8_initializers/builtins-bigint-gen.o obj/v8/v8_initializers/builtins-call-gen.o obj/v8/v8_initializers/builtins-collections-gen.o obj/v8/v8_initializers/builtins-constructor-gen.o obj/v8/v8_initializers/builtins-conversion-gen.o obj/v8/v8_initializers/builtins-date-gen.o obj/v8/v8_initializers/builtins-generator-gen.o obj/v8/v8_initializers/builtins-global-gen.o obj/v8/v8_initializers/builtins-handler-gen.o obj/v8/v8_initializers/builtins-ic-gen.o obj/v8/v8_initializers/builtins-internal-gen.o obj/v8/v8_initializers/builtins-interpreter-gen.o obj/v8/v8_initializers/builtins-intl-gen.o obj/v8/v8_initializers/builtins-iterator-gen.o obj/v8/v8_initializers/builtins-lazy-gen.o obj/v8/v8_initializers/builtins-microtask-queue-gen.o obj/v8/v8_initializers/builtins-number-gen.o obj/v8/v8_initializers/builtins-object-gen.o obj/v8/v8_initializers/builtins-promise-gen.o obj/v8/v8_initializers/builtins-proxy-gen.o obj/v8/v8_initializers/builtins-regexp-gen.o obj/v8/v8_initializers/builtins-shadow-realm-gen.o obj/v8/v8_initializers/builtins-sharedarraybuffer-gen.o obj/v8/v8_initializers/builtins-string-gen.o obj/v8/v8_initializers/builtins-temporal-gen.o obj/v8/v8_initializers/builtins-typed-array-gen.o obj/v8/v8_initializers/growable-fixed-array-gen.o obj/v8/v8_initializers/profile-data-reader.o obj/v8/v8_initializers/setup-builtins-internal.o obj/v8/v8_initializers/code-stub-assembler.o obj/v8/v8_initializers/setup-heap-internal.o obj/v8/v8_initializers/accessor-assembler.o obj/v8/v8_initializers/binary-op-assembler.o obj/v8/v8_initializers/keyed-store-generic.o obj/v8/v8_initializers/unary-op-assembler.o obj/v8/v8_initializers/interpreter-assembler.o obj/v8/v8_initializers/interpreter-generator.o obj/v8/v8_initializers/interpreter-intrinsics-generator.o obj/v8/v8_initializers/builtins-wasm-gen.o obj/v8/v8_initializers/builtins-x64.o || obj/v8/torque_generated_initializers.stamp obj/v8/v8_base_without_compiler.stamp obj/v8/v8_shared_internal_headers.stamp obj/v8/v8_tracing.stamp obj/v8/torque_runtime_support.stamp ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC obj/v8/cppgc_base.stamp obj/v8/cppgc_headers.stamp obj/v8/v8_config_headers.stamp ./libv8_libbase.so.TOC ./libv8_libplatform.so.TOC obj/v8/v8_heap_base.stamp obj/v8/v8_heap_base_headers.stamp obj/v8/v8_headers.stamp obj/v8/v8_version.stamp obj/v8/v8_internal_headers.stamp obj/v8/v8_flags.stamp obj/v8/torque_generated_definitions.stamp obj/v8/v8_bigint.stamp obj/v8/src/inspector/inspector.stamp obj/v8/src/inspector/inspector_test_headers.stamp obj/v8/src/inspector/inspector_string_conversions.stamp obj/v8/third_party/inspector_protocol/crdtp.stamp obj/v8/third_party/inspector_protocol/crdtp_platform.stamp ./libchrome_zlib.so.TOC obj/third_party/zlib/google/libcompression_utils_portable.a

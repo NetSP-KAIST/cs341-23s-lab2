@@ -1,0 +1,135 @@
+defines = -DLEVELDB_PLATFORM_CHROMIUM=1 -DLEVELDB_COMPILE_LIBRARY -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DLEVELDB_SHARED_LIBRARY -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/leveldatabase -I../../third_party/leveldatabase/src -I../../third_party/leveldatabase/src/include -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/ipcz/include -I../../third_party/ced/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/re2/src -I../../third_party/snappy/src -I../../third_party/snappy/linux
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = leveldatabase
+target_out_dir = obj/third_party/leveldatabase
+target_output_name = libthird_party_leveldatabase
+
+build obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/components/nacl/common/buildflags.stamp obj/components/services/storage/public/mojom/filesystem/filesystem__generate_message_ids.stamp obj/components/services/storage/public/mojom/filesystem/filesystem__generator.stamp obj/components/services/storage/public/mojom/filesystem/filesystem_shared__generator.stamp obj/crypto/buildflags.stamp obj/ipc/ipc_buildflags.stamp obj/mojo/buildflags.stamp obj/mojo/public/cpp/bindings/mojo_buildflags.stamp obj/mojo/public/interfaces/bindings/bindings__generate_message_ids.stamp obj/mojo/public/interfaces/bindings/bindings__generator.stamp obj/mojo/public/interfaces/bindings/bindings_shared__generator.stamp obj/mojo/public/mojom/base/base__generate_message_ids.stamp obj/mojo/public/mojom/base/base__generator.stamp obj/mojo/public/mojom/base/base_shared__generator.stamp obj/net/buildflags.stamp obj/net/ios_cronet_buildflags.stamp obj/net/isolation_info_proto_gen.stamp obj/net/net_nqe_proto_gen.stamp obj/net/net_resources_grit.stamp obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp obj/net/cert/root_store_proto_lite_gen.stamp obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp obj/net/third_party/quiche/net_quic_proto_gen.stamp obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/url/buildflags.stamp
+build obj/third_party/leveldatabase/leveldatabase/env_chromium.o: cxx ../../third_party/leveldatabase/env_chromium.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = env_chromium.cc
+  source_name_part = env_chromium
+build obj/third_party/leveldatabase/leveldatabase/leveldb_chrome.o: cxx ../../third_party/leveldatabase/leveldb_chrome.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = leveldb_chrome.cc
+  source_name_part = leveldb_chrome
+build obj/third_party/leveldatabase/leveldatabase/port_chromium.o: cxx ../../third_party/leveldatabase/port/port_chromium.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = port_chromium.cc
+  source_name_part = port_chromium
+build obj/third_party/leveldatabase/leveldatabase/builder.o: cxx ../../third_party/leveldatabase/src/db/builder.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = builder.cc
+  source_name_part = builder
+build obj/third_party/leveldatabase/leveldatabase/db_impl.o: cxx ../../third_party/leveldatabase/src/db/db_impl.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = db_impl.cc
+  source_name_part = db_impl
+build obj/third_party/leveldatabase/leveldatabase/db_iter.o: cxx ../../third_party/leveldatabase/src/db/db_iter.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = db_iter.cc
+  source_name_part = db_iter
+build obj/third_party/leveldatabase/leveldatabase/dbformat.o: cxx ../../third_party/leveldatabase/src/db/dbformat.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = dbformat.cc
+  source_name_part = dbformat
+build obj/third_party/leveldatabase/leveldatabase/dumpfile.o: cxx ../../third_party/leveldatabase/src/db/dumpfile.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = dumpfile.cc
+  source_name_part = dumpfile
+build obj/third_party/leveldatabase/leveldatabase/filename.o: cxx ../../third_party/leveldatabase/src/db/filename.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = filename.cc
+  source_name_part = filename
+build obj/third_party/leveldatabase/leveldatabase/log_reader.o: cxx ../../third_party/leveldatabase/src/db/log_reader.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = log_reader.cc
+  source_name_part = log_reader
+build obj/third_party/leveldatabase/leveldatabase/log_writer.o: cxx ../../third_party/leveldatabase/src/db/log_writer.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = log_writer.cc
+  source_name_part = log_writer
+build obj/third_party/leveldatabase/leveldatabase/memtable.o: cxx ../../third_party/leveldatabase/src/db/memtable.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = memtable.cc
+  source_name_part = memtable
+build obj/third_party/leveldatabase/leveldatabase/repair.o: cxx ../../third_party/leveldatabase/src/db/repair.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = repair.cc
+  source_name_part = repair
+build obj/third_party/leveldatabase/leveldatabase/table_cache.o: cxx ../../third_party/leveldatabase/src/db/table_cache.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = table_cache.cc
+  source_name_part = table_cache
+build obj/third_party/leveldatabase/leveldatabase/version_edit.o: cxx ../../third_party/leveldatabase/src/db/version_edit.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = version_edit.cc
+  source_name_part = version_edit
+build obj/third_party/leveldatabase/leveldatabase/version_set.o: cxx ../../third_party/leveldatabase/src/db/version_set.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = version_set.cc
+  source_name_part = version_set
+build obj/third_party/leveldatabase/leveldatabase/write_batch.o: cxx ../../third_party/leveldatabase/src/db/write_batch.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = write_batch.cc
+  source_name_part = write_batch
+build obj/third_party/leveldatabase/leveldatabase/memenv.o: cxx ../../third_party/leveldatabase/src/helpers/memenv/memenv.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = memenv.cc
+  source_name_part = memenv
+build obj/third_party/leveldatabase/leveldatabase/block.o: cxx ../../third_party/leveldatabase/src/table/block.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = block.cc
+  source_name_part = block
+build obj/third_party/leveldatabase/leveldatabase/block_builder.o: cxx ../../third_party/leveldatabase/src/table/block_builder.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = block_builder.cc
+  source_name_part = block_builder
+build obj/third_party/leveldatabase/leveldatabase/filter_block.o: cxx ../../third_party/leveldatabase/src/table/filter_block.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = filter_block.cc
+  source_name_part = filter_block
+build obj/third_party/leveldatabase/leveldatabase/format.o: cxx ../../third_party/leveldatabase/src/table/format.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = format.cc
+  source_name_part = format
+build obj/third_party/leveldatabase/leveldatabase/iterator.o: cxx ../../third_party/leveldatabase/src/table/iterator.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = iterator.cc
+  source_name_part = iterator
+build obj/third_party/leveldatabase/leveldatabase/merger.o: cxx ../../third_party/leveldatabase/src/table/merger.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = merger.cc
+  source_name_part = merger
+build obj/third_party/leveldatabase/leveldatabase/table.o: cxx ../../third_party/leveldatabase/src/table/table.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = table.cc
+  source_name_part = table
+build obj/third_party/leveldatabase/leveldatabase/table_builder.o: cxx ../../third_party/leveldatabase/src/table/table_builder.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = table_builder.cc
+  source_name_part = table_builder
+build obj/third_party/leveldatabase/leveldatabase/two_level_iterator.o: cxx ../../third_party/leveldatabase/src/table/two_level_iterator.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = two_level_iterator.cc
+  source_name_part = two_level_iterator
+build obj/third_party/leveldatabase/leveldatabase/arena.o: cxx ../../third_party/leveldatabase/src/util/arena.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = arena.cc
+  source_name_part = arena
+build obj/third_party/leveldatabase/leveldatabase/bloom.o: cxx ../../third_party/leveldatabase/src/util/bloom.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = bloom.cc
+  source_name_part = bloom
+build obj/third_party/leveldatabase/leveldatabase/cache.o: cxx ../../third_party/leveldatabase/src/util/cache.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = cache.cc
+  source_name_part = cache
+build obj/third_party/leveldatabase/leveldatabase/coding.o: cxx ../../third_party/leveldatabase/src/util/coding.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = coding.cc
+  source_name_part = coding
+build obj/third_party/leveldatabase/leveldatabase/comparator.o: cxx ../../third_party/leveldatabase/src/util/comparator.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = comparator.cc
+  source_name_part = comparator
+build obj/third_party/leveldatabase/leveldatabase/crc32c.o: cxx ../../third_party/leveldatabase/src/util/crc32c.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = crc32c.cc
+  source_name_part = crc32c
+build obj/third_party/leveldatabase/leveldatabase/env.o: cxx ../../third_party/leveldatabase/src/util/env.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = env.cc
+  source_name_part = env
+build obj/third_party/leveldatabase/leveldatabase/filter_policy.o: cxx ../../third_party/leveldatabase/src/util/filter_policy.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = filter_policy.cc
+  source_name_part = filter_policy
+build obj/third_party/leveldatabase/leveldatabase/hash.o: cxx ../../third_party/leveldatabase/src/util/hash.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = hash.cc
+  source_name_part = hash
+build obj/third_party/leveldatabase/leveldatabase/logging.o: cxx ../../third_party/leveldatabase/src/util/logging.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = logging.cc
+  source_name_part = logging
+build obj/third_party/leveldatabase/leveldatabase/options.o: cxx ../../third_party/leveldatabase/src/util/options.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = options.cc
+  source_name_part = options
+build obj/third_party/leveldatabase/leveldatabase/status.o: cxx ../../third_party/leveldatabase/src/util/status.cc || obj/third_party/leveldatabase/leveldatabase.inputdeps.stamp
+  source_file_part = status.cc
+  source_name_part = status
+
+build ./libthird_party_leveldatabase.so ./libthird_party_leveldatabase.so.TOC: solink obj/third_party/leveldatabase/leveldatabase/env_chromium.o obj/third_party/leveldatabase/leveldatabase/leveldb_chrome.o obj/third_party/leveldatabase/leveldatabase/port_chromium.o obj/third_party/leveldatabase/leveldatabase/builder.o obj/third_party/leveldatabase/leveldatabase/db_impl.o obj/third_party/leveldatabase/leveldatabase/db_iter.o obj/third_party/leveldatabase/leveldatabase/dbformat.o obj/third_party/leveldatabase/leveldatabase/dumpfile.o obj/third_party/leveldatabase/leveldatabase/filename.o obj/third_party/leveldatabase/leveldatabase/log_reader.o obj/third_party/leveldatabase/leveldatabase/log_writer.o obj/third_party/leveldatabase/leveldatabase/memtable.o obj/third_party/leveldatabase/leveldatabase/repair.o obj/third_party/leveldatabase/leveldatabase/table_cache.o obj/third_party/leveldatabase/leveldatabase/version_edit.o obj/third_party/leveldatabase/leveldatabase/version_set.o obj/third_party/leveldatabase/leveldatabase/write_batch.o obj/third_party/leveldatabase/leveldatabase/memenv.o obj/third_party/leveldatabase/leveldatabase/block.o obj/third_party/leveldatabase/leveldatabase/block_builder.o obj/third_party/leveldatabase/leveldatabase/filter_block.o obj/third_party/leveldatabase/leveldatabase/format.o obj/third_party/leveldatabase/leveldatabase/iterator.o obj/third_party/leveldatabase/leveldatabase/merger.o obj/third_party/leveldatabase/leveldatabase/table.o obj/third_party/leveldatabase/leveldatabase/table_builder.o obj/third_party/leveldatabase/leveldatabase/two_level_iterator.o obj/third_party/leveldatabase/leveldatabase/arena.o obj/third_party/leveldatabase/leveldatabase/bloom.o obj/third_party/leveldatabase/leveldatabase/cache.o obj/third_party/leveldatabase/leveldatabase/coding.o obj/third_party/leveldatabase/leveldatabase/comparator.o obj/third_party/leveldatabase/leveldatabase/crc32c.o obj/third_party/leveldatabase/leveldatabase/env.o obj/third_party/leveldatabase/leveldatabase/filter_policy.o obj/third_party/leveldatabase/leveldatabase/hash.o obj/third_party/leveldatabase/leveldatabase/logging.o obj/third_party/leveldatabase/leveldatabase/options.o obj/third_party/leveldatabase/leveldatabase/status.o obj/third_party/crc32c/crc32c/crc32c.o obj/third_party/crc32c/crc32c/crc32c_portable.o obj/third_party/crc32c/crc32c_arm64/crc32c_arm64.o obj/third_party/crc32c/crc32c_sse42/crc32c_sse42.o obj/third_party/re2/libre2.a obj/third_party/snappy/libsnappy.a | ./libbase.so.TOC ./libstorage_service_filesystem_support.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libstorage_service_filesystem_mojom.so.TOC ./libstorage_service_filesystem_mojom_shared.so.TOC ./libmojo_public_cpp_bindings.so.TOC ./libmojo_public_cpp_bindings_bindings_base.so.TOC ./libmojo_public_system_cpp.so.TOC ./libmojo_core_embedder.so.TOC ./libmojo_cpp_platform.so.TOC ./libmojo_public_system.so.TOC ./libipc_message_support.so.TOC ./libmojo_mojom_bindings.so.TOC ./libmojo_mojom_bindings_shared.so.TOC ./libmojo_base_mojom_shared.so.TOC ./libmojo_base_mojom.so.TOC ./libmojo_base_lib.so.TOC ./libmojo_base_shared_typemap_traits.so.TOC ./libbase_i18n.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC ./libmojo_base_typemap_traits.so.TOC ./libstorage_service_typemap_traits.so.TOC ./libc++.so.TOC || obj/build/chromeos_buildflags.stamp obj/third_party/crc32c/crc32c.stamp obj/build/config/shared_library_deps.stamp obj/third_party/crc32c/crc32c_arm64.stamp obj/third_party/crc32c/crc32c_internal_headers.stamp obj/third_party/crc32c/crc32c_sse42.stamp
+  ldflags = -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN -Werror
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .
+  solibs = ./libbase.so ./libstorage_service_filesystem_support.so ./libthird_party_abseil-cpp_absl.so ./libthird_party_boringssl.so ./libbase_allocator_partition_allocator_partition_alloc.so ./libthird_party_perfetto_libperfetto.so ./libstorage_service_filesystem_mojom.so ./libstorage_service_filesystem_mojom_shared.so ./libmojo_public_cpp_bindings.so ./libmojo_public_cpp_bindings_bindings_base.so ./libmojo_public_system_cpp.so ./libmojo_core_embedder.so ./libmojo_cpp_platform.so ./libmojo_public_system.so ./libipc_message_support.so ./libmojo_mojom_bindings.so ./libmojo_mojom_bindings_shared.so ./libmojo_base_mojom_shared.so ./libmojo_base_mojom.so ./libmojo_base_lib.so ./libmojo_base_shared_typemap_traits.so ./libbase_i18n.so ./libthird_party_icu_icui18n.so ./libicuuc.so ./libmojo_base_typemap_traits.so ./libstorage_service_typemap_traits.so ./libc++.so

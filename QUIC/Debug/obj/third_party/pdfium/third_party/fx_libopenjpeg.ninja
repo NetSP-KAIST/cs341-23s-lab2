@@ -1,0 +1,75 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DOPJ_STATIC -D_SKIA_SUPPORT_ -DPDF_USE_PARTITION_ALLOC -DPDF_ENABLE_V8 -DPDF_ENABLE_XFA -DPDF_ENABLE_XFA_BMP -DPDF_ENABLE_XFA_GIF -DPDF_ENABLE_XFA_PNG -DPDF_ENABLE_XFA_TIFF -DFT_CONFIG_MODULES_H=\"freetype-custom/freetype/config/ftmodule.h\" -DFT_CONFIG_OPTIONS_H=\"freetype-custom/freetype/config/ftoption.h\" -DPDFIUM_REQUIRED_MODULES -DABSL_CONSUME_DLL -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/pdfium -I../../third_party/freetype/include -I../../third_party/freetype/include/freetype-custom -I../../third_party/freetype/src/include -I../../third_party/harfbuzz-ng/src/src -I../../third_party/abseil-cpp -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wc++11-narrowing -Wdeprecated-copy -Wtautological-unsigned-zero-compare -Xclang -add-plugin -Xclang blink-gc-plugin -Wno-implicit-int-float-conversion
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = fx_libopenjpeg
+target_out_dir = obj/third_party/pdfium/third_party
+target_output_name = fx_libopenjpeg
+
+build obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp: stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/third_party/icu/copy_icudata.stamp
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/bio.o: cc ../../third_party/pdfium/third_party/libopenjpeg/bio.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = bio.c
+  source_name_part = bio
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/cio.o: cc ../../third_party/pdfium/third_party/libopenjpeg/cio.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = cio.c
+  source_name_part = cio
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/dwt.o: cc ../../third_party/pdfium/third_party/libopenjpeg/dwt.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = dwt.c
+  source_name_part = dwt
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/event.o: cc ../../third_party/pdfium/third_party/libopenjpeg/event.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = event.c
+  source_name_part = event
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/function_list.o: cc ../../third_party/pdfium/third_party/libopenjpeg/function_list.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = function_list.c
+  source_name_part = function_list
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/ht_dec.o: cc ../../third_party/pdfium/third_party/libopenjpeg/ht_dec.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = ht_dec.c
+  source_name_part = ht_dec
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/image.o: cc ../../third_party/pdfium/third_party/libopenjpeg/image.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = image.c
+  source_name_part = image
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/invert.o: cc ../../third_party/pdfium/third_party/libopenjpeg/invert.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = invert.c
+  source_name_part = invert
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/j2k.o: cc ../../third_party/pdfium/third_party/libopenjpeg/j2k.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = j2k.c
+  source_name_part = j2k
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/jp2.o: cc ../../third_party/pdfium/third_party/libopenjpeg/jp2.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = jp2.c
+  source_name_part = jp2
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/mct.o: cc ../../third_party/pdfium/third_party/libopenjpeg/mct.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = mct.c
+  source_name_part = mct
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/mqc.o: cc ../../third_party/pdfium/third_party/libopenjpeg/mqc.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = mqc.c
+  source_name_part = mqc
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/openjpeg.o: cc ../../third_party/pdfium/third_party/libopenjpeg/openjpeg.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = openjpeg.c
+  source_name_part = openjpeg
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/opj_malloc.o: cxx ../../third_party/pdfium/third_party/libopenjpeg/opj_malloc.cc || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = opj_malloc.cc
+  source_name_part = opj_malloc
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/pi.o: cc ../../third_party/pdfium/third_party/libopenjpeg/pi.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = pi.c
+  source_name_part = pi
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/sparse_array.o: cc ../../third_party/pdfium/third_party/libopenjpeg/sparse_array.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = sparse_array.c
+  source_name_part = sparse_array
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/t1.o: cc ../../third_party/pdfium/third_party/libopenjpeg/t1.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = t1.c
+  source_name_part = t1
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/t2.o: cc ../../third_party/pdfium/third_party/libopenjpeg/t2.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = t2.c
+  source_name_part = t2
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/tcd.o: cc ../../third_party/pdfium/third_party/libopenjpeg/tcd.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = tcd.c
+  source_name_part = tcd
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/tgt.o: cc ../../third_party/pdfium/third_party/libopenjpeg/tgt.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = tgt.c
+  source_name_part = tgt
+build obj/third_party/pdfium/third_party/fx_libopenjpeg/thread.o: cc ../../third_party/pdfium/third_party/libopenjpeg/thread.c || obj/third_party/pdfium/third_party/fx_libopenjpeg.inputdeps.stamp
+  source_file_part = thread.c
+  source_name_part = thread
+
+build obj/third_party/pdfium/third_party/fx_libopenjpeg.stamp: stamp obj/third_party/pdfium/third_party/fx_libopenjpeg/bio.o obj/third_party/pdfium/third_party/fx_libopenjpeg/cio.o obj/third_party/pdfium/third_party/fx_libopenjpeg/dwt.o obj/third_party/pdfium/third_party/fx_libopenjpeg/event.o obj/third_party/pdfium/third_party/fx_libopenjpeg/function_list.o obj/third_party/pdfium/third_party/fx_libopenjpeg/ht_dec.o obj/third_party/pdfium/third_party/fx_libopenjpeg/image.o obj/third_party/pdfium/third_party/fx_libopenjpeg/invert.o obj/third_party/pdfium/third_party/fx_libopenjpeg/j2k.o obj/third_party/pdfium/third_party/fx_libopenjpeg/jp2.o obj/third_party/pdfium/third_party/fx_libopenjpeg/mct.o obj/third_party/pdfium/third_party/fx_libopenjpeg/mqc.o obj/third_party/pdfium/third_party/fx_libopenjpeg/openjpeg.o obj/third_party/pdfium/third_party/fx_libopenjpeg/opj_malloc.o obj/third_party/pdfium/third_party/fx_libopenjpeg/pi.o obj/third_party/pdfium/third_party/fx_libopenjpeg/sparse_array.o obj/third_party/pdfium/third_party/fx_libopenjpeg/t1.o obj/third_party/pdfium/third_party/fx_libopenjpeg/t2.o obj/third_party/pdfium/third_party/fx_libopenjpeg/tcd.o obj/third_party/pdfium/third_party/fx_libopenjpeg/tgt.o obj/third_party/pdfium/third_party/fx_libopenjpeg/thread.o || obj/third_party/pdfium/core/fxcrt/fxcrt.stamp obj/third_party/pdfium/core/fxcrt/unowned_ptr.stamp obj/third_party/pdfium/third_party/pdfium_compiler_specific.stamp ./libthird_party_freetype_harfbuzz.so.TOC obj/third_party/pdfium/third_party/pdfium_base.stamp ./libthird_party_abseil-cpp_absl.so.TOC ./libicuuc.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC

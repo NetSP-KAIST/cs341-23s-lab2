@@ -1,0 +1,46 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = protozero
+target_out_dir = obj/third_party/perfetto/src/protozero
+target_output_name = protozero
+
+build obj/third_party/perfetto/src/protozero/protozero/field.o: cxx ../../third_party/perfetto/src/protozero/field.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = field.cc
+  source_name_part = field
+build obj/third_party/perfetto/src/protozero/protozero/gen_field_helpers.o: cxx ../../third_party/perfetto/src/protozero/gen_field_helpers.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = gen_field_helpers.cc
+  source_name_part = gen_field_helpers
+build obj/third_party/perfetto/src/protozero/protozero/message.o: cxx ../../third_party/perfetto/src/protozero/message.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = message.cc
+  source_name_part = message
+build obj/third_party/perfetto/src/protozero/protozero/message_arena.o: cxx ../../third_party/perfetto/src/protozero/message_arena.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = message_arena.cc
+  source_name_part = message_arena
+build obj/third_party/perfetto/src/protozero/protozero/message_handle.o: cxx ../../third_party/perfetto/src/protozero/message_handle.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = message_handle.cc
+  source_name_part = message_handle
+build obj/third_party/perfetto/src/protozero/protozero/packed_repeated_fields.o: cxx ../../third_party/perfetto/src/protozero/packed_repeated_fields.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = packed_repeated_fields.cc
+  source_name_part = packed_repeated_fields
+build obj/third_party/perfetto/src/protozero/protozero/proto_decoder.o: cxx ../../third_party/perfetto/src/protozero/proto_decoder.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = proto_decoder.cc
+  source_name_part = proto_decoder
+build obj/third_party/perfetto/src/protozero/protozero/scattered_heap_buffer.o: cxx ../../third_party/perfetto/src/protozero/scattered_heap_buffer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = scattered_heap_buffer.cc
+  source_name_part = scattered_heap_buffer
+build obj/third_party/perfetto/src/protozero/protozero/scattered_stream_null_delegate.o: cxx ../../third_party/perfetto/src/protozero/scattered_stream_null_delegate.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = scattered_stream_null_delegate.cc
+  source_name_part = scattered_stream_null_delegate
+build obj/third_party/perfetto/src/protozero/protozero/scattered_stream_writer.o: cxx ../../third_party/perfetto/src/protozero/scattered_stream_writer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = scattered_stream_writer.cc
+  source_name_part = scattered_stream_writer
+build obj/third_party/perfetto/src/protozero/protozero/static_buffer.o: cxx ../../third_party/perfetto/src/protozero/static_buffer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = static_buffer.cc
+  source_name_part = static_buffer
+build obj/third_party/perfetto/src/protozero/protozero/virtual_destructors.o: cxx ../../third_party/perfetto/src/protozero/virtual_destructors.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = virtual_destructors.cc
+  source_name_part = virtual_destructors
+
+build obj/third_party/perfetto/src/protozero/protozero.stamp: stamp obj/third_party/perfetto/src/protozero/protozero/field.o obj/third_party/perfetto/src/protozero/protozero/gen_field_helpers.o obj/third_party/perfetto/src/protozero/protozero/message.o obj/third_party/perfetto/src/protozero/protozero/message_arena.o obj/third_party/perfetto/src/protozero/protozero/message_handle.o obj/third_party/perfetto/src/protozero/protozero/packed_repeated_fields.o obj/third_party/perfetto/src/protozero/protozero/proto_decoder.o obj/third_party/perfetto/src/protozero/protozero/scattered_heap_buffer.o obj/third_party/perfetto/src/protozero/protozero/scattered_stream_null_delegate.o obj/third_party/perfetto/src/protozero/protozero/scattered_stream_writer.o obj/third_party/perfetto/src/protozero/protozero/static_buffer.o obj/third_party/perfetto/src/protozero/protozero/virtual_destructors.o || obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp obj/third_party/perfetto/gn/default_deps.stamp obj/third_party/perfetto/src/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp obj/third_party/perfetto/include/perfetto/public/protozero.stamp obj/third_party/perfetto/include/perfetto/ext/base/base.stamp obj/third_party/perfetto/src/base/perfetto_base_default_platform.stamp

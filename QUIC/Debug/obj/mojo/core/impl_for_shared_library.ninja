@@ -1,0 +1,146 @@
+defines = -DMOJO_CORE_SHARED_LIBRARY -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/ipcz/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = impl_for_shared_library
+target_out_dir = obj/mojo/core
+target_output_name = impl_for_shared_library
+
+build obj/mojo/core/impl_for_shared_library.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/components/nacl/common/buildflags.stamp obj/crypto/buildflags.stamp obj/mojo/buildflags.stamp obj/mojo/public/cpp/bindings/mojo_buildflags.stamp obj/net/buildflags.stamp obj/net/ios_cronet_buildflags.stamp obj/net/isolation_info_proto_gen.stamp obj/net/net_nqe_proto_gen.stamp obj/net/net_resources_grit.stamp obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp obj/net/cert/root_store_proto_lite_gen.stamp obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp obj/net/third_party/quiche/net_quic_proto_gen.stamp obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/url/buildflags.stamp
+build obj/mojo/core/impl_for_shared_library/atomic_flag.o: cxx ../../mojo/core/atomic_flag.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = atomic_flag.cc
+  source_name_part = atomic_flag
+build obj/mojo/core/impl_for_shared_library/channel.o: cxx ../../mojo/core/channel.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = channel.cc
+  source_name_part = channel
+build obj/mojo/core/impl_for_shared_library/configuration.o: cxx ../../mojo/core/configuration.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = configuration.cc
+  source_name_part = configuration
+build obj/mojo/core/impl_for_shared_library/connection_params.o: cxx ../../mojo/core/connection_params.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = connection_params.cc
+  source_name_part = connection_params
+build obj/mojo/core/impl_for_shared_library/core.o: cxx ../../mojo/core/core.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = core.cc
+  source_name_part = core
+build obj/mojo/core/impl_for_shared_library/core_ipcz.o: cxx ../../mojo/core/core_ipcz.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = core_ipcz.cc
+  source_name_part = core_ipcz
+build obj/mojo/core/impl_for_shared_library/data_pipe_consumer_dispatcher.o: cxx ../../mojo/core/data_pipe_consumer_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = data_pipe_consumer_dispatcher.cc
+  source_name_part = data_pipe_consumer_dispatcher
+build obj/mojo/core/impl_for_shared_library/data_pipe_control_message.o: cxx ../../mojo/core/data_pipe_control_message.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = data_pipe_control_message.cc
+  source_name_part = data_pipe_control_message
+build obj/mojo/core/impl_for_shared_library/data_pipe_producer_dispatcher.o: cxx ../../mojo/core/data_pipe_producer_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = data_pipe_producer_dispatcher.cc
+  source_name_part = data_pipe_producer_dispatcher
+build obj/mojo/core/impl_for_shared_library/dispatcher.o: cxx ../../mojo/core/dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = dispatcher.cc
+  source_name_part = dispatcher
+build obj/mojo/core/impl_for_shared_library/entrypoints.o: cxx ../../mojo/core/entrypoints.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = entrypoints.cc
+  source_name_part = entrypoints
+build obj/mojo/core/impl_for_shared_library/handle_table.o: cxx ../../mojo/core/handle_table.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = handle_table.cc
+  source_name_part = handle_table
+build obj/mojo/core/impl_for_shared_library/invitation_dispatcher.o: cxx ../../mojo/core/invitation_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = invitation_dispatcher.cc
+  source_name_part = invitation_dispatcher
+build obj/mojo/core/impl_for_shared_library/ipcz_api.o: cxx ../../mojo/core/ipcz_api.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = ipcz_api.cc
+  source_name_part = ipcz_api
+build obj/mojo/core/impl_for_shared_library/base_shared_memory_service.o: cxx ../../mojo/core/ipcz_driver/base_shared_memory_service.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = base_shared_memory_service.cc
+  source_name_part = base_shared_memory_service
+build obj/mojo/core/impl_for_shared_library/data_pipe.o: cxx ../../mojo/core/ipcz_driver/data_pipe.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = data_pipe.cc
+  source_name_part = data_pipe
+build obj/mojo/core/impl_for_shared_library/driver.o: cxx ../../mojo/core/ipcz_driver/driver.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = driver.cc
+  source_name_part = driver
+build obj/mojo/core/impl_for_shared_library/invitation.o: cxx ../../mojo/core/ipcz_driver/invitation.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = invitation.cc
+  source_name_part = invitation
+build obj/mojo/core/impl_for_shared_library/mojo_message.o: cxx ../../mojo/core/ipcz_driver/mojo_message.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = mojo_message.cc
+  source_name_part = mojo_message
+build obj/mojo/core/impl_for_shared_library/mojo_trap.o: cxx ../../mojo/core/ipcz_driver/mojo_trap.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = mojo_trap.cc
+  source_name_part = mojo_trap
+build obj/mojo/core/impl_for_shared_library/object.o: cxx ../../mojo/core/ipcz_driver/object.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = object.cc
+  source_name_part = object
+build obj/mojo/core/impl_for_shared_library/ring_buffer.o: cxx ../../mojo/core/ipcz_driver/ring_buffer.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = ring_buffer.cc
+  source_name_part = ring_buffer
+build obj/mojo/core/impl_for_shared_library/shared_buffer.o: cxx ../../mojo/core/ipcz_driver/shared_buffer.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = shared_buffer.cc
+  source_name_part = shared_buffer
+build obj/mojo/core/impl_for_shared_library/shared_buffer_mapping.o: cxx ../../mojo/core/ipcz_driver/shared_buffer_mapping.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = shared_buffer_mapping.cc
+  source_name_part = shared_buffer_mapping
+build obj/mojo/core/impl_for_shared_library/transmissible_platform_handle.o: cxx ../../mojo/core/ipcz_driver/transmissible_platform_handle.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = transmissible_platform_handle.cc
+  source_name_part = transmissible_platform_handle
+build obj/mojo/core/impl_for_shared_library/transport.o: cxx ../../mojo/core/ipcz_driver/transport.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = transport.cc
+  source_name_part = transport
+build obj/mojo/core/impl_for_shared_library/wrapped_platform_handle.o: cxx ../../mojo/core/ipcz_driver/wrapped_platform_handle.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = wrapped_platform_handle.cc
+  source_name_part = wrapped_platform_handle
+build obj/mojo/core/impl_for_shared_library/message_pipe_dispatcher.o: cxx ../../mojo/core/message_pipe_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = message_pipe_dispatcher.cc
+  source_name_part = message_pipe_dispatcher
+build obj/mojo/core/impl_for_shared_library/node_channel.o: cxx ../../mojo/core/node_channel.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = node_channel.cc
+  source_name_part = node_channel
+build obj/mojo/core/impl_for_shared_library/node_controller.o: cxx ../../mojo/core/node_controller.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = node_controller.cc
+  source_name_part = node_controller
+build obj/mojo/core/impl_for_shared_library/platform_handle_dispatcher.o: cxx ../../mojo/core/platform_handle_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = platform_handle_dispatcher.cc
+  source_name_part = platform_handle_dispatcher
+build obj/mojo/core/impl_for_shared_library/platform_handle_in_transit.o: cxx ../../mojo/core/platform_handle_in_transit.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = platform_handle_in_transit.cc
+  source_name_part = platform_handle_in_transit
+build obj/mojo/core/impl_for_shared_library/platform_handle_utils.o: cxx ../../mojo/core/platform_handle_utils.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = platform_handle_utils.cc
+  source_name_part = platform_handle_utils
+build obj/mojo/core/impl_for_shared_library/platform_shared_memory_mapping.o: cxx ../../mojo/core/platform_shared_memory_mapping.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = platform_shared_memory_mapping.cc
+  source_name_part = platform_shared_memory_mapping
+build obj/mojo/core/impl_for_shared_library/request_context.o: cxx ../../mojo/core/request_context.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = request_context.cc
+  source_name_part = request_context
+build obj/mojo/core/impl_for_shared_library/scoped_ipcz_handle.o: cxx ../../mojo/core/scoped_ipcz_handle.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = scoped_ipcz_handle.cc
+  source_name_part = scoped_ipcz_handle
+build obj/mojo/core/impl_for_shared_library/shared_buffer_dispatcher.o: cxx ../../mojo/core/shared_buffer_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = shared_buffer_dispatcher.cc
+  source_name_part = shared_buffer_dispatcher
+build obj/mojo/core/impl_for_shared_library/user_message_impl.o: cxx ../../mojo/core/user_message_impl.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = user_message_impl.cc
+  source_name_part = user_message_impl
+build obj/mojo/core/impl_for_shared_library/watch.o: cxx ../../mojo/core/watch.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = watch.cc
+  source_name_part = watch
+build obj/mojo/core/impl_for_shared_library/watcher_dispatcher.o: cxx ../../mojo/core/watcher_dispatcher.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = watcher_dispatcher.cc
+  source_name_part = watcher_dispatcher
+build obj/mojo/core/impl_for_shared_library/watcher_set.o: cxx ../../mojo/core/watcher_set.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = watcher_set.cc
+  source_name_part = watcher_set
+build obj/mojo/core/impl_for_shared_library/broker_posix.o: cxx ../../mojo/core/broker_posix.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = broker_posix.cc
+  source_name_part = broker_posix
+build obj/mojo/core/impl_for_shared_library/channel_posix.o: cxx ../../mojo/core/channel_posix.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = channel_posix.cc
+  source_name_part = channel_posix
+build obj/mojo/core/impl_for_shared_library/channel_linux.o: cxx ../../mojo/core/channel_linux.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = channel_linux.cc
+  source_name_part = channel_linux
+build obj/mojo/core/impl_for_shared_library/broker_host.o: cxx ../../mojo/core/broker_host.cc || obj/mojo/core/impl_for_shared_library.inputdeps.stamp
+  source_file_part = broker_host.cc
+  source_name_part = broker_host
+
+build obj/mojo/core/impl_for_shared_library.stamp: stamp obj/mojo/core/impl_for_shared_library/atomic_flag.o obj/mojo/core/impl_for_shared_library/channel.o obj/mojo/core/impl_for_shared_library/configuration.o obj/mojo/core/impl_for_shared_library/connection_params.o obj/mojo/core/impl_for_shared_library/core.o obj/mojo/core/impl_for_shared_library/core_ipcz.o obj/mojo/core/impl_for_shared_library/data_pipe_consumer_dispatcher.o obj/mojo/core/impl_for_shared_library/data_pipe_control_message.o obj/mojo/core/impl_for_shared_library/data_pipe_producer_dispatcher.o obj/mojo/core/impl_for_shared_library/dispatcher.o obj/mojo/core/impl_for_shared_library/entrypoints.o obj/mojo/core/impl_for_shared_library/handle_table.o obj/mojo/core/impl_for_shared_library/invitation_dispatcher.o obj/mojo/core/impl_for_shared_library/ipcz_api.o obj/mojo/core/impl_for_shared_library/base_shared_memory_service.o obj/mojo/core/impl_for_shared_library/data_pipe.o obj/mojo/core/impl_for_shared_library/driver.o obj/mojo/core/impl_for_shared_library/invitation.o obj/mojo/core/impl_for_shared_library/mojo_message.o obj/mojo/core/impl_for_shared_library/mojo_trap.o obj/mojo/core/impl_for_shared_library/object.o obj/mojo/core/impl_for_shared_library/ring_buffer.o obj/mojo/core/impl_for_shared_library/shared_buffer.o obj/mojo/core/impl_for_shared_library/shared_buffer_mapping.o obj/mojo/core/impl_for_shared_library/transmissible_platform_handle.o obj/mojo/core/impl_for_shared_library/transport.o obj/mojo/core/impl_for_shared_library/wrapped_platform_handle.o obj/mojo/core/impl_for_shared_library/message_pipe_dispatcher.o obj/mojo/core/impl_for_shared_library/node_channel.o obj/mojo/core/impl_for_shared_library/node_controller.o obj/mojo/core/impl_for_shared_library/platform_handle_dispatcher.o obj/mojo/core/impl_for_shared_library/platform_handle_in_transit.o obj/mojo/core/impl_for_shared_library/platform_handle_utils.o obj/mojo/core/impl_for_shared_library/platform_shared_memory_mapping.o obj/mojo/core/impl_for_shared_library/request_context.o obj/mojo/core/impl_for_shared_library/scoped_ipcz_handle.o obj/mojo/core/impl_for_shared_library/shared_buffer_dispatcher.o obj/mojo/core/impl_for_shared_library/user_message_impl.o obj/mojo/core/impl_for_shared_library/watch.o obj/mojo/core/impl_for_shared_library/watcher_dispatcher.o obj/mojo/core/impl_for_shared_library/watcher_set.o obj/mojo/core/impl_for_shared_library/broker_posix.o obj/mojo/core/impl_for_shared_library/channel_posix.o obj/mojo/core/impl_for_shared_library/channel_linux.o obj/mojo/core/impl_for_shared_library/broker_host.o || ./libbase.so.TOC obj/mojo/buildflags.stamp ./libmojo_core_embedder_features.so.TOC ./libmojo_core_ports.so.TOC obj/mojo/public/c/system/headers.stamp obj/mojo/public/cpp/bindings/mojo_buildflags.stamp ./libmojo_cpp_platform.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/ipcz/src/ipcz_chromium.stamp ./libcrcrypto.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC obj/third_party/ipcz/src/ipcz_header.stamp obj/third_party/ipcz/src/ipcz_sources_chromium.stamp obj/third_party/ipcz/src/impl_chromium.stamp obj/third_party/ipcz/src/util_chromium.stamp

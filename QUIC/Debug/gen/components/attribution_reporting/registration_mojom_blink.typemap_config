@@ -1,0 +1,73 @@
+[
+  {
+    "traits_headers": [
+      "components/attribution_reporting/registration_mojom_traits.h"
+    ],
+    "traits_public_deps": [
+      ":registration_mojom_traits"
+    ],
+    "types": [
+      {
+        "cpp": "uint64_t",
+        "mojom": "attribution_reporting.mojom.DebugKey"
+      },
+      {
+        "cpp": "uint64_t",
+        "mojom": "attribution_reporting.mojom.TriggerDedupKey"
+      },
+      {
+        "cpp": "::attribution_reporting::SuitableOrigin",
+        "forward_declaration": "namespace attribution_reporting { class SuitableOrigin; }",
+        "mojom": "attribution_reporting.mojom.SuitableOrigin",
+        "move_only": true
+      },
+      {
+        "cpp": "::attribution_reporting::FilterData",
+        "forward_declaration": "namespace attribution_reporting { class FilterData; }",
+        "mojom": "attribution_reporting.mojom.FilterData"
+      },
+      {
+        "cpp": "::attribution_reporting::AggregationKeys",
+        "forward_declaration": "namespace attribution_reporting { class AggregationKeys; }",
+        "mojom": "attribution_reporting.mojom.AggregationKeys"
+      },
+      {
+        "cpp": "::attribution_reporting::SourceRegistration",
+        "forward_declaration": "namespace attribution_reporting { struct SourceRegistration; }",
+        "mojom": "attribution_reporting.mojom.SourceRegistration",
+        "move_only": true
+      },
+      {
+        "cpp": "::attribution_reporting::FilterPair",
+        "forward_declaration": "namespace attribution_reporting { struct FilterPair; }",
+        "mojom": "attribution_reporting.mojom.FilterPair"
+      },
+      {
+        "cpp": "::attribution_reporting::EventTriggerData",
+        "forward_declaration": "namespace attribution_reporting { struct EventTriggerData; }",
+        "mojom": "attribution_reporting.mojom.EventTriggerData"
+      },
+      {
+        "cpp": "::attribution_reporting::AggregatableTriggerData",
+        "forward_declaration": "namespace attribution_reporting { struct AggregatableTriggerData; }",
+        "mojom": "attribution_reporting.mojom.AggregatableTriggerData"
+      },
+      {
+        "cpp": "::attribution_reporting::AggregatableDedupKey",
+        "forward_declaration": "namespace attribution_reporting { struct AggregatableDedupKey; }",
+        "mojom": "attribution_reporting.mojom.AggregatableDedupKey"
+      },
+      {
+        "cpp": "::attribution_reporting::TriggerRegistration",
+        "forward_declaration": "namespace attribution_reporting { struct TriggerRegistration; }",
+        "mojom": "attribution_reporting.mojom.TriggerRegistration",
+        "move_only": true
+      },
+      {
+        "cpp": "::attribution_reporting::DestinationSet",
+        "forward_declaration": "namespace attribution_reporting { class DestinationSet; }",
+        "mojom": "attribution_reporting.mojom.DestinationSet"
+      }
+    ]
+  }
+]

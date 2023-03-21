@@ -1,0 +1,40 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = symbolizer
+target_out_dir = obj/third_party/perfetto/src/profiling/symbolizer
+target_output_name = symbolizer
+
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/breakpad_parser.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/breakpad_parser.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = breakpad_parser.cc
+  source_name_part = breakpad_parser
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/breakpad_symbolizer.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/breakpad_symbolizer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = breakpad_symbolizer.cc
+  source_name_part = breakpad_symbolizer
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/filesystem_posix.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/filesystem_posix.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = filesystem_posix.cc
+  source_name_part = filesystem_posix
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/filesystem_windows.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/filesystem_windows.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = filesystem_windows.cc
+  source_name_part = filesystem_windows
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/local_symbolizer.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/local_symbolizer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = local_symbolizer.cc
+  source_name_part = local_symbolizer
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/scoped_read_mmap_posix.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/scoped_read_mmap_posix.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = scoped_read_mmap_posix.cc
+  source_name_part = scoped_read_mmap_posix
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/scoped_read_mmap_windows.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/scoped_read_mmap_windows.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = scoped_read_mmap_windows.cc
+  source_name_part = scoped_read_mmap_windows
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/subprocess_posix.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/subprocess_posix.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = subprocess_posix.cc
+  source_name_part = subprocess_posix
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/subprocess_windows.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/subprocess_windows.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = subprocess_windows.cc
+  source_name_part = subprocess_windows
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/symbolizer.o: cxx ../../third_party/perfetto/src/profiling/symbolizer/symbolizer.cc || obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = symbolizer.cc
+  source_name_part = symbolizer
+
+build obj/third_party/perfetto/src/profiling/symbolizer/symbolizer.stamp: stamp obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/breakpad_parser.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/breakpad_symbolizer.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/filesystem_posix.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/filesystem_windows.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/local_symbolizer.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/scoped_read_mmap_posix.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/scoped_read_mmap_windows.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/subprocess_posix.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/subprocess_windows.o obj/third_party/perfetto/src/profiling/symbolizer/symbolizer/symbolizer.o || obj/third_party/perfetto/include/perfetto/ext/base/base.stamp obj/third_party/perfetto/gn/default_deps.stamp obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp

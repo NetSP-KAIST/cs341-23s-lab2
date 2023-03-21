@@ -1,0 +1,9 @@
+{
+  "deps": [
+    "../../../components/services/storage/privileged/mojom/mojom_bucket.build_metadata",
+    "../../../services/network/public/mojom/mojom_schemeful_site.build_metadata"
+  ],
+  "sources": [
+    "../../../../../../content/browser/indexed_db/indexed_db_internals.mojom"
+  ]
+}

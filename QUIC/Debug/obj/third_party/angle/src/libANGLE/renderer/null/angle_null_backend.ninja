@@ -1,0 +1,67 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DANGLE_ASSERT_ALWAYS_ON -DANGLE_VMA_VERSION=2003000 -DANGLE_IS_LINUX -DANGLE_USE_VULKAN_DISPLAY -DANGLE_USE_X11 -DANGLE_USE_WAYLAND -DANGLE_VULKAN_DISPLAY_MODE_HEADLESS -DANGLE_DEBUG_LAYERS_ENABLED -DANGLE_OUTSIDE_WEBKIT -DLIBANGLE_IMPLEMENTATION -DANGLE_ENABLE_OVERLAY=1 -DANGLE_DELEGATE_WORKERS -DANGLE_USE_ABSEIL -DABSL_ALLOCATOR_NOTHROW=1 -DABSL_CONSUME_DLL
+include_dirs = -I../../buildtools/third_party/libc++ -I../../third_party/angle/include -I../../third_party/angle/src -I../../third_party/angle/src/common/base -I../../third_party/angle/src/common/third_party/xxhash -I../../third_party/abseil-cpp
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -Wglobal-constructors -Wbad-function-cast -Wconditional-uninitialized -Wextra-semi-stmt -Wfloat-conversion -Winconsistent-missing-destructor-override -Wmissing-field-initializers -Wnewline-eof -Wnon-virtual-dtor -Wredundant-parens -Wreturn-std-move -Wshadow -Wshadow-field -Wtautological-type-limit-compare -Wundefined-reinterpret-cast -Wunneeded-internal-declaration -Wunused-but-set-variable -Wsuggest-destructor-override -Wsuggest-override -Wparentheses -Wrange-loop-analysis -Wstrict-prototypes -Wunreachable-code-aggressive -Wshorten-64-to-32
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = angle_null_backend
+target_out_dir = obj/third_party/angle/src/libANGLE/renderer/null
+target_output_name = angle_null_backend
+
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/BufferNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/BufferNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = BufferNULL.cpp
+  source_name_part = BufferNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/CompilerNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/CompilerNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = CompilerNULL.cpp
+  source_name_part = CompilerNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ContextNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/ContextNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = ContextNULL.cpp
+  source_name_part = ContextNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/DeviceNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/DeviceNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = DeviceNULL.cpp
+  source_name_part = DeviceNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/DisplayNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/DisplayNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = DisplayNULL.cpp
+  source_name_part = DisplayNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/FenceNVNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/FenceNVNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = FenceNVNULL.cpp
+  source_name_part = FenceNVNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/FramebufferNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/FramebufferNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = FramebufferNULL.cpp
+  source_name_part = FramebufferNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ImageNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/ImageNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = ImageNULL.cpp
+  source_name_part = ImageNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ProgramNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/ProgramNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = ProgramNULL.cpp
+  source_name_part = ProgramNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ProgramPipelineNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/ProgramPipelineNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = ProgramPipelineNULL.cpp
+  source_name_part = ProgramPipelineNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/QueryNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/QueryNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = QueryNULL.cpp
+  source_name_part = QueryNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/RenderbufferNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/RenderbufferNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = RenderbufferNULL.cpp
+  source_name_part = RenderbufferNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SamplerNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/SamplerNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = SamplerNULL.cpp
+  source_name_part = SamplerNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ShaderNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/ShaderNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = ShaderNULL.cpp
+  source_name_part = ShaderNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SurfaceNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/SurfaceNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = SurfaceNULL.cpp
+  source_name_part = SurfaceNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SyncNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/SyncNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = SyncNULL.cpp
+  source_name_part = SyncNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/TextureNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/TextureNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = TextureNULL.cpp
+  source_name_part = TextureNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/TransformFeedbackNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/TransformFeedbackNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = TransformFeedbackNULL.cpp
+  source_name_part = TransformFeedbackNULL
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/VertexArrayNULL.o: cxx ../../third_party/angle/src/libANGLE/renderer/null/VertexArrayNULL.cpp || obj/build/chromeos_buildflags.stamp
+  source_file_part = VertexArrayNULL.cpp
+  source_name_part = VertexArrayNULL
+
+build obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend.stamp: stamp obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/BufferNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/CompilerNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ContextNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/DeviceNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/DisplayNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/FenceNVNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/FramebufferNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ImageNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ProgramNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ProgramPipelineNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/QueryNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/RenderbufferNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SamplerNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/ShaderNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SurfaceNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/SyncNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/TextureNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/TransformFeedbackNULL.o obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend/VertexArrayNULL.o || obj/third_party/angle/libANGLE_headers.stamp obj/third_party/angle/libangle_common.a ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/angle/includes.stamp obj/third_party/angle/xxhash.stamp obj/third_party/angle/angle_translator_headers.stamp

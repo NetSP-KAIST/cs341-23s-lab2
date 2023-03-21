@@ -1,0 +1,20 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_
+include_dirs = -I../.. -Iirt_x64/gen
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wshadow -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -fasynchronous-unwind-tables -fomit-frame-pointer -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -no-canonical-prefixes -Os -ffunction-sections -fdata-sections -fno-omit-frame-pointer -g2 -Xclang -fuse-ctor-homing -fvisibility=hidden
+cflags_c = -std=c11
+label_name = browser
+root_out_dir = irt_x64
+target_out_dir = irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim
+target_output_name = libpnacl_irt_shim_browser
+
+build irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim/browser/shim_entry.o: irt_x64_cc ../../ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_entry.c || ./tls_edit
+  source_file_part = shim_entry.c
+  source_name_part = shim_entry
+build irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim/browser/shim_ppapi.o: irt_x64_cc ../../ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_ppapi.c || ./tls_edit
+  source_file_part = shim_ppapi.c
+  source_name_part = shim_ppapi
+
+build irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim/libpnacl_irt_shim_browser.a: irt_x64_alink irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim/browser/shim_entry.o irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim/browser/shim_ppapi.o
+  arflags =
+  output_extension = .a
+  output_dir = irt_x64/obj/ppapi/native_client/src/untrusted/pnacl_irt_shim

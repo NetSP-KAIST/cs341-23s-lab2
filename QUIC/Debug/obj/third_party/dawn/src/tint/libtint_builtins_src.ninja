@@ -1,0 +1,47 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DTINT_BUILD_SPV_READER=0 -DTINT_BUILD_SPV_WRITER=1 -DTINT_BUILD_WGSL_READER=1 -DTINT_BUILD_WGSL_WRITER=1 -DTINT_BUILD_MSL_WRITER=1 -DTINT_BUILD_HLSL_WRITER=1 -DTINT_BUILD_GLSL_WRITER=1 -DTINT_BUILD_SYNTAX_TREE_WRITER=0
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/dawn/src/tint -I../../third_party/dawn -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/spirv-tools/src -I../../third_party/vulkan-deps/spirv-tools/src/include -I../../third_party/dawn/include
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = libtint_builtins_src
+target_out_dir = obj/third_party/dawn/src/tint
+target_output_name = libtint_builtins_src
+
+build obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp: stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp
+build obj/third_party/dawn/src/tint/libtint_builtins_src/access.o: cxx ../../third_party/dawn/src/tint/builtin/access.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = access.cc
+  source_name_part = access
+build obj/third_party/dawn/src/tint/libtint_builtins_src/address_space.o: cxx ../../third_party/dawn/src/tint/builtin/address_space.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = address_space.cc
+  source_name_part = address_space
+build obj/third_party/dawn/src/tint/libtint_builtins_src/attribute.o: cxx ../../third_party/dawn/src/tint/builtin/attribute.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = attribute.cc
+  source_name_part = attribute
+build obj/third_party/dawn/src/tint/libtint_builtins_src/builtin.o: cxx ../../third_party/dawn/src/tint/builtin/builtin.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = builtin.cc
+  source_name_part = builtin
+build obj/third_party/dawn/src/tint/libtint_builtins_src/builtin_value.o: cxx ../../third_party/dawn/src/tint/builtin/builtin_value.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = builtin_value.cc
+  source_name_part = builtin_value
+build obj/third_party/dawn/src/tint/libtint_builtins_src/diagnostic_rule.o: cxx ../../third_party/dawn/src/tint/builtin/diagnostic_rule.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = diagnostic_rule.cc
+  source_name_part = diagnostic_rule
+build obj/third_party/dawn/src/tint/libtint_builtins_src/diagnostic_severity.o: cxx ../../third_party/dawn/src/tint/builtin/diagnostic_severity.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = diagnostic_severity.cc
+  source_name_part = diagnostic_severity
+build obj/third_party/dawn/src/tint/libtint_builtins_src/extension.o: cxx ../../third_party/dawn/src/tint/builtin/extension.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = extension.cc
+  source_name_part = extension
+build obj/third_party/dawn/src/tint/libtint_builtins_src/function.o: cxx ../../third_party/dawn/src/tint/builtin/function.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = function.cc
+  source_name_part = function
+build obj/third_party/dawn/src/tint/libtint_builtins_src/interpolation_sampling.o: cxx ../../third_party/dawn/src/tint/builtin/interpolation_sampling.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = interpolation_sampling.cc
+  source_name_part = interpolation_sampling
+build obj/third_party/dawn/src/tint/libtint_builtins_src/interpolation_type.o: cxx ../../third_party/dawn/src/tint/builtin/interpolation_type.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = interpolation_type.cc
+  source_name_part = interpolation_type
+build obj/third_party/dawn/src/tint/libtint_builtins_src/texel_format.o: cxx ../../third_party/dawn/src/tint/builtin/texel_format.cc || obj/third_party/dawn/src/tint/libtint_builtins_src.inputdeps.stamp
+  source_file_part = texel_format.cc
+  source_name_part = texel_format
+
+build obj/third_party/dawn/src/tint/libtint_builtins_src.stamp: stamp obj/third_party/dawn/src/tint/libtint_builtins_src/access.o obj/third_party/dawn/src/tint/libtint_builtins_src/address_space.o obj/third_party/dawn/src/tint/libtint_builtins_src/attribute.o obj/third_party/dawn/src/tint/libtint_builtins_src/builtin.o obj/third_party/dawn/src/tint/libtint_builtins_src/builtin_value.o obj/third_party/dawn/src/tint/libtint_builtins_src/diagnostic_rule.o obj/third_party/dawn/src/tint/libtint_builtins_src/diagnostic_severity.o obj/third_party/dawn/src/tint/libtint_builtins_src/extension.o obj/third_party/dawn/src/tint/libtint_builtins_src/function.o obj/third_party/dawn/src/tint/libtint_builtins_src/interpolation_sampling.o obj/third_party/dawn/src/tint/libtint_builtins_src/interpolation_type.o obj/third_party/dawn/src/tint/libtint_builtins_src/texel_format.o || obj/third_party/dawn/src/tint/libtint_base_src.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/dawn/src/tint/libtint_text_src.stamp

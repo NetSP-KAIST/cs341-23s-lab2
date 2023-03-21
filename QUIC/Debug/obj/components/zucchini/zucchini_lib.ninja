@@ -1,0 +1,113 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = zucchini_lib
+target_out_dir = obj/components/zucchini
+target_output_name = libzucchini_lib
+
+build obj/components/zucchini/zucchini_lib.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/components/zucchini/buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/components/zucchini/zucchini_lib/abs32_utils.o: cxx ../../components/zucchini/abs32_utils.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = abs32_utils.cc
+  source_name_part = abs32_utils
+build obj/components/zucchini/zucchini_lib/address_translator.o: cxx ../../components/zucchini/address_translator.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = address_translator.cc
+  source_name_part = address_translator
+build obj/components/zucchini/zucchini_lib/arm_utils.o: cxx ../../components/zucchini/arm_utils.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = arm_utils.cc
+  source_name_part = arm_utils
+build obj/components/zucchini/zucchini_lib/binary_data_histogram.o: cxx ../../components/zucchini/binary_data_histogram.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = binary_data_histogram.cc
+  source_name_part = binary_data_histogram
+build obj/components/zucchini/zucchini_lib/buffer_sink.o: cxx ../../components/zucchini/buffer_sink.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = buffer_sink.cc
+  source_name_part = buffer_sink
+build obj/components/zucchini/zucchini_lib/buffer_source.o: cxx ../../components/zucchini/buffer_source.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = buffer_source.cc
+  source_name_part = buffer_source
+build obj/components/zucchini/zucchini_lib/crc32.o: cxx ../../components/zucchini/crc32.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = crc32.cc
+  source_name_part = crc32
+build obj/components/zucchini/zucchini_lib/disassembler.o: cxx ../../components/zucchini/disassembler.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler.cc
+  source_name_part = disassembler
+build obj/components/zucchini/zucchini_lib/disassembler_dex.o: cxx ../../components/zucchini/disassembler_dex.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler_dex.cc
+  source_name_part = disassembler_dex
+build obj/components/zucchini/zucchini_lib/disassembler_elf.o: cxx ../../components/zucchini/disassembler_elf.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler_elf.cc
+  source_name_part = disassembler_elf
+build obj/components/zucchini/zucchini_lib/disassembler_no_op.o: cxx ../../components/zucchini/disassembler_no_op.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler_no_op.cc
+  source_name_part = disassembler_no_op
+build obj/components/zucchini/zucchini_lib/disassembler_win32.o: cxx ../../components/zucchini/disassembler_win32.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler_win32.cc
+  source_name_part = disassembler_win32
+build obj/components/zucchini/zucchini_lib/disassembler_ztf.o: cxx ../../components/zucchini/disassembler_ztf.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = disassembler_ztf.cc
+  source_name_part = disassembler_ztf
+build obj/components/zucchini/zucchini_lib/element_detection.o: cxx ../../components/zucchini/element_detection.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = element_detection.cc
+  source_name_part = element_detection
+build obj/components/zucchini/zucchini_lib/encoded_view.o: cxx ../../components/zucchini/encoded_view.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = encoded_view.cc
+  source_name_part = encoded_view
+build obj/components/zucchini/zucchini_lib/ensemble_matcher.o: cxx ../../components/zucchini/ensemble_matcher.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = ensemble_matcher.cc
+  source_name_part = ensemble_matcher
+build obj/components/zucchini/zucchini_lib/equivalence_map.o: cxx ../../components/zucchini/equivalence_map.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = equivalence_map.cc
+  source_name_part = equivalence_map
+build obj/components/zucchini/zucchini_lib/heuristic_ensemble_matcher.o: cxx ../../components/zucchini/heuristic_ensemble_matcher.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = heuristic_ensemble_matcher.cc
+  source_name_part = heuristic_ensemble_matcher
+build obj/components/zucchini/zucchini_lib/image_index.o: cxx ../../components/zucchini/image_index.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = image_index.cc
+  source_name_part = image_index
+build obj/components/zucchini/zucchini_lib/imposed_ensemble_matcher.o: cxx ../../components/zucchini/imposed_ensemble_matcher.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = imposed_ensemble_matcher.cc
+  source_name_part = imposed_ensemble_matcher
+build obj/components/zucchini/zucchini_lib/io_utils.o: cxx ../../components/zucchini/io_utils.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = io_utils.cc
+  source_name_part = io_utils
+build obj/components/zucchini/zucchini_lib/patch_reader.o: cxx ../../components/zucchini/patch_reader.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = patch_reader.cc
+  source_name_part = patch_reader
+build obj/components/zucchini/zucchini_lib/patch_writer.o: cxx ../../components/zucchini/patch_writer.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = patch_writer.cc
+  source_name_part = patch_writer
+build obj/components/zucchini/zucchini_lib/reference_set.o: cxx ../../components/zucchini/reference_set.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = reference_set.cc
+  source_name_part = reference_set
+build obj/components/zucchini/zucchini_lib/rel32_finder.o: cxx ../../components/zucchini/rel32_finder.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = rel32_finder.cc
+  source_name_part = rel32_finder
+build obj/components/zucchini/zucchini_lib/rel32_utils.o: cxx ../../components/zucchini/rel32_utils.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = rel32_utils.cc
+  source_name_part = rel32_utils
+build obj/components/zucchini/zucchini_lib/reloc_elf.o: cxx ../../components/zucchini/reloc_elf.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = reloc_elf.cc
+  source_name_part = reloc_elf
+build obj/components/zucchini/zucchini_lib/reloc_win32.o: cxx ../../components/zucchini/reloc_win32.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = reloc_win32.cc
+  source_name_part = reloc_win32
+build obj/components/zucchini/zucchini_lib/target_pool.o: cxx ../../components/zucchini/target_pool.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = target_pool.cc
+  source_name_part = target_pool
+build obj/components/zucchini/zucchini_lib/targets_affinity.o: cxx ../../components/zucchini/targets_affinity.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = targets_affinity.cc
+  source_name_part = targets_affinity
+build obj/components/zucchini/zucchini_lib/zucchini_apply.o: cxx ../../components/zucchini/zucchini_apply.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = zucchini_apply.cc
+  source_name_part = zucchini_apply
+build obj/components/zucchini/zucchini_lib/zucchini_gen.o: cxx ../../components/zucchini/zucchini_gen.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = zucchini_gen.cc
+  source_name_part = zucchini_gen
+build obj/components/zucchini/zucchini_lib/zucchini_tools.o: cxx ../../components/zucchini/zucchini_tools.cc || obj/components/zucchini/zucchini_lib.inputdeps.stamp
+  source_file_part = zucchini_tools.cc
+  source_name_part = zucchini_tools
+
+build obj/components/zucchini/libzucchini_lib.a: alink obj/components/zucchini/zucchini_lib/abs32_utils.o obj/components/zucchini/zucchini_lib/address_translator.o obj/components/zucchini/zucchini_lib/arm_utils.o obj/components/zucchini/zucchini_lib/binary_data_histogram.o obj/components/zucchini/zucchini_lib/buffer_sink.o obj/components/zucchini/zucchini_lib/buffer_source.o obj/components/zucchini/zucchini_lib/crc32.o obj/components/zucchini/zucchini_lib/disassembler.o obj/components/zucchini/zucchini_lib/disassembler_dex.o obj/components/zucchini/zucchini_lib/disassembler_elf.o obj/components/zucchini/zucchini_lib/disassembler_no_op.o obj/components/zucchini/zucchini_lib/disassembler_win32.o obj/components/zucchini/zucchini_lib/disassembler_ztf.o obj/components/zucchini/zucchini_lib/element_detection.o obj/components/zucchini/zucchini_lib/encoded_view.o obj/components/zucchini/zucchini_lib/ensemble_matcher.o obj/components/zucchini/zucchini_lib/equivalence_map.o obj/components/zucchini/zucchini_lib/heuristic_ensemble_matcher.o obj/components/zucchini/zucchini_lib/image_index.o obj/components/zucchini/zucchini_lib/imposed_ensemble_matcher.o obj/components/zucchini/zucchini_lib/io_utils.o obj/components/zucchini/zucchini_lib/patch_reader.o obj/components/zucchini/zucchini_lib/patch_writer.o obj/components/zucchini/zucchini_lib/reference_set.o obj/components/zucchini/zucchini_lib/rel32_finder.o obj/components/zucchini/zucchini_lib/rel32_utils.o obj/components/zucchini/zucchini_lib/reloc_elf.o obj/components/zucchini/zucchini_lib/reloc_win32.o obj/components/zucchini/zucchini_lib/target_pool.o obj/components/zucchini/zucchini_lib/targets_affinity.o obj/components/zucchini/zucchini_lib/zucchini_apply.o obj/components/zucchini/zucchini_lib/zucchini_gen.o obj/components/zucchini/zucchini_lib/zucchini_tools.o || obj/components/zucchini/buildflags.stamp ./libbase.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/components/zucchini

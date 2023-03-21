@@ -1,0 +1,5 @@
+../../components/attribution_reporting/eligibility_error.mojom
+../../components/attribution_reporting/os_support.mojom
+../../components/attribution_reporting/registration_type.mojom
+../../components/attribution_reporting/source_registration_error.mojom
+../../components/attribution_reporting/trigger_registration_error.mojom

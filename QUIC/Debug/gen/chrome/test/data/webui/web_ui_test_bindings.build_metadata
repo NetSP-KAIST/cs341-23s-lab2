@@ -1,0 +1,8 @@
+{
+  "deps": [
+
+  ],
+  "sources": [
+    "../../../../../../../chrome/test/data/webui/web_ui_test.mojom"
+  ]
+}

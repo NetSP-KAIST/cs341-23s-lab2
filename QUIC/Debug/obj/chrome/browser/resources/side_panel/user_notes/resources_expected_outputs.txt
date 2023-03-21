@@ -1,0 +1,4 @@
+gen/chrome/grit/side_panel_user_notes_resources.h
+gen/chrome/grit/side_panel_user_notes_resources_map.cc
+gen/chrome/grit/side_panel_user_notes_resources_map.h
+gen/chrome/side_panel_user_notes_resources.pak

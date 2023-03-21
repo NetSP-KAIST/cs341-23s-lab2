@@ -1,0 +1,16 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out -Igen/components/policy/proto
+label_name = cloud_policy_proto_generated_compile
+target_out_dir = obj/components/policy
+target_output_name = libcomponents_policy_cloud_policy_proto_generated_compile
+
+build obj/components/policy/cloud_policy_proto_generated_compile.inputdeps.stamp: stamp obj/components/policy/cloud_policy_proto_generated_compile_proto_gen.stamp obj/components/policy/proto/policy_common_definitions_compile_proto_gen.stamp
+
+build ./libcomponents_policy_cloud_policy_proto_generated_compile.so ./libcomponents_policy_cloud_policy_proto_generated_compile.so.TOC: solink obj/components/policy/cloud_policy_proto_generated_compile_proto/cloud_policy.pb.o obj/components/policy/proto/libpolicy_common_definitions_compile_proto.a | ./libthird_party_protobuf_protobuf_lite.so.TOC ./libc++.so.TOC || obj/components/policy/cloud_policy_proto_generated_compile_proto.stamp obj/build/config/shared_library_deps.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .
+  solibs = ./libthird_party_protobuf_protobuf_lite.so ./libc++.so

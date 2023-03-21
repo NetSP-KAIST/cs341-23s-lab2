@@ -1,0 +1,203 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = generated_api_types
+target_out_dir = obj/extensions/common/api
+target_output_name = libgenerated_api_types
+
+build obj/extensions/common/api/generated_api_types.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/extensions/buildflags/buildflags.stamp obj/extensions/common/api/generated_api_types_schema_generator.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/extensions/common/api/generated_api_types/alarms.o: cxx gen/extensions/common/api/alarms.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = alarms.cc
+  source_name_part = alarms
+build obj/extensions/common/api/generated_api_types/app_current_window_internal.o: cxx gen/extensions/common/api/app_current_window_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = app_current_window_internal.cc
+  source_name_part = app_current_window_internal
+build obj/extensions/common/api/generated_api_types/app_runtime.o: cxx gen/extensions/common/api/app_runtime.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = app_runtime.cc
+  source_name_part = app_runtime
+build obj/extensions/common/api/generated_api_types/app_view_guest_internal.o: cxx gen/extensions/common/api/app_view_guest_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = app_view_guest_internal.cc
+  source_name_part = app_view_guest_internal
+build obj/extensions/common/api/generated_api_types/app_window.o: cxx gen/extensions/common/api/app_window.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = app_window.cc
+  source_name_part = app_window
+build obj/extensions/common/api/generated_api_types/audio.o: cxx gen/extensions/common/api/audio.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = audio.cc
+  source_name_part = audio
+build obj/extensions/common/api/generated_api_types/automation.o: cxx gen/extensions/common/api/automation.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = automation.cc
+  source_name_part = automation
+build obj/extensions/common/api/generated_api_types/automation_internal.o: cxx gen/extensions/common/api/automation_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = automation_internal.cc
+  source_name_part = automation_internal
+build obj/extensions/common/api/generated_api_types/bluetooth.o: cxx gen/extensions/common/api/bluetooth.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = bluetooth.cc
+  source_name_part = bluetooth
+build obj/extensions/common/api/generated_api_types/bluetooth_low_energy.o: cxx gen/extensions/common/api/bluetooth_low_energy.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = bluetooth_low_energy.cc
+  source_name_part = bluetooth_low_energy
+build obj/extensions/common/api/generated_api_types/bluetooth_private.o: cxx gen/extensions/common/api/bluetooth_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = bluetooth_private.cc
+  source_name_part = bluetooth_private
+build obj/extensions/common/api/generated_api_types/bluetooth_socket.o: cxx gen/extensions/common/api/bluetooth_socket.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = bluetooth_socket.cc
+  source_name_part = bluetooth_socket
+build obj/extensions/common/api/generated_api_types/cec_private.o: cxx gen/extensions/common/api/cec_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = cec_private.cc
+  source_name_part = cec_private
+build obj/extensions/common/api/generated_api_types/clipboard.o: cxx gen/extensions/common/api/clipboard.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = clipboard.cc
+  source_name_part = clipboard
+build obj/extensions/common/api/generated_api_types/declarative_net_request.o: cxx gen/extensions/common/api/declarative_net_request.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = declarative_net_request.cc
+  source_name_part = declarative_net_request
+build obj/extensions/common/api/generated_api_types/dns.o: cxx gen/extensions/common/api/dns.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = dns.cc
+  source_name_part = dns
+build obj/extensions/common/api/generated_api_types/events.o: cxx gen/extensions/common/api/events.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = events.cc
+  source_name_part = events
+build obj/extensions/common/api/generated_api_types/extension_options_internal.o: cxx gen/extensions/common/api/extension_options_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = extension_options_internal.cc
+  source_name_part = extension_options_internal
+build obj/extensions/common/api/generated_api_types/extension_types.o: cxx gen/extensions/common/api/extension_types.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = extension_types.cc
+  source_name_part = extension_types
+build obj/extensions/common/api/generated_api_types/feedback_private.o: cxx gen/extensions/common/api/feedback_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = feedback_private.cc
+  source_name_part = feedback_private
+build obj/extensions/common/api/generated_api_types/file_handlers.o: cxx gen/extensions/common/api/file_handlers.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = file_handlers.cc
+  source_name_part = file_handlers
+build obj/extensions/common/api/generated_api_types/file_system.o: cxx gen/extensions/common/api/file_system.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = file_system.cc
+  source_name_part = file_system
+build obj/extensions/common/api/generated_api_types/guest_view_internal.o: cxx gen/extensions/common/api/guest_view_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = guest_view_internal.cc
+  source_name_part = guest_view_internal
+build obj/extensions/common/api/generated_api_types/management.o: cxx gen/extensions/common/api/management.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = management.cc
+  source_name_part = management
+build obj/extensions/common/api/generated_api_types/hid.o: cxx gen/extensions/common/api/hid.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = hid.cc
+  source_name_part = hid
+build obj/extensions/common/api/generated_api_types/i18n.o: cxx gen/extensions/common/api/i18n.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = i18n.cc
+  source_name_part = i18n
+build obj/extensions/common/api/generated_api_types/idle.o: cxx gen/extensions/common/api/idle.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = idle.cc
+  source_name_part = idle
+build obj/extensions/common/api/generated_api_types/metrics_private.o: cxx gen/extensions/common/api/metrics_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = metrics_private.cc
+  source_name_part = metrics_private
+build obj/extensions/common/api/generated_api_types/mime_handler_private.o: cxx gen/extensions/common/api/mime_handler_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = mime_handler_private.cc
+  source_name_part = mime_handler_private
+build obj/extensions/common/api/generated_api_types/mime_handler_view_guest_internal.o: cxx gen/extensions/common/api/mime_handler_view_guest_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = mime_handler_view_guest_internal.cc
+  source_name_part = mime_handler_view_guest_internal
+build obj/extensions/common/api/generated_api_types/mojo_private.o: cxx gen/extensions/common/api/mojo_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = mojo_private.cc
+  source_name_part = mojo_private
+build obj/extensions/common/api/generated_api_types/networking_private.o: cxx gen/extensions/common/api/networking_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = networking_private.cc
+  source_name_part = networking_private
+build obj/extensions/common/api/generated_api_types/offscreen.o: cxx gen/extensions/common/api/offscreen.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = offscreen.cc
+  source_name_part = offscreen
+build obj/extensions/common/api/generated_api_types/power.o: cxx gen/extensions/common/api/power.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = power.cc
+  source_name_part = power
+build obj/extensions/common/api/generated_api_types/printer_provider.o: cxx gen/extensions/common/api/printer_provider.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = printer_provider.cc
+  source_name_part = printer_provider
+build obj/extensions/common/api/generated_api_types/printer_provider_internal.o: cxx gen/extensions/common/api/printer_provider_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = printer_provider_internal.cc
+  source_name_part = printer_provider_internal
+build obj/extensions/common/api/generated_api_types/runtime.o: cxx gen/extensions/common/api/runtime.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = runtime.cc
+  source_name_part = runtime
+build obj/extensions/common/api/generated_api_types/serial.o: cxx gen/extensions/common/api/serial.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = serial.cc
+  source_name_part = serial
+build obj/extensions/common/api/generated_api_types/socket.o: cxx gen/extensions/common/api/socket.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = socket.cc
+  source_name_part = socket
+build obj/extensions/common/api/generated_api_types/sockets_tcp.o: cxx gen/extensions/common/api/sockets_tcp.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = sockets_tcp.cc
+  source_name_part = sockets_tcp
+build obj/extensions/common/api/generated_api_types/sockets_tcp_server.o: cxx gen/extensions/common/api/sockets_tcp_server.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = sockets_tcp_server.cc
+  source_name_part = sockets_tcp_server
+build obj/extensions/common/api/generated_api_types/sockets_udp.o: cxx gen/extensions/common/api/sockets_udp.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = sockets_udp.cc
+  source_name_part = sockets_udp
+build obj/extensions/common/api/generated_api_types/storage.o: cxx gen/extensions/common/api/storage.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = storage.cc
+  source_name_part = storage
+build obj/extensions/common/api/generated_api_types/system_cpu.o: cxx gen/extensions/common/api/system_cpu.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = system_cpu.cc
+  source_name_part = system_cpu
+build obj/extensions/common/api/generated_api_types/system_display.o: cxx gen/extensions/common/api/system_display.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = system_display.cc
+  source_name_part = system_display
+build obj/extensions/common/api/generated_api_types/system_memory.o: cxx gen/extensions/common/api/system_memory.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = system_memory.cc
+  source_name_part = system_memory
+build obj/extensions/common/api/generated_api_types/system_network.o: cxx gen/extensions/common/api/system_network.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = system_network.cc
+  source_name_part = system_network
+build obj/extensions/common/api/generated_api_types/system_storage.o: cxx gen/extensions/common/api/system_storage.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = system_storage.cc
+  source_name_part = system_storage
+build obj/extensions/common/api/generated_api_types/test.o: cxx gen/extensions/common/api/test.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = test.cc
+  source_name_part = test
+build obj/extensions/common/api/generated_api_types/usb.o: cxx gen/extensions/common/api/usb.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = usb.cc
+  source_name_part = usb
+build obj/extensions/common/api/generated_api_types/virtual_keyboard.o: cxx gen/extensions/common/api/virtual_keyboard.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = virtual_keyboard.cc
+  source_name_part = virtual_keyboard
+build obj/extensions/common/api/generated_api_types/virtual_keyboard_private.o: cxx gen/extensions/common/api/virtual_keyboard_private.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = virtual_keyboard_private.cc
+  source_name_part = virtual_keyboard_private
+build obj/extensions/common/api/generated_api_types/web_request.o: cxx gen/extensions/common/api/web_request.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = web_request.cc
+  source_name_part = web_request
+build obj/extensions/common/api/generated_api_types/web_view_internal.o: cxx gen/extensions/common/api/web_view_internal.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = web_view_internal.cc
+  source_name_part = web_view_internal
+build obj/extensions/common/api/generated_api_types/content_scripts.o: cxx gen/extensions/common/api/content_scripts.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = content_scripts.cc
+  source_name_part = content_scripts
+build obj/extensions/common/api/generated_api_types/cross_origin_isolation.o: cxx gen/extensions/common/api/cross_origin_isolation.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = cross_origin_isolation.cc
+  source_name_part = cross_origin_isolation
+build obj/extensions/common/api/generated_api_types/extensions_manifest_types.o: cxx gen/extensions/common/api/extensions_manifest_types.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = extensions_manifest_types.cc
+  source_name_part = extensions_manifest_types
+build obj/extensions/common/api/generated_api_types/incognito.o: cxx gen/extensions/common/api/incognito.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = incognito.cc
+  source_name_part = incognito
+build obj/extensions/common/api/generated_api_types/oauth2.o: cxx gen/extensions/common/api/oauth2.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = oauth2.cc
+  source_name_part = oauth2
+build obj/extensions/common/api/generated_api_types/requirements.o: cxx gen/extensions/common/api/requirements.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = requirements.cc
+  source_name_part = requirements
+build obj/extensions/common/api/generated_api_types/shared_module.o: cxx gen/extensions/common/api/shared_module.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = shared_module.cc
+  source_name_part = shared_module
+build obj/extensions/common/api/generated_api_types/web_accessible_resources.o: cxx gen/extensions/common/api/web_accessible_resources.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = web_accessible_resources.cc
+  source_name_part = web_accessible_resources
+build obj/extensions/common/api/generated_api_types/web_accessible_resources_mv2.o: cxx gen/extensions/common/api/web_accessible_resources_mv2.cc || obj/extensions/common/api/generated_api_types.inputdeps.stamp
+  source_file_part = web_accessible_resources_mv2.cc
+  source_name_part = web_accessible_resources_mv2
+
+build obj/extensions/common/api/libgenerated_api_types.a: alink obj/extensions/common/api/generated_api_types/alarms.o obj/extensions/common/api/generated_api_types/app_current_window_internal.o obj/extensions/common/api/generated_api_types/app_runtime.o obj/extensions/common/api/generated_api_types/app_view_guest_internal.o obj/extensions/common/api/generated_api_types/app_window.o obj/extensions/common/api/generated_api_types/audio.o obj/extensions/common/api/generated_api_types/automation.o obj/extensions/common/api/generated_api_types/automation_internal.o obj/extensions/common/api/generated_api_types/bluetooth.o obj/extensions/common/api/generated_api_types/bluetooth_low_energy.o obj/extensions/common/api/generated_api_types/bluetooth_private.o obj/extensions/common/api/generated_api_types/bluetooth_socket.o obj/extensions/common/api/generated_api_types/cec_private.o obj/extensions/common/api/generated_api_types/clipboard.o obj/extensions/common/api/generated_api_types/declarative_net_request.o obj/extensions/common/api/generated_api_types/dns.o obj/extensions/common/api/generated_api_types/events.o obj/extensions/common/api/generated_api_types/extension_options_internal.o obj/extensions/common/api/generated_api_types/extension_types.o obj/extensions/common/api/generated_api_types/feedback_private.o obj/extensions/common/api/generated_api_types/file_handlers.o obj/extensions/common/api/generated_api_types/file_system.o obj/extensions/common/api/generated_api_types/guest_view_internal.o obj/extensions/common/api/generated_api_types/management.o obj/extensions/common/api/generated_api_types/hid.o obj/extensions/common/api/generated_api_types/i18n.o obj/extensions/common/api/generated_api_types/idle.o obj/extensions/common/api/generated_api_types/metrics_private.o obj/extensions/common/api/generated_api_types/mime_handler_private.o obj/extensions/common/api/generated_api_types/mime_handler_view_guest_internal.o obj/extensions/common/api/generated_api_types/mojo_private.o obj/extensions/common/api/generated_api_types/networking_private.o obj/extensions/common/api/generated_api_types/offscreen.o obj/extensions/common/api/generated_api_types/power.o obj/extensions/common/api/generated_api_types/printer_provider.o obj/extensions/common/api/generated_api_types/printer_provider_internal.o obj/extensions/common/api/generated_api_types/runtime.o obj/extensions/common/api/generated_api_types/serial.o obj/extensions/common/api/generated_api_types/socket.o obj/extensions/common/api/generated_api_types/sockets_tcp.o obj/extensions/common/api/generated_api_types/sockets_tcp_server.o obj/extensions/common/api/generated_api_types/sockets_udp.o obj/extensions/common/api/generated_api_types/storage.o obj/extensions/common/api/generated_api_types/system_cpu.o obj/extensions/common/api/generated_api_types/system_display.o obj/extensions/common/api/generated_api_types/system_memory.o obj/extensions/common/api/generated_api_types/system_network.o obj/extensions/common/api/generated_api_types/system_storage.o obj/extensions/common/api/generated_api_types/test.o obj/extensions/common/api/generated_api_types/usb.o obj/extensions/common/api/generated_api_types/virtual_keyboard.o obj/extensions/common/api/generated_api_types/virtual_keyboard_private.o obj/extensions/common/api/generated_api_types/web_request.o obj/extensions/common/api/generated_api_types/web_view_internal.o obj/extensions/common/api/generated_api_types/content_scripts.o obj/extensions/common/api/generated_api_types/cross_origin_isolation.o obj/extensions/common/api/generated_api_types/extensions_manifest_types.o obj/extensions/common/api/generated_api_types/incognito.o obj/extensions/common/api/generated_api_types/oauth2.o obj/extensions/common/api/generated_api_types/requirements.o obj/extensions/common/api/generated_api_types/shared_module.o obj/extensions/common/api/generated_api_types/web_accessible_resources.o obj/extensions/common/api/generated_api_types/web_accessible_resources_mv2.o || obj/extensions/common/api/generated_api_types_schema_generator.stamp ./libbase.so.TOC obj/tools/json_schema_compiler/generated_api_util.stamp obj/extensions/buildflags/buildflags.stamp ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/extensions/common/api

@@ -1,0 +1,22 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCR_SYSROOT_KEY=20221105T211506Z-0
+include_dirs = -I../.. -Igen
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -fno-complete-member-pointers -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu/qt5/QtCore -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu/qt5 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu/qt5/QtGui
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -fvisibility-inlines-hidden --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = qt5_shim
+target_out_dir = obj/ui/qt
+target_output_name = libqt5_shim
+
+build obj/ui/qt/qt5_shim/qt_shim.o: cxx ../../ui/qt/qt_shim.cc
+  source_file_part = qt_shim.cc
+  source_name_part = qt_shim
+build obj/ui/qt/qt5_shim/qt_shim_moc.o: cxx ../../ui/qt/qt_shim_moc.cc
+  source_file_part = qt_shim_moc.cc
+  source_name_part = qt_shim_moc
+
+build ./libqt5_shim.so ./libqt5_shim.so.TOC: solink obj/ui/qt/qt5_shim/qt_shim.o obj/ui/qt/qt5_shim/qt_shim_moc.o obj/ui/qt/qt_interface/qt_interface.o || obj/ui/qt/qt_interface.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -Wl,-rpath=\$$ORIGIN --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+  libs = -ldl -lpthread -lrt -lstdc++ -lQt5Widgets -lQt5Gui -lQt5Core
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .

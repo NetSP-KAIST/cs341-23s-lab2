@@ -1,0 +1,49 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DWEBP_NEAR_LOSSLESS=0 -DWEBP_DISABLE_STATS -DWEBP_REDUCE_SIZE -DWEBP_REDUCE_CSP -DWEBP_EXTERN=extern
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/libwebp/src -I../../third_party/libwebp/src/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libwebp_utils
+target_out_dir = obj/third_party/libwebp
+target_output_name = libwebp_utils
+
+build obj/third_party/libwebp/libwebp_utils/bit_reader_utils.o: cc ../../third_party/libwebp/src/src/utils/bit_reader_utils.c
+  source_file_part = bit_reader_utils.c
+  source_name_part = bit_reader_utils
+build obj/third_party/libwebp/libwebp_utils/bit_writer_utils.o: cc ../../third_party/libwebp/src/src/utils/bit_writer_utils.c
+  source_file_part = bit_writer_utils.c
+  source_name_part = bit_writer_utils
+build obj/third_party/libwebp/libwebp_utils/color_cache_utils.o: cc ../../third_party/libwebp/src/src/utils/color_cache_utils.c
+  source_file_part = color_cache_utils.c
+  source_name_part = color_cache_utils
+build obj/third_party/libwebp/libwebp_utils/filters_utils.o: cc ../../third_party/libwebp/src/src/utils/filters_utils.c
+  source_file_part = filters_utils.c
+  source_name_part = filters_utils
+build obj/third_party/libwebp/libwebp_utils/huffman_encode_utils.o: cc ../../third_party/libwebp/src/src/utils/huffman_encode_utils.c
+  source_file_part = huffman_encode_utils.c
+  source_name_part = huffman_encode_utils
+build obj/third_party/libwebp/libwebp_utils/huffman_utils.o: cc ../../third_party/libwebp/src/src/utils/huffman_utils.c
+  source_file_part = huffman_utils.c
+  source_name_part = huffman_utils
+build obj/third_party/libwebp/libwebp_utils/quant_levels_dec_utils.o: cc ../../third_party/libwebp/src/src/utils/quant_levels_dec_utils.c
+  source_file_part = quant_levels_dec_utils.c
+  source_name_part = quant_levels_dec_utils
+build obj/third_party/libwebp/libwebp_utils/quant_levels_utils.o: cc ../../third_party/libwebp/src/src/utils/quant_levels_utils.c
+  source_file_part = quant_levels_utils.c
+  source_name_part = quant_levels_utils
+build obj/third_party/libwebp/libwebp_utils/random_utils.o: cc ../../third_party/libwebp/src/src/utils/random_utils.c
+  source_file_part = random_utils.c
+  source_name_part = random_utils
+build obj/third_party/libwebp/libwebp_utils/rescaler_utils.o: cc ../../third_party/libwebp/src/src/utils/rescaler_utils.c
+  source_file_part = rescaler_utils.c
+  source_name_part = rescaler_utils
+build obj/third_party/libwebp/libwebp_utils/thread_utils.o: cc ../../third_party/libwebp/src/src/utils/thread_utils.c
+  source_file_part = thread_utils.c
+  source_name_part = thread_utils
+build obj/third_party/libwebp/libwebp_utils/utils.o: cc ../../third_party/libwebp/src/src/utils/utils.c
+  source_file_part = utils.c
+  source_name_part = utils
+
+build obj/third_party/libwebp/libwebp_utils.a: alink obj/third_party/libwebp/libwebp_utils/bit_reader_utils.o obj/third_party/libwebp/libwebp_utils/bit_writer_utils.o obj/third_party/libwebp/libwebp_utils/color_cache_utils.o obj/third_party/libwebp/libwebp_utils/filters_utils.o obj/third_party/libwebp/libwebp_utils/huffman_encode_utils.o obj/third_party/libwebp/libwebp_utils/huffman_utils.o obj/third_party/libwebp/libwebp_utils/quant_levels_dec_utils.o obj/third_party/libwebp/libwebp_utils/quant_levels_utils.o obj/third_party/libwebp/libwebp_utils/random_utils.o obj/third_party/libwebp/libwebp_utils/rescaler_utils.o obj/third_party/libwebp/libwebp_utils/thread_utils.o obj/third_party/libwebp/libwebp_utils/utils.o || obj/third_party/libwebp/libwebp_dsp_headers.stamp obj/third_party/libwebp/libwebp_webp.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/libwebp

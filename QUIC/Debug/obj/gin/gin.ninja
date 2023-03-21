@@ -1,0 +1,108 @@
+defines = -DGIN_IMPLEMENTATION -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DV8_USE_EXTERNAL_STARTUP_DATA -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DUSING_V8_SHARED -DV8_ENABLE_CHECKS -DV8_COMPRESS_POINTERS -DV8_COMPRESS_POINTERS_IN_SHARED_CAGE -DV8_31BIT_SMIS_ON_64BIT_ARCH -DV8_ENABLE_SANDBOX -DV8_DEPRECATION_WARNINGS -DCPPGC_CAGED_HEAP -DCPPGC_YOUNG_GENERATION -DCPPGC_POINTER_COMPRESSION -DCPPGC_SLIM_WRITE_BARRIER -DUSING_V8_BASE_SHARED -DUSING_V8_PLATFORM_SHARED -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../v8/include -Igen/v8/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = gin
+target_out_dir = obj/gin
+target_output_name = libgin
+
+build obj/gin/gin.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/tools/v8_context_snapshot/buildflags.stamp obj/v8/generate_bytecode_builtins_list.stamp obj/v8/run_gen-regexp-special-case.stamp obj/v8/run_torque.stamp obj/v8/src/inspector/protocol_generated_sources.stamp
+build obj/gin/gin/arguments.o: cxx ../../gin/arguments.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = arguments.cc
+  source_name_part = arguments
+build obj/gin/gin/array_buffer.o: cxx ../../gin/array_buffer.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = array_buffer.cc
+  source_name_part = array_buffer
+build obj/gin/gin/context_holder.o: cxx ../../gin/context_holder.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = context_holder.cc
+  source_name_part = context_holder
+build obj/gin/gin/converter.o: cxx ../../gin/converter.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = converter.cc
+  source_name_part = converter
+build obj/gin/gin/cppgc.o: cxx ../../gin/cppgc.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = cppgc.cc
+  source_name_part = cppgc
+build obj/gin/gin/data_object_builder.o: cxx ../../gin/data_object_builder.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = data_object_builder.cc
+  source_name_part = data_object_builder
+build obj/gin/gin/debug_impl.o: cxx ../../gin/debug_impl.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = debug_impl.cc
+  source_name_part = debug_impl
+build obj/gin/gin/dictionary.o: cxx ../../gin/dictionary.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = dictionary.cc
+  source_name_part = dictionary
+build obj/gin/gin/function_template.o: cxx ../../gin/function_template.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = function_template.cc
+  source_name_part = function_template
+build obj/gin/gin/gin_features.o: cxx ../../gin/gin_features.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = gin_features.cc
+  source_name_part = gin_features
+build obj/gin/gin/interceptor.o: cxx ../../gin/interceptor.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = interceptor.cc
+  source_name_part = interceptor
+build obj/gin/gin/isolate_holder.o: cxx ../../gin/isolate_holder.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = isolate_holder.cc
+  source_name_part = isolate_holder
+build obj/gin/gin/console.o: cxx ../../gin/modules/console.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = console.cc
+  source_name_part = console
+build obj/gin/gin/object_template_builder.o: cxx ../../gin/object_template_builder.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = object_template_builder.cc
+  source_name_part = object_template_builder
+build obj/gin/gin/per_context_data.o: cxx ../../gin/per_context_data.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = per_context_data.cc
+  source_name_part = per_context_data
+build obj/gin/gin/per_isolate_data.o: cxx ../../gin/per_isolate_data.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = per_isolate_data.cc
+  source_name_part = per_isolate_data
+build obj/gin/gin/runner.o: cxx ../../gin/runner.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = runner.cc
+  source_name_part = runner
+build obj/gin/gin/shell_runner.o: cxx ../../gin/shell_runner.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = shell_runner.cc
+  source_name_part = shell_runner
+build obj/gin/gin/time_clamper.o: cxx ../../gin/time_clamper.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = time_clamper.cc
+  source_name_part = time_clamper
+build obj/gin/gin/try_catch.o: cxx ../../gin/try_catch.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = try_catch.cc
+  source_name_part = try_catch
+build obj/gin/gin/v8_foreground_task_runner.o: cxx ../../gin/v8_foreground_task_runner.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_foreground_task_runner.cc
+  source_name_part = v8_foreground_task_runner
+build obj/gin/gin/v8_foreground_task_runner_base.o: cxx ../../gin/v8_foreground_task_runner_base.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_foreground_task_runner_base.cc
+  source_name_part = v8_foreground_task_runner_base
+build obj/gin/gin/v8_foreground_task_runner_with_locker.o: cxx ../../gin/v8_foreground_task_runner_with_locker.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_foreground_task_runner_with_locker.cc
+  source_name_part = v8_foreground_task_runner_with_locker
+build obj/gin/gin/v8_initializer.o: cxx ../../gin/v8_initializer.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_initializer.cc
+  source_name_part = v8_initializer
+build obj/gin/gin/v8_isolate_memory_dump_provider.o: cxx ../../gin/v8_isolate_memory_dump_provider.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_isolate_memory_dump_provider.cc
+  source_name_part = v8_isolate_memory_dump_provider
+build obj/gin/gin/v8_platform.o: cxx ../../gin/v8_platform.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_platform.cc
+  source_name_part = v8_platform
+build obj/gin/gin/v8_shared_memory_dump_provider.o: cxx ../../gin/v8_shared_memory_dump_provider.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_shared_memory_dump_provider.cc
+  source_name_part = v8_shared_memory_dump_provider
+build obj/gin/gin/wrappable.o: cxx ../../gin/wrappable.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = wrappable.cc
+  source_name_part = wrappable
+build obj/gin/gin/wrapper_info.o: cxx ../../gin/wrapper_info.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = wrapper_info.cc
+  source_name_part = wrapper_info
+build obj/gin/gin/v8_platform_page_allocator.o: cxx ../../gin/v8_platform_page_allocator.cc || obj/gin/gin.inputdeps.stamp
+  source_file_part = v8_platform_page_allocator.cc
+  source_name_part = v8_platform_page_allocator
+
+build ./libgin.so ./libgin.so.TOC: solink obj/gin/gin/arguments.o obj/gin/gin/array_buffer.o obj/gin/gin/context_holder.o obj/gin/gin/converter.o obj/gin/gin/cppgc.o obj/gin/gin/data_object_builder.o obj/gin/gin/debug_impl.o obj/gin/gin/dictionary.o obj/gin/gin/function_template.o obj/gin/gin/gin_features.o obj/gin/gin/interceptor.o obj/gin/gin/isolate_holder.o obj/gin/gin/console.o obj/gin/gin/object_template_builder.o obj/gin/gin/per_context_data.o obj/gin/gin/per_isolate_data.o obj/gin/gin/runner.o obj/gin/gin/shell_runner.o obj/gin/gin/time_clamper.o obj/gin/gin/try_catch.o obj/gin/gin/v8_foreground_task_runner.o obj/gin/gin/v8_foreground_task_runner_base.o obj/gin/gin/v8_foreground_task_runner_with_locker.o obj/gin/gin/v8_initializer.o obj/gin/gin/v8_isolate_memory_dump_provider.o obj/gin/gin/v8_platform.o obj/gin/gin/v8_shared_memory_dump_provider.o obj/gin/gin/wrappable.o obj/gin/gin/wrapper_info.o obj/gin/gin/v8_platform_page_allocator.o obj/base/third_party/dynamic_annotations/libdynamic_annotations.a | ./libbase.so.TOC ./libv8.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libv8_libbase.so.TOC ./libv8_libplatform.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC ./libc++.so.TOC || obj/base/allocator/buildflags.stamp obj/tools/v8_context_snapshot/buildflags.stamp obj/build/config/shared_library_deps.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .
+  solibs = ./libbase.so ./libv8.so ./libthird_party_abseil-cpp_absl.so ./libthird_party_boringssl.so ./libbase_allocator_partition_allocator_partition_alloc.so ./libthird_party_perfetto_libperfetto.so ./libv8_libbase.so ./libv8_libplatform.so ./libthird_party_icu_icui18n.so ./libicuuc.so ./libc++.so

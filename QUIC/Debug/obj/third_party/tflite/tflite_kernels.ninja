@@ -1,0 +1,304 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DFARMHASH_NO_CXX_STRING -DNEON2SSE_DISABLE_PERFORMANCE_WARNING -DTF_LITE_STRIP_ERROR_STRINGS -DTFL_STATIC_LIBRARY_BUILD -DTFLITE_BUILD_WITH_XNNPACK_DELEGATE -DTFLITE_WITH_RUY -DEIGEN_MPL2_ONLY -DEIGEN_MAX_ALIGN_BYTES=64 -DEIGEN_HAS_TYPE_TRAITS=0 -DABSL_CONSUME_DLL -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DPTHREADPOOL_USE_GCD=0
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/tflite/src -I../../third_party/pthreadpool/src/include -I../../third_party/eigen3/src -I../../third_party/abseil-cpp -I../../third_party/farmhash/src/src -I../../third_party/flatbuffers/src/include -I../../third_party/fp16/src/include -I../../third_party/gemmlowp/src -I../../third_party/neon_2_sse/src -I../../third_party/pthreadpool/src/src -I../../third_party/ruy/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-c99-extensions -Wno-comment -Wno-extern-c-compat -Wno-gnu-inline-cpp-without-extern -Wno-loop-analysis -Wno-shadow -Wno-sign-compare -Wno-unreachable-code-break -Wno-unreachable-code-return -Wno-unused-but-set-variable -Wno-unused-variable -Wno-deprecated-copy -Wno-deprecated-declarations -Wno-extra-semi -Wno-unused-function -Wno-unused-result -Wno-deprecated-declarations
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = tflite_kernels
+target_out_dir = obj/third_party/tflite
+target_output_name = tflite_kernels
+
+build obj/third_party/tflite/tflite_kernels/activations.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/activations.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = activations.cc
+  source_name_part = activations
+build obj/third_party/tflite/tflite_kernels/add.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/add.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = add.cc
+  source_name_part = add
+build obj/third_party/tflite/tflite_kernels/add_n.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/add_n.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = add_n.cc
+  source_name_part = add_n
+build obj/third_party/tflite/tflite_kernels/arg_min_max.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/arg_min_max.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = arg_min_max.cc
+  source_name_part = arg_min_max
+build obj/third_party/tflite/tflite_kernels/assign_variable.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/assign_variable.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = assign_variable.cc
+  source_name_part = assign_variable
+build obj/third_party/tflite/tflite_kernels/basic_rnn.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/basic_rnn.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = basic_rnn.cc
+  source_name_part = basic_rnn
+build obj/third_party/tflite/tflite_kernels/batch_matmul.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/batch_matmul.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = batch_matmul.cc
+  source_name_part = batch_matmul
+build obj/third_party/tflite/tflite_kernels/batch_to_space_nd.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/batch_to_space_nd.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = batch_to_space_nd.cc
+  source_name_part = batch_to_space_nd
+build obj/third_party/tflite/tflite_kernels/bidirectional_sequence_lstm.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/bidirectional_sequence_lstm.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = bidirectional_sequence_lstm.cc
+  source_name_part = bidirectional_sequence_lstm
+build obj/third_party/tflite/tflite_kernels/bidirectional_sequence_rnn.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/bidirectional_sequence_rnn.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = bidirectional_sequence_rnn.cc
+  source_name_part = bidirectional_sequence_rnn
+build obj/third_party/tflite/tflite_kernels/cast.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/cast.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = cast.cc
+  source_name_part = cast
+build obj/third_party/tflite/tflite_kernels/ceil.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/ceil.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = ceil.cc
+  source_name_part = ceil
+build obj/third_party/tflite/tflite_kernels/comparisons.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/comparisons.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = comparisons.cc
+  source_name_part = comparisons
+build obj/third_party/tflite/tflite_kernels/concatenation.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/concatenation.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = concatenation.cc
+  source_name_part = concatenation
+build obj/third_party/tflite/tflite_kernels/conv.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/conv.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = conv.cc
+  source_name_part = conv
+build obj/third_party/tflite/tflite_kernels/cpu_backend_context.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/cpu_backend_context.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = cpu_backend_context.cc
+  source_name_part = cpu_backend_context
+build obj/third_party/tflite/tflite_kernels/cpu_backend_gemm_eigen.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/cpu_backend_gemm_eigen.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = cpu_backend_gemm_eigen.cc
+  source_name_part = cpu_backend_gemm_eigen
+build obj/third_party/tflite/tflite_kernels/cumsum.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/cumsum.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = cumsum.cc
+  source_name_part = cumsum
+build obj/third_party/tflite/tflite_kernels/densify.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/densify.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = densify.cc
+  source_name_part = densify
+build obj/third_party/tflite/tflite_kernels/depth_to_space.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/depth_to_space.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = depth_to_space.cc
+  source_name_part = depth_to_space
+build obj/third_party/tflite/tflite_kernels/depthwise_conv.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/depthwise_conv.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = depthwise_conv.cc
+  source_name_part = depthwise_conv
+build obj/third_party/tflite/tflite_kernels/dequantize.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/dequantize.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = dequantize.cc
+  source_name_part = dequantize
+build obj/third_party/tflite/tflite_kernels/div.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/div.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = div.cc
+  source_name_part = div
+build obj/third_party/tflite/tflite_kernels/eigen_support.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/eigen_support.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = eigen_support.cc
+  source_name_part = eigen_support
+build obj/third_party/tflite/tflite_kernels/elementwise.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/elementwise.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = elementwise.cc
+  source_name_part = elementwise
+build obj/third_party/tflite/tflite_kernels/embedding_lookup.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/embedding_lookup.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = embedding_lookup.cc
+  source_name_part = embedding_lookup
+build obj/third_party/tflite/tflite_kernels/embedding_lookup_sparse.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/embedding_lookup_sparse.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = embedding_lookup_sparse.cc
+  source_name_part = embedding_lookup_sparse
+build obj/third_party/tflite/tflite_kernels/exp.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/exp.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = exp.cc
+  source_name_part = exp
+build obj/third_party/tflite/tflite_kernels/expand_dims.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/expand_dims.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = expand_dims.cc
+  source_name_part = expand_dims
+build obj/third_party/tflite/tflite_kernels/fake_quant.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/fake_quant.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = fake_quant.cc
+  source_name_part = fake_quant
+build obj/third_party/tflite/tflite_kernels/fill.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/fill.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = fill.cc
+  source_name_part = fill
+build obj/third_party/tflite/tflite_kernels/floor.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/floor.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = floor.cc
+  source_name_part = floor
+build obj/third_party/tflite/tflite_kernels/floor_div.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/floor_div.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = floor_div.cc
+  source_name_part = floor_div
+build obj/third_party/tflite/tflite_kernels/floor_mod.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/floor_mod.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = floor_mod.cc
+  source_name_part = floor_mod
+build obj/third_party/tflite/tflite_kernels/fully_connected.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/fully_connected.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = fully_connected.cc
+  source_name_part = fully_connected
+build obj/third_party/tflite/tflite_kernels/gather.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/gather.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = gather.cc
+  source_name_part = gather
+build obj/third_party/tflite/tflite_kernels/gather_nd.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/gather_nd.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = gather_nd.cc
+  source_name_part = gather_nd
+build obj/third_party/tflite/tflite_kernels/hashtable_lookup.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/hashtable_lookup.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = hashtable_lookup.cc
+  source_name_part = hashtable_lookup
+build obj/third_party/tflite/tflite_kernels/if.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/if.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = if.cc
+  source_name_part = if
+build obj/third_party/tflite/tflite_kernels/kernel_util.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/kernel_util.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = kernel_util.cc
+  source_name_part = kernel_util
+build obj/third_party/tflite/tflite_kernels/l2norm.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/l2norm.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = l2norm.cc
+  source_name_part = l2norm
+build obj/third_party/tflite/tflite_kernels/local_response_norm.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/local_response_norm.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = local_response_norm.cc
+  source_name_part = local_response_norm
+build obj/third_party/tflite/tflite_kernels/logical.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/logical.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = logical.cc
+  source_name_part = logical
+build obj/third_party/tflite/tflite_kernels/lsh_projection.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/lsh_projection.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = lsh_projection.cc
+  source_name_part = lsh_projection
+build obj/third_party/tflite/tflite_kernels/lstm.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/lstm.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = lstm.cc
+  source_name_part = lstm
+build obj/third_party/tflite/tflite_kernels/lstm_eval.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/lstm_eval.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = lstm_eval.cc
+  source_name_part = lstm_eval
+build obj/third_party/tflite/tflite_kernels/matrix_diag.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/matrix_diag.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = matrix_diag.cc
+  source_name_part = matrix_diag
+build obj/third_party/tflite/tflite_kernels/matrix_set_diag.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/matrix_set_diag.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = matrix_set_diag.cc
+  source_name_part = matrix_set_diag
+build obj/third_party/tflite/tflite_kernels/maximum_minimum.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/maximum_minimum.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = maximum_minimum.cc
+  source_name_part = maximum_minimum
+build obj/third_party/tflite/tflite_kernels/mirror_pad.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/mirror_pad.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = mirror_pad.cc
+  source_name_part = mirror_pad
+build obj/third_party/tflite/tflite_kernels/mul.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/mul.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = mul.cc
+  source_name_part = mul
+build obj/third_party/tflite/tflite_kernels/neg.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/neg.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = neg.cc
+  source_name_part = neg
+build obj/third_party/tflite/tflite_kernels/non_max_suppression.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/non_max_suppression.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = non_max_suppression.cc
+  source_name_part = non_max_suppression
+build obj/third_party/tflite/tflite_kernels/numeric_verify.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/numeric_verify.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = numeric_verify.cc
+  source_name_part = numeric_verify
+build obj/third_party/tflite/tflite_kernels/one_hot.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/one_hot.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = one_hot.cc
+  source_name_part = one_hot
+build obj/third_party/tflite/tflite_kernels/pack.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/pack.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = pack.cc
+  source_name_part = pack
+build obj/third_party/tflite/tflite_kernels/pad.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/pad.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = pad.cc
+  source_name_part = pad
+build obj/third_party/tflite/tflite_kernels/pooling.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/pooling.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = pooling.cc
+  source_name_part = pooling
+build obj/third_party/tflite/tflite_kernels/pow.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/pow.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = pow.cc
+  source_name_part = pow
+build obj/third_party/tflite/tflite_kernels/quantize.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/quantize.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = quantize.cc
+  source_name_part = quantize
+build obj/third_party/tflite/tflite_kernels/range.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/range.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = range.cc
+  source_name_part = range
+build obj/third_party/tflite/tflite_kernels/rank.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/rank.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = rank.cc
+  source_name_part = rank
+build obj/third_party/tflite/tflite_kernels/read_variable.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/read_variable.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = read_variable.cc
+  source_name_part = read_variable
+build obj/third_party/tflite/tflite_kernels/reduce.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/reduce.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = reduce.cc
+  source_name_part = reduce
+build obj/third_party/tflite/tflite_kernels/reshape.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/reshape.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = reshape.cc
+  source_name_part = reshape
+build obj/third_party/tflite/tflite_kernels/resize_bilinear.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/resize_bilinear.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = resize_bilinear.cc
+  source_name_part = resize_bilinear
+build obj/third_party/tflite/tflite_kernels/resize_nearest_neighbor.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/resize_nearest_neighbor.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = resize_nearest_neighbor.cc
+  source_name_part = resize_nearest_neighbor
+build obj/third_party/tflite/tflite_kernels/reverse.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/reverse.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = reverse.cc
+  source_name_part = reverse
+build obj/third_party/tflite/tflite_kernels/reverse_sequence.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/reverse_sequence.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = reverse_sequence.cc
+  source_name_part = reverse_sequence
+build obj/third_party/tflite/tflite_kernels/rfft2d.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/rfft2d.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = rfft2d.cc
+  source_name_part = rfft2d
+build obj/third_party/tflite/tflite_kernels/round.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/round.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = round.cc
+  source_name_part = round
+build obj/third_party/tflite/tflite_kernels/scatter_nd.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/scatter_nd.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = scatter_nd.cc
+  source_name_part = scatter_nd
+build obj/third_party/tflite/tflite_kernels/segment_sum.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/segment_sum.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = segment_sum.cc
+  source_name_part = segment_sum
+build obj/third_party/tflite/tflite_kernels/select.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/select.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = select.cc
+  source_name_part = select
+build obj/third_party/tflite/tflite_kernels/shape.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/shape.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = shape.cc
+  source_name_part = shape
+build obj/third_party/tflite/tflite_kernels/skip_gram.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/skip_gram.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = skip_gram.cc
+  source_name_part = skip_gram
+build obj/third_party/tflite/tflite_kernels/slice.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/slice.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = slice.cc
+  source_name_part = slice
+build obj/third_party/tflite/tflite_kernels/space_to_batch_nd.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/space_to_batch_nd.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = space_to_batch_nd.cc
+  source_name_part = space_to_batch_nd
+build obj/third_party/tflite/tflite_kernels/space_to_depth.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/space_to_depth.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = space_to_depth.cc
+  source_name_part = space_to_depth
+build obj/third_party/tflite/tflite_kernels/sparse_to_dense.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/sparse_to_dense.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = sparse_to_dense.cc
+  source_name_part = sparse_to_dense
+build obj/third_party/tflite/tflite_kernels/split.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/split.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = split.cc
+  source_name_part = split
+build obj/third_party/tflite/tflite_kernels/split_v.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/split_v.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = split_v.cc
+  source_name_part = split_v
+build obj/third_party/tflite/tflite_kernels/squared_difference.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/squared_difference.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = squared_difference.cc
+  source_name_part = squared_difference
+build obj/third_party/tflite/tflite_kernels/squeeze.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/squeeze.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = squeeze.cc
+  source_name_part = squeeze
+build obj/third_party/tflite/tflite_kernels/strided_slice.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/strided_slice.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = strided_slice.cc
+  source_name_part = strided_slice
+build obj/third_party/tflite/tflite_kernels/sub.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/sub.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = sub.cc
+  source_name_part = sub
+build obj/third_party/tflite/tflite_kernels/svdf.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/svdf.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = svdf.cc
+  source_name_part = svdf
+build obj/third_party/tflite/tflite_kernels/tile.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/tile.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = tile.cc
+  source_name_part = tile
+build obj/third_party/tflite/tflite_kernels/topk_v2.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/topk_v2.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = topk_v2.cc
+  source_name_part = topk_v2
+build obj/third_party/tflite/tflite_kernels/transpose.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/transpose.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = transpose.cc
+  source_name_part = transpose
+build obj/third_party/tflite/tflite_kernels/transpose_conv.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/transpose_conv.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = transpose_conv.cc
+  source_name_part = transpose_conv
+build obj/third_party/tflite/tflite_kernels/unidirectional_sequence_lstm.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/unidirectional_sequence_lstm.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = unidirectional_sequence_lstm.cc
+  source_name_part = unidirectional_sequence_lstm
+build obj/third_party/tflite/tflite_kernels/unidirectional_sequence_rnn.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/unidirectional_sequence_rnn.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = unidirectional_sequence_rnn.cc
+  source_name_part = unidirectional_sequence_rnn
+build obj/third_party/tflite/tflite_kernels/unique.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/unique.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = unique.cc
+  source_name_part = unique
+build obj/third_party/tflite/tflite_kernels/unpack.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/unpack.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = unpack.cc
+  source_name_part = unpack
+build obj/third_party/tflite/tflite_kernels/where.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/where.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = where.cc
+  source_name_part = where
+build obj/third_party/tflite/tflite_kernels/while.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/while.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = while.cc
+  source_name_part = while
+build obj/third_party/tflite/tflite_kernels/zeros_like.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/zeros_like.cc || obj/build/chromeos_buildflags.stamp
+  source_file_part = zeros_like.cc
+  source_name_part = zeros_like
+
+build obj/third_party/tflite/tflite_kernels.stamp: stamp obj/third_party/tflite/tflite_kernels/activations.o obj/third_party/tflite/tflite_kernels/add.o obj/third_party/tflite/tflite_kernels/add_n.o obj/third_party/tflite/tflite_kernels/arg_min_max.o obj/third_party/tflite/tflite_kernels/assign_variable.o obj/third_party/tflite/tflite_kernels/basic_rnn.o obj/third_party/tflite/tflite_kernels/batch_matmul.o obj/third_party/tflite/tflite_kernels/batch_to_space_nd.o obj/third_party/tflite/tflite_kernels/bidirectional_sequence_lstm.o obj/third_party/tflite/tflite_kernels/bidirectional_sequence_rnn.o obj/third_party/tflite/tflite_kernels/cast.o obj/third_party/tflite/tflite_kernels/ceil.o obj/third_party/tflite/tflite_kernels/comparisons.o obj/third_party/tflite/tflite_kernels/concatenation.o obj/third_party/tflite/tflite_kernels/conv.o obj/third_party/tflite/tflite_kernels/cpu_backend_context.o obj/third_party/tflite/tflite_kernels/cpu_backend_gemm_eigen.o obj/third_party/tflite/tflite_kernels/cumsum.o obj/third_party/tflite/tflite_kernels/densify.o obj/third_party/tflite/tflite_kernels/depth_to_space.o obj/third_party/tflite/tflite_kernels/depthwise_conv.o obj/third_party/tflite/tflite_kernels/dequantize.o obj/third_party/tflite/tflite_kernels/div.o obj/third_party/tflite/tflite_kernels/eigen_support.o obj/third_party/tflite/tflite_kernels/elementwise.o obj/third_party/tflite/tflite_kernels/embedding_lookup.o obj/third_party/tflite/tflite_kernels/embedding_lookup_sparse.o obj/third_party/tflite/tflite_kernels/exp.o obj/third_party/tflite/tflite_kernels/expand_dims.o obj/third_party/tflite/tflite_kernels/fake_quant.o obj/third_party/tflite/tflite_kernels/fill.o obj/third_party/tflite/tflite_kernels/floor.o obj/third_party/tflite/tflite_kernels/floor_div.o obj/third_party/tflite/tflite_kernels/floor_mod.o obj/third_party/tflite/tflite_kernels/fully_connected.o obj/third_party/tflite/tflite_kernels/gather.o obj/third_party/tflite/tflite_kernels/gather_nd.o obj/third_party/tflite/tflite_kernels/hashtable_lookup.o obj/third_party/tflite/tflite_kernels/if.o obj/third_party/tflite/tflite_kernels/kernel_util.o obj/third_party/tflite/tflite_kernels/l2norm.o obj/third_party/tflite/tflite_kernels/local_response_norm.o obj/third_party/tflite/tflite_kernels/logical.o obj/third_party/tflite/tflite_kernels/lsh_projection.o obj/third_party/tflite/tflite_kernels/lstm.o obj/third_party/tflite/tflite_kernels/lstm_eval.o obj/third_party/tflite/tflite_kernels/matrix_diag.o obj/third_party/tflite/tflite_kernels/matrix_set_diag.o obj/third_party/tflite/tflite_kernels/maximum_minimum.o obj/third_party/tflite/tflite_kernels/mirror_pad.o obj/third_party/tflite/tflite_kernels/mul.o obj/third_party/tflite/tflite_kernels/neg.o obj/third_party/tflite/tflite_kernels/non_max_suppression.o obj/third_party/tflite/tflite_kernels/numeric_verify.o obj/third_party/tflite/tflite_kernels/one_hot.o obj/third_party/tflite/tflite_kernels/pack.o obj/third_party/tflite/tflite_kernels/pad.o obj/third_party/tflite/tflite_kernels/pooling.o obj/third_party/tflite/tflite_kernels/pow.o obj/third_party/tflite/tflite_kernels/quantize.o obj/third_party/tflite/tflite_kernels/range.o obj/third_party/tflite/tflite_kernels/rank.o obj/third_party/tflite/tflite_kernels/read_variable.o obj/third_party/tflite/tflite_kernels/reduce.o obj/third_party/tflite/tflite_kernels/reshape.o obj/third_party/tflite/tflite_kernels/resize_bilinear.o obj/third_party/tflite/tflite_kernels/resize_nearest_neighbor.o obj/third_party/tflite/tflite_kernels/reverse.o obj/third_party/tflite/tflite_kernels/reverse_sequence.o obj/third_party/tflite/tflite_kernels/rfft2d.o obj/third_party/tflite/tflite_kernels/round.o obj/third_party/tflite/tflite_kernels/scatter_nd.o obj/third_party/tflite/tflite_kernels/segment_sum.o obj/third_party/tflite/tflite_kernels/select.o obj/third_party/tflite/tflite_kernels/shape.o obj/third_party/tflite/tflite_kernels/skip_gram.o obj/third_party/tflite/tflite_kernels/slice.o obj/third_party/tflite/tflite_kernels/space_to_batch_nd.o obj/third_party/tflite/tflite_kernels/space_to_depth.o obj/third_party/tflite/tflite_kernels/sparse_to_dense.o obj/third_party/tflite/tflite_kernels/split.o obj/third_party/tflite/tflite_kernels/split_v.o obj/third_party/tflite/tflite_kernels/squared_difference.o obj/third_party/tflite/tflite_kernels/squeeze.o obj/third_party/tflite/tflite_kernels/strided_slice.o obj/third_party/tflite/tflite_kernels/sub.o obj/third_party/tflite/tflite_kernels/svdf.o obj/third_party/tflite/tflite_kernels/tile.o obj/third_party/tflite/tflite_kernels/topk_v2.o obj/third_party/tflite/tflite_kernels/transpose.o obj/third_party/tflite/tflite_kernels/transpose_conv.o obj/third_party/tflite/tflite_kernels/unidirectional_sequence_lstm.o obj/third_party/tflite/tflite_kernels/unidirectional_sequence_rnn.o obj/third_party/tflite/tflite_kernels/unique.o obj/third_party/tflite/tflite_kernels/unpack.o obj/third_party/tflite/tflite_kernels/where.o obj/third_party/tflite/tflite_kernels/while.o obj/third_party/tflite/tflite_kernels/zeros_like.o || obj/third_party/tflite/fft2d_deps.stamp obj/third_party/tflite/tflite_kernel_common_headers.stamp obj/third_party/tflite/tflite_kernel_internals.stamp obj/third_party/tflite/tflite_public_headers.stamp ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/farmhash/farmhash.stamp obj/third_party/flatbuffers/flatbuffers.stamp obj/third_party/fp16/fp16.stamp obj/third_party/gemmlowp/gemmlowp.stamp obj/third_party/neon_2_sse/neon_2_sse.stamp obj/third_party/pthreadpool/pthreadpool.stamp obj/third_party/ruy/ruy.stamp obj/third_party/fft2d/fft2d.stamp obj/third_party/ruy/ruy_check_macros.stamp obj/third_party/ruy/ruy_context.stamp obj/third_party/ruy/ruy_allocator.stamp obj/third_party/ruy/ruy_opt_set.stamp obj/third_party/ruy/ruy_size_util.stamp obj/third_party/ruy/ruy_system_aligned_alloc.stamp obj/third_party/ruy/ruy_ctx.stamp obj/third_party/ruy/ruy_cpuinfo.stamp obj/third_party/ruy/ruy_cpu_cache_params.stamp obj/third_party/ruy/ruy_platform.stamp ./libcpuinfo.so.TOC obj/third_party/ruy/ruy_have_built_path_for.stamp obj/third_party/ruy/ruy_have_built_path_for_avx.stamp obj/third_party/ruy/ruy_have_built_path_for_avx2_fma.stamp obj/third_party/ruy/ruy_have_built_path_for_avx512.stamp obj/third_party/ruy/ruy_path.stamp obj/third_party/ruy/ruy_performance_advisory.stamp obj/third_party/ruy/ruy_prepacked_cache.stamp obj/third_party/ruy/ruy_mat.stamp obj/third_party/ruy/ruy_matrix.stamp obj/third_party/ruy/ruy_profiler_instrumentation.stamp obj/third_party/ruy/ruy_instrumentation.stamp obj/third_party/ruy/ruy_thread_pool.stamp obj/third_party/ruy/ruy_blocking_counter.stamp obj/third_party/ruy/ruy_time.stamp obj/third_party/ruy/ruy_wait.stamp obj/third_party/ruy/ruy_denormal.stamp obj/third_party/ruy/ruy_trace.stamp obj/third_party/ruy/ruy_side_pair.stamp obj/third_party/ruy/ruy_tune.stamp obj/third_party/ruy/ruy_context_get_ctx.stamp obj/third_party/ruy/ruy_frontend.stamp obj/third_party/ruy/ruy_create_trmul_params.stamp obj/third_party/ruy/ruy_kernel.stamp obj/third_party/ruy/ruy_apply_multiplier.stamp obj/third_party/ruy/ruy_mul_params.stamp obj/third_party/ruy/ruy_kernel_arm.stamp obj/third_party/ruy/ruy_asm_helpers.stamp obj/third_party/ruy/ruy_kernel_common.stamp obj/third_party/ruy/ruy_kernel_avx.stamp obj/third_party/ruy/ruy_kernel_avx2_fma.stamp obj/third_party/ruy/ruy_kernel_avx512.stamp obj/third_party/ruy/ruy_pack.stamp obj/third_party/ruy/ruy_pack_arm.stamp obj/third_party/ruy/ruy_pack_common.stamp obj/third_party/ruy/ruy_pack_avx.stamp obj/third_party/ruy/ruy_pack_avx2_fma.stamp obj/third_party/ruy/ruy_pack_avx512.stamp obj/third_party/ruy/ruy_trmul_params.stamp obj/third_party/ruy/ruy_prepare_packed_matrices.stamp obj/third_party/ruy/ruy_trmul.stamp obj/third_party/ruy/ruy_block_map.stamp obj/third_party/ruy/ruy_validate.stamp obj/third_party/fxdiv/fxdiv.stamp

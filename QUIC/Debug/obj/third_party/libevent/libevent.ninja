@@ -1,0 +1,55 @@
+defines = -DHAVE_CONFIG_H -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../../third_party/libevent/linux -I../.. -Igen -I../../buildtools/third_party/libc++
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libevent
+target_out_dir = obj/third_party/libevent
+target_output_name = libevent
+
+build obj/third_party/libevent/libevent/buffer.o: cc ../../third_party/libevent/buffer.c
+  source_file_part = buffer.c
+  source_name_part = buffer
+build obj/third_party/libevent/libevent/evbuffer.o: cc ../../third_party/libevent/evbuffer.c
+  source_file_part = evbuffer.c
+  source_name_part = evbuffer
+build obj/third_party/libevent/libevent/evdns.o: cc ../../third_party/libevent/evdns.c
+  source_file_part = evdns.c
+  source_name_part = evdns
+build obj/third_party/libevent/libevent/event.o: cc ../../third_party/libevent/event.c
+  source_file_part = event.c
+  source_name_part = event
+build obj/third_party/libevent/libevent/event_tagging.o: cc ../../third_party/libevent/event_tagging.c
+  source_file_part = event_tagging.c
+  source_name_part = event_tagging
+build obj/third_party/libevent/libevent/evrpc.o: cc ../../third_party/libevent/evrpc.c
+  source_file_part = evrpc.c
+  source_name_part = evrpc
+build obj/third_party/libevent/libevent/evutil.o: cc ../../third_party/libevent/evutil.c
+  source_file_part = evutil.c
+  source_name_part = evutil
+build obj/third_party/libevent/libevent/http.o: cc ../../third_party/libevent/http.c
+  source_file_part = http.c
+  source_name_part = http
+build obj/third_party/libevent/libevent/log.o: cc ../../third_party/libevent/log.c
+  source_file_part = log.c
+  source_name_part = log
+build obj/third_party/libevent/libevent/poll.o: cc ../../third_party/libevent/poll.c
+  source_file_part = poll.c
+  source_name_part = poll
+build obj/third_party/libevent/libevent/select.o: cc ../../third_party/libevent/select.c
+  source_file_part = select.c
+  source_name_part = select
+build obj/third_party/libevent/libevent/signal.o: cc ../../third_party/libevent/signal.c
+  source_file_part = signal.c
+  source_name_part = signal
+build obj/third_party/libevent/libevent/strlcpy.o: cc ../../third_party/libevent/strlcpy.c
+  source_file_part = strlcpy.c
+  source_name_part = strlcpy
+build obj/third_party/libevent/libevent/epoll.o: cc ../../third_party/libevent/epoll.c
+  source_file_part = epoll.c
+  source_name_part = epoll
+
+build obj/third_party/libevent/libevent.a: alink obj/third_party/libevent/libevent/buffer.o obj/third_party/libevent/libevent/evbuffer.o obj/third_party/libevent/libevent/evdns.o obj/third_party/libevent/libevent/event.o obj/third_party/libevent/libevent/event_tagging.o obj/third_party/libevent/libevent/evrpc.o obj/third_party/libevent/libevent/evutil.o obj/third_party/libevent/libevent/http.o obj/third_party/libevent/libevent/log.o obj/third_party/libevent/libevent/poll.o obj/third_party/libevent/libevent/select.o obj/third_party/libevent/libevent/signal.o obj/third_party/libevent/libevent/strlcpy.o obj/third_party/libevent/libevent/epoll.o
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/libevent

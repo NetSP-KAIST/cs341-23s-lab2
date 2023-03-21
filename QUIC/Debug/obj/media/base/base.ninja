@@ -1,0 +1,452 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DIS_MEDIA_IMPL -DUSE_PULSEAUDIO -DDLOPEN_PULSEAUDIO -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DUSE_EGL -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DLIBYUV_DISABLE_NEON -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DVK_NO_PROTOTYPES -DUSE_VULKAN_XCB
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/khronos -I../../gpu -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -Igen/third_party/dawn/include -I../../third_party/dawn/include -I../../third_party/libyuv/include -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/mesa_headers -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ipcz/include -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/linux -I../../third_party/crashpad/crashpad/compat/non_win -I../../third_party/zlib -I../../third_party/ced/src -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -Igen/net/third_party/quiche/src -I../../third_party/ffmpeg/chromium/config/Chromium/linux/x64 -I../../third_party/ffmpeg -I../../third_party/libvpx/source/libvpx -I../../third_party/wayland/include -I../../third_party/wayland/src/cursor -I../../third_party/wayland/src/egl -Igen/third_party/wayland/src/protocol
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -Wno-redundant-parens -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-redundant-parens -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nss -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nspr
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = base
+target_out_dir = obj/media/base
+target_output_name = base
+
+build obj/media/base/base.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/build/linux/libudev/udev0_loader_loader.stamp obj/build/linux/libudev/udev1_loader_loader.stamp obj/components/crash/core/common/crash_buildflags.stamp obj/components/exo/wayland/protocol/aura_shell_protocol_gen.stamp obj/components/exo/wayland/protocol/chrome_color_management_protocol_gen.stamp obj/components/exo/wayland/protocol/overlay_prioritizer_protocol_gen.stamp obj/components/exo/wayland/protocol/surface_augmenter_protocol_gen.stamp obj/components/nacl/common/buildflags.stamp obj/components/system_media_controls/linux/buildflags/buildflags.stamp obj/crypto/buildflags.stamp obj/device/vr/buildflags/buildflags.stamp obj/gpu/command_buffer/service/disk_cache_proto_gen.stamp obj/gpu/config/process_json.stamp obj/gpu/config/workaround_list.stamp obj/gpu/ipc/common/gpu_channel_mojom__generate_message_ids.stamp obj/gpu/ipc/common/gpu_channel_mojom__generator.stamp obj/gpu/ipc/common/gpu_channel_mojom_shared__generator.stamp obj/gpu/ipc/common/gpu_preferences_interface__generate_message_ids.stamp obj/gpu/ipc/common/gpu_preferences_interface__generator.stamp obj/gpu/ipc/common/gpu_preferences_interface_shared__generator.stamp obj/gpu/ipc/common/interfaces__generate_message_ids.stamp obj/gpu/ipc/common/interfaces__generator.stamp obj/gpu/ipc/common/interfaces_shared__generator.stamp obj/gpu/ipc/common/vulkan_interface__generate_message_ids.stamp obj/gpu/ipc/common/vulkan_interface__generator.stamp obj/gpu/ipc/common/vulkan_interface_shared__generator.stamp obj/gpu/vulkan/buildflags.stamp obj/ipc/ipc_buildflags.stamp obj/ipc/mojom__generate_message_ids.stamp obj/ipc/mojom__generator.stamp obj/ipc/mojom_shared__generator.stamp obj/media/media_buildflags.stamp obj/media/gpu/buildflags.stamp obj/mojo/buildflags.stamp obj/mojo/public/cpp/bindings/mojo_buildflags.stamp obj/mojo/public/interfaces/bindings/bindings__generate_message_ids.stamp obj/mojo/public/interfaces/bindings/bindings__generator.stamp obj/mojo/public/interfaces/bindings/bindings_shared__generator.stamp obj/mojo/public/mojom/base/base__generate_message_ids.stamp obj/mojo/public/mojom/base/base__generator.stamp obj/mojo/public/mojom/base/base_shared__generator.stamp obj/net/buildflags.stamp obj/net/ios_cronet_buildflags.stamp obj/net/isolation_info_proto_gen.stamp obj/net/net_nqe_proto_gen.stamp obj/net/net_resources_grit.stamp obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp obj/net/cert/root_store_proto_lite_gen.stamp obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp obj/net/third_party/quiche/net_quic_proto_gen.stamp obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp obj/printing/buildflags/buildflags.stamp obj/sandbox/policy/mojom/mojom__generate_message_ids.stamp obj/sandbox/policy/mojom/mojom__generator.stamp obj/sandbox/policy/mojom/mojom_shared__generator.stamp obj/services/metrics/public/mojom/mojom__generate_message_ids.stamp obj/services/metrics/public/mojom/mojom__generator.stamp obj/services/metrics/public/mojom/mojom_shared__generator.stamp obj/services/service_manager/public/mojom/constants__generate_message_ids.stamp obj/services/service_manager/public/mojom/constants__generator.stamp obj/services/service_manager/public/mojom/constants_shared__generator.stamp obj/services/service_manager/public/mojom/mojom__generate_message_ids.stamp obj/services/service_manager/public/mojom/mojom__generator.stamp obj/services/service_manager/public/mojom/mojom_shared__generator.stamp obj/services/tracing/public/cpp/buildflags.stamp obj/services/tracing/public/mojom/mojom__generate_message_ids.stamp obj/services/tracing/public/mojom/mojom__generator.stamp obj/services/tracing/public/mojom/mojom_shared__generator.stamp obj/services/viz/public/mojom/resource_format__generate_message_ids.stamp obj/services/viz/public/mojom/resource_format__generator.stamp obj/services/viz/public/mojom/resource_format_shared__generator.stamp obj/services/viz/public/mojom/shared_image_format__generate_message_ids.stamp obj/services/viz/public/mojom/shared_image_format__generator.stamp obj/services/viz/public/mojom/shared_image_format_shared__generator.stamp obj/skia/buildflags.stamp obj/skia/public/mojom/mojom__generate_message_ids.stamp obj/skia/public/mojom/mojom__generator.stamp obj/skia/public/mojom/mojom_shared__generator.stamp obj/third_party/angle/angle_commit_id.stamp obj/third_party/angle/angle_program_version_id.stamp obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp obj/third_party/dawn/include/dawn/headers_gen.stamp obj/third_party/dawn/src/dawn/cpp_gen.stamp obj/third_party/dawn/src/dawn/proc_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp obj/third_party/dawn/src/dawn/native/opengl_loader_gen.stamp obj/third_party/dawn/src/dawn/native/utils_gen.stamp obj/third_party/dawn/src/dawn/wire/gen.stamp obj/third_party/ffmpeg/ffmpeg_features.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/metrics_proto/metrics_proto_gen.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/minimal_complete_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp obj/third_party/wayland-protocols/alpha_compositing_protocol_gen.stamp obj/third_party/wayland-protocols/content_type_protocol_gen.stamp obj/third_party/wayland-protocols/cursor_shapes_protocol_gen.stamp obj/third_party/wayland-protocols/extended_drag_gen.stamp obj/third_party/wayland-protocols/gtk_primary_selection_protocol_gen.stamp obj/third_party/wayland-protocols/gtk_shell_protocol_gen.stamp obj/third_party/wayland-protocols/idle_inhibit_protocol_gen.stamp obj/third_party/wayland-protocols/keyboard_extension_protocol_gen.stamp obj/third_party/wayland-protocols/keyboard_shortcuts_inhibit_protocol_gen.stamp obj/third_party/wayland-protocols/linux_dmabuf_protocol_gen.stamp obj/third_party/wayland-protocols/linux_explicit_synchronization_protocol_gen.stamp obj/third_party/wayland-protocols/org_kde_kwin_idle_gen.stamp obj/third_party/wayland-protocols/pointer_constraints_protocol_gen.stamp obj/third_party/wayland-protocols/pointer_gestures_protocol_gen.stamp obj/third_party/wayland-protocols/presentation_time_protocol_gen.stamp obj/third_party/wayland-protocols/primary_selection_protocol_gen.stamp obj/third_party/wayland-protocols/relative_pointer_protocol_gen.stamp obj/third_party/wayland-protocols/stylus_protocol_gen.stamp obj/third_party/wayland-protocols/text_input_extension_protocol_gen.stamp obj/third_party/wayland-protocols/text_input_protocol_gen.stamp obj/third_party/wayland-protocols/touchpad_haptics_protocol_gen.stamp obj/third_party/wayland-protocols/viewporter_protocol_gen.stamp obj/third_party/wayland-protocols/wayland_drm_protocol_gen.stamp obj/third_party/wayland-protocols/xdg_activation_gen.stamp obj/third_party/wayland-protocols/xdg_decoration_protocol_gen.stamp obj/third_party/wayland-protocols/xdg_foreign_gen.stamp obj/third_party/wayland-protocols/xdg_output_protocol_gen.stamp obj/third_party/wayland-protocols/xdg_shell_protocol_gen.stamp obj/third_party/wayland/wayland_client_protocol_gen.stamp obj/third_party/wayland/wayland_protocol_c_gen.stamp obj/third_party/wayland/wayland_server_protocol_gen.stamp obj/third_party/widevine/cdm/buildflags.stamp obj/third_party/widevine/cdm/version_h.stamp obj/ui/base/buildflags.stamp obj/ui/base/locales_list_gen.stamp obj/ui/base/cursor/mojom/cursor_type__generate_message_ids.stamp obj/ui/base/cursor/mojom/cursor_type__generator.stamp obj/ui/base/cursor/mojom/cursor_type_shared__generator.stamp obj/ui/base/dragdrop/mojom/mojom__generate_message_ids.stamp obj/ui/base/dragdrop/mojom/mojom__generator.stamp obj/ui/base/dragdrop/mojom/mojom_shared__generator.stamp obj/ui/base/ime/mojom/mojom__generate_message_ids.stamp obj/ui/base/ime/mojom/mojom__generator.stamp obj/ui/base/ime/mojom/mojom_shared__generator.stamp obj/ui/color/mojom__generate_message_ids.stamp obj/ui/color/mojom__generator.stamp obj/ui/color/mojom_shared__generator.stamp obj/ui/display/mojom/mojom_shared__generator.stamp obj/ui/gfx/geometry/mojom/mojom__generate_message_ids.stamp obj/ui/gfx/geometry/mojom/mojom__generator.stamp obj/ui/gfx/geometry/mojom/mojom_shared__generator.stamp obj/ui/gfx/mojom/mojom__generate_message_ids.stamp obj/ui/gfx/mojom/mojom__generator.stamp obj/ui/gfx/mojom/mojom_shared__generator.stamp obj/ui/gfx/mojom/native_handle_types__generate_message_ids.stamp obj/ui/gfx/mojom/native_handle_types__generator.stamp obj/ui/gfx/mojom/native_handle_types_shared__generator.stamp obj/ui/gfx/range/mojom/mojom__generate_message_ids.stamp obj/ui/gfx/range/mojom/mojom__generator.stamp obj/ui/gfx/range/mojom/mojom_shared__generator.stamp obj/ui/gfx/x/gen_xprotos.stamp obj/ui/gfx/x/xlib_loader_loader.stamp obj/ui/gfx/x/xlib_xcb_loader_loader.stamp obj/ui/gl/buildflags.stamp obj/ui/gl/mojom/mojom__generate_message_ids.stamp obj/ui/gl/mojom/mojom__generator.stamp obj/ui/gl/mojom/mojom_shared__generator.stamp obj/ui/latency/jank_tracker_for_experiments_buildflags.stamp obj/ui/ozone/buildflags.stamp obj/ui/ozone/generate_constructor_list.stamp obj/ui/ozone/generate_ozone_platform_list.stamp obj/ui/ozone/platform/wayland/mojom/mojom__generate_message_ids.stamp obj/ui/ozone/platform/wayland/mojom/mojom__generator.stamp obj/ui/ozone/platform/wayland/mojom/mojom_shared__generator.stamp obj/ui/ozone/public/mojom/gesture_properties_service__generate_message_ids.stamp obj/ui/ozone/public/mojom/gesture_properties_service__generator.stamp obj/ui/ozone/public/mojom/gesture_properties_service_shared__generator.stamp obj/ui/resources/webui_resources_grd_grit.stamp obj/ui/strings/app_locale_settings_grit.stamp obj/ui/strings/ax_strings_grit.stamp obj/ui/strings/ui_strings_grit.stamp obj/url/buildflags.stamp obj/url/mojom/url_mojom_gurl__generate_message_ids.stamp obj/url/mojom/url_mojom_gurl__generator.stamp obj/url/mojom/url_mojom_gurl_shared__generator.stamp obj/url/mojom/url_mojom_origin_shared__generator.stamp obj/url/mojom/url_mojom_scheme_host_port__generate_message_ids.stamp obj/url/mojom/url_mojom_scheme_host_port__generator.stamp obj/url/mojom/url_mojom_scheme_host_port_shared__generator.stamp
+build obj/media/base/base/amplitude_peak_detector.o: cxx ../../media/base/amplitude_peak_detector.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = amplitude_peak_detector.cc
+  source_name_part = amplitude_peak_detector
+build obj/media/base/base/android_overlay_config.o: cxx ../../media/base/android_overlay_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = android_overlay_config.cc
+  source_name_part = android_overlay_config
+build obj/media/base/base/audio_block_fifo.o: cxx ../../media/base/audio_block_fifo.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_block_fifo.cc
+  source_name_part = audio_block_fifo
+build obj/media/base/base/audio_buffer.o: cxx ../../media/base/audio_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer.cc
+  source_name_part = audio_buffer
+build obj/media/base/base/audio_buffer_converter.o: cxx ../../media/base/audio_buffer_converter.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer_converter.cc
+  source_name_part = audio_buffer_converter
+build obj/media/base/base/audio_buffer_queue.o: cxx ../../media/base/audio_buffer_queue.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer_queue.cc
+  source_name_part = audio_buffer_queue
+build obj/media/base/base/audio_codecs.o: cxx ../../media/base/audio_codecs.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_codecs.cc
+  source_name_part = audio_codecs
+build obj/media/base/base/audio_converter.o: cxx ../../media/base/audio_converter.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_converter.cc
+  source_name_part = audio_converter
+build obj/media/base/base/audio_decoder.o: cxx ../../media/base/audio_decoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_decoder.cc
+  source_name_part = audio_decoder
+build obj/media/base/base/audio_decoder_config.o: cxx ../../media/base/audio_decoder_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_decoder_config.cc
+  source_name_part = audio_decoder_config
+build obj/media/base/base/audio_discard_helper.o: cxx ../../media/base/audio_discard_helper.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_discard_helper.cc
+  source_name_part = audio_discard_helper
+build obj/media/base/base/audio_encoder.o: cxx ../../media/base/audio_encoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_encoder.cc
+  source_name_part = audio_encoder
+build obj/media/base/base/audio_fifo.o: cxx ../../media/base/audio_fifo.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_fifo.cc
+  source_name_part = audio_fifo
+build obj/media/base/base/audio_glitch_info.o: cxx ../../media/base/audio_glitch_info.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_glitch_info.cc
+  source_name_part = audio_glitch_info
+build obj/media/base/base/audio_hash.o: cxx ../../media/base/audio_hash.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_hash.cc
+  source_name_part = audio_hash
+build obj/media/base/base/audio_power_monitor.o: cxx ../../media/base/audio_power_monitor.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_power_monitor.cc
+  source_name_part = audio_power_monitor
+build obj/media/base/base/audio_processing.o: cxx ../../media/base/audio_processing.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_processing.cc
+  source_name_part = audio_processing
+build obj/media/base/base/audio_pull_fifo.o: cxx ../../media/base/audio_pull_fifo.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_pull_fifo.cc
+  source_name_part = audio_pull_fifo
+build obj/media/base/base/audio_push_fifo.o: cxx ../../media/base/audio_push_fifo.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_push_fifo.cc
+  source_name_part = audio_push_fifo
+build obj/media/base/base/audio_renderer.o: cxx ../../media/base/audio_renderer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer.cc
+  source_name_part = audio_renderer
+build obj/media/base/base/audio_renderer_mixer.o: cxx ../../media/base/audio_renderer_mixer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer_mixer.cc
+  source_name_part = audio_renderer_mixer
+build obj/media/base/base/audio_renderer_mixer_input.o: cxx ../../media/base/audio_renderer_mixer_input.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer_mixer_input.cc
+  source_name_part = audio_renderer_mixer_input
+build obj/media/base/base/audio_shifter.o: cxx ../../media/base/audio_shifter.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_shifter.cc
+  source_name_part = audio_shifter
+build obj/media/base/base/audio_timestamp_helper.o: cxx ../../media/base/audio_timestamp_helper.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_timestamp_helper.cc
+  source_name_part = audio_timestamp_helper
+build obj/media/base/base/bit_reader.o: cxx ../../media/base/bit_reader.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = bit_reader.cc
+  source_name_part = bit_reader
+build obj/media/base/base/bit_reader_core.o: cxx ../../media/base/bit_reader_core.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = bit_reader_core.cc
+  source_name_part = bit_reader_core
+build obj/media/base/base/bitrate.o: cxx ../../media/base/bitrate.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = bitrate.cc
+  source_name_part = bitrate
+build obj/media/base/base/bitstream_buffer.o: cxx ../../media/base/bitstream_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = bitstream_buffer.cc
+  source_name_part = bitstream_buffer
+build obj/media/base/base/buffering_state.o: cxx ../../media/base/buffering_state.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = buffering_state.cc
+  source_name_part = buffering_state
+build obj/media/base/base/byte_queue.o: cxx ../../media/base/byte_queue.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = byte_queue.cc
+  source_name_part = byte_queue
+build obj/media/base/base/cdm_callback_promise.o: cxx ../../media/base/cdm_callback_promise.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_callback_promise.cc
+  source_name_part = cdm_callback_promise
+build obj/media/base/base/cdm_config.o: cxx ../../media/base/cdm_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_config.cc
+  source_name_part = cdm_config
+build obj/media/base/base/cdm_context.o: cxx ../../media/base/cdm_context.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_context.cc
+  source_name_part = cdm_context
+build obj/media/base/base/cdm_factory.o: cxx ../../media/base/cdm_factory.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_factory.cc
+  source_name_part = cdm_factory
+build obj/media/base/base/cdm_initialized_promise.o: cxx ../../media/base/cdm_initialized_promise.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_initialized_promise.cc
+  source_name_part = cdm_initialized_promise
+build obj/media/base/base/cdm_key_information.o: cxx ../../media/base/cdm_key_information.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_key_information.cc
+  source_name_part = cdm_key_information
+build obj/media/base/base/cdm_promise.o: cxx ../../media/base/cdm_promise.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_promise.cc
+  source_name_part = cdm_promise
+build obj/media/base/base/cdm_promise_adapter.o: cxx ../../media/base/cdm_promise_adapter.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_promise_adapter.cc
+  source_name_part = cdm_promise_adapter
+build obj/media/base/base/cdm_session_tracker.o: cxx ../../media/base/cdm_session_tracker.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_session_tracker.cc
+  source_name_part = cdm_session_tracker
+build obj/media/base/base/channel_mixer.o: cxx ../../media/base/channel_mixer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = channel_mixer.cc
+  source_name_part = channel_mixer
+build obj/media/base/base/channel_mixing_matrix.o: cxx ../../media/base/channel_mixing_matrix.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = channel_mixing_matrix.cc
+  source_name_part = channel_mixing_matrix
+build obj/media/base/base/color_plane_layout.o: cxx ../../media/base/color_plane_layout.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = color_plane_layout.cc
+  source_name_part = color_plane_layout
+build obj/media/base/base/container_names.o: cxx ../../media/base/container_names.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = container_names.cc
+  source_name_part = container_names
+build obj/media/base/base/content_decryption_module.o: cxx ../../media/base/content_decryption_module.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = content_decryption_module.cc
+  source_name_part = content_decryption_module
+build obj/media/base/base/converting_audio_fifo.o: cxx ../../media/base/converting_audio_fifo.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = converting_audio_fifo.cc
+  source_name_part = converting_audio_fifo
+build obj/media/base/base/data_buffer.o: cxx ../../media/base/data_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = data_buffer.cc
+  source_name_part = data_buffer
+build obj/media/base/base/data_source.o: cxx ../../media/base/data_source.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = data_source.cc
+  source_name_part = data_source
+build obj/media/base/base/decoder.o: cxx ../../media/base/decoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder.cc
+  source_name_part = decoder
+build obj/media/base/base/decoder_buffer.o: cxx ../../media/base/decoder_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_buffer.cc
+  source_name_part = decoder_buffer
+build obj/media/base/base/decoder_buffer_queue.o: cxx ../../media/base/decoder_buffer_queue.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_buffer_queue.cc
+  source_name_part = decoder_buffer_queue
+build obj/media/base/base/decoder_factory.o: cxx ../../media/base/decoder_factory.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_factory.cc
+  source_name_part = decoder_factory
+build obj/media/base/base/decoder_status.o: cxx ../../media/base/decoder_status.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_status.cc
+  source_name_part = decoder_status
+build obj/media/base/base/decrypt_config.o: cxx ../../media/base/decrypt_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decrypt_config.cc
+  source_name_part = decrypt_config
+build obj/media/base/base/decryptor.o: cxx ../../media/base/decryptor.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = decryptor.cc
+  source_name_part = decryptor
+build obj/media/base/base/demuxer.o: cxx ../../media/base/demuxer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer.cc
+  source_name_part = demuxer
+build obj/media/base/base/demuxer_stream.o: cxx ../../media/base/demuxer_stream.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer_stream.cc
+  source_name_part = demuxer_stream
+build obj/media/base/base/djb2.o: cxx ../../media/base/djb2.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = djb2.cc
+  source_name_part = djb2
+build obj/media/base/base/encryption_pattern.o: cxx ../../media/base/encryption_pattern.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = encryption_pattern.cc
+  source_name_part = encryption_pattern
+build obj/media/base/base/encryption_scheme.o: cxx ../../media/base/encryption_scheme.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = encryption_scheme.cc
+  source_name_part = encryption_scheme
+build obj/media/base/base/fake_audio_worker.o: cxx ../../media/base/fake_audio_worker.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = fake_audio_worker.cc
+  source_name_part = fake_audio_worker
+build obj/media/base/base/format_utils.o: cxx ../../media/base/format_utils.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = format_utils.cc
+  source_name_part = format_utils
+build obj/media/base/base/frame_rate_estimator.o: cxx ../../media/base/frame_rate_estimator.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = frame_rate_estimator.cc
+  source_name_part = frame_rate_estimator
+build obj/media/base/base/key_system_info.o: cxx ../../media/base/key_system_info.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = key_system_info.cc
+  source_name_part = key_system_info
+build obj/media/base/base/key_system_names.o: cxx ../../media/base/key_system_names.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = key_system_names.cc
+  source_name_part = key_system_names
+build obj/media/base/base/key_systems.o: cxx ../../media/base/key_systems.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = key_systems.cc
+  source_name_part = key_systems
+build obj/media/base/base/localized_strings.o: cxx ../../media/base/localized_strings.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = localized_strings.cc
+  source_name_part = localized_strings
+build obj/media/base/base/loopback_audio_converter.o: cxx ../../media/base/loopback_audio_converter.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = loopback_audio_converter.cc
+  source_name_part = loopback_audio_converter
+build obj/media/base/base/media.o: cxx ../../media/base/media.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media.cc
+  source_name_part = media
+build obj/media/base/base/media_client.o: cxx ../../media/base/media_client.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_client.cc
+  source_name_part = media_client
+build obj/media/base/base/media_content_type.o: cxx ../../media/base/media_content_type.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_content_type.cc
+  source_name_part = media_content_type
+build obj/media/base/base/media_log.o: cxx ../../media/base/media_log.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log.cc
+  source_name_part = media_log
+build obj/media/base/base/media_log_events.o: cxx ../../media/base/media_log_events.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_events.cc
+  source_name_part = media_log_events
+build obj/media/base/base/media_log_message_levels.o: cxx ../../media/base/media_log_message_levels.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_message_levels.cc
+  source_name_part = media_log_message_levels
+build obj/media/base/base/media_log_properties.o: cxx ../../media/base/media_log_properties.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_properties.cc
+  source_name_part = media_log_properties
+build obj/media/base/base/media_observer.o: cxx ../../media/base/media_observer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_observer.cc
+  source_name_part = media_observer
+build obj/media/base/base/media_permission.o: cxx ../../media/base/media_permission.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_permission.cc
+  source_name_part = media_permission
+build obj/media/base/base/media_player_logging_id.o: cxx ../../media/base/media_player_logging_id.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_player_logging_id.cc
+  source_name_part = media_player_logging_id
+build obj/media/base/base/media_resource.o: cxx ../../media/base/media_resource.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_resource.cc
+  source_name_part = media_resource
+build obj/media/base/base/media_status.o: cxx ../../media/base/media_status.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_status.cc
+  source_name_part = media_status
+build obj/media/base/base/media_switches.o: cxx ../../media/base/media_switches.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_switches.cc
+  source_name_part = media_switches
+build obj/media/base/base/media_track.o: cxx ../../media/base/media_track.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_track.cc
+  source_name_part = media_track
+build obj/media/base/base/media_tracks.o: cxx ../../media/base/media_tracks.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_tracks.cc
+  source_name_part = media_tracks
+build obj/media/base/base/media_types.o: cxx ../../media/base/media_types.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_types.cc
+  source_name_part = media_types
+build obj/media/base/base/media_url_demuxer.o: cxx ../../media/base/media_url_demuxer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_url_demuxer.cc
+  source_name_part = media_url_demuxer
+build obj/media/base/base/media_url_params.o: cxx ../../media/base/media_url_params.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_url_params.cc
+  source_name_part = media_url_params
+build obj/media/base/base/media_util.o: cxx ../../media/base/media_util.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = media_util.cc
+  source_name_part = media_util
+build obj/media/base/base/memory_dump_provider_proxy.o: cxx ../../media/base/memory_dump_provider_proxy.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = memory_dump_provider_proxy.cc
+  source_name_part = memory_dump_provider_proxy
+build obj/media/base/base/mime_util.o: cxx ../../media/base/mime_util.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = mime_util.cc
+  source_name_part = mime_util
+build obj/media/base/base/mime_util_internal.o: cxx ../../media/base/mime_util_internal.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = mime_util_internal.cc
+  source_name_part = mime_util_internal
+build obj/media/base/base/moving_average.o: cxx ../../media/base/moving_average.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = moving_average.cc
+  source_name_part = moving_average
+build obj/media/base/base/multi_channel_resampler.o: cxx ../../media/base/multi_channel_resampler.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = multi_channel_resampler.cc
+  source_name_part = multi_channel_resampler
+build obj/media/base/base/null_video_sink.o: cxx ../../media/base/null_video_sink.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = null_video_sink.cc
+  source_name_part = null_video_sink
+build obj/media/base/base/offloading_audio_encoder.o: cxx ../../media/base/offloading_audio_encoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = offloading_audio_encoder.cc
+  source_name_part = offloading_audio_encoder
+build obj/media/base/base/output_device_info.o: cxx ../../media/base/output_device_info.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = output_device_info.cc
+  source_name_part = output_device_info
+build obj/media/base/base/overlay_info.o: cxx ../../media/base/overlay_info.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = overlay_info.cc
+  source_name_part = overlay_info
+build obj/media/base/base/pipeline_impl.o: cxx ../../media/base/pipeline_impl.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_impl.cc
+  source_name_part = pipeline_impl
+build obj/media/base/base/pipeline_metadata.o: cxx ../../media/base/pipeline_metadata.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_metadata.cc
+  source_name_part = pipeline_metadata
+build obj/media/base/base/pipeline_status.o: cxx ../../media/base/pipeline_status.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_status.cc
+  source_name_part = pipeline_status
+build obj/media/base/base/ranges.o: cxx ../../media/base/ranges.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = ranges.cc
+  source_name_part = ranges
+build obj/media/base/base/reentrancy_checker.o: cxx ../../media/base/reentrancy_checker.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = reentrancy_checker.cc
+  source_name_part = reentrancy_checker
+build obj/media/base/base/renderer.o: cxx ../../media/base/renderer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer.cc
+  source_name_part = renderer
+build obj/media/base/base/renderer_client.o: cxx ../../media/base/renderer_client.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_client.cc
+  source_name_part = renderer_client
+build obj/media/base/base/renderer_factory.o: cxx ../../media/base/renderer_factory.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_factory.cc
+  source_name_part = renderer_factory
+build obj/media/base/base/renderer_factory_selector.o: cxx ../../media/base/renderer_factory_selector.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_factory_selector.cc
+  source_name_part = renderer_factory_selector
+build obj/media/base/base/sample_rates.o: cxx ../../media/base/sample_rates.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = sample_rates.cc
+  source_name_part = sample_rates
+build obj/media/base/base/scoped_async_trace.o: cxx ../../media/base/scoped_async_trace.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = scoped_async_trace.cc
+  source_name_part = scoped_async_trace
+build obj/media/base/base/seekable_buffer.o: cxx ../../media/base/seekable_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = seekable_buffer.cc
+  source_name_part = seekable_buffer
+build obj/media/base/base/serial_runner.o: cxx ../../media/base/serial_runner.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = serial_runner.cc
+  source_name_part = serial_runner
+build obj/media/base/base/silent_sink_suspender.o: cxx ../../media/base/silent_sink_suspender.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = silent_sink_suspender.cc
+  source_name_part = silent_sink_suspender
+build obj/media/base/base/simple_sync_token_client.o: cxx ../../media/base/simple_sync_token_client.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = simple_sync_token_client.cc
+  source_name_part = simple_sync_token_client
+build obj/media/base/base/simple_watch_timer.o: cxx ../../media/base/simple_watch_timer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = simple_watch_timer.cc
+  source_name_part = simple_watch_timer
+build obj/media/base/base/sinc_resampler.o: cxx ../../media/base/sinc_resampler.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = sinc_resampler.cc
+  source_name_part = sinc_resampler
+build obj/media/base/base/status.o: cxx ../../media/base/status.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = status.cc
+  source_name_part = status
+build obj/media/base/base/stream_parser.o: cxx ../../media/base/stream_parser.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = stream_parser.cc
+  source_name_part = stream_parser
+build obj/media/base/base/stream_parser_buffer.o: cxx ../../media/base/stream_parser_buffer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = stream_parser_buffer.cc
+  source_name_part = stream_parser_buffer
+build obj/media/base/base/subsample_entry.o: cxx ../../media/base/subsample_entry.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = subsample_entry.cc
+  source_name_part = subsample_entry
+build obj/media/base/base/supported_types.o: cxx ../../media/base/supported_types.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = supported_types.cc
+  source_name_part = supported_types
+build obj/media/base/base/supported_video_decoder_config.o: cxx ../../media/base/supported_video_decoder_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = supported_video_decoder_config.cc
+  source_name_part = supported_video_decoder_config
+build obj/media/base/base/svc_scalability_mode.o: cxx ../../media/base/svc_scalability_mode.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = svc_scalability_mode.cc
+  source_name_part = svc_scalability_mode
+build obj/media/base/base/text_cue.o: cxx ../../media/base/text_cue.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = text_cue.cc
+  source_name_part = text_cue
+build obj/media/base/base/text_ranges.o: cxx ../../media/base/text_ranges.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = text_ranges.cc
+  source_name_part = text_ranges
+build obj/media/base/base/text_renderer.o: cxx ../../media/base/text_renderer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = text_renderer.cc
+  source_name_part = text_renderer
+build obj/media/base/base/text_track_config.o: cxx ../../media/base/text_track_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = text_track_config.cc
+  source_name_part = text_track_config
+build obj/media/base/base/time_delta_interpolator.o: cxx ../../media/base/time_delta_interpolator.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = time_delta_interpolator.cc
+  source_name_part = time_delta_interpolator
+build obj/media/base/base/tuneable.o: cxx ../../media/base/tuneable.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = tuneable.cc
+  source_name_part = tuneable
+build obj/media/base/base/user_input_monitor.o: cxx ../../media/base/user_input_monitor.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = user_input_monitor.cc
+  source_name_part = user_input_monitor
+build obj/media/base/base/video_aspect_ratio.o: cxx ../../media/base/video_aspect_ratio.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_aspect_ratio.cc
+  source_name_part = video_aspect_ratio
+build obj/media/base/base/video_bitrate_allocation.o: cxx ../../media/base/video_bitrate_allocation.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_bitrate_allocation.cc
+  source_name_part = video_bitrate_allocation
+build obj/media/base/base/video_codecs.o: cxx ../../media/base/video_codecs.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_codecs.cc
+  source_name_part = video_codecs
+build obj/media/base/base/video_color_space.o: cxx ../../media/base/video_color_space.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_color_space.cc
+  source_name_part = video_color_space
+build obj/media/base/base/video_decoder.o: cxx ../../media/base/video_decoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_decoder.cc
+  source_name_part = video_decoder
+build obj/media/base/base/video_decoder_config.o: cxx ../../media/base/video_decoder_config.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_decoder_config.cc
+  source_name_part = video_decoder_config
+build obj/media/base/base/video_encoder.o: cxx ../../media/base/video_encoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_encoder.cc
+  source_name_part = video_encoder
+build obj/media/base/base/video_frame.o: cxx ../../media/base/video_frame.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame.cc
+  source_name_part = video_frame
+build obj/media/base/base/video_frame_layout.o: cxx ../../media/base/video_frame_layout.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_layout.cc
+  source_name_part = video_frame_layout
+build obj/media/base/base/video_frame_metadata.o: cxx ../../media/base/video_frame_metadata.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_metadata.cc
+  source_name_part = video_frame_metadata
+build obj/media/base/base/video_frame_pool.o: cxx ../../media/base/video_frame_pool.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_pool.cc
+  source_name_part = video_frame_pool
+build obj/media/base/base/video_renderer.o: cxx ../../media/base/video_renderer.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_renderer.cc
+  source_name_part = video_renderer
+build obj/media/base/base/video_thumbnail_decoder.o: cxx ../../media/base/video_thumbnail_decoder.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_thumbnail_decoder.cc
+  source_name_part = video_thumbnail_decoder
+build obj/media/base/base/video_transformation.o: cxx ../../media/base/video_transformation.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_transformation.cc
+  source_name_part = video_transformation
+build obj/media/base/base/video_util.o: cxx ../../media/base/video_util.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = video_util.cc
+  source_name_part = video_util
+build obj/media/base/base/wait_and_replace_sync_token_client.o: cxx ../../media/base/wait_and_replace_sync_token_client.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = wait_and_replace_sync_token_client.cc
+  source_name_part = wait_and_replace_sync_token_client
+build obj/media/base/base/wall_clock_time_source.o: cxx ../../media/base/wall_clock_time_source.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = wall_clock_time_source.cc
+  source_name_part = wall_clock_time_source
+build obj/media/base/base/watch_time_keys.o: cxx ../../media/base/watch_time_keys.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = watch_time_keys.cc
+  source_name_part = watch_time_keys
+build obj/media/base/base/user_input_monitor_linux.o: cxx ../../media/base/user_input_monitor_linux.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = user_input_monitor_linux.cc
+  source_name_part = user_input_monitor_linux
+build obj/media/base/base/scopedfd_helper.o: cxx ../../media/base/scopedfd_helper.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = scopedfd_helper.cc
+  source_name_part = scopedfd_helper
+build obj/media/base/base/demuxer_memory_limit_default.o: cxx ../../media/base/demuxer_memory_limit_default.cc || obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer_memory_limit_default.cc
+  source_name_part = demuxer_memory_limit_default
+
+build obj/media/base/base.stamp: stamp obj/media/base/base/amplitude_peak_detector.o obj/media/base/base/android_overlay_config.o obj/media/base/base/audio_block_fifo.o obj/media/base/base/audio_buffer.o obj/media/base/base/audio_buffer_converter.o obj/media/base/base/audio_buffer_queue.o obj/media/base/base/audio_codecs.o obj/media/base/base/audio_converter.o obj/media/base/base/audio_decoder.o obj/media/base/base/audio_decoder_config.o obj/media/base/base/audio_discard_helper.o obj/media/base/base/audio_encoder.o obj/media/base/base/audio_fifo.o obj/media/base/base/audio_glitch_info.o obj/media/base/base/audio_hash.o obj/media/base/base/audio_power_monitor.o obj/media/base/base/audio_processing.o obj/media/base/base/audio_pull_fifo.o obj/media/base/base/audio_push_fifo.o obj/media/base/base/audio_renderer.o obj/media/base/base/audio_renderer_mixer.o obj/media/base/base/audio_renderer_mixer_input.o obj/media/base/base/audio_shifter.o obj/media/base/base/audio_timestamp_helper.o obj/media/base/base/bit_reader.o obj/media/base/base/bit_reader_core.o obj/media/base/base/bitrate.o obj/media/base/base/bitstream_buffer.o obj/media/base/base/buffering_state.o obj/media/base/base/byte_queue.o obj/media/base/base/cdm_callback_promise.o obj/media/base/base/cdm_config.o obj/media/base/base/cdm_context.o obj/media/base/base/cdm_factory.o obj/media/base/base/cdm_initialized_promise.o obj/media/base/base/cdm_key_information.o obj/media/base/base/cdm_promise.o obj/media/base/base/cdm_promise_adapter.o obj/media/base/base/cdm_session_tracker.o obj/media/base/base/channel_mixer.o obj/media/base/base/channel_mixing_matrix.o obj/media/base/base/color_plane_layout.o obj/media/base/base/container_names.o obj/media/base/base/content_decryption_module.o obj/media/base/base/converting_audio_fifo.o obj/media/base/base/data_buffer.o obj/media/base/base/data_source.o obj/media/base/base/decoder.o obj/media/base/base/decoder_buffer.o obj/media/base/base/decoder_buffer_queue.o obj/media/base/base/decoder_factory.o obj/media/base/base/decoder_status.o obj/media/base/base/decrypt_config.o obj/media/base/base/decryptor.o obj/media/base/base/demuxer.o obj/media/base/base/demuxer_stream.o obj/media/base/base/djb2.o obj/media/base/base/encryption_pattern.o obj/media/base/base/encryption_scheme.o obj/media/base/base/fake_audio_worker.o obj/media/base/base/format_utils.o obj/media/base/base/frame_rate_estimator.o obj/media/base/base/key_system_info.o obj/media/base/base/key_system_names.o obj/media/base/base/key_systems.o obj/media/base/base/localized_strings.o obj/media/base/base/loopback_audio_converter.o obj/media/base/base/media.o obj/media/base/base/media_client.o obj/media/base/base/media_content_type.o obj/media/base/base/media_log.o obj/media/base/base/media_log_events.o obj/media/base/base/media_log_message_levels.o obj/media/base/base/media_log_properties.o obj/media/base/base/media_observer.o obj/media/base/base/media_permission.o obj/media/base/base/media_player_logging_id.o obj/media/base/base/media_resource.o obj/media/base/base/media_status.o obj/media/base/base/media_switches.o obj/media/base/base/media_track.o obj/media/base/base/media_tracks.o obj/media/base/base/media_types.o obj/media/base/base/media_url_demuxer.o obj/media/base/base/media_url_params.o obj/media/base/base/media_util.o obj/media/base/base/memory_dump_provider_proxy.o obj/media/base/base/mime_util.o obj/media/base/base/mime_util_internal.o obj/media/base/base/moving_average.o obj/media/base/base/multi_channel_resampler.o obj/media/base/base/null_video_sink.o obj/media/base/base/offloading_audio_encoder.o obj/media/base/base/output_device_info.o obj/media/base/base/overlay_info.o obj/media/base/base/pipeline_impl.o obj/media/base/base/pipeline_metadata.o obj/media/base/base/pipeline_status.o obj/media/base/base/ranges.o obj/media/base/base/reentrancy_checker.o obj/media/base/base/renderer.o obj/media/base/base/renderer_client.o obj/media/base/base/renderer_factory.o obj/media/base/base/renderer_factory_selector.o obj/media/base/base/sample_rates.o obj/media/base/base/scoped_async_trace.o obj/media/base/base/seekable_buffer.o obj/media/base/base/serial_runner.o obj/media/base/base/silent_sink_suspender.o obj/media/base/base/simple_sync_token_client.o obj/media/base/base/simple_watch_timer.o obj/media/base/base/sinc_resampler.o obj/media/base/base/status.o obj/media/base/base/stream_parser.o obj/media/base/base/stream_parser_buffer.o obj/media/base/base/subsample_entry.o obj/media/base/base/supported_types.o obj/media/base/base/supported_video_decoder_config.o obj/media/base/base/svc_scalability_mode.o obj/media/base/base/text_cue.o obj/media/base/base/text_ranges.o obj/media/base/base/text_renderer.o obj/media/base/base/text_track_config.o obj/media/base/base/time_delta_interpolator.o obj/media/base/base/tuneable.o obj/media/base/base/user_input_monitor.o obj/media/base/base/video_aspect_ratio.o obj/media/base/base/video_bitrate_allocation.o obj/media/base/base/video_codecs.o obj/media/base/base/video_color_space.o obj/media/base/base/video_decoder.o obj/media/base/base/video_decoder_config.o obj/media/base/base/video_encoder.o obj/media/base/base/video_frame.o obj/media/base/base/video_frame_layout.o obj/media/base/base/video_frame_metadata.o obj/media/base/base/video_frame_pool.o obj/media/base/base/video_renderer.o obj/media/base/base/video_thumbnail_decoder.o obj/media/base/base/video_transformation.o obj/media/base/base/video_util.o obj/media/base/base/wait_and_replace_sync_token_client.o obj/media/base/base/wall_clock_time_source.o obj/media/base/base/watch_time_keys.o obj/media/base/base/user_input_monitor_linux.o obj/media/base/base/scopedfd_helper.o obj/media/base/base/demuxer_memory_limit_default.o || obj/media/base/video_facing.stamp obj/media/media_buildflags.stamp ./libmedia_shared_memory_support.so.TOC obj/media/gpu/buildflags.stamp ./libui_gfx_color_space.so.TOC ./libgl_wrapper.so.TOC ./libbase.so.TOC obj/base/allocator/buildflags.stamp obj/build/chromeos_buildflags.stamp obj/components/system_media_controls/linux/buildflags/buildflags.stamp obj/gpu/command_buffer/client/interface_base.stamp obj/gpu/command_buffer/client/raster_interface.stamp obj/gpu/command_buffer/common/common.stamp obj/gpu/ipc/common/common.stamp obj/media/cdm/clear_key_cdm_common.stamp ./libnet.so.TOC ./libskia.so.TOC obj/third_party/libyuv/libyuv.stamp obj/third_party/widevine/cdm/headers.stamp ./libui_display.so.TOC ./libui_events.so.TOC ./libui_events_events_base.so.TOC ./libui_events_keyboard_hook.so.TOC ./liburl.so.TOC ./libffmpeg.so.TOC obj/third_party/ffmpeg/ffmpeg_features.stamp obj/third_party/libvpx/libvpx.a ./libui_ozone.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libui_events_platform.so.TOC ./libui_gfx.so.TOC ./libui_gfx_color_utils.so.TOC ./libui_gfx_geometry.so.TOC ./libui_gfx_gfx_skia.so.TOC ./libui_gfx_gfx_switches.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC ./libui_gfx_animation.so.TOC ./libui_gfx_codec.so.TOC ./libui_gfx_geometry_geometry_skia.so.TOC ./libui_gfx_range.so.TOC ./libcc_paint.so.TOC ./libcc_base.so.TOC ./libcc_debug.so.TOC obj/components/viz/common/resource_format.stamp ./libmojo_public_cpp_bindings.so.TOC ./libmojo_public_cpp_bindings_bindings_base.so.TOC ./libmojo_public_system_cpp.so.TOC ./libmojo_core_embedder.so.TOC ./libmojo_cpp_platform.so.TOC ./libmojo_public_system.so.TOC ./libipc_message_support.so.TOC ./libmojo_mojom_bindings.so.TOC ./libmojo_mojom_bindings_shared.so.TOC ./libgpu.so.TOC ./libgpu_mailbox.so.TOC ./libchrome_zlib.so.TOC ./libgpu_config_vulkan_info.so.TOC ./libmojo_base_mojom_shared.so.TOC ./libmojo_base_mojom.so.TOC ./libmojo_base_lib.so.TOC ./libmojo_base_shared_typemap_traits.so.TOC ./libbase_i18n.so.TOC ./libmojo_base_typemap_traits.so.TOC ./libgfx_native_types_shared_mojom_traits.so.TOC ./libskia_shared_typemap_traits.so.TOC ./libgfx_shared_mojom_traits.so.TOC ./libui_base_features.so.TOC ./libipc.so.TOC ./libipc_mojom.so.TOC ./libipc_mojom_shared.so.TOC ./libtracing_cpp.so.TOC ./libcomponents_tracing_startup_tracing.so.TOC ./libtracing_mojom.so.TOC ./libtracing_mojom_shared.so.TOC ./liburl_mojom_traits.so.TOC ./libgfx_ipc.so.TOC ./libgfx_ipc_geometry.so.TOC ./libgpu_ipc_common_vulkan_ycbcr_info.so.TOC ./libgpu_channel_mojom_shared.so.TOC ./libgl_mojom_shared.so.TOC ./libgpu_common_interfaces_shared.so.TOC ./libvulkan_interface_shared.so.TOC ./libgl_mojom.so.TOC ./liburl_ipc_url_ipc.so.TOC ./libgpu_gles2.so.TOC ./libui_base_clipboard.so.TOC ./libui_base_clipboard_types.so.TOC ./libui_base_file_info.so.TOC ./libui_base_data_transfer_policy.so.TOC obj/ui/gfx/buffer_types.stamp obj/media/cdm/cdm_type.stamp ./libthird_party_protobuf_protobuf_lite.so.TOC ./libnet_uri_template.so.TOC ./libcrcrypto.so.TOC ./libnet_third_party_quiche.so.TOC obj/third_party/libyuv/libyuv_internal.a obj/third_party/libjpeg_turbo/libjpeg.a obj/third_party/libjpeg_turbo/libjpeg_headers.stamp obj/third_party/libjpeg_turbo/libsimd.a obj/third_party/libjpeg_turbo/libsimd_asm.a ./libdisplay_types.so.TOC ./libkeycodes_x11.so.TOC ./libservices_metrics_public_cpp_metrics_cpp.so.TOC obj/third_party/libvpx/libvpx_x86_64_headers.stamp obj/third_party/libvpx/libvpx_asm.a obj/third_party/libvpx/libvpx_intrinsics_avx.stamp obj/third_party/libvpx/libvpx_intrinsics_avx2.stamp obj/third_party/libvpx/libvpx_intrinsics_avx512.stamp obj/third_party/libvpx/libvpx_intrinsics_mmx.stamp obj/third_party/libvpx/libvpx_intrinsics_sse2.stamp obj/third_party/libvpx/libvpx_intrinsics_sse4_1.stamp obj/third_party/libvpx/libvpx_intrinsics_ssse3.stamp ./libui_ozone_ozone_base.so.TOC ./libdisplay_util.so.TOC ./libui_events_devices.so.TOC ./libgfx_ipc_buffer_types.so.TOC ./libgfx_ipc_skia.so.TOC ./libvulkan_wrapper.so.TOC ./libservice_manager_cpp.so.TOC ./libservice_manager_cpp_types.so.TOC ./libservice_manager_mojom.so.TOC ./libservice_manager_mojom_shared.so.TOC ./libservice_manager_mojom_constants_shared.so.TOC ./libservice_manager_mojom_constants.so.TOC ./libservice_manager_mojom_traits.so.TOC ./libui_base_data_exchange.so.TOC ./libui_platform_window.so.TOC
