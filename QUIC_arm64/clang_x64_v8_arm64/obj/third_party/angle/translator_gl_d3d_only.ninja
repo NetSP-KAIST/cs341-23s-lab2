@@ -1,0 +1,347 @@
+defines = -DANGLE_ENABLE_ESSL -DANGLE_ENABLE_GLSL -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DANGLE_ASSERT_ALWAYS_ON -DANGLE_VMA_VERSION=2003000 -DANGLE_IS_LINUX -DANGLE_USE_VULKAN_DISPLAY -DANGLE_USE_X11 -DANGLE_USE_WAYLAND -DANGLE_VULKAN_DISPLAY_MODE_HEADLESS -DANGLE_DEBUG_LAYERS_ENABLED -DANGLE_OUTSIDE_WEBKIT -DANGLE_DELEGATE_WORKERS -DANGLE_USE_ABSEIL -DABSL_ALLOCATOR_NOTHROW=1 -DABSL_CONSUME_DLL
+include_dirs = -I../../buildtools/third_party/libc++ -I../../third_party/angle/include -I../../third_party/angle/src -I../../third_party/angle/src/common/base -I../../third_party/angle/src/common/third_party/xxhash -I../../third_party/abseil-cpp
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -Wglobal-constructors -Wbad-function-cast -Wconditional-uninitialized -Wextra-semi-stmt -Wfloat-conversion -Winconsistent-missing-destructor-override -Wmissing-field-initializers -Wnewline-eof -Wnon-virtual-dtor -Wredundant-parens -Wreturn-std-move -Wshadow -Wshadow-field -Wtautological-type-limit-compare -Wundefined-reinterpret-cast -Wunneeded-internal-declaration -Wunused-but-set-variable -Wsuggest-destructor-override -Wsuggest-override -Wparentheses -Wrange-loop-analysis -Wstrict-prototypes -Wunreachable-code-aggressive -Wshorten-64-to-32
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = translator_gl_d3d_only
+target_out_dir = clang_x64_v8_arm64/obj/third_party/angle
+target_output_name = libtranslator_gl_d3d_only
+
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_commit_id.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_program_version_id.stamp
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BaseTypes.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/BaseTypes.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = BaseTypes.cpp
+  source_name_part = BaseTypes
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltInFunctionEmulator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/BuiltInFunctionEmulator.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = BuiltInFunctionEmulator.cpp
+  source_name_part = BuiltInFunctionEmulator
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CallDAG.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/CallDAG.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = CallDAG.cpp
+  source_name_part = CallDAG
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CodeGen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/CodeGen.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = CodeGen.cpp
+  source_name_part = CodeGen
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CollectVariables.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/CollectVariables.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = CollectVariables.cpp
+  source_name_part = CollectVariables
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Compiler.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Compiler.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Compiler.cpp
+  source_name_part = Compiler
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ConstantUnion.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ConstantUnion.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ConstantUnion.cpp
+  source_name_part = ConstantUnion
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Declarator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Declarator.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Declarator.cpp
+  source_name_part = Declarator
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Diagnostics.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Diagnostics.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Diagnostics.cpp
+  source_name_part = Diagnostics
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DirectiveHandler.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/DirectiveHandler.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = DirectiveHandler.cpp
+  source_name_part = DirectiveHandler
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ExtensionBehavior.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ExtensionBehavior.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ExtensionBehavior.cpp
+  source_name_part = ExtensionBehavior
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FlagStd140Structs.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/FlagStd140Structs.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FlagStd140Structs.cpp
+  source_name_part = FlagStd140Structs
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FunctionLookup.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/FunctionLookup.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FunctionLookup.cpp
+  source_name_part = FunctionLookup
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/HashNames.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/HashNames.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = HashNames.cpp
+  source_name_part = HashNames
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ImmutableStringBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ImmutableStringBuilder.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ImmutableStringBuilder.cpp
+  source_name_part = ImmutableStringBuilder
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InfoSink.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/InfoSink.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = InfoSink.cpp
+  source_name_part = InfoSink
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Initialize.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Initialize.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Initialize.cpp
+  source_name_part = Initialize
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InitializeDll.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/InitializeDll.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = InitializeDll.cpp
+  source_name_part = InitializeDll
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNode.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/IntermNode.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IntermNode.cpp
+  source_name_part = IntermNode
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IsASTDepthBelowLimit.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/IsASTDepthBelowLimit.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IsASTDepthBelowLimit.cpp
+  source_name_part = IsASTDepthBelowLimit
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Operator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Operator.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Operator.cpp
+  source_name_part = Operator
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputTree.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/OutputTree.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = OutputTree.cpp
+  source_name_part = OutputTree
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ParseContext.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ParseContext.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ParseContext.cpp
+  source_name_part = ParseContext
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PoolAlloc.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/PoolAlloc.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = PoolAlloc.cpp
+  source_name_part = PoolAlloc
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/QualifierTypes.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/QualifierTypes.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = QualifierTypes.cpp
+  source_name_part = QualifierTypes
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ShaderLang.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ShaderLang.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ShaderLang.cpp
+  source_name_part = ShaderLang
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ShaderVars.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ShaderVars.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ShaderVars.cpp
+  source_name_part = ShaderVars
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Symbol.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Symbol.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Symbol.cpp
+  source_name_part = Symbol
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolTable.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/SymbolTable.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SymbolTable.cpp
+  source_name_part = SymbolTable
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolUniqueId.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/SymbolUniqueId.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SymbolUniqueId.cpp
+  source_name_part = SymbolUniqueId
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Types.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/Types.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = Types.cpp
+  source_name_part = Types
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateAST.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateAST.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateAST.cpp
+  source_name_part = ValidateAST
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateBarrierFunctionCall.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateBarrierFunctionCall.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateBarrierFunctionCall.cpp
+  source_name_part = ValidateBarrierFunctionCall
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateClipCullDistance.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateClipCullDistance.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateClipCullDistance.cpp
+  source_name_part = ValidateClipCullDistance
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateGlobalInitializer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateGlobalInitializer.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateGlobalInitializer.cpp
+  source_name_part = ValidateGlobalInitializer
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateLimitations.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateLimitations.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateLimitations.cpp
+  source_name_part = ValidateLimitations
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateMaxParameters.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateMaxParameters.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateMaxParameters.cpp
+  source_name_part = ValidateMaxParameters
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateOutputs.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateOutputs.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateOutputs.cpp
+  source_name_part = ValidateOutputs
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateSwitch.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateSwitch.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateSwitch.cpp
+  source_name_part = ValidateSwitch
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateTypeSizeLimitations.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateTypeSizeLimitations.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateTypeSizeLimitations.cpp
+  source_name_part = ValidateTypeSizeLimitations
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateVaryingLocations.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ValidateVaryingLocations.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ValidateVaryingLocations.cpp
+  source_name_part = ValidateVaryingLocations
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/VariablePacker.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/VariablePacker.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = VariablePacker.cpp
+  source_name_part = VariablePacker
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/blocklayout.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/blocklayout.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = blocklayout.cpp
+  source_name_part = blocklayout
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/glslang_lex_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/glslang_lex_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = glslang_lex_autogen.cpp
+  source_name_part = glslang_lex_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/glslang_tab_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/glslang_tab_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = glslang_tab_autogen.cpp
+  source_name_part = glslang_tab_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampIndirectIndices.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/ClampIndirectIndices.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ClampIndirectIndices.cpp
+  source_name_part = ClampIndirectIndices
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampPointSize.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/ClampPointSize.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ClampPointSize.cpp
+  source_name_part = ClampPointSize
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ConvertUnsupportedConstructorsToFunctionCalls.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/ConvertUnsupportedConstructorsToFunctionCalls.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ConvertUnsupportedConstructorsToFunctionCalls.cpp
+  source_name_part = ConvertUnsupportedConstructorsToFunctionCalls
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeclareAndInitBuiltinsForInstancedMultiview.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/DeclareAndInitBuiltinsForInstancedMultiview.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = DeclareAndInitBuiltinsForInstancedMultiview.cpp
+  source_name_part = DeclareAndInitBuiltinsForInstancedMultiview
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeclarePerVertexBlocks.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/DeclarePerVertexBlocks.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = DeclarePerVertexBlocks.cpp
+  source_name_part = DeclarePerVertexBlocks
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeferGlobalInitializers.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/DeferGlobalInitializers.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = DeferGlobalInitializers.cpp
+  source_name_part = DeferGlobalInitializers
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/EmulateGLFragColorBroadcast.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/EmulateGLFragColorBroadcast.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = EmulateGLFragColorBroadcast.cpp
+  source_name_part = EmulateGLFragColorBroadcast
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/EmulateMultiDrawShaderBuiltins.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/EmulateMultiDrawShaderBuiltins.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = EmulateMultiDrawShaderBuiltins.cpp
+  source_name_part = EmulateMultiDrawShaderBuiltins
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FoldExpressions.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/FoldExpressions.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FoldExpressions.cpp
+  source_name_part = FoldExpressions
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ForcePrecisionQualifier.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/ForcePrecisionQualifier.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ForcePrecisionQualifier.cpp
+  source_name_part = ForcePrecisionQualifier
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InitializeVariables.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/InitializeVariables.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = InitializeVariables.cpp
+  source_name_part = InitializeVariables
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/MonomorphizeUnsupportedFunctions.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/MonomorphizeUnsupportedFunctions.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = MonomorphizeUnsupportedFunctions.cpp
+  source_name_part = MonomorphizeUnsupportedFunctions
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PruneEmptyCases.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/PruneEmptyCases.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = PruneEmptyCases.cpp
+  source_name_part = PruneEmptyCases
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PruneNoOps.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/PruneNoOps.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = PruneNoOps.cpp
+  source_name_part = PruneNoOps
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RecordConstantPrecision.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RecordConstantPrecision.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RecordConstantPrecision.cpp
+  source_name_part = RecordConstantPrecision
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveArrayLengthMethod.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveArrayLengthMethod.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveArrayLengthMethod.cpp
+  source_name_part = RemoveArrayLengthMethod
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveAtomicCounterBuiltins.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveAtomicCounterBuiltins.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveAtomicCounterBuiltins.cpp
+  source_name_part = RemoveAtomicCounterBuiltins
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveDynamicIndexing.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveDynamicIndexing.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveDynamicIndexing.cpp
+  source_name_part = RemoveDynamicIndexing
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveInactiveInterfaceVariables.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveInactiveInterfaceVariables.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveInactiveInterfaceVariables.cpp
+  source_name_part = RemoveInactiveInterfaceVariables
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveInvariantDeclaration.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveInvariantDeclaration.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveInvariantDeclaration.cpp
+  source_name_part = RemoveInvariantDeclaration
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveUnreferencedVariables.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RemoveUnreferencedVariables.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RemoveUnreferencedVariables.cpp
+  source_name_part = RemoveUnreferencedVariables
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteArrayOfArrayOfOpaqueUniforms.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteArrayOfArrayOfOpaqueUniforms.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteArrayOfArrayOfOpaqueUniforms.cpp
+  source_name_part = RewriteArrayOfArrayOfOpaqueUniforms
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteAtomicCounters.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteAtomicCounters.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteAtomicCounters.cpp
+  source_name_part = RewriteAtomicCounters
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteCubeMapSamplersAs2DArray.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteCubeMapSamplersAs2DArray.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteCubeMapSamplersAs2DArray.cpp
+  source_name_part = RewriteCubeMapSamplersAs2DArray
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteDfdy.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteDfdy.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteDfdy.cpp
+  source_name_part = RewriteDfdy
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewritePixelLocalStorage.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewritePixelLocalStorage.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewritePixelLocalStorage.cpp
+  source_name_part = RewritePixelLocalStorage
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteStructSamplers.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteStructSamplers.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteStructSamplers.cpp
+  source_name_part = RewriteStructSamplers
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteTexelFetchOffset.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/RewriteTexelFetchOffset.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteTexelFetchOffset.cpp
+  source_name_part = RewriteTexelFetchOffset
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ScalarizeVecAndMatConstructorArgs.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/ScalarizeVecAndMatConstructorArgs.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ScalarizeVecAndMatConstructorArgs.cpp
+  source_name_part = ScalarizeVecAndMatConstructorArgs
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SeparateDeclarations.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/SeparateDeclarations.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SeparateDeclarations.cpp
+  source_name_part = SeparateDeclarations
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SeparateStructFromUniformDeclarations.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/SeparateStructFromUniformDeclarations.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SeparateStructFromUniformDeclarations.cpp
+  source_name_part = SeparateStructFromUniformDeclarations
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SimplifyLoopConditions.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/SimplifyLoopConditions.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SimplifyLoopConditions.cpp
+  source_name_part = SimplifyLoopConditions
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SplitSequenceOperator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/SplitSequenceOperator.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SplitSequenceOperator.cpp
+  source_name_part = SplitSequenceOperator
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DriverUniform.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/DriverUniform.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = DriverUniform.cpp
+  source_name_part = DriverUniform
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindFunction.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/FindFunction.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FindFunction.cpp
+  source_name_part = FindFunction
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindMain.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/FindMain.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FindMain.cpp
+  source_name_part = FindMain
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindPreciseNodes.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/FindPreciseNodes.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FindPreciseNodes.cpp
+  source_name_part = FindPreciseNodes
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindSymbolNode.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/FindSymbolNode.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = FindSymbolNode.cpp
+  source_name_part = FindSymbolNode
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNodePatternMatcher.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/IntermNodePatternMatcher.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IntermNodePatternMatcher.cpp
+  source_name_part = IntermNodePatternMatcher
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNode_util.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/IntermNode_util.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IntermNode_util.cpp
+  source_name_part = IntermNode_util
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermRebuild.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/IntermRebuild.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IntermRebuild.cpp
+  source_name_part = IntermRebuild
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermTraverse.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/IntermTraverse.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = IntermTraverse.cpp
+  source_name_part = IntermTraverse
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceArrayOfMatrixVarying.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/ReplaceArrayOfMatrixVarying.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ReplaceArrayOfMatrixVarying.cpp
+  source_name_part = ReplaceArrayOfMatrixVarying
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceClipCullDistanceVariable.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/ReplaceClipCullDistanceVariable.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ReplaceClipCullDistanceVariable.cpp
+  source_name_part = ReplaceClipCullDistanceVariable
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceShadowingVariables.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/ReplaceShadowingVariables.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ReplaceShadowingVariables.cpp
+  source_name_part = ReplaceShadowingVariables
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceVariable.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/ReplaceVariable.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ReplaceVariable.cpp
+  source_name_part = ReplaceVariable
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteSampleMaskVariable.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/RewriteSampleMaskVariable.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteSampleMaskVariable.cpp
+  source_name_part = RewriteSampleMaskVariable
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RunAtTheBeginningOfShader.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/RunAtTheBeginningOfShader.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RunAtTheBeginningOfShader.cpp
+  source_name_part = RunAtTheBeginningOfShader
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RunAtTheEndOfShader.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/RunAtTheEndOfShader.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RunAtTheEndOfShader.cpp
+  source_name_part = RunAtTheEndOfShader
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SpecializationConstant.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_util/SpecializationConstant.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SpecializationConstant.cpp
+  source_name_part = SpecializationConstant
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/util.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/util.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = util.cpp
+  source_name_part = util
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ImmutableString_ESSL_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ImmutableString_ESSL_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ImmutableString_ESSL_autogen.cpp
+  source_name_part = ImmutableString_ESSL_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolTable_ESSL_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/SymbolTable_ESSL_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = SymbolTable_ESSL_autogen.cpp
+  source_name_part = SymbolTable_ESSL_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputESSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/OutputESSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = OutputESSL.cpp
+  source_name_part = OutputESSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/TranslatorESSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/TranslatorESSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = TranslatorESSL.cpp
+  source_name_part = TranslatorESSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltInFunctionEmulatorGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/BuiltInFunctionEmulatorGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = BuiltInFunctionEmulatorGLSL.cpp
+  source_name_part = BuiltInFunctionEmulatorGLSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ExtensionGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/ExtensionGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ExtensionGLSL.cpp
+  source_name_part = ExtensionGLSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/TranslatorGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/TranslatorGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = TranslatorGLSL.cpp
+  source_name_part = TranslatorGLSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/VersionGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/VersionGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = VersionGLSL.cpp
+  source_name_part = VersionGLSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampFragDepth.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/gl/ClampFragDepth.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = ClampFragDepth.cpp
+  source_name_part = ClampFragDepth
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RegenerateStructNames.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/gl/RegenerateStructNames.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RegenerateStructNames.cpp
+  source_name_part = RegenerateStructNames
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteRepeatedAssignToSwizzled.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/gl/RewriteRepeatedAssignToSwizzled.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = RewriteRepeatedAssignToSwizzled.cpp
+  source_name_part = RewriteRepeatedAssignToSwizzled
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/UseInterfaceBlockFields.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/tree_ops/gl/UseInterfaceBlockFields.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = UseInterfaceBlockFields.cpp
+  source_name_part = UseInterfaceBlockFields
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputGLSLBase.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/OutputGLSLBase.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = OutputGLSLBase.cpp
+  source_name_part = OutputGLSLBase
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltinsWorkaroundGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/BuiltinsWorkaroundGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = BuiltinsWorkaroundGLSL.cpp
+  source_name_part = BuiltinsWorkaroundGLSL
+build clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputGLSL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/compiler/translator/OutputGLSL.cpp || clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only.inputdeps.stamp
+  source_file_part = OutputGLSL.cpp
+  source_name_part = OutputGLSL
+
+build clang_x64_v8_arm64/obj/third_party/angle/libtranslator_gl_d3d_only.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BaseTypes.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltInFunctionEmulator.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CallDAG.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CodeGen.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/CollectVariables.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Compiler.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ConstantUnion.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Declarator.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Diagnostics.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DirectiveHandler.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ExtensionBehavior.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FlagStd140Structs.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FunctionLookup.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/HashNames.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ImmutableStringBuilder.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InfoSink.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Initialize.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InitializeDll.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNode.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IsASTDepthBelowLimit.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Operator.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputTree.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ParseContext.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PoolAlloc.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/QualifierTypes.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ShaderLang.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ShaderVars.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Symbol.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolTable.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolUniqueId.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/Types.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateAST.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateBarrierFunctionCall.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateClipCullDistance.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateGlobalInitializer.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateLimitations.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateMaxParameters.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateOutputs.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateSwitch.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateTypeSizeLimitations.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ValidateVaryingLocations.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/VariablePacker.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/blocklayout.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/glslang_lex_autogen.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/glslang_tab_autogen.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampIndirectIndices.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampPointSize.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ConvertUnsupportedConstructorsToFunctionCalls.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeclareAndInitBuiltinsForInstancedMultiview.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeclarePerVertexBlocks.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DeferGlobalInitializers.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/EmulateGLFragColorBroadcast.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/EmulateMultiDrawShaderBuiltins.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FoldExpressions.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ForcePrecisionQualifier.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/InitializeVariables.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/MonomorphizeUnsupportedFunctions.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PruneEmptyCases.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/PruneNoOps.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RecordConstantPrecision.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveArrayLengthMethod.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveAtomicCounterBuiltins.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveDynamicIndexing.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveInactiveInterfaceVariables.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveInvariantDeclaration.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RemoveUnreferencedVariables.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteArrayOfArrayOfOpaqueUniforms.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteAtomicCounters.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteCubeMapSamplersAs2DArray.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteDfdy.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewritePixelLocalStorage.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteStructSamplers.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteTexelFetchOffset.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ScalarizeVecAndMatConstructorArgs.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SeparateDeclarations.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SeparateStructFromUniformDeclarations.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SimplifyLoopConditions.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SplitSequenceOperator.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/DriverUniform.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindFunction.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindMain.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindPreciseNodes.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/FindSymbolNode.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNodePatternMatcher.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermNode_util.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermRebuild.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/IntermTraverse.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceArrayOfMatrixVarying.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceClipCullDistanceVariable.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceShadowingVariables.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ReplaceVariable.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteSampleMaskVariable.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RunAtTheBeginningOfShader.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RunAtTheEndOfShader.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SpecializationConstant.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/util.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ImmutableString_ESSL_autogen.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/SymbolTable_ESSL_autogen.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputESSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/TranslatorESSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltInFunctionEmulatorGLSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ExtensionGLSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/TranslatorGLSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/VersionGLSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/ClampFragDepth.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RegenerateStructNames.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/RewriteRepeatedAssignToSwizzled.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/UseInterfaceBlockFields.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputGLSLBase.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/BuiltinsWorkaroundGLSL.o clang_x64_v8_arm64/obj/third_party/angle/translator_gl_d3d_only/OutputGLSL.o || clang_x64_v8_arm64/obj/third_party/angle/libangle_common.a clang_x64_v8_arm64/obj/third_party/angle/angle_translator_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_version_info.stamp clang_x64_v8_arm64/obj/third_party/angle/libangle_common_shader_state.a clang_x64_v8_arm64/obj/third_party/angle/includes.stamp clang_x64_v8_arm64/obj/third_party/angle/libpreprocessor.a clang_x64_v8_arm64/obj/third_party/angle/src/common/spirv/angle_spirv_headers.stamp clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/obj/third_party/angle/xxhash.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_version.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/angle

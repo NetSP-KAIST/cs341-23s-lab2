@@ -1,0 +1,17 @@
+[
+  {
+    "traits_deps": [
+      "//services/network/public/cpp:trigger_attestation_traits"
+    ],
+    "traits_headers": [
+      "services/network/public/cpp/attribution_mojom_traits.h"
+    ],
+    "types": [
+      {
+        "cpp": "::network::TriggerAttestation",
+        "mojom": "network.mojom.TriggerAttestation",
+        "move_only": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,235 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = protocol
+target_out_dir = obj/components/sync/protocol
+target_output_name = libprotocol
+
+build obj/components/sync/protocol/protocol/app_list_specifics.pb.o: cxx gen/components/sync/protocol/app_list_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = app_list_specifics.pb.cc
+  source_name_part = app_list_specifics.pb
+build obj/components/sync/protocol/protocol/app_notification_specifics.pb.o: cxx gen/components/sync/protocol/app_notification_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = app_notification_specifics.pb.cc
+  source_name_part = app_notification_specifics.pb
+build obj/components/sync/protocol/protocol/app_setting_specifics.pb.o: cxx gen/components/sync/protocol/app_setting_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = app_setting_specifics.pb.cc
+  source_name_part = app_setting_specifics.pb
+build obj/components/sync/protocol/protocol/app_specifics.pb.o: cxx gen/components/sync/protocol/app_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = app_specifics.pb.cc
+  source_name_part = app_specifics.pb
+build obj/components/sync/protocol/protocol/arc_package_specifics.pb.o: cxx gen/components/sync/protocol/arc_package_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = arc_package_specifics.pb.cc
+  source_name_part = arc_package_specifics.pb
+build obj/components/sync/protocol/protocol/autofill_offer_specifics.pb.o: cxx gen/components/sync/protocol/autofill_offer_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = autofill_offer_specifics.pb.cc
+  source_name_part = autofill_offer_specifics.pb
+build obj/components/sync/protocol/protocol/autofill_specifics.pb.o: cxx gen/components/sync/protocol/autofill_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = autofill_specifics.pb.cc
+  source_name_part = autofill_specifics.pb
+build obj/components/sync/protocol/protocol/autofill_wallet_usage_specifics.pb.o: cxx gen/components/sync/protocol/autofill_wallet_usage_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = autofill_wallet_usage_specifics.pb.cc
+  source_name_part = autofill_wallet_usage_specifics.pb
+build obj/components/sync/protocol/protocol/bookmark_model_metadata.pb.o: cxx gen/components/sync/protocol/bookmark_model_metadata.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = bookmark_model_metadata.pb.cc
+  source_name_part = bookmark_model_metadata.pb
+build obj/components/sync/protocol/protocol/bookmark_specifics.pb.o: cxx gen/components/sync/protocol/bookmark_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = bookmark_specifics.pb.cc
+  source_name_part = bookmark_specifics.pb
+build obj/components/sync/protocol/protocol/client_commands.pb.o: cxx gen/components/sync/protocol/client_commands.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = client_commands.pb.cc
+  source_name_part = client_commands.pb
+build obj/components/sync/protocol/protocol/client_debug_info.pb.o: cxx gen/components/sync/protocol/client_debug_info.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = client_debug_info.pb.cc
+  source_name_part = client_debug_info.pb
+build obj/components/sync/protocol/protocol/contact_info_specifics.pb.o: cxx gen/components/sync/protocol/contact_info_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = contact_info_specifics.pb.cc
+  source_name_part = contact_info_specifics.pb
+build obj/components/sync/protocol/protocol/data_type_progress_marker.pb.o: cxx gen/components/sync/protocol/data_type_progress_marker.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = data_type_progress_marker.pb.cc
+  source_name_part = data_type_progress_marker.pb
+build obj/components/sync/protocol/protocol/device_info_specifics.pb.o: cxx gen/components/sync/protocol/device_info_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = device_info_specifics.pb.cc
+  source_name_part = device_info_specifics.pb
+build obj/components/sync/protocol/protocol/dictionary_specifics.pb.o: cxx gen/components/sync/protocol/dictionary_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = dictionary_specifics.pb.cc
+  source_name_part = dictionary_specifics.pb
+build obj/components/sync/protocol/protocol/encryption.pb.o: cxx gen/components/sync/protocol/encryption.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = encryption.pb.cc
+  source_name_part = encryption.pb
+build obj/components/sync/protocol/protocol/entity_metadata.pb.o: cxx gen/components/sync/protocol/entity_metadata.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = entity_metadata.pb.cc
+  source_name_part = entity_metadata.pb
+build obj/components/sync/protocol/protocol/entity_specifics.pb.o: cxx gen/components/sync/protocol/entity_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = entity_specifics.pb.cc
+  source_name_part = entity_specifics.pb
+build obj/components/sync/protocol/protocol/experiments_specifics.pb.o: cxx gen/components/sync/protocol/experiments_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = experiments_specifics.pb.cc
+  source_name_part = experiments_specifics.pb
+build obj/components/sync/protocol/protocol/extension_setting_specifics.pb.o: cxx gen/components/sync/protocol/extension_setting_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = extension_setting_specifics.pb.cc
+  source_name_part = extension_setting_specifics.pb
+build obj/components/sync/protocol/protocol/extension_specifics.pb.o: cxx gen/components/sync/protocol/extension_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = extension_specifics.pb.cc
+  source_name_part = extension_specifics.pb
+build obj/components/sync/protocol/protocol/favicon_image_specifics.pb.o: cxx gen/components/sync/protocol/favicon_image_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = favicon_image_specifics.pb.cc
+  source_name_part = favicon_image_specifics.pb
+build obj/components/sync/protocol/protocol/favicon_tracking_specifics.pb.o: cxx gen/components/sync/protocol/favicon_tracking_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = favicon_tracking_specifics.pb.cc
+  source_name_part = favicon_tracking_specifics.pb
+build obj/components/sync/protocol/protocol/gaia_password_reuse.pb.o: cxx gen/components/sync/protocol/gaia_password_reuse.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = gaia_password_reuse.pb.cc
+  source_name_part = gaia_password_reuse.pb
+build obj/components/sync/protocol/protocol/get_updates_caller_info.pb.o: cxx gen/components/sync/protocol/get_updates_caller_info.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = get_updates_caller_info.pb.cc
+  source_name_part = get_updates_caller_info.pb
+build obj/components/sync/protocol/protocol/history_delete_directive_specifics.pb.o: cxx gen/components/sync/protocol/history_delete_directive_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = history_delete_directive_specifics.pb.cc
+  source_name_part = history_delete_directive_specifics.pb
+build obj/components/sync/protocol/protocol/history_specifics.pb.o: cxx gen/components/sync/protocol/history_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = history_specifics.pb.cc
+  source_name_part = history_specifics.pb
+build obj/components/sync/protocol/protocol/history_status.pb.o: cxx gen/components/sync/protocol/history_status.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = history_status.pb.cc
+  source_name_part = history_status.pb
+build obj/components/sync/protocol/protocol/local_trusted_vault.pb.o: cxx gen/components/sync/protocol/local_trusted_vault.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = local_trusted_vault.pb.cc
+  source_name_part = local_trusted_vault.pb
+build obj/components/sync/protocol/protocol/loopback_server.pb.o: cxx gen/components/sync/protocol/loopback_server.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = loopback_server.pb.cc
+  source_name_part = loopback_server.pb
+build obj/components/sync/protocol/protocol/managed_user_setting_specifics.pb.o: cxx gen/components/sync/protocol/managed_user_setting_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = managed_user_setting_specifics.pb.cc
+  source_name_part = managed_user_setting_specifics.pb
+build obj/components/sync/protocol/protocol/managed_user_shared_setting_specifics.pb.o: cxx gen/components/sync/protocol/managed_user_shared_setting_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = managed_user_shared_setting_specifics.pb.cc
+  source_name_part = managed_user_shared_setting_specifics.pb
+build obj/components/sync/protocol/protocol/managed_user_specifics.pb.o: cxx gen/components/sync/protocol/managed_user_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = managed_user_specifics.pb.cc
+  source_name_part = managed_user_specifics.pb
+build obj/components/sync/protocol/protocol/model_type_state.pb.o: cxx gen/components/sync/protocol/model_type_state.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = model_type_state.pb.cc
+  source_name_part = model_type_state.pb
+build obj/components/sync/protocol/protocol/model_type_store_schema_descriptor.pb.o: cxx gen/components/sync/protocol/model_type_store_schema_descriptor.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = model_type_store_schema_descriptor.pb.cc
+  source_name_part = model_type_store_schema_descriptor.pb
+build obj/components/sync/protocol/protocol/nigori_local_data.pb.o: cxx gen/components/sync/protocol/nigori_local_data.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = nigori_local_data.pb.cc
+  source_name_part = nigori_local_data.pb
+build obj/components/sync/protocol/protocol/nigori_specifics.pb.o: cxx gen/components/sync/protocol/nigori_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = nigori_specifics.pb.cc
+  source_name_part = nigori_specifics.pb
+build obj/components/sync/protocol/protocol/note_entity.pb.o: cxx gen/components/sync/protocol/note_entity.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = note_entity.pb.cc
+  source_name_part = note_entity.pb
+build obj/components/sync/protocol/protocol/os_preference_specifics.pb.o: cxx gen/components/sync/protocol/os_preference_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = os_preference_specifics.pb.cc
+  source_name_part = os_preference_specifics.pb
+build obj/components/sync/protocol/protocol/os_priority_preference_specifics.pb.o: cxx gen/components/sync/protocol/os_priority_preference_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = os_priority_preference_specifics.pb.cc
+  source_name_part = os_priority_preference_specifics.pb
+build obj/components/sync/protocol/protocol/password_specifics.pb.o: cxx gen/components/sync/protocol/password_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = password_specifics.pb.cc
+  source_name_part = password_specifics.pb
+build obj/components/sync/protocol/protocol/persisted_entity_data.pb.o: cxx gen/components/sync/protocol/persisted_entity_data.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = persisted_entity_data.pb.cc
+  source_name_part = persisted_entity_data.pb
+build obj/components/sync/protocol/protocol/power_bookmark_specifics.pb.o: cxx gen/components/sync/protocol/power_bookmark_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = power_bookmark_specifics.pb.cc
+  source_name_part = power_bookmark_specifics.pb
+build obj/components/sync/protocol/protocol/preference_specifics.pb.o: cxx gen/components/sync/protocol/preference_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = preference_specifics.pb.cc
+  source_name_part = preference_specifics.pb
+build obj/components/sync/protocol/protocol/printer_specifics.pb.o: cxx gen/components/sync/protocol/printer_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = printer_specifics.pb.cc
+  source_name_part = printer_specifics.pb
+build obj/components/sync/protocol/protocol/printers_authorization_server_specifics.pb.o: cxx gen/components/sync/protocol/printers_authorization_server_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = printers_authorization_server_specifics.pb.cc
+  source_name_part = printers_authorization_server_specifics.pb
+build obj/components/sync/protocol/protocol/priority_preference_specifics.pb.o: cxx gen/components/sync/protocol/priority_preference_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = priority_preference_specifics.pb.cc
+  source_name_part = priority_preference_specifics.pb
+build obj/components/sync/protocol/protocol/reading_list_specifics.pb.o: cxx gen/components/sync/protocol/reading_list_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = reading_list_specifics.pb.cc
+  source_name_part = reading_list_specifics.pb
+build obj/components/sync/protocol/protocol/saved_tab_group_specifics.pb.o: cxx gen/components/sync/protocol/saved_tab_group_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = saved_tab_group_specifics.pb.cc
+  source_name_part = saved_tab_group_specifics.pb
+build obj/components/sync/protocol/protocol/search_engine_specifics.pb.o: cxx gen/components/sync/protocol/search_engine_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = search_engine_specifics.pb.cc
+  source_name_part = search_engine_specifics.pb
+build obj/components/sync/protocol/protocol/security_event_specifics.pb.o: cxx gen/components/sync/protocol/security_event_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = security_event_specifics.pb.cc
+  source_name_part = security_event_specifics.pb
+build obj/components/sync/protocol/protocol/segmentation_specifics.pb.o: cxx gen/components/sync/protocol/segmentation_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = segmentation_specifics.pb.cc
+  source_name_part = segmentation_specifics.pb
+build obj/components/sync/protocol/protocol/send_tab_to_self_specifics.pb.o: cxx gen/components/sync/protocol/send_tab_to_self_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = send_tab_to_self_specifics.pb.cc
+  source_name_part = send_tab_to_self_specifics.pb
+build obj/components/sync/protocol/protocol/session_specifics.pb.o: cxx gen/components/sync/protocol/session_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = session_specifics.pb.cc
+  source_name_part = session_specifics.pb
+build obj/components/sync/protocol/protocol/sharing_message_specifics.pb.o: cxx gen/components/sync/protocol/sharing_message_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = sharing_message_specifics.pb.cc
+  source_name_part = sharing_message_specifics.pb
+build obj/components/sync/protocol/protocol/sync.pb.o: cxx gen/components/sync/protocol/sync.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = sync.pb.cc
+  source_name_part = sync.pb
+build obj/components/sync/protocol/protocol/sync_entity.pb.o: cxx gen/components/sync/protocol/sync_entity.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = sync_entity.pb.cc
+  source_name_part = sync_entity.pb
+build obj/components/sync/protocol/protocol/sync_enums.pb.o: cxx gen/components/sync/protocol/sync_enums.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = sync_enums.pb.cc
+  source_name_part = sync_enums.pb
+build obj/components/sync/protocol/protocol/sync_invalidations_payload.pb.o: cxx gen/components/sync/protocol/sync_invalidations_payload.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = sync_invalidations_payload.pb.cc
+  source_name_part = sync_invalidations_payload.pb
+build obj/components/sync/protocol/protocol/synced_notification_app_info_specifics.pb.o: cxx gen/components/sync/protocol/synced_notification_app_info_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = synced_notification_app_info_specifics.pb.cc
+  source_name_part = synced_notification_app_info_specifics.pb
+build obj/components/sync/protocol/protocol/synced_notification_specifics.pb.o: cxx gen/components/sync/protocol/synced_notification_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = synced_notification_specifics.pb.cc
+  source_name_part = synced_notification_specifics.pb
+build obj/components/sync/protocol/protocol/test.pb.o: cxx gen/components/sync/protocol/test.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = test.pb.cc
+  source_name_part = test.pb
+build obj/components/sync/protocol/protocol/theme_specifics.pb.o: cxx gen/components/sync/protocol/theme_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = theme_specifics.pb.cc
+  source_name_part = theme_specifics.pb
+build obj/components/sync/protocol/protocol/typed_url_specifics.pb.o: cxx gen/components/sync/protocol/typed_url_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = typed_url_specifics.pb.cc
+  source_name_part = typed_url_specifics.pb
+build obj/components/sync/protocol/protocol/unique_position.pb.o: cxx gen/components/sync/protocol/unique_position.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = unique_position.pb.cc
+  source_name_part = unique_position.pb
+build obj/components/sync/protocol/protocol/user_consent_specifics.pb.o: cxx gen/components/sync/protocol/user_consent_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = user_consent_specifics.pb.cc
+  source_name_part = user_consent_specifics.pb
+build obj/components/sync/protocol/protocol/user_consent_types.pb.o: cxx gen/components/sync/protocol/user_consent_types.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = user_consent_types.pb.cc
+  source_name_part = user_consent_types.pb
+build obj/components/sync/protocol/protocol/user_event_specifics.pb.o: cxx gen/components/sync/protocol/user_event_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = user_event_specifics.pb.cc
+  source_name_part = user_event_specifics.pb
+build obj/components/sync/protocol/protocol/vault.pb.o: cxx gen/components/sync/protocol/vault.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = vault.pb.cc
+  source_name_part = vault.pb
+build obj/components/sync/protocol/protocol/web_app_specifics.pb.o: cxx gen/components/sync/protocol/web_app_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = web_app_specifics.pb.cc
+  source_name_part = web_app_specifics.pb
+build obj/components/sync/protocol/protocol/webauthn_credential_specifics.pb.o: cxx gen/components/sync/protocol/webauthn_credential_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = webauthn_credential_specifics.pb.cc
+  source_name_part = webauthn_credential_specifics.pb
+build obj/components/sync/protocol/protocol/wifi_configuration_specifics.pb.o: cxx gen/components/sync/protocol/wifi_configuration_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = wifi_configuration_specifics.pb.cc
+  source_name_part = wifi_configuration_specifics.pb
+build obj/components/sync/protocol/protocol/workspace_desk_specifics.pb.o: cxx gen/components/sync/protocol/workspace_desk_specifics.pb.cc || obj/components/sync/protocol/protocol_gen.stamp
+  source_file_part = workspace_desk_specifics.pb.cc
+  source_name_part = workspace_desk_specifics.pb
+
+build obj/components/sync/protocol/libprotocol.a: alink obj/components/sync/protocol/protocol/app_list_specifics.pb.o obj/components/sync/protocol/protocol/app_notification_specifics.pb.o obj/components/sync/protocol/protocol/app_setting_specifics.pb.o obj/components/sync/protocol/protocol/app_specifics.pb.o obj/components/sync/protocol/protocol/arc_package_specifics.pb.o obj/components/sync/protocol/protocol/autofill_offer_specifics.pb.o obj/components/sync/protocol/protocol/autofill_specifics.pb.o obj/components/sync/protocol/protocol/autofill_wallet_usage_specifics.pb.o obj/components/sync/protocol/protocol/bookmark_model_metadata.pb.o obj/components/sync/protocol/protocol/bookmark_specifics.pb.o obj/components/sync/protocol/protocol/client_commands.pb.o obj/components/sync/protocol/protocol/client_debug_info.pb.o obj/components/sync/protocol/protocol/contact_info_specifics.pb.o obj/components/sync/protocol/protocol/data_type_progress_marker.pb.o obj/components/sync/protocol/protocol/device_info_specifics.pb.o obj/components/sync/protocol/protocol/dictionary_specifics.pb.o obj/components/sync/protocol/protocol/encryption.pb.o obj/components/sync/protocol/protocol/entity_metadata.pb.o obj/components/sync/protocol/protocol/entity_specifics.pb.o obj/components/sync/protocol/protocol/experiments_specifics.pb.o obj/components/sync/protocol/protocol/extension_setting_specifics.pb.o obj/components/sync/protocol/protocol/extension_specifics.pb.o obj/components/sync/protocol/protocol/favicon_image_specifics.pb.o obj/components/sync/protocol/protocol/favicon_tracking_specifics.pb.o obj/components/sync/protocol/protocol/gaia_password_reuse.pb.o obj/components/sync/protocol/protocol/get_updates_caller_info.pb.o obj/components/sync/protocol/protocol/history_delete_directive_specifics.pb.o obj/components/sync/protocol/protocol/history_specifics.pb.o obj/components/sync/protocol/protocol/history_status.pb.o obj/components/sync/protocol/protocol/local_trusted_vault.pb.o obj/components/sync/protocol/protocol/loopback_server.pb.o obj/components/sync/protocol/protocol/managed_user_setting_specifics.pb.o obj/components/sync/protocol/protocol/managed_user_shared_setting_specifics.pb.o obj/components/sync/protocol/protocol/managed_user_specifics.pb.o obj/components/sync/protocol/protocol/model_type_state.pb.o obj/components/sync/protocol/protocol/model_type_store_schema_descriptor.pb.o obj/components/sync/protocol/protocol/nigori_local_data.pb.o obj/components/sync/protocol/protocol/nigori_specifics.pb.o obj/components/sync/protocol/protocol/note_entity.pb.o obj/components/sync/protocol/protocol/os_preference_specifics.pb.o obj/components/sync/protocol/protocol/os_priority_preference_specifics.pb.o obj/components/sync/protocol/protocol/password_specifics.pb.o obj/components/sync/protocol/protocol/persisted_entity_data.pb.o obj/components/sync/protocol/protocol/power_bookmark_specifics.pb.o obj/components/sync/protocol/protocol/preference_specifics.pb.o obj/components/sync/protocol/protocol/printer_specifics.pb.o obj/components/sync/protocol/protocol/printers_authorization_server_specifics.pb.o obj/components/sync/protocol/protocol/priority_preference_specifics.pb.o obj/components/sync/protocol/protocol/reading_list_specifics.pb.o obj/components/sync/protocol/protocol/saved_tab_group_specifics.pb.o obj/components/sync/protocol/protocol/search_engine_specifics.pb.o obj/components/sync/protocol/protocol/security_event_specifics.pb.o obj/components/sync/protocol/protocol/segmentation_specifics.pb.o obj/components/sync/protocol/protocol/send_tab_to_self_specifics.pb.o obj/components/sync/protocol/protocol/session_specifics.pb.o obj/components/sync/protocol/protocol/sharing_message_specifics.pb.o obj/components/sync/protocol/protocol/sync.pb.o obj/components/sync/protocol/protocol/sync_entity.pb.o obj/components/sync/protocol/protocol/sync_enums.pb.o obj/components/sync/protocol/protocol/sync_invalidations_payload.pb.o obj/components/sync/protocol/protocol/synced_notification_app_info_specifics.pb.o obj/components/sync/protocol/protocol/synced_notification_specifics.pb.o obj/components/sync/protocol/protocol/test.pb.o obj/components/sync/protocol/protocol/theme_specifics.pb.o obj/components/sync/protocol/protocol/typed_url_specifics.pb.o obj/components/sync/protocol/protocol/unique_position.pb.o obj/components/sync/protocol/protocol/user_consent_specifics.pb.o obj/components/sync/protocol/protocol/user_consent_types.pb.o obj/components/sync/protocol/protocol/user_event_specifics.pb.o obj/components/sync/protocol/protocol/vault.pb.o obj/components/sync/protocol/protocol/web_app_specifics.pb.o obj/components/sync/protocol/protocol/webauthn_credential_specifics.pb.o obj/components/sync/protocol/protocol/wifi_configuration_specifics.pb.o obj/components/sync/protocol/protocol/workspace_desk_specifics.pb.o || ./libthird_party_protobuf_protobuf_lite.so.TOC obj/components/sync/protocol/protocol_gen.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/components/sync/protocol

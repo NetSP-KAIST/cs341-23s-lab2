@@ -1,0 +1,89 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = zero
+target_out_dir = obj/third_party/perfetto/protos/perfetto/trace/track_event
+target_output_name = zero
+
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp: stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_active_processes.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_active_processes.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_active_processes.pbzero.cc
+  source_name_part = chrome_active_processes.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_application_state_info.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_application_state_info.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_application_state_info.pbzero.cc
+  source_name_part = chrome_application_state_info.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_compositor_scheduler_state.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_compositor_scheduler_state.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_compositor_scheduler_state.pbzero.cc
+  source_name_part = chrome_compositor_scheduler_state.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_content_settings_event_info.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_content_settings_event_info.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_content_settings_event_info.pbzero.cc
+  source_name_part = chrome_content_settings_event_info.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_frame_reporter.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_frame_reporter.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_frame_reporter.pbzero.cc
+  source_name_part = chrome_frame_reporter.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_histogram_sample.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_histogram_sample.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_histogram_sample.pbzero.cc
+  source_name_part = chrome_histogram_sample.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_keyed_service.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_keyed_service.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_keyed_service.pbzero.cc
+  source_name_part = chrome_keyed_service.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_latency_info.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_latency_info.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_latency_info.pbzero.cc
+  source_name_part = chrome_latency_info.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_legacy_ipc.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_legacy_ipc.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_legacy_ipc.pbzero.cc
+  source_name_part = chrome_legacy_ipc.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_message_pump.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_message_pump.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_message_pump.pbzero.cc
+  source_name_part = chrome_message_pump.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_mojo_event_info.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_mojo_event_info.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_mojo_event_info.pbzero.cc
+  source_name_part = chrome_mojo_event_info.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_process_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_process_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_process_descriptor.pbzero.cc
+  source_name_part = chrome_process_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_renderer_scheduler_state.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_renderer_scheduler_state.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_renderer_scheduler_state.pbzero.cc
+  source_name_part = chrome_renderer_scheduler_state.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_thread_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_thread_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_thread_descriptor.pbzero.cc
+  source_name_part = chrome_thread_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_user_event.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_user_event.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_user_event.pbzero.cc
+  source_name_part = chrome_user_event.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_window_handle_event_info.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_window_handle_event_info.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = chrome_window_handle_event_info.pbzero.cc
+  source_name_part = chrome_window_handle_event_info.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/counter_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/counter_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = counter_descriptor.pbzero.cc
+  source_name_part = counter_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/debug_annotation.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/debug_annotation.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = debug_annotation.pbzero.cc
+  source_name_part = debug_annotation.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/log_message.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/log_message.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = log_message.pbzero.cc
+  source_name_part = log_message.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/process_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/process_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = process_descriptor.pbzero.cc
+  source_name_part = process_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/range_of_interest.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/range_of_interest.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = range_of_interest.pbzero.cc
+  source_name_part = range_of_interest.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/source_location.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/source_location.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = source_location.pbzero.cc
+  source_name_part = source_location.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/task_execution.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/task_execution.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = task_execution.pbzero.cc
+  source_name_part = task_execution.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/thread_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/thread_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = thread_descriptor.pbzero.cc
+  source_name_part = thread_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/track_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/track_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = track_descriptor.pbzero.cc
+  source_name_part = track_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/track_event.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/track_event.pbzero.cc || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.inputdeps.stamp
+  source_file_part = track_event.pbzero.cc
+  source_name_part = track_event.pbzero
+
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/zero.stamp: stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_active_processes.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_application_state_info.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_compositor_scheduler_state.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_content_settings_event_info.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_frame_reporter.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_histogram_sample.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_keyed_service.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_latency_info.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_legacy_ipc.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_message_pump.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_mojo_event_info.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_process_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_renderer_scheduler_state.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_thread_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_user_event.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/chrome_window_handle_event_info.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/counter_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/debug_annotation.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/log_message.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/process_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/range_of_interest.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/source_location.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/task_execution.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/thread_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/track_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/trace/track_event/zero/track_event.pbzero.o || obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/src/protozero/protozero.stamp obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp obj/third_party/perfetto/include/perfetto/public/protozero.stamp obj/third_party/perfetto/src/base/base.stamp obj/third_party/perfetto/include/perfetto/ext/base/base.stamp obj/third_party/perfetto/src/base/perfetto_base_default_platform.stamp

@@ -1,0 +1,3 @@
+clang_x64_v8_arm64/gen/third_party/blink/public/resources/grit/blink_image_resources.h
+clang_x64_v8_arm64/gen/third_party/blink/public/resources/blink_image_resources_100_percent.pak
+clang_x64_v8_arm64/gen/third_party/blink/public/resources/blink_image_resources_200_percent.pak

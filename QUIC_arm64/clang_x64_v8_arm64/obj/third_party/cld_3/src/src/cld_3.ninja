@@ -1,0 +1,85 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Iclang_x64_v8_arm64/gen/protoc_out
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = cld_3
+target_out_dir = clang_x64_v8_arm64/obj/third_party/cld_3/src/src
+target_output_name = libcld_3
+
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/base.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/base.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = base.cc
+  source_name_part = base
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/embedding_feature_extractor.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/embedding_feature_extractor.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = embedding_feature_extractor.cc
+  source_name_part = embedding_feature_extractor
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/embedding_network.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/embedding_network.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = embedding_network.cc
+  source_name_part = embedding_network
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/feature_extractor.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/feature_extractor.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = feature_extractor.cc
+  source_name_part = feature_extractor
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/feature_types.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/feature_types.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = feature_types.cc
+  source_name_part = feature_types
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/fml_parser.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/fml_parser.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = fml_parser.cc
+  source_name_part = fml_parser
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/language_identifier_features.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/language_identifier_features.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = language_identifier_features.cc
+  source_name_part = language_identifier_features
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/lang_id_nn_params.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/lang_id_nn_params.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = lang_id_nn_params.cc
+  source_name_part = lang_id_nn_params
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/nnet_language_identifier.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/nnet_language_identifier.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = nnet_language_identifier.cc
+  source_name_part = nnet_language_identifier
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/registry.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/registry.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = registry.cc
+  source_name_part = registry
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/relevant_script_feature.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/relevant_script_feature.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = relevant_script_feature.cc
+  source_name_part = relevant_script_feature
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/sentence_features.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/sentence_features.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = sentence_features.cc
+  source_name_part = sentence_features
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/fixunicodevalue.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/fixunicodevalue.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = fixunicodevalue.cc
+  source_name_part = fixunicodevalue
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/generated_entities.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/generated_entities.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = generated_entities.cc
+  source_name_part = generated_entities
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/generated_ulscript.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/generated_ulscript.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = generated_ulscript.cc
+  source_name_part = generated_ulscript
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/getonescriptspan.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/getonescriptspan.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = getonescriptspan.cc
+  source_name_part = getonescriptspan
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/offsetmap.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/offsetmap.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = offsetmap.cc
+  source_name_part = offsetmap
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/text_processing.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/text_processing.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = text_processing.cc
+  source_name_part = text_processing
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/utf8statetable.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/script_span/utf8statetable.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = utf8statetable.cc
+  source_name_part = utf8statetable
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/task_context.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/task_context.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = task_context.cc
+  source_name_part = task_context
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/task_context_params.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/task_context_params.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = task_context_params.cc
+  source_name_part = task_context_params
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/unicodetext.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/unicodetext.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = unicodetext.cc
+  source_name_part = unicodetext
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/utils.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/utils.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = utils.cc
+  source_name_part = utils
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/workspace.o: clang_x64_v8_arm64_cxx ../../third_party/cld_3/src/src/workspace.cc || clang_x64_v8_arm64/obj/third_party/cld_3/src/src/protos_gen.stamp
+  source_file_part = workspace.cc
+  source_name_part = workspace
+
+build clang_x64_v8_arm64/obj/third_party/cld_3/src/src/libcld_3.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/base.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/embedding_feature_extractor.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/embedding_network.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/feature_extractor.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/feature_types.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/fml_parser.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/language_identifier_features.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/lang_id_nn_params.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/nnet_language_identifier.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/registry.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/relevant_script_feature.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/sentence_features.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/fixunicodevalue.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/generated_entities.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/generated_ulscript.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/getonescriptspan.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/offsetmap.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/text_processing.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/utf8statetable.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/task_context.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/task_context_params.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/unicodetext.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/utils.o clang_x64_v8_arm64/obj/third_party/cld_3/src/src/cld_3/workspace.o || clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so.TOC clang_x64_v8_arm64/obj/third_party/cld_3/src/src/libprotos.a
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/cld_3/src/src

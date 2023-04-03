@@ -1,0 +1,59 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = zero
+target_out_dir = obj/third_party/perfetto/protos/perfetto/common
+target_output_name = zero
+
+build obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp: stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp
+build obj/third_party/perfetto/protos/perfetto/common/zero/android_energy_consumer_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/android_energy_consumer_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = android_energy_consumer_descriptor.pbzero.cc
+  source_name_part = android_energy_consumer_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/android_log_constants.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/android_log_constants.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = android_log_constants.pbzero.cc
+  source_name_part = android_log_constants.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/builtin_clock.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/builtin_clock.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = builtin_clock.pbzero.cc
+  source_name_part = builtin_clock.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/commit_data_request.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/commit_data_request.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = commit_data_request.pbzero.cc
+  source_name_part = commit_data_request.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/data_source_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/data_source_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = data_source_descriptor.pbzero.cc
+  source_name_part = data_source_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = descriptor.pbzero.cc
+  source_name_part = descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/ftrace_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/ftrace_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = ftrace_descriptor.pbzero.cc
+  source_name_part = ftrace_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/gpu_counter_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/gpu_counter_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = gpu_counter_descriptor.pbzero.cc
+  source_name_part = gpu_counter_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/interceptor_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/interceptor_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = interceptor_descriptor.pbzero.cc
+  source_name_part = interceptor_descriptor.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/observable_events.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/observable_events.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = observable_events.pbzero.cc
+  source_name_part = observable_events.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/perf_events.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/perf_events.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = perf_events.pbzero.cc
+  source_name_part = perf_events.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/sys_stats_counters.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/sys_stats_counters.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = sys_stats_counters.pbzero.cc
+  source_name_part = sys_stats_counters.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/trace_stats.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/trace_stats.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = trace_stats.pbzero.cc
+  source_name_part = trace_stats.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/tracing_service_capabilities.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/tracing_service_capabilities.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = tracing_service_capabilities.pbzero.cc
+  source_name_part = tracing_service_capabilities.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/tracing_service_state.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/tracing_service_state.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = tracing_service_state.pbzero.cc
+  source_name_part = tracing_service_state.pbzero
+build obj/third_party/perfetto/protos/perfetto/common/zero/track_event_descriptor.pbzero.o: cxx gen/third_party/perfetto/protos/perfetto/common/track_event_descriptor.pbzero.cc || obj/third_party/perfetto/protos/perfetto/common/zero.inputdeps.stamp
+  source_file_part = track_event_descriptor.pbzero.cc
+  source_name_part = track_event_descriptor.pbzero
+
+build obj/third_party/perfetto/protos/perfetto/common/zero.stamp: stamp obj/third_party/perfetto/protos/perfetto/common/zero/android_energy_consumer_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/android_log_constants.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/builtin_clock.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/commit_data_request.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/data_source_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/ftrace_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/gpu_counter_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/interceptor_descriptor.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/observable_events.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/perf_events.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/sys_stats_counters.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/trace_stats.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/tracing_service_capabilities.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/tracing_service_state.pbzero.o obj/third_party/perfetto/protos/perfetto/common/zero/track_event_descriptor.pbzero.o || obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/src/protozero/protozero.stamp obj/third_party/perfetto/include/perfetto/base/base.stamp obj/third_party/perfetto/include/perfetto/public/base.stamp obj/third_party/perfetto/include/perfetto/public/abi/base.stamp obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp obj/third_party/perfetto/include/perfetto/public/protozero.stamp obj/third_party/perfetto/src/base/base.stamp obj/third_party/perfetto/include/perfetto/ext/base/base.stamp obj/third_party/perfetto/src/base/perfetto_base_default_platform.stamp

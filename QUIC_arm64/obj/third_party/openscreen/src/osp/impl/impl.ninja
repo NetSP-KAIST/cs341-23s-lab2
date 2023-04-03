@@ -1,0 +1,50 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DOPENSCREEN_TEST_DATA_DIR=\"third_party/openscreen/src/test/data/\" -DABSL_CONSUME_DLL -DENABLE_TRACE_LOGGING -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/openscreen/src -I../../third_party/openscreen/src -I../../third_party/abseil-cpp -I../../third_party/jsoncpp/source/include -I../../third_party/boringssl/src/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = impl
+target_out_dir = obj/third_party/openscreen/src/osp/impl
+target_output_name = impl
+
+build obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp: stamp obj/build/chromeos_buildflags.stamp obj/third_party/openscreen/src/osp/msgs/cddl_gen.stamp
+build obj/third_party/openscreen/src/osp/impl/impl/dns_sd_publisher_client.o: cxx ../../third_party/openscreen/src/osp/impl/dns_sd_publisher_client.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = dns_sd_publisher_client.cc
+  source_name_part = dns_sd_publisher_client
+build obj/third_party/openscreen/src/osp/impl/impl/dns_sd_service_publisher_factory.o: cxx ../../third_party/openscreen/src/osp/impl/dns_sd_service_publisher_factory.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = dns_sd_service_publisher_factory.cc
+  source_name_part = dns_sd_service_publisher_factory
+build obj/third_party/openscreen/src/osp/impl/impl/message_demuxer.o: cxx ../../third_party/openscreen/src/osp/impl/message_demuxer.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = message_demuxer.cc
+  source_name_part = message_demuxer
+build obj/third_party/openscreen/src/osp/impl/impl/network_service_manager.o: cxx ../../third_party/openscreen/src/osp/impl/network_service_manager.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = network_service_manager.cc
+  source_name_part = network_service_manager
+build obj/third_party/openscreen/src/osp/impl/impl/presentation_common.o: cxx ../../third_party/openscreen/src/osp/impl/presentation/presentation_common.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = presentation_common.cc
+  source_name_part = presentation_common
+build obj/third_party/openscreen/src/osp/impl/impl/presentation_connection.o: cxx ../../third_party/openscreen/src/osp/impl/presentation/presentation_connection.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = presentation_connection.cc
+  source_name_part = presentation_connection
+build obj/third_party/openscreen/src/osp/impl/impl/presentation_controller.o: cxx ../../third_party/openscreen/src/osp/impl/presentation/presentation_controller.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = presentation_controller.cc
+  source_name_part = presentation_controller
+build obj/third_party/openscreen/src/osp/impl/impl/presentation_receiver.o: cxx ../../third_party/openscreen/src/osp/impl/presentation/presentation_receiver.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = presentation_receiver.cc
+  source_name_part = presentation_receiver
+build obj/third_party/openscreen/src/osp/impl/impl/url_availability_requester.o: cxx ../../third_party/openscreen/src/osp/impl/presentation/url_availability_requester.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = url_availability_requester.cc
+  source_name_part = url_availability_requester
+build obj/third_party/openscreen/src/osp/impl/impl/receiver_list.o: cxx ../../third_party/openscreen/src/osp/impl/receiver_list.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = receiver_list.cc
+  source_name_part = receiver_list
+build obj/third_party/openscreen/src/osp/impl/impl/service_listener_impl.o: cxx ../../third_party/openscreen/src/osp/impl/service_listener_impl.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = service_listener_impl.cc
+  source_name_part = service_listener_impl
+build obj/third_party/openscreen/src/osp/impl/impl/service_publisher_impl.o: cxx ../../third_party/openscreen/src/osp/impl/service_publisher_impl.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = service_publisher_impl.cc
+  source_name_part = service_publisher_impl
+build obj/third_party/openscreen/src/osp/impl/impl/with_destruction_callback.o: cxx ../../third_party/openscreen/src/osp/impl/with_destruction_callback.cc || obj/third_party/openscreen/src/osp/impl/impl.inputdeps.stamp
+  source_file_part = with_destruction_callback.cc
+  source_name_part = with_destruction_callback
+
+build obj/third_party/openscreen/src/osp/impl/impl.stamp: stamp obj/third_party/openscreen/src/osp/impl/impl/dns_sd_publisher_client.o obj/third_party/openscreen/src/osp/impl/impl/dns_sd_service_publisher_factory.o obj/third_party/openscreen/src/osp/impl/impl/message_demuxer.o obj/third_party/openscreen/src/osp/impl/impl/network_service_manager.o obj/third_party/openscreen/src/osp/impl/impl/presentation_common.o obj/third_party/openscreen/src/osp/impl/impl/presentation_connection.o obj/third_party/openscreen/src/osp/impl/impl/presentation_controller.o obj/third_party/openscreen/src/osp/impl/impl/presentation_receiver.o obj/third_party/openscreen/src/osp/impl/impl/url_availability_requester.o obj/third_party/openscreen/src/osp/impl/impl/receiver_list.o obj/third_party/openscreen/src/osp/impl/impl/service_listener_impl.o obj/third_party/openscreen/src/osp/impl/impl/service_publisher_impl.o obj/third_party/openscreen/src/osp/impl/impl/with_destruction_callback.o || obj/third_party/openscreen/src/osp/msgs/msgs.stamp obj/third_party/openscreen/src/osp/public/public.stamp obj/third_party/openscreen/src/discovery/dnssd.stamp obj/third_party/openscreen/src/discovery/public.stamp obj/third_party/openscreen/src/platform/platform.stamp obj/third_party/openscreen/src/third_party/abseil/abseil.stamp obj/third_party/openscreen/src/util/util.stamp obj/third_party/openscreen/src/osp/impl/quic/quic.stamp ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/openscreen/src/third_party/tinycbor/tinycbor.stamp obj/third_party/openscreen/src/platform/api.stamp obj/third_party/openscreen/src/platform/base.stamp obj/third_party/openscreen/src/platform/logging.stamp obj/third_party/openscreen/src/util/base.stamp obj/third_party/openscreen/src/third_party/jsoncpp/jsoncpp.stamp obj/third_party/jsoncpp/jsoncpp.stamp obj/third_party/openscreen/src/third_party/mozilla/mozilla.stamp obj/third_party/modp_b64/libmodp_b64.a ./libthird_party_boringssl.so.TOC obj/third_party/openscreen/src/discovery/mdns.stamp

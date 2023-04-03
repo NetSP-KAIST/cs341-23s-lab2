@@ -1,0 +1,68 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DVK_ENABLE_BETA_EXTENSIONS -DSYSCONFDIR=\"/etc\" -DFALLBACK_CONFIG_DIRS=\"/etc/xdg\" -DFALLBACK_DATA_DIRS=\"/usr/local/share$:/usr/share\" -DAPI_NAME=\"Vulkan\" -DUSE_UNSAFE_FILE_SEARCH=1 -DHAVE_SECURE_GETENV -DLOADER_ENABLE_LINUX_SORT -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/vulkan-deps/vulkan-loader/src/loader/generated -I../../third_party/vulkan-deps/vulkan-loader/src/loader -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-conversion -Wno-extra-semi -Wno-sign-compare -Wno-unreachable-code -Wno-unused-function -Wno-unused-variable -Wno-redundant-parens
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libvulkan
+target_out_dir = clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src
+target_output_name = libvulkan
+
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/allocation.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/allocation.c
+  source_file_part = allocation.c
+  source_name_part = allocation
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/asm_offset.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/asm_offset.c
+  source_file_part = asm_offset.c
+  source_name_part = asm_offset
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/cJSON.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/cJSON.c
+  source_file_part = cJSON.c
+  source_name_part = cJSON
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/debug_utils.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/debug_utils.c
+  source_file_part = debug_utils.c
+  source_name_part = debug_utils
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/dev_ext_trampoline.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/dev_ext_trampoline.c
+  source_file_part = dev_ext_trampoline.c
+  source_name_part = dev_ext_trampoline
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/extension_manual.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/extension_manual.c
+  source_file_part = extension_manual.c
+  source_name_part = extension_manual
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/gpa_helper.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/gpa_helper.c
+  source_file_part = gpa_helper.c
+  source_name_part = gpa_helper
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader_environment.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/loader_environment.c
+  source_file_part = loader_environment.c
+  source_name_part = loader_environment
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/loader.c
+  source_file_part = loader.c
+  source_name_part = loader
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/log.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/log.c
+  source_file_part = log.c
+  source_name_part = log
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/phys_dev_ext.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/phys_dev_ext.c
+  source_file_part = phys_dev_ext.c
+  source_name_part = phys_dev_ext
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/terminator.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/terminator.c
+  source_file_part = terminator.c
+  source_name_part = terminator
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/trampoline.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/trampoline.c
+  source_file_part = trampoline.c
+  source_name_part = trampoline
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/unknown_function_handling.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/unknown_function_handling.c
+  source_file_part = unknown_function_handling.c
+  source_name_part = unknown_function_handling
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/unknown_ext_chain.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/unknown_ext_chain.c
+  source_file_part = unknown_ext_chain.c
+  source_name_part = unknown_ext_chain
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/wsi.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/wsi.c
+  source_file_part = wsi.c
+  source_name_part = wsi
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader_linux.o: clang_x64_v8_arm64_cc ../../third_party/vulkan-deps/vulkan-loader/src/loader/loader_linux.c
+  source_file_part = loader_linux.c
+  source_name_part = loader_linux
+
+build clang_x64_v8_arm64/libvulkan.so.1 clang_x64_v8_arm64/libvulkan.so.1.TOC: clang_x64_v8_arm64_solink clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/allocation.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/asm_offset.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/cJSON.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/debug_utils.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/dev_ext_trampoline.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/extension_manual.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/gpa_helper.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader_environment.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/log.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/phys_dev_ext.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/terminator.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/trampoline.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/unknown_function_handling.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/unknown_ext_chain.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/wsi.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-loader/src/libvulkan/loader_linux.o | clang_x64_v8_arm64/libc++.so.TOC || clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp clang_x64_v8_arm64/obj/build/config/shared_library_deps.stamp
+  ldflags = -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN -Werror
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = .so.1
+  output_dir = clang_x64_v8_arm64
+  solibs = clang_x64_v8_arm64/libc++.so

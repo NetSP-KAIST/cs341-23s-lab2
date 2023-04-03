@@ -1,0 +1,191 @@
+defines = -DANGLE_ENABLE_VULKAN_VALIDATION_LAYERS_BY_DEFAULT -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DANGLE_ASSERT_ALWAYS_ON -DANGLE_VMA_VERSION=2003000 -DANGLE_IS_LINUX -DANGLE_USE_VULKAN_DISPLAY -DANGLE_USE_X11 -DANGLE_USE_WAYLAND -DANGLE_VULKAN_DISPLAY_MODE_HEADLESS -DANGLE_DEBUG_LAYERS_ENABLED -DANGLE_OUTSIDE_WEBKIT -DANGLE_ENABLE_VULKAN -DANGLE_ENABLE_SWIFTSHADER -DANGLE_ENABLE_VULKAN_VALIDATION_LAYERS -DANGLE_ENABLE_VULKAN_SHARED_RING_BUFFER_CMD_ALLOC=false -DLIBANGLE_IMPLEMENTATION -DANGLE_ENABLE_OVERLAY=1 -DANGLE_DELEGATE_WORKERS -DANGLE_USE_ABSEIL -DABSL_ALLOCATOR_NOTHROW=1 -DABSL_CONSUME_DLL -DANGLE_USE_CUSTOM_LIBVULKAN -DANGLE_SHARED_LIBVULKAN=1 -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DANGLE_ENABLE_OPENGL -DANGLE_ENABLE_GL_DESKTOP_BACKEND -DANGLE_ENABLE_OPENGL_NULL -DANGLE_ENABLE_NULL
+include_dirs = -I../../buildtools/third_party/libc++ -I../../third_party/angle/include -I../../third_party/angle/src -I../../third_party/wayland/src/egl -I../../third_party/wayland/src/src -I../../third_party/angle/src/common/base -I../../third_party/angle/src/common/third_party/xxhash -I../../third_party/abseil-cpp -I../../third_party/wayland/include/src -I../../third_party/angle/src/third_party/volk -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/zlib/google -I../../third_party/zlib -I../../third_party/angle/src/third_party/khronos -I../../third_party/wayland/include -I../../third_party/wayland/src/cursor -Igen/third_party/wayland/src/protocol -I../../third_party/vulkan-deps/spirv-headers/src/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -Wglobal-constructors -Wbad-function-cast -Wconditional-uninitialized -Wextra-semi-stmt -Wfloat-conversion -Winconsistent-missing-destructor-override -Wmissing-field-initializers -Wnewline-eof -Wnon-virtual-dtor -Wredundant-parens -Wreturn-std-move -Wshadow -Wshadow-field -Wtautological-type-limit-compare -Wundefined-reinterpret-cast -Wunneeded-internal-declaration -Wunused-but-set-variable -Wsuggest-destructor-override -Wsuggest-override -Wparentheses -Wrange-loop-analysis -Wstrict-prototypes -Wunreachable-code-aggressive -Wshorten-64-to-32 -Wno-redundant-parens
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = angle_vulkan_secondaries_backend
+target_out_dir = obj/third_party/angle/src/libANGLE/renderer/vulkan
+target_output_name = angle_vulkan_secondaries_backend
+
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp: stamp obj/build/chromeos_buildflags.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp obj/third_party/wayland/wayland_client_protocol_gen.stamp obj/third_party/wayland/wayland_protocol_c_gen.stamp
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/AllocatorHelperPool.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/AllocatorHelperPool.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = AllocatorHelperPool.cpp
+  source_name_part = AllocatorHelperPool
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/AllocatorHelperRing.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/AllocatorHelperRing.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = AllocatorHelperRing.cpp
+  source_name_part = AllocatorHelperRing
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/BufferVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/BufferVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = BufferVk.cpp
+  source_name_part = BufferVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/CommandProcessor.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/CommandProcessor.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = CommandProcessor.cpp
+  source_name_part = CommandProcessor
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/CompilerVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/CompilerVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = CompilerVk.cpp
+  source_name_part = CompilerVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ContextVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ContextVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ContextVk.cpp
+  source_name_part = ContextVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DebugAnnotatorVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/DebugAnnotatorVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DebugAnnotatorVk.cpp
+  source_name_part = DebugAnnotatorVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DeviceVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/DeviceVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DeviceVk.cpp
+  source_name_part = DeviceVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/DisplayVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVk.cpp
+  source_name_part = DisplayVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/FenceNVVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/FenceNVVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = FenceNVVk.cpp
+  source_name_part = FenceNVVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/FramebufferVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/FramebufferVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = FramebufferVk.cpp
+  source_name_part = FramebufferVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ImageVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ImageVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ImageVk.cpp
+  source_name_part = ImageVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/MemoryObjectVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/MemoryObjectVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = MemoryObjectVk.cpp
+  source_name_part = MemoryObjectVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/MemoryTracking.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/MemoryTracking.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = MemoryTracking.cpp
+  source_name_part = MemoryTracking
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/OverlayVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/OverlayVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = OverlayVk.cpp
+  source_name_part = OverlayVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/PersistentCommandPool.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/PersistentCommandPool.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = PersistentCommandPool.cpp
+  source_name_part = PersistentCommandPool
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramExecutableVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ProgramExecutableVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ProgramExecutableVk.cpp
+  source_name_part = ProgramExecutableVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramPipelineVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ProgramPipelineVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ProgramPipelineVk.cpp
+  source_name_part = ProgramPipelineVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ProgramVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ProgramVk.cpp
+  source_name_part = ProgramVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/QueryVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/QueryVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = QueryVk.cpp
+  source_name_part = QueryVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RenderTargetVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/RenderTargetVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = RenderTargetVk.cpp
+  source_name_part = RenderTargetVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RenderbufferVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/RenderbufferVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = RenderbufferVk.cpp
+  source_name_part = RenderbufferVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RendererVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/RendererVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = RendererVk.cpp
+  source_name_part = RendererVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ResourceVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ResourceVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ResourceVk.cpp
+  source_name_part = ResourceVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SamplerVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SamplerVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SamplerVk.cpp
+  source_name_part = SamplerVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SecondaryCommandBuffer.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SecondaryCommandBuffer.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SecondaryCommandBuffer.cpp
+  source_name_part = SecondaryCommandBuffer
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SecondaryCommandPool.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SecondaryCommandPool.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SecondaryCommandPool.cpp
+  source_name_part = SecondaryCommandPool
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SemaphoreVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SemaphoreVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SemaphoreVk.cpp
+  source_name_part = SemaphoreVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ShaderInterfaceVariableInfoMap.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ShaderInterfaceVariableInfoMap.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ShaderInterfaceVariableInfoMap.cpp
+  source_name_part = ShaderInterfaceVariableInfoMap
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ShaderVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/ShaderVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = ShaderVk.cpp
+  source_name_part = ShaderVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/Suballocation.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/Suballocation.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = Suballocation.cpp
+  source_name_part = Suballocation
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SurfaceVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SurfaceVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SurfaceVk.cpp
+  source_name_part = SurfaceVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SyncVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/SyncVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = SyncVk.cpp
+  source_name_part = SyncVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/TextureVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/TextureVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = TextureVk.cpp
+  source_name_part = TextureVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/TransformFeedbackVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/TransformFeedbackVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = TransformFeedbackVk.cpp
+  source_name_part = TransformFeedbackVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/UtilsVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/UtilsVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = UtilsVk.cpp
+  source_name_part = UtilsVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VertexArrayVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/VertexArrayVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = VertexArrayVk.cpp
+  source_name_part = VertexArrayVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VkImageImageSiblingVk.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/VkImageImageSiblingVk.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = VkImageImageSiblingVk.cpp
+  source_name_part = VkImageImageSiblingVk
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VulkanSecondaryCommandBuffer.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/VulkanSecondaryCommandBuffer.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = VulkanSecondaryCommandBuffer.cpp
+  source_name_part = VulkanSecondaryCommandBuffer
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_android_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/android/vk_android_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_android_utils.cpp
+  source_name_part = vk_android_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/spv_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/spv_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = spv_utils.cpp
+  source_name_part = spv_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_cache_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_cache_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_cache_utils.cpp
+  source_name_part = vk_cache_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_caps_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_caps_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_caps_utils.cpp
+  source_name_part = vk_caps_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_format_table_autogen.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_format_table_autogen.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_format_table_autogen.cpp
+  source_name_part = vk_format_table_autogen
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_format_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_format_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_format_utils.cpp
+  source_name_part = vk_format_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_helpers.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_helpers.cpp
+  source_name_part = vk_helpers
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_internal_shaders_autogen.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_internal_shaders_autogen.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_internal_shaders_autogen.cpp
+  source_name_part = vk_internal_shaders_autogen
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_mandatory_format_support_table_autogen.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_mandatory_format_support_table_autogen.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_mandatory_format_support_table_autogen.cpp
+  source_name_part = vk_mandatory_format_support_table_autogen
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_utils.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/vk_utils.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = vk_utils.cpp
+  source_name_part = vk_utils
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DeviceVkLinux.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/DeviceVkLinux.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DeviceVkLinux.cpp
+  source_name_part = DeviceVkLinux
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkLinux.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/DisplayVkLinux.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVkLinux.cpp
+  source_name_part = DisplayVkLinux
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DmaBufImageSiblingVkLinux.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/DmaBufImageSiblingVkLinux.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DmaBufImageSiblingVkLinux.cpp
+  source_name_part = DmaBufImageSiblingVkLinux
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkSimple.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/display/DisplayVkSimple.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVkSimple.cpp
+  source_name_part = DisplayVkSimple
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkSimple.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/display/WindowSurfaceVkSimple.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = WindowSurfaceVkSimple.cpp
+  source_name_part = WindowSurfaceVkSimple
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkHeadless.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/headless/DisplayVkHeadless.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVkHeadless.cpp
+  source_name_part = DisplayVkHeadless
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkHeadless.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/headless/WindowSurfaceVkHeadless.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = WindowSurfaceVkHeadless.cpp
+  source_name_part = WindowSurfaceVkHeadless
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkXcb.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/xcb/DisplayVkXcb.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVkXcb.cpp
+  source_name_part = DisplayVkXcb
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkXcb.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/xcb/WindowSurfaceVkXcb.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = WindowSurfaceVkXcb.cpp
+  source_name_part = WindowSurfaceVkXcb
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkWayland.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/wayland/DisplayVkWayland.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = DisplayVkWayland.cpp
+  source_name_part = DisplayVkWayland
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkWayland.o: cxx ../../third_party/angle/src/libANGLE/renderer/vulkan/linux/wayland/WindowSurfaceVkWayland.cpp || obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.inputdeps.stamp
+  source_file_part = WindowSurfaceVkWayland.cpp
+  source_name_part = WindowSurfaceVkWayland
+
+build obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend.stamp: stamp obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/AllocatorHelperPool.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/AllocatorHelperRing.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/BufferVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/CommandProcessor.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/CompilerVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ContextVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DebugAnnotatorVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DeviceVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/FenceNVVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/FramebufferVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ImageVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/MemoryObjectVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/MemoryTracking.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/OverlayVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/PersistentCommandPool.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramExecutableVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramPipelineVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ProgramVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/QueryVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RenderTargetVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RenderbufferVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/RendererVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ResourceVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SamplerVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SecondaryCommandBuffer.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SecondaryCommandPool.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SemaphoreVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ShaderInterfaceVariableInfoMap.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/ShaderVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/Suballocation.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SurfaceVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/SyncVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/TextureVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/TransformFeedbackVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/UtilsVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VertexArrayVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VkImageImageSiblingVk.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/VulkanSecondaryCommandBuffer.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_android_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/spv_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_cache_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_caps_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_format_table_autogen.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_format_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_helpers.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_internal_shaders_autogen.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_mandatory_format_support_table_autogen.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/vk_utils.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DeviceVkLinux.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkLinux.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DmaBufImageSiblingVkLinux.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkSimple.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkSimple.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkHeadless.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkHeadless.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkXcb.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkXcb.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/DisplayVkWayland.o obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vulkan_secondaries_backend/WindowSurfaceVkWayland.o || obj/third_party/angle/libANGLE_headers.stamp obj/third_party/angle/src/common/vulkan/vulkan.stamp obj/third_party/angle/src/common/vulkan/angle_libvulkan_loader.stamp obj/third_party/angle/src/common/vulkan/angle_vulkan_entry_points.stamp obj/third_party/angle/src/common/vulkan/angle_vulkan_headers.stamp obj/third_party/angle/src/libANGLE/renderer/vulkan/angle_vk_mem_alloc_wrapper.stamp obj/third_party/angle/angle_abseil.stamp obj/third_party/angle/angle_compression.stamp obj/third_party/angle/libangle_gpu_info_util.a obj/third_party/angle/libangle_image_util.a obj/third_party/angle/src/common/spirv/angle_spirv_base.stamp obj/third_party/angle/src/common/spirv/angle_spirv_builder.stamp obj/third_party/angle/src/common/spirv/angle_spirv_headers.stamp obj/third_party/angle/src/common/spirv/angle_spirv_parser.stamp obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp obj/third_party/angle/src/common/linux/angle_dma_buf.stamp obj/third_party/angle/libangle_common.a ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/angle/includes.stamp obj/third_party/angle/xxhash.stamp obj/third_party/angle/angle_translator_headers.stamp obj/third_party/angle/src/third_party/volk/volk.stamp obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp obj/third_party/angle/src/common/vulkan/angle_vulkan_icd.stamp obj/third_party/vulkan_memory_allocator/vulkan_memory_allocator.stamp obj/third_party/zlib/google/libcompression_utils_portable.a ./libchrome_zlib.so.TOC obj/third_party/wayland/libwayland_client.a obj/third_party/wayland/wayland_client_protocol.stamp obj/third_party/wayland/wayland_util.stamp obj/third_party/wayland/libwayland_private.a obj/third_party/wayland/wayland_protocol_c.stamp obj/third_party/wayland/libwayland_egl.a obj/third_party/angle/src/third_party/libXNVCtrl/libXNVCtrl.stamp obj/third_party/angle/angle_image_util_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_val.a obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a obj/third_party/angle/src/common/vulkan/vulkan_validation_layers.stamp

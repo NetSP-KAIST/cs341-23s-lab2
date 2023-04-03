@@ -1,0 +1,11 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++
+label_name = ffmpeg_nasm
+target_out_dir = clang_x64_v8_arm64/obj/third_party/ffmpeg
+target_output_name = libffmpeg_nasm
+
+
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/libffmpeg_nasm.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/autorename_libavcodec_x86_hpeldsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/autorename_libavcodec_x86_videodsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/autorename_libavcodec_x86_vp3dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/autorename_libavcodec_x86_vp8dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/fpel.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/h264_intrapred.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/h264_intrapred_10bit.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/hpeldsp_vp3.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/vp8dsp_loopfilter.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/dct32.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/fft.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/flacdsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/imdct36.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/vorbisdsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/cpuid.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/fixed_dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/float_dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/imgutils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/lls.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm/tx_float.o || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_nasm_action.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/ffmpeg

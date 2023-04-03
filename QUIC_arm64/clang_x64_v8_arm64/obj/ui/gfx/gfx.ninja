@@ -1,0 +1,192 @@
+defines = -DGFX_IMPLEMENTATION -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DFT_CONFIG_MODULES_H=\"freetype-custom/freetype/config/ftmodule.h\" -DFT_CONFIG_OPTIONS_H=\"freetype-custom/freetype/config/ftoption.h\" -DPDFIUM_REQUIRED_MODULES
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Iclang_x64_v8_arm64/gen/third_party/perfetto/build_config -Iclang_x64_v8_arm64/gen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Iclang_x64_v8_arm64/gen/protoc_out -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ced/src -I../../third_party/zlib -I../../third_party/freetype/include -I../../third_party/freetype/include/freetype-custom -I../../third_party/freetype/src/include -I../../third_party/harfbuzz-ng/src/src -I../../third_party/fontconfig/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-redundant-parens
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = gfx
+target_out_dir = clang_x64_v8_arm64/obj/ui/gfx
+target_output_name = libui_gfx
+
+build clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/base/anchor_functions_buildflags.stamp clang_x64_v8_arm64/obj/base/build_date.stamp clang_x64_v8_arm64/obj/base/cfi_buildflags.stamp clang_x64_v8_arm64/obj/base/clang_profiling_buildflags.stamp clang_x64_v8_arm64/obj/base/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/feature_list_buildflags.stamp clang_x64_v8_arm64/obj/base/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/base/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/message_pump_buildflags.stamp clang_x64_v8_arm64/obj/base/orderfile_buildflags.stamp clang_x64_v8_arm64/obj/base/power_monitor_buildflags.stamp clang_x64_v8_arm64/obj/base/profiler_buildflags.stamp clang_x64_v8_arm64/obj/base/rust_buildflags.stamp clang_x64_v8_arm64/obj/base/sanitizer_buildflags.stamp clang_x64_v8_arm64/obj/base/synchronization_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_gen.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_zero_gen.stamp clang_x64_v8_arm64/obj/build/blink_buildflags.stamp clang_x64_v8_arm64/obj/build/branding_buildflags.stamp clang_x64_v8_arm64/obj/build/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/build/config/compiler/compiler_buildflags.stamp clang_x64_v8_arm64/obj/components/crash/core/common/crash_buildflags.stamp clang_x64_v8_arm64/obj/device/vr/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp clang_x64_v8_arm64/obj/printing/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/skia/buildflags.stamp clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp clang_x64_v8_arm64/obj/third_party/perfetto/gn/gen_buildflags.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp clang_x64_v8_arm64/obj/ui/base/buildflags.stamp clang_x64_v8_arm64/obj/ui/ozone/buildflags.stamp
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/color_analysis.o: clang_x64_v8_arm64_cxx ../../ui/gfx/color_analysis.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = color_analysis.cc
+  source_name_part = color_analysis
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/color_conversions.o: clang_x64_v8_arm64_cxx ../../ui/gfx/color_conversions.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = color_conversions.cc
+  source_name_part = color_conversions
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/decorated_text.o: clang_x64_v8_arm64_cxx ../../ui/gfx/decorated_text.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = decorated_text.cc
+  source_name_part = decorated_text
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/delegated_ink_metadata.o: clang_x64_v8_arm64_cxx ../../ui/gfx/delegated_ink_metadata.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = delegated_ink_metadata.cc
+  source_name_part = delegated_ink_metadata
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/delegated_ink_point.o: clang_x64_v8_arm64_cxx ../../ui/gfx/delegated_ink_point.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = delegated_ink_point.cc
+  source_name_part = delegated_ink_point
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/extension_set.o: clang_x64_v8_arm64_cxx ../../ui/gfx/extension_set.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = extension_set.cc
+  source_name_part = extension_set
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/favicon_size.o: clang_x64_v8_arm64_cxx ../../ui/gfx/favicon_size.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = favicon_size.cc
+  source_name_part = favicon_size
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font.cc
+  source_name_part = font
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_list.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_list.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_list.cc
+  source_name_part = font_list
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_list_impl.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_list_impl.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_list_impl.cc
+  source_name_part = font_list_impl
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_render_params.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_render_params.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_render_params.cc
+  source_name_part = font_render_params
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_util.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_util.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_util.cc
+  source_name_part = font_util
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/gpu_extra_info.o: clang_x64_v8_arm64_cxx ../../ui/gfx/gpu_extra_info.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = gpu_extra_info.cc
+  source_name_part = gpu_extra_info
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/half_float.o: clang_x64_v8_arm64_cxx ../../ui/gfx/half_float.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = half_float.cc
+  source_name_part = half_float
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/buffer_w_stream.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/buffer_w_stream.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = buffer_w_stream.cc
+  source_name_part = buffer_w_stream
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image.cc
+  source_name_part = image
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_family.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_family.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_family.cc
+  source_name_part = image_family
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_png_rep.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_png_rep.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_png_rep.cc
+  source_name_part = image_png_rep
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_skia.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_skia.cc
+  source_name_part = image_skia
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_source.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_skia_source.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_skia_source.cc
+  source_name_part = image_skia_source
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_util.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_util.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_util.cc
+  source_name_part = image_util
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/interpolated_transform.o: clang_x64_v8_arm64_cxx ../../ui/gfx/interpolated_transform.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = interpolated_transform.cc
+  source_name_part = interpolated_transform
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/nine_image_painter.o: clang_x64_v8_arm64_cxx ../../ui/gfx/nine_image_painter.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = nine_image_painter.cc
+  source_name_part = nine_image_painter
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/overlay_plane_data.o: clang_x64_v8_arm64_cxx ../../ui/gfx/overlay_plane_data.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = overlay_plane_data.cc
+  source_name_part = overlay_plane_data
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/overlay_transform_utils.o: clang_x64_v8_arm64_cxx ../../ui/gfx/overlay_transform_utils.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = overlay_transform_utils.cc
+  source_name_part = overlay_transform_utils
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/scrollbar_size.o: clang_x64_v8_arm64_cxx ../../ui/gfx/scrollbar_size.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = scrollbar_size.cc
+  source_name_part = scrollbar_size
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/selection_model.o: clang_x64_v8_arm64_cxx ../../ui/gfx/selection_model.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = selection_model.cc
+  source_name_part = selection_model
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/sequential_id_generator.o: clang_x64_v8_arm64_cxx ../../ui/gfx/sequential_id_generator.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = sequential_id_generator.cc
+  source_name_part = sequential_id_generator
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/shadow_value.o: clang_x64_v8_arm64_cxx ../../ui/gfx/shadow_value.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = shadow_value.cc
+  source_name_part = shadow_value
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/skbitmap_operations.o: clang_x64_v8_arm64_cxx ../../ui/gfx/skbitmap_operations.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = skbitmap_operations.cc
+  source_name_part = skbitmap_operations
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/swap_result.o: clang_x64_v8_arm64_cxx ../../ui/gfx/swap_result.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = swap_result.cc
+  source_name_part = swap_result
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/text_elider.o: clang_x64_v8_arm64_cxx ../../ui/gfx/text_elider.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = text_elider.cc
+  source_name_part = text_elider
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/text_utils.o: clang_x64_v8_arm64_cxx ../../ui/gfx/text_utils.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = text_utils.cc
+  source_name_part = text_utils
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/ui_gfx_exports.o: clang_x64_v8_arm64_cxx ../../ui/gfx/ui_gfx_exports.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = ui_gfx_exports.cc
+  source_name_part = ui_gfx_exports
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/utf16_indexing.o: clang_x64_v8_arm64_cxx ../../ui/gfx/utf16_indexing.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = utf16_indexing.cc
+  source_name_part = utf16_indexing
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/vector_icon_utils.o: clang_x64_v8_arm64_cxx ../../ui/gfx/vector_icon_utils.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = vector_icon_utils.cc
+  source_name_part = vector_icon_utils
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/vsync_provider.o: clang_x64_v8_arm64_cxx ../../ui/gfx/vsync_provider.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = vsync_provider.cc
+  source_name_part = vsync_provider
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_fallback_linux.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_fallback_linux.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_fallback_linux.cc
+  source_name_part = font_fallback_linux
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/font_render_params_linux.o: clang_x64_v8_arm64_cxx ../../ui/gfx/font_render_params_linux.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = font_render_params_linux.cc
+  source_name_part = font_render_params_linux
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/fontconfig_util.o: clang_x64_v8_arm64_cxx ../../ui/gfx/linux/fontconfig_util.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = fontconfig_util.cc
+  source_name_part = fontconfig_util
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/blit.o: clang_x64_v8_arm64_cxx ../../ui/gfx/blit.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = blit.cc
+  source_name_part = blit
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas.o: clang_x64_v8_arm64_cxx ../../ui/gfx/canvas.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = canvas.cc
+  source_name_part = canvas
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas_skia.o: clang_x64_v8_arm64_cxx ../../ui/gfx/canvas_skia.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = canvas_skia.cc
+  source_name_part = canvas_skia
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas_image_source.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/canvas_image_source.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = canvas_image_source.cc
+  source_name_part = canvas_image_source
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_generic.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_generic.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_generic.cc
+  source_name_part = image_generic
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_operations.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_skia_operations.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_skia_operations.cc
+  source_name_part = image_skia_operations
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_rep_default.o: clang_x64_v8_arm64_cxx ../../ui/gfx/image/image_skia_rep_default.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = image_skia_rep_default.cc
+  source_name_part = image_skia_rep_default
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/paint_throbber.o: clang_x64_v8_arm64_cxx ../../ui/gfx/paint_throbber.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = paint_throbber.cc
+  source_name_part = paint_throbber
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/scoped_canvas.o: clang_x64_v8_arm64_cxx ../../ui/gfx/scoped_canvas.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = scoped_canvas.cc
+  source_name_part = scoped_canvas
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/shadow_util.o: clang_x64_v8_arm64_cxx ../../ui/gfx/shadow_util.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = shadow_util.cc
+  source_name_part = shadow_util
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/skia_paint_util.o: clang_x64_v8_arm64_cxx ../../ui/gfx/skia_paint_util.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = skia_paint_util.cc
+  source_name_part = skia_paint_util
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/platform_font_skia.o: clang_x64_v8_arm64_cxx ../../ui/gfx/platform_font_skia.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = platform_font_skia.cc
+  source_name_part = platform_font_skia
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/bidi_line_iterator.o: clang_x64_v8_arm64_cxx ../../ui/gfx/bidi_line_iterator.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = bidi_line_iterator.cc
+  source_name_part = bidi_line_iterator
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/harfbuzz_font_skia.o: clang_x64_v8_arm64_cxx ../../ui/gfx/harfbuzz_font_skia.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = harfbuzz_font_skia.cc
+  source_name_part = harfbuzz_font_skia
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/paint_vector_icon.o: clang_x64_v8_arm64_cxx ../../ui/gfx/paint_vector_icon.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = paint_vector_icon.cc
+  source_name_part = paint_vector_icon
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/render_text.o: clang_x64_v8_arm64_cxx ../../ui/gfx/render_text.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = render_text.cc
+  source_name_part = render_text
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/render_text_harfbuzz.o: clang_x64_v8_arm64_cxx ../../ui/gfx/render_text_harfbuzz.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = render_text_harfbuzz.cc
+  source_name_part = render_text_harfbuzz
+build clang_x64_v8_arm64/obj/ui/gfx/gfx/text_utils_skia.o: clang_x64_v8_arm64_cxx ../../ui/gfx/text_utils_skia.cc || clang_x64_v8_arm64/obj/ui/gfx/gfx.inputdeps.stamp
+  source_file_part = text_utils_skia.cc
+  source_name_part = text_utils_skia
+
+build clang_x64_v8_arm64/libui_gfx.so clang_x64_v8_arm64/libui_gfx.so.TOC: clang_x64_v8_arm64_solink clang_x64_v8_arm64/obj/ui/gfx/gfx/color_analysis.o clang_x64_v8_arm64/obj/ui/gfx/gfx/color_conversions.o clang_x64_v8_arm64/obj/ui/gfx/gfx/decorated_text.o clang_x64_v8_arm64/obj/ui/gfx/gfx/delegated_ink_metadata.o clang_x64_v8_arm64/obj/ui/gfx/gfx/delegated_ink_point.o clang_x64_v8_arm64/obj/ui/gfx/gfx/extension_set.o clang_x64_v8_arm64/obj/ui/gfx/gfx/favicon_size.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_list.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_list_impl.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_render_params.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_util.o clang_x64_v8_arm64/obj/ui/gfx/gfx/gpu_extra_info.o clang_x64_v8_arm64/obj/ui/gfx/gfx/half_float.o clang_x64_v8_arm64/obj/ui/gfx/gfx/buffer_w_stream.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_family.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_png_rep.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_source.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_util.o clang_x64_v8_arm64/obj/ui/gfx/gfx/interpolated_transform.o clang_x64_v8_arm64/obj/ui/gfx/gfx/nine_image_painter.o clang_x64_v8_arm64/obj/ui/gfx/gfx/overlay_plane_data.o clang_x64_v8_arm64/obj/ui/gfx/gfx/overlay_transform_utils.o clang_x64_v8_arm64/obj/ui/gfx/gfx/scrollbar_size.o clang_x64_v8_arm64/obj/ui/gfx/gfx/selection_model.o clang_x64_v8_arm64/obj/ui/gfx/gfx/sequential_id_generator.o clang_x64_v8_arm64/obj/ui/gfx/gfx/shadow_value.o clang_x64_v8_arm64/obj/ui/gfx/gfx/skbitmap_operations.o clang_x64_v8_arm64/obj/ui/gfx/gfx/swap_result.o clang_x64_v8_arm64/obj/ui/gfx/gfx/text_elider.o clang_x64_v8_arm64/obj/ui/gfx/gfx/text_utils.o clang_x64_v8_arm64/obj/ui/gfx/gfx/ui_gfx_exports.o clang_x64_v8_arm64/obj/ui/gfx/gfx/utf16_indexing.o clang_x64_v8_arm64/obj/ui/gfx/gfx/vector_icon_utils.o clang_x64_v8_arm64/obj/ui/gfx/gfx/vsync_provider.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_fallback_linux.o clang_x64_v8_arm64/obj/ui/gfx/gfx/font_render_params_linux.o clang_x64_v8_arm64/obj/ui/gfx/gfx/fontconfig_util.o clang_x64_v8_arm64/obj/ui/gfx/gfx/blit.o clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas.o clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas_skia.o clang_x64_v8_arm64/obj/ui/gfx/gfx/canvas_image_source.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_generic.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_operations.o clang_x64_v8_arm64/obj/ui/gfx/gfx/image_skia_rep_default.o clang_x64_v8_arm64/obj/ui/gfx/gfx/paint_throbber.o clang_x64_v8_arm64/obj/ui/gfx/gfx/scoped_canvas.o clang_x64_v8_arm64/obj/ui/gfx/gfx/shadow_util.o clang_x64_v8_arm64/obj/ui/gfx/gfx/skia_paint_util.o clang_x64_v8_arm64/obj/ui/gfx/gfx/platform_font_skia.o clang_x64_v8_arm64/obj/ui/gfx/gfx/bidi_line_iterator.o clang_x64_v8_arm64/obj/ui/gfx/gfx/harfbuzz_font_skia.o clang_x64_v8_arm64/obj/ui/gfx/gfx/paint_vector_icon.o clang_x64_v8_arm64/obj/ui/gfx/gfx/render_text.o clang_x64_v8_arm64/obj/ui/gfx/gfx/render_text_harfbuzz.o clang_x64_v8_arm64/obj/ui/gfx/gfx/text_utils_skia.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/buffer_format_util.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/buffer_usage_util.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/generic_shared_memory_id.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/gpu_fence.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/gpu_fence_handle.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/ca_layer_params.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/gpu_memory_buffer.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/client_native_pixmap_dmabuf.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/client_native_pixmap_factory_dmabuf.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/native_pixmap_dmabuf.o clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources/native_pixmap_handle.o clang_x64_v8_arm64/obj/ui/gfx/selection_bound_sources/selection_bound.o clang_x64_v8_arm64/obj/skia/skcms/skcms.o clang_x64_v8_arm64/obj/third_party/libsync/libsync/sync.o clang_x64_v8_arm64/obj/third_party/libsync/libsync/strlcpy.o clang_x64_v8_arm64/obj/base/libbase_static.a clang_x64_v8_arm64/obj/base/third_party/dynamic_annotations/libdynamic_annotations.a | clang_x64_v8_arm64/libui_gfx_color_space.so.TOC clang_x64_v8_arm64/libui_gfx_color_utils.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_skia.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_switches.so.TOC clang_x64_v8_arm64/libbase.so.TOC clang_x64_v8_arm64/libskia.so.TOC clang_x64_v8_arm64/libui_gfx_animation.so.TOC clang_x64_v8_arm64/libui_gfx_codec.so.TOC clang_x64_v8_arm64/libui_gfx_geometry.so.TOC clang_x64_v8_arm64/libui_gfx_geometry_geometry_skia.so.TOC clang_x64_v8_arm64/libui_gfx_range.so.TOC clang_x64_v8_arm64/libcc_paint.so.TOC clang_x64_v8_arm64/libbase_i18n.so.TOC clang_x64_v8_arm64/libchrome_zlib.so.TOC clang_x64_v8_arm64/libthird_party_freetype_harfbuzz.so.TOC clang_x64_v8_arm64/libui_linux_linux_ui.so.TOC clang_x64_v8_arm64/libthird_party_fontconfig.so.TOC clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/libthird_party_boringssl.so.TOC clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so.TOC clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so.TOC clang_x64_v8_arm64/libthird_party_icu_icui18n.so.TOC clang_x64_v8_arm64/libicuuc.so.TOC clang_x64_v8_arm64/libcc_base.so.TOC clang_x64_v8_arm64/libcc_debug.so.TOC clang_x64_v8_arm64/libc++.so.TOC || clang_x64_v8_arm64/obj/ui/gfx/memory_buffer_sources.stamp clang_x64_v8_arm64/obj/ui/gfx/native_widget_types.stamp clang_x64_v8_arm64/obj/ui/gfx/resize_image_dimensions.stamp clang_x64_v8_arm64/obj/ui/gfx/selection_bound_sources.stamp clang_x64_v8_arm64/obj/skia/skcms.stamp clang_x64_v8_arm64/obj/third_party/icu/icu.stamp clang_x64_v8_arm64/obj/ui/gfx/gfx_export.stamp clang_x64_v8_arm64/obj/build/blink_buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/device/vr/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/mojo/public/cpp/bindings/struct_traits.stamp clang_x64_v8_arm64/obj/ui/ozone/buildflags.stamp clang_x64_v8_arm64/obj/build/config/shared_library_deps.stamp clang_x64_v8_arm64/obj/ui/gfx/buffer_types.stamp clang_x64_v8_arm64/obj/third_party/libsync/libsync.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0 -ldrm
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = clang_x64_v8_arm64
+  solibs = clang_x64_v8_arm64/libui_gfx_color_space.so clang_x64_v8_arm64/libui_gfx_color_utils.so clang_x64_v8_arm64/libui_gfx_gfx_skia.so clang_x64_v8_arm64/libui_gfx_gfx_switches.so clang_x64_v8_arm64/libbase.so clang_x64_v8_arm64/libskia.so clang_x64_v8_arm64/libui_gfx_animation.so clang_x64_v8_arm64/libui_gfx_codec.so clang_x64_v8_arm64/libui_gfx_geometry.so clang_x64_v8_arm64/libui_gfx_geometry_geometry_skia.so clang_x64_v8_arm64/libui_gfx_range.so clang_x64_v8_arm64/libcc_paint.so clang_x64_v8_arm64/libbase_i18n.so clang_x64_v8_arm64/libchrome_zlib.so clang_x64_v8_arm64/libthird_party_freetype_harfbuzz.so clang_x64_v8_arm64/libui_linux_linux_ui.so clang_x64_v8_arm64/libthird_party_fontconfig.so clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so clang_x64_v8_arm64/libthird_party_boringssl.so clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so clang_x64_v8_arm64/libthird_party_icu_icui18n.so clang_x64_v8_arm64/libicuuc.so clang_x64_v8_arm64/libcc_base.so clang_x64_v8_arm64/libcc_debug.so clang_x64_v8_arm64/libc++.so

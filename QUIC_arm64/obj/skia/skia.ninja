@@ -1,0 +1,1869 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DIS_SKIA_IMPL=1 -DSKIA_IMPLEMENTATION=1 -DSK_FREETYPE_MINIMUM_RUNTIME_VERSION=\(\(\(FREETYPE_MAJOR\)\$ \*\$ 0x01000000\)\$ \|\$ \(\(FREETYPE_MINOR\)\$ \*\$ 0x00010000\)\$ \|\$ \(\(FREETYPE_PATCH\)\$ \*\$ 0x00000100\)\) -DSK_TYPEFACE_FACTORY_FREETYPE -DSK_GAMMA_EXPONENT=1.2 -DSK_GAMMA_CONTRAST=0.2 -DSK_DEFAULT_FONT_CACHE_LIMIT=20971520 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DFT_CONFIG_MODULES_H=\"freetype-custom/freetype/config/ftmodule.h\" -DFT_CONFIG_OPTIONS_H=\"freetype-custom/freetype/config/ftoption.h\" -DPDFIUM_REQUIRED_MODULES -DUSE_LIBJPEG_TURBO=1 -DMANGLE_JPEG_NAMES -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/libpng -I../../third_party/zlib -I../../third_party/freetype/include -I../../third_party/freetype/include/freetype-custom -I../../third_party/freetype/src/include -I../../third_party/harfbuzz-ng/src/src -I../../third_party/libjpeg_turbo -I../../third_party/fontconfig/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wno-redundant-parens -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = skia
+target_out_dir = obj/skia
+target_output_name = libskia
+
+build obj/skia/skia.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/gpu/config/workaround_list.stamp obj/skia/buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/skia/skia/SkDiscardableMemory_chrome.o: cxx ../../skia/ext/SkDiscardableMemory_chrome.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDiscardableMemory_chrome.cc
+  source_name_part = SkDiscardableMemory_chrome
+build obj/skia/skia/SkMemory_new_handler.o: cxx ../../skia/ext/SkMemory_new_handler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkMemory_new_handler.cpp
+  source_name_part = SkMemory_new_handler
+build obj/skia/skia/benchmarking_canvas.o: cxx ../../skia/ext/benchmarking_canvas.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = benchmarking_canvas.cc
+  source_name_part = benchmarking_canvas
+build obj/skia/skia/cicp.o: cxx ../../skia/ext/cicp.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = cicp.cc
+  source_name_part = cicp
+build obj/skia/skia/convolver.o: cxx ../../skia/ext/convolver.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = convolver.cc
+  source_name_part = convolver
+build obj/skia/skia/event_tracer_impl.o: cxx ../../skia/ext/event_tracer_impl.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = event_tracer_impl.cc
+  source_name_part = event_tracer_impl
+build obj/skia/skia/google_logging.o: cxx ../../skia/ext/google_logging.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = google_logging.cc
+  source_name_part = google_logging
+build obj/skia/skia/image_operations.o: cxx ../../skia/ext/image_operations.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = image_operations.cc
+  source_name_part = image_operations
+build obj/skia/skia/legacy_display_globals.o: cxx ../../skia/ext/legacy_display_globals.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = legacy_display_globals.cc
+  source_name_part = legacy_display_globals
+build obj/skia/skia/opacity_filter_canvas.o: cxx ../../skia/ext/opacity_filter_canvas.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = opacity_filter_canvas.cc
+  source_name_part = opacity_filter_canvas
+build obj/skia/skia/recursive_gaussian_convolution.o: cxx ../../skia/ext/recursive_gaussian_convolution.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = recursive_gaussian_convolution.cc
+  source_name_part = recursive_gaussian_convolution
+build obj/skia/skia/rgba_to_yuva.o: cxx ../../skia/ext/rgba_to_yuva.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = rgba_to_yuva.cc
+  source_name_part = rgba_to_yuva
+build obj/skia/skia/skcolorspace_primaries.o: cxx ../../skia/ext/skcolorspace_primaries.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = skcolorspace_primaries.cc
+  source_name_part = skcolorspace_primaries
+build obj/skia/skia/skia_histogram.o: cxx ../../skia/ext/skia_histogram.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = skia_histogram.cc
+  source_name_part = skia_histogram
+build obj/skia/skia/skia_memory_dump_provider.o: cxx ../../skia/ext/skia_memory_dump_provider.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = skia_memory_dump_provider.cc
+  source_name_part = skia_memory_dump_provider
+build obj/skia/skia/skia_trace_memory_dump_impl.o: cxx ../../skia/ext/skia_trace_memory_dump_impl.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = skia_trace_memory_dump_impl.cc
+  source_name_part = skia_trace_memory_dump_impl
+build obj/skia/skia/skia_utils_base.o: cxx ../../skia/ext/skia_utils_base.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = skia_utils_base.cc
+  source_name_part = skia_utils_base
+build obj/skia/skia/fontmgr_default.o: cxx ../../skia/ext/fontmgr_default.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = fontmgr_default.cc
+  source_name_part = fontmgr_default
+build obj/skia/skia/fontmgr_default_linux.o: cxx ../../skia/ext/fontmgr_default_linux.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = fontmgr_default_linux.cc
+  source_name_part = fontmgr_default_linux
+build obj/skia/skia/platform_canvas.o: cxx ../../skia/ext/platform_canvas.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = platform_canvas.cc
+  source_name_part = platform_canvas
+build obj/skia/skia/convolver_neon.o: cxx ../../skia/ext/convolver_neon.cc || obj/skia/skia.inputdeps.stamp
+  source_file_part = convolver_neon.cc
+  source_name_part = convolver_neon
+build obj/skia/skia/SkSLAnalysis.o: cxx ../../third_party/skia/src/sksl/SkSLAnalysis.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLAnalysis.cpp
+  source_name_part = SkSLAnalysis
+build obj/skia/skia/SkSLBuiltinTypes.o: cxx ../../third_party/skia/src/sksl/SkSLBuiltinTypes.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLBuiltinTypes.cpp
+  source_name_part = SkSLBuiltinTypes
+build obj/skia/skia/SkSLCompiler.o: cxx ../../third_party/skia/src/sksl/SkSLCompiler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLCompiler.cpp
+  source_name_part = SkSLCompiler
+build obj/skia/skia/SkSLConstantFolder.o: cxx ../../third_party/skia/src/sksl/SkSLConstantFolder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstantFolder.cpp
+  source_name_part = SkSLConstantFolder
+build obj/skia/skia/SkSLContext.o: cxx ../../third_party/skia/src/sksl/SkSLContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLContext.cpp
+  source_name_part = SkSLContext
+build obj/skia/skia/SkSLErrorReporter.o: cxx ../../third_party/skia/src/sksl/SkSLErrorReporter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLErrorReporter.cpp
+  source_name_part = SkSLErrorReporter
+build obj/skia/skia/SkSLInliner.o: cxx ../../third_party/skia/src/sksl/SkSLInliner.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLInliner.cpp
+  source_name_part = SkSLInliner
+build obj/skia/skia/SkSLIntrinsicList.o: cxx ../../third_party/skia/src/sksl/SkSLIntrinsicList.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIntrinsicList.cpp
+  source_name_part = SkSLIntrinsicList
+build obj/skia/skia/SkSLLexer.o: cxx ../../third_party/skia/src/sksl/SkSLLexer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLLexer.cpp
+  source_name_part = SkSLLexer
+build obj/skia/skia/SkSLMangler.o: cxx ../../third_party/skia/src/sksl/SkSLMangler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLMangler.cpp
+  source_name_part = SkSLMangler
+build obj/skia/skia/SkSLModuleLoader.o: cxx ../../third_party/skia/src/sksl/SkSLModuleLoader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLModuleLoader.cpp
+  source_name_part = SkSLModuleLoader
+build obj/skia/skia/SkSLOperator.o: cxx ../../third_party/skia/src/sksl/SkSLOperator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLOperator.cpp
+  source_name_part = SkSLOperator
+build obj/skia/skia/SkSLOutputStream.o: cxx ../../third_party/skia/src/sksl/SkSLOutputStream.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLOutputStream.cpp
+  source_name_part = SkSLOutputStream
+build obj/skia/skia/SkSLParser.o: cxx ../../third_party/skia/src/sksl/SkSLParser.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLParser.cpp
+  source_name_part = SkSLParser
+build obj/skia/skia/SkSLPool.o: cxx ../../third_party/skia/src/sksl/SkSLPool.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLPool.cpp
+  source_name_part = SkSLPool
+build obj/skia/skia/SkSLPosition.o: cxx ../../third_party/skia/src/sksl/SkSLPosition.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLPosition.cpp
+  source_name_part = SkSLPosition
+build obj/skia/skia/SkSLSampleUsage.o: cxx ../../third_party/skia/src/sksl/SkSLSampleUsage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSampleUsage.cpp
+  source_name_part = SkSLSampleUsage
+build obj/skia/skia/SkSLString.o: cxx ../../third_party/skia/src/sksl/SkSLString.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLString.cpp
+  source_name_part = SkSLString
+build obj/skia/skia/SkSLThreadContext.o: cxx ../../third_party/skia/src/sksl/SkSLThreadContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLThreadContext.cpp
+  source_name_part = SkSLThreadContext
+build obj/skia/skia/SkSLUtil.o: cxx ../../third_party/skia/src/sksl/SkSLUtil.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLUtil.cpp
+  source_name_part = SkSLUtil
+build obj/skia/skia/SkSLCanExitWithoutReturningValue.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLCanExitWithoutReturningValue.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLCanExitWithoutReturningValue.cpp
+  source_name_part = SkSLCanExitWithoutReturningValue
+build obj/skia/skia/SkSLCheckProgramStructure.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLCheckProgramStructure.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLCheckProgramStructure.cpp
+  source_name_part = SkSLCheckProgramStructure
+build obj/skia/skia/SkSLFinalizationChecks.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLFinalizationChecks.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFinalizationChecks.cpp
+  source_name_part = SkSLFinalizationChecks
+build obj/skia/skia/SkSLGetLoopControlFlowInfo.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLGetLoopControlFlowInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLGetLoopControlFlowInfo.cpp
+  source_name_part = SkSLGetLoopControlFlowInfo
+build obj/skia/skia/SkSLGetLoopUnrollInfo.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLGetLoopUnrollInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLGetLoopUnrollInfo.cpp
+  source_name_part = SkSLGetLoopUnrollInfo
+build obj/skia/skia/SkSLGetReturnComplexity.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLGetReturnComplexity.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLGetReturnComplexity.cpp
+  source_name_part = SkSLGetReturnComplexity
+build obj/skia/skia/SkSLHasSideEffects.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLHasSideEffects.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLHasSideEffects.cpp
+  source_name_part = SkSLHasSideEffects
+build obj/skia/skia/SkSLIsConstantExpression.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLIsConstantExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIsConstantExpression.cpp
+  source_name_part = SkSLIsConstantExpression
+build obj/skia/skia/SkSLIsDynamicallyUniformExpression.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLIsDynamicallyUniformExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIsDynamicallyUniformExpression.cpp
+  source_name_part = SkSLIsDynamicallyUniformExpression
+build obj/skia/skia/SkSLIsSameExpressionTree.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLIsSameExpressionTree.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIsSameExpressionTree.cpp
+  source_name_part = SkSLIsSameExpressionTree
+build obj/skia/skia/SkSLIsTrivialExpression.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLIsTrivialExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIsTrivialExpression.cpp
+  source_name_part = SkSLIsTrivialExpression
+build obj/skia/skia/SkSLProgramUsage.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLProgramUsage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLProgramUsage.cpp
+  source_name_part = SkSLProgramUsage
+build obj/skia/skia/SkSLSwitchCaseContainsExit.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLSwitchCaseContainsExit.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSwitchCaseContainsExit.cpp
+  source_name_part = SkSLSwitchCaseContainsExit
+build obj/skia/skia/SkSLSymbolTableStackBuilder.o: cxx ../../third_party/skia/src/sksl/analysis/SkSLSymbolTableStackBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSymbolTableStackBuilder.cpp
+  source_name_part = SkSLSymbolTableStackBuilder
+build obj/skia/skia/SkSLRasterPipelineBuilder.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLRasterPipelineBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLRasterPipelineBuilder.cpp
+  source_name_part = SkSLRasterPipelineBuilder
+build obj/skia/skia/SkSLRasterPipelineCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLRasterPipelineCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLRasterPipelineCodeGenerator.cpp
+  source_name_part = SkSLRasterPipelineCodeGenerator
+build obj/skia/skia/SkSLVMCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLVMCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLVMCodeGenerator.cpp
+  source_name_part = SkSLVMCodeGenerator
+build obj/skia/skia/DSLBlock.o: cxx ../../third_party/skia/src/sksl/dsl/DSLBlock.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLBlock.cpp
+  source_name_part = DSLBlock
+build obj/skia/skia/DSLCase.o: cxx ../../third_party/skia/src/sksl/dsl/DSLCase.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLCase.cpp
+  source_name_part = DSLCase
+build obj/skia/skia/DSLCore.o: cxx ../../third_party/skia/src/sksl/dsl/DSLCore.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLCore.cpp
+  source_name_part = DSLCore
+build obj/skia/skia/DSLExpression.o: cxx ../../third_party/skia/src/sksl/dsl/DSLExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLExpression.cpp
+  source_name_part = DSLExpression
+build obj/skia/skia/DSLFunction.o: cxx ../../third_party/skia/src/sksl/dsl/DSLFunction.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLFunction.cpp
+  source_name_part = DSLFunction
+build obj/skia/skia/DSLLayout.o: cxx ../../third_party/skia/src/sksl/dsl/DSLLayout.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLLayout.cpp
+  source_name_part = DSLLayout
+build obj/skia/skia/DSLStatement.o: cxx ../../third_party/skia/src/sksl/dsl/DSLStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLStatement.cpp
+  source_name_part = DSLStatement
+build obj/skia/skia/DSLType.o: cxx ../../third_party/skia/src/sksl/dsl/DSLType.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLType.cpp
+  source_name_part = DSLType
+build obj/skia/skia/DSLVar.o: cxx ../../third_party/skia/src/sksl/dsl/DSLVar.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLVar.cpp
+  source_name_part = DSLVar
+build obj/skia/skia/DSLWriter.o: cxx ../../third_party/skia/src/sksl/dsl/priv/DSLWriter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DSLWriter.cpp
+  source_name_part = DSLWriter
+build obj/skia/skia/SkSLBinaryExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLBinaryExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLBinaryExpression.cpp
+  source_name_part = SkSLBinaryExpression
+build obj/skia/skia/SkSLBlock.o: cxx ../../third_party/skia/src/sksl/ir/SkSLBlock.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLBlock.cpp
+  source_name_part = SkSLBlock
+build obj/skia/skia/SkSLChildCall.o: cxx ../../third_party/skia/src/sksl/ir/SkSLChildCall.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLChildCall.cpp
+  source_name_part = SkSLChildCall
+build obj/skia/skia/SkSLConstructor.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructor.cpp
+  source_name_part = SkSLConstructor
+build obj/skia/skia/SkSLConstructorArray.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorArray.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorArray.cpp
+  source_name_part = SkSLConstructorArray
+build obj/skia/skia/SkSLConstructorArrayCast.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorArrayCast.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorArrayCast.cpp
+  source_name_part = SkSLConstructorArrayCast
+build obj/skia/skia/SkSLConstructorCompound.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorCompound.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorCompound.cpp
+  source_name_part = SkSLConstructorCompound
+build obj/skia/skia/SkSLConstructorCompoundCast.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorCompoundCast.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorCompoundCast.cpp
+  source_name_part = SkSLConstructorCompoundCast
+build obj/skia/skia/SkSLConstructorDiagonalMatrix.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorDiagonalMatrix.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorDiagonalMatrix.cpp
+  source_name_part = SkSLConstructorDiagonalMatrix
+build obj/skia/skia/SkSLConstructorMatrixResize.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorMatrixResize.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorMatrixResize.cpp
+  source_name_part = SkSLConstructorMatrixResize
+build obj/skia/skia/SkSLConstructorScalarCast.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorScalarCast.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorScalarCast.cpp
+  source_name_part = SkSLConstructorScalarCast
+build obj/skia/skia/SkSLConstructorSplat.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorSplat.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorSplat.cpp
+  source_name_part = SkSLConstructorSplat
+build obj/skia/skia/SkSLConstructorStruct.o: cxx ../../third_party/skia/src/sksl/ir/SkSLConstructorStruct.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLConstructorStruct.cpp
+  source_name_part = SkSLConstructorStruct
+build obj/skia/skia/SkSLDiscardStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLDiscardStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLDiscardStatement.cpp
+  source_name_part = SkSLDiscardStatement
+build obj/skia/skia/SkSLDoStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLDoStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLDoStatement.cpp
+  source_name_part = SkSLDoStatement
+build obj/skia/skia/SkSLExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLExpression.cpp
+  source_name_part = SkSLExpression
+build obj/skia/skia/SkSLExpressionStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLExpressionStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLExpressionStatement.cpp
+  source_name_part = SkSLExpressionStatement
+build obj/skia/skia/SkSLFieldAccess.o: cxx ../../third_party/skia/src/sksl/ir/SkSLFieldAccess.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFieldAccess.cpp
+  source_name_part = SkSLFieldAccess
+build obj/skia/skia/SkSLForStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLForStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLForStatement.cpp
+  source_name_part = SkSLForStatement
+build obj/skia/skia/SkSLFunctionCall.o: cxx ../../third_party/skia/src/sksl/ir/SkSLFunctionCall.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFunctionCall.cpp
+  source_name_part = SkSLFunctionCall
+build obj/skia/skia/SkSLFunctionDeclaration.o: cxx ../../third_party/skia/src/sksl/ir/SkSLFunctionDeclaration.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFunctionDeclaration.cpp
+  source_name_part = SkSLFunctionDeclaration
+build obj/skia/skia/SkSLFunctionDefinition.o: cxx ../../third_party/skia/src/sksl/ir/SkSLFunctionDefinition.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFunctionDefinition.cpp
+  source_name_part = SkSLFunctionDefinition
+build obj/skia/skia/SkSLIfStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLIfStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIfStatement.cpp
+  source_name_part = SkSLIfStatement
+build obj/skia/skia/SkSLIndexExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLIndexExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLIndexExpression.cpp
+  source_name_part = SkSLIndexExpression
+build obj/skia/skia/SkSLInterfaceBlock.o: cxx ../../third_party/skia/src/sksl/ir/SkSLInterfaceBlock.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLInterfaceBlock.cpp
+  source_name_part = SkSLInterfaceBlock
+build obj/skia/skia/SkSLLayout.o: cxx ../../third_party/skia/src/sksl/ir/SkSLLayout.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLLayout.cpp
+  source_name_part = SkSLLayout
+build obj/skia/skia/SkSLLiteral.o: cxx ../../third_party/skia/src/sksl/ir/SkSLLiteral.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLLiteral.cpp
+  source_name_part = SkSLLiteral
+build obj/skia/skia/SkSLModifiers.o: cxx ../../third_party/skia/src/sksl/ir/SkSLModifiers.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLModifiers.cpp
+  source_name_part = SkSLModifiers
+build obj/skia/skia/SkSLPostfixExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLPostfixExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLPostfixExpression.cpp
+  source_name_part = SkSLPostfixExpression
+build obj/skia/skia/SkSLPrefixExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLPrefixExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLPrefixExpression.cpp
+  source_name_part = SkSLPrefixExpression
+build obj/skia/skia/SkSLProgram.o: cxx ../../third_party/skia/src/sksl/ir/SkSLProgram.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLProgram.cpp
+  source_name_part = SkSLProgram
+build obj/skia/skia/SkSLSetting.o: cxx ../../third_party/skia/src/sksl/ir/SkSLSetting.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSetting.cpp
+  source_name_part = SkSLSetting
+build obj/skia/skia/SkSLSwitchStatement.o: cxx ../../third_party/skia/src/sksl/ir/SkSLSwitchStatement.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSwitchStatement.cpp
+  source_name_part = SkSLSwitchStatement
+build obj/skia/skia/SkSLSwizzle.o: cxx ../../third_party/skia/src/sksl/ir/SkSLSwizzle.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSwizzle.cpp
+  source_name_part = SkSLSwizzle
+build obj/skia/skia/SkSLSymbolTable.o: cxx ../../third_party/skia/src/sksl/ir/SkSLSymbolTable.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSymbolTable.cpp
+  source_name_part = SkSLSymbolTable
+build obj/skia/skia/SkSLTernaryExpression.o: cxx ../../third_party/skia/src/sksl/ir/SkSLTernaryExpression.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLTernaryExpression.cpp
+  source_name_part = SkSLTernaryExpression
+build obj/skia/skia/SkSLType.o: cxx ../../third_party/skia/src/sksl/ir/SkSLType.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLType.cpp
+  source_name_part = SkSLType
+build obj/skia/skia/SkSLTypeReference.o: cxx ../../third_party/skia/src/sksl/ir/SkSLTypeReference.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLTypeReference.cpp
+  source_name_part = SkSLTypeReference
+build obj/skia/skia/SkSLVarDeclarations.o: cxx ../../third_party/skia/src/sksl/ir/SkSLVarDeclarations.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLVarDeclarations.cpp
+  source_name_part = SkSLVarDeclarations
+build obj/skia/skia/SkSLVariable.o: cxx ../../third_party/skia/src/sksl/ir/SkSLVariable.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLVariable.cpp
+  source_name_part = SkSLVariable
+build obj/skia/skia/SkSLVariableReference.o: cxx ../../third_party/skia/src/sksl/ir/SkSLVariableReference.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLVariableReference.cpp
+  source_name_part = SkSLVariableReference
+build obj/skia/skia/SkRPDebugTrace.o: cxx ../../third_party/skia/src/sksl/tracing/SkRPDebugTrace.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkRPDebugTrace.cpp
+  source_name_part = SkRPDebugTrace
+build obj/skia/skia/SkVMDebugTrace.o: cxx ../../third_party/skia/src/sksl/tracing/SkVMDebugTrace.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkVMDebugTrace.cpp
+  source_name_part = SkVMDebugTrace
+build obj/skia/skia/SkSLAddConstToVarModifiers.o: cxx ../../third_party/skia/src/sksl/transform/SkSLAddConstToVarModifiers.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLAddConstToVarModifiers.cpp
+  source_name_part = SkSLAddConstToVarModifiers
+build obj/skia/skia/SkSLEliminateDeadFunctions.o: cxx ../../third_party/skia/src/sksl/transform/SkSLEliminateDeadFunctions.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEliminateDeadFunctions.cpp
+  source_name_part = SkSLEliminateDeadFunctions
+build obj/skia/skia/SkSLEliminateDeadGlobalVariables.o: cxx ../../third_party/skia/src/sksl/transform/SkSLEliminateDeadGlobalVariables.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEliminateDeadGlobalVariables.cpp
+  source_name_part = SkSLEliminateDeadGlobalVariables
+build obj/skia/skia/SkSLEliminateDeadLocalVariables.o: cxx ../../third_party/skia/src/sksl/transform/SkSLEliminateDeadLocalVariables.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEliminateDeadLocalVariables.cpp
+  source_name_part = SkSLEliminateDeadLocalVariables
+build obj/skia/skia/SkSLEliminateEmptyStatements.o: cxx ../../third_party/skia/src/sksl/transform/SkSLEliminateEmptyStatements.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEliminateEmptyStatements.cpp
+  source_name_part = SkSLEliminateEmptyStatements
+build obj/skia/skia/SkSLEliminateUnreachableCode.o: cxx ../../third_party/skia/src/sksl/transform/SkSLEliminateUnreachableCode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEliminateUnreachableCode.cpp
+  source_name_part = SkSLEliminateUnreachableCode
+build obj/skia/skia/SkSLFindAndDeclareBuiltinFunctions.o: cxx ../../third_party/skia/src/sksl/transform/SkSLFindAndDeclareBuiltinFunctions.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFindAndDeclareBuiltinFunctions.cpp
+  source_name_part = SkSLFindAndDeclareBuiltinFunctions
+build obj/skia/skia/SkSLFindAndDeclareBuiltinVariables.o: cxx ../../third_party/skia/src/sksl/transform/SkSLFindAndDeclareBuiltinVariables.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLFindAndDeclareBuiltinVariables.cpp
+  source_name_part = SkSLFindAndDeclareBuiltinVariables
+build obj/skia/skia/SkSLRenamePrivateSymbols.o: cxx ../../third_party/skia/src/sksl/transform/SkSLRenamePrivateSymbols.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLRenamePrivateSymbols.cpp
+  source_name_part = SkSLRenamePrivateSymbols
+build obj/skia/skia/SkSLReplaceConstVarsWithLiterals.o: cxx ../../third_party/skia/src/sksl/transform/SkSLReplaceConstVarsWithLiterals.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLReplaceConstVarsWithLiterals.cpp
+  source_name_part = SkSLReplaceConstVarsWithLiterals
+build obj/skia/skia/SkSLRewriteIndexedSwizzle.o: cxx ../../third_party/skia/src/sksl/transform/SkSLRewriteIndexedSwizzle.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLRewriteIndexedSwizzle.cpp
+  source_name_part = SkSLRewriteIndexedSwizzle
+build obj/skia/skia/SkAnimCodecPlayer.o: cxx ../../third_party/skia/src/utils/SkAnimCodecPlayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkAnimCodecPlayer.cpp
+  source_name_part = SkAnimCodecPlayer
+build obj/skia/skia/SkBase64.o: cxx ../../third_party/skia/src/utils/SkBase64.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBase64.cpp
+  source_name_part = SkBase64
+build obj/skia/skia/SkCamera.o: cxx ../../third_party/skia/src/utils/SkCamera.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCamera.cpp
+  source_name_part = SkCamera
+build obj/skia/skia/SkCanvasStack.o: cxx ../../third_party/skia/src/utils/SkCanvasStack.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCanvasStack.cpp
+  source_name_part = SkCanvasStack
+build obj/skia/skia/SkCanvasStateUtils.o: cxx ../../third_party/skia/src/utils/SkCanvasStateUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCanvasStateUtils.cpp
+  source_name_part = SkCanvasStateUtils
+build obj/skia/skia/SkCharToGlyphCache.o: cxx ../../third_party/skia/src/utils/SkCharToGlyphCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCharToGlyphCache.cpp
+  source_name_part = SkCharToGlyphCache
+build obj/skia/skia/SkClipStackUtils.o: cxx ../../third_party/skia/src/utils/SkClipStackUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkClipStackUtils.cpp
+  source_name_part = SkClipStackUtils
+build obj/skia/skia/SkCustomTypeface.o: cxx ../../third_party/skia/src/utils/SkCustomTypeface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCustomTypeface.cpp
+  source_name_part = SkCustomTypeface
+build obj/skia/skia/SkDashPath.o: cxx ../../third_party/skia/src/utils/SkDashPath.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDashPath.cpp
+  source_name_part = SkDashPath
+build obj/skia/skia/SkEventTracer.o: cxx ../../third_party/skia/src/utils/SkEventTracer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkEventTracer.cpp
+  source_name_part = SkEventTracer
+build obj/skia/skia/SkFloatToDecimal.o: cxx ../../third_party/skia/src/utils/SkFloatToDecimal.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFloatToDecimal.cpp
+  source_name_part = SkFloatToDecimal
+build obj/skia/skia/SkGaussianColorFilter.o: cxx ../../third_party/skia/src/utils/SkGaussianColorFilter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkGaussianColorFilter.cpp
+  source_name_part = SkGaussianColorFilter
+build obj/skia/skia/SkJSON.o: cxx ../../third_party/skia/src/utils/SkJSON.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJSON.cpp
+  source_name_part = SkJSON
+build obj/skia/skia/SkJSONWriter.o: cxx ../../third_party/skia/src/utils/SkJSONWriter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJSONWriter.cpp
+  source_name_part = SkJSONWriter
+build obj/skia/skia/SkMatrix22.o: cxx ../../third_party/skia/src/utils/SkMatrix22.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkMatrix22.cpp
+  source_name_part = SkMatrix22
+build obj/skia/skia/SkMultiPictureDocument.o: cxx ../../third_party/skia/src/utils/SkMultiPictureDocument.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkMultiPictureDocument.cpp
+  source_name_part = SkMultiPictureDocument
+build obj/skia/skia/SkNWayCanvas.o: cxx ../../third_party/skia/src/utils/SkNWayCanvas.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkNWayCanvas.cpp
+  source_name_part = SkNWayCanvas
+build obj/skia/skia/SkNullCanvas.o: cxx ../../third_party/skia/src/utils/SkNullCanvas.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkNullCanvas.cpp
+  source_name_part = SkNullCanvas
+build obj/skia/skia/SkOSPath.o: cxx ../../third_party/skia/src/utils/SkOSPath.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOSPath.cpp
+  source_name_part = SkOSPath
+build obj/skia/skia/SkOrderedFontMgr.o: cxx ../../third_party/skia/src/utils/SkOrderedFontMgr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOrderedFontMgr.cpp
+  source_name_part = SkOrderedFontMgr
+build obj/skia/skia/SkPaintFilterCanvas.o: cxx ../../third_party/skia/src/utils/SkPaintFilterCanvas.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPaintFilterCanvas.cpp
+  source_name_part = SkPaintFilterCanvas
+build obj/skia/skia/SkParse.o: cxx ../../third_party/skia/src/utils/SkParse.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkParse.cpp
+  source_name_part = SkParse
+build obj/skia/skia/SkParseColor.o: cxx ../../third_party/skia/src/utils/SkParseColor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkParseColor.cpp
+  source_name_part = SkParseColor
+build obj/skia/skia/SkPatchUtils.o: cxx ../../third_party/skia/src/utils/SkPatchUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPatchUtils.cpp
+  source_name_part = SkPatchUtils
+build obj/skia/skia/SkPolyUtils.o: cxx ../../third_party/skia/src/utils/SkPolyUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPolyUtils.cpp
+  source_name_part = SkPolyUtils
+build obj/skia/skia/SkShaderUtils.o: cxx ../../third_party/skia/src/utils/SkShaderUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkShaderUtils.cpp
+  source_name_part = SkShaderUtils
+build obj/skia/skia/SkShadowTessellator.o: cxx ../../third_party/skia/src/utils/SkShadowTessellator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkShadowTessellator.cpp
+  source_name_part = SkShadowTessellator
+build obj/skia/skia/SkShadowUtils.o: cxx ../../third_party/skia/src/utils/SkShadowUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkShadowUtils.cpp
+  source_name_part = SkShadowUtils
+build obj/skia/skia/SkTextUtils.o: cxx ../../third_party/skia/src/utils/SkTextUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkTextUtils.cpp
+  source_name_part = SkTextUtils
+build obj/skia/skia/SkVMVisualizer.o: cxx ../../third_party/skia/src/utils/SkVMVisualizer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkVMVisualizer.cpp
+  source_name_part = SkVMVisualizer
+build obj/skia/skia/SkCTFont.o: cxx ../../third_party/skia/src/utils/mac/SkCTFont.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCTFont.cpp
+  source_name_part = SkCTFont
+build obj/skia/skia/SkCreateCGImageRef.o: cxx ../../third_party/skia/src/utils/mac/SkCreateCGImageRef.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCreateCGImageRef.cpp
+  source_name_part = SkCreateCGImageRef
+build obj/skia/skia/SkAutoCoInitialize.o: cxx ../../third_party/skia/src/utils/win/SkAutoCoInitialize.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkAutoCoInitialize.cpp
+  source_name_part = SkAutoCoInitialize
+build obj/skia/skia/SkDWrite.o: cxx ../../third_party/skia/src/utils/win/SkDWrite.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDWrite.cpp
+  source_name_part = SkDWrite
+build obj/skia/skia/SkDWriteFontFileStream.o: cxx ../../third_party/skia/src/utils/win/SkDWriteFontFileStream.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDWriteFontFileStream.cpp
+  source_name_part = SkDWriteFontFileStream
+build obj/skia/skia/SkDWriteGeometrySink.o: cxx ../../third_party/skia/src/utils/win/SkDWriteGeometrySink.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDWriteGeometrySink.cpp
+  source_name_part = SkDWriteGeometrySink
+build obj/skia/skia/SkHRESULT.o: cxx ../../third_party/skia/src/utils/win/SkHRESULT.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkHRESULT.cpp
+  source_name_part = SkHRESULT
+build obj/skia/skia/SkIStream.o: cxx ../../third_party/skia/src/utils/win/SkIStream.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkIStream.cpp
+  source_name_part = SkIStream
+build obj/skia/skia/SkWGL_win.o: cxx ../../third_party/skia/src/utils/win/SkWGL_win.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkWGL_win.cpp
+  source_name_part = SkWGL_win
+build obj/skia/skia/SkXPSDevice.o: cxx ../../third_party/skia/src/xps/SkXPSDevice.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkXPSDevice.cpp
+  source_name_part = SkXPSDevice
+build obj/skia/skia/SkXPSDocument.o: cxx ../../third_party/skia/src/xps/SkXPSDocument.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkXPSDocument.cpp
+  source_name_part = SkXPSDocument
+build obj/skia/skia/SkEncoder.o: cxx ../../third_party/skia/src/encode/SkEncoder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkEncoder.cpp
+  source_name_part = SkEncoder
+build obj/skia/skia/SkImageEncoder.o: cxx ../../third_party/skia/src/encode/SkImageEncoder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImageEncoder.cpp
+  source_name_part = SkImageEncoder
+build obj/skia/skia/SkPngEncoder.o: cxx ../../third_party/skia/src/encode/SkPngEncoder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPngEncoder.cpp
+  source_name_part = SkPngEncoder
+build obj/skia/skia/SkWebpEncoder.o: cxx ../../third_party/skia/src/encode/SkWebpEncoder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkWebpEncoder.cpp
+  source_name_part = SkWebpEncoder
+build obj/skia/skia/SkFontMgr_indirect.o: cxx ../../third_party/skia/src/fonts/SkFontMgr_indirect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontMgr_indirect.cpp
+  source_name_part = SkFontMgr_indirect
+build obj/skia/skia/SkRemotableFontMgr.o: cxx ../../third_party/skia/src/fonts/SkRemotableFontMgr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkRemotableFontMgr.cpp
+  source_name_part = SkRemotableFontMgr
+build obj/skia/skia/SkGlobalInitialization_default.o: cxx ../../third_party/skia/src/ports/SkGlobalInitialization_default.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkGlobalInitialization_default.cpp
+  source_name_part = SkGlobalInitialization_default
+build obj/skia/skia/SkOSFile_stdio.o: cxx ../../third_party/skia/src/ports/SkOSFile_stdio.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOSFile_stdio.cpp
+  source_name_part = SkOSFile_stdio
+build obj/skia/skia/SkOTTable_name.o: cxx ../../third_party/skia/src/sfnt/SkOTTable_name.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOTTable_name.cpp
+  source_name_part = SkOTTable_name
+build obj/skia/skia/SkOTUtils.o: cxx ../../third_party/skia/src/sfnt/SkOTUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOTUtils.cpp
+  source_name_part = SkOTUtils
+build obj/skia/skia/SkCodec.o: cxx ../../third_party/skia/src/codec/SkCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCodec.cpp
+  source_name_part = SkCodec
+build obj/skia/skia/SkCodecImageGenerator.o: cxx ../../third_party/skia/src/codec/SkCodecImageGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkCodecImageGenerator.cpp
+  source_name_part = SkCodecImageGenerator
+build obj/skia/skia/SkColorTable.o: cxx ../../third_party/skia/src/codec/SkColorTable.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkColorTable.cpp
+  source_name_part = SkColorTable
+build obj/skia/skia/SkMaskSwizzler.o: cxx ../../third_party/skia/src/codec/SkMaskSwizzler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkMaskSwizzler.cpp
+  source_name_part = SkMaskSwizzler
+build obj/skia/skia/SkMasks.o: cxx ../../third_party/skia/src/codec/SkMasks.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkMasks.cpp
+  source_name_part = SkMasks
+build obj/skia/skia/SkPixmapUtils.o: cxx ../../third_party/skia/src/codec/SkPixmapUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPixmapUtils.cpp
+  source_name_part = SkPixmapUtils
+build obj/skia/skia/SkSampler.o: cxx ../../third_party/skia/src/codec/SkSampler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSampler.cpp
+  source_name_part = SkSampler
+build obj/skia/skia/SkSwizzler.o: cxx ../../third_party/skia/src/codec/SkSwizzler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSwizzler.cpp
+  source_name_part = SkSwizzler
+build obj/skia/skia/SkBmpBaseCodec.o: cxx ../../third_party/skia/src/codec/SkBmpBaseCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBmpBaseCodec.cpp
+  source_name_part = SkBmpBaseCodec
+build obj/skia/skia/SkBmpCodec.o: cxx ../../third_party/skia/src/codec/SkBmpCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBmpCodec.cpp
+  source_name_part = SkBmpCodec
+build obj/skia/skia/SkBmpMaskCodec.o: cxx ../../third_party/skia/src/codec/SkBmpMaskCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBmpMaskCodec.cpp
+  source_name_part = SkBmpMaskCodec
+build obj/skia/skia/SkBmpRLECodec.o: cxx ../../third_party/skia/src/codec/SkBmpRLECodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBmpRLECodec.cpp
+  source_name_part = SkBmpRLECodec
+build obj/skia/skia/SkBmpStandardCodec.o: cxx ../../third_party/skia/src/codec/SkBmpStandardCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkBmpStandardCodec.cpp
+  source_name_part = SkBmpStandardCodec
+build obj/skia/skia/SkWbmpCodec.o: cxx ../../third_party/skia/src/codec/SkWbmpCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkWbmpCodec.cpp
+  source_name_part = SkWbmpCodec
+build obj/skia/skia/SkJPEGWriteUtility.o: cxx ../../third_party/skia/src/encode/SkJPEGWriteUtility.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJPEGWriteUtility.cpp
+  source_name_part = SkJPEGWriteUtility
+build obj/skia/skia/SkJpegEncoder.o: cxx ../../third_party/skia/src/encode/SkJpegEncoder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegEncoder.cpp
+  source_name_part = SkJpegEncoder
+build obj/skia/skia/SkEncodedInfo.o: cxx ../../third_party/skia/src/codec/SkEncodedInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkEncodedInfo.cpp
+  source_name_part = SkEncodedInfo
+build obj/skia/skia/SkIcoCodec.o: cxx ../../third_party/skia/src/codec/SkIcoCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkIcoCodec.cpp
+  source_name_part = SkIcoCodec
+build obj/skia/skia/SkJpegCodec.o: cxx ../../third_party/skia/src/codec/SkJpegCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegCodec.cpp
+  source_name_part = SkJpegCodec
+build obj/skia/skia/SkJpegDecoderMgr.o: cxx ../../third_party/skia/src/codec/SkJpegDecoderMgr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegDecoderMgr.cpp
+  source_name_part = SkJpegDecoderMgr
+build obj/skia/skia/SkJpegMultiPicture.o: cxx ../../third_party/skia/src/codec/SkJpegMultiPicture.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegMultiPicture.cpp
+  source_name_part = SkJpegMultiPicture
+build obj/skia/skia/SkJpegSegmentScan.o: cxx ../../third_party/skia/src/codec/SkJpegSegmentScan.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegSegmentScan.cpp
+  source_name_part = SkJpegSegmentScan
+build obj/skia/skia/SkJpegSourceMgr.o: cxx ../../third_party/skia/src/codec/SkJpegSourceMgr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegSourceMgr.cpp
+  source_name_part = SkJpegSourceMgr
+build obj/skia/skia/SkJpegUtility.o: cxx ../../third_party/skia/src/codec/SkJpegUtility.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegUtility.cpp
+  source_name_part = SkJpegUtility
+build obj/skia/skia/SkParseEncodedOrigin.o: cxx ../../third_party/skia/src/codec/SkParseEncodedOrigin.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkParseEncodedOrigin.cpp
+  source_name_part = SkParseEncodedOrigin
+build obj/skia/skia/SkPngCodec.o: cxx ../../third_party/skia/src/codec/SkPngCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPngCodec.cpp
+  source_name_part = SkPngCodec
+build obj/skia/skia/SkWebpCodec.o: cxx ../../third_party/skia/src/codec/SkWebpCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkWebpCodec.cpp
+  source_name_part = SkWebpCodec
+build obj/skia/skia/SkWuffsCodec.o: cxx ../../third_party/skia/src/codec/SkWuffsCodec.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkWuffsCodec.cpp
+  source_name_part = SkWuffsCodec
+build obj/skia/skia/SkImageGenerator_skia.o: cxx ../../third_party/skia/src/ports/SkImageGenerator_skia.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImageGenerator_skia.cpp
+  source_name_part = SkImageGenerator_skia
+build obj/skia/skia/SkFontHost_FreeType.o: cxx ../../third_party/skia/src/ports/SkFontHost_FreeType.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontHost_FreeType.cpp
+  source_name_part = SkFontHost_FreeType
+build obj/skia/skia/SkFontHost_FreeType_common.o: cxx ../../third_party/skia/src/ports/SkFontHost_FreeType_common.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontHost_FreeType_common.cpp
+  source_name_part = SkFontHost_FreeType_common
+build obj/skia/skia/SkOSFile_posix.o: cxx ../../third_party/skia/src/ports/SkOSFile_posix.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkOSFile_posix.cpp
+  source_name_part = SkOSFile_posix
+build obj/skia/skia/SkFontConfigInterface.o: cxx ../../third_party/skia/src/ports/SkFontConfigInterface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontConfigInterface.cpp
+  source_name_part = SkFontConfigInterface
+build obj/skia/skia/SkFontConfigInterface_direct.o: cxx ../../third_party/skia/src/ports/SkFontConfigInterface_direct.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontConfigInterface_direct.cpp
+  source_name_part = SkFontConfigInterface_direct
+build obj/skia/skia/SkFontConfigInterface_direct_factory.o: cxx ../../third_party/skia/src/ports/SkFontConfigInterface_direct_factory.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontConfigInterface_direct_factory.cpp
+  source_name_part = SkFontConfigInterface_direct_factory
+build obj/skia/skia/SkFontMgr_FontConfigInterface.o: cxx ../../third_party/skia/src/ports/SkFontMgr_FontConfigInterface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontMgr_FontConfigInterface.cpp
+  source_name_part = SkFontMgr_FontConfigInterface
+build obj/skia/skia/SkFontMgr_android.o: cxx ../../third_party/skia/src/ports/SkFontMgr_android.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontMgr_android.cpp
+  source_name_part = SkFontMgr_android
+build obj/skia/skia/SkFontMgr_android_parser.o: cxx ../../third_party/skia/src/ports/SkFontMgr_android_parser.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkFontMgr_android_parser.cpp
+  source_name_part = SkFontMgr_android_parser
+build obj/skia/skia/ClipStack.o: cxx ../../third_party/skia/src/gpu/ganesh/ClipStack.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ClipStack.cpp
+  source_name_part = ClipStack
+build obj/skia/skia/Device.o: cxx ../../third_party/skia/src/gpu/ganesh/Device.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Device.cpp
+  source_name_part = Device
+build obj/skia/skia/Device_drawTexture.o: cxx ../../third_party/skia/src/gpu/ganesh/Device_drawTexture.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Device_drawTexture.cpp
+  source_name_part = Device_drawTexture
+build obj/skia/skia/GrAHardwareBufferImageGenerator.o: cxx ../../third_party/skia/src/gpu/ganesh/GrAHardwareBufferImageGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAHardwareBufferImageGenerator.cpp
+  source_name_part = GrAHardwareBufferImageGenerator
+build obj/skia/skia/GrAHardwareBufferUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrAHardwareBufferUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAHardwareBufferUtils.cpp
+  source_name_part = GrAHardwareBufferUtils
+build obj/skia/skia/GrAttachment.o: cxx ../../third_party/skia/src/gpu/ganesh/GrAttachment.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAttachment.cpp
+  source_name_part = GrAttachment
+build obj/skia/skia/GrAuditTrail.o: cxx ../../third_party/skia/src/gpu/ganesh/GrAuditTrail.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAuditTrail.cpp
+  source_name_part = GrAuditTrail
+build obj/skia/skia/GrBackendSemaphore.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBackendSemaphore.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBackendSemaphore.cpp
+  source_name_part = GrBackendSemaphore
+build obj/skia/skia/GrBackendSurface.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBackendSurface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBackendSurface.cpp
+  source_name_part = GrBackendSurface
+build obj/skia/skia/GrBackendTextureImageGenerator.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBackendTextureImageGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBackendTextureImageGenerator.cpp
+  source_name_part = GrBackendTextureImageGenerator
+build obj/skia/skia/GrBackendUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBackendUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBackendUtils.cpp
+  source_name_part = GrBackendUtils
+build obj/skia/skia/GrBlurUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBlurUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBlurUtils.cpp
+  source_name_part = GrBlurUtils
+build obj/skia/skia/GrBufferAllocPool.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBufferAllocPool.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBufferAllocPool.cpp
+  source_name_part = GrBufferAllocPool
+build obj/skia/skia/GrBufferTransferRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBufferTransferRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBufferTransferRenderTask.cpp
+  source_name_part = GrBufferTransferRenderTask
+build obj/skia/skia/GrBufferUpdateRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrBufferUpdateRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBufferUpdateRenderTask.cpp
+  source_name_part = GrBufferUpdateRenderTask
+build obj/skia/skia/GrCaps.o: cxx ../../third_party/skia/src/gpu/ganesh/GrCaps.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrCaps.cpp
+  source_name_part = GrCaps
+build obj/skia/skia/GrClientMappedBufferManager.o: cxx ../../third_party/skia/src/gpu/ganesh/GrClientMappedBufferManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrClientMappedBufferManager.cpp
+  source_name_part = GrClientMappedBufferManager
+build obj/skia/skia/GrColorInfo.o: cxx ../../third_party/skia/src/gpu/ganesh/GrColorInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrColorInfo.cpp
+  source_name_part = GrColorInfo
+build obj/skia/skia/GrColorSpaceXform.o: cxx ../../third_party/skia/src/gpu/ganesh/GrColorSpaceXform.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrColorSpaceXform.cpp
+  source_name_part = GrColorSpaceXform
+build obj/skia/skia/GrContextThreadSafeProxy.o: cxx ../../third_party/skia/src/gpu/ganesh/GrContextThreadSafeProxy.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrContextThreadSafeProxy.cpp
+  source_name_part = GrContextThreadSafeProxy
+build obj/skia/skia/GrContext_Base.o: cxx ../../third_party/skia/src/gpu/ganesh/GrContext_Base.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrContext_Base.cpp
+  source_name_part = GrContext_Base
+build obj/skia/skia/GrCopyRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrCopyRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrCopyRenderTask.cpp
+  source_name_part = GrCopyRenderTask
+build obj/skia/skia/GrDDLContext.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDDLContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDDLContext.cpp
+  source_name_part = GrDDLContext
+build obj/skia/skia/GrDDLTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDDLTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDDLTask.cpp
+  source_name_part = GrDDLTask
+build obj/skia/skia/GrDataUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDataUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDataUtils.cpp
+  source_name_part = GrDataUtils
+build obj/skia/skia/GrDefaultGeoProcFactory.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDefaultGeoProcFactory.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDefaultGeoProcFactory.cpp
+  source_name_part = GrDefaultGeoProcFactory
+build obj/skia/skia/GrDirectContext.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDirectContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDirectContext.cpp
+  source_name_part = GrDirectContext
+build obj/skia/skia/GrDirectContextPriv.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDirectContextPriv.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDirectContextPriv.cpp
+  source_name_part = GrDirectContextPriv
+build obj/skia/skia/GrDistanceFieldGenFromVector.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDistanceFieldGenFromVector.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDistanceFieldGenFromVector.cpp
+  source_name_part = GrDistanceFieldGenFromVector
+build obj/skia/skia/GrDrawOpAtlas.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDrawOpAtlas.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDrawOpAtlas.cpp
+  source_name_part = GrDrawOpAtlas
+build obj/skia/skia/GrDrawOpTest.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDrawOpTest.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDrawOpTest.cpp
+  source_name_part = GrDrawOpTest
+build obj/skia/skia/GrDrawingManager.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDrawingManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDrawingManager.cpp
+  source_name_part = GrDrawingManager
+build obj/skia/skia/GrDriverBugWorkarounds.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDriverBugWorkarounds.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDriverBugWorkarounds.cpp
+  source_name_part = GrDriverBugWorkarounds
+build obj/skia/skia/GrDynamicAtlas.o: cxx ../../third_party/skia/src/gpu/ganesh/GrDynamicAtlas.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDynamicAtlas.cpp
+  source_name_part = GrDynamicAtlas
+build obj/skia/skia/GrEagerVertexAllocator.o: cxx ../../third_party/skia/src/gpu/ganesh/GrEagerVertexAllocator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrEagerVertexAllocator.cpp
+  source_name_part = GrEagerVertexAllocator
+build obj/skia/skia/GrFinishCallbacks.o: cxx ../../third_party/skia/src/gpu/ganesh/GrFinishCallbacks.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrFinishCallbacks.cpp
+  source_name_part = GrFinishCallbacks
+build obj/skia/skia/GrFixedClip.o: cxx ../../third_party/skia/src/gpu/ganesh/GrFixedClip.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrFixedClip.cpp
+  source_name_part = GrFixedClip
+build obj/skia/skia/GrFragmentProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/GrFragmentProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrFragmentProcessor.cpp
+  source_name_part = GrFragmentProcessor
+build obj/skia/skia/GrGeometryProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/GrGeometryProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGeometryProcessor.cpp
+  source_name_part = GrGeometryProcessor
+build obj/skia/skia/GrGpu.o: cxx ../../third_party/skia/src/gpu/ganesh/GrGpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGpu.cpp
+  source_name_part = GrGpu
+build obj/skia/skia/GrGpuBuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/GrGpuBuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGpuBuffer.cpp
+  source_name_part = GrGpuBuffer
+build obj/skia/skia/GrGpuResource.o: cxx ../../third_party/skia/src/gpu/ganesh/GrGpuResource.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGpuResource.cpp
+  source_name_part = GrGpuResource
+build obj/skia/skia/GrImageContext.o: cxx ../../third_party/skia/src/gpu/ganesh/GrImageContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrImageContext.cpp
+  source_name_part = GrImageContext
+build obj/skia/skia/GrImageInfo.o: cxx ../../third_party/skia/src/gpu/ganesh/GrImageInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrImageInfo.cpp
+  source_name_part = GrImageInfo
+build obj/skia/skia/GrImageUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrImageUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrImageUtils.cpp
+  source_name_part = GrImageUtils
+build obj/skia/skia/GrManagedResource.o: cxx ../../third_party/skia/src/gpu/ganesh/GrManagedResource.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrManagedResource.cpp
+  source_name_part = GrManagedResource
+build obj/skia/skia/GrMemoryPool.o: cxx ../../third_party/skia/src/gpu/ganesh/GrMemoryPool.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMemoryPool.cpp
+  source_name_part = GrMemoryPool
+build obj/skia/skia/GrMeshDrawTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/GrMeshDrawTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMeshDrawTarget.cpp
+  source_name_part = GrMeshDrawTarget
+build obj/skia/skia/GrOnFlushResourceProvider.o: cxx ../../third_party/skia/src/gpu/ganesh/GrOnFlushResourceProvider.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOnFlushResourceProvider.cpp
+  source_name_part = GrOnFlushResourceProvider
+build obj/skia/skia/GrOpFlushState.o: cxx ../../third_party/skia/src/gpu/ganesh/GrOpFlushState.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOpFlushState.cpp
+  source_name_part = GrOpFlushState
+build obj/skia/skia/GrOpsRenderPass.o: cxx ../../third_party/skia/src/gpu/ganesh/GrOpsRenderPass.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOpsRenderPass.cpp
+  source_name_part = GrOpsRenderPass
+build obj/skia/skia/GrPaint.o: cxx ../../third_party/skia/src/gpu/ganesh/GrPaint.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPaint.cpp
+  source_name_part = GrPaint
+build obj/skia/skia/GrPersistentCacheUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrPersistentCacheUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPersistentCacheUtils.cpp
+  source_name_part = GrPersistentCacheUtils
+build obj/skia/skia/GrPinnableImage.o: cxx ../../third_party/skia/src/gpu/ganesh/GrPinnableImage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPinnableImage.cpp
+  source_name_part = GrPinnableImage
+build obj/skia/skia/GrPipeline.o: cxx ../../third_party/skia/src/gpu/ganesh/GrPipeline.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPipeline.cpp
+  source_name_part = GrPipeline
+build obj/skia/skia/GrProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProcessor.cpp
+  source_name_part = GrProcessor
+build obj/skia/skia/GrProcessorAnalysis.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProcessorAnalysis.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProcessorAnalysis.cpp
+  source_name_part = GrProcessorAnalysis
+build obj/skia/skia/GrProcessorSet.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProcessorSet.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProcessorSet.cpp
+  source_name_part = GrProcessorSet
+build obj/skia/skia/GrProcessorUnitTest.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProcessorUnitTest.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProcessorUnitTest.cpp
+  source_name_part = GrProcessorUnitTest
+build obj/skia/skia/GrProgramDesc.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProgramDesc.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProgramDesc.cpp
+  source_name_part = GrProgramDesc
+build obj/skia/skia/GrProgramInfo.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProgramInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProgramInfo.cpp
+  source_name_part = GrProgramInfo
+build obj/skia/skia/GrProxyProvider.o: cxx ../../third_party/skia/src/gpu/ganesh/GrProxyProvider.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrProxyProvider.cpp
+  source_name_part = GrProxyProvider
+build obj/skia/skia/GrRecordingContext.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRecordingContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRecordingContext.cpp
+  source_name_part = GrRecordingContext
+build obj/skia/skia/GrRecordingContextPriv.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRecordingContextPriv.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRecordingContextPriv.cpp
+  source_name_part = GrRecordingContextPriv
+build obj/skia/skia/GrRenderTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRenderTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRenderTarget.cpp
+  source_name_part = GrRenderTarget
+build obj/skia/skia/GrRenderTargetProxy.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRenderTargetProxy.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRenderTargetProxy.cpp
+  source_name_part = GrRenderTargetProxy
+build obj/skia/skia/GrRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRenderTask.cpp
+  source_name_part = GrRenderTask
+build obj/skia/skia/GrRenderTaskCluster.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRenderTaskCluster.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRenderTaskCluster.cpp
+  source_name_part = GrRenderTaskCluster
+build obj/skia/skia/GrResourceAllocator.o: cxx ../../third_party/skia/src/gpu/ganesh/GrResourceAllocator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrResourceAllocator.cpp
+  source_name_part = GrResourceAllocator
+build obj/skia/skia/GrResourceCache.o: cxx ../../third_party/skia/src/gpu/ganesh/GrResourceCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrResourceCache.cpp
+  source_name_part = GrResourceCache
+build obj/skia/skia/GrResourceProvider.o: cxx ../../third_party/skia/src/gpu/ganesh/GrResourceProvider.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrResourceProvider.cpp
+  source_name_part = GrResourceProvider
+build obj/skia/skia/GrRingBuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/GrRingBuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRingBuffer.cpp
+  source_name_part = GrRingBuffer
+build obj/skia/skia/GrSPIRVUniformHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSPIRVUniformHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSPIRVUniformHandler.cpp
+  source_name_part = GrSPIRVUniformHandler
+build obj/skia/skia/GrSPIRVVaryingHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSPIRVVaryingHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSPIRVVaryingHandler.cpp
+  source_name_part = GrSPIRVVaryingHandler
+build obj/skia/skia/GrSWMaskHelper.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSWMaskHelper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSWMaskHelper.cpp
+  source_name_part = GrSWMaskHelper
+build obj/skia/skia/GrShaderCaps.o: cxx ../../third_party/skia/src/gpu/ganesh/GrShaderCaps.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrShaderCaps.cpp
+  source_name_part = GrShaderCaps
+build obj/skia/skia/GrShaderVar.o: cxx ../../third_party/skia/src/gpu/ganesh/GrShaderVar.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrShaderVar.cpp
+  source_name_part = GrShaderVar
+build obj/skia/skia/GrStagingBufferManager.o: cxx ../../third_party/skia/src/gpu/ganesh/GrStagingBufferManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrStagingBufferManager.cpp
+  source_name_part = GrStagingBufferManager
+build obj/skia/skia/GrStencilSettings.o: cxx ../../third_party/skia/src/gpu/ganesh/GrStencilSettings.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrStencilSettings.cpp
+  source_name_part = GrStencilSettings
+build obj/skia/skia/GrStyle.o: cxx ../../third_party/skia/src/gpu/ganesh/GrStyle.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrStyle.cpp
+  source_name_part = GrStyle
+build obj/skia/skia/GrSurface.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSurface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSurface.cpp
+  source_name_part = GrSurface
+build obj/skia/skia/GrSurfaceInfo.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSurfaceInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSurfaceInfo.cpp
+  source_name_part = GrSurfaceInfo
+build obj/skia/skia/GrSurfaceProxy.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSurfaceProxy.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSurfaceProxy.cpp
+  source_name_part = GrSurfaceProxy
+build obj/skia/skia/GrSurfaceProxyView.o: cxx ../../third_party/skia/src/gpu/ganesh/GrSurfaceProxyView.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSurfaceProxyView.cpp
+  source_name_part = GrSurfaceProxyView
+build obj/skia/skia/GrTestUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTestUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTestUtils.cpp
+  source_name_part = GrTestUtils
+build obj/skia/skia/GrTexture.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTexture.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTexture.cpp
+  source_name_part = GrTexture
+build obj/skia/skia/GrTextureProxy.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTextureProxy.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTextureProxy.cpp
+  source_name_part = GrTextureProxy
+build obj/skia/skia/GrTextureRenderTargetProxy.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTextureRenderTargetProxy.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTextureRenderTargetProxy.cpp
+  source_name_part = GrTextureRenderTargetProxy
+build obj/skia/skia/GrTextureResolveRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTextureResolveRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTextureResolveRenderTask.cpp
+  source_name_part = GrTextureResolveRenderTask
+build obj/skia/skia/GrThreadSafeCache.o: cxx ../../third_party/skia/src/gpu/ganesh/GrThreadSafeCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrThreadSafeCache.cpp
+  source_name_part = GrThreadSafeCache
+build obj/skia/skia/GrThreadSafePipelineBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/GrThreadSafePipelineBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrThreadSafePipelineBuilder.cpp
+  source_name_part = GrThreadSafePipelineBuilder
+build obj/skia/skia/GrTransferFromRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrTransferFromRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTransferFromRenderTask.cpp
+  source_name_part = GrTransferFromRenderTask
+build obj/skia/skia/GrUniformDataManager.o: cxx ../../third_party/skia/src/gpu/ganesh/GrUniformDataManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrUniformDataManager.cpp
+  source_name_part = GrUniformDataManager
+build obj/skia/skia/GrUtil.o: cxx ../../third_party/skia/src/gpu/ganesh/GrUtil.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrUtil.cpp
+  source_name_part = GrUtil
+build obj/skia/skia/GrVertexChunkArray.o: cxx ../../third_party/skia/src/gpu/ganesh/GrVertexChunkArray.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVertexChunkArray.cpp
+  source_name_part = GrVertexChunkArray
+build obj/skia/skia/GrWaitRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrWaitRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrWaitRenderTask.cpp
+  source_name_part = GrWaitRenderTask
+build obj/skia/skia/GrWritePixelsRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/GrWritePixelsRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrWritePixelsRenderTask.cpp
+  source_name_part = GrWritePixelsRenderTask
+build obj/skia/skia/GrXferProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/GrXferProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrXferProcessor.cpp
+  source_name_part = GrXferProcessor
+build obj/skia/skia/GrYUVABackendTextures.o: cxx ../../third_party/skia/src/gpu/ganesh/GrYUVABackendTextures.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrYUVABackendTextures.cpp
+  source_name_part = GrYUVABackendTextures
+build obj/skia/skia/GrYUVATextureProxies.o: cxx ../../third_party/skia/src/gpu/ganesh/GrYUVATextureProxies.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrYUVATextureProxies.cpp
+  source_name_part = GrYUVATextureProxies
+build obj/skia/skia/PathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/PathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathRenderer.cpp
+  source_name_part = PathRenderer
+build obj/skia/skia/PathRendererChain.o: cxx ../../third_party/skia/src/gpu/ganesh/PathRendererChain.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathRendererChain.cpp
+  source_name_part = PathRendererChain
+build obj/skia/skia/SkGr.o: cxx ../../third_party/skia/src/gpu/ganesh/SkGr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkGr.cpp
+  source_name_part = SkGr
+build obj/skia/skia/StencilMaskHelper.o: cxx ../../third_party/skia/src/gpu/ganesh/StencilMaskHelper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = StencilMaskHelper.cpp
+  source_name_part = StencilMaskHelper
+build obj/skia/skia/SurfaceContext.o: cxx ../../third_party/skia/src/gpu/ganesh/SurfaceContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SurfaceContext.cpp
+  source_name_part = SurfaceContext
+build obj/skia/skia/SurfaceDrawContext.o: cxx ../../third_party/skia/src/gpu/ganesh/SurfaceDrawContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SurfaceDrawContext.cpp
+  source_name_part = SurfaceDrawContext
+build obj/skia/skia/SurfaceFillContext.o: cxx ../../third_party/skia/src/gpu/ganesh/SurfaceFillContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SurfaceFillContext.cpp
+  source_name_part = SurfaceFillContext
+build obj/skia/skia/GrBezierEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrBezierEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBezierEffect.cpp
+  source_name_part = GrBezierEffect
+build obj/skia/skia/GrBicubicEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrBicubicEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBicubicEffect.cpp
+  source_name_part = GrBicubicEffect
+build obj/skia/skia/GrBitmapTextGeoProc.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrBitmapTextGeoProc.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBitmapTextGeoProc.cpp
+  source_name_part = GrBitmapTextGeoProc
+build obj/skia/skia/GrBlendFragmentProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrBlendFragmentProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrBlendFragmentProcessor.cpp
+  source_name_part = GrBlendFragmentProcessor
+build obj/skia/skia/GrConvexPolyEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrConvexPolyEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrConvexPolyEffect.cpp
+  source_name_part = GrConvexPolyEffect
+build obj/skia/skia/GrCoverageSetOpXP.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrCoverageSetOpXP.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrCoverageSetOpXP.cpp
+  source_name_part = GrCoverageSetOpXP
+build obj/skia/skia/GrCustomXfermode.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrCustomXfermode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrCustomXfermode.cpp
+  source_name_part = GrCustomXfermode
+build obj/skia/skia/GrDisableColorXP.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrDisableColorXP.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDisableColorXP.cpp
+  source_name_part = GrDisableColorXP
+build obj/skia/skia/GrDistanceFieldGeoProc.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrDistanceFieldGeoProc.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrDistanceFieldGeoProc.cpp
+  source_name_part = GrDistanceFieldGeoProc
+build obj/skia/skia/GrGaussianConvolutionFragmentProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrGaussianConvolutionFragmentProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGaussianConvolutionFragmentProcessor.cpp
+  source_name_part = GrGaussianConvolutionFragmentProcessor
+build obj/skia/skia/GrMatrixConvolutionEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrMatrixConvolutionEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMatrixConvolutionEffect.cpp
+  source_name_part = GrMatrixConvolutionEffect
+build obj/skia/skia/GrMatrixEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrMatrixEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMatrixEffect.cpp
+  source_name_part = GrMatrixEffect
+build obj/skia/skia/GrModulateAtlasCoverageEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrModulateAtlasCoverageEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrModulateAtlasCoverageEffect.cpp
+  source_name_part = GrModulateAtlasCoverageEffect
+build obj/skia/skia/GrOvalEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrOvalEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOvalEffect.cpp
+  source_name_part = GrOvalEffect
+build obj/skia/skia/GrPorterDuffXferProcessor.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrPorterDuffXferProcessor.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPorterDuffXferProcessor.cpp
+  source_name_part = GrPorterDuffXferProcessor
+build obj/skia/skia/GrRRectEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrRRectEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrRRectEffect.cpp
+  source_name_part = GrRRectEffect
+build obj/skia/skia/GrShadowGeoProc.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrShadowGeoProc.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrShadowGeoProc.cpp
+  source_name_part = GrShadowGeoProc
+build obj/skia/skia/GrSkSLFP.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrSkSLFP.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSkSLFP.cpp
+  source_name_part = GrSkSLFP
+build obj/skia/skia/GrTextureEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrTextureEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTextureEffect.cpp
+  source_name_part = GrTextureEffect
+build obj/skia/skia/GrYUVtoRGBEffect.o: cxx ../../third_party/skia/src/gpu/ganesh/effects/GrYUVtoRGBEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrYUVtoRGBEffect.cpp
+  source_name_part = GrYUVtoRGBEffect
+build obj/skia/skia/GrAAConvexTessellator.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrAAConvexTessellator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAAConvexTessellator.cpp
+  source_name_part = GrAAConvexTessellator
+build obj/skia/skia/GrAATriangulator.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrAATriangulator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAATriangulator.cpp
+  source_name_part = GrAATriangulator
+build obj/skia/skia/GrPathUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrPathUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPathUtils.cpp
+  source_name_part = GrPathUtils
+build obj/skia/skia/GrQuad.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrQuad.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrQuad.cpp
+  source_name_part = GrQuad
+build obj/skia/skia/GrQuadUtils.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrQuadUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrQuadUtils.cpp
+  source_name_part = GrQuadUtils
+build obj/skia/skia/GrShape.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrShape.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrShape.cpp
+  source_name_part = GrShape
+build obj/skia/skia/GrStyledShape.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrStyledShape.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrStyledShape.cpp
+  source_name_part = GrStyledShape
+build obj/skia/skia/GrTriangulator.o: cxx ../../third_party/skia/src/gpu/ganesh/geometry/GrTriangulator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTriangulator.cpp
+  source_name_part = GrTriangulator
+build obj/skia/skia/GrGLSLBlend.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLBlend.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLBlend.cpp
+  source_name_part = GrGLSLBlend
+build obj/skia/skia/GrGLSLFragmentShaderBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLFragmentShaderBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLFragmentShaderBuilder.cpp
+  source_name_part = GrGLSLFragmentShaderBuilder
+build obj/skia/skia/GrGLSLProgramBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLProgramBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLProgramBuilder.cpp
+  source_name_part = GrGLSLProgramBuilder
+build obj/skia/skia/GrGLSLProgramDataManager.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLProgramDataManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLProgramDataManager.cpp
+  source_name_part = GrGLSLProgramDataManager
+build obj/skia/skia/GrGLSLShaderBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLShaderBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLShaderBuilder.cpp
+  source_name_part = GrGLSLShaderBuilder
+build obj/skia/skia/GrGLSLUniformHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLUniformHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLUniformHandler.cpp
+  source_name_part = GrGLSLUniformHandler
+build obj/skia/skia/GrGLSLVarying.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLVarying.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLVarying.cpp
+  source_name_part = GrGLSLVarying
+build obj/skia/skia/GrGLSLVertexGeoBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/glsl/GrGLSLVertexGeoBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSLVertexGeoBuilder.cpp
+  source_name_part = GrGLSLVertexGeoBuilder
+build obj/skia/skia/GrGradientBitmapCache.o: cxx ../../third_party/skia/src/gpu/ganesh/gradients/GrGradientBitmapCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGradientBitmapCache.cpp
+  source_name_part = GrGradientBitmapCache
+build obj/skia/skia/GrGradientShader.o: cxx ../../third_party/skia/src/gpu/ganesh/gradients/GrGradientShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGradientShader.cpp
+  source_name_part = GrGradientShader
+build obj/skia/skia/GrMockCaps.o: cxx ../../third_party/skia/src/gpu/ganesh/mock/GrMockCaps.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMockCaps.cpp
+  source_name_part = GrMockCaps
+build obj/skia/skia/GrMockGpu.o: cxx ../../third_party/skia/src/gpu/ganesh/mock/GrMockGpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMockGpu.cpp
+  source_name_part = GrMockGpu
+build obj/skia/skia/GrMockTypes.o: cxx ../../third_party/skia/src/gpu/ganesh/mock/GrMockTypes.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMockTypes.cpp
+  source_name_part = GrMockTypes
+build obj/skia/skia/AAConvexPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AAConvexPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AAConvexPathRenderer.cpp
+  source_name_part = AAConvexPathRenderer
+build obj/skia/skia/AAHairLinePathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AAHairLinePathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AAHairLinePathRenderer.cpp
+  source_name_part = AAHairLinePathRenderer
+build obj/skia/skia/AALinearizingConvexPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AALinearizingConvexPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AALinearizingConvexPathRenderer.cpp
+  source_name_part = AALinearizingConvexPathRenderer
+build obj/skia/skia/AtlasInstancedHelper.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AtlasInstancedHelper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AtlasInstancedHelper.cpp
+  source_name_part = AtlasInstancedHelper
+build obj/skia/skia/AtlasPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AtlasPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AtlasPathRenderer.cpp
+  source_name_part = AtlasPathRenderer
+build obj/skia/skia/AtlasRenderTask.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AtlasRenderTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AtlasRenderTask.cpp
+  source_name_part = AtlasRenderTask
+build obj/skia/skia/AtlasTextOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/AtlasTextOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AtlasTextOp.cpp
+  source_name_part = AtlasTextOp
+build obj/skia/skia/ClearOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/ClearOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ClearOp.cpp
+  source_name_part = ClearOp
+build obj/skia/skia/DashLinePathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DashLinePathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DashLinePathRenderer.cpp
+  source_name_part = DashLinePathRenderer
+build obj/skia/skia/DashOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DashOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DashOp.cpp
+  source_name_part = DashOp
+build obj/skia/skia/DefaultPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DefaultPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DefaultPathRenderer.cpp
+  source_name_part = DefaultPathRenderer
+build obj/skia/skia/DrawAtlasOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DrawAtlasOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DrawAtlasOp.cpp
+  source_name_part = DrawAtlasOp
+build obj/skia/skia/DrawAtlasPathOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DrawAtlasPathOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DrawAtlasPathOp.cpp
+  source_name_part = DrawAtlasPathOp
+build obj/skia/skia/DrawMeshOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DrawMeshOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DrawMeshOp.cpp
+  source_name_part = DrawMeshOp
+build obj/skia/skia/DrawableOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/DrawableOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DrawableOp.cpp
+  source_name_part = DrawableOp
+build obj/skia/skia/FillRRectOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/FillRRectOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FillRRectOp.cpp
+  source_name_part = FillRRectOp
+build obj/skia/skia/FillRectOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/FillRectOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FillRectOp.cpp
+  source_name_part = FillRectOp
+build obj/skia/skia/GrMeshDrawOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/GrMeshDrawOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrMeshDrawOp.cpp
+  source_name_part = GrMeshDrawOp
+build obj/skia/skia/GrOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/GrOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOp.cpp
+  source_name_part = GrOp
+build obj/skia/skia/GrOvalOpFactory.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/GrOvalOpFactory.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrOvalOpFactory.cpp
+  source_name_part = GrOvalOpFactory
+build obj/skia/skia/GrSimpleMeshDrawOpHelper.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/GrSimpleMeshDrawOpHelper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSimpleMeshDrawOpHelper.cpp
+  source_name_part = GrSimpleMeshDrawOpHelper
+build obj/skia/skia/GrSimpleMeshDrawOpHelperWithStencil.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/GrSimpleMeshDrawOpHelperWithStencil.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrSimpleMeshDrawOpHelperWithStencil.cpp
+  source_name_part = GrSimpleMeshDrawOpHelperWithStencil
+build obj/skia/skia/LatticeOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/LatticeOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = LatticeOp.cpp
+  source_name_part = LatticeOp
+build obj/skia/skia/OpsTask.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/OpsTask.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = OpsTask.cpp
+  source_name_part = OpsTask
+build obj/skia/skia/PathInnerTriangulateOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/PathInnerTriangulateOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathInnerTriangulateOp.cpp
+  source_name_part = PathInnerTriangulateOp
+build obj/skia/skia/PathStencilCoverOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/PathStencilCoverOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathStencilCoverOp.cpp
+  source_name_part = PathStencilCoverOp
+build obj/skia/skia/PathTessellateOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/PathTessellateOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathTessellateOp.cpp
+  source_name_part = PathTessellateOp
+build obj/skia/skia/QuadPerEdgeAA.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/QuadPerEdgeAA.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = QuadPerEdgeAA.cpp
+  source_name_part = QuadPerEdgeAA
+build obj/skia/skia/RegionOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/RegionOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RegionOp.cpp
+  source_name_part = RegionOp
+build obj/skia/skia/ShadowRRectOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/ShadowRRectOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShadowRRectOp.cpp
+  source_name_part = ShadowRRectOp
+build obj/skia/skia/SmallPathAtlasMgr.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/SmallPathAtlasMgr.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SmallPathAtlasMgr.cpp
+  source_name_part = SmallPathAtlasMgr
+build obj/skia/skia/SmallPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/SmallPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SmallPathRenderer.cpp
+  source_name_part = SmallPathRenderer
+build obj/skia/skia/SmallPathShapeData.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/SmallPathShapeData.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SmallPathShapeData.cpp
+  source_name_part = SmallPathShapeData
+build obj/skia/skia/SoftwarePathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/SoftwarePathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SoftwarePathRenderer.cpp
+  source_name_part = SoftwarePathRenderer
+build obj/skia/skia/StrokeRectOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/StrokeRectOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = StrokeRectOp.cpp
+  source_name_part = StrokeRectOp
+build obj/skia/skia/StrokeTessellateOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/StrokeTessellateOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = StrokeTessellateOp.cpp
+  source_name_part = StrokeTessellateOp
+build obj/skia/skia/TessellationPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/TessellationPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TessellationPathRenderer.cpp
+  source_name_part = TessellationPathRenderer
+build obj/skia/skia/TextureOp.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/TextureOp.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextureOp.cpp
+  source_name_part = TextureOp
+build obj/skia/skia/TriangulatingPathRenderer.o: cxx ../../third_party/skia/src/gpu/ganesh/ops/TriangulatingPathRenderer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TriangulatingPathRenderer.cpp
+  source_name_part = TriangulatingPathRenderer
+build obj/skia/skia/GrPathTessellationShader.o: cxx ../../third_party/skia/src/gpu/ganesh/tessellate/GrPathTessellationShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrPathTessellationShader.cpp
+  source_name_part = GrPathTessellationShader
+build obj/skia/skia/GrStrokeTessellationShader.o: cxx ../../third_party/skia/src/gpu/ganesh/tessellate/GrStrokeTessellationShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrStrokeTessellationShader.cpp
+  source_name_part = GrStrokeTessellationShader
+build obj/skia/skia/GrTessellationShader.o: cxx ../../third_party/skia/src/gpu/ganesh/tessellate/GrTessellationShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrTessellationShader.cpp
+  source_name_part = GrTessellationShader
+build obj/skia/skia/PathTessellator.o: cxx ../../third_party/skia/src/gpu/ganesh/tessellate/PathTessellator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PathTessellator.cpp
+  source_name_part = PathTessellator
+build obj/skia/skia/StrokeTessellator.o: cxx ../../third_party/skia/src/gpu/ganesh/tessellate/StrokeTessellator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = StrokeTessellator.cpp
+  source_name_part = StrokeTessellator
+build obj/skia/skia/GrAtlasManager.o: cxx ../../third_party/skia/src/gpu/ganesh/text/GrAtlasManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrAtlasManager.cpp
+  source_name_part = GrAtlasManager
+build obj/skia/skia/SkImage_AndroidFactories.o: cxx ../../third_party/skia/src/image/SkImage_AndroidFactories.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImage_AndroidFactories.cpp
+  source_name_part = SkImage_AndroidFactories
+build obj/skia/skia/SkImage_GaneshFactories.o: cxx ../../third_party/skia/src/image/SkImage_GaneshFactories.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImage_GaneshFactories.cpp
+  source_name_part = SkImage_GaneshFactories
+build obj/skia/skia/SkImage_Gpu.o: cxx ../../third_party/skia/src/image/SkImage_Gpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImage_Gpu.cpp
+  source_name_part = SkImage_Gpu
+build obj/skia/skia/SkImage_GpuBase.o: cxx ../../third_party/skia/src/image/SkImage_GpuBase.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImage_GpuBase.cpp
+  source_name_part = SkImage_GpuBase
+build obj/skia/skia/SkImage_GpuYUVA.o: cxx ../../third_party/skia/src/image/SkImage_GpuYUVA.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkImage_GpuYUVA.cpp
+  source_name_part = SkImage_GpuYUVA
+build obj/skia/skia/SkSurface_Gpu.o: cxx ../../third_party/skia/src/image/SkSurface_Gpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSurface_Gpu.cpp
+  source_name_part = SkSurface_Gpu
+build obj/skia/skia/GrGLMakeNativeInterface_none.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLMakeNativeInterface_none.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLMakeNativeInterface_none.cpp
+  source_name_part = GrGLMakeNativeInterface_none
+build obj/skia/skia/SkSLGLSLCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLGLSLCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLGLSLCodeGenerator.cpp
+  source_name_part = SkSLGLSLCodeGenerator
+build obj/skia/skia/SkSLMetalCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLMetalCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLMetalCodeGenerator.cpp
+  source_name_part = SkSLMetalCodeGenerator
+build obj/skia/skia/SkSLPipelineStageCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLPipelineStageCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLPipelineStageCodeGenerator.cpp
+  source_name_part = SkSLPipelineStageCodeGenerator
+build obj/skia/skia/SkSLSPIRVCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLSPIRVCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSPIRVCodeGenerator.cpp
+  source_name_part = SkSLSPIRVCodeGenerator
+build obj/skia/skia/SkSLSPIRVtoHLSL.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLSPIRVtoHLSL.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLSPIRVtoHLSL.cpp
+  source_name_part = SkSLSPIRVtoHLSL
+build obj/skia/skia/SkSLWGSLCodeGenerator.o: cxx ../../third_party/skia/src/sksl/codegen/SkSLWGSLCodeGenerator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLWGSLCodeGenerator.cpp
+  source_name_part = SkSLWGSLCodeGenerator
+build obj/skia/skia/AtlasTypes.o: cxx ../../third_party/skia/src/gpu/AtlasTypes.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AtlasTypes.cpp
+  source_name_part = AtlasTypes
+build obj/skia/skia/Blend.o: cxx ../../third_party/skia/src/gpu/Blend.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Blend.cpp
+  source_name_part = Blend
+build obj/skia/skia/RectanizerPow2.o: cxx ../../third_party/skia/src/gpu/RectanizerPow2.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RectanizerPow2.cpp
+  source_name_part = RectanizerPow2
+build obj/skia/skia/RectanizerSkyline.o: cxx ../../third_party/skia/src/gpu/RectanizerSkyline.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RectanizerSkyline.cpp
+  source_name_part = RectanizerSkyline
+build obj/skia/skia/ResourceKey.o: cxx ../../third_party/skia/src/gpu/ResourceKey.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ResourceKey.cpp
+  source_name_part = ResourceKey
+build obj/skia/skia/ShaderErrorHandler.o: cxx ../../third_party/skia/src/gpu/ShaderErrorHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShaderErrorHandler.cpp
+  source_name_part = ShaderErrorHandler
+build obj/skia/skia/Swizzle.o: cxx ../../third_party/skia/src/gpu/Swizzle.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Swizzle.cpp
+  source_name_part = Swizzle
+build obj/skia/skia/FixedCountBufferUtils.o: cxx ../../third_party/skia/src/gpu/tessellate/FixedCountBufferUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FixedCountBufferUtils.cpp
+  source_name_part = FixedCountBufferUtils
+build obj/skia/skia/Tessellation.o: cxx ../../third_party/skia/src/gpu/tessellate/Tessellation.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Tessellation.cpp
+  source_name_part = Tessellation
+build obj/skia/skia/DistanceFieldAdjustTable.o: cxx ../../third_party/skia/src/text/gpu/DistanceFieldAdjustTable.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DistanceFieldAdjustTable.cpp
+  source_name_part = DistanceFieldAdjustTable
+build obj/skia/skia/GlyphVector.o: cxx ../../third_party/skia/src/text/gpu/GlyphVector.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GlyphVector.cpp
+  source_name_part = GlyphVector
+build obj/skia/skia/SDFMaskFilter.o: cxx ../../third_party/skia/src/text/gpu/SDFMaskFilter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SDFMaskFilter.cpp
+  source_name_part = SDFMaskFilter
+build obj/skia/skia/SDFTControl.o: cxx ../../third_party/skia/src/text/gpu/SDFTControl.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SDFTControl.cpp
+  source_name_part = SDFTControl
+build obj/skia/skia/Slug.o: cxx ../../third_party/skia/src/text/gpu/Slug.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Slug.cpp
+  source_name_part = Slug
+build obj/skia/skia/StrikeCache.o: cxx ../../third_party/skia/src/text/gpu/StrikeCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = StrikeCache.cpp
+  source_name_part = StrikeCache
+build obj/skia/skia/SubRunAllocator.o: cxx ../../third_party/skia/src/text/gpu/SubRunAllocator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SubRunAllocator.cpp
+  source_name_part = SubRunAllocator
+build obj/skia/skia/SubRunContainer.o: cxx ../../third_party/skia/src/text/gpu/SubRunContainer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SubRunContainer.cpp
+  source_name_part = SubRunContainer
+build obj/skia/skia/TextBlob.o: cxx ../../third_party/skia/src/text/gpu/TextBlob.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextBlob.cpp
+  source_name_part = TextBlob
+build obj/skia/skia/TextBlobRedrawCoordinator.o: cxx ../../third_party/skia/src/text/gpu/TextBlobRedrawCoordinator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextBlobRedrawCoordinator.cpp
+  source_name_part = TextBlobRedrawCoordinator
+build obj/skia/skia/GrGLAssembleGLESInterfaceAutogen.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAssembleGLESInterfaceAutogen.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAssembleGLESInterfaceAutogen.cpp
+  source_name_part = GrGLAssembleGLESInterfaceAutogen
+build obj/skia/skia/GrGLAssembleGLInterfaceAutogen.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAssembleGLInterfaceAutogen.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAssembleGLInterfaceAutogen.cpp
+  source_name_part = GrGLAssembleGLInterfaceAutogen
+build obj/skia/skia/GrGLAssembleHelpers.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAssembleHelpers.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAssembleHelpers.cpp
+  source_name_part = GrGLAssembleHelpers
+build obj/skia/skia/GrGLAssembleInterface.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAssembleInterface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAssembleInterface.cpp
+  source_name_part = GrGLAssembleInterface
+build obj/skia/skia/GrGLAssembleWebGLInterfaceAutogen.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAssembleWebGLInterfaceAutogen.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAssembleWebGLInterfaceAutogen.cpp
+  source_name_part = GrGLAssembleWebGLInterfaceAutogen
+build obj/skia/skia/GrGLAttachment.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLAttachment.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLAttachment.cpp
+  source_name_part = GrGLAttachment
+build obj/skia/skia/GrGLBuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLBuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLBuffer.cpp
+  source_name_part = GrGLBuffer
+build obj/skia/skia/GrGLCaps.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLCaps.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLCaps.cpp
+  source_name_part = GrGLCaps
+build obj/skia/skia/GrGLContext.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLContext.cpp
+  source_name_part = GrGLContext
+build obj/skia/skia/GrGLExtensions.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLExtensions.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLExtensions.cpp
+  source_name_part = GrGLExtensions
+build obj/skia/skia/GrGLGLSL.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLGLSL.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLGLSL.cpp
+  source_name_part = GrGLGLSL
+build obj/skia/skia/GrGLGpu.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLGpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLGpu.cpp
+  source_name_part = GrGLGpu
+build obj/skia/skia/GrGLGpuProgramCache.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLGpuProgramCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLGpuProgramCache.cpp
+  source_name_part = GrGLGpuProgramCache
+build obj/skia/skia/GrGLInterfaceAutogen.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLInterfaceAutogen.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLInterfaceAutogen.cpp
+  source_name_part = GrGLInterfaceAutogen
+build obj/skia/skia/GrGLOpsRenderPass.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLOpsRenderPass.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLOpsRenderPass.cpp
+  source_name_part = GrGLOpsRenderPass
+build obj/skia/skia/GrGLProgram.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLProgram.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLProgram.cpp
+  source_name_part = GrGLProgram
+build obj/skia/skia/GrGLProgramDataManager.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLProgramDataManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLProgramDataManager.cpp
+  source_name_part = GrGLProgramDataManager
+build obj/skia/skia/GrGLRenderTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLRenderTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLRenderTarget.cpp
+  source_name_part = GrGLRenderTarget
+build obj/skia/skia/GrGLSemaphore.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLSemaphore.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLSemaphore.cpp
+  source_name_part = GrGLSemaphore
+build obj/skia/skia/GrGLTexture.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLTexture.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLTexture.cpp
+  source_name_part = GrGLTexture
+build obj/skia/skia/GrGLTextureRenderTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLTextureRenderTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLTextureRenderTarget.cpp
+  source_name_part = GrGLTextureRenderTarget
+build obj/skia/skia/GrGLTypesPriv.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLTypesPriv.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLTypesPriv.cpp
+  source_name_part = GrGLTypesPriv
+build obj/skia/skia/GrGLUniformHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLUniformHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLUniformHandler.cpp
+  source_name_part = GrGLUniformHandler
+build obj/skia/skia/GrGLUtil.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLUtil.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLUtil.cpp
+  source_name_part = GrGLUtil
+build obj/skia/skia/GrGLVertexArray.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/GrGLVertexArray.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLVertexArray.cpp
+  source_name_part = GrGLVertexArray
+build obj/skia/skia/GrGLProgramBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/builders/GrGLProgramBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLProgramBuilder.cpp
+  source_name_part = GrGLProgramBuilder
+build obj/skia/skia/GrGLShaderStringBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/gl/builders/GrGLShaderStringBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrGLShaderStringBuilder.cpp
+  source_name_part = GrGLShaderStringBuilder
+build obj/skia/skia/GrVkBuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkBuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkBuffer.cpp
+  source_name_part = GrVkBuffer
+build obj/skia/skia/GrVkCaps.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkCaps.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkCaps.cpp
+  source_name_part = GrVkCaps
+build obj/skia/skia/GrVkCommandBuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkCommandBuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkCommandBuffer.cpp
+  source_name_part = GrVkCommandBuffer
+build obj/skia/skia/GrVkCommandPool.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkCommandPool.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkCommandPool.cpp
+  source_name_part = GrVkCommandPool
+build obj/skia/skia/GrVkDescriptorPool.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkDescriptorPool.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkDescriptorPool.cpp
+  source_name_part = GrVkDescriptorPool
+build obj/skia/skia/GrVkDescriptorSet.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkDescriptorSet.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkDescriptorSet.cpp
+  source_name_part = GrVkDescriptorSet
+build obj/skia/skia/GrVkDescriptorSetManager.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkDescriptorSetManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkDescriptorSetManager.cpp
+  source_name_part = GrVkDescriptorSetManager
+build obj/skia/skia/GrVkFramebuffer.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkFramebuffer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkFramebuffer.cpp
+  source_name_part = GrVkFramebuffer
+build obj/skia/skia/GrVkGpu.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkGpu.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkGpu.cpp
+  source_name_part = GrVkGpu
+build obj/skia/skia/GrVkImage.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkImage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkImage.cpp
+  source_name_part = GrVkImage
+build obj/skia/skia/GrVkImageView.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkImageView.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkImageView.cpp
+  source_name_part = GrVkImageView
+build obj/skia/skia/GrVkMSAALoadManager.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkMSAALoadManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkMSAALoadManager.cpp
+  source_name_part = GrVkMSAALoadManager
+build obj/skia/skia/GrVkOpsRenderPass.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkOpsRenderPass.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkOpsRenderPass.cpp
+  source_name_part = GrVkOpsRenderPass
+build obj/skia/skia/GrVkPipeline.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkPipeline.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkPipeline.cpp
+  source_name_part = GrVkPipeline
+build obj/skia/skia/GrVkPipelineState.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkPipelineState.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkPipelineState.cpp
+  source_name_part = GrVkPipelineState
+build obj/skia/skia/GrVkPipelineStateBuilder.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkPipelineStateBuilder.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkPipelineStateBuilder.cpp
+  source_name_part = GrVkPipelineStateBuilder
+build obj/skia/skia/GrVkPipelineStateCache.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkPipelineStateCache.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkPipelineStateCache.cpp
+  source_name_part = GrVkPipelineStateCache
+build obj/skia/skia/GrVkPipelineStateDataManager.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkPipelineStateDataManager.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkPipelineStateDataManager.cpp
+  source_name_part = GrVkPipelineStateDataManager
+build obj/skia/skia/GrVkRenderPass.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkRenderPass.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkRenderPass.cpp
+  source_name_part = GrVkRenderPass
+build obj/skia/skia/GrVkRenderTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkRenderTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkRenderTarget.cpp
+  source_name_part = GrVkRenderTarget
+build obj/skia/skia/GrVkResourceProvider.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkResourceProvider.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkResourceProvider.cpp
+  source_name_part = GrVkResourceProvider
+build obj/skia/skia/GrVkSampler.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkSampler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkSampler.cpp
+  source_name_part = GrVkSampler
+build obj/skia/skia/GrVkSamplerYcbcrConversion.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkSamplerYcbcrConversion.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkSamplerYcbcrConversion.cpp
+  source_name_part = GrVkSamplerYcbcrConversion
+build obj/skia/skia/GrVkSemaphore.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkSemaphore.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkSemaphore.cpp
+  source_name_part = GrVkSemaphore
+build obj/skia/skia/GrVkTexture.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkTexture.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkTexture.cpp
+  source_name_part = GrVkTexture
+build obj/skia/skia/GrVkTextureRenderTarget.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkTextureRenderTarget.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkTextureRenderTarget.cpp
+  source_name_part = GrVkTextureRenderTarget
+build obj/skia/skia/GrVkTypesPriv.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkTypesPriv.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkTypesPriv.cpp
+  source_name_part = GrVkTypesPriv
+build obj/skia/skia/GrVkUniformHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkUniformHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkUniformHandler.cpp
+  source_name_part = GrVkUniformHandler
+build obj/skia/skia/GrVkUtil.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkUtil.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkUtil.cpp
+  source_name_part = GrVkUtil
+build obj/skia/skia/GrVkVaryingHandler.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkVaryingHandler.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkVaryingHandler.cpp
+  source_name_part = GrVkVaryingHandler
+build obj/skia/skia/VulkanAMDMemoryAllocator.o: cxx ../../third_party/skia/src/gpu/vk/VulkanAMDMemoryAllocator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VulkanAMDMemoryAllocator.cpp
+  source_name_part = VulkanAMDMemoryAllocator
+build obj/skia/skia/VulkanExtensions.o: cxx ../../third_party/skia/src/gpu/vk/VulkanExtensions.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VulkanExtensions.cpp
+  source_name_part = VulkanExtensions
+build obj/skia/skia/VulkanInterface.o: cxx ../../third_party/skia/src/gpu/vk/VulkanInterface.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VulkanInterface.cpp
+  source_name_part = VulkanInterface
+build obj/skia/skia/VulkanMemory.o: cxx ../../third_party/skia/src/gpu/vk/VulkanMemory.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VulkanMemory.cpp
+  source_name_part = VulkanMemory
+build obj/skia/skia/GrVkSecondaryCBDrawContext.o: cxx ../../third_party/skia/src/gpu/ganesh/vk/GrVkSecondaryCBDrawContext.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GrVkSecondaryCBDrawContext.cpp
+  source_name_part = GrVkSecondaryCBDrawContext
+build obj/skia/skia/SkClusterator.o: cxx ../../third_party/skia/src/pdf/SkClusterator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkClusterator.cpp
+  source_name_part = SkClusterator
+build obj/skia/skia/SkDeflate.o: cxx ../../third_party/skia/src/pdf/SkDeflate.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkDeflate.cpp
+  source_name_part = SkDeflate
+build obj/skia/skia/SkJpegInfo.o: cxx ../../third_party/skia/src/pdf/SkJpegInfo.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkJpegInfo.cpp
+  source_name_part = SkJpegInfo
+build obj/skia/skia/SkKeyedImage.o: cxx ../../third_party/skia/src/pdf/SkKeyedImage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkKeyedImage.cpp
+  source_name_part = SkKeyedImage
+build obj/skia/skia/SkPDFBitmap.o: cxx ../../third_party/skia/src/pdf/SkPDFBitmap.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFBitmap.cpp
+  source_name_part = SkPDFBitmap
+build obj/skia/skia/SkPDFDevice.o: cxx ../../third_party/skia/src/pdf/SkPDFDevice.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFDevice.cpp
+  source_name_part = SkPDFDevice
+build obj/skia/skia/SkPDFDocument.o: cxx ../../third_party/skia/src/pdf/SkPDFDocument.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFDocument.cpp
+  source_name_part = SkPDFDocument
+build obj/skia/skia/SkPDFFont.o: cxx ../../third_party/skia/src/pdf/SkPDFFont.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFFont.cpp
+  source_name_part = SkPDFFont
+build obj/skia/skia/SkPDFFormXObject.o: cxx ../../third_party/skia/src/pdf/SkPDFFormXObject.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFFormXObject.cpp
+  source_name_part = SkPDFFormXObject
+build obj/skia/skia/SkPDFGradientShader.o: cxx ../../third_party/skia/src/pdf/SkPDFGradientShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFGradientShader.cpp
+  source_name_part = SkPDFGradientShader
+build obj/skia/skia/SkPDFGraphicStackState.o: cxx ../../third_party/skia/src/pdf/SkPDFGraphicStackState.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFGraphicStackState.cpp
+  source_name_part = SkPDFGraphicStackState
+build obj/skia/skia/SkPDFGraphicState.o: cxx ../../third_party/skia/src/pdf/SkPDFGraphicState.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFGraphicState.cpp
+  source_name_part = SkPDFGraphicState
+build obj/skia/skia/SkPDFMakeCIDGlyphWidthsArray.o: cxx ../../third_party/skia/src/pdf/SkPDFMakeCIDGlyphWidthsArray.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFMakeCIDGlyphWidthsArray.cpp
+  source_name_part = SkPDFMakeCIDGlyphWidthsArray
+build obj/skia/skia/SkPDFMakeToUnicodeCmap.o: cxx ../../third_party/skia/src/pdf/SkPDFMakeToUnicodeCmap.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFMakeToUnicodeCmap.cpp
+  source_name_part = SkPDFMakeToUnicodeCmap
+build obj/skia/skia/SkPDFMetadata.o: cxx ../../third_party/skia/src/pdf/SkPDFMetadata.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFMetadata.cpp
+  source_name_part = SkPDFMetadata
+build obj/skia/skia/SkPDFResourceDict.o: cxx ../../third_party/skia/src/pdf/SkPDFResourceDict.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFResourceDict.cpp
+  source_name_part = SkPDFResourceDict
+build obj/skia/skia/SkPDFShader.o: cxx ../../third_party/skia/src/pdf/SkPDFShader.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFShader.cpp
+  source_name_part = SkPDFShader
+build obj/skia/skia/SkPDFSubsetFont.o: cxx ../../third_party/skia/src/pdf/SkPDFSubsetFont.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFSubsetFont.cpp
+  source_name_part = SkPDFSubsetFont
+build obj/skia/skia/SkPDFTag.o: cxx ../../third_party/skia/src/pdf/SkPDFTag.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFTag.cpp
+  source_name_part = SkPDFTag
+build obj/skia/skia/SkPDFType1Font.o: cxx ../../third_party/skia/src/pdf/SkPDFType1Font.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFType1Font.cpp
+  source_name_part = SkPDFType1Font
+build obj/skia/skia/SkPDFTypes.o: cxx ../../third_party/skia/src/pdf/SkPDFTypes.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFTypes.cpp
+  source_name_part = SkPDFTypes
+build obj/skia/skia/SkPDFUtils.o: cxx ../../third_party/skia/src/pdf/SkPDFUtils.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkPDFUtils.cpp
+  source_name_part = SkPDFUtils
+build obj/skia/skia/BlendModes.o: cxx ../../third_party/skia/modules/skottie/src/BlendModes.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = BlendModes.cpp
+  source_name_part = BlendModes
+build obj/skia/skia/Camera.o: cxx ../../third_party/skia/modules/skottie/src/Camera.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Camera.cpp
+  source_name_part = Camera
+build obj/skia/skia/Composition.o: cxx ../../third_party/skia/modules/skottie/src/Composition.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Composition.cpp
+  source_name_part = Composition
+build obj/skia/skia/Layer.o: cxx ../../third_party/skia/modules/skottie/src/Layer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Layer.cpp
+  source_name_part = Layer
+build obj/skia/skia/Path.o: cxx ../../third_party/skia/modules/skottie/src/Path.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Path.cpp
+  source_name_part = Path
+build obj/skia/skia/Skottie.o: cxx ../../third_party/skia/modules/skottie/src/Skottie.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Skottie.cpp
+  source_name_part = Skottie
+build obj/skia/skia/SkottieJson.o: cxx ../../third_party/skia/modules/skottie/src/SkottieJson.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkottieJson.cpp
+  source_name_part = SkottieJson
+build obj/skia/skia/SkottieProperty.o: cxx ../../third_party/skia/modules/skottie/src/SkottieProperty.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkottieProperty.cpp
+  source_name_part = SkottieProperty
+build obj/skia/skia/Transform.o: cxx ../../third_party/skia/modules/skottie/src/Transform.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Transform.cpp
+  source_name_part = Transform
+build obj/skia/skia/Animator.o: cxx ../../third_party/skia/modules/skottie/src/animator/Animator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Animator.cpp
+  source_name_part = Animator
+build obj/skia/skia/KeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/KeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = KeyframeAnimator.cpp
+  source_name_part = KeyframeAnimator
+build obj/skia/skia/ScalarKeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/ScalarKeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ScalarKeyframeAnimator.cpp
+  source_name_part = ScalarKeyframeAnimator
+build obj/skia/skia/ShapeKeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/ShapeKeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShapeKeyframeAnimator.cpp
+  source_name_part = ShapeKeyframeAnimator
+build obj/skia/skia/TextKeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/TextKeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextKeyframeAnimator.cpp
+  source_name_part = TextKeyframeAnimator
+build obj/skia/skia/Vec2KeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/Vec2KeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Vec2KeyframeAnimator.cpp
+  source_name_part = Vec2KeyframeAnimator
+build obj/skia/skia/VectorKeyframeAnimator.o: cxx ../../third_party/skia/modules/skottie/src/animator/VectorKeyframeAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VectorKeyframeAnimator.cpp
+  source_name_part = VectorKeyframeAnimator
+build obj/skia/skia/BlackAndWhiteEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/BlackAndWhiteEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = BlackAndWhiteEffect.cpp
+  source_name_part = BlackAndWhiteEffect
+build obj/skia/skia/BrightnessContrastEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/BrightnessContrastEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = BrightnessContrastEffect.cpp
+  source_name_part = BrightnessContrastEffect
+build obj/skia/skia/BulgeEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/BulgeEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = BulgeEffect.cpp
+  source_name_part = BulgeEffect
+build obj/skia/skia/CCTonerEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/CCTonerEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = CCTonerEffect.cpp
+  source_name_part = CCTonerEffect
+build obj/skia/skia/CornerPinEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/CornerPinEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = CornerPinEffect.cpp
+  source_name_part = CornerPinEffect
+build obj/skia/skia/DirectionalBlur.o: cxx ../../third_party/skia/modules/skottie/src/effects/DirectionalBlur.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DirectionalBlur.cpp
+  source_name_part = DirectionalBlur
+build obj/skia/skia/DisplacementMapEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/DisplacementMapEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DisplacementMapEffect.cpp
+  source_name_part = DisplacementMapEffect
+build obj/skia/skia/DropShadowEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/DropShadowEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = DropShadowEffect.cpp
+  source_name_part = DropShadowEffect
+build obj/skia/skia/Effects.o: cxx ../../third_party/skia/modules/skottie/src/effects/Effects.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Effects.cpp
+  source_name_part = Effects
+build obj/skia/skia/FillEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/FillEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FillEffect.cpp
+  source_name_part = FillEffect
+build obj/skia/skia/FractalNoiseEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/FractalNoiseEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FractalNoiseEffect.cpp
+  source_name_part = FractalNoiseEffect
+build obj/skia/skia/GaussianBlurEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/GaussianBlurEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GaussianBlurEffect.cpp
+  source_name_part = GaussianBlurEffect
+build obj/skia/skia/GlowStyles.o: cxx ../../third_party/skia/modules/skottie/src/effects/GlowStyles.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GlowStyles.cpp
+  source_name_part = GlowStyles
+build obj/skia/skia/GradientEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/GradientEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = GradientEffect.cpp
+  source_name_part = GradientEffect
+build obj/skia/skia/HueSaturationEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/HueSaturationEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = HueSaturationEffect.cpp
+  source_name_part = HueSaturationEffect
+build obj/skia/skia/InvertEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/InvertEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = InvertEffect.cpp
+  source_name_part = InvertEffect
+build obj/skia/skia/LevelsEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/LevelsEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = LevelsEffect.cpp
+  source_name_part = LevelsEffect
+build obj/skia/skia/LinearWipeEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/LinearWipeEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = LinearWipeEffect.cpp
+  source_name_part = LinearWipeEffect
+build obj/skia/skia/MotionBlurEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/MotionBlurEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = MotionBlurEffect.cpp
+  source_name_part = MotionBlurEffect
+build obj/skia/skia/MotionTileEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/MotionTileEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = MotionTileEffect.cpp
+  source_name_part = MotionTileEffect
+build obj/skia/skia/RadialWipeEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/RadialWipeEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RadialWipeEffect.cpp
+  source_name_part = RadialWipeEffect
+build obj/skia/skia/ShadowStyles.o: cxx ../../third_party/skia/modules/skottie/src/effects/ShadowStyles.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShadowStyles.cpp
+  source_name_part = ShadowStyles
+build obj/skia/skia/SharpenEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/SharpenEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SharpenEffect.cpp
+  source_name_part = SharpenEffect
+build obj/skia/skia/ShiftChannelsEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/ShiftChannelsEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShiftChannelsEffect.cpp
+  source_name_part = ShiftChannelsEffect
+build obj/skia/skia/SkSLEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/SkSLEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSLEffect.cpp
+  source_name_part = SkSLEffect
+build obj/skia/skia/SphereEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/SphereEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SphereEffect.cpp
+  source_name_part = SphereEffect
+build obj/skia/skia/ThresholdEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/ThresholdEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ThresholdEffect.cpp
+  source_name_part = ThresholdEffect
+build obj/skia/skia/TintEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/TintEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TintEffect.cpp
+  source_name_part = TintEffect
+build obj/skia/skia/TransformEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/TransformEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TransformEffect.cpp
+  source_name_part = TransformEffect
+build obj/skia/skia/TritoneEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/TritoneEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TritoneEffect.cpp
+  source_name_part = TritoneEffect
+build obj/skia/skia/VenetianBlindsEffect.o: cxx ../../third_party/skia/modules/skottie/src/effects/VenetianBlindsEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = VenetianBlindsEffect.cpp
+  source_name_part = VenetianBlindsEffect
+build obj/skia/skia/AudioLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/AudioLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = AudioLayer.cpp
+  source_name_part = AudioLayer
+build obj/skia/skia/FootageLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/FootageLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FootageLayer.cpp
+  source_name_part = FootageLayer
+build obj/skia/skia/NullLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/NullLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = NullLayer.cpp
+  source_name_part = NullLayer
+build obj/skia/skia/PrecompLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/PrecompLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PrecompLayer.cpp
+  source_name_part = PrecompLayer
+build obj/skia/skia/SolidLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/SolidLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SolidLayer.cpp
+  source_name_part = SolidLayer
+build obj/skia/skia/TextLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/TextLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextLayer.cpp
+  source_name_part = TextLayer
+build obj/skia/skia/Ellipse.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/Ellipse.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Ellipse.cpp
+  source_name_part = Ellipse
+build obj/skia/skia/FillStroke.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/FillStroke.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = FillStroke.cpp
+  source_name_part = FillStroke
+build obj/skia/skia/Gradient.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/Gradient.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Gradient.cpp
+  source_name_part = Gradient
+build obj/skia/skia/MergePaths.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/MergePaths.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = MergePaths.cpp
+  source_name_part = MergePaths
+build obj/skia/skia/OffsetPaths.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/OffsetPaths.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = OffsetPaths.cpp
+  source_name_part = OffsetPaths
+build obj/skia/skia/Polystar.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/Polystar.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Polystar.cpp
+  source_name_part = Polystar
+build obj/skia/skia/PuckerBloat.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/PuckerBloat.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = PuckerBloat.cpp
+  source_name_part = PuckerBloat
+build obj/skia/skia/Rectangle.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/Rectangle.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Rectangle.cpp
+  source_name_part = Rectangle
+build obj/skia/skia/Repeater.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/Repeater.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Repeater.cpp
+  source_name_part = Repeater
+build obj/skia/skia/RoundCorners.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/RoundCorners.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RoundCorners.cpp
+  source_name_part = RoundCorners
+build obj/skia/skia/ShapeLayer.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/ShapeLayer.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = ShapeLayer.cpp
+  source_name_part = ShapeLayer
+build obj/skia/skia/TrimPaths.o: cxx ../../third_party/skia/modules/skottie/src/layers/shapelayer/TrimPaths.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TrimPaths.cpp
+  source_name_part = TrimPaths
+build obj/skia/skia/Font.o: cxx ../../third_party/skia/modules/skottie/src/text/Font.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = Font.cpp
+  source_name_part = Font
+build obj/skia/skia/RangeSelector.o: cxx ../../third_party/skia/modules/skottie/src/text/RangeSelector.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = RangeSelector.cpp
+  source_name_part = RangeSelector
+build obj/skia/skia/SkottieShaper.o: cxx ../../third_party/skia/modules/skottie/src/text/SkottieShaper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkottieShaper.cpp
+  source_name_part = SkottieShaper
+build obj/skia/skia/TextAdapter.o: cxx ../../third_party/skia/modules/skottie/src/text/TextAdapter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextAdapter.cpp
+  source_name_part = TextAdapter
+build obj/skia/skia/TextAnimator.o: cxx ../../third_party/skia/modules/skottie/src/text/TextAnimator.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextAnimator.cpp
+  source_name_part = TextAnimator
+build obj/skia/skia/TextValue.o: cxx ../../third_party/skia/modules/skottie/src/text/TextValue.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = TextValue.cpp
+  source_name_part = TextValue
+build obj/skia/skia/SkResources.o: cxx ../../third_party/skia/modules/skresources/src/SkResources.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkResources.cpp
+  source_name_part = SkResources
+build obj/skia/skia/SkSGClipEffect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGClipEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGClipEffect.cpp
+  source_name_part = SkSGClipEffect
+build obj/skia/skia/SkSGColorFilter.o: cxx ../../third_party/skia/modules/sksg/src/SkSGColorFilter.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGColorFilter.cpp
+  source_name_part = SkSGColorFilter
+build obj/skia/skia/SkSGDraw.o: cxx ../../third_party/skia/modules/sksg/src/SkSGDraw.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGDraw.cpp
+  source_name_part = SkSGDraw
+build obj/skia/skia/SkSGEffectNode.o: cxx ../../third_party/skia/modules/sksg/src/SkSGEffectNode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGEffectNode.cpp
+  source_name_part = SkSGEffectNode
+build obj/skia/skia/SkSGGeometryEffect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGGeometryEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGGeometryEffect.cpp
+  source_name_part = SkSGGeometryEffect
+build obj/skia/skia/SkSGGeometryNode.o: cxx ../../third_party/skia/modules/sksg/src/SkSGGeometryNode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGGeometryNode.cpp
+  source_name_part = SkSGGeometryNode
+build obj/skia/skia/SkSGGradient.o: cxx ../../third_party/skia/modules/sksg/src/SkSGGradient.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGGradient.cpp
+  source_name_part = SkSGGradient
+build obj/skia/skia/SkSGGroup.o: cxx ../../third_party/skia/modules/sksg/src/SkSGGroup.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGGroup.cpp
+  source_name_part = SkSGGroup
+build obj/skia/skia/SkSGImage.o: cxx ../../third_party/skia/modules/sksg/src/SkSGImage.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGImage.cpp
+  source_name_part = SkSGImage
+build obj/skia/skia/SkSGInvalidationController.o: cxx ../../third_party/skia/modules/sksg/src/SkSGInvalidationController.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGInvalidationController.cpp
+  source_name_part = SkSGInvalidationController
+build obj/skia/skia/SkSGMaskEffect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGMaskEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGMaskEffect.cpp
+  source_name_part = SkSGMaskEffect
+build obj/skia/skia/SkSGMerge.o: cxx ../../third_party/skia/modules/sksg/src/SkSGMerge.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGMerge.cpp
+  source_name_part = SkSGMerge
+build obj/skia/skia/SkSGNode.o: cxx ../../third_party/skia/modules/sksg/src/SkSGNode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGNode.cpp
+  source_name_part = SkSGNode
+build obj/skia/skia/SkSGOpacityEffect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGOpacityEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGOpacityEffect.cpp
+  source_name_part = SkSGOpacityEffect
+build obj/skia/skia/SkSGPaint.o: cxx ../../third_party/skia/modules/sksg/src/SkSGPaint.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGPaint.cpp
+  source_name_part = SkSGPaint
+build obj/skia/skia/SkSGPath.o: cxx ../../third_party/skia/modules/sksg/src/SkSGPath.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGPath.cpp
+  source_name_part = SkSGPath
+build obj/skia/skia/SkSGPlane.o: cxx ../../third_party/skia/modules/sksg/src/SkSGPlane.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGPlane.cpp
+  source_name_part = SkSGPlane
+build obj/skia/skia/SkSGRect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGRect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGRect.cpp
+  source_name_part = SkSGRect
+build obj/skia/skia/SkSGRenderEffect.o: cxx ../../third_party/skia/modules/sksg/src/SkSGRenderEffect.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGRenderEffect.cpp
+  source_name_part = SkSGRenderEffect
+build obj/skia/skia/SkSGRenderNode.o: cxx ../../third_party/skia/modules/sksg/src/SkSGRenderNode.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGRenderNode.cpp
+  source_name_part = SkSGRenderNode
+build obj/skia/skia/SkSGScene.o: cxx ../../third_party/skia/modules/sksg/src/SkSGScene.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGScene.cpp
+  source_name_part = SkSGScene
+build obj/skia/skia/SkSGText.o: cxx ../../third_party/skia/modules/sksg/src/SkSGText.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGText.cpp
+  source_name_part = SkSGText
+build obj/skia/skia/SkSGTransform.o: cxx ../../third_party/skia/modules/sksg/src/SkSGTransform.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkSGTransform.cpp
+  source_name_part = SkSGTransform
+build obj/skia/skia/SkShaper.o: cxx ../../third_party/skia/modules/skshaper/src/SkShaper.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkShaper.cpp
+  source_name_part = SkShaper
+build obj/skia/skia/SkShaper_primitive.o: cxx ../../third_party/skia/modules/skshaper/src/SkShaper_primitive.cpp || obj/skia/skia.inputdeps.stamp
+  source_file_part = SkShaper_primitive.cpp
+  source_name_part = SkShaper_primitive
+
+build ./libskia.so ./libskia.so.TOC: solink obj/skia/skia/SkDiscardableMemory_chrome.o obj/skia/skia/SkMemory_new_handler.o obj/skia/skia/benchmarking_canvas.o obj/skia/skia/cicp.o obj/skia/skia/convolver.o obj/skia/skia/event_tracer_impl.o obj/skia/skia/google_logging.o obj/skia/skia/image_operations.o obj/skia/skia/legacy_display_globals.o obj/skia/skia/opacity_filter_canvas.o obj/skia/skia/recursive_gaussian_convolution.o obj/skia/skia/rgba_to_yuva.o obj/skia/skia/skcolorspace_primaries.o obj/skia/skia/skia_histogram.o obj/skia/skia/skia_memory_dump_provider.o obj/skia/skia/skia_trace_memory_dump_impl.o obj/skia/skia/skia_utils_base.o obj/skia/skia/fontmgr_default.o obj/skia/skia/fontmgr_default_linux.o obj/skia/skia/platform_canvas.o obj/skia/skia/convolver_neon.o obj/skia/skia/SkSLAnalysis.o obj/skia/skia/SkSLBuiltinTypes.o obj/skia/skia/SkSLCompiler.o obj/skia/skia/SkSLConstantFolder.o obj/skia/skia/SkSLContext.o obj/skia/skia/SkSLErrorReporter.o obj/skia/skia/SkSLInliner.o obj/skia/skia/SkSLIntrinsicList.o obj/skia/skia/SkSLLexer.o obj/skia/skia/SkSLMangler.o obj/skia/skia/SkSLModuleLoader.o obj/skia/skia/SkSLOperator.o obj/skia/skia/SkSLOutputStream.o obj/skia/skia/SkSLParser.o obj/skia/skia/SkSLPool.o obj/skia/skia/SkSLPosition.o obj/skia/skia/SkSLSampleUsage.o obj/skia/skia/SkSLString.o obj/skia/skia/SkSLThreadContext.o obj/skia/skia/SkSLUtil.o obj/skia/skia/SkSLCanExitWithoutReturningValue.o obj/skia/skia/SkSLCheckProgramStructure.o obj/skia/skia/SkSLFinalizationChecks.o obj/skia/skia/SkSLGetLoopControlFlowInfo.o obj/skia/skia/SkSLGetLoopUnrollInfo.o obj/skia/skia/SkSLGetReturnComplexity.o obj/skia/skia/SkSLHasSideEffects.o obj/skia/skia/SkSLIsConstantExpression.o obj/skia/skia/SkSLIsDynamicallyUniformExpression.o obj/skia/skia/SkSLIsSameExpressionTree.o obj/skia/skia/SkSLIsTrivialExpression.o obj/skia/skia/SkSLProgramUsage.o obj/skia/skia/SkSLSwitchCaseContainsExit.o obj/skia/skia/SkSLSymbolTableStackBuilder.o obj/skia/skia/SkSLRasterPipelineBuilder.o obj/skia/skia/SkSLRasterPipelineCodeGenerator.o obj/skia/skia/SkSLVMCodeGenerator.o obj/skia/skia/DSLBlock.o obj/skia/skia/DSLCase.o obj/skia/skia/DSLCore.o obj/skia/skia/DSLExpression.o obj/skia/skia/DSLFunction.o obj/skia/skia/DSLLayout.o obj/skia/skia/DSLStatement.o obj/skia/skia/DSLType.o obj/skia/skia/DSLVar.o obj/skia/skia/DSLWriter.o obj/skia/skia/SkSLBinaryExpression.o obj/skia/skia/SkSLBlock.o obj/skia/skia/SkSLChildCall.o obj/skia/skia/SkSLConstructor.o obj/skia/skia/SkSLConstructorArray.o obj/skia/skia/SkSLConstructorArrayCast.o obj/skia/skia/SkSLConstructorCompound.o obj/skia/skia/SkSLConstructorCompoundCast.o obj/skia/skia/SkSLConstructorDiagonalMatrix.o obj/skia/skia/SkSLConstructorMatrixResize.o obj/skia/skia/SkSLConstructorScalarCast.o obj/skia/skia/SkSLConstructorSplat.o obj/skia/skia/SkSLConstructorStruct.o obj/skia/skia/SkSLDiscardStatement.o obj/skia/skia/SkSLDoStatement.o obj/skia/skia/SkSLExpression.o obj/skia/skia/SkSLExpressionStatement.o obj/skia/skia/SkSLFieldAccess.o obj/skia/skia/SkSLForStatement.o obj/skia/skia/SkSLFunctionCall.o obj/skia/skia/SkSLFunctionDeclaration.o obj/skia/skia/SkSLFunctionDefinition.o obj/skia/skia/SkSLIfStatement.o obj/skia/skia/SkSLIndexExpression.o obj/skia/skia/SkSLInterfaceBlock.o obj/skia/skia/SkSLLayout.o obj/skia/skia/SkSLLiteral.o obj/skia/skia/SkSLModifiers.o obj/skia/skia/SkSLPostfixExpression.o obj/skia/skia/SkSLPrefixExpression.o obj/skia/skia/SkSLProgram.o obj/skia/skia/SkSLSetting.o obj/skia/skia/SkSLSwitchStatement.o obj/skia/skia/SkSLSwizzle.o obj/skia/skia/SkSLSymbolTable.o obj/skia/skia/SkSLTernaryExpression.o obj/skia/skia/SkSLType.o obj/skia/skia/SkSLTypeReference.o obj/skia/skia/SkSLVarDeclarations.o obj/skia/skia/SkSLVariable.o obj/skia/skia/SkSLVariableReference.o obj/skia/skia/SkRPDebugTrace.o obj/skia/skia/SkVMDebugTrace.o obj/skia/skia/SkSLAddConstToVarModifiers.o obj/skia/skia/SkSLEliminateDeadFunctions.o obj/skia/skia/SkSLEliminateDeadGlobalVariables.o obj/skia/skia/SkSLEliminateDeadLocalVariables.o obj/skia/skia/SkSLEliminateEmptyStatements.o obj/skia/skia/SkSLEliminateUnreachableCode.o obj/skia/skia/SkSLFindAndDeclareBuiltinFunctions.o obj/skia/skia/SkSLFindAndDeclareBuiltinVariables.o obj/skia/skia/SkSLRenamePrivateSymbols.o obj/skia/skia/SkSLReplaceConstVarsWithLiterals.o obj/skia/skia/SkSLRewriteIndexedSwizzle.o obj/skia/skia/SkAnimCodecPlayer.o obj/skia/skia/SkBase64.o obj/skia/skia/SkCamera.o obj/skia/skia/SkCanvasStack.o obj/skia/skia/SkCanvasStateUtils.o obj/skia/skia/SkCharToGlyphCache.o obj/skia/skia/SkClipStackUtils.o obj/skia/skia/SkCustomTypeface.o obj/skia/skia/SkDashPath.o obj/skia/skia/SkEventTracer.o obj/skia/skia/SkFloatToDecimal.o obj/skia/skia/SkGaussianColorFilter.o obj/skia/skia/SkJSON.o obj/skia/skia/SkJSONWriter.o obj/skia/skia/SkMatrix22.o obj/skia/skia/SkMultiPictureDocument.o obj/skia/skia/SkNWayCanvas.o obj/skia/skia/SkNullCanvas.o obj/skia/skia/SkOSPath.o obj/skia/skia/SkOrderedFontMgr.o obj/skia/skia/SkPaintFilterCanvas.o obj/skia/skia/SkParse.o obj/skia/skia/SkParseColor.o obj/skia/skia/SkPatchUtils.o obj/skia/skia/SkPolyUtils.o obj/skia/skia/SkShaderUtils.o obj/skia/skia/SkShadowTessellator.o obj/skia/skia/SkShadowUtils.o obj/skia/skia/SkTextUtils.o obj/skia/skia/SkVMVisualizer.o obj/skia/skia/SkCTFont.o obj/skia/skia/SkCreateCGImageRef.o obj/skia/skia/SkAutoCoInitialize.o obj/skia/skia/SkDWrite.o obj/skia/skia/SkDWriteFontFileStream.o obj/skia/skia/SkDWriteGeometrySink.o obj/skia/skia/SkHRESULT.o obj/skia/skia/SkIStream.o obj/skia/skia/SkWGL_win.o obj/skia/skia/SkXPSDevice.o obj/skia/skia/SkXPSDocument.o obj/skia/skia/SkEncoder.o obj/skia/skia/SkImageEncoder.o obj/skia/skia/SkPngEncoder.o obj/skia/skia/SkWebpEncoder.o obj/skia/skia/SkFontMgr_indirect.o obj/skia/skia/SkRemotableFontMgr.o obj/skia/skia/SkGlobalInitialization_default.o obj/skia/skia/SkOSFile_stdio.o obj/skia/skia/SkOTTable_name.o obj/skia/skia/SkOTUtils.o obj/skia/skia/SkCodec.o obj/skia/skia/SkCodecImageGenerator.o obj/skia/skia/SkColorTable.o obj/skia/skia/SkMaskSwizzler.o obj/skia/skia/SkMasks.o obj/skia/skia/SkPixmapUtils.o obj/skia/skia/SkSampler.o obj/skia/skia/SkSwizzler.o obj/skia/skia/SkBmpBaseCodec.o obj/skia/skia/SkBmpCodec.o obj/skia/skia/SkBmpMaskCodec.o obj/skia/skia/SkBmpRLECodec.o obj/skia/skia/SkBmpStandardCodec.o obj/skia/skia/SkWbmpCodec.o obj/skia/skia/SkJPEGWriteUtility.o obj/skia/skia/SkJpegEncoder.o obj/skia/skia/SkEncodedInfo.o obj/skia/skia/SkIcoCodec.o obj/skia/skia/SkJpegCodec.o obj/skia/skia/SkJpegDecoderMgr.o obj/skia/skia/SkJpegMultiPicture.o obj/skia/skia/SkJpegSegmentScan.o obj/skia/skia/SkJpegSourceMgr.o obj/skia/skia/SkJpegUtility.o obj/skia/skia/SkParseEncodedOrigin.o obj/skia/skia/SkPngCodec.o obj/skia/skia/SkWebpCodec.o obj/skia/skia/SkWuffsCodec.o obj/skia/skia/SkImageGenerator_skia.o obj/skia/skia/SkFontHost_FreeType.o obj/skia/skia/SkFontHost_FreeType_common.o obj/skia/skia/SkOSFile_posix.o obj/skia/skia/SkFontConfigInterface.o obj/skia/skia/SkFontConfigInterface_direct.o obj/skia/skia/SkFontConfigInterface_direct_factory.o obj/skia/skia/SkFontMgr_FontConfigInterface.o obj/skia/skia/SkFontMgr_android.o obj/skia/skia/SkFontMgr_android_parser.o obj/skia/skia/ClipStack.o obj/skia/skia/Device.o obj/skia/skia/Device_drawTexture.o obj/skia/skia/GrAHardwareBufferImageGenerator.o obj/skia/skia/GrAHardwareBufferUtils.o obj/skia/skia/GrAttachment.o obj/skia/skia/GrAuditTrail.o obj/skia/skia/GrBackendSemaphore.o obj/skia/skia/GrBackendSurface.o obj/skia/skia/GrBackendTextureImageGenerator.o obj/skia/skia/GrBackendUtils.o obj/skia/skia/GrBlurUtils.o obj/skia/skia/GrBufferAllocPool.o obj/skia/skia/GrBufferTransferRenderTask.o obj/skia/skia/GrBufferUpdateRenderTask.o obj/skia/skia/GrCaps.o obj/skia/skia/GrClientMappedBufferManager.o obj/skia/skia/GrColorInfo.o obj/skia/skia/GrColorSpaceXform.o obj/skia/skia/GrContextThreadSafeProxy.o obj/skia/skia/GrContext_Base.o obj/skia/skia/GrCopyRenderTask.o obj/skia/skia/GrDDLContext.o obj/skia/skia/GrDDLTask.o obj/skia/skia/GrDataUtils.o obj/skia/skia/GrDefaultGeoProcFactory.o obj/skia/skia/GrDirectContext.o obj/skia/skia/GrDirectContextPriv.o obj/skia/skia/GrDistanceFieldGenFromVector.o obj/skia/skia/GrDrawOpAtlas.o obj/skia/skia/GrDrawOpTest.o obj/skia/skia/GrDrawingManager.o obj/skia/skia/GrDriverBugWorkarounds.o obj/skia/skia/GrDynamicAtlas.o obj/skia/skia/GrEagerVertexAllocator.o obj/skia/skia/GrFinishCallbacks.o obj/skia/skia/GrFixedClip.o obj/skia/skia/GrFragmentProcessor.o obj/skia/skia/GrGeometryProcessor.o obj/skia/skia/GrGpu.o obj/skia/skia/GrGpuBuffer.o obj/skia/skia/GrGpuResource.o obj/skia/skia/GrImageContext.o obj/skia/skia/GrImageInfo.o obj/skia/skia/GrImageUtils.o obj/skia/skia/GrManagedResource.o obj/skia/skia/GrMemoryPool.o obj/skia/skia/GrMeshDrawTarget.o obj/skia/skia/GrOnFlushResourceProvider.o obj/skia/skia/GrOpFlushState.o obj/skia/skia/GrOpsRenderPass.o obj/skia/skia/GrPaint.o obj/skia/skia/GrPersistentCacheUtils.o obj/skia/skia/GrPinnableImage.o obj/skia/skia/GrPipeline.o obj/skia/skia/GrProcessor.o obj/skia/skia/GrProcessorAnalysis.o obj/skia/skia/GrProcessorSet.o obj/skia/skia/GrProcessorUnitTest.o obj/skia/skia/GrProgramDesc.o obj/skia/skia/GrProgramInfo.o obj/skia/skia/GrProxyProvider.o obj/skia/skia/GrRecordingContext.o obj/skia/skia/GrRecordingContextPriv.o obj/skia/skia/GrRenderTarget.o obj/skia/skia/GrRenderTargetProxy.o obj/skia/skia/GrRenderTask.o obj/skia/skia/GrRenderTaskCluster.o obj/skia/skia/GrResourceAllocator.o obj/skia/skia/GrResourceCache.o obj/skia/skia/GrResourceProvider.o obj/skia/skia/GrRingBuffer.o obj/skia/skia/GrSPIRVUniformHandler.o obj/skia/skia/GrSPIRVVaryingHandler.o obj/skia/skia/GrSWMaskHelper.o obj/skia/skia/GrShaderCaps.o obj/skia/skia/GrShaderVar.o obj/skia/skia/GrStagingBufferManager.o obj/skia/skia/GrStencilSettings.o obj/skia/skia/GrStyle.o obj/skia/skia/GrSurface.o obj/skia/skia/GrSurfaceInfo.o obj/skia/skia/GrSurfaceProxy.o obj/skia/skia/GrSurfaceProxyView.o obj/skia/skia/GrTestUtils.o obj/skia/skia/GrTexture.o obj/skia/skia/GrTextureProxy.o obj/skia/skia/GrTextureRenderTargetProxy.o obj/skia/skia/GrTextureResolveRenderTask.o obj/skia/skia/GrThreadSafeCache.o obj/skia/skia/GrThreadSafePipelineBuilder.o obj/skia/skia/GrTransferFromRenderTask.o obj/skia/skia/GrUniformDataManager.o obj/skia/skia/GrUtil.o obj/skia/skia/GrVertexChunkArray.o obj/skia/skia/GrWaitRenderTask.o obj/skia/skia/GrWritePixelsRenderTask.o obj/skia/skia/GrXferProcessor.o obj/skia/skia/GrYUVABackendTextures.o obj/skia/skia/GrYUVATextureProxies.o obj/skia/skia/PathRenderer.o obj/skia/skia/PathRendererChain.o obj/skia/skia/SkGr.o obj/skia/skia/StencilMaskHelper.o obj/skia/skia/SurfaceContext.o obj/skia/skia/SurfaceDrawContext.o obj/skia/skia/SurfaceFillContext.o obj/skia/skia/GrBezierEffect.o obj/skia/skia/GrBicubicEffect.o obj/skia/skia/GrBitmapTextGeoProc.o obj/skia/skia/GrBlendFragmentProcessor.o obj/skia/skia/GrConvexPolyEffect.o obj/skia/skia/GrCoverageSetOpXP.o obj/skia/skia/GrCustomXfermode.o obj/skia/skia/GrDisableColorXP.o obj/skia/skia/GrDistanceFieldGeoProc.o obj/skia/skia/GrGaussianConvolutionFragmentProcessor.o obj/skia/skia/GrMatrixConvolutionEffect.o obj/skia/skia/GrMatrixEffect.o obj/skia/skia/GrModulateAtlasCoverageEffect.o obj/skia/skia/GrOvalEffect.o obj/skia/skia/GrPorterDuffXferProcessor.o obj/skia/skia/GrRRectEffect.o obj/skia/skia/GrShadowGeoProc.o obj/skia/skia/GrSkSLFP.o obj/skia/skia/GrTextureEffect.o obj/skia/skia/GrYUVtoRGBEffect.o obj/skia/skia/GrAAConvexTessellator.o obj/skia/skia/GrAATriangulator.o obj/skia/skia/GrPathUtils.o obj/skia/skia/GrQuad.o obj/skia/skia/GrQuadUtils.o obj/skia/skia/GrShape.o obj/skia/skia/GrStyledShape.o obj/skia/skia/GrTriangulator.o obj/skia/skia/GrGLSLBlend.o obj/skia/skia/GrGLSLFragmentShaderBuilder.o obj/skia/skia/GrGLSLProgramBuilder.o obj/skia/skia/GrGLSLProgramDataManager.o obj/skia/skia/GrGLSLShaderBuilder.o obj/skia/skia/GrGLSLUniformHandler.o obj/skia/skia/GrGLSLVarying.o obj/skia/skia/GrGLSLVertexGeoBuilder.o obj/skia/skia/GrGradientBitmapCache.o obj/skia/skia/GrGradientShader.o obj/skia/skia/GrMockCaps.o obj/skia/skia/GrMockGpu.o obj/skia/skia/GrMockTypes.o obj/skia/skia/AAConvexPathRenderer.o obj/skia/skia/AAHairLinePathRenderer.o obj/skia/skia/AALinearizingConvexPathRenderer.o obj/skia/skia/AtlasInstancedHelper.o obj/skia/skia/AtlasPathRenderer.o obj/skia/skia/AtlasRenderTask.o obj/skia/skia/AtlasTextOp.o obj/skia/skia/ClearOp.o obj/skia/skia/DashLinePathRenderer.o obj/skia/skia/DashOp.o obj/skia/skia/DefaultPathRenderer.o obj/skia/skia/DrawAtlasOp.o obj/skia/skia/DrawAtlasPathOp.o obj/skia/skia/DrawMeshOp.o obj/skia/skia/DrawableOp.o obj/skia/skia/FillRRectOp.o obj/skia/skia/FillRectOp.o obj/skia/skia/GrMeshDrawOp.o obj/skia/skia/GrOp.o obj/skia/skia/GrOvalOpFactory.o obj/skia/skia/GrSimpleMeshDrawOpHelper.o obj/skia/skia/GrSimpleMeshDrawOpHelperWithStencil.o obj/skia/skia/LatticeOp.o obj/skia/skia/OpsTask.o obj/skia/skia/PathInnerTriangulateOp.o obj/skia/skia/PathStencilCoverOp.o obj/skia/skia/PathTessellateOp.o obj/skia/skia/QuadPerEdgeAA.o obj/skia/skia/RegionOp.o obj/skia/skia/ShadowRRectOp.o obj/skia/skia/SmallPathAtlasMgr.o obj/skia/skia/SmallPathRenderer.o obj/skia/skia/SmallPathShapeData.o obj/skia/skia/SoftwarePathRenderer.o obj/skia/skia/StrokeRectOp.o obj/skia/skia/StrokeTessellateOp.o obj/skia/skia/TessellationPathRenderer.o obj/skia/skia/TextureOp.o obj/skia/skia/TriangulatingPathRenderer.o obj/skia/skia/GrPathTessellationShader.o obj/skia/skia/GrStrokeTessellationShader.o obj/skia/skia/GrTessellationShader.o obj/skia/skia/PathTessellator.o obj/skia/skia/StrokeTessellator.o obj/skia/skia/GrAtlasManager.o obj/skia/skia/SkImage_AndroidFactories.o obj/skia/skia/SkImage_GaneshFactories.o obj/skia/skia/SkImage_Gpu.o obj/skia/skia/SkImage_GpuBase.o obj/skia/skia/SkImage_GpuYUVA.o obj/skia/skia/SkSurface_Gpu.o obj/skia/skia/GrGLMakeNativeInterface_none.o obj/skia/skia/SkSLGLSLCodeGenerator.o obj/skia/skia/SkSLMetalCodeGenerator.o obj/skia/skia/SkSLPipelineStageCodeGenerator.o obj/skia/skia/SkSLSPIRVCodeGenerator.o obj/skia/skia/SkSLSPIRVtoHLSL.o obj/skia/skia/SkSLWGSLCodeGenerator.o obj/skia/skia/AtlasTypes.o obj/skia/skia/Blend.o obj/skia/skia/RectanizerPow2.o obj/skia/skia/RectanizerSkyline.o obj/skia/skia/ResourceKey.o obj/skia/skia/ShaderErrorHandler.o obj/skia/skia/Swizzle.o obj/skia/skia/FixedCountBufferUtils.o obj/skia/skia/Tessellation.o obj/skia/skia/DistanceFieldAdjustTable.o obj/skia/skia/GlyphVector.o obj/skia/skia/SDFMaskFilter.o obj/skia/skia/SDFTControl.o obj/skia/skia/Slug.o obj/skia/skia/StrikeCache.o obj/skia/skia/SubRunAllocator.o obj/skia/skia/SubRunContainer.o obj/skia/skia/TextBlob.o obj/skia/skia/TextBlobRedrawCoordinator.o obj/skia/skia/GrGLAssembleGLESInterfaceAutogen.o obj/skia/skia/GrGLAssembleGLInterfaceAutogen.o obj/skia/skia/GrGLAssembleHelpers.o obj/skia/skia/GrGLAssembleInterface.o obj/skia/skia/GrGLAssembleWebGLInterfaceAutogen.o obj/skia/skia/GrGLAttachment.o obj/skia/skia/GrGLBuffer.o obj/skia/skia/GrGLCaps.o obj/skia/skia/GrGLContext.o obj/skia/skia/GrGLExtensions.o obj/skia/skia/GrGLGLSL.o obj/skia/skia/GrGLGpu.o obj/skia/skia/GrGLGpuProgramCache.o obj/skia/skia/GrGLInterfaceAutogen.o obj/skia/skia/GrGLOpsRenderPass.o obj/skia/skia/GrGLProgram.o obj/skia/skia/GrGLProgramDataManager.o obj/skia/skia/GrGLRenderTarget.o obj/skia/skia/GrGLSemaphore.o obj/skia/skia/GrGLTexture.o obj/skia/skia/GrGLTextureRenderTarget.o obj/skia/skia/GrGLTypesPriv.o obj/skia/skia/GrGLUniformHandler.o obj/skia/skia/GrGLUtil.o obj/skia/skia/GrGLVertexArray.o obj/skia/skia/GrGLProgramBuilder.o obj/skia/skia/GrGLShaderStringBuilder.o obj/skia/skia/GrVkBuffer.o obj/skia/skia/GrVkCaps.o obj/skia/skia/GrVkCommandBuffer.o obj/skia/skia/GrVkCommandPool.o obj/skia/skia/GrVkDescriptorPool.o obj/skia/skia/GrVkDescriptorSet.o obj/skia/skia/GrVkDescriptorSetManager.o obj/skia/skia/GrVkFramebuffer.o obj/skia/skia/GrVkGpu.o obj/skia/skia/GrVkImage.o obj/skia/skia/GrVkImageView.o obj/skia/skia/GrVkMSAALoadManager.o obj/skia/skia/GrVkOpsRenderPass.o obj/skia/skia/GrVkPipeline.o obj/skia/skia/GrVkPipelineState.o obj/skia/skia/GrVkPipelineStateBuilder.o obj/skia/skia/GrVkPipelineStateCache.o obj/skia/skia/GrVkPipelineStateDataManager.o obj/skia/skia/GrVkRenderPass.o obj/skia/skia/GrVkRenderTarget.o obj/skia/skia/GrVkResourceProvider.o obj/skia/skia/GrVkSampler.o obj/skia/skia/GrVkSamplerYcbcrConversion.o obj/skia/skia/GrVkSemaphore.o obj/skia/skia/GrVkTexture.o obj/skia/skia/GrVkTextureRenderTarget.o obj/skia/skia/GrVkTypesPriv.o obj/skia/skia/GrVkUniformHandler.o obj/skia/skia/GrVkUtil.o obj/skia/skia/GrVkVaryingHandler.o obj/skia/skia/VulkanAMDMemoryAllocator.o obj/skia/skia/VulkanExtensions.o obj/skia/skia/VulkanInterface.o obj/skia/skia/VulkanMemory.o obj/skia/skia/GrVkSecondaryCBDrawContext.o obj/skia/skia/SkClusterator.o obj/skia/skia/SkDeflate.o obj/skia/skia/SkJpegInfo.o obj/skia/skia/SkKeyedImage.o obj/skia/skia/SkPDFBitmap.o obj/skia/skia/SkPDFDevice.o obj/skia/skia/SkPDFDocument.o obj/skia/skia/SkPDFFont.o obj/skia/skia/SkPDFFormXObject.o obj/skia/skia/SkPDFGradientShader.o obj/skia/skia/SkPDFGraphicStackState.o obj/skia/skia/SkPDFGraphicState.o obj/skia/skia/SkPDFMakeCIDGlyphWidthsArray.o obj/skia/skia/SkPDFMakeToUnicodeCmap.o obj/skia/skia/SkPDFMetadata.o obj/skia/skia/SkPDFResourceDict.o obj/skia/skia/SkPDFShader.o obj/skia/skia/SkPDFSubsetFont.o obj/skia/skia/SkPDFTag.o obj/skia/skia/SkPDFType1Font.o obj/skia/skia/SkPDFTypes.o obj/skia/skia/SkPDFUtils.o obj/skia/skia/BlendModes.o obj/skia/skia/Camera.o obj/skia/skia/Composition.o obj/skia/skia/Layer.o obj/skia/skia/Path.o obj/skia/skia/Skottie.o obj/skia/skia/SkottieJson.o obj/skia/skia/SkottieProperty.o obj/skia/skia/Transform.o obj/skia/skia/Animator.o obj/skia/skia/KeyframeAnimator.o obj/skia/skia/ScalarKeyframeAnimator.o obj/skia/skia/ShapeKeyframeAnimator.o obj/skia/skia/TextKeyframeAnimator.o obj/skia/skia/Vec2KeyframeAnimator.o obj/skia/skia/VectorKeyframeAnimator.o obj/skia/skia/BlackAndWhiteEffect.o obj/skia/skia/BrightnessContrastEffect.o obj/skia/skia/BulgeEffect.o obj/skia/skia/CCTonerEffect.o obj/skia/skia/CornerPinEffect.o obj/skia/skia/DirectionalBlur.o obj/skia/skia/DisplacementMapEffect.o obj/skia/skia/DropShadowEffect.o obj/skia/skia/Effects.o obj/skia/skia/FillEffect.o obj/skia/skia/FractalNoiseEffect.o obj/skia/skia/GaussianBlurEffect.o obj/skia/skia/GlowStyles.o obj/skia/skia/GradientEffect.o obj/skia/skia/HueSaturationEffect.o obj/skia/skia/InvertEffect.o obj/skia/skia/LevelsEffect.o obj/skia/skia/LinearWipeEffect.o obj/skia/skia/MotionBlurEffect.o obj/skia/skia/MotionTileEffect.o obj/skia/skia/RadialWipeEffect.o obj/skia/skia/ShadowStyles.o obj/skia/skia/SharpenEffect.o obj/skia/skia/ShiftChannelsEffect.o obj/skia/skia/SkSLEffect.o obj/skia/skia/SphereEffect.o obj/skia/skia/ThresholdEffect.o obj/skia/skia/TintEffect.o obj/skia/skia/TransformEffect.o obj/skia/skia/TritoneEffect.o obj/skia/skia/VenetianBlindsEffect.o obj/skia/skia/AudioLayer.o obj/skia/skia/FootageLayer.o obj/skia/skia/NullLayer.o obj/skia/skia/PrecompLayer.o obj/skia/skia/SolidLayer.o obj/skia/skia/TextLayer.o obj/skia/skia/Ellipse.o obj/skia/skia/FillStroke.o obj/skia/skia/Gradient.o obj/skia/skia/MergePaths.o obj/skia/skia/OffsetPaths.o obj/skia/skia/Polystar.o obj/skia/skia/PuckerBloat.o obj/skia/skia/Rectangle.o obj/skia/skia/Repeater.o obj/skia/skia/RoundCorners.o obj/skia/skia/ShapeLayer.o obj/skia/skia/TrimPaths.o obj/skia/skia/Font.o obj/skia/skia/RangeSelector.o obj/skia/skia/SkottieShaper.o obj/skia/skia/TextAdapter.o obj/skia/skia/TextAnimator.o obj/skia/skia/TextValue.o obj/skia/skia/SkResources.o obj/skia/skia/SkSGClipEffect.o obj/skia/skia/SkSGColorFilter.o obj/skia/skia/SkSGDraw.o obj/skia/skia/SkSGEffectNode.o obj/skia/skia/SkSGGeometryEffect.o obj/skia/skia/SkSGGeometryNode.o obj/skia/skia/SkSGGradient.o obj/skia/skia/SkSGGroup.o obj/skia/skia/SkSGImage.o obj/skia/skia/SkSGInvalidationController.o obj/skia/skia/SkSGMaskEffect.o obj/skia/skia/SkSGMerge.o obj/skia/skia/SkSGNode.o obj/skia/skia/SkSGOpacityEffect.o obj/skia/skia/SkSGPaint.o obj/skia/skia/SkSGPath.o obj/skia/skia/SkSGPlane.o obj/skia/skia/SkSGRect.o obj/skia/skia/SkSGRenderEffect.o obj/skia/skia/SkSGRenderNode.o obj/skia/skia/SkSGScene.o obj/skia/skia/SkSGText.o obj/skia/skia/SkSGTransform.o obj/skia/skia/SkShaper.o obj/skia/skia/SkShaper_primitive.o obj/skia/skia_core_and_effects/SkArenaAlloc.o obj/skia/skia_core_and_effects/SkBezierCurves.o obj/skia/skia_core_and_effects/SkBlockAllocator.o obj/skia/skia_core_and_effects/SkBuffer.o obj/skia/skia_core_and_effects/SkContainers.o obj/skia/skia_core_and_effects/SkCubics.o obj/skia/skia_core_and_effects/SkDeque.o obj/skia/skia_core_and_effects/SkFloatingPoint.o obj/skia/skia_core_and_effects/SkHalf.o obj/skia/skia_core_and_effects/SkMalloc.o obj/skia/skia_core_and_effects/SkMathPriv.o obj/skia/skia_core_and_effects/SkQuads.o obj/skia/skia_core_and_effects/SkSafeMath.o obj/skia/skia_core_and_effects/SkSemaphore.o obj/skia/skia_core_and_effects/SkTDArray.o obj/skia/skia_core_and_effects/SkTSearch.o obj/skia/skia_core_and_effects/SkThreadID.o obj/skia/skia_core_and_effects/SkUTF.o obj/skia/skia_core_and_effects/SkUtils.o obj/skia/skia_core_and_effects/SkAAClip.o obj/skia/skia_core_and_effects/SkATrace.o obj/skia/skia_core_and_effects/SkAlphaRuns.o obj/skia/skia_core_and_effects/SkAnalyticEdge.o obj/skia/skia_core_and_effects/SkAnnotation.o obj/skia/skia_core_and_effects/SkAutoPixmapStorage.o obj/skia/skia_core_and_effects/SkBBHFactory.o obj/skia/skia_core_and_effects/SkBitmap.o obj/skia/skia_core_and_effects/SkBitmapCache.o obj/skia/skia_core_and_effects/SkBitmapDevice.o obj/skia/skia_core_and_effects/SkBitmapProcState.o obj/skia/skia_core_and_effects/SkBitmapProcState_matrixProcs.o obj/skia/skia_core_and_effects/SkBlendMode.o obj/skia/skia_core_and_effects/SkBlendModeBlender.o obj/skia/skia_core_and_effects/SkBlitRow_D32.o obj/skia/skia_core_and_effects/SkBlitter.o obj/skia/skia_core_and_effects/SkBlitter_A8.o obj/skia/skia_core_and_effects/SkBlitter_ARGB32.o obj/skia/skia_core_and_effects/SkBlitter_Sprite.o obj/skia/skia_core_and_effects/SkBlurMF.o obj/skia/skia_core_and_effects/SkBlurMask.o obj/skia/skia_core_and_effects/SkCachedData.o obj/skia/skia_core_and_effects/SkCanvas.o obj/skia/skia_core_and_effects/SkCanvasPriv.o obj/skia/skia_core_and_effects/SkCanvas_Raster.o obj/skia/skia_core_and_effects/SkCapabilities.o obj/skia/skia_core_and_effects/SkChromeRemoteGlyphCache.o obj/skia/skia_core_and_effects/SkClipStack.o obj/skia/skia_core_and_effects/SkClipStackDevice.o obj/skia/skia_core_and_effects/SkColor.o obj/skia/skia_core_and_effects/SkColorFilter.o obj/skia/skia_core_and_effects/SkColorFilter_Matrix.o obj/skia/skia_core_and_effects/SkColorSpace.o obj/skia/skia_core_and_effects/SkColorSpaceXformSteps.o obj/skia/skia_core_and_effects/SkCompressedDataUtils.o obj/skia/skia_core_and_effects/SkContourMeasure.o obj/skia/skia_core_and_effects/SkConvertPixels.o obj/skia/skia_core_and_effects/SkCpu.o obj/skia/skia_core_and_effects/SkCubicClipper.o obj/skia/skia_core_and_effects/SkCubicMap.o obj/skia/skia_core_and_effects/SkData.o obj/skia/skia_core_and_effects/SkDataTable.o obj/skia/skia_core_and_effects/SkDebug.o obj/skia/skia_core_and_effects/SkDeferredDisplayList.o obj/skia/skia_core_and_effects/SkDeferredDisplayListRecorder.o obj/skia/skia_core_and_effects/SkDescriptor.o obj/skia/skia_core_and_effects/SkDevice.o obj/skia/skia_core_and_effects/SkDistanceFieldGen.o obj/skia/skia_core_and_effects/SkDocument.o obj/skia/skia_core_and_effects/SkDraw.o obj/skia/skia_core_and_effects/SkDrawBase.o obj/skia/skia_core_and_effects/SkDrawLooper.o obj/skia/skia_core_and_effects/SkDrawShadowInfo.o obj/skia/skia_core_and_effects/SkDraw_atlas.o obj/skia/skia_core_and_effects/SkDraw_text.o obj/skia/skia_core_and_effects/SkDraw_vertices.o obj/skia/skia_core_and_effects/SkDrawable.o obj/skia/skia_core_and_effects/SkEdge.o obj/skia/skia_core_and_effects/SkEdgeBuilder.o obj/skia/skia_core_and_effects/SkEdgeClipper.o obj/skia/skia_core_and_effects/SkExecutor.o obj/skia/skia_core_and_effects/SkFlattenable.o obj/skia/skia_core_and_effects/SkFont.o obj/skia/skia_core_and_effects/SkFontDescriptor.o obj/skia/skia_core_and_effects/SkFontMetricsPriv.o obj/skia/skia_core_and_effects/SkFontMgr.o obj/skia/skia_core_and_effects/SkFontStream.o obj/skia/skia_core_and_effects/SkFont_serial.o obj/skia/skia_core_and_effects/SkGaussFilter.o obj/skia/skia_core_and_effects/SkGeometry.o obj/skia/skia_core_and_effects/SkGlobalInitialization_core.o obj/skia/skia_core_and_effects/SkGlyph.o obj/skia/skia_core_and_effects/SkGlyphRunPainter.o obj/skia/skia_core_and_effects/SkGpuBlurUtils.o obj/skia/skia_core_and_effects/SkGraphics.o obj/skia/skia_core_and_effects/SkICC.o obj/skia/skia_core_and_effects/SkIDChangeListener.o obj/skia/skia_core_and_effects/SkImageFilter.o obj/skia/skia_core_and_effects/SkImageFilterCache.o obj/skia/skia_core_and_effects/SkImageFilterTypes.o obj/skia/skia_core_and_effects/SkImageGenerator.o obj/skia/skia_core_and_effects/SkImageInfo.o obj/skia/skia_core_and_effects/SkLatticeIter.o obj/skia/skia_core_and_effects/SkLineClipper.o obj/skia/skia_core_and_effects/SkLocalMatrixImageFilter.o obj/skia/skia_core_and_effects/SkM44.o obj/skia/skia_core_and_effects/SkMD5.o obj/skia/skia_core_and_effects/SkMallocPixelRef.o obj/skia/skia_core_and_effects/SkMask.o obj/skia/skia_core_and_effects/SkMaskBlurFilter.o obj/skia/skia_core_and_effects/SkMaskCache.o obj/skia/skia_core_and_effects/SkMaskFilter.o obj/skia/skia_core_and_effects/SkMaskGamma.o obj/skia/skia_core_and_effects/SkMatrix.o obj/skia/skia_core_and_effects/SkMatrixInvert.o obj/skia/skia_core_and_effects/SkMesh.o obj/skia/skia_core_and_effects/SkMipmap.o obj/skia/skia_core_and_effects/SkMipmapAccessor.o obj/skia/skia_core_and_effects/SkMipmapBuilder.o obj/skia/skia_core_and_effects/SkModeColorFilter.o obj/skia/skia_core_and_effects/SkOpts.o obj/skia/skia_core_and_effects/SkOpts_erms.o obj/skia/skia_core_and_effects/SkOverdrawCanvas.o obj/skia/skia_core_and_effects/SkPaint.o obj/skia/skia_core_and_effects/SkPaintPriv.o obj/skia/skia_core_and_effects/SkPath.o obj/skia/skia_core_and_effects/SkPathBuilder.o obj/skia/skia_core_and_effects/SkPathEffect.o obj/skia/skia_core_and_effects/SkPathMeasure.o obj/skia/skia_core_and_effects/SkPathRef.o obj/skia/skia_core_and_effects/SkPathUtils.o obj/skia/skia_core_and_effects/SkPath_serial.o obj/skia/skia_core_and_effects/SkPixelRef.o obj/skia/skia_core_and_effects/SkPixmap.o obj/skia/skia_core_and_effects/SkPixmapDraw.o obj/skia/skia_core_and_effects/SkPoint.o obj/skia/skia_core_and_effects/SkPoint3.o obj/skia/skia_core_and_effects/SkPromiseImageTexture.o obj/skia/skia_core_and_effects/SkPtrRecorder.o obj/skia/skia_core_and_effects/SkQuadClipper.o obj/skia/skia_core_and_effects/SkRRect.o obj/skia/skia_core_and_effects/SkRSXform.o obj/skia/skia_core_and_effects/SkRTree.o obj/skia/skia_core_and_effects/SkRasterClip.o obj/skia/skia_core_and_effects/SkRasterPipeline.o obj/skia/skia_core_and_effects/SkRasterPipelineBlitter.o obj/skia/skia_core_and_effects/SkReadBuffer.o obj/skia/skia_core_and_effects/SkReadPixelsRec.o obj/skia/skia_core_and_effects/SkRecord.o obj/skia/skia_core_and_effects/SkRecordDraw.o obj/skia/skia_core_and_effects/SkRecordOpts.o obj/skia/skia_core_and_effects/SkRecords.o obj/skia/skia_core_and_effects/SkRect.o obj/skia/skia_core_and_effects/SkRegion.o obj/skia/skia_core_and_effects/SkRegion_path.o obj/skia/skia_core_and_effects/SkResourceCache.o obj/skia/skia_core_and_effects/SkRuntimeEffect.o obj/skia/skia_core_and_effects/SkSLTypeShared.o obj/skia/skia_core_and_effects/SkScalar.o obj/skia/skia_core_and_effects/SkScalerContext.o obj/skia/skia_core_and_effects/SkScan.o obj/skia/skia_core_and_effects/SkScan_AAAPath.o obj/skia/skia_core_and_effects/SkScan_AntiPath.o obj/skia/skia_core_and_effects/SkScan_Antihair.o obj/skia/skia_core_and_effects/SkScan_Hairline.o obj/skia/skia_core_and_effects/SkScan_Path.o obj/skia/skia_core_and_effects/SkScan_SAAPath.o obj/skia/skia_core_and_effects/SkSharedMutex.o obj/skia/skia_core_and_effects/SkSpecialImage.o obj/skia/skia_core_and_effects/SkSpecialSurface.o obj/skia/skia_core_and_effects/SkSpinlock.o obj/skia/skia_core_and_effects/SkSpriteBlitter_ARGB32.o obj/skia/skia_core_and_effects/SkStream.o obj/skia/skia_core_and_effects/SkStrike.o obj/skia/skia_core_and_effects/SkStrikeCache.o obj/skia/skia_core_and_effects/SkStrikeSpec.o obj/skia/skia_core_and_effects/SkString.o obj/skia/skia_core_and_effects/SkStringUtils.o obj/skia/skia_core_and_effects/SkStroke.o obj/skia/skia_core_and_effects/SkStrokeRec.o obj/skia/skia_core_and_effects/SkStrokerPriv.o obj/skia/skia_core_and_effects/SkSurfaceCharacterization.o obj/skia/skia_core_and_effects/SkSwizzle.o obj/skia/skia_core_and_effects/SkTaskGroup.o obj/skia/skia_core_and_effects/SkTextBlob.o obj/skia/skia_core_and_effects/SkTextBlobTrace.o obj/skia/skia_core_and_effects/SkTime.o obj/skia/skia_core_and_effects/SkTypeface.o obj/skia/skia_core_and_effects/SkTypefaceCache.o obj/skia/skia_core_and_effects/SkTypeface_remote.o obj/skia/skia_core_and_effects/SkUnPreMultiply.o obj/skia/skia_core_and_effects/SkVM.o obj/skia/skia_core_and_effects/SkVMBlitter.o obj/skia/skia_core_and_effects/SkVertState.o obj/skia/skia_core_and_effects/SkVertices.o obj/skia/skia_core_and_effects/SkWriteBuffer.o obj/skia/skia_core_and_effects/SkWritePixelsRec.o obj/skia/skia_core_and_effects/SkWriter32.o obj/skia/skia_core_and_effects/SkXfermode.o obj/skia/skia_core_and_effects/SkXfermodeInterpretation.o obj/skia/skia_core_and_effects/SkYUVAInfo.o obj/skia/skia_core_and_effects/SkYUVAPixmaps.o obj/skia/skia_core_and_effects/SkYUVMath.o obj/skia/skia_core_and_effects/SkYUVPlanesCache.o obj/skia/skia_core_and_effects/SkImage.o obj/skia/skia_core_and_effects/SkImage_Base.o obj/skia/skia_core_and_effects/SkImage_Lazy.o obj/skia/skia_core_and_effects/SkImage_LazyFactories.o obj/skia/skia_core_and_effects/SkImage_Raster.o obj/skia/skia_core_and_effects/SkImage_RasterFactories.o obj/skia/skia_core_and_effects/SkRescaleAndReadPixels.o obj/skia/skia_core_and_effects/SkSurface.o obj/skia/skia_core_and_effects/SkSurface_Base.o obj/skia/skia_core_and_effects/SkSurface_Null.o obj/skia/skia_core_and_effects/SkSurface_Raster.o obj/skia/skia_core_and_effects/SkDiscardableMemoryPool.o obj/skia/skia_core_and_effects/SkBitmapProcShader.o obj/skia/skia_core_and_effects/SkColorFilterShader.o obj/skia/skia_core_and_effects/SkColorShader.o obj/skia/skia_core_and_effects/SkComposeShader.o obj/skia/skia_core_and_effects/SkCoordClampShader.o obj/skia/skia_core_and_effects/SkEmptyShader.o obj/skia/skia_core_and_effects/SkGainmapShader.o obj/skia/skia_core_and_effects/SkImageShader.o obj/skia/skia_core_and_effects/SkLocalMatrixShader.o obj/skia/skia_core_and_effects/SkPerlinNoiseShader.o obj/skia/skia_core_and_effects/SkShader.o obj/skia/skia_core_and_effects/SkTransformShader.o obj/skia/skia_core_and_effects/GlyphRun.o obj/skia/skia_core_and_effects/StrikeForGPU.o obj/skia/skia_core_and_effects/SkAddIntersections.o obj/skia/skia_core_and_effects/SkDConicLineIntersection.o obj/skia/skia_core_and_effects/SkDCubicLineIntersection.o obj/skia/skia_core_and_effects/SkDCubicToQuads.o obj/skia/skia_core_and_effects/SkDLineIntersection.o obj/skia/skia_core_and_effects/SkDQuadLineIntersection.o obj/skia/skia_core_and_effects/SkIntersections.o obj/skia/skia_core_and_effects/SkOpAngle.o obj/skia/skia_core_and_effects/SkOpBuilder.o obj/skia/skia_core_and_effects/SkOpCoincidence.o obj/skia/skia_core_and_effects/SkOpContour.o obj/skia/skia_core_and_effects/SkOpCubicHull.o obj/skia/skia_core_and_effects/SkOpEdgeBuilder.o obj/skia/skia_core_and_effects/SkOpSegment.o obj/skia/skia_core_and_effects/SkOpSpan.o obj/skia/skia_core_and_effects/SkPathOpsAsWinding.o obj/skia/skia_core_and_effects/SkPathOpsCommon.o obj/skia/skia_core_and_effects/SkPathOpsConic.o obj/skia/skia_core_and_effects/SkPathOpsCubic.o obj/skia/skia_core_and_effects/SkPathOpsCurve.o obj/skia/skia_core_and_effects/SkPathOpsDebug.o obj/skia/skia_core_and_effects/SkPathOpsLine.o obj/skia/skia_core_and_effects/SkPathOpsOp.o obj/skia/skia_core_and_effects/SkPathOpsQuad.o obj/skia/skia_core_and_effects/SkPathOpsRect.o obj/skia/skia_core_and_effects/SkPathOpsSimplify.o obj/skia/skia_core_and_effects/SkPathOpsTSect.o obj/skia/skia_core_and_effects/SkPathOpsTightBounds.o obj/skia/skia_core_and_effects/SkPathOpsTypes.o obj/skia/skia_core_and_effects/SkPathOpsWinding.o obj/skia/skia_core_and_effects/SkPathWriter.o obj/skia/skia_core_and_effects/SkReduceOrder.o obj/skia/skia_core_and_effects/SkBigPicture.o obj/skia/skia_core_and_effects/SkPicture.o obj/skia/skia_core_and_effects/SkPictureData.o obj/skia/skia_core_and_effects/SkPictureFlat.o obj/skia/skia_core_and_effects/SkPictureImageGenerator.o obj/skia/skia_core_and_effects/SkPicturePlayback.o obj/skia/skia_core_and_effects/SkPictureRecord.o obj/skia/skia_core_and_effects/SkPictureRecorder.o obj/skia/skia_core_and_effects/SkRecordedDrawable.o obj/skia/skia_core_and_effects/SkRecorder.o obj/skia/skia_core_and_effects/SkPictureShader.o obj/skia/skia_core_and_effects/Sk1DPathEffect.o obj/skia/skia_core_and_effects/Sk2DPathEffect.o obj/skia/skia_core_and_effects/SkBlenders.o obj/skia/skia_core_and_effects/SkColorMatrix.o obj/skia/skia_core_and_effects/SkColorMatrixFilter.o obj/skia/skia_core_and_effects/SkCornerPathEffect.o obj/skia/skia_core_and_effects/SkDashPathEffect.o obj/skia/skia_core_and_effects/SkDiscretePathEffect.o obj/skia/skia_core_and_effects/SkEmbossMask.o obj/skia/skia_core_and_effects/SkEmbossMaskFilter.o obj/skia/skia_core_and_effects/SkHighContrastFilter.o obj/skia/skia_core_and_effects/SkLayerDrawLooper.o obj/skia/skia_core_and_effects/SkLumaColorFilter.o obj/skia/skia_core_and_effects/SkOpPathEffect.o obj/skia/skia_core_and_effects/SkOverdrawColorFilter.o obj/skia/skia_core_and_effects/SkShaderMaskFilter.o obj/skia/skia_core_and_effects/SkTableColorFilter.o obj/skia/skia_core_and_effects/SkTableMaskFilter.o obj/skia/skia_core_and_effects/SkTrimPathEffect.o obj/skia/skia_core_and_effects/SkGradientShader.o obj/skia/skia_core_and_effects/SkGradientShaderBase.o obj/skia/skia_core_and_effects/SkLinearGradient.o obj/skia/skia_core_and_effects/SkRadialGradient.o obj/skia/skia_core_and_effects/SkSweepGradient.o obj/skia/skia_core_and_effects/SkTwoPointConicalGradient.o obj/skia/skia_core_and_effects/SkAlphaThresholdImageFilter.o obj/skia/skia_core_and_effects/SkArithmeticImageFilter.o obj/skia/skia_core_and_effects/SkBlendImageFilter.o obj/skia/skia_core_and_effects/SkBlurImageFilter.o obj/skia/skia_core_and_effects/SkColorFilterImageFilter.o obj/skia/skia_core_and_effects/SkComposeImageFilter.o obj/skia/skia_core_and_effects/SkCropImageFilter.o obj/skia/skia_core_and_effects/SkDisplacementMapImageFilter.o obj/skia/skia_core_and_effects/SkDropShadowImageFilter.o obj/skia/skia_core_and_effects/SkImageImageFilter.o obj/skia/skia_core_and_effects/SkLightingImageFilter.o obj/skia/skia_core_and_effects/SkMagnifierImageFilter.o obj/skia/skia_core_and_effects/SkMatrixConvolutionImageFilter.o obj/skia/skia_core_and_effects/SkMatrixTransformImageFilter.o obj/skia/skia_core_and_effects/SkMergeImageFilter.o obj/skia/skia_core_and_effects/SkMorphologyImageFilter.o obj/skia/skia_core_and_effects/SkPictureImageFilter.o obj/skia/skia_core_and_effects/SkRuntimeImageFilter.o obj/skia/skia_core_and_effects/SkShaderImageFilter.o obj/skia/skia_core_and_effects/SkTileImageFilter.o obj/skia/skcms/skcms.o obj/skia/skia_opts_crc32/SkOpts_crc32.o obj/third_party/libpng/libpng_sources/png.o obj/third_party/libpng/libpng_sources/pngerror.o obj/third_party/libpng/libpng_sources/pngget.o obj/third_party/libpng/libpng_sources/pngmem.o obj/third_party/libpng/libpng_sources/pngpread.o obj/third_party/libpng/libpng_sources/pngread.o obj/third_party/libpng/libpng_sources/pngrio.o obj/third_party/libpng/libpng_sources/pngrtran.o obj/third_party/libpng/libpng_sources/pngrutil.o obj/third_party/libpng/libpng_sources/pngset.o obj/third_party/libpng/libpng_sources/pngtrans.o obj/third_party/libpng/libpng_sources/pngwio.o obj/third_party/libpng/libpng_sources/pngwrite.o obj/third_party/libpng/libpng_sources/pngwtran.o obj/third_party/libpng/libpng_sources/pngwutil.o obj/third_party/libpng/libpng_sources/arm_init.o obj/third_party/libpng/libpng_sources/filter_neon_intrinsics.o obj/third_party/libpng/libpng_sources/palette_neon_intrinsics.o obj/third_party/wuffs/libwuffs.a obj/base/third_party/dynamic_annotations/libdynamic_annotations.a obj/third_party/libwebp/libwebp_dec.a obj/third_party/libwebp/libwebp_utils.a obj/third_party/libwebp/libwebp_demux.a obj/third_party/libwebp/libwebp_dsp.a obj/third_party/libwebp/libwebp_dsp_sse2.a obj/third_party/libwebp/libwebp_enc.a obj/third_party/libwebp/libwebp_sharpyuv.a obj/third_party/libwebp/libwebp_sharpyuv_dsp.a obj/third_party/libwebp/libwebp_sharpyuv_sse2.a obj/third_party/libwebp/libwebp_sharpyuv_neon.a obj/third_party/libwebp/libwebp_dsp_sse41.a obj/third_party/libwebp/libwebp_mux.a obj/third_party/libwebp/libwebp_dsp_neon.a obj/third_party/libjpeg_turbo/libjpeg.a obj/third_party/libjpeg_turbo/libsimd.a | ./libbase.so.TOC ./libthird_party_fontconfig.so.TOC ./libthird_party_freetype_harfbuzz.so.TOC ./libchrome_zlib.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libicuuc.so.TOC ./libc++.so.TOC || obj/skia/buildflags.stamp obj/skia/skia_core_and_effects.stamp obj/skia/skcms.stamp obj/skia/skia_opts.stamp obj/third_party/libpng/libpng.stamp obj/third_party/libwebp/libwebp.stamp obj/third_party/libwebp/libwebp_webp.stamp obj/build/config/freetype/freetype.stamp obj/third_party/jpeg.stamp obj/third_party/expat/expat.stamp obj/third_party/icu/icuuc.stamp obj/gpu/config/workaround_list.stamp obj/build/config/shared_library_deps.stamp obj/skia/skia_opts_crc32.stamp obj/third_party/libpng/libpng_sources.stamp obj/third_party/libwebp/libwebp_dsp_headers.stamp obj/third_party/libwebp/libwebp_dsp_cpu_c.stamp obj/third_party/libwebp/libwebp_sharpyuv_dsp_headers.stamp obj/third_party/libjpeg_turbo/libjpeg_headers.stamp
+  ldflags = -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort --target=aarch64-linux-gnu -Wl,-mllvm,-enable-machine-outliner=never -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -Wl,-rpath=\$$ORIGIN -Werror -L../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0 -lexpat
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .
+  solibs = ./libbase.so ./libthird_party_fontconfig.so ./libthird_party_freetype_harfbuzz.so ./libchrome_zlib.so ./libthird_party_abseil-cpp_absl.so ./libthird_party_boringssl.so ./libbase_allocator_partition_allocator_partition_alloc.so ./libthird_party_perfetto_libperfetto.so ./libicuuc.so ./libc++.so

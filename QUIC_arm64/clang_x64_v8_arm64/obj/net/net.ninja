@@ -1,0 +1,1548 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DNET_IMPLEMENTATION -DENABLE_BUILT_IN_DNS -DUSE_GIO -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Iclang_x64_v8_arm64/gen/third_party/perfetto/build_config -Iclang_x64_v8_arm64/gen/third_party/perfetto -I../../third_party/protobuf/src -Iclang_x64_v8_arm64/gen/protoc_out -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -Iclang_x64_v8_arm64/gen/net/third_party/quiche/src -I../../third_party/zlib -I../../third_party/ced/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/brotli/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nss -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nspr -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1 -Wexit-time-destructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/libmount -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/blkid
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = net
+target_out_dir = clang_x64_v8_arm64/obj/net
+target_output_name = libnet
+
+build clang_x64_v8_arm64/obj/net/net.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/base/anchor_functions_buildflags.stamp clang_x64_v8_arm64/obj/base/build_date.stamp clang_x64_v8_arm64/obj/base/cfi_buildflags.stamp clang_x64_v8_arm64/obj/base/clang_profiling_buildflags.stamp clang_x64_v8_arm64/obj/base/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/feature_list_buildflags.stamp clang_x64_v8_arm64/obj/base/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/base/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/message_pump_buildflags.stamp clang_x64_v8_arm64/obj/base/orderfile_buildflags.stamp clang_x64_v8_arm64/obj/base/power_monitor_buildflags.stamp clang_x64_v8_arm64/obj/base/profiler_buildflags.stamp clang_x64_v8_arm64/obj/base/rust_buildflags.stamp clang_x64_v8_arm64/obj/base/sanitizer_buildflags.stamp clang_x64_v8_arm64/obj/base/synchronization_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_gen.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_zero_gen.stamp clang_x64_v8_arm64/obj/build/blink_buildflags.stamp clang_x64_v8_arm64/obj/build/branding_buildflags.stamp clang_x64_v8_arm64/obj/build/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/build/config/compiler/compiler_buildflags.stamp clang_x64_v8_arm64/obj/components/nacl/common/buildflags.stamp clang_x64_v8_arm64/obj/crypto/buildflags.stamp clang_x64_v8_arm64/obj/net/buildflags.stamp clang_x64_v8_arm64/obj/net/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/net/isolation_info_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_nqe_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_resources_grit.stamp clang_x64_v8_arm64/obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp clang_x64_v8_arm64/obj/net/cert/root_store_proto_lite_gen.stamp clang_x64_v8_arm64/obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_proto_gen.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp clang_x64_v8_arm64/obj/third_party/perfetto/gn/gen_buildflags.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp clang_x64_v8_arm64/obj/url/buildflags.stamp
+build clang_x64_v8_arm64/obj/net/net/address_family.o: clang_x64_v8_arm64_cxx ../../net/base/address_family.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = address_family.cc
+  source_name_part = address_family
+build clang_x64_v8_arm64/obj/net/net/address_list.o: clang_x64_v8_arm64_cxx ../../net/base/address_list.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = address_list.cc
+  source_name_part = address_list
+build clang_x64_v8_arm64/obj/net/net/auth.o: clang_x64_v8_arm64_cxx ../../net/base/auth.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = auth.cc
+  source_name_part = auth
+build clang_x64_v8_arm64/obj/net/net/backoff_entry.o: clang_x64_v8_arm64_cxx ../../net/base/backoff_entry.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = backoff_entry.cc
+  source_name_part = backoff_entry
+build clang_x64_v8_arm64/obj/net/net/backoff_entry_serializer.o: clang_x64_v8_arm64_cxx ../../net/base/backoff_entry_serializer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = backoff_entry_serializer.cc
+  source_name_part = backoff_entry_serializer
+build clang_x64_v8_arm64/obj/net/net/cache_metrics.o: clang_x64_v8_arm64_cxx ../../net/base/cache_metrics.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cache_metrics.cc
+  source_name_part = cache_metrics
+build clang_x64_v8_arm64/obj/net/net/chunked_upload_data_stream.o: clang_x64_v8_arm64_cxx ../../net/base/chunked_upload_data_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = chunked_upload_data_stream.cc
+  source_name_part = chunked_upload_data_stream
+build clang_x64_v8_arm64/obj/net/net/connection_endpoint_metadata.o: clang_x64_v8_arm64_cxx ../../net/base/connection_endpoint_metadata.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = connection_endpoint_metadata.cc
+  source_name_part = connection_endpoint_metadata
+build clang_x64_v8_arm64/obj/net/net/data_url.o: clang_x64_v8_arm64_cxx ../../net/base/data_url.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = data_url.cc
+  source_name_part = data_url
+build clang_x64_v8_arm64/obj/net/net/datagram_buffer.o: clang_x64_v8_arm64_cxx ../../net/base/datagram_buffer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = datagram_buffer.cc
+  source_name_part = datagram_buffer
+build clang_x64_v8_arm64/obj/net/net/elements_upload_data_stream.o: clang_x64_v8_arm64_cxx ../../net/base/elements_upload_data_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = elements_upload_data_stream.cc
+  source_name_part = elements_upload_data_stream
+build clang_x64_v8_arm64/obj/net/net/features.o: clang_x64_v8_arm64_cxx ../../net/base/features.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = features.cc
+  source_name_part = features
+build clang_x64_v8_arm64/obj/net/net/file_stream.o: clang_x64_v8_arm64_cxx ../../net/base/file_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_stream.cc
+  source_name_part = file_stream
+build clang_x64_v8_arm64/obj/net/net/file_stream_context.o: clang_x64_v8_arm64_cxx ../../net/base/file_stream_context.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_stream_context.cc
+  source_name_part = file_stream_context
+build clang_x64_v8_arm64/obj/net/net/filename_util.o: clang_x64_v8_arm64_cxx ../../net/base/filename_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = filename_util.cc
+  source_name_part = filename_util
+build clang_x64_v8_arm64/obj/net/net/filename_util_internal.o: clang_x64_v8_arm64_cxx ../../net/base/filename_util_internal.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = filename_util_internal.cc
+  source_name_part = filename_util_internal
+build clang_x64_v8_arm64/obj/net/net/hash_value.o: clang_x64_v8_arm64_cxx ../../net/base/hash_value.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = hash_value.cc
+  source_name_part = hash_value
+build clang_x64_v8_arm64/obj/net/net/hex_utils.o: clang_x64_v8_arm64_cxx ../../net/base/hex_utils.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = hex_utils.cc
+  source_name_part = hex_utils
+build clang_x64_v8_arm64/obj/net/net/host_mapping_rules.o: clang_x64_v8_arm64_cxx ../../net/base/host_mapping_rules.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = host_mapping_rules.cc
+  source_name_part = host_mapping_rules
+build clang_x64_v8_arm64/obj/net/net/host_port_pair.o: clang_x64_v8_arm64_cxx ../../net/base/host_port_pair.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = host_port_pair.cc
+  source_name_part = host_port_pair
+build clang_x64_v8_arm64/obj/net/net/io_buffer.o: clang_x64_v8_arm64_cxx ../../net/base/io_buffer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = io_buffer.cc
+  source_name_part = io_buffer
+build clang_x64_v8_arm64/obj/net/net/ip_address.o: clang_x64_v8_arm64_cxx ../../net/base/ip_address.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ip_address.cc
+  source_name_part = ip_address
+build clang_x64_v8_arm64/obj/net/net/ip_endpoint.o: clang_x64_v8_arm64_cxx ../../net/base/ip_endpoint.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ip_endpoint.cc
+  source_name_part = ip_endpoint
+build clang_x64_v8_arm64/obj/net/net/isolation_info.o: clang_x64_v8_arm64_cxx ../../net/base/isolation_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = isolation_info.cc
+  source_name_part = isolation_info
+build clang_x64_v8_arm64/obj/net/net/load_timing_info.o: clang_x64_v8_arm64_cxx ../../net/base/load_timing_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = load_timing_info.cc
+  source_name_part = load_timing_info
+build clang_x64_v8_arm64/obj/net/net/logging_network_change_observer.o: clang_x64_v8_arm64_cxx ../../net/base/logging_network_change_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = logging_network_change_observer.cc
+  source_name_part = logging_network_change_observer
+build clang_x64_v8_arm64/obj/net/net/lookup_string_in_fixed_set.o: clang_x64_v8_arm64_cxx ../../net/base/lookup_string_in_fixed_set.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = lookup_string_in_fixed_set.cc
+  source_name_part = lookup_string_in_fixed_set
+build clang_x64_v8_arm64/obj/net/net/mime_sniffer.o: clang_x64_v8_arm64_cxx ../../net/base/mime_sniffer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mime_sniffer.cc
+  source_name_part = mime_sniffer
+build clang_x64_v8_arm64/obj/net/net/mime_util.o: clang_x64_v8_arm64_cxx ../../net/base/mime_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mime_util.cc
+  source_name_part = mime_util
+build clang_x64_v8_arm64/obj/net/net/net_errors.o: clang_x64_v8_arm64_cxx ../../net/base/net_errors.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_errors.cc
+  source_name_part = net_errors
+build clang_x64_v8_arm64/obj/net/net/net_module.o: clang_x64_v8_arm64_cxx ../../net/base/net_module.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_module.cc
+  source_name_part = net_module
+build clang_x64_v8_arm64/obj/net/net/network_activity_monitor.o: clang_x64_v8_arm64_cxx ../../net/base/network_activity_monitor.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_activity_monitor.cc
+  source_name_part = network_activity_monitor
+build clang_x64_v8_arm64/obj/net/net/network_anonymization_key.o: clang_x64_v8_arm64_cxx ../../net/base/network_anonymization_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_anonymization_key.cc
+  source_name_part = network_anonymization_key
+build clang_x64_v8_arm64/obj/net/net/network_change_notifier.o: clang_x64_v8_arm64_cxx ../../net/base/network_change_notifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_change_notifier.cc
+  source_name_part = network_change_notifier
+build clang_x64_v8_arm64/obj/net/net/network_delegate.o: clang_x64_v8_arm64_cxx ../../net/base/network_delegate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_delegate.cc
+  source_name_part = network_delegate
+build clang_x64_v8_arm64/obj/net/net/network_delegate_impl.o: clang_x64_v8_arm64_cxx ../../net/base/network_delegate_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_delegate_impl.cc
+  source_name_part = network_delegate_impl
+build clang_x64_v8_arm64/obj/net/net/network_interfaces.o: clang_x64_v8_arm64_cxx ../../net/base/network_interfaces.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_interfaces.cc
+  source_name_part = network_interfaces
+build clang_x64_v8_arm64/obj/net/net/network_isolation_key.o: clang_x64_v8_arm64_cxx ../../net/base/network_isolation_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_isolation_key.cc
+  source_name_part = network_isolation_key
+build clang_x64_v8_arm64/obj/net/net/parse_number.o: clang_x64_v8_arm64_cxx ../../net/base/parse_number.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parse_number.cc
+  source_name_part = parse_number
+build clang_x64_v8_arm64/obj/net/net/port_util.o: clang_x64_v8_arm64_cxx ../../net/base/port_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = port_util.cc
+  source_name_part = port_util
+build clang_x64_v8_arm64/obj/net/net/prioritized_dispatcher.o: clang_x64_v8_arm64_cxx ../../net/base/prioritized_dispatcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = prioritized_dispatcher.cc
+  source_name_part = prioritized_dispatcher
+build clang_x64_v8_arm64/obj/net/net/prioritized_task_runner.o: clang_x64_v8_arm64_cxx ../../net/base/prioritized_task_runner.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = prioritized_task_runner.cc
+  source_name_part = prioritized_task_runner
+build clang_x64_v8_arm64/obj/net/net/privacy_mode.o: clang_x64_v8_arm64_cxx ../../net/base/privacy_mode.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = privacy_mode.cc
+  source_name_part = privacy_mode
+build clang_x64_v8_arm64/obj/net/net/proxy_server.o: clang_x64_v8_arm64_cxx ../../net/base/proxy_server.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_server.cc
+  source_name_part = proxy_server
+build clang_x64_v8_arm64/obj/net/net/proxy_string_util.o: clang_x64_v8_arm64_cxx ../../net/base/proxy_string_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_string_util.cc
+  source_name_part = proxy_string_util
+build clang_x64_v8_arm64/obj/net/net/registry_controlled_domain.o: clang_x64_v8_arm64_cxx ../../net/base/registry_controlled_domains/registry_controlled_domain.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = registry_controlled_domain.cc
+  source_name_part = registry_controlled_domain
+build clang_x64_v8_arm64/obj/net/net/request_priority.o: clang_x64_v8_arm64_cxx ../../net/base/request_priority.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = request_priority.cc
+  source_name_part = request_priority
+build clang_x64_v8_arm64/obj/net/net/scheme_host_port_matcher.o: clang_x64_v8_arm64_cxx ../../net/base/scheme_host_port_matcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = scheme_host_port_matcher.cc
+  source_name_part = scheme_host_port_matcher
+build clang_x64_v8_arm64/obj/net/net/scheme_host_port_matcher_rule.o: clang_x64_v8_arm64_cxx ../../net/base/scheme_host_port_matcher_rule.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = scheme_host_port_matcher_rule.cc
+  source_name_part = scheme_host_port_matcher_rule
+build clang_x64_v8_arm64/obj/net/net/schemeful_site.o: clang_x64_v8_arm64_cxx ../../net/base/schemeful_site.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = schemeful_site.cc
+  source_name_part = schemeful_site
+build clang_x64_v8_arm64/obj/net/net/sockaddr_storage.o: clang_x64_v8_arm64_cxx ../../net/base/sockaddr_storage.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = sockaddr_storage.cc
+  source_name_part = sockaddr_storage
+build clang_x64_v8_arm64/obj/net/net/transport_info.o: clang_x64_v8_arm64_cxx ../../net/base/transport_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_info.cc
+  source_name_part = transport_info
+build clang_x64_v8_arm64/obj/net/net/upload_bytes_element_reader.o: clang_x64_v8_arm64_cxx ../../net/base/upload_bytes_element_reader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = upload_bytes_element_reader.cc
+  source_name_part = upload_bytes_element_reader
+build clang_x64_v8_arm64/obj/net/net/upload_data_stream.o: clang_x64_v8_arm64_cxx ../../net/base/upload_data_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = upload_data_stream.cc
+  source_name_part = upload_data_stream
+build clang_x64_v8_arm64/obj/net/net/upload_element_reader.o: clang_x64_v8_arm64_cxx ../../net/base/upload_element_reader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = upload_element_reader.cc
+  source_name_part = upload_element_reader
+build clang_x64_v8_arm64/obj/net/net/upload_file_element_reader.o: clang_x64_v8_arm64_cxx ../../net/base/upload_file_element_reader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = upload_file_element_reader.cc
+  source_name_part = upload_file_element_reader
+build clang_x64_v8_arm64/obj/net/net/url_search_params.o: clang_x64_v8_arm64_cxx ../../net/base/url_search_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_search_params.cc
+  source_name_part = url_search_params
+build clang_x64_v8_arm64/obj/net/net/url_util.o: clang_x64_v8_arm64_cxx ../../net/base/url_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_util.cc
+  source_name_part = url_util
+build clang_x64_v8_arm64/obj/net/net/asn1_util.o: clang_x64_v8_arm64_cxx ../../net/cert/asn1_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = asn1_util.cc
+  source_name_part = asn1_util
+build clang_x64_v8_arm64/obj/net/net/caching_cert_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/caching_cert_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = caching_cert_verifier.cc
+  source_name_part = caching_cert_verifier
+build clang_x64_v8_arm64/obj/net/net/cert_and_ct_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_and_ct_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_and_ct_verifier.cc
+  source_name_part = cert_and_ct_verifier
+build clang_x64_v8_arm64/obj/net/net/cert_database.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_database.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_database.cc
+  source_name_part = cert_database
+build clang_x64_v8_arm64/obj/net/net/cert_status_flags.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_status_flags.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_status_flags.cc
+  source_name_part = cert_status_flags
+build clang_x64_v8_arm64/obj/net/net/cert_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_verifier.cc
+  source_name_part = cert_verifier
+build clang_x64_v8_arm64/obj/net/net/cert_verify_proc.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_verify_proc.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_verify_proc.cc
+  source_name_part = cert_verify_proc
+build clang_x64_v8_arm64/obj/net/net/cert_verify_proc_builtin.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_verify_proc_builtin.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_verify_proc_builtin.cc
+  source_name_part = cert_verify_proc_builtin
+build clang_x64_v8_arm64/obj/net/net/cert_verify_result.o: clang_x64_v8_arm64_cxx ../../net/cert/cert_verify_result.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_verify_result.cc
+  source_name_part = cert_verify_result
+build clang_x64_v8_arm64/obj/net/net/coalescing_cert_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/coalescing_cert_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = coalescing_cert_verifier.cc
+  source_name_part = coalescing_cert_verifier
+build clang_x64_v8_arm64/obj/net/net/crl_set.o: clang_x64_v8_arm64_cxx ../../net/cert/crl_set.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = crl_set.cc
+  source_name_part = crl_set
+build clang_x64_v8_arm64/obj/net/net/ct_log_response_parser.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_log_response_parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_log_response_parser.cc
+  source_name_part = ct_log_response_parser
+build clang_x64_v8_arm64/obj/net/net/ct_log_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_log_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_log_verifier.cc
+  source_name_part = ct_log_verifier
+build clang_x64_v8_arm64/obj/net/net/ct_log_verifier_util.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_log_verifier_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_log_verifier_util.cc
+  source_name_part = ct_log_verifier_util
+build clang_x64_v8_arm64/obj/net/net/ct_objects_extractor.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_objects_extractor.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_objects_extractor.cc
+  source_name_part = ct_objects_extractor
+build clang_x64_v8_arm64/obj/net/net/ct_policy_enforcer.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_policy_enforcer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_policy_enforcer.cc
+  source_name_part = ct_policy_enforcer
+build clang_x64_v8_arm64/obj/net/net/ct_sct_to_string.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_sct_to_string.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_sct_to_string.cc
+  source_name_part = ct_sct_to_string
+build clang_x64_v8_arm64/obj/net/net/ct_serialization.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_serialization.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_serialization.cc
+  source_name_part = ct_serialization
+build clang_x64_v8_arm64/obj/net/net/ct_signed_certificate_timestamp_log_param.o: clang_x64_v8_arm64_cxx ../../net/cert/ct_signed_certificate_timestamp_log_param.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ct_signed_certificate_timestamp_log_param.cc
+  source_name_part = ct_signed_certificate_timestamp_log_param
+build clang_x64_v8_arm64/obj/net/net/do_nothing_ct_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/do_nothing_ct_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = do_nothing_ct_verifier.cc
+  source_name_part = do_nothing_ct_verifier
+build clang_x64_v8_arm64/obj/net/net/ev_root_ca_metadata.o: clang_x64_v8_arm64_cxx ../../net/cert/ev_root_ca_metadata.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ev_root_ca_metadata.cc
+  source_name_part = ev_root_ca_metadata
+build clang_x64_v8_arm64/obj/net/net/cert_issuer_source_aia.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/cert_issuer_source_aia.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_issuer_source_aia.cc
+  source_name_part = cert_issuer_source_aia
+build clang_x64_v8_arm64/obj/net/net/revocation_checker.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/revocation_checker.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = revocation_checker.cc
+  source_name_part = revocation_checker
+build clang_x64_v8_arm64/obj/net/net/system_trust_store.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/system_trust_store.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = system_trust_store.cc
+  source_name_part = system_trust_store
+build clang_x64_v8_arm64/obj/net/net/trust_store_features.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/trust_store_features.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store_features.cc
+  source_name_part = trust_store_features
+build clang_x64_v8_arm64/obj/net/net/known_roots.o: clang_x64_v8_arm64_cxx ../../net/cert/known_roots.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = known_roots.cc
+  source_name_part = known_roots
+build clang_x64_v8_arm64/obj/net/net/merkle_audit_proof.o: clang_x64_v8_arm64_cxx ../../net/cert/merkle_audit_proof.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = merkle_audit_proof.cc
+  source_name_part = merkle_audit_proof
+build clang_x64_v8_arm64/obj/net/net/merkle_consistency_proof.o: clang_x64_v8_arm64_cxx ../../net/cert/merkle_consistency_proof.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = merkle_consistency_proof.cc
+  source_name_part = merkle_consistency_proof
+build clang_x64_v8_arm64/obj/net/net/merkle_tree_leaf.o: clang_x64_v8_arm64_cxx ../../net/cert/merkle_tree_leaf.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = merkle_tree_leaf.cc
+  source_name_part = merkle_tree_leaf
+build clang_x64_v8_arm64/obj/net/net/multi_log_ct_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/multi_log_ct_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = multi_log_ct_verifier.cc
+  source_name_part = multi_log_ct_verifier
+build clang_x64_v8_arm64/obj/net/net/multi_threaded_cert_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/multi_threaded_cert_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = multi_threaded_cert_verifier.cc
+  source_name_part = multi_threaded_cert_verifier
+build clang_x64_v8_arm64/obj/net/net/ocsp_verify_result.o: clang_x64_v8_arm64_cxx ../../net/cert/ocsp_verify_result.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ocsp_verify_result.cc
+  source_name_part = ocsp_verify_result
+build clang_x64_v8_arm64/obj/net/net/pem.o: clang_x64_v8_arm64_cxx ../../net/cert/pem.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pem.cc
+  source_name_part = pem
+build clang_x64_v8_arm64/obj/net/net/cert_error_id.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/cert_error_id.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_error_id.cc
+  source_name_part = cert_error_id
+build clang_x64_v8_arm64/obj/net/net/cert_error_params.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/cert_error_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_error_params.cc
+  source_name_part = cert_error_params
+build clang_x64_v8_arm64/obj/net/net/cert_errors.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/cert_errors.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_errors.cc
+  source_name_part = cert_errors
+build clang_x64_v8_arm64/obj/net/net/cert_issuer_source_static.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/cert_issuer_source_static.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_issuer_source_static.cc
+  source_name_part = cert_issuer_source_static
+build clang_x64_v8_arm64/obj/net/net/certificate_policies.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/certificate_policies.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = certificate_policies.cc
+  source_name_part = certificate_policies
+build clang_x64_v8_arm64/obj/net/net/common_cert_errors.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/common_cert_errors.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = common_cert_errors.cc
+  source_name_part = common_cert_errors
+build clang_x64_v8_arm64/obj/net/net/crl.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/crl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = crl.cc
+  source_name_part = crl
+build clang_x64_v8_arm64/obj/net/net/extended_key_usage.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/extended_key_usage.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = extended_key_usage.cc
+  source_name_part = extended_key_usage
+build clang_x64_v8_arm64/obj/net/net/general_names.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/general_names.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = general_names.cc
+  source_name_part = general_names
+build clang_x64_v8_arm64/obj/net/net/name_constraints.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/name_constraints.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = name_constraints.cc
+  source_name_part = name_constraints
+build clang_x64_v8_arm64/obj/net/net/ocsp.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/ocsp.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ocsp.cc
+  source_name_part = ocsp
+build clang_x64_v8_arm64/obj/net/net/parse_certificate.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/parse_certificate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parse_certificate.cc
+  source_name_part = parse_certificate
+build clang_x64_v8_arm64/obj/net/net/parse_name.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/parse_name.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parse_name.cc
+  source_name_part = parse_name
+build clang_x64_v8_arm64/obj/net/net/parsed_certificate.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/parsed_certificate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parsed_certificate.cc
+  source_name_part = parsed_certificate
+build clang_x64_v8_arm64/obj/net/net/path_builder.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/path_builder.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = path_builder.cc
+  source_name_part = path_builder
+build clang_x64_v8_arm64/obj/net/net/revocation_util.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/revocation_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = revocation_util.cc
+  source_name_part = revocation_util
+build clang_x64_v8_arm64/obj/net/net/signature_algorithm.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/signature_algorithm.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = signature_algorithm.cc
+  source_name_part = signature_algorithm
+build clang_x64_v8_arm64/obj/net/net/simple_path_builder_delegate.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/simple_path_builder_delegate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_path_builder_delegate.cc
+  source_name_part = simple_path_builder_delegate
+build clang_x64_v8_arm64/obj/net/net/string_util.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/string_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = string_util.cc
+  source_name_part = string_util
+build clang_x64_v8_arm64/obj/net/net/trust_store.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/trust_store.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store.cc
+  source_name_part = trust_store
+build clang_x64_v8_arm64/obj/net/net/trust_store_collection.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/trust_store_collection.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store_collection.cc
+  source_name_part = trust_store_collection
+build clang_x64_v8_arm64/obj/net/net/trust_store_in_memory.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/trust_store_in_memory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store_in_memory.cc
+  source_name_part = trust_store_in_memory
+build clang_x64_v8_arm64/obj/net/net/verify_certificate_chain.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/verify_certificate_chain.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = verify_certificate_chain.cc
+  source_name_part = verify_certificate_chain
+build clang_x64_v8_arm64/obj/net/net/verify_name_match.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/verify_name_match.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = verify_name_match.cc
+  source_name_part = verify_name_match
+build clang_x64_v8_arm64/obj/net/net/verify_signed_data.o: clang_x64_v8_arm64_cxx ../../net/cert/pki/verify_signed_data.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = verify_signed_data.cc
+  source_name_part = verify_signed_data
+build clang_x64_v8_arm64/obj/net/net/sct_status_flags.o: clang_x64_v8_arm64_cxx ../../net/cert/sct_status_flags.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = sct_status_flags.cc
+  source_name_part = sct_status_flags
+build clang_x64_v8_arm64/obj/net/net/signed_certificate_timestamp.o: clang_x64_v8_arm64_cxx ../../net/cert/signed_certificate_timestamp.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = signed_certificate_timestamp.cc
+  source_name_part = signed_certificate_timestamp
+build clang_x64_v8_arm64/obj/net/net/signed_certificate_timestamp_and_status.o: clang_x64_v8_arm64_cxx ../../net/cert/signed_certificate_timestamp_and_status.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = signed_certificate_timestamp_and_status.cc
+  source_name_part = signed_certificate_timestamp_and_status
+build clang_x64_v8_arm64/obj/net/net/signed_tree_head.o: clang_x64_v8_arm64_cxx ../../net/cert/signed_tree_head.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = signed_tree_head.cc
+  source_name_part = signed_tree_head
+build clang_x64_v8_arm64/obj/net/net/symantec_certs.o: clang_x64_v8_arm64_cxx ../../net/cert/symantec_certs.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = symantec_certs.cc
+  source_name_part = symantec_certs
+build clang_x64_v8_arm64/obj/net/net/test_root_certs.o: clang_x64_v8_arm64_cxx ../../net/cert/test_root_certs.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = test_root_certs.cc
+  source_name_part = test_root_certs
+build clang_x64_v8_arm64/obj/net/net/trial_comparison_cert_verifier_util.o: clang_x64_v8_arm64_cxx ../../net/cert/trial_comparison_cert_verifier_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trial_comparison_cert_verifier_util.cc
+  source_name_part = trial_comparison_cert_verifier_util
+build clang_x64_v8_arm64/obj/net/net/x509_cert_types.o: clang_x64_v8_arm64_cxx ../../net/cert/x509_cert_types.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = x509_cert_types.cc
+  source_name_part = x509_cert_types
+build clang_x64_v8_arm64/obj/net/net/x509_certificate.o: clang_x64_v8_arm64_cxx ../../net/cert/x509_certificate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = x509_certificate.cc
+  source_name_part = x509_certificate
+build clang_x64_v8_arm64/obj/net/net/x509_certificate_net_log_param.o: clang_x64_v8_arm64_cxx ../../net/cert/x509_certificate_net_log_param.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = x509_certificate_net_log_param.cc
+  source_name_part = x509_certificate_net_log_param
+build clang_x64_v8_arm64/obj/net/net/x509_util.o: clang_x64_v8_arm64_cxx ../../net/cert/x509_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = x509_util.cc
+  source_name_part = x509_util
+build clang_x64_v8_arm64/obj/net/net/cert_net_fetcher_url_request.o: clang_x64_v8_arm64_cxx ../../net/cert_net/cert_net_fetcher_url_request.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_net_fetcher_url_request.cc
+  source_name_part = cert_net_fetcher_url_request
+build clang_x64_v8_arm64/obj/net/net/canonical_cookie.o: clang_x64_v8_arm64_cxx ../../net/cookies/canonical_cookie.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = canonical_cookie.cc
+  source_name_part = canonical_cookie
+build clang_x64_v8_arm64/obj/net/net/cookie_access_delegate.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_access_delegate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_access_delegate.cc
+  source_name_part = cookie_access_delegate
+build clang_x64_v8_arm64/obj/net/net/cookie_access_result.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_access_result.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_access_result.cc
+  source_name_part = cookie_access_result
+build clang_x64_v8_arm64/obj/net/net/cookie_change_dispatcher.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_change_dispatcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_change_dispatcher.cc
+  source_name_part = cookie_change_dispatcher
+build clang_x64_v8_arm64/obj/net/net/cookie_constants.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_constants.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_constants.cc
+  source_name_part = cookie_constants
+build clang_x64_v8_arm64/obj/net/net/cookie_deletion_info.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_deletion_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_deletion_info.cc
+  source_name_part = cookie_deletion_info
+build clang_x64_v8_arm64/obj/net/net/cookie_inclusion_status.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_inclusion_status.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_inclusion_status.cc
+  source_name_part = cookie_inclusion_status
+build clang_x64_v8_arm64/obj/net/net/cookie_monster.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_monster.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_monster.cc
+  source_name_part = cookie_monster
+build clang_x64_v8_arm64/obj/net/net/cookie_monster_change_dispatcher.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_monster_change_dispatcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_monster_change_dispatcher.cc
+  source_name_part = cookie_monster_change_dispatcher
+build clang_x64_v8_arm64/obj/net/net/cookie_monster_netlog_params.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_monster_netlog_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_monster_netlog_params.cc
+  source_name_part = cookie_monster_netlog_params
+build clang_x64_v8_arm64/obj/net/net/cookie_options.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_options.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_options.cc
+  source_name_part = cookie_options
+build clang_x64_v8_arm64/obj/net/net/cookie_partition_key.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_partition_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_partition_key.cc
+  source_name_part = cookie_partition_key
+build clang_x64_v8_arm64/obj/net/net/cookie_partition_key_collection.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_partition_key_collection.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_partition_key_collection.cc
+  source_name_part = cookie_partition_key_collection
+build clang_x64_v8_arm64/obj/net/net/cookie_store.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_store.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_store.cc
+  source_name_part = cookie_store
+build clang_x64_v8_arm64/obj/net/net/cookie_util.o: clang_x64_v8_arm64_cxx ../../net/cookies/cookie_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cookie_util.cc
+  source_name_part = cookie_util
+build clang_x64_v8_arm64/obj/net/net/parsed_cookie.o: clang_x64_v8_arm64_cxx ../../net/cookies/parsed_cookie.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parsed_cookie.cc
+  source_name_part = parsed_cookie
+build clang_x64_v8_arm64/obj/net/net/site_for_cookies.o: clang_x64_v8_arm64_cxx ../../net/cookies/site_for_cookies.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = site_for_cookies.cc
+  source_name_part = site_for_cookies
+build clang_x64_v8_arm64/obj/net/net/static_cookie_policy.o: clang_x64_v8_arm64_cxx ../../net/cookies/static_cookie_policy.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = static_cookie_policy.cc
+  source_name_part = static_cookie_policy
+build clang_x64_v8_arm64/obj/net/net/encode_values.o: clang_x64_v8_arm64_cxx ../../net/der/encode_values.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = encode_values.cc
+  source_name_part = encode_values
+build clang_x64_v8_arm64/obj/net/net/input.o: clang_x64_v8_arm64_cxx ../../net/der/input.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = input.cc
+  source_name_part = input
+build clang_x64_v8_arm64/obj/net/net/parse_values.o: clang_x64_v8_arm64_cxx ../../net/der/parse_values.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parse_values.cc
+  source_name_part = parse_values
+build clang_x64_v8_arm64/obj/net/net/parser.o: clang_x64_v8_arm64_cxx ../../net/der/parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = parser.cc
+  source_name_part = parser
+build clang_x64_v8_arm64/obj/net/net/tag.o: clang_x64_v8_arm64_cxx ../../net/der/tag.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = tag.cc
+  source_name_part = tag
+build clang_x64_v8_arm64/obj/net/net/backend_cleanup_tracker.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/backend_cleanup_tracker.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = backend_cleanup_tracker.cc
+  source_name_part = backend_cleanup_tracker
+build clang_x64_v8_arm64/obj/net/net/addr.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/addr.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = addr.cc
+  source_name_part = addr
+build clang_x64_v8_arm64/obj/net/net/backend_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/backend_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = backend_impl.cc
+  source_name_part = backend_impl
+build clang_x64_v8_arm64/obj/net/net/bitmap.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/bitmap.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bitmap.cc
+  source_name_part = bitmap
+build clang_x64_v8_arm64/obj/net/net/block_files.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/block_files.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = block_files.cc
+  source_name_part = block_files
+build clang_x64_v8_arm64/obj/net/net/disk_format.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/disk_format.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = disk_format.cc
+  source_name_part = disk_format
+build clang_x64_v8_arm64/obj/net/net/entry_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/entry_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = entry_impl.cc
+  source_name_part = entry_impl
+build clang_x64_v8_arm64/obj/net/net/eviction.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/eviction.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = eviction.cc
+  source_name_part = eviction
+build clang_x64_v8_arm64/obj/net/net/file.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/file.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file.cc
+  source_name_part = file
+build clang_x64_v8_arm64/obj/net/net/file_lock.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/file_lock.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_lock.cc
+  source_name_part = file_lock
+build clang_x64_v8_arm64/obj/net/net/in_flight_backend_io.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/in_flight_backend_io.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = in_flight_backend_io.cc
+  source_name_part = in_flight_backend_io
+build clang_x64_v8_arm64/obj/net/net/in_flight_io.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/in_flight_io.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = in_flight_io.cc
+  source_name_part = in_flight_io
+build clang_x64_v8_arm64/obj/net/net/mapped_file.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/mapped_file.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mapped_file.cc
+  source_name_part = mapped_file
+build clang_x64_v8_arm64/obj/net/net/rankings.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/rankings.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = rankings.cc
+  source_name_part = rankings
+build clang_x64_v8_arm64/obj/net/net/sparse_control.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/sparse_control.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = sparse_control.cc
+  source_name_part = sparse_control
+build clang_x64_v8_arm64/obj/net/net/stats.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/stats.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = stats.cc
+  source_name_part = stats
+build clang_x64_v8_arm64/obj/net/net/cache_util.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/cache_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cache_util.cc
+  source_name_part = cache_util
+build clang_x64_v8_arm64/obj/net/net/disk_cache.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/disk_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = disk_cache.cc
+  source_name_part = disk_cache
+build clang_x64_v8_arm64/obj/net/net/mem_backend_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/memory/mem_backend_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mem_backend_impl.cc
+  source_name_part = mem_backend_impl
+build clang_x64_v8_arm64/obj/net/net/mem_entry_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/memory/mem_entry_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mem_entry_impl.cc
+  source_name_part = mem_entry_impl
+build clang_x64_v8_arm64/obj/net/net/net_log_parameters.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/net_log_parameters.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_parameters.cc
+  source_name_part = net_log_parameters
+build clang_x64_v8_arm64/obj/net/net/post_doom_waiter.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/post_doom_waiter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = post_doom_waiter.cc
+  source_name_part = post_doom_waiter
+build clang_x64_v8_arm64/obj/net/net/simple_backend_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_backend_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_backend_impl.cc
+  source_name_part = simple_backend_impl
+build clang_x64_v8_arm64/obj/net/net/simple_entry_format.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_entry_format.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_entry_format.cc
+  source_name_part = simple_entry_format
+build clang_x64_v8_arm64/obj/net/net/simple_entry_impl.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_entry_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_entry_impl.cc
+  source_name_part = simple_entry_impl
+build clang_x64_v8_arm64/obj/net/net/simple_entry_operation.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_entry_operation.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_entry_operation.cc
+  source_name_part = simple_entry_operation
+build clang_x64_v8_arm64/obj/net/net/simple_file_enumerator.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_file_enumerator.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_file_enumerator.cc
+  source_name_part = simple_file_enumerator
+build clang_x64_v8_arm64/obj/net/net/simple_file_tracker.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_file_tracker.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_file_tracker.cc
+  source_name_part = simple_file_tracker
+build clang_x64_v8_arm64/obj/net/net/simple_index.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_index.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_index.cc
+  source_name_part = simple_index
+build clang_x64_v8_arm64/obj/net/net/simple_index_file.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_index_file.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_index_file.cc
+  source_name_part = simple_index_file
+build clang_x64_v8_arm64/obj/net/net/simple_net_log_parameters.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_net_log_parameters.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_net_log_parameters.cc
+  source_name_part = simple_net_log_parameters
+build clang_x64_v8_arm64/obj/net/net/simple_synchronous_entry.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_synchronous_entry.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_synchronous_entry.cc
+  source_name_part = simple_synchronous_entry
+build clang_x64_v8_arm64/obj/net/net/simple_util.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_util.cc
+  source_name_part = simple_util
+build clang_x64_v8_arm64/obj/net/net/simple_version_upgrade.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_version_upgrade.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_version_upgrade.cc
+  source_name_part = simple_version_upgrade
+build clang_x64_v8_arm64/obj/net/net/filter_source_stream.o: clang_x64_v8_arm64_cxx ../../net/filter/filter_source_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = filter_source_stream.cc
+  source_name_part = filter_source_stream
+build clang_x64_v8_arm64/obj/net/net/gzip_header.o: clang_x64_v8_arm64_cxx ../../net/filter/gzip_header.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = gzip_header.cc
+  source_name_part = gzip_header
+build clang_x64_v8_arm64/obj/net/net/gzip_source_stream.o: clang_x64_v8_arm64_cxx ../../net/filter/gzip_source_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = gzip_source_stream.cc
+  source_name_part = gzip_source_stream
+build clang_x64_v8_arm64/obj/net/net/source_stream.o: clang_x64_v8_arm64_cxx ../../net/filter/source_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = source_stream.cc
+  source_name_part = source_stream
+build clang_x64_v8_arm64/obj/net/net/addition_overlaps_union_find.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/addition_overlaps_union_find.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = addition_overlaps_union_find.cc
+  source_name_part = addition_overlaps_union_find
+build clang_x64_v8_arm64/obj/net/net/first_party_set_entry.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/first_party_set_entry.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = first_party_set_entry.cc
+  source_name_part = first_party_set_entry
+build clang_x64_v8_arm64/obj/net/net/first_party_set_entry_override.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/first_party_set_entry_override.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = first_party_set_entry_override.cc
+  source_name_part = first_party_set_entry_override
+build clang_x64_v8_arm64/obj/net/net/first_party_set_metadata.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/first_party_set_metadata.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = first_party_set_metadata.cc
+  source_name_part = first_party_set_metadata
+build clang_x64_v8_arm64/obj/net/net/first_party_sets_cache_filter.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/first_party_sets_cache_filter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = first_party_sets_cache_filter.cc
+  source_name_part = first_party_sets_cache_filter
+build clang_x64_v8_arm64/obj/net/net/first_party_sets_context_config.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/first_party_sets_context_config.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = first_party_sets_context_config.cc
+  source_name_part = first_party_sets_context_config
+build clang_x64_v8_arm64/obj/net/net/global_first_party_sets.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/global_first_party_sets.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = global_first_party_sets.cc
+  source_name_part = global_first_party_sets
+build clang_x64_v8_arm64/obj/net/net/same_party_context.o: clang_x64_v8_arm64_cxx ../../net/first_party_sets/same_party_context.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = same_party_context.cc
+  source_name_part = same_party_context
+build clang_x64_v8_arm64/obj/net/net/alternative_service.o: clang_x64_v8_arm64_cxx ../../net/http/alternative_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = alternative_service.cc
+  source_name_part = alternative_service
+build clang_x64_v8_arm64/obj/net/net/bidirectional_stream.o: clang_x64_v8_arm64_cxx ../../net/http/bidirectional_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bidirectional_stream.cc
+  source_name_part = bidirectional_stream
+build clang_x64_v8_arm64/obj/net/net/bidirectional_stream_impl.o: clang_x64_v8_arm64_cxx ../../net/http/bidirectional_stream_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bidirectional_stream_impl.cc
+  source_name_part = bidirectional_stream_impl
+build clang_x64_v8_arm64/obj/net/net/bidirectional_stream_request_info.o: clang_x64_v8_arm64_cxx ../../net/http/bidirectional_stream_request_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bidirectional_stream_request_info.cc
+  source_name_part = bidirectional_stream_request_info
+build clang_x64_v8_arm64/obj/net/net/broken_alternative_services.o: clang_x64_v8_arm64_cxx ../../net/http/broken_alternative_services.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = broken_alternative_services.cc
+  source_name_part = broken_alternative_services
+build clang_x64_v8_arm64/obj/net/net/http_auth.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth.cc
+  source_name_part = http_auth
+build clang_x64_v8_arm64/obj/net/net/http_auth_cache.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_cache.cc
+  source_name_part = http_auth_cache
+build clang_x64_v8_arm64/obj/net/net/http_auth_challenge_tokenizer.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_challenge_tokenizer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_challenge_tokenizer.cc
+  source_name_part = http_auth_challenge_tokenizer
+build clang_x64_v8_arm64/obj/net/net/http_auth_controller.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_controller.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_controller.cc
+  source_name_part = http_auth_controller
+build clang_x64_v8_arm64/obj/net/net/http_auth_filter.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_filter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_filter.cc
+  source_name_part = http_auth_filter
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler.cc
+  source_name_part = http_auth_handler
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_basic.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_basic.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_basic.cc
+  source_name_part = http_auth_handler_basic
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_digest.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_digest.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_digest.cc
+  source_name_part = http_auth_handler_digest
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_factory.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_factory.cc
+  source_name_part = http_auth_handler_factory
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_ntlm.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_ntlm.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_ntlm.cc
+  source_name_part = http_auth_handler_ntlm
+build clang_x64_v8_arm64/obj/net/net/http_auth_multi_round_parse.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_multi_round_parse.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_multi_round_parse.cc
+  source_name_part = http_auth_multi_round_parse
+build clang_x64_v8_arm64/obj/net/net/http_auth_preferences.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_preferences.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_preferences.cc
+  source_name_part = http_auth_preferences
+build clang_x64_v8_arm64/obj/net/net/http_auth_scheme.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_scheme.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_scheme.cc
+  source_name_part = http_auth_scheme
+build clang_x64_v8_arm64/obj/net/net/http_basic_state.o: clang_x64_v8_arm64_cxx ../../net/http/http_basic_state.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_basic_state.cc
+  source_name_part = http_basic_state
+build clang_x64_v8_arm64/obj/net/net/http_basic_stream.o: clang_x64_v8_arm64_cxx ../../net/http/http_basic_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_basic_stream.cc
+  source_name_part = http_basic_stream
+build clang_x64_v8_arm64/obj/net/net/http_byte_range.o: clang_x64_v8_arm64_cxx ../../net/http/http_byte_range.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_byte_range.cc
+  source_name_part = http_byte_range
+build clang_x64_v8_arm64/obj/net/net/http_cache.o: clang_x64_v8_arm64_cxx ../../net/http/http_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_cache.cc
+  source_name_part = http_cache
+build clang_x64_v8_arm64/obj/net/net/http_cache_lookup_manager.o: clang_x64_v8_arm64_cxx ../../net/http/http_cache_lookup_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_cache_lookup_manager.cc
+  source_name_part = http_cache_lookup_manager
+build clang_x64_v8_arm64/obj/net/net/http_cache_transaction.o: clang_x64_v8_arm64_cxx ../../net/http/http_cache_transaction.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_cache_transaction.cc
+  source_name_part = http_cache_transaction
+build clang_x64_v8_arm64/obj/net/net/http_cache_writers.o: clang_x64_v8_arm64_cxx ../../net/http/http_cache_writers.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_cache_writers.cc
+  source_name_part = http_cache_writers
+build clang_x64_v8_arm64/obj/net/net/http_chunked_decoder.o: clang_x64_v8_arm64_cxx ../../net/http/http_chunked_decoder.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_chunked_decoder.cc
+  source_name_part = http_chunked_decoder
+build clang_x64_v8_arm64/obj/net/net/http_content_disposition.o: clang_x64_v8_arm64_cxx ../../net/http/http_content_disposition.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_content_disposition.cc
+  source_name_part = http_content_disposition
+build clang_x64_v8_arm64/obj/net/net/http_log_util.o: clang_x64_v8_arm64_cxx ../../net/http/http_log_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_log_util.cc
+  source_name_part = http_log_util
+build clang_x64_v8_arm64/obj/net/net/http_network_layer.o: clang_x64_v8_arm64_cxx ../../net/http/http_network_layer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_network_layer.cc
+  source_name_part = http_network_layer
+build clang_x64_v8_arm64/obj/net/net/http_network_session.o: clang_x64_v8_arm64_cxx ../../net/http/http_network_session.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_network_session.cc
+  source_name_part = http_network_session
+build clang_x64_v8_arm64/obj/net/net/http_network_session_peer.o: clang_x64_v8_arm64_cxx ../../net/http/http_network_session_peer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_network_session_peer.cc
+  source_name_part = http_network_session_peer
+build clang_x64_v8_arm64/obj/net/net/http_network_transaction.o: clang_x64_v8_arm64_cxx ../../net/http/http_network_transaction.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_network_transaction.cc
+  source_name_part = http_network_transaction
+build clang_x64_v8_arm64/obj/net/net/http_no_vary_search_data.o: clang_x64_v8_arm64_cxx ../../net/http/http_no_vary_search_data.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_no_vary_search_data.cc
+  source_name_part = http_no_vary_search_data
+build clang_x64_v8_arm64/obj/net/net/http_proxy_client_socket.o: clang_x64_v8_arm64_cxx ../../net/http/http_proxy_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_proxy_client_socket.cc
+  source_name_part = http_proxy_client_socket
+build clang_x64_v8_arm64/obj/net/net/http_proxy_connect_job.o: clang_x64_v8_arm64_cxx ../../net/http/http_proxy_connect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_proxy_connect_job.cc
+  source_name_part = http_proxy_connect_job
+build clang_x64_v8_arm64/obj/net/net/http_raw_request_headers.o: clang_x64_v8_arm64_cxx ../../net/http/http_raw_request_headers.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_raw_request_headers.cc
+  source_name_part = http_raw_request_headers
+build clang_x64_v8_arm64/obj/net/net/http_request_headers.o: clang_x64_v8_arm64_cxx ../../net/http/http_request_headers.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_request_headers.cc
+  source_name_part = http_request_headers
+build clang_x64_v8_arm64/obj/net/net/http_request_info.o: clang_x64_v8_arm64_cxx ../../net/http/http_request_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_request_info.cc
+  source_name_part = http_request_info
+build clang_x64_v8_arm64/obj/net/net/http_response_body_drainer.o: clang_x64_v8_arm64_cxx ../../net/http/http_response_body_drainer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_response_body_drainer.cc
+  source_name_part = http_response_body_drainer
+build clang_x64_v8_arm64/obj/net/net/http_response_headers.o: clang_x64_v8_arm64_cxx ../../net/http/http_response_headers.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_response_headers.cc
+  source_name_part = http_response_headers
+build clang_x64_v8_arm64/obj/net/net/http_response_info.o: clang_x64_v8_arm64_cxx ../../net/http/http_response_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_response_info.cc
+  source_name_part = http_response_info
+build clang_x64_v8_arm64/obj/net/net/http_security_headers.o: clang_x64_v8_arm64_cxx ../../net/http/http_security_headers.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_security_headers.cc
+  source_name_part = http_security_headers
+build clang_x64_v8_arm64/obj/net/net/http_server_properties.o: clang_x64_v8_arm64_cxx ../../net/http/http_server_properties.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_server_properties.cc
+  source_name_part = http_server_properties
+build clang_x64_v8_arm64/obj/net/net/http_server_properties_manager.o: clang_x64_v8_arm64_cxx ../../net/http/http_server_properties_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_server_properties_manager.cc
+  source_name_part = http_server_properties_manager
+build clang_x64_v8_arm64/obj/net/net/http_status_code.o: clang_x64_v8_arm64_cxx ../../net/http/http_status_code.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_status_code.cc
+  source_name_part = http_status_code
+build clang_x64_v8_arm64/obj/net/net/http_stream_factory.o: clang_x64_v8_arm64_cxx ../../net/http/http_stream_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_stream_factory.cc
+  source_name_part = http_stream_factory
+build clang_x64_v8_arm64/obj/net/net/http_stream_factory_job.o: clang_x64_v8_arm64_cxx ../../net/http/http_stream_factory_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_stream_factory_job.cc
+  source_name_part = http_stream_factory_job
+build clang_x64_v8_arm64/obj/net/net/http_stream_factory_job_controller.o: clang_x64_v8_arm64_cxx ../../net/http/http_stream_factory_job_controller.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_stream_factory_job_controller.cc
+  source_name_part = http_stream_factory_job_controller
+build clang_x64_v8_arm64/obj/net/net/http_stream_parser.o: clang_x64_v8_arm64_cxx ../../net/http/http_stream_parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_stream_parser.cc
+  source_name_part = http_stream_parser
+build clang_x64_v8_arm64/obj/net/net/http_stream_request.o: clang_x64_v8_arm64_cxx ../../net/http/http_stream_request.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_stream_request.cc
+  source_name_part = http_stream_request
+build clang_x64_v8_arm64/obj/net/net/http_util.o: clang_x64_v8_arm64_cxx ../../net/http/http_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_util.cc
+  source_name_part = http_util
+build clang_x64_v8_arm64/obj/net/net/http_vary_data.o: clang_x64_v8_arm64_cxx ../../net/http/http_vary_data.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_vary_data.cc
+  source_name_part = http_vary_data
+build clang_x64_v8_arm64/obj/net/net/partial_data.o: clang_x64_v8_arm64_cxx ../../net/http/partial_data.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = partial_data.cc
+  source_name_part = partial_data
+build clang_x64_v8_arm64/obj/net/net/proxy_client_socket.o: clang_x64_v8_arm64_cxx ../../net/http/proxy_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_client_socket.cc
+  source_name_part = proxy_client_socket
+build clang_x64_v8_arm64/obj/net/net/proxy_fallback.o: clang_x64_v8_arm64_cxx ../../net/http/proxy_fallback.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_fallback.cc
+  source_name_part = proxy_fallback
+build clang_x64_v8_arm64/obj/net/net/transport_security_persister.o: clang_x64_v8_arm64_cxx ../../net/http/transport_security_persister.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_security_persister.cc
+  source_name_part = transport_security_persister
+build clang_x64_v8_arm64/obj/net/net/transport_security_state_source.o: clang_x64_v8_arm64_cxx ../../net/http/transport_security_state_source.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_security_state_source.cc
+  source_name_part = transport_security_state_source
+build clang_x64_v8_arm64/obj/net/net/url_security_manager.o: clang_x64_v8_arm64_cxx ../../net/http/url_security_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_security_manager.cc
+  source_name_part = url_security_manager
+build clang_x64_v8_arm64/obj/net/net/webfonts_histogram.o: clang_x64_v8_arm64_cxx ../../net/http/webfonts_histogram.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = webfonts_histogram.cc
+  source_name_part = webfonts_histogram
+build clang_x64_v8_arm64/obj/net/net/file_net_log_observer.o: clang_x64_v8_arm64_cxx ../../net/log/file_net_log_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_net_log_observer.cc
+  source_name_part = file_net_log_observer
+build clang_x64_v8_arm64/obj/net/net/net_log.o: clang_x64_v8_arm64_cxx ../../net/log/net_log.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log.cc
+  source_name_part = net_log
+build clang_x64_v8_arm64/obj/net/net/net_log_capture_mode.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_capture_mode.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_capture_mode.cc
+  source_name_part = net_log_capture_mode
+build clang_x64_v8_arm64/obj/net/net/net_log_entry.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_entry.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_entry.cc
+  source_name_part = net_log_entry
+build clang_x64_v8_arm64/obj/net/net/net_log_event_type.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_event_type.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_event_type.cc
+  source_name_part = net_log_event_type
+build clang_x64_v8_arm64/obj/net/net/net_log_source.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_source.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_source.cc
+  source_name_part = net_log_source
+build clang_x64_v8_arm64/obj/net/net/net_log_util.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_util.cc
+  source_name_part = net_log_util
+build clang_x64_v8_arm64/obj/net/net/net_log_values.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_values.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_values.cc
+  source_name_part = net_log_values
+build clang_x64_v8_arm64/obj/net/net/net_log_with_source.o: clang_x64_v8_arm64_cxx ../../net/log/net_log_with_source.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_log_with_source.cc
+  source_name_part = net_log_with_source
+build clang_x64_v8_arm64/obj/net/net/trace_net_log_observer.o: clang_x64_v8_arm64_cxx ../../net/log/trace_net_log_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trace_net_log_observer.cc
+  source_name_part = trace_net_log_observer
+build clang_x64_v8_arm64/obj/net/net/cached_network_quality.o: clang_x64_v8_arm64_cxx ../../net/nqe/cached_network_quality.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cached_network_quality.cc
+  source_name_part = cached_network_quality
+build clang_x64_v8_arm64/obj/net/net/effective_connection_type.o: clang_x64_v8_arm64_cxx ../../net/nqe/effective_connection_type.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = effective_connection_type.cc
+  source_name_part = effective_connection_type
+build clang_x64_v8_arm64/obj/net/net/event_creator.o: clang_x64_v8_arm64_cxx ../../net/nqe/event_creator.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = event_creator.cc
+  source_name_part = event_creator
+build clang_x64_v8_arm64/obj/net/net/network_id.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_id.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_id.cc
+  source_name_part = network_id
+build clang_x64_v8_arm64/obj/net/net/network_qualities_prefs_manager.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_qualities_prefs_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_qualities_prefs_manager.cc
+  source_name_part = network_qualities_prefs_manager
+build clang_x64_v8_arm64/obj/net/net/network_quality.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality.cc
+  source_name_part = network_quality
+build clang_x64_v8_arm64/obj/net/net/network_quality_estimator.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality_estimator.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality_estimator.cc
+  source_name_part = network_quality_estimator
+build clang_x64_v8_arm64/obj/net/net/network_quality_estimator_params.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality_estimator_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality_estimator_params.cc
+  source_name_part = network_quality_estimator_params
+build clang_x64_v8_arm64/obj/net/net/network_quality_estimator_util.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality_estimator_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality_estimator_util.cc
+  source_name_part = network_quality_estimator_util
+build clang_x64_v8_arm64/obj/net/net/network_quality_observation.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality_observation.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality_observation.cc
+  source_name_part = network_quality_observation
+build clang_x64_v8_arm64/obj/net/net/network_quality_store.o: clang_x64_v8_arm64_cxx ../../net/nqe/network_quality_store.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_quality_store.cc
+  source_name_part = network_quality_store
+build clang_x64_v8_arm64/obj/net/net/observation_buffer.o: clang_x64_v8_arm64_cxx ../../net/nqe/observation_buffer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = observation_buffer.cc
+  source_name_part = observation_buffer
+build clang_x64_v8_arm64/obj/net/net/pref_names.o: clang_x64_v8_arm64_cxx ../../net/nqe/pref_names.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pref_names.cc
+  source_name_part = pref_names
+build clang_x64_v8_arm64/obj/net/net/socket_watcher.o: clang_x64_v8_arm64_cxx ../../net/nqe/socket_watcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_watcher.cc
+  source_name_part = socket_watcher
+build clang_x64_v8_arm64/obj/net/net/socket_watcher_factory.o: clang_x64_v8_arm64_cxx ../../net/nqe/socket_watcher_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_watcher_factory.cc
+  source_name_part = socket_watcher_factory
+build clang_x64_v8_arm64/obj/net/net/throughput_analyzer.o: clang_x64_v8_arm64_cxx ../../net/nqe/throughput_analyzer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = throughput_analyzer.cc
+  source_name_part = throughput_analyzer
+build clang_x64_v8_arm64/obj/net/net/configured_proxy_resolution_request.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/configured_proxy_resolution_request.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = configured_proxy_resolution_request.cc
+  source_name_part = configured_proxy_resolution_request
+build clang_x64_v8_arm64/obj/net/net/configured_proxy_resolution_service.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/configured_proxy_resolution_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = configured_proxy_resolution_service.cc
+  source_name_part = configured_proxy_resolution_service
+build clang_x64_v8_arm64/obj/net/net/dhcp_pac_file_fetcher.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/dhcp_pac_file_fetcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = dhcp_pac_file_fetcher.cc
+  source_name_part = dhcp_pac_file_fetcher
+build clang_x64_v8_arm64/obj/net/net/multi_threaded_proxy_resolver.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/multi_threaded_proxy_resolver.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = multi_threaded_proxy_resolver.cc
+  source_name_part = multi_threaded_proxy_resolver
+build clang_x64_v8_arm64/obj/net/net/network_delegate_error_observer.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/network_delegate_error_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_delegate_error_observer.cc
+  source_name_part = network_delegate_error_observer
+build clang_x64_v8_arm64/obj/net/net/pac_file_data.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/pac_file_data.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pac_file_data.cc
+  source_name_part = pac_file_data
+build clang_x64_v8_arm64/obj/net/net/pac_file_decider.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/pac_file_decider.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pac_file_decider.cc
+  source_name_part = pac_file_decider
+build clang_x64_v8_arm64/obj/net/net/pac_file_fetcher.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/pac_file_fetcher.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pac_file_fetcher.cc
+  source_name_part = pac_file_fetcher
+build clang_x64_v8_arm64/obj/net/net/pac_file_fetcher_impl.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/pac_file_fetcher_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = pac_file_fetcher_impl.cc
+  source_name_part = pac_file_fetcher_impl
+build clang_x64_v8_arm64/obj/net/net/polling_proxy_config_service.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/polling_proxy_config_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = polling_proxy_config_service.cc
+  source_name_part = polling_proxy_config_service
+build clang_x64_v8_arm64/obj/net/net/proxy_bypass_rules.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_bypass_rules.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_bypass_rules.cc
+  source_name_part = proxy_bypass_rules
+build clang_x64_v8_arm64/obj/net/net/proxy_config.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_config.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_config.cc
+  source_name_part = proxy_config
+build clang_x64_v8_arm64/obj/net/net/proxy_config_service.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_config_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_config_service.cc
+  source_name_part = proxy_config_service
+build clang_x64_v8_arm64/obj/net/net/proxy_config_service_fixed.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_config_service_fixed.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_config_service_fixed.cc
+  source_name_part = proxy_config_service_fixed
+build clang_x64_v8_arm64/obj/net/net/proxy_config_with_annotation.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_config_with_annotation.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_config_with_annotation.cc
+  source_name_part = proxy_config_with_annotation
+build clang_x64_v8_arm64/obj/net/net/proxy_info.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_info.cc
+  source_name_part = proxy_info
+build clang_x64_v8_arm64/obj/net/net/proxy_list.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_list.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_list.cc
+  source_name_part = proxy_list
+build clang_x64_v8_arm64/obj/net/net/proxy_resolver_factory.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_resolver_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_resolver_factory.cc
+  source_name_part = proxy_resolver_factory
+build clang_x64_v8_arm64/obj/net/net/bidirectional_stream_quic_impl.o: clang_x64_v8_arm64_cxx ../../net/quic/bidirectional_stream_quic_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bidirectional_stream_quic_impl.cc
+  source_name_part = bidirectional_stream_quic_impl
+build clang_x64_v8_arm64/obj/net/net/proof_source_chromium.o: clang_x64_v8_arm64_cxx ../../net/quic/crypto/proof_source_chromium.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proof_source_chromium.cc
+  source_name_part = proof_source_chromium
+build clang_x64_v8_arm64/obj/net/net/proof_verifier_chromium.o: clang_x64_v8_arm64_cxx ../../net/quic/crypto/proof_verifier_chromium.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proof_verifier_chromium.cc
+  source_name_part = proof_verifier_chromium
+build clang_x64_v8_arm64/obj/net/net/dedicated_web_transport_http3_client.o: clang_x64_v8_arm64_cxx ../../net/quic/dedicated_web_transport_http3_client.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = dedicated_web_transport_http3_client.cc
+  source_name_part = dedicated_web_transport_http3_client
+build clang_x64_v8_arm64/obj/net/net/network_connection.o: clang_x64_v8_arm64_cxx ../../net/quic/network_connection.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_connection.cc
+  source_name_part = network_connection
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_clock.o: clang_x64_v8_arm64_cxx ../../net/quic/platform/impl/quic_chromium_clock.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_clock.cc
+  source_name_part = quic_chromium_clock
+build clang_x64_v8_arm64/obj/net/net/properties_based_quic_server_info.o: clang_x64_v8_arm64_cxx ../../net/quic/properties_based_quic_server_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = properties_based_quic_server_info.cc
+  source_name_part = properties_based_quic_server_info
+build clang_x64_v8_arm64/obj/net/net/quic_address_mismatch.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_address_mismatch.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_address_mismatch.cc
+  source_name_part = quic_address_mismatch
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_alarm_factory.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_alarm_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_alarm_factory.cc
+  source_name_part = quic_chromium_alarm_factory
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_client_session.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_client_session.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_client_session.cc
+  source_name_part = quic_chromium_client_session
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_client_stream.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_client_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_client_stream.cc
+  source_name_part = quic_chromium_client_stream
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_connection_helper.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_connection_helper.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_connection_helper.cc
+  source_name_part = quic_chromium_connection_helper
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_packet_reader.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_packet_reader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_packet_reader.cc
+  source_name_part = quic_chromium_packet_reader
+build clang_x64_v8_arm64/obj/net/net/quic_chromium_packet_writer.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_chromium_packet_writer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_chromium_packet_writer.cc
+  source_name_part = quic_chromium_packet_writer
+build clang_x64_v8_arm64/obj/net/net/quic_clock_skew_detector.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_clock_skew_detector.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_clock_skew_detector.cc
+  source_name_part = quic_clock_skew_detector
+build clang_x64_v8_arm64/obj/net/net/quic_connection_logger.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_connection_logger.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_connection_logger.cc
+  source_name_part = quic_connection_logger
+build clang_x64_v8_arm64/obj/net/net/quic_connectivity_monitor.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_connectivity_monitor.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_connectivity_monitor.cc
+  source_name_part = quic_connectivity_monitor
+build clang_x64_v8_arm64/obj/net/net/quic_context.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_context.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_context.cc
+  source_name_part = quic_context
+build clang_x64_v8_arm64/obj/net/net/quic_crypto_client_config_handle.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_crypto_client_config_handle.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_crypto_client_config_handle.cc
+  source_name_part = quic_crypto_client_config_handle
+build clang_x64_v8_arm64/obj/net/net/quic_crypto_client_stream_factory.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_crypto_client_stream_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_crypto_client_stream_factory.cc
+  source_name_part = quic_crypto_client_stream_factory
+build clang_x64_v8_arm64/obj/net/net/quic_event_logger.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_event_logger.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_event_logger.cc
+  source_name_part = quic_event_logger
+build clang_x64_v8_arm64/obj/net/net/quic_http3_logger.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_http3_logger.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_http3_logger.cc
+  source_name_part = quic_http3_logger
+build clang_x64_v8_arm64/obj/net/net/quic_http_stream.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_http_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_http_stream.cc
+  source_name_part = quic_http_stream
+build clang_x64_v8_arm64/obj/net/net/quic_http_utils.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_http_utils.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_http_utils.cc
+  source_name_part = quic_http_utils
+build clang_x64_v8_arm64/obj/net/net/quic_proxy_client_socket.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_proxy_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_proxy_client_socket.cc
+  source_name_part = quic_proxy_client_socket
+build clang_x64_v8_arm64/obj/net/net/quic_server_info.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_server_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_server_info.cc
+  source_name_part = quic_server_info
+build clang_x64_v8_arm64/obj/net/net/quic_session_key.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_session_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_session_key.cc
+  source_name_part = quic_session_key
+build clang_x64_v8_arm64/obj/net/net/quic_stream_factory.o: clang_x64_v8_arm64_cxx ../../net/quic/quic_stream_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = quic_stream_factory.cc
+  source_name_part = quic_stream_factory
+build clang_x64_v8_arm64/obj/net/net/set_quic_flag.o: clang_x64_v8_arm64_cxx ../../net/quic/set_quic_flag.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = set_quic_flag.cc
+  source_name_part = set_quic_flag
+build clang_x64_v8_arm64/obj/net/net/web_transport_client.o: clang_x64_v8_arm64_cxx ../../net/quic/web_transport_client.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = web_transport_client.cc
+  source_name_part = web_transport_client
+build clang_x64_v8_arm64/obj/net/net/web_transport_error.o: clang_x64_v8_arm64_cxx ../../net/quic/web_transport_error.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = web_transport_error.cc
+  source_name_part = web_transport_error
+build clang_x64_v8_arm64/obj/net/net/client_socket_factory.o: clang_x64_v8_arm64_cxx ../../net/socket/client_socket_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_socket_factory.cc
+  source_name_part = client_socket_factory
+build clang_x64_v8_arm64/obj/net/net/client_socket_handle.o: clang_x64_v8_arm64_cxx ../../net/socket/client_socket_handle.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_socket_handle.cc
+  source_name_part = client_socket_handle
+build clang_x64_v8_arm64/obj/net/net/client_socket_pool.o: clang_x64_v8_arm64_cxx ../../net/socket/client_socket_pool.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_socket_pool.cc
+  source_name_part = client_socket_pool
+build clang_x64_v8_arm64/obj/net/net/client_socket_pool_manager.o: clang_x64_v8_arm64_cxx ../../net/socket/client_socket_pool_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_socket_pool_manager.cc
+  source_name_part = client_socket_pool_manager
+build clang_x64_v8_arm64/obj/net/net/client_socket_pool_manager_impl.o: clang_x64_v8_arm64_cxx ../../net/socket/client_socket_pool_manager_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_socket_pool_manager_impl.cc
+  source_name_part = client_socket_pool_manager_impl
+build clang_x64_v8_arm64/obj/net/net/connect_job.o: clang_x64_v8_arm64_cxx ../../net/socket/connect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = connect_job.cc
+  source_name_part = connect_job
+build clang_x64_v8_arm64/obj/net/net/connect_job_factory.o: clang_x64_v8_arm64_cxx ../../net/socket/connect_job_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = connect_job_factory.cc
+  source_name_part = connect_job_factory
+build clang_x64_v8_arm64/obj/net/net/network_binding_client_socket_factory.o: clang_x64_v8_arm64_cxx ../../net/socket/network_binding_client_socket_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_binding_client_socket_factory.cc
+  source_name_part = network_binding_client_socket_factory
+build clang_x64_v8_arm64/obj/net/net/next_proto.o: clang_x64_v8_arm64_cxx ../../net/socket/next_proto.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = next_proto.cc
+  source_name_part = next_proto
+build clang_x64_v8_arm64/obj/net/net/server_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/server_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = server_socket.cc
+  source_name_part = server_socket
+build clang_x64_v8_arm64/obj/net/net/socket.o: clang_x64_v8_arm64_cxx ../../net/socket/socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket.cc
+  source_name_part = socket
+build clang_x64_v8_arm64/obj/net/net/socket_bio_adapter.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_bio_adapter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_bio_adapter.cc
+  source_name_part = socket_bio_adapter
+build clang_x64_v8_arm64/obj/net/net/socket_descriptor.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_descriptor.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_descriptor.cc
+  source_name_part = socket_descriptor
+build clang_x64_v8_arm64/obj/net/net/socket_net_log_params.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_net_log_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_net_log_params.cc
+  source_name_part = socket_net_log_params
+build clang_x64_v8_arm64/obj/net/net/socket_options.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_options.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_options.cc
+  source_name_part = socket_options
+build clang_x64_v8_arm64/obj/net/net/socket_tag.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_tag.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_tag.cc
+  source_name_part = socket_tag
+build clang_x64_v8_arm64/obj/net/net/socks5_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/socks5_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socks5_client_socket.cc
+  source_name_part = socks5_client_socket
+build clang_x64_v8_arm64/obj/net/net/socks_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/socks_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socks_client_socket.cc
+  source_name_part = socks_client_socket
+build clang_x64_v8_arm64/obj/net/net/socks_connect_job.o: clang_x64_v8_arm64_cxx ../../net/socket/socks_connect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socks_connect_job.cc
+  source_name_part = socks_connect_job
+build clang_x64_v8_arm64/obj/net/net/ssl_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/ssl_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_client_socket.cc
+  source_name_part = ssl_client_socket
+build clang_x64_v8_arm64/obj/net/net/ssl_client_socket_impl.o: clang_x64_v8_arm64_cxx ../../net/socket/ssl_client_socket_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_client_socket_impl.cc
+  source_name_part = ssl_client_socket_impl
+build clang_x64_v8_arm64/obj/net/net/ssl_connect_job.o: clang_x64_v8_arm64_cxx ../../net/socket/ssl_connect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_connect_job.cc
+  source_name_part = ssl_connect_job
+build clang_x64_v8_arm64/obj/net/net/ssl_server_socket_impl.o: clang_x64_v8_arm64_cxx ../../net/socket/ssl_server_socket_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_server_socket_impl.cc
+  source_name_part = ssl_server_socket_impl
+build clang_x64_v8_arm64/obj/net/net/stream_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/stream_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = stream_socket.cc
+  source_name_part = stream_socket
+build clang_x64_v8_arm64/obj/net/net/tcp_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/tcp_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = tcp_client_socket.cc
+  source_name_part = tcp_client_socket
+build clang_x64_v8_arm64/obj/net/net/tcp_server_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/tcp_server_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = tcp_server_socket.cc
+  source_name_part = tcp_server_socket
+build clang_x64_v8_arm64/obj/net/net/transport_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/transport_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_client_socket.cc
+  source_name_part = transport_client_socket
+build clang_x64_v8_arm64/obj/net/net/transport_client_socket_pool.o: clang_x64_v8_arm64_cxx ../../net/socket/transport_client_socket_pool.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_client_socket_pool.cc
+  source_name_part = transport_client_socket_pool
+build clang_x64_v8_arm64/obj/net/net/transport_connect_job.o: clang_x64_v8_arm64_cxx ../../net/socket/transport_connect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_connect_job.cc
+  source_name_part = transport_connect_job
+build clang_x64_v8_arm64/obj/net/net/transport_connect_sub_job.o: clang_x64_v8_arm64_cxx ../../net/socket/transport_connect_sub_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = transport_connect_sub_job.cc
+  source_name_part = transport_connect_sub_job
+build clang_x64_v8_arm64/obj/net/net/udp_client_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/udp_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = udp_client_socket.cc
+  source_name_part = udp_client_socket
+build clang_x64_v8_arm64/obj/net/net/udp_net_log_parameters.o: clang_x64_v8_arm64_cxx ../../net/socket/udp_net_log_parameters.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = udp_net_log_parameters.cc
+  source_name_part = udp_net_log_parameters
+build clang_x64_v8_arm64/obj/net/net/udp_server_socket.o: clang_x64_v8_arm64_cxx ../../net/socket/udp_server_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = udp_server_socket.cc
+  source_name_part = udp_server_socket
+build clang_x64_v8_arm64/obj/net/net/udp_socket_global_limits.o: clang_x64_v8_arm64_cxx ../../net/socket/udp_socket_global_limits.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = udp_socket_global_limits.cc
+  source_name_part = udp_socket_global_limits
+build clang_x64_v8_arm64/obj/net/net/websocket_endpoint_lock_manager.o: clang_x64_v8_arm64_cxx ../../net/socket/websocket_endpoint_lock_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_endpoint_lock_manager.cc
+  source_name_part = websocket_endpoint_lock_manager
+build clang_x64_v8_arm64/obj/net/net/websocket_transport_client_socket_pool.o: clang_x64_v8_arm64_cxx ../../net/socket/websocket_transport_client_socket_pool.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_transport_client_socket_pool.cc
+  source_name_part = websocket_transport_client_socket_pool
+build clang_x64_v8_arm64/obj/net/net/alps_decoder.o: clang_x64_v8_arm64_cxx ../../net/spdy/alps_decoder.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = alps_decoder.cc
+  source_name_part = alps_decoder
+build clang_x64_v8_arm64/obj/net/net/bidirectional_stream_spdy_impl.o: clang_x64_v8_arm64_cxx ../../net/spdy/bidirectional_stream_spdy_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = bidirectional_stream_spdy_impl.cc
+  source_name_part = bidirectional_stream_spdy_impl
+build clang_x64_v8_arm64/obj/net/net/buffered_spdy_framer.o: clang_x64_v8_arm64_cxx ../../net/spdy/buffered_spdy_framer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = buffered_spdy_framer.cc
+  source_name_part = buffered_spdy_framer
+build clang_x64_v8_arm64/obj/net/net/header_coalescer.o: clang_x64_v8_arm64_cxx ../../net/spdy/header_coalescer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = header_coalescer.cc
+  source_name_part = header_coalescer
+build clang_x64_v8_arm64/obj/net/net/http2_priority_dependencies.o: clang_x64_v8_arm64_cxx ../../net/spdy/http2_priority_dependencies.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http2_priority_dependencies.cc
+  source_name_part = http2_priority_dependencies
+build clang_x64_v8_arm64/obj/net/net/http2_push_promise_index.o: clang_x64_v8_arm64_cxx ../../net/spdy/http2_push_promise_index.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http2_push_promise_index.cc
+  source_name_part = http2_push_promise_index
+build clang_x64_v8_arm64/obj/net/net/multiplexed_http_stream.o: clang_x64_v8_arm64_cxx ../../net/spdy/multiplexed_http_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = multiplexed_http_stream.cc
+  source_name_part = multiplexed_http_stream
+build clang_x64_v8_arm64/obj/net/net/multiplexed_session.o: clang_x64_v8_arm64_cxx ../../net/spdy/multiplexed_session.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = multiplexed_session.cc
+  source_name_part = multiplexed_session
+build clang_x64_v8_arm64/obj/net/net/spdy_buffer.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_buffer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_buffer.cc
+  source_name_part = spdy_buffer
+build clang_x64_v8_arm64/obj/net/net/spdy_buffer_producer.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_buffer_producer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_buffer_producer.cc
+  source_name_part = spdy_buffer_producer
+build clang_x64_v8_arm64/obj/net/net/spdy_http_stream.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_http_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_http_stream.cc
+  source_name_part = spdy_http_stream
+build clang_x64_v8_arm64/obj/net/net/spdy_http_utils.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_http_utils.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_http_utils.cc
+  source_name_part = spdy_http_utils
+build clang_x64_v8_arm64/obj/net/net/spdy_log_util.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_log_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_log_util.cc
+  source_name_part = spdy_log_util
+build clang_x64_v8_arm64/obj/net/net/spdy_proxy_client_socket.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_proxy_client_socket.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_proxy_client_socket.cc
+  source_name_part = spdy_proxy_client_socket
+build clang_x64_v8_arm64/obj/net/net/spdy_read_queue.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_read_queue.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_read_queue.cc
+  source_name_part = spdy_read_queue
+build clang_x64_v8_arm64/obj/net/net/spdy_session.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_session.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_session.cc
+  source_name_part = spdy_session
+build clang_x64_v8_arm64/obj/net/net/spdy_session_key.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_session_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_session_key.cc
+  source_name_part = spdy_session_key
+build clang_x64_v8_arm64/obj/net/net/spdy_session_pool.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_session_pool.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_session_pool.cc
+  source_name_part = spdy_session_pool
+build clang_x64_v8_arm64/obj/net/net/spdy_stream.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_stream.cc
+  source_name_part = spdy_stream
+build clang_x64_v8_arm64/obj/net/net/spdy_write_queue.o: clang_x64_v8_arm64_cxx ../../net/spdy/spdy_write_queue.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = spdy_write_queue.cc
+  source_name_part = spdy_write_queue
+build clang_x64_v8_arm64/obj/net/net/cert_compression.o: clang_x64_v8_arm64_cxx ../../net/ssl/cert_compression.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cert_compression.cc
+  source_name_part = cert_compression
+build clang_x64_v8_arm64/obj/net/net/client_cert_identity.o: clang_x64_v8_arm64_cxx ../../net/ssl/client_cert_identity.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_cert_identity.cc
+  source_name_part = client_cert_identity
+build clang_x64_v8_arm64/obj/net/net/openssl_ssl_util.o: clang_x64_v8_arm64_cxx ../../net/ssl/openssl_ssl_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = openssl_ssl_util.cc
+  source_name_part = openssl_ssl_util
+build clang_x64_v8_arm64/obj/net/net/ssl_cert_request_info.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_cert_request_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_cert_request_info.cc
+  source_name_part = ssl_cert_request_info
+build clang_x64_v8_arm64/obj/net/net/ssl_cipher_suite_names.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_cipher_suite_names.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_cipher_suite_names.cc
+  source_name_part = ssl_cipher_suite_names
+build clang_x64_v8_arm64/obj/net/net/ssl_client_auth_cache.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_client_auth_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_client_auth_cache.cc
+  source_name_part = ssl_client_auth_cache
+build clang_x64_v8_arm64/obj/net/net/ssl_client_session_cache.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_client_session_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_client_session_cache.cc
+  source_name_part = ssl_client_session_cache
+build clang_x64_v8_arm64/obj/net/net/ssl_config.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_config.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_config.cc
+  source_name_part = ssl_config
+build clang_x64_v8_arm64/obj/net/net/ssl_config_service.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_config_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_config_service.cc
+  source_name_part = ssl_config_service
+build clang_x64_v8_arm64/obj/net/net/ssl_config_service_defaults.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_config_service_defaults.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_config_service_defaults.cc
+  source_name_part = ssl_config_service_defaults
+build clang_x64_v8_arm64/obj/net/net/ssl_info.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_info.cc
+  source_name_part = ssl_info
+build clang_x64_v8_arm64/obj/net/net/ssl_key_logger.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_key_logger.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_key_logger.cc
+  source_name_part = ssl_key_logger
+build clang_x64_v8_arm64/obj/net/net/ssl_key_logger_impl.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_key_logger_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_key_logger_impl.cc
+  source_name_part = ssl_key_logger_impl
+build clang_x64_v8_arm64/obj/net/net/ssl_platform_key_util.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_platform_key_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_platform_key_util.cc
+  source_name_part = ssl_platform_key_util
+build clang_x64_v8_arm64/obj/net/net/ssl_private_key.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_private_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_private_key.cc
+  source_name_part = ssl_private_key
+build clang_x64_v8_arm64/obj/net/net/ssl_server_config.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_server_config.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_server_config.cc
+  source_name_part = ssl_server_config
+build clang_x64_v8_arm64/obj/net/net/threaded_ssl_private_key.o: clang_x64_v8_arm64_cxx ../../net/ssl/threaded_ssl_private_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = threaded_ssl_private_key.cc
+  source_name_part = threaded_ssl_private_key
+build clang_x64_v8_arm64/obj/net/net/redirect_info.o: clang_x64_v8_arm64_cxx ../../net/url_request/redirect_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = redirect_info.cc
+  source_name_part = redirect_info
+build clang_x64_v8_arm64/obj/net/net/redirect_util.o: clang_x64_v8_arm64_cxx ../../net/url_request/redirect_util.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = redirect_util.cc
+  source_name_part = redirect_util
+build clang_x64_v8_arm64/obj/net/net/report_sender.o: clang_x64_v8_arm64_cxx ../../net/url_request/report_sender.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = report_sender.cc
+  source_name_part = report_sender
+build clang_x64_v8_arm64/obj/net/net/static_http_user_agent_settings.o: clang_x64_v8_arm64_cxx ../../net/url_request/static_http_user_agent_settings.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = static_http_user_agent_settings.cc
+  source_name_part = static_http_user_agent_settings
+build clang_x64_v8_arm64/obj/net/net/url_request.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request.cc
+  source_name_part = url_request
+build clang_x64_v8_arm64/obj/net/net/url_request_context.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_context.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_context.cc
+  source_name_part = url_request_context
+build clang_x64_v8_arm64/obj/net/net/url_request_context_builder.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_context_builder.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_context_builder.cc
+  source_name_part = url_request_context_builder
+build clang_x64_v8_arm64/obj/net/net/url_request_context_getter.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_context_getter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_context_getter.cc
+  source_name_part = url_request_context_getter
+build clang_x64_v8_arm64/obj/net/net/url_request_error_job.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_error_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_error_job.cc
+  source_name_part = url_request_error_job
+build clang_x64_v8_arm64/obj/net/net/url_request_filter.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_filter.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_filter.cc
+  source_name_part = url_request_filter
+build clang_x64_v8_arm64/obj/net/net/url_request_http_job.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_http_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_http_job.cc
+  source_name_part = url_request_http_job
+build clang_x64_v8_arm64/obj/net/net/url_request_interceptor.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_interceptor.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_interceptor.cc
+  source_name_part = url_request_interceptor
+build clang_x64_v8_arm64/obj/net/net/url_request_job.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_job.cc
+  source_name_part = url_request_job
+build clang_x64_v8_arm64/obj/net/net/url_request_job_factory.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_job_factory.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_job_factory.cc
+  source_name_part = url_request_job_factory
+build clang_x64_v8_arm64/obj/net/net/url_request_netlog_params.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_netlog_params.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_netlog_params.cc
+  source_name_part = url_request_netlog_params
+build clang_x64_v8_arm64/obj/net/net/url_request_redirect_job.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_redirect_job.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_redirect_job.cc
+  source_name_part = url_request_redirect_job
+build clang_x64_v8_arm64/obj/net/net/url_request_throttler_entry.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_throttler_entry.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_throttler_entry.cc
+  source_name_part = url_request_throttler_entry
+build clang_x64_v8_arm64/obj/net/net/url_request_throttler_manager.o: clang_x64_v8_arm64_cxx ../../net/url_request/url_request_throttler_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_request_throttler_manager.cc
+  source_name_part = url_request_throttler_manager
+build clang_x64_v8_arm64/obj/net/net/view_cache_helper.o: clang_x64_v8_arm64_cxx ../../net/url_request/view_cache_helper.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = view_cache_helper.cc
+  source_name_part = view_cache_helper
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_userdata_key.o: clang_x64_v8_arm64_cxx ../../net/url_request/websocket_handshake_userdata_key.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_userdata_key.cc
+  source_name_part = websocket_handshake_userdata_key
+build clang_x64_v8_arm64/obj/net/net/net_errors_posix.o: clang_x64_v8_arm64_cxx ../../net/base/net_errors_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_errors_posix.cc
+  source_name_part = net_errors_posix
+build clang_x64_v8_arm64/obj/net/net/network_error_logging_service.o: clang_x64_v8_arm64_cxx ../../net/network_error_logging/network_error_logging_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_error_logging_service.cc
+  source_name_part = network_error_logging_service
+build clang_x64_v8_arm64/obj/net/net/reporting_browsing_data_remover.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_browsing_data_remover.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_browsing_data_remover.cc
+  source_name_part = reporting_browsing_data_remover
+build clang_x64_v8_arm64/obj/net/net/reporting_cache.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_cache.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_cache.cc
+  source_name_part = reporting_cache
+build clang_x64_v8_arm64/obj/net/net/reporting_cache_impl.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_cache_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_cache_impl.cc
+  source_name_part = reporting_cache_impl
+build clang_x64_v8_arm64/obj/net/net/reporting_cache_observer.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_cache_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_cache_observer.cc
+  source_name_part = reporting_cache_observer
+build clang_x64_v8_arm64/obj/net/net/reporting_context.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_context.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_context.cc
+  source_name_part = reporting_context
+build clang_x64_v8_arm64/obj/net/net/reporting_delegate.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_delegate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_delegate.cc
+  source_name_part = reporting_delegate
+build clang_x64_v8_arm64/obj/net/net/reporting_delivery_agent.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_delivery_agent.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_delivery_agent.cc
+  source_name_part = reporting_delivery_agent
+build clang_x64_v8_arm64/obj/net/net/reporting_endpoint.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_endpoint.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_endpoint.cc
+  source_name_part = reporting_endpoint
+build clang_x64_v8_arm64/obj/net/net/reporting_endpoint_manager.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_endpoint_manager.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_endpoint_manager.cc
+  source_name_part = reporting_endpoint_manager
+build clang_x64_v8_arm64/obj/net/net/reporting_garbage_collector.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_garbage_collector.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_garbage_collector.cc
+  source_name_part = reporting_garbage_collector
+build clang_x64_v8_arm64/obj/net/net/reporting_header_parser.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_header_parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_header_parser.cc
+  source_name_part = reporting_header_parser
+build clang_x64_v8_arm64/obj/net/net/reporting_network_change_observer.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_network_change_observer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_network_change_observer.cc
+  source_name_part = reporting_network_change_observer
+build clang_x64_v8_arm64/obj/net/net/reporting_policy.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_policy.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_policy.cc
+  source_name_part = reporting_policy
+build clang_x64_v8_arm64/obj/net/net/reporting_report.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_report.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_report.cc
+  source_name_part = reporting_report
+build clang_x64_v8_arm64/obj/net/net/reporting_service.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_service.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_service.cc
+  source_name_part = reporting_service
+build clang_x64_v8_arm64/obj/net/net/reporting_uploader.o: clang_x64_v8_arm64_cxx ../../net/reporting/reporting_uploader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = reporting_uploader.cc
+  source_name_part = reporting_uploader
+build clang_x64_v8_arm64/obj/net/net/network_change_notifier_linux.o: clang_x64_v8_arm64_cxx ../../net/base/network_change_notifier_linux.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_change_notifier_linux.cc
+  source_name_part = network_change_notifier_linux
+build clang_x64_v8_arm64/obj/net/net/proxy_config_service_linux.o: clang_x64_v8_arm64_cxx ../../net/proxy_resolution/proxy_config_service_linux.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = proxy_config_service_linux.cc
+  source_name_part = proxy_config_service_linux
+build clang_x64_v8_arm64/obj/net/net/address_tracker_linux.o: clang_x64_v8_arm64_cxx ../../net/base/address_tracker_linux.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = address_tracker_linux.cc
+  source_name_part = address_tracker_linux
+build clang_x64_v8_arm64/obj/net/net/network_interfaces_linux.o: clang_x64_v8_arm64_cxx ../../net/base/network_interfaces_linux.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_interfaces_linux.cc
+  source_name_part = network_interfaces_linux
+build clang_x64_v8_arm64/obj/net/net/platform_mime_util_linux.o: clang_x64_v8_arm64_cxx ../../net/base/platform_mime_util_linux.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = platform_mime_util_linux.cc
+  source_name_part = platform_mime_util_linux
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_negotiate.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_negotiate.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_negotiate.cc
+  source_name_part = http_auth_handler_negotiate
+build clang_x64_v8_arm64/obj/net/net/file_stream_context_posix.o: clang_x64_v8_arm64_cxx ../../net/base/file_stream_context_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_stream_context_posix.cc
+  source_name_part = file_stream_context_posix
+build clang_x64_v8_arm64/obj/net/net/network_interfaces_posix.o: clang_x64_v8_arm64_cxx ../../net/base/network_interfaces_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = network_interfaces_posix.cc
+  source_name_part = network_interfaces_posix
+build clang_x64_v8_arm64/obj/net/net/sockaddr_util_posix.o: clang_x64_v8_arm64_cxx ../../net/base/sockaddr_util_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = sockaddr_util_posix.cc
+  source_name_part = sockaddr_util_posix
+build clang_x64_v8_arm64/obj/net/net/cache_util_posix.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/cache_util_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cache_util_posix.cc
+  source_name_part = cache_util_posix
+build clang_x64_v8_arm64/obj/net/net/simple_util_posix.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/simple/simple_util_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = simple_util_posix.cc
+  source_name_part = simple_util_posix
+build clang_x64_v8_arm64/obj/net/net/url_security_manager_posix.o: clang_x64_v8_arm64_cxx ../../net/http/url_security_manager_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = url_security_manager_posix.cc
+  source_name_part = url_security_manager_posix
+build clang_x64_v8_arm64/obj/net/net/socket_posix.o: clang_x64_v8_arm64_cxx ../../net/socket/socket_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = socket_posix.cc
+  source_name_part = socket_posix
+build clang_x64_v8_arm64/obj/net/net/tcp_socket_posix.o: clang_x64_v8_arm64_cxx ../../net/socket/tcp_socket_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = tcp_socket_posix.cc
+  source_name_part = tcp_socket_posix
+build clang_x64_v8_arm64/obj/net/net/udp_socket_posix.o: clang_x64_v8_arm64_cxx ../../net/socket/udp_socket_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = udp_socket_posix.cc
+  source_name_part = udp_socket_posix
+build clang_x64_v8_arm64/obj/net/net/file_posix.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/file_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = file_posix.cc
+  source_name_part = file_posix
+build clang_x64_v8_arm64/obj/net/net/mapped_file_posix.o: clang_x64_v8_arm64_cxx ../../net/disk_cache/blockfile/mapped_file_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = mapped_file_posix.cc
+  source_name_part = mapped_file_posix
+build clang_x64_v8_arm64/obj/net/net/http_auth_handler_ntlm_portable.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_handler_ntlm_portable.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_handler_ntlm_portable.cc
+  source_name_part = http_auth_handler_ntlm_portable
+build clang_x64_v8_arm64/obj/net/net/http_auth_ntlm_mechanism.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_ntlm_mechanism.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_ntlm_mechanism.cc
+  source_name_part = http_auth_ntlm_mechanism
+build clang_x64_v8_arm64/obj/net/net/ntlm.o: clang_x64_v8_arm64_cxx ../../net/ntlm/ntlm.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ntlm.cc
+  source_name_part = ntlm
+build clang_x64_v8_arm64/obj/net/net/ntlm_buffer_reader.o: clang_x64_v8_arm64_cxx ../../net/ntlm/ntlm_buffer_reader.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ntlm_buffer_reader.cc
+  source_name_part = ntlm_buffer_reader
+build clang_x64_v8_arm64/obj/net/net/ntlm_buffer_writer.o: clang_x64_v8_arm64_cxx ../../net/ntlm/ntlm_buffer_writer.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ntlm_buffer_writer.cc
+  source_name_part = ntlm_buffer_writer
+build clang_x64_v8_arm64/obj/net/net/ntlm_client.o: clang_x64_v8_arm64_cxx ../../net/ntlm/ntlm_client.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ntlm_client.cc
+  source_name_part = ntlm_client
+build clang_x64_v8_arm64/obj/net/net/ntlm_constants.o: clang_x64_v8_arm64_cxx ../../net/ntlm/ntlm_constants.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ntlm_constants.cc
+  source_name_part = ntlm_constants
+build clang_x64_v8_arm64/obj/net/net/http_auth_gssapi_posix.o: clang_x64_v8_arm64_cxx ../../net/http/http_auth_gssapi_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = http_auth_gssapi_posix.cc
+  source_name_part = http_auth_gssapi_posix
+build clang_x64_v8_arm64/obj/net/net/trust_store_chrome.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/trust_store_chrome.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store_chrome.cc
+  source_name_part = trust_store_chrome
+build clang_x64_v8_arm64/obj/net/net/trust_store_nss.o: clang_x64_v8_arm64_cxx ../../net/cert/internal/trust_store_nss.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trust_store_nss.cc
+  source_name_part = trust_store_nss
+build clang_x64_v8_arm64/obj/net/net/known_roots_nss.o: clang_x64_v8_arm64_cxx ../../net/cert/known_roots_nss.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = known_roots_nss.cc
+  source_name_part = known_roots_nss
+build clang_x64_v8_arm64/obj/net/net/nss_cert_database.o: clang_x64_v8_arm64_cxx ../../net/cert/nss_cert_database.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = nss_cert_database.cc
+  source_name_part = nss_cert_database
+build clang_x64_v8_arm64/obj/net/net/test_root_certs_builtin.o: clang_x64_v8_arm64_cxx ../../net/cert/test_root_certs_builtin.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = test_root_certs_builtin.cc
+  source_name_part = test_root_certs_builtin
+build clang_x64_v8_arm64/obj/net/net/x509_util_nss.o: clang_x64_v8_arm64_cxx ../../net/cert/x509_util_nss.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = x509_util_nss.cc
+  source_name_part = x509_util_nss
+build clang_x64_v8_arm64/obj/net/net/nsNSSCertificateDB.o: clang_x64_v8_arm64_cxx ../../net/third_party/mozilla_security_manager/nsNSSCertificateDB.cpp || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = nsNSSCertificateDB.cpp
+  source_name_part = nsNSSCertificateDB
+build clang_x64_v8_arm64/obj/net/net/nsPKCS12Blob.o: clang_x64_v8_arm64_cxx ../../net/third_party/mozilla_security_manager/nsPKCS12Blob.cpp || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = nsPKCS12Blob.cpp
+  source_name_part = nsPKCS12Blob
+build clang_x64_v8_arm64/obj/net/net/cmpcert.o: clang_x64_v8_arm64_cxx ../../net/third_party/nss/ssl/cmpcert.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = cmpcert.cc
+  source_name_part = cmpcert
+build clang_x64_v8_arm64/obj/net/net/client_cert_store_nss.o: clang_x64_v8_arm64_cxx ../../net/ssl/client_cert_store_nss.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = client_cert_store_nss.cc
+  source_name_part = client_cert_store_nss
+build clang_x64_v8_arm64/obj/net/net/ssl_platform_key_nss.o: clang_x64_v8_arm64_cxx ../../net/ssl/ssl_platform_key_nss.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = ssl_platform_key_nss.cc
+  source_name_part = ssl_platform_key_nss
+build clang_x64_v8_arm64/obj/net/net/trial_comparison_cert_verifier.o: clang_x64_v8_arm64_cxx ../../net/cert/trial_comparison_cert_verifier.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = trial_comparison_cert_verifier.cc
+  source_name_part = trial_comparison_cert_verifier
+build clang_x64_v8_arm64/obj/net/net/unix_domain_client_socket_posix.o: clang_x64_v8_arm64_cxx ../../net/socket/unix_domain_client_socket_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = unix_domain_client_socket_posix.cc
+  source_name_part = unix_domain_client_socket_posix
+build clang_x64_v8_arm64/obj/net/net/unix_domain_server_socket_posix.o: clang_x64_v8_arm64_cxx ../../net/socket/unix_domain_server_socket_posix.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = unix_domain_server_socket_posix.cc
+  source_name_part = unix_domain_server_socket_posix
+build clang_x64_v8_arm64/obj/net/net/directory_lister.o: clang_x64_v8_arm64_cxx ../../net/base/directory_lister.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = directory_lister.cc
+  source_name_part = directory_lister
+build clang_x64_v8_arm64/obj/net/net/directory_listing.o: clang_x64_v8_arm64_cxx ../../net/base/directory_listing.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = directory_listing.cc
+  source_name_part = directory_listing
+build clang_x64_v8_arm64/obj/net/net/websocket_basic_handshake_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_basic_handshake_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_basic_handshake_stream.cc
+  source_name_part = websocket_basic_handshake_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_basic_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_basic_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_basic_stream.cc
+  source_name_part = websocket_basic_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_basic_stream_adapters.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_basic_stream_adapters.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_basic_stream_adapters.cc
+  source_name_part = websocket_basic_stream_adapters
+build clang_x64_v8_arm64/obj/net/net/websocket_channel.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_channel.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_channel.cc
+  source_name_part = websocket_channel
+build clang_x64_v8_arm64/obj/net/net/websocket_deflate_parameters.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_deflate_parameters.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_deflate_parameters.cc
+  source_name_part = websocket_deflate_parameters
+build clang_x64_v8_arm64/obj/net/net/websocket_deflate_predictor_impl.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_deflate_predictor_impl.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_deflate_predictor_impl.cc
+  source_name_part = websocket_deflate_predictor_impl
+build clang_x64_v8_arm64/obj/net/net/websocket_deflate_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_deflate_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_deflate_stream.cc
+  source_name_part = websocket_deflate_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_deflater.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_deflater.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_deflater.cc
+  source_name_part = websocket_deflater
+build clang_x64_v8_arm64/obj/net/net/websocket_errors.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_errors.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_errors.cc
+  source_name_part = websocket_errors
+build clang_x64_v8_arm64/obj/net/net/websocket_extension.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_extension.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_extension.cc
+  source_name_part = websocket_extension
+build clang_x64_v8_arm64/obj/net/net/websocket_extension_parser.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_extension_parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_extension_parser.cc
+  source_name_part = websocket_extension_parser
+build clang_x64_v8_arm64/obj/net/net/websocket_frame.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_frame.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_frame.cc
+  source_name_part = websocket_frame
+build clang_x64_v8_arm64/obj/net/net/websocket_frame_parser.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_frame_parser.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_frame_parser.cc
+  source_name_part = websocket_frame_parser
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_challenge.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_challenge.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_challenge.cc
+  source_name_part = websocket_handshake_challenge
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_constants.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_constants.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_constants.cc
+  source_name_part = websocket_handshake_constants
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_request_info.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_request_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_request_info.cc
+  source_name_part = websocket_handshake_request_info
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_response_info.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_response_info.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_response_info.cc
+  source_name_part = websocket_handshake_response_info
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_stream_base.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_stream_base.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_stream_base.cc
+  source_name_part = websocket_handshake_stream_base
+build clang_x64_v8_arm64/obj/net/net/websocket_handshake_stream_create_helper.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_handshake_stream_create_helper.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_handshake_stream_create_helper.cc
+  source_name_part = websocket_handshake_stream_create_helper
+build clang_x64_v8_arm64/obj/net/net/websocket_http2_handshake_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_http2_handshake_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_http2_handshake_stream.cc
+  source_name_part = websocket_http2_handshake_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_http3_handshake_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_http3_handshake_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_http3_handshake_stream.cc
+  source_name_part = websocket_http3_handshake_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_inflater.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_inflater.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_inflater.cc
+  source_name_part = websocket_inflater
+build clang_x64_v8_arm64/obj/net/net/websocket_quic_spdy_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_quic_spdy_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_quic_spdy_stream.cc
+  source_name_part = websocket_quic_spdy_stream
+build clang_x64_v8_arm64/obj/net/net/websocket_stream.o: clang_x64_v8_arm64_cxx ../../net/websockets/websocket_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = websocket_stream.cc
+  source_name_part = websocket_stream
+build clang_x64_v8_arm64/obj/net/net/filename_util_icu.o: clang_x64_v8_arm64_cxx ../../net/base/filename_util_icu.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = filename_util_icu.cc
+  source_name_part = filename_util_icu
+build clang_x64_v8_arm64/obj/net/net/net_string_util_icu.o: clang_x64_v8_arm64_cxx ../../net/base/net_string_util_icu.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = net_string_util_icu.cc
+  source_name_part = net_string_util_icu
+build clang_x64_v8_arm64/obj/net/net/brotli_source_stream.o: clang_x64_v8_arm64_cxx ../../net/filter/brotli_source_stream.cc || clang_x64_v8_arm64/obj/net/net.inputdeps.stamp
+  source_file_part = brotli_source_stream.cc
+  source_name_part = brotli_source_stream
+
+build clang_x64_v8_arm64/libnet.so clang_x64_v8_arm64/libnet.so.TOC: clang_x64_v8_arm64_solink clang_x64_v8_arm64/obj/net/net/address_family.o clang_x64_v8_arm64/obj/net/net/address_list.o clang_x64_v8_arm64/obj/net/net/auth.o clang_x64_v8_arm64/obj/net/net/backoff_entry.o clang_x64_v8_arm64/obj/net/net/backoff_entry_serializer.o clang_x64_v8_arm64/obj/net/net/cache_metrics.o clang_x64_v8_arm64/obj/net/net/chunked_upload_data_stream.o clang_x64_v8_arm64/obj/net/net/connection_endpoint_metadata.o clang_x64_v8_arm64/obj/net/net/data_url.o clang_x64_v8_arm64/obj/net/net/datagram_buffer.o clang_x64_v8_arm64/obj/net/net/elements_upload_data_stream.o clang_x64_v8_arm64/obj/net/net/features.o clang_x64_v8_arm64/obj/net/net/file_stream.o clang_x64_v8_arm64/obj/net/net/file_stream_context.o clang_x64_v8_arm64/obj/net/net/filename_util.o clang_x64_v8_arm64/obj/net/net/filename_util_internal.o clang_x64_v8_arm64/obj/net/net/hash_value.o clang_x64_v8_arm64/obj/net/net/hex_utils.o clang_x64_v8_arm64/obj/net/net/host_mapping_rules.o clang_x64_v8_arm64/obj/net/net/host_port_pair.o clang_x64_v8_arm64/obj/net/net/io_buffer.o clang_x64_v8_arm64/obj/net/net/ip_address.o clang_x64_v8_arm64/obj/net/net/ip_endpoint.o clang_x64_v8_arm64/obj/net/net/isolation_info.o clang_x64_v8_arm64/obj/net/net/load_timing_info.o clang_x64_v8_arm64/obj/net/net/logging_network_change_observer.o clang_x64_v8_arm64/obj/net/net/lookup_string_in_fixed_set.o clang_x64_v8_arm64/obj/net/net/mime_sniffer.o clang_x64_v8_arm64/obj/net/net/mime_util.o clang_x64_v8_arm64/obj/net/net/net_errors.o clang_x64_v8_arm64/obj/net/net/net_module.o clang_x64_v8_arm64/obj/net/net/network_activity_monitor.o clang_x64_v8_arm64/obj/net/net/network_anonymization_key.o clang_x64_v8_arm64/obj/net/net/network_change_notifier.o clang_x64_v8_arm64/obj/net/net/network_delegate.o clang_x64_v8_arm64/obj/net/net/network_delegate_impl.o clang_x64_v8_arm64/obj/net/net/network_interfaces.o clang_x64_v8_arm64/obj/net/net/network_isolation_key.o clang_x64_v8_arm64/obj/net/net/parse_number.o clang_x64_v8_arm64/obj/net/net/port_util.o clang_x64_v8_arm64/obj/net/net/prioritized_dispatcher.o clang_x64_v8_arm64/obj/net/net/prioritized_task_runner.o clang_x64_v8_arm64/obj/net/net/privacy_mode.o clang_x64_v8_arm64/obj/net/net/proxy_server.o clang_x64_v8_arm64/obj/net/net/proxy_string_util.o clang_x64_v8_arm64/obj/net/net/registry_controlled_domain.o clang_x64_v8_arm64/obj/net/net/request_priority.o clang_x64_v8_arm64/obj/net/net/scheme_host_port_matcher.o clang_x64_v8_arm64/obj/net/net/scheme_host_port_matcher_rule.o clang_x64_v8_arm64/obj/net/net/schemeful_site.o clang_x64_v8_arm64/obj/net/net/sockaddr_storage.o clang_x64_v8_arm64/obj/net/net/transport_info.o clang_x64_v8_arm64/obj/net/net/upload_bytes_element_reader.o clang_x64_v8_arm64/obj/net/net/upload_data_stream.o clang_x64_v8_arm64/obj/net/net/upload_element_reader.o clang_x64_v8_arm64/obj/net/net/upload_file_element_reader.o clang_x64_v8_arm64/obj/net/net/url_search_params.o clang_x64_v8_arm64/obj/net/net/url_util.o clang_x64_v8_arm64/obj/net/net/asn1_util.o clang_x64_v8_arm64/obj/net/net/caching_cert_verifier.o clang_x64_v8_arm64/obj/net/net/cert_and_ct_verifier.o clang_x64_v8_arm64/obj/net/net/cert_database.o clang_x64_v8_arm64/obj/net/net/cert_status_flags.o clang_x64_v8_arm64/obj/net/net/cert_verifier.o clang_x64_v8_arm64/obj/net/net/cert_verify_proc.o clang_x64_v8_arm64/obj/net/net/cert_verify_proc_builtin.o clang_x64_v8_arm64/obj/net/net/cert_verify_result.o clang_x64_v8_arm64/obj/net/net/coalescing_cert_verifier.o clang_x64_v8_arm64/obj/net/net/crl_set.o clang_x64_v8_arm64/obj/net/net/ct_log_response_parser.o clang_x64_v8_arm64/obj/net/net/ct_log_verifier.o clang_x64_v8_arm64/obj/net/net/ct_log_verifier_util.o clang_x64_v8_arm64/obj/net/net/ct_objects_extractor.o clang_x64_v8_arm64/obj/net/net/ct_policy_enforcer.o clang_x64_v8_arm64/obj/net/net/ct_sct_to_string.o clang_x64_v8_arm64/obj/net/net/ct_serialization.o clang_x64_v8_arm64/obj/net/net/ct_signed_certificate_timestamp_log_param.o clang_x64_v8_arm64/obj/net/net/do_nothing_ct_verifier.o clang_x64_v8_arm64/obj/net/net/ev_root_ca_metadata.o clang_x64_v8_arm64/obj/net/net/cert_issuer_source_aia.o clang_x64_v8_arm64/obj/net/net/revocation_checker.o clang_x64_v8_arm64/obj/net/net/system_trust_store.o clang_x64_v8_arm64/obj/net/net/trust_store_features.o clang_x64_v8_arm64/obj/net/net/known_roots.o clang_x64_v8_arm64/obj/net/net/merkle_audit_proof.o clang_x64_v8_arm64/obj/net/net/merkle_consistency_proof.o clang_x64_v8_arm64/obj/net/net/merkle_tree_leaf.o clang_x64_v8_arm64/obj/net/net/multi_log_ct_verifier.o clang_x64_v8_arm64/obj/net/net/multi_threaded_cert_verifier.o clang_x64_v8_arm64/obj/net/net/ocsp_verify_result.o clang_x64_v8_arm64/obj/net/net/pem.o clang_x64_v8_arm64/obj/net/net/cert_error_id.o clang_x64_v8_arm64/obj/net/net/cert_error_params.o clang_x64_v8_arm64/obj/net/net/cert_errors.o clang_x64_v8_arm64/obj/net/net/cert_issuer_source_static.o clang_x64_v8_arm64/obj/net/net/certificate_policies.o clang_x64_v8_arm64/obj/net/net/common_cert_errors.o clang_x64_v8_arm64/obj/net/net/crl.o clang_x64_v8_arm64/obj/net/net/extended_key_usage.o clang_x64_v8_arm64/obj/net/net/general_names.o clang_x64_v8_arm64/obj/net/net/name_constraints.o clang_x64_v8_arm64/obj/net/net/ocsp.o clang_x64_v8_arm64/obj/net/net/parse_certificate.o clang_x64_v8_arm64/obj/net/net/parse_name.o clang_x64_v8_arm64/obj/net/net/parsed_certificate.o clang_x64_v8_arm64/obj/net/net/path_builder.o clang_x64_v8_arm64/obj/net/net/revocation_util.o clang_x64_v8_arm64/obj/net/net/signature_algorithm.o clang_x64_v8_arm64/obj/net/net/simple_path_builder_delegate.o clang_x64_v8_arm64/obj/net/net/string_util.o clang_x64_v8_arm64/obj/net/net/trust_store.o clang_x64_v8_arm64/obj/net/net/trust_store_collection.o clang_x64_v8_arm64/obj/net/net/trust_store_in_memory.o clang_x64_v8_arm64/obj/net/net/verify_certificate_chain.o clang_x64_v8_arm64/obj/net/net/verify_name_match.o clang_x64_v8_arm64/obj/net/net/verify_signed_data.o clang_x64_v8_arm64/obj/net/net/sct_status_flags.o clang_x64_v8_arm64/obj/net/net/signed_certificate_timestamp.o clang_x64_v8_arm64/obj/net/net/signed_certificate_timestamp_and_status.o clang_x64_v8_arm64/obj/net/net/signed_tree_head.o clang_x64_v8_arm64/obj/net/net/symantec_certs.o clang_x64_v8_arm64/obj/net/net/test_root_certs.o clang_x64_v8_arm64/obj/net/net/trial_comparison_cert_verifier_util.o clang_x64_v8_arm64/obj/net/net/x509_cert_types.o clang_x64_v8_arm64/obj/net/net/x509_certificate.o clang_x64_v8_arm64/obj/net/net/x509_certificate_net_log_param.o clang_x64_v8_arm64/obj/net/net/x509_util.o clang_x64_v8_arm64/obj/net/net/cert_net_fetcher_url_request.o clang_x64_v8_arm64/obj/net/net/canonical_cookie.o clang_x64_v8_arm64/obj/net/net/cookie_access_delegate.o clang_x64_v8_arm64/obj/net/net/cookie_access_result.o clang_x64_v8_arm64/obj/net/net/cookie_change_dispatcher.o clang_x64_v8_arm64/obj/net/net/cookie_constants.o clang_x64_v8_arm64/obj/net/net/cookie_deletion_info.o clang_x64_v8_arm64/obj/net/net/cookie_inclusion_status.o clang_x64_v8_arm64/obj/net/net/cookie_monster.o clang_x64_v8_arm64/obj/net/net/cookie_monster_change_dispatcher.o clang_x64_v8_arm64/obj/net/net/cookie_monster_netlog_params.o clang_x64_v8_arm64/obj/net/net/cookie_options.o clang_x64_v8_arm64/obj/net/net/cookie_partition_key.o clang_x64_v8_arm64/obj/net/net/cookie_partition_key_collection.o clang_x64_v8_arm64/obj/net/net/cookie_store.o clang_x64_v8_arm64/obj/net/net/cookie_util.o clang_x64_v8_arm64/obj/net/net/parsed_cookie.o clang_x64_v8_arm64/obj/net/net/site_for_cookies.o clang_x64_v8_arm64/obj/net/net/static_cookie_policy.o clang_x64_v8_arm64/obj/net/net/encode_values.o clang_x64_v8_arm64/obj/net/net/input.o clang_x64_v8_arm64/obj/net/net/parse_values.o clang_x64_v8_arm64/obj/net/net/parser.o clang_x64_v8_arm64/obj/net/net/tag.o clang_x64_v8_arm64/obj/net/net/backend_cleanup_tracker.o clang_x64_v8_arm64/obj/net/net/addr.o clang_x64_v8_arm64/obj/net/net/backend_impl.o clang_x64_v8_arm64/obj/net/net/bitmap.o clang_x64_v8_arm64/obj/net/net/block_files.o clang_x64_v8_arm64/obj/net/net/disk_format.o clang_x64_v8_arm64/obj/net/net/entry_impl.o clang_x64_v8_arm64/obj/net/net/eviction.o clang_x64_v8_arm64/obj/net/net/file.o clang_x64_v8_arm64/obj/net/net/file_lock.o clang_x64_v8_arm64/obj/net/net/in_flight_backend_io.o clang_x64_v8_arm64/obj/net/net/in_flight_io.o clang_x64_v8_arm64/obj/net/net/mapped_file.o clang_x64_v8_arm64/obj/net/net/rankings.o clang_x64_v8_arm64/obj/net/net/sparse_control.o clang_x64_v8_arm64/obj/net/net/stats.o clang_x64_v8_arm64/obj/net/net/cache_util.o clang_x64_v8_arm64/obj/net/net/disk_cache.o clang_x64_v8_arm64/obj/net/net/mem_backend_impl.o clang_x64_v8_arm64/obj/net/net/mem_entry_impl.o clang_x64_v8_arm64/obj/net/net/net_log_parameters.o clang_x64_v8_arm64/obj/net/net/post_doom_waiter.o clang_x64_v8_arm64/obj/net/net/simple_backend_impl.o clang_x64_v8_arm64/obj/net/net/simple_entry_format.o clang_x64_v8_arm64/obj/net/net/simple_entry_impl.o clang_x64_v8_arm64/obj/net/net/simple_entry_operation.o clang_x64_v8_arm64/obj/net/net/simple_file_enumerator.o clang_x64_v8_arm64/obj/net/net/simple_file_tracker.o clang_x64_v8_arm64/obj/net/net/simple_index.o clang_x64_v8_arm64/obj/net/net/simple_index_file.o clang_x64_v8_arm64/obj/net/net/simple_net_log_parameters.o clang_x64_v8_arm64/obj/net/net/simple_synchronous_entry.o clang_x64_v8_arm64/obj/net/net/simple_util.o clang_x64_v8_arm64/obj/net/net/simple_version_upgrade.o clang_x64_v8_arm64/obj/net/net/filter_source_stream.o clang_x64_v8_arm64/obj/net/net/gzip_header.o clang_x64_v8_arm64/obj/net/net/gzip_source_stream.o clang_x64_v8_arm64/obj/net/net/source_stream.o clang_x64_v8_arm64/obj/net/net/addition_overlaps_union_find.o clang_x64_v8_arm64/obj/net/net/first_party_set_entry.o clang_x64_v8_arm64/obj/net/net/first_party_set_entry_override.o clang_x64_v8_arm64/obj/net/net/first_party_set_metadata.o clang_x64_v8_arm64/obj/net/net/first_party_sets_cache_filter.o clang_x64_v8_arm64/obj/net/net/first_party_sets_context_config.o clang_x64_v8_arm64/obj/net/net/global_first_party_sets.o clang_x64_v8_arm64/obj/net/net/same_party_context.o clang_x64_v8_arm64/obj/net/net/alternative_service.o clang_x64_v8_arm64/obj/net/net/bidirectional_stream.o clang_x64_v8_arm64/obj/net/net/bidirectional_stream_impl.o clang_x64_v8_arm64/obj/net/net/bidirectional_stream_request_info.o clang_x64_v8_arm64/obj/net/net/broken_alternative_services.o clang_x64_v8_arm64/obj/net/net/http_auth.o clang_x64_v8_arm64/obj/net/net/http_auth_cache.o clang_x64_v8_arm64/obj/net/net/http_auth_challenge_tokenizer.o clang_x64_v8_arm64/obj/net/net/http_auth_controller.o clang_x64_v8_arm64/obj/net/net/http_auth_filter.o clang_x64_v8_arm64/obj/net/net/http_auth_handler.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_basic.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_digest.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_factory.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_ntlm.o clang_x64_v8_arm64/obj/net/net/http_auth_multi_round_parse.o clang_x64_v8_arm64/obj/net/net/http_auth_preferences.o clang_x64_v8_arm64/obj/net/net/http_auth_scheme.o clang_x64_v8_arm64/obj/net/net/http_basic_state.o clang_x64_v8_arm64/obj/net/net/http_basic_stream.o clang_x64_v8_arm64/obj/net/net/http_byte_range.o clang_x64_v8_arm64/obj/net/net/http_cache.o clang_x64_v8_arm64/obj/net/net/http_cache_lookup_manager.o clang_x64_v8_arm64/obj/net/net/http_cache_transaction.o clang_x64_v8_arm64/obj/net/net/http_cache_writers.o clang_x64_v8_arm64/obj/net/net/http_chunked_decoder.o clang_x64_v8_arm64/obj/net/net/http_content_disposition.o clang_x64_v8_arm64/obj/net/net/http_log_util.o clang_x64_v8_arm64/obj/net/net/http_network_layer.o clang_x64_v8_arm64/obj/net/net/http_network_session.o clang_x64_v8_arm64/obj/net/net/http_network_session_peer.o clang_x64_v8_arm64/obj/net/net/http_network_transaction.o clang_x64_v8_arm64/obj/net/net/http_no_vary_search_data.o clang_x64_v8_arm64/obj/net/net/http_proxy_client_socket.o clang_x64_v8_arm64/obj/net/net/http_proxy_connect_job.o clang_x64_v8_arm64/obj/net/net/http_raw_request_headers.o clang_x64_v8_arm64/obj/net/net/http_request_headers.o clang_x64_v8_arm64/obj/net/net/http_request_info.o clang_x64_v8_arm64/obj/net/net/http_response_body_drainer.o clang_x64_v8_arm64/obj/net/net/http_response_headers.o clang_x64_v8_arm64/obj/net/net/http_response_info.o clang_x64_v8_arm64/obj/net/net/http_security_headers.o clang_x64_v8_arm64/obj/net/net/http_server_properties.o clang_x64_v8_arm64/obj/net/net/http_server_properties_manager.o clang_x64_v8_arm64/obj/net/net/http_status_code.o clang_x64_v8_arm64/obj/net/net/http_stream_factory.o clang_x64_v8_arm64/obj/net/net/http_stream_factory_job.o clang_x64_v8_arm64/obj/net/net/http_stream_factory_job_controller.o clang_x64_v8_arm64/obj/net/net/http_stream_parser.o clang_x64_v8_arm64/obj/net/net/http_stream_request.o clang_x64_v8_arm64/obj/net/net/http_util.o clang_x64_v8_arm64/obj/net/net/http_vary_data.o clang_x64_v8_arm64/obj/net/net/partial_data.o clang_x64_v8_arm64/obj/net/net/proxy_client_socket.o clang_x64_v8_arm64/obj/net/net/proxy_fallback.o clang_x64_v8_arm64/obj/net/net/transport_security_persister.o clang_x64_v8_arm64/obj/net/net/transport_security_state_source.o clang_x64_v8_arm64/obj/net/net/url_security_manager.o clang_x64_v8_arm64/obj/net/net/webfonts_histogram.o clang_x64_v8_arm64/obj/net/net/file_net_log_observer.o clang_x64_v8_arm64/obj/net/net/net_log.o clang_x64_v8_arm64/obj/net/net/net_log_capture_mode.o clang_x64_v8_arm64/obj/net/net/net_log_entry.o clang_x64_v8_arm64/obj/net/net/net_log_event_type.o clang_x64_v8_arm64/obj/net/net/net_log_source.o clang_x64_v8_arm64/obj/net/net/net_log_util.o clang_x64_v8_arm64/obj/net/net/net_log_values.o clang_x64_v8_arm64/obj/net/net/net_log_with_source.o clang_x64_v8_arm64/obj/net/net/trace_net_log_observer.o clang_x64_v8_arm64/obj/net/net/cached_network_quality.o clang_x64_v8_arm64/obj/net/net/effective_connection_type.o clang_x64_v8_arm64/obj/net/net/event_creator.o clang_x64_v8_arm64/obj/net/net/network_id.o clang_x64_v8_arm64/obj/net/net/network_qualities_prefs_manager.o clang_x64_v8_arm64/obj/net/net/network_quality.o clang_x64_v8_arm64/obj/net/net/network_quality_estimator.o clang_x64_v8_arm64/obj/net/net/network_quality_estimator_params.o clang_x64_v8_arm64/obj/net/net/network_quality_estimator_util.o clang_x64_v8_arm64/obj/net/net/network_quality_observation.o clang_x64_v8_arm64/obj/net/net/network_quality_store.o clang_x64_v8_arm64/obj/net/net/observation_buffer.o clang_x64_v8_arm64/obj/net/net/pref_names.o clang_x64_v8_arm64/obj/net/net/socket_watcher.o clang_x64_v8_arm64/obj/net/net/socket_watcher_factory.o clang_x64_v8_arm64/obj/net/net/throughput_analyzer.o clang_x64_v8_arm64/obj/net/net/configured_proxy_resolution_request.o clang_x64_v8_arm64/obj/net/net/configured_proxy_resolution_service.o clang_x64_v8_arm64/obj/net/net/dhcp_pac_file_fetcher.o clang_x64_v8_arm64/obj/net/net/multi_threaded_proxy_resolver.o clang_x64_v8_arm64/obj/net/net/network_delegate_error_observer.o clang_x64_v8_arm64/obj/net/net/pac_file_data.o clang_x64_v8_arm64/obj/net/net/pac_file_decider.o clang_x64_v8_arm64/obj/net/net/pac_file_fetcher.o clang_x64_v8_arm64/obj/net/net/pac_file_fetcher_impl.o clang_x64_v8_arm64/obj/net/net/polling_proxy_config_service.o clang_x64_v8_arm64/obj/net/net/proxy_bypass_rules.o clang_x64_v8_arm64/obj/net/net/proxy_config.o clang_x64_v8_arm64/obj/net/net/proxy_config_service.o clang_x64_v8_arm64/obj/net/net/proxy_config_service_fixed.o clang_x64_v8_arm64/obj/net/net/proxy_config_with_annotation.o clang_x64_v8_arm64/obj/net/net/proxy_info.o clang_x64_v8_arm64/obj/net/net/proxy_list.o clang_x64_v8_arm64/obj/net/net/proxy_resolver_factory.o clang_x64_v8_arm64/obj/net/net/bidirectional_stream_quic_impl.o clang_x64_v8_arm64/obj/net/net/proof_source_chromium.o clang_x64_v8_arm64/obj/net/net/proof_verifier_chromium.o clang_x64_v8_arm64/obj/net/net/dedicated_web_transport_http3_client.o clang_x64_v8_arm64/obj/net/net/network_connection.o clang_x64_v8_arm64/obj/net/net/quic_chromium_clock.o clang_x64_v8_arm64/obj/net/net/properties_based_quic_server_info.o clang_x64_v8_arm64/obj/net/net/quic_address_mismatch.o clang_x64_v8_arm64/obj/net/net/quic_chromium_alarm_factory.o clang_x64_v8_arm64/obj/net/net/quic_chromium_client_session.o clang_x64_v8_arm64/obj/net/net/quic_chromium_client_stream.o clang_x64_v8_arm64/obj/net/net/quic_chromium_connection_helper.o clang_x64_v8_arm64/obj/net/net/quic_chromium_packet_reader.o clang_x64_v8_arm64/obj/net/net/quic_chromium_packet_writer.o clang_x64_v8_arm64/obj/net/net/quic_clock_skew_detector.o clang_x64_v8_arm64/obj/net/net/quic_connection_logger.o clang_x64_v8_arm64/obj/net/net/quic_connectivity_monitor.o clang_x64_v8_arm64/obj/net/net/quic_context.o clang_x64_v8_arm64/obj/net/net/quic_crypto_client_config_handle.o clang_x64_v8_arm64/obj/net/net/quic_crypto_client_stream_factory.o clang_x64_v8_arm64/obj/net/net/quic_event_logger.o clang_x64_v8_arm64/obj/net/net/quic_http3_logger.o clang_x64_v8_arm64/obj/net/net/quic_http_stream.o clang_x64_v8_arm64/obj/net/net/quic_http_utils.o clang_x64_v8_arm64/obj/net/net/quic_proxy_client_socket.o clang_x64_v8_arm64/obj/net/net/quic_server_info.o clang_x64_v8_arm64/obj/net/net/quic_session_key.o clang_x64_v8_arm64/obj/net/net/quic_stream_factory.o clang_x64_v8_arm64/obj/net/net/set_quic_flag.o clang_x64_v8_arm64/obj/net/net/web_transport_client.o clang_x64_v8_arm64/obj/net/net/web_transport_error.o clang_x64_v8_arm64/obj/net/net/client_socket_factory.o clang_x64_v8_arm64/obj/net/net/client_socket_handle.o clang_x64_v8_arm64/obj/net/net/client_socket_pool.o clang_x64_v8_arm64/obj/net/net/client_socket_pool_manager.o clang_x64_v8_arm64/obj/net/net/client_socket_pool_manager_impl.o clang_x64_v8_arm64/obj/net/net/connect_job.o clang_x64_v8_arm64/obj/net/net/connect_job_factory.o clang_x64_v8_arm64/obj/net/net/network_binding_client_socket_factory.o clang_x64_v8_arm64/obj/net/net/next_proto.o clang_x64_v8_arm64/obj/net/net/server_socket.o clang_x64_v8_arm64/obj/net/net/socket.o clang_x64_v8_arm64/obj/net/net/socket_bio_adapter.o clang_x64_v8_arm64/obj/net/net/socket_descriptor.o clang_x64_v8_arm64/obj/net/net/socket_net_log_params.o clang_x64_v8_arm64/obj/net/net/socket_options.o clang_x64_v8_arm64/obj/net/net/socket_tag.o clang_x64_v8_arm64/obj/net/net/socks5_client_socket.o clang_x64_v8_arm64/obj/net/net/socks_client_socket.o clang_x64_v8_arm64/obj/net/net/socks_connect_job.o clang_x64_v8_arm64/obj/net/net/ssl_client_socket.o clang_x64_v8_arm64/obj/net/net/ssl_client_socket_impl.o clang_x64_v8_arm64/obj/net/net/ssl_connect_job.o clang_x64_v8_arm64/obj/net/net/ssl_server_socket_impl.o clang_x64_v8_arm64/obj/net/net/stream_socket.o clang_x64_v8_arm64/obj/net/net/tcp_client_socket.o clang_x64_v8_arm64/obj/net/net/tcp_server_socket.o clang_x64_v8_arm64/obj/net/net/transport_client_socket.o clang_x64_v8_arm64/obj/net/net/transport_client_socket_pool.o clang_x64_v8_arm64/obj/net/net/transport_connect_job.o clang_x64_v8_arm64/obj/net/net/transport_connect_sub_job.o clang_x64_v8_arm64/obj/net/net/udp_client_socket.o clang_x64_v8_arm64/obj/net/net/udp_net_log_parameters.o clang_x64_v8_arm64/obj/net/net/udp_server_socket.o clang_x64_v8_arm64/obj/net/net/udp_socket_global_limits.o clang_x64_v8_arm64/obj/net/net/websocket_endpoint_lock_manager.o clang_x64_v8_arm64/obj/net/net/websocket_transport_client_socket_pool.o clang_x64_v8_arm64/obj/net/net/alps_decoder.o clang_x64_v8_arm64/obj/net/net/bidirectional_stream_spdy_impl.o clang_x64_v8_arm64/obj/net/net/buffered_spdy_framer.o clang_x64_v8_arm64/obj/net/net/header_coalescer.o clang_x64_v8_arm64/obj/net/net/http2_priority_dependencies.o clang_x64_v8_arm64/obj/net/net/http2_push_promise_index.o clang_x64_v8_arm64/obj/net/net/multiplexed_http_stream.o clang_x64_v8_arm64/obj/net/net/multiplexed_session.o clang_x64_v8_arm64/obj/net/net/spdy_buffer.o clang_x64_v8_arm64/obj/net/net/spdy_buffer_producer.o clang_x64_v8_arm64/obj/net/net/spdy_http_stream.o clang_x64_v8_arm64/obj/net/net/spdy_http_utils.o clang_x64_v8_arm64/obj/net/net/spdy_log_util.o clang_x64_v8_arm64/obj/net/net/spdy_proxy_client_socket.o clang_x64_v8_arm64/obj/net/net/spdy_read_queue.o clang_x64_v8_arm64/obj/net/net/spdy_session.o clang_x64_v8_arm64/obj/net/net/spdy_session_key.o clang_x64_v8_arm64/obj/net/net/spdy_session_pool.o clang_x64_v8_arm64/obj/net/net/spdy_stream.o clang_x64_v8_arm64/obj/net/net/spdy_write_queue.o clang_x64_v8_arm64/obj/net/net/cert_compression.o clang_x64_v8_arm64/obj/net/net/client_cert_identity.o clang_x64_v8_arm64/obj/net/net/openssl_ssl_util.o clang_x64_v8_arm64/obj/net/net/ssl_cert_request_info.o clang_x64_v8_arm64/obj/net/net/ssl_cipher_suite_names.o clang_x64_v8_arm64/obj/net/net/ssl_client_auth_cache.o clang_x64_v8_arm64/obj/net/net/ssl_client_session_cache.o clang_x64_v8_arm64/obj/net/net/ssl_config.o clang_x64_v8_arm64/obj/net/net/ssl_config_service.o clang_x64_v8_arm64/obj/net/net/ssl_config_service_defaults.o clang_x64_v8_arm64/obj/net/net/ssl_info.o clang_x64_v8_arm64/obj/net/net/ssl_key_logger.o clang_x64_v8_arm64/obj/net/net/ssl_key_logger_impl.o clang_x64_v8_arm64/obj/net/net/ssl_platform_key_util.o clang_x64_v8_arm64/obj/net/net/ssl_private_key.o clang_x64_v8_arm64/obj/net/net/ssl_server_config.o clang_x64_v8_arm64/obj/net/net/threaded_ssl_private_key.o clang_x64_v8_arm64/obj/net/net/redirect_info.o clang_x64_v8_arm64/obj/net/net/redirect_util.o clang_x64_v8_arm64/obj/net/net/report_sender.o clang_x64_v8_arm64/obj/net/net/static_http_user_agent_settings.o clang_x64_v8_arm64/obj/net/net/url_request.o clang_x64_v8_arm64/obj/net/net/url_request_context.o clang_x64_v8_arm64/obj/net/net/url_request_context_builder.o clang_x64_v8_arm64/obj/net/net/url_request_context_getter.o clang_x64_v8_arm64/obj/net/net/url_request_error_job.o clang_x64_v8_arm64/obj/net/net/url_request_filter.o clang_x64_v8_arm64/obj/net/net/url_request_http_job.o clang_x64_v8_arm64/obj/net/net/url_request_interceptor.o clang_x64_v8_arm64/obj/net/net/url_request_job.o clang_x64_v8_arm64/obj/net/net/url_request_job_factory.o clang_x64_v8_arm64/obj/net/net/url_request_netlog_params.o clang_x64_v8_arm64/obj/net/net/url_request_redirect_job.o clang_x64_v8_arm64/obj/net/net/url_request_throttler_entry.o clang_x64_v8_arm64/obj/net/net/url_request_throttler_manager.o clang_x64_v8_arm64/obj/net/net/view_cache_helper.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_userdata_key.o clang_x64_v8_arm64/obj/net/net/net_errors_posix.o clang_x64_v8_arm64/obj/net/net/network_error_logging_service.o clang_x64_v8_arm64/obj/net/net/reporting_browsing_data_remover.o clang_x64_v8_arm64/obj/net/net/reporting_cache.o clang_x64_v8_arm64/obj/net/net/reporting_cache_impl.o clang_x64_v8_arm64/obj/net/net/reporting_cache_observer.o clang_x64_v8_arm64/obj/net/net/reporting_context.o clang_x64_v8_arm64/obj/net/net/reporting_delegate.o clang_x64_v8_arm64/obj/net/net/reporting_delivery_agent.o clang_x64_v8_arm64/obj/net/net/reporting_endpoint.o clang_x64_v8_arm64/obj/net/net/reporting_endpoint_manager.o clang_x64_v8_arm64/obj/net/net/reporting_garbage_collector.o clang_x64_v8_arm64/obj/net/net/reporting_header_parser.o clang_x64_v8_arm64/obj/net/net/reporting_network_change_observer.o clang_x64_v8_arm64/obj/net/net/reporting_policy.o clang_x64_v8_arm64/obj/net/net/reporting_report.o clang_x64_v8_arm64/obj/net/net/reporting_service.o clang_x64_v8_arm64/obj/net/net/reporting_uploader.o clang_x64_v8_arm64/obj/net/net/network_change_notifier_linux.o clang_x64_v8_arm64/obj/net/net/proxy_config_service_linux.o clang_x64_v8_arm64/obj/net/net/address_tracker_linux.o clang_x64_v8_arm64/obj/net/net/network_interfaces_linux.o clang_x64_v8_arm64/obj/net/net/platform_mime_util_linux.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_negotiate.o clang_x64_v8_arm64/obj/net/net/file_stream_context_posix.o clang_x64_v8_arm64/obj/net/net/network_interfaces_posix.o clang_x64_v8_arm64/obj/net/net/sockaddr_util_posix.o clang_x64_v8_arm64/obj/net/net/cache_util_posix.o clang_x64_v8_arm64/obj/net/net/simple_util_posix.o clang_x64_v8_arm64/obj/net/net/url_security_manager_posix.o clang_x64_v8_arm64/obj/net/net/socket_posix.o clang_x64_v8_arm64/obj/net/net/tcp_socket_posix.o clang_x64_v8_arm64/obj/net/net/udp_socket_posix.o clang_x64_v8_arm64/obj/net/net/file_posix.o clang_x64_v8_arm64/obj/net/net/mapped_file_posix.o clang_x64_v8_arm64/obj/net/net/http_auth_handler_ntlm_portable.o clang_x64_v8_arm64/obj/net/net/http_auth_ntlm_mechanism.o clang_x64_v8_arm64/obj/net/net/ntlm.o clang_x64_v8_arm64/obj/net/net/ntlm_buffer_reader.o clang_x64_v8_arm64/obj/net/net/ntlm_buffer_writer.o clang_x64_v8_arm64/obj/net/net/ntlm_client.o clang_x64_v8_arm64/obj/net/net/ntlm_constants.o clang_x64_v8_arm64/obj/net/net/http_auth_gssapi_posix.o clang_x64_v8_arm64/obj/net/net/trust_store_chrome.o clang_x64_v8_arm64/obj/net/net/trust_store_nss.o clang_x64_v8_arm64/obj/net/net/known_roots_nss.o clang_x64_v8_arm64/obj/net/net/nss_cert_database.o clang_x64_v8_arm64/obj/net/net/test_root_certs_builtin.o clang_x64_v8_arm64/obj/net/net/x509_util_nss.o clang_x64_v8_arm64/obj/net/net/nsNSSCertificateDB.o clang_x64_v8_arm64/obj/net/net/nsPKCS12Blob.o clang_x64_v8_arm64/obj/net/net/cmpcert.o clang_x64_v8_arm64/obj/net/net/client_cert_store_nss.o clang_x64_v8_arm64/obj/net/net/ssl_platform_key_nss.o clang_x64_v8_arm64/obj/net/net/trial_comparison_cert_verifier.o clang_x64_v8_arm64/obj/net/net/unix_domain_client_socket_posix.o clang_x64_v8_arm64/obj/net/net/unix_domain_server_socket_posix.o clang_x64_v8_arm64/obj/net/net/directory_lister.o clang_x64_v8_arm64/obj/net/net/directory_listing.o clang_x64_v8_arm64/obj/net/net/websocket_basic_handshake_stream.o clang_x64_v8_arm64/obj/net/net/websocket_basic_stream.o clang_x64_v8_arm64/obj/net/net/websocket_basic_stream_adapters.o clang_x64_v8_arm64/obj/net/net/websocket_channel.o clang_x64_v8_arm64/obj/net/net/websocket_deflate_parameters.o clang_x64_v8_arm64/obj/net/net/websocket_deflate_predictor_impl.o clang_x64_v8_arm64/obj/net/net/websocket_deflate_stream.o clang_x64_v8_arm64/obj/net/net/websocket_deflater.o clang_x64_v8_arm64/obj/net/net/websocket_errors.o clang_x64_v8_arm64/obj/net/net/websocket_extension.o clang_x64_v8_arm64/obj/net/net/websocket_extension_parser.o clang_x64_v8_arm64/obj/net/net/websocket_frame.o clang_x64_v8_arm64/obj/net/net/websocket_frame_parser.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_challenge.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_constants.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_request_info.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_response_info.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_stream_base.o clang_x64_v8_arm64/obj/net/net/websocket_handshake_stream_create_helper.o clang_x64_v8_arm64/obj/net/net/websocket_http2_handshake_stream.o clang_x64_v8_arm64/obj/net/net/websocket_http3_handshake_stream.o clang_x64_v8_arm64/obj/net/net/websocket_inflater.o clang_x64_v8_arm64/obj/net/net/websocket_quic_spdy_stream.o clang_x64_v8_arm64/obj/net/net/websocket_stream.o clang_x64_v8_arm64/obj/net/net/filename_util_icu.o clang_x64_v8_arm64/obj/net/net/net_string_util_icu.o clang_x64_v8_arm64/obj/net/net/brotli_source_stream.o clang_x64_v8_arm64/obj/net/dns/dns/address_info.o clang_x64_v8_arm64/obj/net/dns/dns/context_host_resolver.o clang_x64_v8_arm64/obj/net/dns/dns/dns_alias_utility.o clang_x64_v8_arm64/obj/net/dns/dns/dns_config.o clang_x64_v8_arm64/obj/net/dns/dns/dns_config_service.o clang_x64_v8_arm64/obj/net/dns/dns/dns_hosts.o clang_x64_v8_arm64/obj/net/dns/dns/dns_names_util.o clang_x64_v8_arm64/obj/net/dns/dns/dns_query.o clang_x64_v8_arm64/obj/net/dns/dns/dns_reloader.o clang_x64_v8_arm64/obj/net/dns/dns/dns_response.o clang_x64_v8_arm64/obj/net/dns/dns/dns_response_result_extractor.o clang_x64_v8_arm64/obj/net/dns/dns/dns_server_iterator.o clang_x64_v8_arm64/obj/net/dns/dns/dns_session.o clang_x64_v8_arm64/obj/net/dns/dns/dns_transaction.o clang_x64_v8_arm64/obj/net/dns/dns/dns_udp_tracker.o clang_x64_v8_arm64/obj/net/dns/dns/dns_util.o clang_x64_v8_arm64/obj/net/dns/dns/host_cache.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_internal_result.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_manager.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_mdns_listener_impl.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_mdns_task.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_nat64_task.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_proc.o clang_x64_v8_arm64/obj/net/dns/dns/host_resolver_system_task.o clang_x64_v8_arm64/obj/net/dns/dns/https_record_rdata.o clang_x64_v8_arm64/obj/net/dns/dns/httpssvc_metrics.o clang_x64_v8_arm64/obj/net/dns/dns/mapped_host_resolver.o clang_x64_v8_arm64/obj/net/dns/dns/nsswitch_reader.o clang_x64_v8_arm64/obj/net/dns/dns/opt_record_rdata.o clang_x64_v8_arm64/obj/net/dns/dns/record_parsed.o clang_x64_v8_arm64/obj/net/dns/dns/record_rdata.o clang_x64_v8_arm64/obj/net/dns/dns/resolve_context.o clang_x64_v8_arm64/obj/net/dns/dns/serial_worker.o clang_x64_v8_arm64/obj/net/dns/dns/system_dns_config_change_notifier.o clang_x64_v8_arm64/obj/net/dns/dns/test_dns_config_service.o clang_x64_v8_arm64/obj/net/dns/dns/dns_config_service_linux.o clang_x64_v8_arm64/obj/net/dns/dns/dns_client.o clang_x64_v8_arm64/obj/net/dns/dns/address_sorter_posix.o clang_x64_v8_arm64/obj/net/dns/dns/mdns_cache.o clang_x64_v8_arm64/obj/net/dns/dns/mdns_client.o clang_x64_v8_arm64/obj/net/dns/dns/mdns_client_impl.o clang_x64_v8_arm64/obj/net/dns/public/public/dns_config_overrides.o clang_x64_v8_arm64/obj/net/dns/public/public/dns_over_https_config.o clang_x64_v8_arm64/obj/net/dns/public/public/dns_over_https_server_config.o clang_x64_v8_arm64/obj/net/dns/public/public/dns_query_type.o clang_x64_v8_arm64/obj/net/dns/public/public/doh_provider_entry.o clang_x64_v8_arm64/obj/net/dns/public/public/host_resolver_results.o clang_x64_v8_arm64/obj/net/dns/public/public/resolve_error_info.o clang_x64_v8_arm64/obj/net/dns/public/public/util.o clang_x64_v8_arm64/obj/net/dns/public/public/resolv_reader.o clang_x64_v8_arm64/obj/net/dns/public/public/scoped_res_state.o clang_x64_v8_arm64/obj/net/http/transport_security_state_generated_files/transport_security_state.o clang_x64_v8_arm64/obj/net/net_nqe_proto/network_id_proto.pb.o clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_test_tools_proto/send_algorithm_test_result.pb.o clang_x64_v8_arm64/obj/net/cert/libroot_store_proto_lite.a clang_x64_v8_arm64/obj/net/libisolation_info_proto.a clang_x64_v8_arm64/obj/net/libpreload_decoder.a clang_x64_v8_arm64/obj/base/third_party/dynamic_annotations/libdynamic_annotations.a clang_x64_v8_arm64/obj/third_party/brotli/libdec.a clang_x64_v8_arm64/obj/third_party/brotli/libcommon.a | clang_x64_v8_arm64/libbase.so.TOC clang_x64_v8_arm64/libnet_third_party_quiche.so.TOC clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so.TOC clang_x64_v8_arm64/libnet_uri_template.so.TOC clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/libthird_party_boringssl.so.TOC clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so.TOC clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so.TOC clang_x64_v8_arm64/libcrcrypto.so.TOC clang_x64_v8_arm64/liburl.so.TOC clang_x64_v8_arm64/libchrome_zlib.so.TOC clang_x64_v8_arm64/libbase_i18n.so.TOC clang_x64_v8_arm64/libthird_party_icu_icui18n.so.TOC clang_x64_v8_arm64/libicuuc.so.TOC clang_x64_v8_arm64/libc++.so.TOC || clang_x64_v8_arm64/obj/net/net_export_header.stamp clang_x64_v8_arm64/obj/net/net_public_deps.stamp clang_x64_v8_arm64/obj/net/dns/dns.stamp clang_x64_v8_arm64/obj/net/dns/dns_client.stamp clang_x64_v8_arm64/obj/net/dns/host_resolver.stamp clang_x64_v8_arm64/obj/net/dns/host_resolver_manager.stamp clang_x64_v8_arm64/obj/net/dns/mdns_client.stamp clang_x64_v8_arm64/obj/net/dns/public/public.stamp clang_x64_v8_arm64/obj/net/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/net/net_deps.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp clang_x64_v8_arm64/obj/net/http/transport_security_state_generated_files.stamp clang_x64_v8_arm64/obj/build/config/shared_library_deps.stamp clang_x64_v8_arm64/obj/net/net_nqe_proto.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_test_tools_proto.stamp clang_x64_v8_arm64/obj/net/traffic_annotation/traffic_annotation.stamp clang_x64_v8_arm64/obj/net/constants.stamp clang_x64_v8_arm64/obj/net/net_resources.stamp clang_x64_v8_arm64/obj/third_party/brotli/headers.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt -lnss3 -lnssutil3 -lsmime3 -lplds4 -lplc4 -lnspr4 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0 -lresolv -lgio-2.0
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = clang_x64_v8_arm64
+  solibs = clang_x64_v8_arm64/libbase.so clang_x64_v8_arm64/libnet_third_party_quiche.so clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so clang_x64_v8_arm64/libnet_uri_template.so clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so clang_x64_v8_arm64/libthird_party_boringssl.so clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so clang_x64_v8_arm64/libcrcrypto.so clang_x64_v8_arm64/liburl.so clang_x64_v8_arm64/libchrome_zlib.so clang_x64_v8_arm64/libbase_i18n.so clang_x64_v8_arm64/libthird_party_icu_icui18n.so clang_x64_v8_arm64/libicuuc.so clang_x64_v8_arm64/libc++.so

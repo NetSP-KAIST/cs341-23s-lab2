@@ -1,0 +1,470 @@
+defines = -DDAWN_ENABLE_VULKAN_VALIDATION_LAYERS -DDAWN_VK_DATA_DIR=\"angledata\" -DDAWN_ENABLE_SWIFTSHADER -DDAWN_ENABLE_SPIRV_VALIDATION -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDAWN_ENABLE_ASSERTS -DDAWN_ENABLE_BACKEND_NULL -DDAWN_ENABLE_BACKEND_OPENGL -DDAWN_ENABLE_BACKEND_DESKTOP_GL -DDAWN_ENABLE_BACKEND_OPENGLES -DDAWN_ENABLE_BACKEND_VULKAN -DDAWN_USE_X11 -DDAWN_ENABLE_ERROR_INJECTION -DTINT_BUILD_SPV_READER=0 -DTINT_BUILD_SPV_WRITER=1 -DTINT_BUILD_WGSL_READER=1 -DTINT_BUILD_WGSL_WRITER=1 -DTINT_BUILD_MSL_WRITER=1 -DTINT_BUILD_HLSL_WRITER=1 -DTINT_BUILD_GLSL_WRITER=1 -DTINT_BUILD_SYNTAX_TREE_WRITER=0 -DABSL_CONSUME_DLL -DDAWN_PLATFORM_SHARED_LIBRARY -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../../third_party/khronos -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -Iclang_x64_v8_arm64/gen/third_party/dawn/src -I../../third_party/dawn/src -I../../third_party/dawn -I../../third_party/dawn/include -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/vulkan-tools/src -Iclang_x64_v8_arm64/gen/third_party/dawn/include -I../../third_party/abseil-cpp -I../../third_party/dawn/third_party/khronos -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/vulkan-deps/spirv-tools/src/include
+cflags = -Wglobal-constructors -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-shadow -Wno-redundant-parens -Wno-shadow
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = sources
+target_out_dir = clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native
+target_output_name = sources
+
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/headers_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/opengl_loader_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/utils_gen.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ChainUtils_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/ChainUtils_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ChainUtils_autogen.cpp
+  source_name_part = ChainUtils_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ProcTable.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/ProcTable.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ProcTable.cpp
+  source_name_part = ProcTable
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/wgpu_structs_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/wgpu_structs_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = wgpu_structs_autogen.cpp
+  source_name_part = wgpu_structs_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ValidationUtils_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/ValidationUtils_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ValidationUtils_autogen.cpp
+  source_name_part = ValidationUtils_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_absl_format_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/webgpu_absl_format_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = webgpu_absl_format_autogen.cpp
+  source_name_part = webgpu_absl_format_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_StreamImpl_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/webgpu_StreamImpl_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = webgpu_StreamImpl_autogen.cpp
+  source_name_part = webgpu_StreamImpl_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectType_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/ObjectType_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ObjectType_autogen.cpp
+  source_name_part = ObjectType_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Adapter.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Adapter.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Adapter.cpp
+  source_name_part = Adapter
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ApplyClearColorValueWithDrawHelper.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ApplyClearColorValueWithDrawHelper.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ApplyClearColorValueWithDrawHelper.cpp
+  source_name_part = ApplyClearColorValueWithDrawHelper
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AsyncTask.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/AsyncTask.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = AsyncTask.cpp
+  source_name_part = AsyncTask
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AttachmentState.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/AttachmentState.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = AttachmentState.cpp
+  source_name_part = AttachmentState
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendConnection.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BackendConnection.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BackendConnection.cpp
+  source_name_part = BackendConnection
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroup.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BindGroup.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroup.cpp
+  source_name_part = BindGroup
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayout.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BindGroupLayout.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroupLayout.cpp
+  source_name_part = BindGroupLayout
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindingInfo.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BindingInfo.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindingInfo.cpp
+  source_name_part = BindingInfo
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlitBufferToDepthStencil.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BlitBufferToDepthStencil.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BlitBufferToDepthStencil.cpp
+  source_name_part = BlitBufferToDepthStencil
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlitDepthToDepth.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BlitDepthToDepth.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BlitDepthToDepth.cpp
+  source_name_part = BlitDepthToDepth
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Blob.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Blob.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Blob.cpp
+  source_name_part = Blob
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlobCache.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BlobCache.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BlobCache.cpp
+  source_name_part = BlobCache
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BuddyAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BuddyAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BuddyAllocator.cpp
+  source_name_part = BuddyAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BuddyMemoryAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/BuddyMemoryAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BuddyMemoryAllocator.cpp
+  source_name_part = BuddyMemoryAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Buffer.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Buffer.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Buffer.cpp
+  source_name_part = Buffer
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CacheKey.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CacheKey.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CacheKey.cpp
+  source_name_part = CacheKey
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CacheRequest.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CacheRequest.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CacheRequest.cpp
+  source_name_part = CacheRequest
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CachedObject.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CachedObject.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CachedObject.cpp
+  source_name_part = CachedObject
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CallbackTaskManager.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CallbackTaskManager.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CallbackTaskManager.cpp
+  source_name_part = CallbackTaskManager
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CommandAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandAllocator.cpp
+  source_name_part = CommandAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CommandBuffer.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandBuffer.cpp
+  source_name_part = CommandBuffer
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferStateTracker.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CommandBufferStateTracker.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandBufferStateTracker.cpp
+  source_name_part = CommandBufferStateTracker
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CommandEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandEncoder.cpp
+  source_name_part = CommandEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandValidation.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CommandValidation.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandValidation.cpp
+  source_name_part = CommandValidation
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Commands.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Commands.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Commands.cpp
+  source_name_part = Commands
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CompilationMessages.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CompilationMessages.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CompilationMessages.cpp
+  source_name_part = CompilationMessages
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePassEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ComputePassEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ComputePassEncoder.cpp
+  source_name_part = ComputePassEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipeline.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ComputePipeline.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ComputePipeline.cpp
+  source_name_part = ComputePipeline
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CopyTextureForBrowserHelper.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CopyTextureForBrowserHelper.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CopyTextureForBrowserHelper.cpp
+  source_name_part = CopyTextureForBrowserHelper
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CreatePipelineAsyncTask.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/CreatePipelineAsyncTask.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CreatePipelineAsyncTask.cpp
+  source_name_part = CreatePipelineAsyncTask
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Device.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Device.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Device.cpp
+  source_name_part = Device
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DynamicUploader.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/DynamicUploader.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = DynamicUploader.cpp
+  source_name_part = DynamicUploader
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/EncodingContext.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/EncodingContext.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = EncodingContext.cpp
+  source_name_part = EncodingContext
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Error.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Error.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Error.cpp
+  source_name_part = Error
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorData.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ErrorData.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ErrorData.cpp
+  source_name_part = ErrorData
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorInjector.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ErrorInjector.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ErrorInjector.cpp
+  source_name_part = ErrorInjector
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorScope.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ErrorScope.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ErrorScope.cpp
+  source_name_part = ErrorScope
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ExternalTexture.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ExternalTexture.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ExternalTexture.cpp
+  source_name_part = ExternalTexture
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Features.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Features.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Features.cpp
+  source_name_part = Features
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Format.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Format.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Format.cpp
+  source_name_part = Format
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/IndirectDrawMetadata.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/IndirectDrawMetadata.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = IndirectDrawMetadata.cpp
+  source_name_part = IndirectDrawMetadata
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/IndirectDrawValidationEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/IndirectDrawValidationEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = IndirectDrawValidationEncoder.cpp
+  source_name_part = IndirectDrawValidationEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Instance.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Instance.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Instance.cpp
+  source_name_part = Instance
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/InternalPipelineStore.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/InternalPipelineStore.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = InternalPipelineStore.cpp
+  source_name_part = InternalPipelineStore
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Limits.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Limits.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Limits.cpp
+  source_name_part = Limits
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectBase.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ObjectBase.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ObjectBase.cpp
+  source_name_part = ObjectBase
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectContentHasher.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ObjectContentHasher.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ObjectContentHasher.cpp
+  source_name_part = ObjectContentHasher
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PassResourceUsage.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PassResourceUsage.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PassResourceUsage.cpp
+  source_name_part = PassResourceUsage
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PassResourceUsageTracker.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PassResourceUsageTracker.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PassResourceUsageTracker.cpp
+  source_name_part = PassResourceUsageTracker
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PerStage.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PerStage.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PerStage.cpp
+  source_name_part = PerStage
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Pipeline.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Pipeline.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Pipeline.cpp
+  source_name_part = Pipeline
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineCache.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PipelineCache.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineCache.cpp
+  source_name_part = PipelineCache
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayout.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PipelineLayout.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineLayout.cpp
+  source_name_part = PipelineLayout
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PooledResourceMemoryAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/PooledResourceMemoryAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PooledResourceMemoryAllocator.cpp
+  source_name_part = PooledResourceMemoryAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ProgrammableEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ProgrammableEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ProgrammableEncoder.cpp
+  source_name_part = ProgrammableEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueryHelper.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/QueryHelper.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QueryHelper.cpp
+  source_name_part = QueryHelper
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySet.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/QuerySet.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QuerySet.cpp
+  source_name_part = QuerySet
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Queue.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Queue.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Queue.cpp
+  source_name_part = Queue
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RefCountedWithExternalCount.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RefCountedWithExternalCount.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RefCountedWithExternalCount.cpp
+  source_name_part = RefCountedWithExternalCount
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderBundle.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RenderBundle.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderBundle.cpp
+  source_name_part = RenderBundle
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderBundleEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RenderBundleEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderBundleEncoder.cpp
+  source_name_part = RenderBundleEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderEncoderBase.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RenderEncoderBase.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderEncoderBase.cpp
+  source_name_part = RenderEncoderBase
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPassEncoder.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RenderPassEncoder.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderPassEncoder.cpp
+  source_name_part = RenderPassEncoder
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipeline.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RenderPipeline.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderPipeline.cpp
+  source_name_part = RenderPipeline
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceMemoryAllocation.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ResourceMemoryAllocation.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ResourceMemoryAllocation.cpp
+  source_name_part = ResourceMemoryAllocation
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RingBufferAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/RingBufferAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RingBufferAllocator.cpp
+  source_name_part = RingBufferAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Sampler.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Sampler.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Sampler.cpp
+  source_name_part = Sampler
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ScratchBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ScratchBuffer.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ScratchBuffer.cpp
+  source_name_part = ScratchBuffer
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModule.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/ShaderModule.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ShaderModule.cpp
+  source_name_part = ShaderModule
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/StreamImplTint.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/StreamImplTint.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = StreamImplTint.cpp
+  source_name_part = StreamImplTint
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Subresource.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Subresource.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Subresource.cpp
+  source_name_part = Subresource
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Surface.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Surface.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Surface.cpp
+  source_name_part = Surface
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChain.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/SwapChain.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SwapChain.cpp
+  source_name_part = SwapChain
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Texture.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Texture.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Texture.cpp
+  source_name_part = Texture
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TintUtils.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/TintUtils.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = TintUtils.cpp
+  source_name_part = TintUtils
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Toggles.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/Toggles.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Toggles.cpp
+  source_name_part = Toggles
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VertexFormat.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/VertexFormat.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = VertexFormat.cpp
+  source_name_part = VertexFormat
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlobSource.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/stream/BlobSource.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BlobSource.cpp
+  source_name_part = BlobSource
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ByteVectorSink.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/stream/ByteVectorSink.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ByteVectorSink.cpp
+  source_name_part = ByteVectorSink
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Stream.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/stream/Stream.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = Stream.cpp
+  source_name_part = Stream
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/WGPUHelpers.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/utils/WGPUHelpers.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = WGPUHelpers.cpp
+  source_name_part = WGPUHelpers
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_absl_format.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/webgpu_absl_format.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = webgpu_absl_format.cpp
+  source_name_part = webgpu_absl_format
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/XlibXcbFunctions.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/XlibXcbFunctions.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = XlibXcbFunctions.cpp
+  source_name_part = XlibXcbFunctions
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceNull.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/null/DeviceNull.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = DeviceNull.cpp
+  source_name_part = DeviceNull
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SpirvValidation.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/SpirvValidation.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SpirvValidation.cpp
+  source_name_part = SpirvValidation
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLFunctionsBase_autogen.o: clang_x64_v8_arm64_cxx clang_x64_v8_arm64/gen/third_party/dawn/src/dawn/native/opengl/OpenGLFunctionsBase_autogen.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = OpenGLFunctionsBase_autogen.cpp
+  source_name_part = OpenGLFunctionsBase_autogen
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AdapterGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/AdapterGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = AdapterGL.cpp
+  source_name_part = AdapterGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/BackendGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BackendGL.cpp
+  source_name_part = BackendGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/BindGroupGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroupGL.cpp
+  source_name_part = BindGroupGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayoutGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/BindGroupLayoutGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroupLayoutGL.cpp
+  source_name_part = BindGroupLayoutGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BufferGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/BufferGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BufferGL.cpp
+  source_name_part = BufferGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/CommandBufferGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandBufferGL.cpp
+  source_name_part = CommandBufferGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipelineGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/ComputePipelineGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ComputePipelineGL.cpp
+  source_name_part = ComputePipelineGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ContextEGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/ContextEGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ContextEGL.cpp
+  source_name_part = ContextEGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/DeviceGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = DeviceGL.cpp
+  source_name_part = DeviceGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/EGLFunctions.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/EGLFunctions.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = EGLFunctions.cpp
+  source_name_part = EGLFunctions
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/GLFormat.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/GLFormat.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = GLFormat.cpp
+  source_name_part = GLFormat
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/NativeSwapChainImplGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/NativeSwapChainImplGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = NativeSwapChainImplGL.cpp
+  source_name_part = NativeSwapChainImplGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLFunctions.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/OpenGLFunctions.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = OpenGLFunctions.cpp
+  source_name_part = OpenGLFunctions
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLVersion.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/OpenGLVersion.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = OpenGLVersion.cpp
+  source_name_part = OpenGLVersion
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PersistentPipelineStateGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/PersistentPipelineStateGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PersistentPipelineStateGL.cpp
+  source_name_part = PersistentPipelineStateGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/PipelineGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineGL.cpp
+  source_name_part = PipelineGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayoutGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/PipelineLayoutGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineLayoutGL.cpp
+  source_name_part = PipelineLayoutGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySetGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/QuerySetGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QuerySetGL.cpp
+  source_name_part = QuerySetGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueueGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/QueueGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QueueGL.cpp
+  source_name_part = QueueGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipelineGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/RenderPipelineGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderPipelineGL.cpp
+  source_name_part = RenderPipelineGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SamplerGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/SamplerGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SamplerGL.cpp
+  source_name_part = SamplerGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModuleGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/ShaderModuleGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ShaderModuleGL.cpp
+  source_name_part = ShaderModuleGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChainGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/SwapChainGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SwapChainGL.cpp
+  source_name_part = SwapChainGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TextureGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/TextureGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = TextureGL.cpp
+  source_name_part = TextureGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsEGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/UtilsEGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = UtilsEGL.cpp
+  source_name_part = UtilsEGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsGL.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/opengl/UtilsGL.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = UtilsGL.cpp
+  source_name_part = UtilsGL
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AdapterVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/AdapterVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = AdapterVk.cpp
+  source_name_part = AdapterVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/BackendVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BackendVk.cpp
+  source_name_part = BackendVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayoutVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/BindGroupLayoutVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroupLayoutVk.cpp
+  source_name_part = BindGroupLayoutVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/BindGroupVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BindGroupVk.cpp
+  source_name_part = BindGroupVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BufferVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/BufferVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = BufferVk.cpp
+  source_name_part = BufferVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/CommandBufferVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = CommandBufferVk.cpp
+  source_name_part = CommandBufferVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipelineVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/ComputePipelineVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ComputePipelineVk.cpp
+  source_name_part = ComputePipelineVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DescriptorSetAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/DescriptorSetAllocator.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = DescriptorSetAllocator.cpp
+  source_name_part = DescriptorSetAllocator
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/DeviceVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = DeviceVk.cpp
+  source_name_part = DeviceVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/FencedDeleter.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/FencedDeleter.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = FencedDeleter.cpp
+  source_name_part = FencedDeleter
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/NativeSwapChainImplVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/NativeSwapChainImplVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = NativeSwapChainImplVk.cpp
+  source_name_part = NativeSwapChainImplVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineCacheVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/PipelineCacheVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineCacheVk.cpp
+  source_name_part = PipelineCacheVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayoutVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/PipelineLayoutVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = PipelineLayoutVk.cpp
+  source_name_part = PipelineLayoutVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySetVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/QuerySetVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QuerySetVk.cpp
+  source_name_part = QuerySetVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueueVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/QueueVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = QueueVk.cpp
+  source_name_part = QueueVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPassCache.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/RenderPassCache.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderPassCache.cpp
+  source_name_part = RenderPassCache
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipelineVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/RenderPipelineVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = RenderPipelineVk.cpp
+  source_name_part = RenderPipelineVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceHeapVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/ResourceHeapVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ResourceHeapVk.cpp
+  source_name_part = ResourceHeapVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceMemoryAllocatorVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/ResourceMemoryAllocatorVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ResourceMemoryAllocatorVk.cpp
+  source_name_part = ResourceMemoryAllocatorVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SamplerVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/SamplerVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SamplerVk.cpp
+  source_name_part = SamplerVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModuleVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/ShaderModuleVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ShaderModuleVk.cpp
+  source_name_part = ShaderModuleVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/StreamImplVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/StreamImplVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = StreamImplVk.cpp
+  source_name_part = StreamImplVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChainVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/SwapChainVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SwapChainVk.cpp
+  source_name_part = SwapChainVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TextureVk.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/TextureVk.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = TextureVk.cpp
+  source_name_part = TextureVk
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsVulkan.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/UtilsVulkan.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = UtilsVulkan.cpp
+  source_name_part = UtilsVulkan
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanError.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/VulkanError.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = VulkanError.cpp
+  source_name_part = VulkanError
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanExtensions.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/VulkanExtensions.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = VulkanExtensions.cpp
+  source_name_part = VulkanExtensions
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanFunctions.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/VulkanFunctions.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = VulkanFunctions.cpp
+  source_name_part = VulkanFunctions
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanInfo.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/VulkanInfo.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = VulkanInfo.cpp
+  source_name_part = VulkanInfo
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/MemoryService.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/external_memory/MemoryService.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = MemoryService.cpp
+  source_name_part = MemoryService
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SemaphoreService.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/external_semaphore/SemaphoreService.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = SemaphoreService.cpp
+  source_name_part = SemaphoreService
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ServiceImplementation.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/external_semaphore/ServiceImplementation.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ServiceImplementation.cpp
+  source_name_part = ServiceImplementation
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ServiceImplementationFD.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/external_semaphore/ServiceImplementationFD.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = ServiceImplementationFD.cpp
+  source_name_part = ServiceImplementationFD
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/MemoryServiceOpaqueFD.o: clang_x64_v8_arm64_cxx ../../third_party/dawn/src/dawn/native/vulkan/external_memory/MemoryServiceOpaqueFD.cpp || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.inputdeps.stamp
+  source_file_part = MemoryServiceOpaqueFD.cpp
+  source_name_part = MemoryServiceOpaqueFD
+
+build clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ChainUtils_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ProcTable.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/wgpu_structs_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ValidationUtils_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_absl_format_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_StreamImpl_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectType_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Adapter.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ApplyClearColorValueWithDrawHelper.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AsyncTask.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AttachmentState.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendConnection.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroup.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayout.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindingInfo.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlitBufferToDepthStencil.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlitDepthToDepth.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Blob.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlobCache.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BuddyAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BuddyMemoryAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Buffer.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CacheKey.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CacheRequest.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CachedObject.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CallbackTaskManager.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBuffer.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferStateTracker.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandValidation.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Commands.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CompilationMessages.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePassEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipeline.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CopyTextureForBrowserHelper.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CreatePipelineAsyncTask.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Device.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DynamicUploader.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/EncodingContext.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Error.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorData.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorInjector.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ErrorScope.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ExternalTexture.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Features.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Format.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/IndirectDrawMetadata.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/IndirectDrawValidationEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Instance.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/InternalPipelineStore.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Limits.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectBase.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ObjectContentHasher.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PassResourceUsage.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PassResourceUsageTracker.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PerStage.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Pipeline.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineCache.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayout.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PooledResourceMemoryAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ProgrammableEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueryHelper.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySet.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Queue.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RefCountedWithExternalCount.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderBundle.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderBundleEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderEncoderBase.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPassEncoder.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipeline.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceMemoryAllocation.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RingBufferAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Sampler.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ScratchBuffer.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModule.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/StreamImplTint.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Subresource.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Surface.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChain.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Texture.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TintUtils.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Toggles.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VertexFormat.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BlobSource.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ByteVectorSink.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/Stream.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/WGPUHelpers.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/webgpu_absl_format.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/XlibXcbFunctions.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceNull.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SpirvValidation.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLFunctionsBase_autogen.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AdapterGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayoutGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BufferGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipelineGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ContextEGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/EGLFunctions.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/GLFormat.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/NativeSwapChainImplGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLFunctions.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/OpenGLVersion.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PersistentPipelineStateGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayoutGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySetGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueueGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipelineGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SamplerGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModuleGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChainGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TextureGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsEGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsGL.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/AdapterVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BackendVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupLayoutVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BindGroupVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/BufferVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/CommandBufferVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ComputePipelineVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DescriptorSetAllocator.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/DeviceVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/FencedDeleter.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/NativeSwapChainImplVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineCacheVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/PipelineLayoutVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QuerySetVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/QueueVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPassCache.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/RenderPipelineVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceHeapVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ResourceMemoryAllocatorVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SamplerVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ShaderModuleVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/StreamImplVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SwapChainVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/TextureVk.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/UtilsVulkan.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanError.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanExtensions.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanFunctions.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/VulkanInfo.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/MemoryService.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/SemaphoreService.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ServiceImplementation.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/ServiceImplementationFD.o clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/sources/MemoryServiceOpaqueFD.o || clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/abseil.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/platform/platform.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/opengl_loader_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/third_party/khronos/khronos_platform.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/headers.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/utils_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/common/libcommon.a clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_opt.a clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_val.a clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-tools/src/vulkan_tools_headers.stamp clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/libdawn_platform.so.TOC clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/cpp_headers.stamp clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/headers.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_ast_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_ast_hdrs.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_base_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_text_src.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_builtins_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_clone_context_hdrs.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_type_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_program_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_constant_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_sem_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_demangler_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_initializer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_inspector_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_transform_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_writer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_spv_writer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_wgsl_reader_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_reader_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_wgsl_writer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_msl_writer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_hlsl_writer_src.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/tint/libtint_glsl_writer_src.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a clang_x64_v8_arm64/libvulkan.so.1.TOC clang_x64_v8_arm64/libvk_swiftshader.so.TOC clang_x64_v8_arm64/libEGL.so.TOC clang_x64_v8_arm64/libGLESv2.so.TOC

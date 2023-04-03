@@ -1,0 +1,4 @@
+clang_x64_v8_arm64/gen/ui/resources/grit/webui_resources.h
+clang_x64_v8_arm64/gen/ui/resources/grit/webui_resources_map.cc
+clang_x64_v8_arm64/gen/ui/resources/grit/webui_resources_map.h
+clang_x64_v8_arm64/gen/ui/resources/webui_resources.pak

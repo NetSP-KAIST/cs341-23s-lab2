@@ -1,0 +1,58 @@
+defines = -DAVIF_LIBYUV_ENABLED -DAVIF_CODEC_DAV1D -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCONFIG_LOG=1 -DHAVE_PTHREAD_GETAFFINITY_NP=1 -DHAVE_PTHREAD_SETAFFINITY_NP=1 -DDAV1D_API=
+include_dirs = -I../../third_party/libavif/src/include -I../../third_party/dav1d/libdav1d/include -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/libyuv/include -I../../third_party/dav1d/version
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_arm64-sysroot
+label_name = libavif
+target_out_dir = obj/third_party/libavif
+target_output_name = libavif
+
+build obj/third_party/libavif/libavif/alpha.o: cc ../../third_party/libavif/src/src/alpha.c
+  source_file_part = alpha.c
+  source_name_part = alpha
+build obj/third_party/libavif/libavif/avif.o: cc ../../third_party/libavif/src/src/avif.c
+  source_file_part = avif.c
+  source_name_part = avif
+build obj/third_party/libavif/libavif/colr.o: cc ../../third_party/libavif/src/src/colr.c
+  source_file_part = colr.c
+  source_name_part = colr
+build obj/third_party/libavif/libavif/diag.o: cc ../../third_party/libavif/src/src/diag.c
+  source_file_part = diag.c
+  source_name_part = diag
+build obj/third_party/libavif/libavif/io.o: cc ../../third_party/libavif/src/src/io.c
+  source_file_part = io.c
+  source_name_part = io
+build obj/third_party/libavif/libavif/mem.o: cc ../../third_party/libavif/src/src/mem.c
+  source_file_part = mem.c
+  source_name_part = mem
+build obj/third_party/libavif/libavif/obu.o: cc ../../third_party/libavif/src/src/obu.c
+  source_file_part = obu.c
+  source_name_part = obu
+build obj/third_party/libavif/libavif/rawdata.o: cc ../../third_party/libavif/src/src/rawdata.c
+  source_file_part = rawdata.c
+  source_name_part = rawdata
+build obj/third_party/libavif/libavif/read.o: cc ../../third_party/libavif/src/src/read.c
+  source_file_part = read.c
+  source_name_part = read
+build obj/third_party/libavif/libavif/reformat.o: cc ../../third_party/libavif/src/src/reformat.c
+  source_file_part = reformat.c
+  source_name_part = reformat
+build obj/third_party/libavif/libavif/reformat_libsharpyuv.o: cc ../../third_party/libavif/src/src/reformat_libsharpyuv.c
+  source_file_part = reformat_libsharpyuv.c
+  source_name_part = reformat_libsharpyuv
+build obj/third_party/libavif/libavif/reformat_libyuv.o: cc ../../third_party/libavif/src/src/reformat_libyuv.c
+  source_file_part = reformat_libyuv.c
+  source_name_part = reformat_libyuv
+build obj/third_party/libavif/libavif/scale.o: cc ../../third_party/libavif/src/src/scale.c
+  source_file_part = scale.c
+  source_name_part = scale
+build obj/third_party/libavif/libavif/stream.o: cc ../../third_party/libavif/src/src/stream.c
+  source_file_part = stream.c
+  source_name_part = stream
+build obj/third_party/libavif/libavif/utils.o: cc ../../third_party/libavif/src/src/utils.c
+  source_file_part = utils.c
+  source_name_part = utils
+build obj/third_party/libavif/libavif/codec_dav1d.o: cc ../../third_party/libavif/src/src/codec_dav1d.c
+  source_file_part = codec_dav1d.c
+  source_name_part = codec_dav1d
+
+build obj/third_party/libavif/libavif.stamp: stamp obj/third_party/libavif/libavif/alpha.o obj/third_party/libavif/libavif/avif.o obj/third_party/libavif/libavif/colr.o obj/third_party/libavif/libavif/diag.o obj/third_party/libavif/libavif/io.o obj/third_party/libavif/libavif/mem.o obj/third_party/libavif/libavif/obu.o obj/third_party/libavif/libavif/rawdata.o obj/third_party/libavif/libavif/read.o obj/third_party/libavif/libavif/reformat.o obj/third_party/libavif/libavif/reformat_libsharpyuv.o obj/third_party/libavif/libavif/reformat_libyuv.o obj/third_party/libavif/libavif/scale.o obj/third_party/libavif/libavif/stream.o obj/third_party/libavif/libavif/utils.o obj/third_party/libavif/libavif/codec_dav1d.o || obj/third_party/libyuv/libyuv.stamp obj/third_party/dav1d/libdav1d.a obj/third_party/libyuv/libyuv_internal.a obj/third_party/libyuv/libyuv_neon.a obj/third_party/libjpeg_turbo/libjpeg.a obj/third_party/libjpeg_turbo/libjpeg_headers.stamp obj/third_party/libjpeg_turbo/libsimd.a obj/third_party/dav1d/libdav1d_10bit.a obj/third_party/dav1d/dav1d_headers.stamp obj/third_party/dav1d/libdav1d_8bit.a obj/third_party/dav1d/libdav1d_arm.a

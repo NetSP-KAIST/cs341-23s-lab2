@@ -1,0 +1,6 @@
+clang_x64_v8_arm64/gen/ui/resources/grit/ui_resources.h
+clang_x64_v8_arm64/gen/ui/resources/grit/ui_resources_map.cc
+clang_x64_v8_arm64/gen/ui/resources/grit/ui_resources_map.h
+clang_x64_v8_arm64/gen/ui/resources/ui_resources_100_percent.pak
+clang_x64_v8_arm64/gen/ui/resources/ui_resources_200_percent.pak
+clang_x64_v8_arm64/gen/ui/resources/ui_resources_300_percent.pak

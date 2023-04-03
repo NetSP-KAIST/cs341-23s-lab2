@@ -1,0 +1,171 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DIS_PARTITION_ALLOC_IMPL
+include_dirs = -I../.. -Iclang_x64/gen -I../../buildtools/third_party/libc++
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = partition_alloc
+target_out_dir = clang_x64/obj/base/allocator/partition_allocator
+target_output_name = libbase_allocator_partition_allocator_partition_alloc
+
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp: clang_x64_stamp clang_x64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_pool_manager.o: clang_x64_cxx ../../base/allocator/partition_allocator/address_pool_manager.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = address_pool_manager.cc
+  source_name_part = address_pool_manager
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_pool_manager_bitmap.o: clang_x64_cxx ../../base/allocator/partition_allocator/address_pool_manager_bitmap.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = address_pool_manager_bitmap.cc
+  source_name_part = address_pool_manager_bitmap
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_space_randomization.o: clang_x64_cxx ../../base/allocator/partition_allocator/address_space_randomization.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = address_space_randomization.cc
+  source_name_part = address_space_randomization
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/allocation_guard.o: clang_x64_cxx ../../base/allocator/partition_allocator/allocation_guard.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = allocation_guard.cc
+  source_name_part = allocation_guard
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/compressed_pointer.o: clang_x64_cxx ../../base/allocator/partition_allocator/compressed_pointer.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = compressed_pointer.cc
+  source_name_part = compressed_pointer
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/dangling_raw_ptr_checks.o: clang_x64_cxx ../../base/allocator/partition_allocator/dangling_raw_ptr_checks.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = dangling_raw_ptr_checks.cc
+  source_name_part = dangling_raw_ptr_checks
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/gwp_asan_support.o: clang_x64_cxx ../../base/allocator/partition_allocator/gwp_asan_support.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = gwp_asan_support.cc
+  source_name_part = gwp_asan_support
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/memory_reclaimer.o: clang_x64_cxx ../../base/allocator/partition_allocator/memory_reclaimer.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = memory_reclaimer.cc
+  source_name_part = memory_reclaimer
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/oom.o: clang_x64_cxx ../../base/allocator/partition_allocator/oom.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = oom.cc
+  source_name_part = oom
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/oom_callback.o: clang_x64_cxx ../../base/allocator/partition_allocator/oom_callback.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = oom_callback.cc
+  source_name_part = oom_callback
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/page_allocator.o: clang_x64_cxx ../../base/allocator/partition_allocator/page_allocator.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = page_allocator.cc
+  source_name_part = page_allocator
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_address_space.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_address_space.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_address_space.cc
+  source_name_part = partition_address_space
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_alloc.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_alloc.cc
+  source_name_part = partition_alloc
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/check.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/check.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = check.cc
+  source_name_part = check
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/cpu.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/cpu.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = cpu.cc
+  source_name_part = cpu
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/alias.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/debug/alias.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = alias.cc
+  source_name_part = alias
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/logging.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/logging.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = logging.cc
+  source_name_part = logging
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/ref_counted.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/memory/ref_counted.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = ref_counted.cc
+  source_name_part = ref_counted
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/rand_util.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/rand_util.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = rand_util.cc
+  source_name_part = rand_util
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stringprintf.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/strings/stringprintf.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = stringprintf.cc
+  source_name_part = stringprintf
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/platform_thread.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/threading/platform_thread.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = platform_thread.cc
+  source_name_part = platform_thread
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/time/time.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = time.cc
+  source_name_part = time
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_override.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/time/time_override.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = time_override.cc
+  source_name_part = time_override
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_alloc_hooks.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_hooks.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_alloc_hooks.cc
+  source_name_part = partition_alloc_hooks
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_bucket.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_bucket.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_bucket.cc
+  source_name_part = partition_bucket
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_oom.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_oom.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_oom.cc
+  source_name_part = partition_oom
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_page.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_page.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_page.cc
+  source_name_part = partition_page
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_root.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_root.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_root.cc
+  source_name_part = partition_root
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_stats.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_stats.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = partition_stats.cc
+  source_name_part = partition_stats
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pkey.o: clang_x64_cxx ../../base/allocator/partition_allocator/pkey.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = pkey.cc
+  source_name_part = pkey
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/random.o: clang_x64_cxx ../../base/allocator/partition_allocator/random.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = random.cc
+  source_name_part = random
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/reservation_offset_table.o: clang_x64_cxx ../../base/allocator/partition_allocator/reservation_offset_table.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = reservation_offset_table.cc
+  source_name_part = reservation_offset_table
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/spinning_mutex.o: clang_x64_cxx ../../base/allocator/partition_allocator/spinning_mutex.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = spinning_mutex.cc
+  source_name_part = spinning_mutex
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/tagging.o: clang_x64_cxx ../../base/allocator/partition_allocator/tagging.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = tagging.cc
+  source_name_part = tagging
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/thread_cache.o: clang_x64_cxx ../../base/allocator/partition_allocator/thread_cache.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = thread_cache.cc
+  source_name_part = thread_cache
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/metadata_allocator.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/metadata_allocator.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = metadata_allocator.cc
+  source_name_part = metadata_allocator
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/pcscan.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = pcscan.cc
+  source_name_part = pcscan
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan_internal.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/pcscan_internal.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = pcscan_internal.cc
+  source_name_part = pcscan_internal
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan_scheduling.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/pcscan_scheduling.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = pcscan_scheduling.cc
+  source_name_part = pcscan_scheduling
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/snapshot.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/snapshot.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = snapshot.cc
+  source_name_part = snapshot
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stack.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/stack/stack.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = stack.cc
+  source_name_part = stack
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stats_collector.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/stats_collector.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = stats_collector.cc
+  source_name_part = stats_collector
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/write_protector.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/write_protector.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = write_protector.cc
+  source_name_part = write_protector
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/page_allocator_internals_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/page_allocator_internals_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = page_allocator_internals_posix.cc
+  source_name_part = page_allocator_internals_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/file_util_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/files/file_util_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = file_util_posix.cc
+  source_name_part = file_util_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/safe_strerror.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/posix/safe_strerror.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = safe_strerror.cc
+  source_name_part = safe_strerror
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/rand_util_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/rand_util_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = rand_util_posix.cc
+  source_name_part = rand_util_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/platform_thread_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/threading/platform_thread_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = platform_thread_posix.cc
+  source_name_part = platform_thread_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_conversion_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/time/time_conversion_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = time_conversion_posix.cc
+  source_name_part = time_conversion_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_now_posix.o: clang_x64_cxx ../../base/allocator/partition_allocator/partition_alloc_base/time/time_now_posix.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = time_now_posix.cc
+  source_name_part = time_now_posix
+build clang_x64/obj/base/allocator/partition_allocator/partition_alloc/push_registers_asm.o: clang_x64_cxx ../../base/allocator/partition_allocator/starscan/stack/asm/x64/push_registers_asm.cc || clang_x64/obj/base/allocator/partition_allocator/partition_alloc.inputdeps.stamp
+  source_file_part = push_registers_asm.cc
+  source_name_part = push_registers_asm
+
+build clang_x64/libbase_allocator_partition_allocator_partition_alloc.so clang_x64/libbase_allocator_partition_allocator_partition_alloc.so.TOC: clang_x64_solink clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_pool_manager.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_pool_manager_bitmap.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/address_space_randomization.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/allocation_guard.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/compressed_pointer.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/dangling_raw_ptr_checks.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/gwp_asan_support.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/memory_reclaimer.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/oom.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/oom_callback.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/page_allocator.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_address_space.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_alloc.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/check.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/cpu.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/alias.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/logging.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/ref_counted.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/rand_util.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stringprintf.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/platform_thread.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_override.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_alloc_hooks.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_bucket.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_oom.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_page.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_root.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/partition_stats.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pkey.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/random.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/reservation_offset_table.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/spinning_mutex.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/tagging.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/thread_cache.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/metadata_allocator.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan_internal.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/pcscan_scheduling.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/snapshot.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stack.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/stats_collector.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/write_protector.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/page_allocator_internals_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/file_util_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/safe_strerror.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/rand_util_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/platform_thread_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_conversion_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/time_now_posix.o clang_x64/obj/base/allocator/partition_allocator/partition_alloc/push_registers_asm.o | clang_x64/libc++.so.TOC || clang_x64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp clang_x64/obj/build/config/shared_library_deps.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = clang_x64
+  solibs = clang_x64/libc++.so

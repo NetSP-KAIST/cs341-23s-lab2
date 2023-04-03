@@ -1,0 +1,100 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Iclang_x64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Iclang_x64/gen/third_party/perfetto/build_config -Iclang_x64/gen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = base
+target_out_dir = clang_x64/obj/third_party/perfetto/src/base
+target_output_name = base
+
+build clang_x64/obj/third_party/perfetto/src/base/base/android_utils.o: clang_x64_cxx ../../third_party/perfetto/src/base/android_utils.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = android_utils.cc
+  source_name_part = android_utils
+build clang_x64/obj/third_party/perfetto/src/base/base/base64.o: clang_x64_cxx ../../third_party/perfetto/src/base/base64.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = base64.cc
+  source_name_part = base64
+build clang_x64/obj/third_party/perfetto/src/base/base/crash_keys.o: clang_x64_cxx ../../third_party/perfetto/src/base/crash_keys.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = crash_keys.cc
+  source_name_part = crash_keys
+build clang_x64/obj/third_party/perfetto/src/base/base/ctrl_c_handler.o: clang_x64_cxx ../../third_party/perfetto/src/base/ctrl_c_handler.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = ctrl_c_handler.cc
+  source_name_part = ctrl_c_handler
+build clang_x64/obj/third_party/perfetto/src/base/base/event_fd.o: clang_x64_cxx ../../third_party/perfetto/src/base/event_fd.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = event_fd.cc
+  source_name_part = event_fd
+build clang_x64/obj/third_party/perfetto/src/base/base/file_utils.o: clang_x64_cxx ../../third_party/perfetto/src/base/file_utils.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = file_utils.cc
+  source_name_part = file_utils
+build clang_x64/obj/third_party/perfetto/src/base/base/getopt_compat.o: clang_x64_cxx ../../third_party/perfetto/src/base/getopt_compat.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = getopt_compat.cc
+  source_name_part = getopt_compat
+build clang_x64/obj/third_party/perfetto/src/base/base/logging.o: clang_x64_cxx ../../third_party/perfetto/src/base/logging.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = logging.cc
+  source_name_part = logging
+build clang_x64/obj/third_party/perfetto/src/base/base/metatrace.o: clang_x64_cxx ../../third_party/perfetto/src/base/metatrace.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = metatrace.cc
+  source_name_part = metatrace
+build clang_x64/obj/third_party/perfetto/src/base/base/paged_memory.o: clang_x64_cxx ../../third_party/perfetto/src/base/paged_memory.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = paged_memory.cc
+  source_name_part = paged_memory
+build clang_x64/obj/third_party/perfetto/src/base/base/periodic_task.o: clang_x64_cxx ../../third_party/perfetto/src/base/periodic_task.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = periodic_task.cc
+  source_name_part = periodic_task
+build clang_x64/obj/third_party/perfetto/src/base/base/pipe.o: clang_x64_cxx ../../third_party/perfetto/src/base/pipe.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = pipe.cc
+  source_name_part = pipe
+build clang_x64/obj/third_party/perfetto/src/base/base/status.o: clang_x64_cxx ../../third_party/perfetto/src/base/status.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = status.cc
+  source_name_part = status
+build clang_x64/obj/third_party/perfetto/src/base/base/string_splitter.o: clang_x64_cxx ../../third_party/perfetto/src/base/string_splitter.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = string_splitter.cc
+  source_name_part = string_splitter
+build clang_x64/obj/third_party/perfetto/src/base/base/string_utils.o: clang_x64_cxx ../../third_party/perfetto/src/base/string_utils.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = string_utils.cc
+  source_name_part = string_utils
+build clang_x64/obj/third_party/perfetto/src/base/base/string_view.o: clang_x64_cxx ../../third_party/perfetto/src/base/string_view.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = string_view.cc
+  source_name_part = string_view
+build clang_x64/obj/third_party/perfetto/src/base/base/temp_file.o: clang_x64_cxx ../../third_party/perfetto/src/base/temp_file.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = temp_file.cc
+  source_name_part = temp_file
+build clang_x64/obj/third_party/perfetto/src/base/base/thread_checker.o: clang_x64_cxx ../../third_party/perfetto/src/base/thread_checker.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = thread_checker.cc
+  source_name_part = thread_checker
+build clang_x64/obj/third_party/perfetto/src/base/base/thread_utils.o: clang_x64_cxx ../../third_party/perfetto/src/base/thread_utils.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = thread_utils.cc
+  source_name_part = thread_utils
+build clang_x64/obj/third_party/perfetto/src/base/base/time.o: clang_x64_cxx ../../third_party/perfetto/src/base/time.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = time.cc
+  source_name_part = time
+build clang_x64/obj/third_party/perfetto/src/base/base/utils.o: clang_x64_cxx ../../third_party/perfetto/src/base/utils.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = utils.cc
+  source_name_part = utils
+build clang_x64/obj/third_party/perfetto/src/base/base/uuid.o: clang_x64_cxx ../../third_party/perfetto/src/base/uuid.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = uuid.cc
+  source_name_part = uuid
+build clang_x64/obj/third_party/perfetto/src/base/base/virtual_destructors.o: clang_x64_cxx ../../third_party/perfetto/src/base/virtual_destructors.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = virtual_destructors.cc
+  source_name_part = virtual_destructors
+build clang_x64/obj/third_party/perfetto/src/base/base/waitable_event.o: clang_x64_cxx ../../third_party/perfetto/src/base/waitable_event.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = waitable_event.cc
+  source_name_part = waitable_event
+build clang_x64/obj/third_party/perfetto/src/base/base/watchdog_posix.o: clang_x64_cxx ../../third_party/perfetto/src/base/watchdog_posix.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = watchdog_posix.cc
+  source_name_part = watchdog_posix
+build clang_x64/obj/third_party/perfetto/src/base/base/thread_task_runner.o: clang_x64_cxx ../../third_party/perfetto/src/base/thread_task_runner.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = thread_task_runner.cc
+  source_name_part = thread_task_runner
+build clang_x64/obj/third_party/perfetto/src/base/base/unix_task_runner.o: clang_x64_cxx ../../third_party/perfetto/src/base/unix_task_runner.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = unix_task_runner.cc
+  source_name_part = unix_task_runner
+build clang_x64/obj/third_party/perfetto/src/base/base/subprocess.o: clang_x64_cxx ../../third_party/perfetto/src/base/subprocess.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = subprocess.cc
+  source_name_part = subprocess
+build clang_x64/obj/third_party/perfetto/src/base/base/subprocess_posix.o: clang_x64_cxx ../../third_party/perfetto/src/base/subprocess_posix.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = subprocess_posix.cc
+  source_name_part = subprocess_posix
+build clang_x64/obj/third_party/perfetto/src/base/base/subprocess_windows.o: clang_x64_cxx ../../third_party/perfetto/src/base/subprocess_windows.cc || clang_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp
+  source_file_part = subprocess_windows.cc
+  source_name_part = subprocess_windows
+
+build clang_x64/obj/third_party/perfetto/src/base/base.stamp: clang_x64_stamp clang_x64/obj/third_party/perfetto/src/base/base/android_utils.o clang_x64/obj/third_party/perfetto/src/base/base/base64.o clang_x64/obj/third_party/perfetto/src/base/base/crash_keys.o clang_x64/obj/third_party/perfetto/src/base/base/ctrl_c_handler.o clang_x64/obj/third_party/perfetto/src/base/base/event_fd.o clang_x64/obj/third_party/perfetto/src/base/base/file_utils.o clang_x64/obj/third_party/perfetto/src/base/base/getopt_compat.o clang_x64/obj/third_party/perfetto/src/base/base/logging.o clang_x64/obj/third_party/perfetto/src/base/base/metatrace.o clang_x64/obj/third_party/perfetto/src/base/base/paged_memory.o clang_x64/obj/third_party/perfetto/src/base/base/periodic_task.o clang_x64/obj/third_party/perfetto/src/base/base/pipe.o clang_x64/obj/third_party/perfetto/src/base/base/status.o clang_x64/obj/third_party/perfetto/src/base/base/string_splitter.o clang_x64/obj/third_party/perfetto/src/base/base/string_utils.o clang_x64/obj/third_party/perfetto/src/base/base/string_view.o clang_x64/obj/third_party/perfetto/src/base/base/temp_file.o clang_x64/obj/third_party/perfetto/src/base/base/thread_checker.o clang_x64/obj/third_party/perfetto/src/base/base/thread_utils.o clang_x64/obj/third_party/perfetto/src/base/base/time.o clang_x64/obj/third_party/perfetto/src/base/base/utils.o clang_x64/obj/third_party/perfetto/src/base/base/uuid.o clang_x64/obj/third_party/perfetto/src/base/base/virtual_destructors.o clang_x64/obj/third_party/perfetto/src/base/base/waitable_event.o clang_x64/obj/third_party/perfetto/src/base/base/watchdog_posix.o clang_x64/obj/third_party/perfetto/src/base/base/thread_task_runner.o clang_x64/obj/third_party/perfetto/src/base/base/unix_task_runner.o clang_x64/obj/third_party/perfetto/src/base/base/subprocess.o clang_x64/obj/third_party/perfetto/src/base/base/subprocess_posix.o clang_x64/obj/third_party/perfetto/src/base/base/subprocess_windows.o || clang_x64/obj/third_party/perfetto/include/perfetto/base/base.stamp clang_x64/obj/third_party/perfetto/include/perfetto/ext/base/base.stamp clang_x64/obj/third_party/perfetto/gn/base_platform.stamp clang_x64/obj/third_party/perfetto/gn/default_deps.stamp clang_x64/obj/third_party/perfetto/include/perfetto/public/base.stamp clang_x64/obj/third_party/perfetto/include/perfetto/public/abi/base.stamp clang_x64/obj/third_party/perfetto/src/base/perfetto_base_default_platform.stamp

@@ -1,0 +1,452 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DIS_MEDIA_IMPL -DUSE_PULSEAUDIO -DDLOPEN_PULSEAUDIO -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DUSE_EGL -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DLIBYUV_DISABLE_NEON -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DVK_NO_PROTOTYPES -DUSE_VULKAN_XCB
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Iclang_x64_v8_arm64/gen/third_party/perfetto/build_config -Iclang_x64_v8_arm64/gen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/khronos -I../../gpu -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -Iclang_x64_v8_arm64/gen/third_party/dawn/include -I../../third_party/dawn/include -I../../third_party/libyuv/include -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Iclang_x64_v8_arm64/gen/protoc_out -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/mesa_headers -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/ipcz/include -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/linux -I../../third_party/crashpad/crashpad/compat/non_win -I../../third_party/zlib -I../../third_party/ced/src -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -Iclang_x64_v8_arm64/gen/net/third_party/quiche/src -I../../third_party/ffmpeg/chromium/config/Chromium/linux/x64 -I../../third_party/ffmpeg -I../../third_party/libvpx/source/libvpx -I../../third_party/wayland/include -I../../third_party/wayland/src/cursor -I../../third_party/wayland/src/egl -Iclang_x64_v8_arm64/gen/third_party/wayland/src/protocol
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -Wno-redundant-parens -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-redundant-parens -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nss -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nspr
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = base
+target_out_dir = clang_x64_v8_arm64/obj/media/base
+target_output_name = base
+
+build clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/base/anchor_functions_buildflags.stamp clang_x64_v8_arm64/obj/base/build_date.stamp clang_x64_v8_arm64/obj/base/cfi_buildflags.stamp clang_x64_v8_arm64/obj/base/clang_profiling_buildflags.stamp clang_x64_v8_arm64/obj/base/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/feature_list_buildflags.stamp clang_x64_v8_arm64/obj/base/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/base/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/message_pump_buildflags.stamp clang_x64_v8_arm64/obj/base/orderfile_buildflags.stamp clang_x64_v8_arm64/obj/base/power_monitor_buildflags.stamp clang_x64_v8_arm64/obj/base/profiler_buildflags.stamp clang_x64_v8_arm64/obj/base/rust_buildflags.stamp clang_x64_v8_arm64/obj/base/sanitizer_buildflags.stamp clang_x64_v8_arm64/obj/base/synchronization_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_gen.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_zero_gen.stamp clang_x64_v8_arm64/obj/build/blink_buildflags.stamp clang_x64_v8_arm64/obj/build/branding_buildflags.stamp clang_x64_v8_arm64/obj/build/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/build/config/compiler/compiler_buildflags.stamp clang_x64_v8_arm64/obj/build/linux/libudev/udev0_loader_loader.stamp clang_x64_v8_arm64/obj/build/linux/libudev/udev1_loader_loader.stamp clang_x64_v8_arm64/obj/components/crash/core/common/crash_buildflags.stamp clang_x64_v8_arm64/obj/components/exo/wayland/protocol/aura_shell_protocol_gen.stamp clang_x64_v8_arm64/obj/components/exo/wayland/protocol/chrome_color_management_protocol_gen.stamp clang_x64_v8_arm64/obj/components/exo/wayland/protocol/overlay_prioritizer_protocol_gen.stamp clang_x64_v8_arm64/obj/components/exo/wayland/protocol/surface_augmenter_protocol_gen.stamp clang_x64_v8_arm64/obj/components/nacl/common/buildflags.stamp clang_x64_v8_arm64/obj/components/system_media_controls/linux/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/crypto/buildflags.stamp clang_x64_v8_arm64/obj/device/vr/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/gpu/command_buffer/service/disk_cache_proto_gen.stamp clang_x64_v8_arm64/obj/gpu/config/process_json.stamp clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_channel_mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_channel_mojom__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_channel_mojom_shared__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_preferences_interface__generate_message_ids.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_preferences_interface__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/gpu_preferences_interface_shared__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/interfaces__generate_message_ids.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/interfaces__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/interfaces_shared__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/vulkan_interface__generate_message_ids.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/vulkan_interface__generator.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/vulkan_interface_shared__generator.stamp clang_x64_v8_arm64/obj/gpu/vulkan/buildflags.stamp clang_x64_v8_arm64/obj/ipc/ipc_buildflags.stamp clang_x64_v8_arm64/obj/ipc/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ipc/mojom__generator.stamp clang_x64_v8_arm64/obj/ipc/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/media/media_buildflags.stamp clang_x64_v8_arm64/obj/media/gpu/buildflags.stamp clang_x64_v8_arm64/obj/mojo/buildflags.stamp clang_x64_v8_arm64/obj/mojo/public/cpp/bindings/mojo_buildflags.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings__generate_message_ids.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings__generator.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings_shared__generator.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base__generate_message_ids.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base__generator.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base_shared__generator.stamp clang_x64_v8_arm64/obj/net/buildflags.stamp clang_x64_v8_arm64/obj/net/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/net/isolation_info_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_nqe_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_resources_grit.stamp clang_x64_v8_arm64/obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp clang_x64_v8_arm64/obj/net/cert/root_store_proto_lite_gen.stamp clang_x64_v8_arm64/obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_proto_gen.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp clang_x64_v8_arm64/obj/printing/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/constants__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/constants__generator.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/constants_shared__generator.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/services/service_manager/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/tracing/public/cpp/buildflags.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/resource_format__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/resource_format__generator.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/resource_format_shared__generator.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/shared_image_format__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/shared_image_format__generator.stamp clang_x64_v8_arm64/obj/services/viz/public/mojom/shared_image_format_shared__generator.stamp clang_x64_v8_arm64/obj/skia/buildflags.stamp clang_x64_v8_arm64/obj/skia/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/skia/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/skia/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_commit_id.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_program_version_id.stamp clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/include/dawn/headers_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/proc_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/common/dawn_gpu_info_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/common/dawn_version_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/opengl_loader_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/native/utils_gen.stamp clang_x64_v8_arm64/obj/third_party/dawn/src/dawn/wire/gen.stamp clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp clang_x64_v8_arm64/obj/third_party/metrics_proto/metrics_proto_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/gn/gen_buildflags.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/minimal_complete_lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/alpha_compositing_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/content_type_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/cursor_shapes_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/extended_drag_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/gtk_primary_selection_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/gtk_shell_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/idle_inhibit_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/keyboard_extension_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/keyboard_shortcuts_inhibit_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/linux_dmabuf_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/linux_explicit_synchronization_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/org_kde_kwin_idle_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/pointer_constraints_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/pointer_gestures_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/presentation_time_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/primary_selection_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/relative_pointer_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/stylus_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/text_input_extension_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/text_input_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/touchpad_haptics_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/viewporter_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/wayland_drm_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/xdg_activation_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/xdg_decoration_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/xdg_foreign_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/xdg_output_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland-protocols/xdg_shell_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_client_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_protocol_c_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_server_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/widevine/cdm/buildflags.stamp clang_x64_v8_arm64/obj/third_party/widevine/cdm/version_h.stamp clang_x64_v8_arm64/obj/ui/base/buildflags.stamp clang_x64_v8_arm64/obj/ui/base/locales_list_gen.stamp clang_x64_v8_arm64/obj/ui/base/cursor/mojom/cursor_type__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/base/cursor/mojom/cursor_type__generator.stamp clang_x64_v8_arm64/obj/ui/base/cursor/mojom/cursor_type_shared__generator.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/base/ime/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/base/ime/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/base/ime/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/color/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/color/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/color/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/display/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/geometry/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/gfx/geometry/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/geometry/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/native_handle_types__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/native_handle_types__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/native_handle_types_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/range/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/gfx/range/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/range/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/x/gen_xprotos.stamp clang_x64_v8_arm64/obj/ui/gfx/x/xlib_loader_loader.stamp clang_x64_v8_arm64/obj/ui/gfx/x/xlib_xcb_loader_loader.stamp clang_x64_v8_arm64/obj/ui/gl/buildflags.stamp clang_x64_v8_arm64/obj/ui/gl/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/gl/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/gl/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/latency/jank_tracker_for_experiments_buildflags.stamp clang_x64_v8_arm64/obj/ui/ozone/buildflags.stamp clang_x64_v8_arm64/obj/ui/ozone/generate_constructor_list.stamp clang_x64_v8_arm64/obj/ui/ozone/generate_ozone_platform_list.stamp clang_x64_v8_arm64/obj/ui/ozone/platform/wayland/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/ozone/platform/wayland/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/ozone/platform/wayland/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/ozone/public/mojom/gesture_properties_service__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/ozone/public/mojom/gesture_properties_service__generator.stamp clang_x64_v8_arm64/obj/ui/ozone/public/mojom/gesture_properties_service_shared__generator.stamp clang_x64_v8_arm64/obj/ui/resources/webui_resources_grd_grit.stamp clang_x64_v8_arm64/obj/ui/strings/app_locale_settings_grit.stamp clang_x64_v8_arm64/obj/ui/strings/ax_strings_grit.stamp clang_x64_v8_arm64/obj/ui/strings/ui_strings_grit.stamp clang_x64_v8_arm64/obj/url/buildflags.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl__generate_message_ids.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl_shared__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_origin_shared__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port__generate_message_ids.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port_shared__generator.stamp
+build clang_x64_v8_arm64/obj/media/base/base/amplitude_peak_detector.o: clang_x64_v8_arm64_cxx ../../media/base/amplitude_peak_detector.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = amplitude_peak_detector.cc
+  source_name_part = amplitude_peak_detector
+build clang_x64_v8_arm64/obj/media/base/base/android_overlay_config.o: clang_x64_v8_arm64_cxx ../../media/base/android_overlay_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = android_overlay_config.cc
+  source_name_part = android_overlay_config
+build clang_x64_v8_arm64/obj/media/base/base/audio_block_fifo.o: clang_x64_v8_arm64_cxx ../../media/base/audio_block_fifo.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_block_fifo.cc
+  source_name_part = audio_block_fifo
+build clang_x64_v8_arm64/obj/media/base/base/audio_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/audio_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer.cc
+  source_name_part = audio_buffer
+build clang_x64_v8_arm64/obj/media/base/base/audio_buffer_converter.o: clang_x64_v8_arm64_cxx ../../media/base/audio_buffer_converter.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer_converter.cc
+  source_name_part = audio_buffer_converter
+build clang_x64_v8_arm64/obj/media/base/base/audio_buffer_queue.o: clang_x64_v8_arm64_cxx ../../media/base/audio_buffer_queue.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_buffer_queue.cc
+  source_name_part = audio_buffer_queue
+build clang_x64_v8_arm64/obj/media/base/base/audio_codecs.o: clang_x64_v8_arm64_cxx ../../media/base/audio_codecs.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_codecs.cc
+  source_name_part = audio_codecs
+build clang_x64_v8_arm64/obj/media/base/base/audio_converter.o: clang_x64_v8_arm64_cxx ../../media/base/audio_converter.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_converter.cc
+  source_name_part = audio_converter
+build clang_x64_v8_arm64/obj/media/base/base/audio_decoder.o: clang_x64_v8_arm64_cxx ../../media/base/audio_decoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_decoder.cc
+  source_name_part = audio_decoder
+build clang_x64_v8_arm64/obj/media/base/base/audio_decoder_config.o: clang_x64_v8_arm64_cxx ../../media/base/audio_decoder_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_decoder_config.cc
+  source_name_part = audio_decoder_config
+build clang_x64_v8_arm64/obj/media/base/base/audio_discard_helper.o: clang_x64_v8_arm64_cxx ../../media/base/audio_discard_helper.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_discard_helper.cc
+  source_name_part = audio_discard_helper
+build clang_x64_v8_arm64/obj/media/base/base/audio_encoder.o: clang_x64_v8_arm64_cxx ../../media/base/audio_encoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_encoder.cc
+  source_name_part = audio_encoder
+build clang_x64_v8_arm64/obj/media/base/base/audio_fifo.o: clang_x64_v8_arm64_cxx ../../media/base/audio_fifo.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_fifo.cc
+  source_name_part = audio_fifo
+build clang_x64_v8_arm64/obj/media/base/base/audio_glitch_info.o: clang_x64_v8_arm64_cxx ../../media/base/audio_glitch_info.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_glitch_info.cc
+  source_name_part = audio_glitch_info
+build clang_x64_v8_arm64/obj/media/base/base/audio_hash.o: clang_x64_v8_arm64_cxx ../../media/base/audio_hash.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_hash.cc
+  source_name_part = audio_hash
+build clang_x64_v8_arm64/obj/media/base/base/audio_power_monitor.o: clang_x64_v8_arm64_cxx ../../media/base/audio_power_monitor.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_power_monitor.cc
+  source_name_part = audio_power_monitor
+build clang_x64_v8_arm64/obj/media/base/base/audio_processing.o: clang_x64_v8_arm64_cxx ../../media/base/audio_processing.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_processing.cc
+  source_name_part = audio_processing
+build clang_x64_v8_arm64/obj/media/base/base/audio_pull_fifo.o: clang_x64_v8_arm64_cxx ../../media/base/audio_pull_fifo.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_pull_fifo.cc
+  source_name_part = audio_pull_fifo
+build clang_x64_v8_arm64/obj/media/base/base/audio_push_fifo.o: clang_x64_v8_arm64_cxx ../../media/base/audio_push_fifo.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_push_fifo.cc
+  source_name_part = audio_push_fifo
+build clang_x64_v8_arm64/obj/media/base/base/audio_renderer.o: clang_x64_v8_arm64_cxx ../../media/base/audio_renderer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer.cc
+  source_name_part = audio_renderer
+build clang_x64_v8_arm64/obj/media/base/base/audio_renderer_mixer.o: clang_x64_v8_arm64_cxx ../../media/base/audio_renderer_mixer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer_mixer.cc
+  source_name_part = audio_renderer_mixer
+build clang_x64_v8_arm64/obj/media/base/base/audio_renderer_mixer_input.o: clang_x64_v8_arm64_cxx ../../media/base/audio_renderer_mixer_input.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_renderer_mixer_input.cc
+  source_name_part = audio_renderer_mixer_input
+build clang_x64_v8_arm64/obj/media/base/base/audio_shifter.o: clang_x64_v8_arm64_cxx ../../media/base/audio_shifter.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_shifter.cc
+  source_name_part = audio_shifter
+build clang_x64_v8_arm64/obj/media/base/base/audio_timestamp_helper.o: clang_x64_v8_arm64_cxx ../../media/base/audio_timestamp_helper.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = audio_timestamp_helper.cc
+  source_name_part = audio_timestamp_helper
+build clang_x64_v8_arm64/obj/media/base/base/bit_reader.o: clang_x64_v8_arm64_cxx ../../media/base/bit_reader.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = bit_reader.cc
+  source_name_part = bit_reader
+build clang_x64_v8_arm64/obj/media/base/base/bit_reader_core.o: clang_x64_v8_arm64_cxx ../../media/base/bit_reader_core.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = bit_reader_core.cc
+  source_name_part = bit_reader_core
+build clang_x64_v8_arm64/obj/media/base/base/bitrate.o: clang_x64_v8_arm64_cxx ../../media/base/bitrate.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = bitrate.cc
+  source_name_part = bitrate
+build clang_x64_v8_arm64/obj/media/base/base/bitstream_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/bitstream_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = bitstream_buffer.cc
+  source_name_part = bitstream_buffer
+build clang_x64_v8_arm64/obj/media/base/base/buffering_state.o: clang_x64_v8_arm64_cxx ../../media/base/buffering_state.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = buffering_state.cc
+  source_name_part = buffering_state
+build clang_x64_v8_arm64/obj/media/base/base/byte_queue.o: clang_x64_v8_arm64_cxx ../../media/base/byte_queue.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = byte_queue.cc
+  source_name_part = byte_queue
+build clang_x64_v8_arm64/obj/media/base/base/cdm_callback_promise.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_callback_promise.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_callback_promise.cc
+  source_name_part = cdm_callback_promise
+build clang_x64_v8_arm64/obj/media/base/base/cdm_config.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_config.cc
+  source_name_part = cdm_config
+build clang_x64_v8_arm64/obj/media/base/base/cdm_context.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_context.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_context.cc
+  source_name_part = cdm_context
+build clang_x64_v8_arm64/obj/media/base/base/cdm_factory.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_factory.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_factory.cc
+  source_name_part = cdm_factory
+build clang_x64_v8_arm64/obj/media/base/base/cdm_initialized_promise.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_initialized_promise.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_initialized_promise.cc
+  source_name_part = cdm_initialized_promise
+build clang_x64_v8_arm64/obj/media/base/base/cdm_key_information.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_key_information.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_key_information.cc
+  source_name_part = cdm_key_information
+build clang_x64_v8_arm64/obj/media/base/base/cdm_promise.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_promise.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_promise.cc
+  source_name_part = cdm_promise
+build clang_x64_v8_arm64/obj/media/base/base/cdm_promise_adapter.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_promise_adapter.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_promise_adapter.cc
+  source_name_part = cdm_promise_adapter
+build clang_x64_v8_arm64/obj/media/base/base/cdm_session_tracker.o: clang_x64_v8_arm64_cxx ../../media/base/cdm_session_tracker.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = cdm_session_tracker.cc
+  source_name_part = cdm_session_tracker
+build clang_x64_v8_arm64/obj/media/base/base/channel_mixer.o: clang_x64_v8_arm64_cxx ../../media/base/channel_mixer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = channel_mixer.cc
+  source_name_part = channel_mixer
+build clang_x64_v8_arm64/obj/media/base/base/channel_mixing_matrix.o: clang_x64_v8_arm64_cxx ../../media/base/channel_mixing_matrix.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = channel_mixing_matrix.cc
+  source_name_part = channel_mixing_matrix
+build clang_x64_v8_arm64/obj/media/base/base/color_plane_layout.o: clang_x64_v8_arm64_cxx ../../media/base/color_plane_layout.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = color_plane_layout.cc
+  source_name_part = color_plane_layout
+build clang_x64_v8_arm64/obj/media/base/base/container_names.o: clang_x64_v8_arm64_cxx ../../media/base/container_names.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = container_names.cc
+  source_name_part = container_names
+build clang_x64_v8_arm64/obj/media/base/base/content_decryption_module.o: clang_x64_v8_arm64_cxx ../../media/base/content_decryption_module.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = content_decryption_module.cc
+  source_name_part = content_decryption_module
+build clang_x64_v8_arm64/obj/media/base/base/converting_audio_fifo.o: clang_x64_v8_arm64_cxx ../../media/base/converting_audio_fifo.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = converting_audio_fifo.cc
+  source_name_part = converting_audio_fifo
+build clang_x64_v8_arm64/obj/media/base/base/data_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/data_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = data_buffer.cc
+  source_name_part = data_buffer
+build clang_x64_v8_arm64/obj/media/base/base/data_source.o: clang_x64_v8_arm64_cxx ../../media/base/data_source.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = data_source.cc
+  source_name_part = data_source
+build clang_x64_v8_arm64/obj/media/base/base/decoder.o: clang_x64_v8_arm64_cxx ../../media/base/decoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder.cc
+  source_name_part = decoder
+build clang_x64_v8_arm64/obj/media/base/base/decoder_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/decoder_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_buffer.cc
+  source_name_part = decoder_buffer
+build clang_x64_v8_arm64/obj/media/base/base/decoder_buffer_queue.o: clang_x64_v8_arm64_cxx ../../media/base/decoder_buffer_queue.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_buffer_queue.cc
+  source_name_part = decoder_buffer_queue
+build clang_x64_v8_arm64/obj/media/base/base/decoder_factory.o: clang_x64_v8_arm64_cxx ../../media/base/decoder_factory.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_factory.cc
+  source_name_part = decoder_factory
+build clang_x64_v8_arm64/obj/media/base/base/decoder_status.o: clang_x64_v8_arm64_cxx ../../media/base/decoder_status.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decoder_status.cc
+  source_name_part = decoder_status
+build clang_x64_v8_arm64/obj/media/base/base/decrypt_config.o: clang_x64_v8_arm64_cxx ../../media/base/decrypt_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decrypt_config.cc
+  source_name_part = decrypt_config
+build clang_x64_v8_arm64/obj/media/base/base/decryptor.o: clang_x64_v8_arm64_cxx ../../media/base/decryptor.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = decryptor.cc
+  source_name_part = decryptor
+build clang_x64_v8_arm64/obj/media/base/base/demuxer.o: clang_x64_v8_arm64_cxx ../../media/base/demuxer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer.cc
+  source_name_part = demuxer
+build clang_x64_v8_arm64/obj/media/base/base/demuxer_stream.o: clang_x64_v8_arm64_cxx ../../media/base/demuxer_stream.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer_stream.cc
+  source_name_part = demuxer_stream
+build clang_x64_v8_arm64/obj/media/base/base/djb2.o: clang_x64_v8_arm64_cxx ../../media/base/djb2.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = djb2.cc
+  source_name_part = djb2
+build clang_x64_v8_arm64/obj/media/base/base/encryption_pattern.o: clang_x64_v8_arm64_cxx ../../media/base/encryption_pattern.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = encryption_pattern.cc
+  source_name_part = encryption_pattern
+build clang_x64_v8_arm64/obj/media/base/base/encryption_scheme.o: clang_x64_v8_arm64_cxx ../../media/base/encryption_scheme.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = encryption_scheme.cc
+  source_name_part = encryption_scheme
+build clang_x64_v8_arm64/obj/media/base/base/fake_audio_worker.o: clang_x64_v8_arm64_cxx ../../media/base/fake_audio_worker.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = fake_audio_worker.cc
+  source_name_part = fake_audio_worker
+build clang_x64_v8_arm64/obj/media/base/base/format_utils.o: clang_x64_v8_arm64_cxx ../../media/base/format_utils.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = format_utils.cc
+  source_name_part = format_utils
+build clang_x64_v8_arm64/obj/media/base/base/frame_rate_estimator.o: clang_x64_v8_arm64_cxx ../../media/base/frame_rate_estimator.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = frame_rate_estimator.cc
+  source_name_part = frame_rate_estimator
+build clang_x64_v8_arm64/obj/media/base/base/key_system_info.o: clang_x64_v8_arm64_cxx ../../media/base/key_system_info.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = key_system_info.cc
+  source_name_part = key_system_info
+build clang_x64_v8_arm64/obj/media/base/base/key_system_names.o: clang_x64_v8_arm64_cxx ../../media/base/key_system_names.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = key_system_names.cc
+  source_name_part = key_system_names
+build clang_x64_v8_arm64/obj/media/base/base/key_systems.o: clang_x64_v8_arm64_cxx ../../media/base/key_systems.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = key_systems.cc
+  source_name_part = key_systems
+build clang_x64_v8_arm64/obj/media/base/base/localized_strings.o: clang_x64_v8_arm64_cxx ../../media/base/localized_strings.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = localized_strings.cc
+  source_name_part = localized_strings
+build clang_x64_v8_arm64/obj/media/base/base/loopback_audio_converter.o: clang_x64_v8_arm64_cxx ../../media/base/loopback_audio_converter.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = loopback_audio_converter.cc
+  source_name_part = loopback_audio_converter
+build clang_x64_v8_arm64/obj/media/base/base/media.o: clang_x64_v8_arm64_cxx ../../media/base/media.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media.cc
+  source_name_part = media
+build clang_x64_v8_arm64/obj/media/base/base/media_client.o: clang_x64_v8_arm64_cxx ../../media/base/media_client.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_client.cc
+  source_name_part = media_client
+build clang_x64_v8_arm64/obj/media/base/base/media_content_type.o: clang_x64_v8_arm64_cxx ../../media/base/media_content_type.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_content_type.cc
+  source_name_part = media_content_type
+build clang_x64_v8_arm64/obj/media/base/base/media_log.o: clang_x64_v8_arm64_cxx ../../media/base/media_log.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log.cc
+  source_name_part = media_log
+build clang_x64_v8_arm64/obj/media/base/base/media_log_events.o: clang_x64_v8_arm64_cxx ../../media/base/media_log_events.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_events.cc
+  source_name_part = media_log_events
+build clang_x64_v8_arm64/obj/media/base/base/media_log_message_levels.o: clang_x64_v8_arm64_cxx ../../media/base/media_log_message_levels.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_message_levels.cc
+  source_name_part = media_log_message_levels
+build clang_x64_v8_arm64/obj/media/base/base/media_log_properties.o: clang_x64_v8_arm64_cxx ../../media/base/media_log_properties.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_log_properties.cc
+  source_name_part = media_log_properties
+build clang_x64_v8_arm64/obj/media/base/base/media_observer.o: clang_x64_v8_arm64_cxx ../../media/base/media_observer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_observer.cc
+  source_name_part = media_observer
+build clang_x64_v8_arm64/obj/media/base/base/media_permission.o: clang_x64_v8_arm64_cxx ../../media/base/media_permission.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_permission.cc
+  source_name_part = media_permission
+build clang_x64_v8_arm64/obj/media/base/base/media_player_logging_id.o: clang_x64_v8_arm64_cxx ../../media/base/media_player_logging_id.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_player_logging_id.cc
+  source_name_part = media_player_logging_id
+build clang_x64_v8_arm64/obj/media/base/base/media_resource.o: clang_x64_v8_arm64_cxx ../../media/base/media_resource.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_resource.cc
+  source_name_part = media_resource
+build clang_x64_v8_arm64/obj/media/base/base/media_status.o: clang_x64_v8_arm64_cxx ../../media/base/media_status.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_status.cc
+  source_name_part = media_status
+build clang_x64_v8_arm64/obj/media/base/base/media_switches.o: clang_x64_v8_arm64_cxx ../../media/base/media_switches.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_switches.cc
+  source_name_part = media_switches
+build clang_x64_v8_arm64/obj/media/base/base/media_track.o: clang_x64_v8_arm64_cxx ../../media/base/media_track.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_track.cc
+  source_name_part = media_track
+build clang_x64_v8_arm64/obj/media/base/base/media_tracks.o: clang_x64_v8_arm64_cxx ../../media/base/media_tracks.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_tracks.cc
+  source_name_part = media_tracks
+build clang_x64_v8_arm64/obj/media/base/base/media_types.o: clang_x64_v8_arm64_cxx ../../media/base/media_types.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_types.cc
+  source_name_part = media_types
+build clang_x64_v8_arm64/obj/media/base/base/media_url_demuxer.o: clang_x64_v8_arm64_cxx ../../media/base/media_url_demuxer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_url_demuxer.cc
+  source_name_part = media_url_demuxer
+build clang_x64_v8_arm64/obj/media/base/base/media_url_params.o: clang_x64_v8_arm64_cxx ../../media/base/media_url_params.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_url_params.cc
+  source_name_part = media_url_params
+build clang_x64_v8_arm64/obj/media/base/base/media_util.o: clang_x64_v8_arm64_cxx ../../media/base/media_util.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = media_util.cc
+  source_name_part = media_util
+build clang_x64_v8_arm64/obj/media/base/base/memory_dump_provider_proxy.o: clang_x64_v8_arm64_cxx ../../media/base/memory_dump_provider_proxy.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = memory_dump_provider_proxy.cc
+  source_name_part = memory_dump_provider_proxy
+build clang_x64_v8_arm64/obj/media/base/base/mime_util.o: clang_x64_v8_arm64_cxx ../../media/base/mime_util.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = mime_util.cc
+  source_name_part = mime_util
+build clang_x64_v8_arm64/obj/media/base/base/mime_util_internal.o: clang_x64_v8_arm64_cxx ../../media/base/mime_util_internal.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = mime_util_internal.cc
+  source_name_part = mime_util_internal
+build clang_x64_v8_arm64/obj/media/base/base/moving_average.o: clang_x64_v8_arm64_cxx ../../media/base/moving_average.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = moving_average.cc
+  source_name_part = moving_average
+build clang_x64_v8_arm64/obj/media/base/base/multi_channel_resampler.o: clang_x64_v8_arm64_cxx ../../media/base/multi_channel_resampler.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = multi_channel_resampler.cc
+  source_name_part = multi_channel_resampler
+build clang_x64_v8_arm64/obj/media/base/base/null_video_sink.o: clang_x64_v8_arm64_cxx ../../media/base/null_video_sink.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = null_video_sink.cc
+  source_name_part = null_video_sink
+build clang_x64_v8_arm64/obj/media/base/base/offloading_audio_encoder.o: clang_x64_v8_arm64_cxx ../../media/base/offloading_audio_encoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = offloading_audio_encoder.cc
+  source_name_part = offloading_audio_encoder
+build clang_x64_v8_arm64/obj/media/base/base/output_device_info.o: clang_x64_v8_arm64_cxx ../../media/base/output_device_info.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = output_device_info.cc
+  source_name_part = output_device_info
+build clang_x64_v8_arm64/obj/media/base/base/overlay_info.o: clang_x64_v8_arm64_cxx ../../media/base/overlay_info.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = overlay_info.cc
+  source_name_part = overlay_info
+build clang_x64_v8_arm64/obj/media/base/base/pipeline_impl.o: clang_x64_v8_arm64_cxx ../../media/base/pipeline_impl.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_impl.cc
+  source_name_part = pipeline_impl
+build clang_x64_v8_arm64/obj/media/base/base/pipeline_metadata.o: clang_x64_v8_arm64_cxx ../../media/base/pipeline_metadata.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_metadata.cc
+  source_name_part = pipeline_metadata
+build clang_x64_v8_arm64/obj/media/base/base/pipeline_status.o: clang_x64_v8_arm64_cxx ../../media/base/pipeline_status.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = pipeline_status.cc
+  source_name_part = pipeline_status
+build clang_x64_v8_arm64/obj/media/base/base/ranges.o: clang_x64_v8_arm64_cxx ../../media/base/ranges.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = ranges.cc
+  source_name_part = ranges
+build clang_x64_v8_arm64/obj/media/base/base/reentrancy_checker.o: clang_x64_v8_arm64_cxx ../../media/base/reentrancy_checker.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = reentrancy_checker.cc
+  source_name_part = reentrancy_checker
+build clang_x64_v8_arm64/obj/media/base/base/renderer.o: clang_x64_v8_arm64_cxx ../../media/base/renderer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer.cc
+  source_name_part = renderer
+build clang_x64_v8_arm64/obj/media/base/base/renderer_client.o: clang_x64_v8_arm64_cxx ../../media/base/renderer_client.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_client.cc
+  source_name_part = renderer_client
+build clang_x64_v8_arm64/obj/media/base/base/renderer_factory.o: clang_x64_v8_arm64_cxx ../../media/base/renderer_factory.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_factory.cc
+  source_name_part = renderer_factory
+build clang_x64_v8_arm64/obj/media/base/base/renderer_factory_selector.o: clang_x64_v8_arm64_cxx ../../media/base/renderer_factory_selector.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = renderer_factory_selector.cc
+  source_name_part = renderer_factory_selector
+build clang_x64_v8_arm64/obj/media/base/base/sample_rates.o: clang_x64_v8_arm64_cxx ../../media/base/sample_rates.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = sample_rates.cc
+  source_name_part = sample_rates
+build clang_x64_v8_arm64/obj/media/base/base/scoped_async_trace.o: clang_x64_v8_arm64_cxx ../../media/base/scoped_async_trace.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = scoped_async_trace.cc
+  source_name_part = scoped_async_trace
+build clang_x64_v8_arm64/obj/media/base/base/seekable_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/seekable_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = seekable_buffer.cc
+  source_name_part = seekable_buffer
+build clang_x64_v8_arm64/obj/media/base/base/serial_runner.o: clang_x64_v8_arm64_cxx ../../media/base/serial_runner.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = serial_runner.cc
+  source_name_part = serial_runner
+build clang_x64_v8_arm64/obj/media/base/base/silent_sink_suspender.o: clang_x64_v8_arm64_cxx ../../media/base/silent_sink_suspender.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = silent_sink_suspender.cc
+  source_name_part = silent_sink_suspender
+build clang_x64_v8_arm64/obj/media/base/base/simple_sync_token_client.o: clang_x64_v8_arm64_cxx ../../media/base/simple_sync_token_client.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = simple_sync_token_client.cc
+  source_name_part = simple_sync_token_client
+build clang_x64_v8_arm64/obj/media/base/base/simple_watch_timer.o: clang_x64_v8_arm64_cxx ../../media/base/simple_watch_timer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = simple_watch_timer.cc
+  source_name_part = simple_watch_timer
+build clang_x64_v8_arm64/obj/media/base/base/sinc_resampler.o: clang_x64_v8_arm64_cxx ../../media/base/sinc_resampler.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = sinc_resampler.cc
+  source_name_part = sinc_resampler
+build clang_x64_v8_arm64/obj/media/base/base/status.o: clang_x64_v8_arm64_cxx ../../media/base/status.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = status.cc
+  source_name_part = status
+build clang_x64_v8_arm64/obj/media/base/base/stream_parser.o: clang_x64_v8_arm64_cxx ../../media/base/stream_parser.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = stream_parser.cc
+  source_name_part = stream_parser
+build clang_x64_v8_arm64/obj/media/base/base/stream_parser_buffer.o: clang_x64_v8_arm64_cxx ../../media/base/stream_parser_buffer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = stream_parser_buffer.cc
+  source_name_part = stream_parser_buffer
+build clang_x64_v8_arm64/obj/media/base/base/subsample_entry.o: clang_x64_v8_arm64_cxx ../../media/base/subsample_entry.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = subsample_entry.cc
+  source_name_part = subsample_entry
+build clang_x64_v8_arm64/obj/media/base/base/supported_types.o: clang_x64_v8_arm64_cxx ../../media/base/supported_types.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = supported_types.cc
+  source_name_part = supported_types
+build clang_x64_v8_arm64/obj/media/base/base/supported_video_decoder_config.o: clang_x64_v8_arm64_cxx ../../media/base/supported_video_decoder_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = supported_video_decoder_config.cc
+  source_name_part = supported_video_decoder_config
+build clang_x64_v8_arm64/obj/media/base/base/svc_scalability_mode.o: clang_x64_v8_arm64_cxx ../../media/base/svc_scalability_mode.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = svc_scalability_mode.cc
+  source_name_part = svc_scalability_mode
+build clang_x64_v8_arm64/obj/media/base/base/text_cue.o: clang_x64_v8_arm64_cxx ../../media/base/text_cue.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = text_cue.cc
+  source_name_part = text_cue
+build clang_x64_v8_arm64/obj/media/base/base/text_ranges.o: clang_x64_v8_arm64_cxx ../../media/base/text_ranges.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = text_ranges.cc
+  source_name_part = text_ranges
+build clang_x64_v8_arm64/obj/media/base/base/text_renderer.o: clang_x64_v8_arm64_cxx ../../media/base/text_renderer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = text_renderer.cc
+  source_name_part = text_renderer
+build clang_x64_v8_arm64/obj/media/base/base/text_track_config.o: clang_x64_v8_arm64_cxx ../../media/base/text_track_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = text_track_config.cc
+  source_name_part = text_track_config
+build clang_x64_v8_arm64/obj/media/base/base/time_delta_interpolator.o: clang_x64_v8_arm64_cxx ../../media/base/time_delta_interpolator.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = time_delta_interpolator.cc
+  source_name_part = time_delta_interpolator
+build clang_x64_v8_arm64/obj/media/base/base/tuneable.o: clang_x64_v8_arm64_cxx ../../media/base/tuneable.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = tuneable.cc
+  source_name_part = tuneable
+build clang_x64_v8_arm64/obj/media/base/base/user_input_monitor.o: clang_x64_v8_arm64_cxx ../../media/base/user_input_monitor.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = user_input_monitor.cc
+  source_name_part = user_input_monitor
+build clang_x64_v8_arm64/obj/media/base/base/video_aspect_ratio.o: clang_x64_v8_arm64_cxx ../../media/base/video_aspect_ratio.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_aspect_ratio.cc
+  source_name_part = video_aspect_ratio
+build clang_x64_v8_arm64/obj/media/base/base/video_bitrate_allocation.o: clang_x64_v8_arm64_cxx ../../media/base/video_bitrate_allocation.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_bitrate_allocation.cc
+  source_name_part = video_bitrate_allocation
+build clang_x64_v8_arm64/obj/media/base/base/video_codecs.o: clang_x64_v8_arm64_cxx ../../media/base/video_codecs.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_codecs.cc
+  source_name_part = video_codecs
+build clang_x64_v8_arm64/obj/media/base/base/video_color_space.o: clang_x64_v8_arm64_cxx ../../media/base/video_color_space.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_color_space.cc
+  source_name_part = video_color_space
+build clang_x64_v8_arm64/obj/media/base/base/video_decoder.o: clang_x64_v8_arm64_cxx ../../media/base/video_decoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_decoder.cc
+  source_name_part = video_decoder
+build clang_x64_v8_arm64/obj/media/base/base/video_decoder_config.o: clang_x64_v8_arm64_cxx ../../media/base/video_decoder_config.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_decoder_config.cc
+  source_name_part = video_decoder_config
+build clang_x64_v8_arm64/obj/media/base/base/video_encoder.o: clang_x64_v8_arm64_cxx ../../media/base/video_encoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_encoder.cc
+  source_name_part = video_encoder
+build clang_x64_v8_arm64/obj/media/base/base/video_frame.o: clang_x64_v8_arm64_cxx ../../media/base/video_frame.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame.cc
+  source_name_part = video_frame
+build clang_x64_v8_arm64/obj/media/base/base/video_frame_layout.o: clang_x64_v8_arm64_cxx ../../media/base/video_frame_layout.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_layout.cc
+  source_name_part = video_frame_layout
+build clang_x64_v8_arm64/obj/media/base/base/video_frame_metadata.o: clang_x64_v8_arm64_cxx ../../media/base/video_frame_metadata.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_metadata.cc
+  source_name_part = video_frame_metadata
+build clang_x64_v8_arm64/obj/media/base/base/video_frame_pool.o: clang_x64_v8_arm64_cxx ../../media/base/video_frame_pool.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_frame_pool.cc
+  source_name_part = video_frame_pool
+build clang_x64_v8_arm64/obj/media/base/base/video_renderer.o: clang_x64_v8_arm64_cxx ../../media/base/video_renderer.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_renderer.cc
+  source_name_part = video_renderer
+build clang_x64_v8_arm64/obj/media/base/base/video_thumbnail_decoder.o: clang_x64_v8_arm64_cxx ../../media/base/video_thumbnail_decoder.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_thumbnail_decoder.cc
+  source_name_part = video_thumbnail_decoder
+build clang_x64_v8_arm64/obj/media/base/base/video_transformation.o: clang_x64_v8_arm64_cxx ../../media/base/video_transformation.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_transformation.cc
+  source_name_part = video_transformation
+build clang_x64_v8_arm64/obj/media/base/base/video_util.o: clang_x64_v8_arm64_cxx ../../media/base/video_util.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = video_util.cc
+  source_name_part = video_util
+build clang_x64_v8_arm64/obj/media/base/base/wait_and_replace_sync_token_client.o: clang_x64_v8_arm64_cxx ../../media/base/wait_and_replace_sync_token_client.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = wait_and_replace_sync_token_client.cc
+  source_name_part = wait_and_replace_sync_token_client
+build clang_x64_v8_arm64/obj/media/base/base/wall_clock_time_source.o: clang_x64_v8_arm64_cxx ../../media/base/wall_clock_time_source.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = wall_clock_time_source.cc
+  source_name_part = wall_clock_time_source
+build clang_x64_v8_arm64/obj/media/base/base/watch_time_keys.o: clang_x64_v8_arm64_cxx ../../media/base/watch_time_keys.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = watch_time_keys.cc
+  source_name_part = watch_time_keys
+build clang_x64_v8_arm64/obj/media/base/base/user_input_monitor_linux.o: clang_x64_v8_arm64_cxx ../../media/base/user_input_monitor_linux.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = user_input_monitor_linux.cc
+  source_name_part = user_input_monitor_linux
+build clang_x64_v8_arm64/obj/media/base/base/scopedfd_helper.o: clang_x64_v8_arm64_cxx ../../media/base/scopedfd_helper.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = scopedfd_helper.cc
+  source_name_part = scopedfd_helper
+build clang_x64_v8_arm64/obj/media/base/base/demuxer_memory_limit_default.o: clang_x64_v8_arm64_cxx ../../media/base/demuxer_memory_limit_default.cc || clang_x64_v8_arm64/obj/media/base/base.inputdeps.stamp
+  source_file_part = demuxer_memory_limit_default.cc
+  source_name_part = demuxer_memory_limit_default
+
+build clang_x64_v8_arm64/obj/media/base/base.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/media/base/base/amplitude_peak_detector.o clang_x64_v8_arm64/obj/media/base/base/android_overlay_config.o clang_x64_v8_arm64/obj/media/base/base/audio_block_fifo.o clang_x64_v8_arm64/obj/media/base/base/audio_buffer.o clang_x64_v8_arm64/obj/media/base/base/audio_buffer_converter.o clang_x64_v8_arm64/obj/media/base/base/audio_buffer_queue.o clang_x64_v8_arm64/obj/media/base/base/audio_codecs.o clang_x64_v8_arm64/obj/media/base/base/audio_converter.o clang_x64_v8_arm64/obj/media/base/base/audio_decoder.o clang_x64_v8_arm64/obj/media/base/base/audio_decoder_config.o clang_x64_v8_arm64/obj/media/base/base/audio_discard_helper.o clang_x64_v8_arm64/obj/media/base/base/audio_encoder.o clang_x64_v8_arm64/obj/media/base/base/audio_fifo.o clang_x64_v8_arm64/obj/media/base/base/audio_glitch_info.o clang_x64_v8_arm64/obj/media/base/base/audio_hash.o clang_x64_v8_arm64/obj/media/base/base/audio_power_monitor.o clang_x64_v8_arm64/obj/media/base/base/audio_processing.o clang_x64_v8_arm64/obj/media/base/base/audio_pull_fifo.o clang_x64_v8_arm64/obj/media/base/base/audio_push_fifo.o clang_x64_v8_arm64/obj/media/base/base/audio_renderer.o clang_x64_v8_arm64/obj/media/base/base/audio_renderer_mixer.o clang_x64_v8_arm64/obj/media/base/base/audio_renderer_mixer_input.o clang_x64_v8_arm64/obj/media/base/base/audio_shifter.o clang_x64_v8_arm64/obj/media/base/base/audio_timestamp_helper.o clang_x64_v8_arm64/obj/media/base/base/bit_reader.o clang_x64_v8_arm64/obj/media/base/base/bit_reader_core.o clang_x64_v8_arm64/obj/media/base/base/bitrate.o clang_x64_v8_arm64/obj/media/base/base/bitstream_buffer.o clang_x64_v8_arm64/obj/media/base/base/buffering_state.o clang_x64_v8_arm64/obj/media/base/base/byte_queue.o clang_x64_v8_arm64/obj/media/base/base/cdm_callback_promise.o clang_x64_v8_arm64/obj/media/base/base/cdm_config.o clang_x64_v8_arm64/obj/media/base/base/cdm_context.o clang_x64_v8_arm64/obj/media/base/base/cdm_factory.o clang_x64_v8_arm64/obj/media/base/base/cdm_initialized_promise.o clang_x64_v8_arm64/obj/media/base/base/cdm_key_information.o clang_x64_v8_arm64/obj/media/base/base/cdm_promise.o clang_x64_v8_arm64/obj/media/base/base/cdm_promise_adapter.o clang_x64_v8_arm64/obj/media/base/base/cdm_session_tracker.o clang_x64_v8_arm64/obj/media/base/base/channel_mixer.o clang_x64_v8_arm64/obj/media/base/base/channel_mixing_matrix.o clang_x64_v8_arm64/obj/media/base/base/color_plane_layout.o clang_x64_v8_arm64/obj/media/base/base/container_names.o clang_x64_v8_arm64/obj/media/base/base/content_decryption_module.o clang_x64_v8_arm64/obj/media/base/base/converting_audio_fifo.o clang_x64_v8_arm64/obj/media/base/base/data_buffer.o clang_x64_v8_arm64/obj/media/base/base/data_source.o clang_x64_v8_arm64/obj/media/base/base/decoder.o clang_x64_v8_arm64/obj/media/base/base/decoder_buffer.o clang_x64_v8_arm64/obj/media/base/base/decoder_buffer_queue.o clang_x64_v8_arm64/obj/media/base/base/decoder_factory.o clang_x64_v8_arm64/obj/media/base/base/decoder_status.o clang_x64_v8_arm64/obj/media/base/base/decrypt_config.o clang_x64_v8_arm64/obj/media/base/base/decryptor.o clang_x64_v8_arm64/obj/media/base/base/demuxer.o clang_x64_v8_arm64/obj/media/base/base/demuxer_stream.o clang_x64_v8_arm64/obj/media/base/base/djb2.o clang_x64_v8_arm64/obj/media/base/base/encryption_pattern.o clang_x64_v8_arm64/obj/media/base/base/encryption_scheme.o clang_x64_v8_arm64/obj/media/base/base/fake_audio_worker.o clang_x64_v8_arm64/obj/media/base/base/format_utils.o clang_x64_v8_arm64/obj/media/base/base/frame_rate_estimator.o clang_x64_v8_arm64/obj/media/base/base/key_system_info.o clang_x64_v8_arm64/obj/media/base/base/key_system_names.o clang_x64_v8_arm64/obj/media/base/base/key_systems.o clang_x64_v8_arm64/obj/media/base/base/localized_strings.o clang_x64_v8_arm64/obj/media/base/base/loopback_audio_converter.o clang_x64_v8_arm64/obj/media/base/base/media.o clang_x64_v8_arm64/obj/media/base/base/media_client.o clang_x64_v8_arm64/obj/media/base/base/media_content_type.o clang_x64_v8_arm64/obj/media/base/base/media_log.o clang_x64_v8_arm64/obj/media/base/base/media_log_events.o clang_x64_v8_arm64/obj/media/base/base/media_log_message_levels.o clang_x64_v8_arm64/obj/media/base/base/media_log_properties.o clang_x64_v8_arm64/obj/media/base/base/media_observer.o clang_x64_v8_arm64/obj/media/base/base/media_permission.o clang_x64_v8_arm64/obj/media/base/base/media_player_logging_id.o clang_x64_v8_arm64/obj/media/base/base/media_resource.o clang_x64_v8_arm64/obj/media/base/base/media_status.o clang_x64_v8_arm64/obj/media/base/base/media_switches.o clang_x64_v8_arm64/obj/media/base/base/media_track.o clang_x64_v8_arm64/obj/media/base/base/media_tracks.o clang_x64_v8_arm64/obj/media/base/base/media_types.o clang_x64_v8_arm64/obj/media/base/base/media_url_demuxer.o clang_x64_v8_arm64/obj/media/base/base/media_url_params.o clang_x64_v8_arm64/obj/media/base/base/media_util.o clang_x64_v8_arm64/obj/media/base/base/memory_dump_provider_proxy.o clang_x64_v8_arm64/obj/media/base/base/mime_util.o clang_x64_v8_arm64/obj/media/base/base/mime_util_internal.o clang_x64_v8_arm64/obj/media/base/base/moving_average.o clang_x64_v8_arm64/obj/media/base/base/multi_channel_resampler.o clang_x64_v8_arm64/obj/media/base/base/null_video_sink.o clang_x64_v8_arm64/obj/media/base/base/offloading_audio_encoder.o clang_x64_v8_arm64/obj/media/base/base/output_device_info.o clang_x64_v8_arm64/obj/media/base/base/overlay_info.o clang_x64_v8_arm64/obj/media/base/base/pipeline_impl.o clang_x64_v8_arm64/obj/media/base/base/pipeline_metadata.o clang_x64_v8_arm64/obj/media/base/base/pipeline_status.o clang_x64_v8_arm64/obj/media/base/base/ranges.o clang_x64_v8_arm64/obj/media/base/base/reentrancy_checker.o clang_x64_v8_arm64/obj/media/base/base/renderer.o clang_x64_v8_arm64/obj/media/base/base/renderer_client.o clang_x64_v8_arm64/obj/media/base/base/renderer_factory.o clang_x64_v8_arm64/obj/media/base/base/renderer_factory_selector.o clang_x64_v8_arm64/obj/media/base/base/sample_rates.o clang_x64_v8_arm64/obj/media/base/base/scoped_async_trace.o clang_x64_v8_arm64/obj/media/base/base/seekable_buffer.o clang_x64_v8_arm64/obj/media/base/base/serial_runner.o clang_x64_v8_arm64/obj/media/base/base/silent_sink_suspender.o clang_x64_v8_arm64/obj/media/base/base/simple_sync_token_client.o clang_x64_v8_arm64/obj/media/base/base/simple_watch_timer.o clang_x64_v8_arm64/obj/media/base/base/sinc_resampler.o clang_x64_v8_arm64/obj/media/base/base/status.o clang_x64_v8_arm64/obj/media/base/base/stream_parser.o clang_x64_v8_arm64/obj/media/base/base/stream_parser_buffer.o clang_x64_v8_arm64/obj/media/base/base/subsample_entry.o clang_x64_v8_arm64/obj/media/base/base/supported_types.o clang_x64_v8_arm64/obj/media/base/base/supported_video_decoder_config.o clang_x64_v8_arm64/obj/media/base/base/svc_scalability_mode.o clang_x64_v8_arm64/obj/media/base/base/text_cue.o clang_x64_v8_arm64/obj/media/base/base/text_ranges.o clang_x64_v8_arm64/obj/media/base/base/text_renderer.o clang_x64_v8_arm64/obj/media/base/base/text_track_config.o clang_x64_v8_arm64/obj/media/base/base/time_delta_interpolator.o clang_x64_v8_arm64/obj/media/base/base/tuneable.o clang_x64_v8_arm64/obj/media/base/base/user_input_monitor.o clang_x64_v8_arm64/obj/media/base/base/video_aspect_ratio.o clang_x64_v8_arm64/obj/media/base/base/video_bitrate_allocation.o clang_x64_v8_arm64/obj/media/base/base/video_codecs.o clang_x64_v8_arm64/obj/media/base/base/video_color_space.o clang_x64_v8_arm64/obj/media/base/base/video_decoder.o clang_x64_v8_arm64/obj/media/base/base/video_decoder_config.o clang_x64_v8_arm64/obj/media/base/base/video_encoder.o clang_x64_v8_arm64/obj/media/base/base/video_frame.o clang_x64_v8_arm64/obj/media/base/base/video_frame_layout.o clang_x64_v8_arm64/obj/media/base/base/video_frame_metadata.o clang_x64_v8_arm64/obj/media/base/base/video_frame_pool.o clang_x64_v8_arm64/obj/media/base/base/video_renderer.o clang_x64_v8_arm64/obj/media/base/base/video_thumbnail_decoder.o clang_x64_v8_arm64/obj/media/base/base/video_transformation.o clang_x64_v8_arm64/obj/media/base/base/video_util.o clang_x64_v8_arm64/obj/media/base/base/wait_and_replace_sync_token_client.o clang_x64_v8_arm64/obj/media/base/base/wall_clock_time_source.o clang_x64_v8_arm64/obj/media/base/base/watch_time_keys.o clang_x64_v8_arm64/obj/media/base/base/user_input_monitor_linux.o clang_x64_v8_arm64/obj/media/base/base/scopedfd_helper.o clang_x64_v8_arm64/obj/media/base/base/demuxer_memory_limit_default.o || clang_x64_v8_arm64/obj/media/base/video_facing.stamp clang_x64_v8_arm64/obj/media/media_buildflags.stamp clang_x64_v8_arm64/libmedia_shared_memory_support.so.TOC clang_x64_v8_arm64/obj/media/gpu/buildflags.stamp clang_x64_v8_arm64/libui_gfx_color_space.so.TOC clang_x64_v8_arm64/libgl_wrapper.so.TOC clang_x64_v8_arm64/libbase.so.TOC clang_x64_v8_arm64/obj/base/allocator/buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/components/system_media_controls/linux/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/gpu/command_buffer/client/interface_base.stamp clang_x64_v8_arm64/obj/gpu/command_buffer/client/raster_interface.stamp clang_x64_v8_arm64/obj/gpu/command_buffer/common/common.stamp clang_x64_v8_arm64/obj/gpu/ipc/common/common.stamp clang_x64_v8_arm64/obj/media/cdm/clear_key_cdm_common.stamp clang_x64_v8_arm64/libnet.so.TOC clang_x64_v8_arm64/libskia.so.TOC clang_x64_v8_arm64/obj/third_party/libyuv/libyuv.stamp clang_x64_v8_arm64/obj/third_party/widevine/cdm/headers.stamp clang_x64_v8_arm64/libui_display.so.TOC clang_x64_v8_arm64/libui_events.so.TOC clang_x64_v8_arm64/libui_events_events_base.so.TOC clang_x64_v8_arm64/libui_events_keyboard_hook.so.TOC clang_x64_v8_arm64/liburl.so.TOC clang_x64_v8_arm64/libffmpeg.so.TOC clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx.a clang_x64_v8_arm64/libui_ozone.so.TOC clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/libthird_party_boringssl.so.TOC clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so.TOC clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so.TOC clang_x64_v8_arm64/libui_events_platform.so.TOC clang_x64_v8_arm64/libui_gfx.so.TOC clang_x64_v8_arm64/libui_gfx_color_utils.so.TOC clang_x64_v8_arm64/libui_gfx_geometry.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_skia.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_switches.so.TOC clang_x64_v8_arm64/libthird_party_icu_icui18n.so.TOC clang_x64_v8_arm64/libicuuc.so.TOC clang_x64_v8_arm64/libui_gfx_animation.so.TOC clang_x64_v8_arm64/libui_gfx_codec.so.TOC clang_x64_v8_arm64/libui_gfx_geometry_geometry_skia.so.TOC clang_x64_v8_arm64/libui_gfx_range.so.TOC clang_x64_v8_arm64/libcc_paint.so.TOC clang_x64_v8_arm64/libcc_base.so.TOC clang_x64_v8_arm64/libcc_debug.so.TOC clang_x64_v8_arm64/obj/components/viz/common/resource_format.stamp clang_x64_v8_arm64/libmojo_public_cpp_bindings.so.TOC clang_x64_v8_arm64/libmojo_public_cpp_bindings_bindings_base.so.TOC clang_x64_v8_arm64/libmojo_public_system_cpp.so.TOC clang_x64_v8_arm64/libmojo_core_embedder.so.TOC clang_x64_v8_arm64/libmojo_cpp_platform.so.TOC clang_x64_v8_arm64/libmojo_public_system.so.TOC clang_x64_v8_arm64/libipc_message_support.so.TOC clang_x64_v8_arm64/libmojo_mojom_bindings.so.TOC clang_x64_v8_arm64/libmojo_mojom_bindings_shared.so.TOC clang_x64_v8_arm64/libgpu.so.TOC clang_x64_v8_arm64/libgpu_mailbox.so.TOC clang_x64_v8_arm64/libchrome_zlib.so.TOC clang_x64_v8_arm64/libgpu_config_vulkan_info.so.TOC clang_x64_v8_arm64/libmojo_base_mojom_shared.so.TOC clang_x64_v8_arm64/libmojo_base_mojom.so.TOC clang_x64_v8_arm64/libmojo_base_lib.so.TOC clang_x64_v8_arm64/libmojo_base_shared_typemap_traits.so.TOC clang_x64_v8_arm64/libbase_i18n.so.TOC clang_x64_v8_arm64/libmojo_base_typemap_traits.so.TOC clang_x64_v8_arm64/libgfx_native_types_shared_mojom_traits.so.TOC clang_x64_v8_arm64/libskia_shared_typemap_traits.so.TOC clang_x64_v8_arm64/libgfx_shared_mojom_traits.so.TOC clang_x64_v8_arm64/libui_base_features.so.TOC clang_x64_v8_arm64/libipc.so.TOC clang_x64_v8_arm64/libipc_mojom.so.TOC clang_x64_v8_arm64/libipc_mojom_shared.so.TOC clang_x64_v8_arm64/libtracing_cpp.so.TOC clang_x64_v8_arm64/libcomponents_tracing_startup_tracing.so.TOC clang_x64_v8_arm64/libtracing_mojom.so.TOC clang_x64_v8_arm64/libtracing_mojom_shared.so.TOC clang_x64_v8_arm64/liburl_mojom_traits.so.TOC clang_x64_v8_arm64/libgfx_ipc.so.TOC clang_x64_v8_arm64/libgfx_ipc_geometry.so.TOC clang_x64_v8_arm64/libgpu_ipc_common_vulkan_ycbcr_info.so.TOC clang_x64_v8_arm64/libgpu_channel_mojom_shared.so.TOC clang_x64_v8_arm64/libgl_mojom_shared.so.TOC clang_x64_v8_arm64/libgpu_common_interfaces_shared.so.TOC clang_x64_v8_arm64/libvulkan_interface_shared.so.TOC clang_x64_v8_arm64/libgl_mojom.so.TOC clang_x64_v8_arm64/liburl_ipc_url_ipc.so.TOC clang_x64_v8_arm64/libgpu_gles2.so.TOC clang_x64_v8_arm64/libui_base_clipboard.so.TOC clang_x64_v8_arm64/libui_base_clipboard_types.so.TOC clang_x64_v8_arm64/libui_base_file_info.so.TOC clang_x64_v8_arm64/libui_base_data_transfer_policy.so.TOC clang_x64_v8_arm64/obj/ui/gfx/buffer_types.stamp clang_x64_v8_arm64/obj/media/cdm/cdm_type.stamp clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so.TOC clang_x64_v8_arm64/libnet_uri_template.so.TOC clang_x64_v8_arm64/libcrcrypto.so.TOC clang_x64_v8_arm64/libnet_third_party_quiche.so.TOC clang_x64_v8_arm64/obj/third_party/libyuv/libyuv_internal.a clang_x64_v8_arm64/obj/third_party/libjpeg_turbo/libjpeg.a clang_x64_v8_arm64/obj/third_party/libjpeg_turbo/libjpeg_headers.stamp clang_x64_v8_arm64/obj/third_party/libjpeg_turbo/libsimd.a clang_x64_v8_arm64/obj/third_party/libjpeg_turbo/libsimd_asm.a clang_x64_v8_arm64/libdisplay_types.so.TOC clang_x64_v8_arm64/libkeycodes_x11.so.TOC clang_x64_v8_arm64/libservices_metrics_public_cpp_metrics_cpp.so.TOC clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_x86_64_headers.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_asm.a clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx512.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_mmx.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_sse2.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_sse4_1.stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_ssse3.stamp clang_x64_v8_arm64/libui_ozone_ozone_base.so.TOC clang_x64_v8_arm64/libdisplay_util.so.TOC clang_x64_v8_arm64/libui_events_devices.so.TOC clang_x64_v8_arm64/libgfx_ipc_buffer_types.so.TOC clang_x64_v8_arm64/libgfx_ipc_skia.so.TOC clang_x64_v8_arm64/libvulkan_wrapper.so.TOC clang_x64_v8_arm64/libservice_manager_cpp.so.TOC clang_x64_v8_arm64/libservice_manager_cpp_types.so.TOC clang_x64_v8_arm64/libservice_manager_mojom.so.TOC clang_x64_v8_arm64/libservice_manager_mojom_shared.so.TOC clang_x64_v8_arm64/libservice_manager_mojom_constants_shared.so.TOC clang_x64_v8_arm64/libservice_manager_mojom_constants.so.TOC clang_x64_v8_arm64/libservice_manager_mojom_traits.so.TOC clang_x64_v8_arm64/libui_base_data_exchange.so.TOC clang_x64_v8_arm64/libui_platform_window.so.TOC

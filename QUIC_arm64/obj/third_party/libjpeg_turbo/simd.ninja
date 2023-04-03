@@ -1,0 +1,58 @@
+defines = -DMANGLE_JPEG_NAMES -DNEON_INTRINSICS -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../../third_party/libjpeg_turbo -I../../third_party/libjpeg_turbo/simd/arm -I../.. -Igen -I../../buildtools/third_party/libc++
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -O3 -fdata-sections -ffunction-sections -fno-unique-section-names
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_arm64-sysroot
+label_name = simd
+target_out_dir = obj/third_party/libjpeg_turbo
+target_output_name = libsimd
+
+build obj/third_party/libjpeg_turbo/simd/jccolor-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jccolor-neon.c
+  source_file_part = jccolor-neon.c
+  source_name_part = jccolor-neon
+build obj/third_party/libjpeg_turbo/simd/jcgray-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jcgray-neon.c
+  source_file_part = jcgray-neon.c
+  source_name_part = jcgray-neon
+build obj/third_party/libjpeg_turbo/simd/jcphuff-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jcphuff-neon.c
+  source_file_part = jcphuff-neon.c
+  source_name_part = jcphuff-neon
+build obj/third_party/libjpeg_turbo/simd/jcsample-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jcsample-neon.c
+  source_file_part = jcsample-neon.c
+  source_name_part = jcsample-neon
+build obj/third_party/libjpeg_turbo/simd/jdcolor-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jdcolor-neon.c
+  source_file_part = jdcolor-neon.c
+  source_name_part = jdcolor-neon
+build obj/third_party/libjpeg_turbo/simd/jdmerge-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jdmerge-neon.c
+  source_file_part = jdmerge-neon.c
+  source_name_part = jdmerge-neon
+build obj/third_party/libjpeg_turbo/simd/jdsample-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jdsample-neon.c
+  source_file_part = jdsample-neon.c
+  source_name_part = jdsample-neon
+build obj/third_party/libjpeg_turbo/simd/jfdctfst-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jfdctfst-neon.c
+  source_file_part = jfdctfst-neon.c
+  source_name_part = jfdctfst-neon
+build obj/third_party/libjpeg_turbo/simd/jfdctint-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jfdctint-neon.c
+  source_file_part = jfdctint-neon.c
+  source_name_part = jfdctint-neon
+build obj/third_party/libjpeg_turbo/simd/jidctfst-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jidctfst-neon.c
+  source_file_part = jidctfst-neon.c
+  source_name_part = jidctfst-neon
+build obj/third_party/libjpeg_turbo/simd/jidctint-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jidctint-neon.c
+  source_file_part = jidctint-neon.c
+  source_name_part = jidctint-neon
+build obj/third_party/libjpeg_turbo/simd/jidctred-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jidctred-neon.c
+  source_file_part = jidctred-neon.c
+  source_name_part = jidctred-neon
+build obj/third_party/libjpeg_turbo/simd/jquanti-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/jquanti-neon.c
+  source_file_part = jquanti-neon.c
+  source_name_part = jquanti-neon
+build obj/third_party/libjpeg_turbo/simd/jchuff-neon.o: cc ../../third_party/libjpeg_turbo/simd/arm/aarch64/jchuff-neon.c
+  source_file_part = jchuff-neon.c
+  source_name_part = jchuff-neon
+build obj/third_party/libjpeg_turbo/simd/jsimd.o: cc ../../third_party/libjpeg_turbo/simd/arm/aarch64/jsimd.c
+  source_file_part = jsimd.c
+  source_name_part = jsimd
+
+build obj/third_party/libjpeg_turbo/libsimd.a: alink obj/third_party/libjpeg_turbo/simd/jccolor-neon.o obj/third_party/libjpeg_turbo/simd/jcgray-neon.o obj/third_party/libjpeg_turbo/simd/jcphuff-neon.o obj/third_party/libjpeg_turbo/simd/jcsample-neon.o obj/third_party/libjpeg_turbo/simd/jdcolor-neon.o obj/third_party/libjpeg_turbo/simd/jdmerge-neon.o obj/third_party/libjpeg_turbo/simd/jdsample-neon.o obj/third_party/libjpeg_turbo/simd/jfdctfst-neon.o obj/third_party/libjpeg_turbo/simd/jfdctint-neon.o obj/third_party/libjpeg_turbo/simd/jidctfst-neon.o obj/third_party/libjpeg_turbo/simd/jidctint-neon.o obj/third_party/libjpeg_turbo/simd/jidctred-neon.o obj/third_party/libjpeg_turbo/simd/jquanti-neon.o obj/third_party/libjpeg_turbo/simd/jchuff-neon.o obj/third_party/libjpeg_turbo/simd/jsimd.o || obj/third_party/libjpeg_turbo/libjpeg_headers.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/libjpeg_turbo

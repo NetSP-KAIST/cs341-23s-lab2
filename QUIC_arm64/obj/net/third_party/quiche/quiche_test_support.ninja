@@ -1,0 +1,293 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DGTEST_API_= -DGTEST_HAS_POSIX_RE=0 -DGTEST_LANG_CXX11=1 -DGTEST_HAS_TR1_TUPLE=0 -DGTEST_HAS_ABSL=1 -DUNIT_TEST
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/protobuf/src -Igen/protoc_out -Igen/net/third_party/quiche/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/ced/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/googletest/custom -I../../third_party/googletest/src/googlemock/include -I../../third_party/googletest/src/googletest/include
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-unused-private-field -Wno-shadow -Wno-sign-compare -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-inconsistent-missing-override -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/nss -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/nspr
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = quiche_test_support
+target_out_dir = obj/net/third_party/quiche
+target_output_name = libquiche_test_support
+
+build obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/components/nacl/common/buildflags.stamp obj/crypto/buildflags.stamp obj/net/buildflags.stamp obj/net/ios_cronet_buildflags.stamp obj/net/isolation_info_proto_gen.stamp obj/net/net_nqe_proto_gen.stamp obj/net/net_resources_grit.stamp obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp obj/net/cert/root_store_proto_lite_gen.stamp obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp obj/net/http/transport_security_state_unittest_data_default.stamp obj/net/third_party/quiche/net_quic_proto_gen.stamp obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/lite_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/third_party/quic_trace/quic_trace_proto_gen.stamp obj/url/buildflags.stamp
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_helpers_impl.o: cxx ../../net/third_party/quiche/overrides/quiche_platform_impl/quiche_test_helpers_impl.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_helpers_impl.cc
+  source_name_part = quiche_test_helpers_impl
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_impl.o: cxx ../../net/third_party/quiche/overrides/quiche_platform_impl/quiche_test_impl.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_impl.cc
+  source_name_part = quiche_test_impl
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_output_impl.o: cxx ../../net/third_party/quiche/overrides/quiche_platform_impl/quiche_test_output_impl.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_output_impl.cc
+  source_name_part = quiche_test_output_impl
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_loopback.o: cxx ../../net/third_party/quiche/src/quiche/common/platform/api/quiche_test_loopback.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_loopback.cc
+  source_name_part = quiche_test_loopback
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_loopback_impl.o: cxx ../../net/third_party/quiche/src/quiche/common/platform/default/quiche_platform_impl/quiche_test_loopback_impl.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_loopback_impl.cc
+  source_name_part = quiche_test_loopback_impl
+build obj/net/third_party/quiche/quiche_test_support/quiche_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/common/test_tools/quiche_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quiche_test_utils.cc
+  source_name_part = quiche_test_utils
+build obj/net/third_party/quiche/quiche_test_support/test_frame_sequence.o: cxx ../../net/third_party/quiche/src/quiche/http2/adapter/test_frame_sequence.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = test_frame_sequence.cc
+  source_name_part = test_frame_sequence
+build obj/net/third_party/quiche/quiche_test_support/test_utils.o: cxx ../../net/third_party/quiche/src/quiche/http2/adapter/test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = test_utils.cc
+  source_name_part = test_utils
+build obj/net/third_party/quiche/quiche_test_support/frame_decoder_state_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/frame_decoder_state_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = frame_decoder_state_test_util.cc
+  source_name_part = frame_decoder_state_test_util
+build obj/net/third_party/quiche/quiche_test_support/frame_parts.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/frame_parts.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = frame_parts.cc
+  source_name_part = frame_parts
+build obj/net/third_party/quiche/quiche_test_support/frame_parts_collector.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/frame_parts_collector.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = frame_parts_collector.cc
+  source_name_part = frame_parts_collector
+build obj/net/third_party/quiche/quiche_test_support/frame_parts_collector_listener.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/frame_parts_collector_listener.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = frame_parts_collector_listener.cc
+  source_name_part = frame_parts_collector_listener
+build obj/net/third_party/quiche/quiche_test_support/hpack_block_builder.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/hpack_block_builder.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = hpack_block_builder.cc
+  source_name_part = hpack_block_builder
+build obj/net/third_party/quiche/quiche_test_support/hpack_block_collector.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/hpack_block_collector.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = hpack_block_collector.cc
+  source_name_part = hpack_block_collector
+build obj/net/third_party/quiche/quiche_test_support/hpack_entry_collector.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/hpack_entry_collector.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = hpack_entry_collector.cc
+  source_name_part = hpack_entry_collector
+build obj/net/third_party/quiche/quiche_test_support/hpack_example.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/hpack_example.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = hpack_example.cc
+  source_name_part = hpack_example
+build obj/net/third_party/quiche/quiche_test_support/hpack_string_collector.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/hpack_string_collector.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = hpack_string_collector.cc
+  source_name_part = hpack_string_collector
+build obj/net/third_party/quiche/quiche_test_support/http2_constants_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_constants_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_constants_test_util.cc
+  source_name_part = http2_constants_test_util
+build obj/net/third_party/quiche/quiche_test_support/http2_frame_builder.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_frame_builder.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_frame_builder.cc
+  source_name_part = http2_frame_builder
+build obj/net/third_party/quiche/quiche_test_support/http2_frame_decoder_listener_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_frame_decoder_listener_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_frame_decoder_listener_test_util.cc
+  source_name_part = http2_frame_decoder_listener_test_util
+build obj/net/third_party/quiche/quiche_test_support/http2_random.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_random.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_random.cc
+  source_name_part = http2_random
+build obj/net/third_party/quiche/quiche_test_support/http2_structure_decoder_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_structure_decoder_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_structure_decoder_test_util.cc
+  source_name_part = http2_structure_decoder_test_util
+build obj/net/third_party/quiche/quiche_test_support/http2_structures_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/http2_structures_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = http2_structures_test_util.cc
+  source_name_part = http2_structures_test_util
+build obj/net/third_party/quiche/quiche_test_support/payload_decoder_base_test_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/payload_decoder_base_test_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = payload_decoder_base_test_util.cc
+  source_name_part = payload_decoder_base_test_util
+build obj/net/third_party/quiche/quiche_test_support/random_decoder_test_base.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/random_decoder_test_base.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = random_decoder_test_base.cc
+  source_name_part = random_decoder_test_base
+build obj/net/third_party/quiche/quiche_test_support/random_util.o: cxx ../../net/third_party/quiche/src/quiche/http2/test_tools/random_util.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = random_util.cc
+  source_name_part = random_util
+build obj/net/third_party/quiche/quiche_test_support/quic_trace_visitor.o: cxx ../../net/third_party/quiche/src/quiche/quic/core/quic_trace_visitor.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_trace_visitor.cc
+  source_name_part = quic_trace_visitor
+build obj/net/third_party/quiche/quiche_test_support/bad_packet_writer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/bad_packet_writer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = bad_packet_writer.cc
+  source_name_part = bad_packet_writer
+build obj/net/third_party/quiche/quiche_test_support/crypto_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/crypto_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = crypto_test_utils.cc
+  source_name_part = crypto_test_utils
+build obj/net/third_party/quiche/quiche_test_support/failing_proof_source.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/failing_proof_source.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = failing_proof_source.cc
+  source_name_part = failing_proof_source
+build obj/net/third_party/quiche/quiche_test_support/fake_proof_source.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/fake_proof_source.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = fake_proof_source.cc
+  source_name_part = fake_proof_source
+build obj/net/third_party/quiche/quiche_test_support/first_flight.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/first_flight.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = first_flight.cc
+  source_name_part = first_flight
+build obj/net/third_party/quiche/quiche_test_support/limited_mtu_test_writer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/limited_mtu_test_writer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = limited_mtu_test_writer.cc
+  source_name_part = limited_mtu_test_writer
+build obj/net/third_party/quiche/quiche_test_support/mock_clock.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_clock.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_clock.cc
+  source_name_part = mock_clock
+build obj/net/third_party/quiche/quiche_test_support/mock_quic_client_promised_info.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_quic_client_promised_info.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_quic_client_promised_info.cc
+  source_name_part = mock_quic_client_promised_info
+build obj/net/third_party/quiche/quiche_test_support/mock_quic_dispatcher.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_quic_dispatcher.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_quic_dispatcher.cc
+  source_name_part = mock_quic_dispatcher
+build obj/net/third_party/quiche/quiche_test_support/mock_quic_session_visitor.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_quic_session_visitor.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_quic_session_visitor.cc
+  source_name_part = mock_quic_session_visitor
+build obj/net/third_party/quiche/quiche_test_support/mock_quic_spdy_client_stream.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_quic_spdy_client_stream.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_quic_spdy_client_stream.cc
+  source_name_part = mock_quic_spdy_client_stream
+build obj/net/third_party/quiche/quiche_test_support/mock_quic_time_wait_list_manager.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_quic_time_wait_list_manager.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_quic_time_wait_list_manager.cc
+  source_name_part = mock_quic_time_wait_list_manager
+build obj/net/third_party/quiche/quiche_test_support/mock_random.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/mock_random.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_random.cc
+  source_name_part = mock_random
+build obj/net/third_party/quiche/quiche_test_support/packet_dropping_test_writer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/packet_dropping_test_writer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = packet_dropping_test_writer.cc
+  source_name_part = packet_dropping_test_writer
+build obj/net/third_party/quiche/quiche_test_support/packet_reordering_writer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/packet_reordering_writer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = packet_reordering_writer.cc
+  source_name_part = packet_reordering_writer
+build obj/net/third_party/quiche/quiche_test_support/qpack_decoder_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/qpack/qpack_decoder_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = qpack_decoder_test_utils.cc
+  source_name_part = qpack_decoder_test_utils
+build obj/net/third_party/quiche/quiche_test_support/qpack_encoder_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/qpack/qpack_encoder_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = qpack_encoder_peer.cc
+  source_name_part = qpack_encoder_peer
+build obj/net/third_party/quiche/quiche_test_support/qpack_offline_decoder.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/qpack/qpack_offline_decoder.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = qpack_offline_decoder.cc
+  source_name_part = qpack_offline_decoder
+build obj/net/third_party/quiche/quiche_test_support/qpack_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/qpack/qpack_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = qpack_test_utils.cc
+  source_name_part = qpack_test_utils
+build obj/net/third_party/quiche/quiche_test_support/quic_buffered_packet_store_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_buffered_packet_store_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_buffered_packet_store_peer.cc
+  source_name_part = quic_buffered_packet_store_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_client_promised_info_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_client_promised_info_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_client_promised_info_peer.cc
+  source_name_part = quic_client_promised_info_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_coalesced_packet_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_coalesced_packet_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_coalesced_packet_peer.cc
+  source_name_part = quic_coalesced_packet_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_config_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_config_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_config_peer.cc
+  source_name_part = quic_config_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_connection_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_connection_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_connection_peer.cc
+  source_name_part = quic_connection_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_crypto_server_config_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_crypto_server_config_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_crypto_server_config_peer.cc
+  source_name_part = quic_crypto_server_config_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_dispatcher_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_dispatcher_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_dispatcher_peer.cc
+  source_name_part = quic_dispatcher_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_flow_controller_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_flow_controller_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_flow_controller_peer.cc
+  source_name_part = quic_flow_controller_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_framer_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_framer_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_framer_peer.cc
+  source_name_part = quic_framer_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_packet_creator_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_packet_creator_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_packet_creator_peer.cc
+  source_name_part = quic_packet_creator_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_path_validator_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_path_validator_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_path_validator_peer.cc
+  source_name_part = quic_path_validator_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_sent_packet_manager_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_sent_packet_manager_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_sent_packet_manager_peer.cc
+  source_name_part = quic_sent_packet_manager_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_session_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_session_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_session_peer.cc
+  source_name_part = quic_session_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_spdy_session_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_spdy_session_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_spdy_session_peer.cc
+  source_name_part = quic_spdy_session_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_spdy_stream_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_spdy_stream_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_spdy_stream_peer.cc
+  source_name_part = quic_spdy_stream_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_stream_id_manager_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_stream_id_manager_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_stream_id_manager_peer.cc
+  source_name_part = quic_stream_id_manager_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_stream_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_stream_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_stream_peer.cc
+  source_name_part = quic_stream_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_stream_send_buffer_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_stream_send_buffer_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_stream_send_buffer_peer.cc
+  source_name_part = quic_stream_send_buffer_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_stream_sequencer_buffer_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_stream_sequencer_buffer_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_stream_sequencer_buffer_peer.cc
+  source_name_part = quic_stream_sequencer_buffer_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_stream_sequencer_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_stream_sequencer_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_stream_sequencer_peer.cc
+  source_name_part = quic_stream_sequencer_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_sustained_bandwidth_recorder_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_sustained_bandwidth_recorder_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_sustained_bandwidth_recorder_peer.cc
+  source_name_part = quic_sustained_bandwidth_recorder_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_test_backend.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_test_backend.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_test_backend.cc
+  source_name_part = quic_test_backend
+build obj/net/third_party/quiche/quiche_test_support/quic_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_test_utils.cc
+  source_name_part = quic_test_utils
+build obj/net/third_party/quiche/quiche_test_support/quic_time_wait_list_manager_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_time_wait_list_manager_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_time_wait_list_manager_peer.cc
+  source_name_part = quic_time_wait_list_manager_peer
+build obj/net/third_party/quiche/quiche_test_support/quic_unacked_packet_map_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/quic_unacked_packet_map_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_unacked_packet_map_peer.cc
+  source_name_part = quic_unacked_packet_map_peer
+build obj/net/third_party/quiche/quiche_test_support/rtt_stats_peer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/rtt_stats_peer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = rtt_stats_peer.cc
+  source_name_part = rtt_stats_peer
+build obj/net/third_party/quiche/quiche_test_support/send_algorithm_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/send_algorithm_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = send_algorithm_test_utils.cc
+  source_name_part = send_algorithm_test_utils
+build obj/net/third_party/quiche/quiche_test_support/simple_data_producer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simple_data_producer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = simple_data_producer.cc
+  source_name_part = simple_data_producer
+build obj/net/third_party/quiche/quiche_test_support/simple_quic_framer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simple_quic_framer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = simple_quic_framer.cc
+  source_name_part = simple_quic_framer
+build obj/net/third_party/quiche/quiche_test_support/simple_session_cache.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simple_session_cache.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = simple_session_cache.cc
+  source_name_part = simple_session_cache
+build obj/net/third_party/quiche/quiche_test_support/simple_session_notifier.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simple_session_notifier.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = simple_session_notifier.cc
+  source_name_part = simple_session_notifier
+build obj/net/third_party/quiche/quiche_test_support/actor.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/actor.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = actor.cc
+  source_name_part = actor
+build obj/net/third_party/quiche/quiche_test_support/alarm_factory.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/alarm_factory.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = alarm_factory.cc
+  source_name_part = alarm_factory
+build obj/net/third_party/quiche/quiche_test_support/link.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/link.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = link.cc
+  source_name_part = link
+build obj/net/third_party/quiche/quiche_test_support/packet_filter.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/packet_filter.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = packet_filter.cc
+  source_name_part = packet_filter
+build obj/net/third_party/quiche/quiche_test_support/port.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/port.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = port.cc
+  source_name_part = port
+build obj/net/third_party/quiche/quiche_test_support/queue.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/queue.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = queue.cc
+  source_name_part = queue
+build obj/net/third_party/quiche/quiche_test_support/quic_endpoint.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/quic_endpoint.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_endpoint.cc
+  source_name_part = quic_endpoint
+build obj/net/third_party/quiche/quiche_test_support/quic_endpoint_base.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/quic_endpoint_base.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = quic_endpoint_base.cc
+  source_name_part = quic_endpoint_base
+build obj/net/third_party/quiche/quiche_test_support/simulator.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/simulator.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = simulator.cc
+  source_name_part = simulator
+build obj/net/third_party/quiche/quiche_test_support/switch.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/switch.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = switch.cc
+  source_name_part = switch
+build obj/net/third_party/quiche/quiche_test_support/traffic_policer.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/simulator/traffic_policer.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = traffic_policer.cc
+  source_name_part = traffic_policer
+build obj/net/third_party/quiche/quiche_test_support/test_certificates.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/test_certificates.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = test_certificates.cc
+  source_name_part = test_certificates
+build obj/net/third_party/quiche/quiche_test_support/test_ticket_crypter.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/test_ticket_crypter.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = test_ticket_crypter.cc
+  source_name_part = test_ticket_crypter
+build obj/net/third_party/quiche/quiche_test_support/web_transport_resets_backend.o: cxx ../../net/third_party/quiche/src/quiche/quic/test_tools/web_transport_resets_backend.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = web_transport_resets_backend.cc
+  source_name_part = web_transport_resets_backend
+build obj/net/third_party/quiche/quiche_test_support/mock_spdy_framer_visitor.o: cxx ../../net/third_party/quiche/src/quiche/spdy/test_tools/mock_spdy_framer_visitor.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = mock_spdy_framer_visitor.cc
+  source_name_part = mock_spdy_framer_visitor
+build obj/net/third_party/quiche/quiche_test_support/spdy_test_utils.o: cxx ../../net/third_party/quiche/src/quiche/spdy/test_tools/spdy_test_utils.cc || obj/net/third_party/quiche/quiche_test_support.inputdeps.stamp
+  source_file_part = spdy_test_utils.cc
+  source_name_part = spdy_test_utils
+
+build obj/net/third_party/quiche/libquiche_test_support.a: alink obj/net/third_party/quiche/quiche_test_support/quiche_test_helpers_impl.o obj/net/third_party/quiche/quiche_test_support/quiche_test_impl.o obj/net/third_party/quiche/quiche_test_support/quiche_test_output_impl.o obj/net/third_party/quiche/quiche_test_support/quiche_test_loopback.o obj/net/third_party/quiche/quiche_test_support/quiche_test_loopback_impl.o obj/net/third_party/quiche/quiche_test_support/quiche_test_utils.o obj/net/third_party/quiche/quiche_test_support/test_frame_sequence.o obj/net/third_party/quiche/quiche_test_support/test_utils.o obj/net/third_party/quiche/quiche_test_support/frame_decoder_state_test_util.o obj/net/third_party/quiche/quiche_test_support/frame_parts.o obj/net/third_party/quiche/quiche_test_support/frame_parts_collector.o obj/net/third_party/quiche/quiche_test_support/frame_parts_collector_listener.o obj/net/third_party/quiche/quiche_test_support/hpack_block_builder.o obj/net/third_party/quiche/quiche_test_support/hpack_block_collector.o obj/net/third_party/quiche/quiche_test_support/hpack_entry_collector.o obj/net/third_party/quiche/quiche_test_support/hpack_example.o obj/net/third_party/quiche/quiche_test_support/hpack_string_collector.o obj/net/third_party/quiche/quiche_test_support/http2_constants_test_util.o obj/net/third_party/quiche/quiche_test_support/http2_frame_builder.o obj/net/third_party/quiche/quiche_test_support/http2_frame_decoder_listener_test_util.o obj/net/third_party/quiche/quiche_test_support/http2_random.o obj/net/third_party/quiche/quiche_test_support/http2_structure_decoder_test_util.o obj/net/third_party/quiche/quiche_test_support/http2_structures_test_util.o obj/net/third_party/quiche/quiche_test_support/payload_decoder_base_test_util.o obj/net/third_party/quiche/quiche_test_support/random_decoder_test_base.o obj/net/third_party/quiche/quiche_test_support/random_util.o obj/net/third_party/quiche/quiche_test_support/quic_trace_visitor.o obj/net/third_party/quiche/quiche_test_support/bad_packet_writer.o obj/net/third_party/quiche/quiche_test_support/crypto_test_utils.o obj/net/third_party/quiche/quiche_test_support/failing_proof_source.o obj/net/third_party/quiche/quiche_test_support/fake_proof_source.o obj/net/third_party/quiche/quiche_test_support/first_flight.o obj/net/third_party/quiche/quiche_test_support/limited_mtu_test_writer.o obj/net/third_party/quiche/quiche_test_support/mock_clock.o obj/net/third_party/quiche/quiche_test_support/mock_quic_client_promised_info.o obj/net/third_party/quiche/quiche_test_support/mock_quic_dispatcher.o obj/net/third_party/quiche/quiche_test_support/mock_quic_session_visitor.o obj/net/third_party/quiche/quiche_test_support/mock_quic_spdy_client_stream.o obj/net/third_party/quiche/quiche_test_support/mock_quic_time_wait_list_manager.o obj/net/third_party/quiche/quiche_test_support/mock_random.o obj/net/third_party/quiche/quiche_test_support/packet_dropping_test_writer.o obj/net/third_party/quiche/quiche_test_support/packet_reordering_writer.o obj/net/third_party/quiche/quiche_test_support/qpack_decoder_test_utils.o obj/net/third_party/quiche/quiche_test_support/qpack_encoder_peer.o obj/net/third_party/quiche/quiche_test_support/qpack_offline_decoder.o obj/net/third_party/quiche/quiche_test_support/qpack_test_utils.o obj/net/third_party/quiche/quiche_test_support/quic_buffered_packet_store_peer.o obj/net/third_party/quiche/quiche_test_support/quic_client_promised_info_peer.o obj/net/third_party/quiche/quiche_test_support/quic_coalesced_packet_peer.o obj/net/third_party/quiche/quiche_test_support/quic_config_peer.o obj/net/third_party/quiche/quiche_test_support/quic_connection_peer.o obj/net/third_party/quiche/quiche_test_support/quic_crypto_server_config_peer.o obj/net/third_party/quiche/quiche_test_support/quic_dispatcher_peer.o obj/net/third_party/quiche/quiche_test_support/quic_flow_controller_peer.o obj/net/third_party/quiche/quiche_test_support/quic_framer_peer.o obj/net/third_party/quiche/quiche_test_support/quic_packet_creator_peer.o obj/net/third_party/quiche/quiche_test_support/quic_path_validator_peer.o obj/net/third_party/quiche/quiche_test_support/quic_sent_packet_manager_peer.o obj/net/third_party/quiche/quiche_test_support/quic_session_peer.o obj/net/third_party/quiche/quiche_test_support/quic_spdy_session_peer.o obj/net/third_party/quiche/quiche_test_support/quic_spdy_stream_peer.o obj/net/third_party/quiche/quiche_test_support/quic_stream_id_manager_peer.o obj/net/third_party/quiche/quiche_test_support/quic_stream_peer.o obj/net/third_party/quiche/quiche_test_support/quic_stream_send_buffer_peer.o obj/net/third_party/quiche/quiche_test_support/quic_stream_sequencer_buffer_peer.o obj/net/third_party/quiche/quiche_test_support/quic_stream_sequencer_peer.o obj/net/third_party/quiche/quiche_test_support/quic_sustained_bandwidth_recorder_peer.o obj/net/third_party/quiche/quiche_test_support/quic_test_backend.o obj/net/third_party/quiche/quiche_test_support/quic_test_utils.o obj/net/third_party/quiche/quiche_test_support/quic_time_wait_list_manager_peer.o obj/net/third_party/quiche/quiche_test_support/quic_unacked_packet_map_peer.o obj/net/third_party/quiche/quiche_test_support/rtt_stats_peer.o obj/net/third_party/quiche/quiche_test_support/send_algorithm_test_utils.o obj/net/third_party/quiche/quiche_test_support/simple_data_producer.o obj/net/third_party/quiche/quiche_test_support/simple_quic_framer.o obj/net/third_party/quiche/quiche_test_support/simple_session_cache.o obj/net/third_party/quiche/quiche_test_support/simple_session_notifier.o obj/net/third_party/quiche/quiche_test_support/actor.o obj/net/third_party/quiche/quiche_test_support/alarm_factory.o obj/net/third_party/quiche/quiche_test_support/link.o obj/net/third_party/quiche/quiche_test_support/packet_filter.o obj/net/third_party/quiche/quiche_test_support/port.o obj/net/third_party/quiche/quiche_test_support/queue.o obj/net/third_party/quiche/quiche_test_support/quic_endpoint.o obj/net/third_party/quiche/quiche_test_support/quic_endpoint_base.o obj/net/third_party/quiche/quiche_test_support/simulator.o obj/net/third_party/quiche/quiche_test_support/switch.o obj/net/third_party/quiche/quiche_test_support/traffic_policer.o obj/net/third_party/quiche/quiche_test_support/test_certificates.o obj/net/third_party/quiche/quiche_test_support/test_ticket_crypter.o obj/net/third_party/quiche/quiche_test_support/web_transport_resets_backend.o obj/net/third_party/quiche/quiche_test_support/mock_spdy_framer_visitor.o obj/net/third_party/quiche/quiche_test_support/spdy_test_utils.o || ./libnet_third_party_quiche.so.TOC obj/net/third_party/quiche/libquiche_tool_support.a ./libbase.so.TOC obj/crypto/libtest_support.a obj/net/quic_test_flags_utils.stamp obj/net/libtest_support.a obj/testing/gmock/gmock.stamp obj/testing/gtest/libgtest.a ./libthird_party_boringssl.so.TOC ./libthird_party_protobuf_protobuf_lite.so.TOC obj/third_party/quic_trace/quic_trace_proto.stamp ./libthird_party_abseil-cpp_absl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./liburl.so.TOC obj/base/third_party/dynamic_annotations/libdynamic_annotations.a ./libnet.so.TOC ./libnet_uri_template.so.TOC ./libcrcrypto.so.TOC obj/net/libgtest_util.a obj/base/test/libtest_support.a obj/base/test/libtest_config.a obj/base/libbase_static.a ./libbase_i18n.so.TOC ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC obj/third_party/googletest/gmock.stamp obj/third_party/googletest/gtest.stamp ./libthird_party_perfetto_perfetto_test_support.so.TOC obj/third_party/test_fonts/fontconfig/fontconfig_util_linux.stamp ./libthird_party_fontconfig.so.TOC obj/third_party/libxml/libxml_utils.a obj/third_party/libxml/libxml2.a ./libchrome_zlib.so.TOC obj/third_party/libxml/libxml_reader.a obj/net/dns/test_support.stamp obj/net/tools/tld_cleanup/tld_cleanup.stamp obj/net/traffic_annotation/test_support.stamp obj/net/traffic_annotation/traffic_annotation.stamp obj/net/simple_quic_tools.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/net/third_party/quiche

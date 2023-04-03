@@ -1,0 +1,2 @@
+clang_x64_v8_arm64/gen/ui/resources/grit/ui_unscaled_resources.h
+clang_x64_v8_arm64/gen/ui/resources/ui_unscaled_resources.rc

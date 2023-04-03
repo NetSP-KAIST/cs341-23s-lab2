@@ -1,0 +1,664 @@
+defines = -DHAVE_AV_CONFIG_H -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -DFFMPEG_CONFIGURATION=NULL -D_ISOC99_SOURCE -D_LARGEFILE_SOURCE -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../../third_party/ffmpeg/chromium/config/Chromium/linux/x64 -I../../third_party/ffmpeg -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/opus/src/include
+cflags = -fPIC -Wno-deprecated-declarations -fomit-frame-pointer -std=c99 -pthread -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-incompatible-pointer-types -Wno-absolute-value -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-logical-op-parentheses -Wno-parentheses -Wno-pointer-sign -Wno-switch -Wno-unused-label -Wno-unused-variable -Wno-string-conversion -Wno-sometimes-uninitialized -Wno-unguarded-availability -Wno-unused-function -Wno-constant-conversion -Wno-string-plus-int -Wno-tautological-constant-out-of-range-compare -Wno-implicit-int-float-conversion -Wno-inline-asm -O2 -fdata-sections -ffunction-sections -fno-unique-section-names -fvisibility=default
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = ffmpeg_internal
+target_out_dir = clang_x64_v8_arm64/obj/third_party/ffmpeg
+target_output_name = ffmpeg_internal
+
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ac3_channel_layout_tab.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/ac3_channel_layout_tab.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = ac3_channel_layout_tab.c
+  source_name_part = ac3_channel_layout_tab
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ac3_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/ac3_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = ac3_parser.c
+  source_name_part = ac3_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/adts_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/adts_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = adts_parser.c
+  source_name_part = adts_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/allcodecs.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/allcodecs.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = allcodecs.c
+  source_name_part = allcodecs
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_flacdsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/autorename_libavcodec_flacdsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_flacdsp.c
+  source_name_part = autorename_libavcodec_flacdsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_mpegaudiodsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/autorename_libavcodec_mpegaudiodsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_mpegaudiodsp.c
+  source_name_part = autorename_libavcodec_mpegaudiodsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_vorbisdsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/autorename_libavcodec_vorbisdsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_vorbisdsp.c
+  source_name_part = autorename_libavcodec_vorbisdsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avcodec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/avcodec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avcodec.c
+  source_name_part = avcodec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avdct.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/avdct.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avdct.c
+  source_name_part = avdct
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avfft.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/avfft.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avfft.c
+  source_name_part = avfft
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avpacket.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/avpacket.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avpacket.c
+  source_name_part = avpacket
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bitstream.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/bitstream.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = bitstream.c
+  source_name_part = bitstream
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bitstream_filters.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/bitstream_filters.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = bitstream_filters.c
+  source_name_part = bitstream_filters
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bsf.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/bsf.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = bsf.c
+  source_name_part = bsf
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/codec_desc.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/codec_desc.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = codec_desc.c
+  source_name_part = codec_desc
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/codec_par.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/codec_par.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = codec_par.c
+  source_name_part = codec_par
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/d3d11va.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/d3d11va.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = d3d11va.c
+  source_name_part = d3d11va
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/dct.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dct.c
+  source_name_part = dct
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct32_fixed.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/dct32_fixed.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dct32_fixed.c
+  source_name_part = dct32_fixed
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct32_float.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/dct32_float.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dct32_float.c
+  source_name_part = dct32_float
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/decode.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/decode.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = decode.c
+  source_name_part = decode
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dirac.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/dirac.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dirac.c
+  source_name_part = dirac
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dv_profile.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/dv_profile.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dv_profile.c
+  source_name_part = dv_profile
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/encode.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/encode.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = encode.c
+  source_name_part = encode
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_fixed_32.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/fft_fixed_32.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fft_fixed_32.c
+  source_name_part = fft_fixed_32
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_float.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/fft_float.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fft_float.c
+  source_name_part = fft_float
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_init_table.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/fft_init_table.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fft_init_table.c
+  source_name_part = fft_init_table
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/flac.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flac.c
+  source_name_part = flac
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/flac_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flac_parser.c
+  source_name_part = flac_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/flacdata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flacdata.c
+  source_name_part = flacdata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/flacdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flacdec.c
+  source_name_part = flacdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/get_buffer.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/get_buffer.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = get_buffer.c
+  source_name_part = get_buffer
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/golomb.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/golomb.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = golomb.c
+  source_name_part = golomb
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/imgconvert.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/imgconvert.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = imgconvert.c
+  source_name_part = imgconvert
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/jni.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/jni.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = jni.c
+  source_name_part = jni
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/libopus.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/libopus.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = libopus.c
+  source_name_part = libopus
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/libopusdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/libopusdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = libopusdec.c
+  source_name_part = libopusdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mathtables.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mathtables.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mathtables.c
+  source_name_part = mathtables
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mediacodec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mediacodec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mediacodec.c
+  source_name_part = mediacodec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg12framerate.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpeg12framerate.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpeg12framerate.c
+  source_name_part = mpeg12framerate
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg4audio.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpeg4audio.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpeg4audio.c
+  source_name_part = mpeg4audio
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg4audio_sample_rates.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpeg4audio_sample_rates.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpeg4audio_sample_rates.c
+  source_name_part = mpeg4audio_sample_rates
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudio.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudio.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudio.c
+  source_name_part = mpegaudio
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudio_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudio_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudio_parser.c
+  source_name_part = mpegaudio_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodata.c
+  source_name_part = mpegaudiodata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodec_common.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodec_common.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodec_common.c
+  source_name_part = mpegaudiodec_common
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodec_fixed.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodec_fixed.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodec_fixed.c
+  source_name_part = mpegaudiodec_fixed
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodecheader.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodecheader.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodecheader.c
+  source_name_part = mpegaudiodecheader
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_data.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodsp_data.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodsp_data.c
+  source_name_part = mpegaudiodsp_data
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_fixed.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodsp_fixed.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodsp_fixed.c
+  source_name_part = mpegaudiodsp_fixed
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_float.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiodsp_float.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodsp_float.c
+  source_name_part = mpegaudiodsp_float
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiotabs.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/mpegaudiotabs.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiotabs.c
+  source_name_part = mpegaudiotabs
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/options.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/options.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = options.c
+  source_name_part = options
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opus_parse.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/opus_parse.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = opus_parse.c
+  source_name_part = opus_parse
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opus_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/opus_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = opus_parser.c
+  source_name_part = opus_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = parser.c
+  source_name_part = parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parsers.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/parsers.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = parsers.c
+  source_name_part = parsers
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pcm.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/pcm.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pcm.c
+  source_name_part = pcm
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/profiles.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/profiles.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = profiles.c
+  source_name_part = profiles
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/pthread.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pthread.c
+  source_name_part = pthread
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread_frame.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/pthread_frame.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pthread_frame.c
+  source_name_part = pthread_frame
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread_slice.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/pthread_slice.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pthread_slice.c
+  source_name_part = pthread_slice
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/qsv_api.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/qsv_api.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = qsv_api.c
+  source_name_part = qsv_api
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/raw.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/raw.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = raw.c
+  source_name_part = raw
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rdft.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/rdft.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = rdft.c
+  source_name_part = rdft
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/to_upper4.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/to_upper4.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = to_upper4.c
+  source_name_part = to_upper4
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = utils.c
+  source_name_part = utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/version.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/version.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = version.c
+  source_name_part = version
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vlc.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vlc.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vlc.c
+  source_name_part = vlc
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vorbis.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vorbis.c
+  source_name_part = vorbis
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis_data.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vorbis_data.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vorbis_data.c
+  source_name_part = vorbis_data
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vorbis_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vorbis_parser.c
+  source_name_part = vorbis_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbisdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vorbisdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vorbisdec.c
+  source_name_part = vorbisdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp9_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp9_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp9_parser.c
+  source_name_part = vp9_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/xiph.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/xiph.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = xiph.c
+  source_name_part = xiph
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/allformats.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/allformats.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = allformats.c
+  source_name_part = allformats
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_flacdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/autorename_libavformat_flacdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavformat_flacdec.c
+  source_name_part = autorename_libavformat_flacdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_options.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/autorename_libavformat_options.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavformat_options.c
+  source_name_part = autorename_libavformat_options
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_pcm.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/autorename_libavformat_pcm.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavformat_pcm.c
+  source_name_part = autorename_libavformat_pcm
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/autorename_libavformat_utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavformat_utils.c
+  source_name_part = autorename_libavformat_utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_version.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/autorename_libavformat_version.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavformat_version.c
+  source_name_part = autorename_libavformat_version
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avformat.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/avformat.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avformat.c
+  source_name_part = avformat
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avio.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/avio.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avio.c
+  source_name_part = avio
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aviobuf.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/aviobuf.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = aviobuf.c
+  source_name_part = aviobuf
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/demux.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/demux.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = demux.c
+  source_name_part = demux
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/demux_utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/demux_utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = demux_utils.c
+  source_name_part = demux_utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dovi_isom.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/dovi_isom.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dovi_isom.c
+  source_name_part = dovi_isom
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dump.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/dump.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dump.c
+  source_name_part = dump
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dv.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/dv.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dv.c
+  source_name_part = dv
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac_picture.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/flac_picture.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flac_picture.c
+  source_name_part = flac_picture
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/format.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/format.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = format.c
+  source_name_part = format
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/id3v1.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/id3v1.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = id3v1.c
+  source_name_part = id3v1
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/id3v2.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/id3v2.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = id3v2.c
+  source_name_part = id3v2
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/isom.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/isom.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = isom.c
+  source_name_part = isom
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/isom_tags.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/isom_tags.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = isom_tags.c
+  source_name_part = isom_tags
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/matroska.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/matroska.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = matroska.c
+  source_name_part = matroska
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/matroskadec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/matroskadec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = matroskadec.c
+  source_name_part = matroskadec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/metadata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/metadata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = metadata.c
+  source_name_part = metadata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mov.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mov.c
+  source_name_part = mov
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov_chan.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mov_chan.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mov_chan.c
+  source_name_part = mov_chan
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov_esds.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mov_esds.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mov_esds.c
+  source_name_part = mov_esds
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mp3dec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mp3dec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mp3dec.c
+  source_name_part = mp3dec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mux.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mux.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mux.c
+  source_name_part = mux
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mux_utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/mux_utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mux_utils.c
+  source_name_part = mux_utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggdec.c
+  source_name_part = oggdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseflac.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparseflac.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparseflac.c
+  source_name_part = oggparseflac
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseogm.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparseogm.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparseogm.c
+  source_name_part = oggparseogm
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseopus.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparseopus.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparseopus.c
+  source_name_part = oggparseopus
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseskeleton.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparseskeleton.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparseskeleton.c
+  source_name_part = oggparseskeleton
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsetheora.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparsetheora.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparsetheora.c
+  source_name_part = oggparsetheora
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsevorbis.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparsevorbis.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparsevorbis.c
+  source_name_part = oggparsevorbis
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsevp8.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/oggparsevp8.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = oggparsevp8.c
+  source_name_part = oggparsevp8
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/os_support.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/os_support.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = os_support.c
+  source_name_part = os_support
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/protocols.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/protocols.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = protocols.c
+  source_name_part = protocols
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/qtpalette.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/qtpalette.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = qtpalette.c
+  source_name_part = qtpalette
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rawdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/rawdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = rawdec.c
+  source_name_part = rawdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/replaygain.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/replaygain.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = replaygain.c
+  source_name_part = replaygain
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/riff.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/riff.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = riff.c
+  source_name_part = riff
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/riffdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/riffdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = riffdec.c
+  source_name_part = riffdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rmsipr.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/rmsipr.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = rmsipr.c
+  source_name_part = rmsipr
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/seek.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/seek.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = seek.c
+  source_name_part = seek
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/url.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/url.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = url.c
+  source_name_part = url
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbiscomment.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/vorbiscomment.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vorbiscomment.c
+  source_name_part = vorbiscomment
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/wavdec.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavformat/wavdec.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = wavdec.c
+  source_name_part = wavdec
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aes.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/aes.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = aes.c
+  source_name_part = aes
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aes_ctr.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/aes_ctr.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = aes_ctr.c
+  source_name_part = aes_ctr
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ambient_viewing_environment.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/ambient_viewing_environment.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = ambient_viewing_environment.c
+  source_name_part = ambient_viewing_environment
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_cpu.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_cpu.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_cpu.c
+  source_name_part = autorename_libavutil_cpu
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_fixed_dsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_fixed_dsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_fixed_dsp.c
+  source_name_part = autorename_libavutil_fixed_dsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_float_dsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_float_dsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_float_dsp.c
+  source_name_part = autorename_libavutil_float_dsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_imgutils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_imgutils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_imgutils.c
+  source_name_part = autorename_libavutil_imgutils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_tx_float.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_tx_float.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_tx_float.c
+  source_name_part = autorename_libavutil_tx_float
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_utils.c
+  source_name_part = autorename_libavutil_utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_version.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/autorename_libavutil_version.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_version.c
+  source_name_part = autorename_libavutil_version
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avstring.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/avstring.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = avstring.c
+  source_name_part = avstring
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/base64.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/base64.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = base64.c
+  source_name_part = base64
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bprint.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/bprint.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = bprint.c
+  source_name_part = bprint
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/buffer.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/buffer.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = buffer.c
+  source_name_part = buffer
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/camellia.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/camellia.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = camellia.c
+  source_name_part = camellia
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/channel_layout.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/channel_layout.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = channel_layout.c
+  source_name_part = channel_layout
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/color_utils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/color_utils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = color_utils.c
+  source_name_part = color_utils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/crc.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/crc.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = crc.c
+  source_name_part = crc
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/csp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/csp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = csp.c
+  source_name_part = csp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/detection_bbox.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/detection_bbox.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = detection_bbox.c
+  source_name_part = detection_bbox
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dict.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/dict.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dict.c
+  source_name_part = dict
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/display.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/display.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = display.c
+  source_name_part = display
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dovi_meta.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/dovi_meta.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dovi_meta.c
+  source_name_part = dovi_meta
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/downmix_info.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/downmix_info.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = downmix_info.c
+  source_name_part = downmix_info
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/encryption_info.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/encryption_info.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = encryption_info.c
+  source_name_part = encryption_info
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/error.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/error.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = error.c
+  source_name_part = error
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/eval.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/eval.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = eval.c
+  source_name_part = eval
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fifo.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/fifo.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fifo.c
+  source_name_part = fifo
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/file_open.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/file_open.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = file_open.c
+  source_name_part = file_open
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/film_grain_params.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/film_grain_params.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = film_grain_params.c
+  source_name_part = film_grain_params
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/frame.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/frame.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = frame.c
+  source_name_part = frame
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hdr_dynamic_metadata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/hdr_dynamic_metadata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hdr_dynamic_metadata.c
+  source_name_part = hdr_dynamic_metadata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hdr_dynamic_vivid_metadata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/hdr_dynamic_vivid_metadata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hdr_dynamic_vivid_metadata.c
+  source_name_part = hdr_dynamic_vivid_metadata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hwcontext.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/hwcontext.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hwcontext.c
+  source_name_part = hwcontext
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hwcontext_stub.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/hwcontext_stub.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hwcontext_stub.c
+  source_name_part = hwcontext_stub
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/integer.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/integer.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = integer.c
+  source_name_part = integer
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/intmath.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/intmath.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = intmath.c
+  source_name_part = intmath
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lfg.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/lfg.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = lfg.c
+  source_name_part = lfg
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/log.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/log.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = log.c
+  source_name_part = log
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/log2_tab.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/log2_tab.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = log2_tab.c
+  source_name_part = log2_tab
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lzo.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/lzo.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = lzo.c
+  source_name_part = lzo
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mastering_display_metadata.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/mastering_display_metadata.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mastering_display_metadata.c
+  source_name_part = mastering_display_metadata
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mathematics.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/mathematics.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mathematics.c
+  source_name_part = mathematics
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/md5.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/md5.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = md5.c
+  source_name_part = md5
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mem.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/mem.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mem.c
+  source_name_part = mem
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opt.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/opt.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = opt.c
+  source_name_part = opt
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parseutils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/parseutils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = parseutils.c
+  source_name_part = parseutils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pixdesc.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/pixdesc.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pixdesc.c
+  source_name_part = pixdesc
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pixelutils.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/pixelutils.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = pixelutils.c
+  source_name_part = pixelutils
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/random_seed.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/random_seed.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = random_seed.c
+  source_name_part = random_seed
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rational.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/rational.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = rational.c
+  source_name_part = rational
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/reverse.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/reverse.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = reverse.c
+  source_name_part = reverse
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/samplefmt.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/samplefmt.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = samplefmt.c
+  source_name_part = samplefmt
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/sha.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/sha.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = sha.c
+  source_name_part = sha
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/slicethread.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/slicethread.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = slicethread.c
+  source_name_part = slicethread
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/spherical.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/spherical.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = spherical.c
+  source_name_part = spherical
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/stereo3d.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/stereo3d.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = stereo3d.c
+  source_name_part = stereo3d
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/tea.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/tea.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = tea.c
+  source_name_part = tea
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/threadmessage.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/threadmessage.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = threadmessage.c
+  source_name_part = threadmessage
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/time.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/time.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = time.c
+  source_name_part = time
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/timecode.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/timecode.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = timecode.c
+  source_name_part = timecode
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/twofish.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/twofish.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = twofish.c
+  source_name_part = twofish
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/tx.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/tx.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = tx.c
+  source_name_part = tx
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/uuid.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/uuid.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = uuid.c
+  source_name_part = uuid
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/video_enc_params.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/video_enc_params.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = video_enc_params.c
+  source_name_part = video_enc_params
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_x86_videodsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/autorename_libavcodec_x86_videodsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_x86_videodsp_init.c
+  source_name_part = autorename_libavcodec_x86_videodsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/h264_intrapred_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/h264_intrapred_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = h264_intrapred_init.c
+  source_name_part = h264_intrapred_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/hpeldsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hpeldsp_init.c
+  source_name_part = hpeldsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp_vp3_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/hpeldsp_vp3_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hpeldsp_vp3_init.c
+  source_name_part = hpeldsp_vp3_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3dsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/vp3dsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp3dsp_init.c
+  source_name_part = vp3dsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8dsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/vp8dsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp8dsp_init.c
+  source_name_part = vp8dsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_tx_float_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/autorename_libavutil_x86_tx_float_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_x86_tx_float_init.c
+  source_name_part = autorename_libavutil_x86_tx_float_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_x86_vorbisdsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/autorename_libavcodec_x86_vorbisdsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_x86_vorbisdsp_init.c
+  source_name_part = autorename_libavcodec_x86_vorbisdsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/constants.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/constants.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = constants.c
+  source_name_part = constants
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/dct_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = dct_init.c
+  source_name_part = dct_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/fft_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fft_init.c
+  source_name_part = fft_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/flacdsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = flacdsp_init.c
+  source_name_part = flacdsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/x86/mpegaudiodsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = mpegaudiodsp.c
+  source_name_part = mpegaudiodsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_cpu.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/autorename_libavutil_x86_cpu.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_x86_cpu.c
+  source_name_part = autorename_libavutil_x86_cpu
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_float_dsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/autorename_libavutil_x86_float_dsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavutil_x86_float_dsp_init.c
+  source_name_part = autorename_libavutil_x86_float_dsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fixed_dsp_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/fixed_dsp_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = fixed_dsp_init.c
+  source_name_part = fixed_dsp_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/imgutils_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/imgutils_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = imgutils_init.c
+  source_name_part = imgutils_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lls_init.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavutil/x86/lls_init.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = lls_init.c
+  source_name_part = lls_init
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_videodsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/autorename_libavcodec_videodsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = autorename_libavcodec_videodsp.c
+  source_name_part = autorename_libavcodec_videodsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/h264pred.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/h264pred.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = h264pred.c
+  source_name_part = h264pred
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/hpeldsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = hpeldsp.c
+  source_name_part = hpeldsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/jpegquanttables.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/jpegquanttables.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = jpegquanttables.c
+  source_name_part = jpegquanttables
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp3.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp3.c
+  source_name_part = vp3
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp3_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp3_parser.c
+  source_name_part = vp3_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3dsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp3dsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp3dsp.c
+  source_name_part = vp3dsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp8.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp8.c
+  source_name_part = vp8
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8_parser.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp8_parser.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp8_parser.c
+  source_name_part = vp8_parser
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8dsp.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vp8dsp.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vp8dsp.c
+  source_name_part = vp8dsp
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vpx_rac.o: clang_x64_v8_arm64_cc ../../third_party/ffmpeg/libavcodec/vpx_rac.c || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp
+  source_file_part = vpx_rac.c
+  source_name_part = vpx_rac
+
+build clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ac3_channel_layout_tab.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ac3_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/adts_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/allcodecs.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_flacdsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_mpegaudiodsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_vorbisdsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avcodec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avdct.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avfft.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avpacket.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bitstream.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bitstream_filters.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bsf.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/codec_desc.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/codec_par.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/d3d11va.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct32_fixed.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct32_float.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/decode.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dirac.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dv_profile.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/encode.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_fixed_32.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_float.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_init_table.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/get_buffer.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/golomb.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/imgconvert.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/jni.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/libopus.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/libopusdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mathtables.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mediacodec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg12framerate.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg4audio.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpeg4audio_sample_rates.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudio.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudio_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodec_common.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodec_fixed.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodecheader.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_data.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_fixed.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp_float.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiotabs.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/options.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opus_parse.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opus_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parsers.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pcm.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/profiles.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread_frame.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pthread_slice.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/qsv_api.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/raw.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rdft.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/to_upper4.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/version.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vlc.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis_data.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbis_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbisdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp9_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/xiph.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/allformats.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_flacdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_options.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_pcm.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavformat_version.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avformat.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avio.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aviobuf.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/demux.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/demux_utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dovi_isom.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dump.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dv.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flac_picture.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/format.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/id3v1.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/id3v2.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/isom.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/isom_tags.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/matroska.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/matroskadec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/metadata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov_chan.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mov_esds.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mp3dec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mux.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mux_utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseflac.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseogm.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseopus.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparseskeleton.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsetheora.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsevorbis.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/oggparsevp8.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/os_support.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/protocols.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/qtpalette.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rawdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/replaygain.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/riff.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/riffdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rmsipr.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/seek.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/url.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vorbiscomment.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/wavdec.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aes.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/aes_ctr.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/ambient_viewing_environment.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_cpu.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_fixed_dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_float_dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_imgutils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_tx_float.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_version.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/avstring.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/base64.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/bprint.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/buffer.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/camellia.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/channel_layout.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/color_utils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/crc.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/csp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/detection_bbox.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dict.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/display.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dovi_meta.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/downmix_info.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/encryption_info.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/error.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/eval.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fifo.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/file_open.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/film_grain_params.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/frame.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hdr_dynamic_metadata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hdr_dynamic_vivid_metadata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hwcontext.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hwcontext_stub.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/integer.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/intmath.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lfg.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/log.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/log2_tab.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lzo.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mastering_display_metadata.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mathematics.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/md5.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mem.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/opt.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/parseutils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pixdesc.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/pixelutils.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/random_seed.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/rational.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/reverse.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/samplefmt.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/sha.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/slicethread.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/spherical.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/stereo3d.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/tea.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/threadmessage.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/time.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/timecode.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/twofish.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/tx.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/uuid.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/video_enc_params.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_x86_videodsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/h264_intrapred_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp_vp3_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3dsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8dsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_tx_float_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_x86_vorbisdsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/constants.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/dct_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fft_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/flacdsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/mpegaudiodsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_cpu.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavutil_x86_float_dsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/fixed_dsp_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/imgutils_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/lls_init.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/autorename_libavcodec_videodsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/h264pred.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/hpeldsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/jpegquanttables.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp3dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8_parser.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vp8dsp.o clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_internal/vpx_rac.o || clang_x64_v8_arm64/obj/third_party/ffmpeg/ffmpeg_features.stamp clang_x64_v8_arm64/obj/third_party/opus/libopus.a clang_x64_v8_arm64/obj/third_party/ffmpeg/libffmpeg_nasm.a clang_x64_v8_arm64/obj/third_party/opus/opus_sse41.stamp

@@ -1,0 +1,164 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DEIGEN_MPL2_ONLY -DEIGEN_MAX_ALIGN_BYTES=64 -DEIGEN_HAS_TYPE_TRAITS=0 -DFARMHASH_NO_CXX_STRING -DNEON2SSE_DISABLE_PERFORMANCE_WARNING -DTF_LITE_STRIP_ERROR_STRINGS -DTFL_STATIC_LIBRARY_BUILD -DTFLITE_WITHOUT_XNNPACK -DTFLITE_WITH_RUY -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DABSL_CONSUME_DLL -DPTHREADPOOL_USE_GCD=0
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/eigen3/src -I../../third_party/tflite/src -I../../third_party/pthreadpool/src/include -I../../third_party/protobuf/src -Igen/protoc_out -Igen/third_party/tflite/src -I../../third_party/flatbuffers/src/include -I../../third_party/abseil-cpp -I../../third_party/farmhash/src/src -I../../third_party/fp16/src/include -I../../third_party/gemmlowp/src -I../../third_party/neon_2_sse/src -I../../third_party/pthreadpool/src/src -I../../third_party/ruy/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-deprecated-copy -Wno-deprecated-declarations -Wno-extra-semi -Wno-unused-function -Wno-unused-result -Wno-c99-extensions -Wno-comment -Wno-extern-c-compat -Wno-gnu-inline-cpp-without-extern -Wno-loop-analysis -Wno-shadow -Wno-sign-compare -Wno-unreachable-code-break -Wno-unreachable-code-return -Wno-unused-but-set-variable -Wno-unused-variable -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = tflite
+target_out_dir = obj/third_party/tflite
+target_output_name = libtflite
+
+build obj/third_party/tflite/tflite.inputdeps.stamp: stamp obj/build/chromeos_buildflags.stamp obj/third_party/tflite/tflite-config-proto_gen.stamp
+build obj/third_party/tflite/tflite/allocation.o: cxx ../../third_party/tflite/src/tensorflow/lite/allocation.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = allocation.cc
+  source_name_part = allocation
+build obj/third_party/tflite/tflite/arena_planner.o: cxx ../../third_party/tflite/src/tensorflow/lite/arena_planner.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = arena_planner.cc
+  source_name_part = arena_planner
+build obj/third_party/tflite/tflite/common_internal.o: cxx ../../third_party/tflite/src/tensorflow/lite/c/common_internal.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = common_internal.cc
+  source_name_part = common_internal
+build obj/third_party/tflite/tflite/error_reporter.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/api/error_reporter.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = error_reporter.cc
+  source_name_part = error_reporter
+build obj/third_party/tflite/tflite/flatbuffer_conversions.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/api/flatbuffer_conversions.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = flatbuffer_conversions.cc
+  source_name_part = flatbuffer_conversions
+build obj/third_party/tflite/tflite/op_resolver.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/api/op_resolver.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = op_resolver.cc
+  source_name_part = op_resolver
+build obj/third_party/tflite/tflite/tensor_utils.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/api/tensor_utils.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = tensor_utils.cc
+  source_name_part = tensor_utils
+build obj/third_party/tflite/tflite/async_signature_runner.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/async/async_signature_runner.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = async_signature_runner.cc
+  source_name_part = async_signature_runner
+build obj/third_party/tflite/tflite/async_subgraph.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/async/async_subgraph.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = async_subgraph.cc
+  source_name_part = async_subgraph
+build obj/third_party/tflite/tflite/task_internal.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/async/task_internal.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = task_internal.cc
+  source_name_part = task_internal
+build obj/third_party/tflite/tflite/common.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/c/common.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = common.cc
+  source_name_part = common
+build obj/third_party/tflite/tflite/delegate_registry.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/experimental/acceleration/configuration/delegate_registry.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = delegate_registry.cc
+  source_name_part = delegate_registry
+build obj/third_party/tflite/tflite/interpreter.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/interpreter.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = interpreter.cc
+  source_name_part = interpreter
+build obj/third_party/tflite/tflite/interpreter_builder.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/interpreter_builder.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = interpreter_builder.cc
+  source_name_part = interpreter_builder
+build obj/third_party/tflite/tflite/interpreter_experimental.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/interpreter_experimental.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = interpreter_experimental.cc
+  source_name_part = interpreter_experimental
+build obj/third_party/tflite/tflite/model_builder.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/model_builder.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = model_builder.cc
+  source_name_part = model_builder
+build obj/third_party/tflite/tflite/subgraph.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/subgraph.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = subgraph.cc
+  source_name_part = subgraph
+build obj/third_party/tflite/tflite/verifier.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/tools/verifier.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = verifier.cc
+  source_name_part = verifier
+build obj/third_party/tflite/tflite/verifier_internal.o: cxx ../../third_party/tflite/src/tensorflow/lite/core/tools/verifier_internal.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = verifier_internal.cc
+  source_name_part = verifier_internal
+build obj/third_party/tflite/tflite/interpreter_utils.o: cxx ../../third_party/tflite/src/tensorflow/lite/delegates/interpreter_utils.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = interpreter_utils.cc
+  source_name_part = interpreter_utils
+build obj/third_party/tflite/tflite/nnapi_delegate_disabled.o: cxx ../../third_party/tflite/src/tensorflow/lite/delegates/nnapi/nnapi_delegate_disabled.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = nnapi_delegate_disabled.cc
+  source_name_part = nnapi_delegate_disabled
+build obj/third_party/tflite/tflite/flatbuffer_to_proto.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/acceleration/configuration/flatbuffer_to_proto.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = flatbuffer_to_proto.cc
+  source_name_part = flatbuffer_to_proto
+build obj/third_party/tflite/tflite/proto_to_flatbuffer.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/acceleration/configuration/proto_to_flatbuffer.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = proto_to_flatbuffer.cc
+  source_name_part = proto_to_flatbuffer
+build obj/third_party/tflite/tflite/mini_benchmark.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/acceleration/mini_benchmark/mini_benchmark.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = mini_benchmark.cc
+  source_name_part = mini_benchmark
+build obj/third_party/tflite/tflite/metadata_util.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/remat/metadata_util.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = metadata_util.cc
+  source_name_part = metadata_util
+build obj/third_party/tflite/tflite/initialization_status.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/resource/initialization_status.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = initialization_status.cc
+  source_name_part = initialization_status
+build obj/third_party/tflite/tflite/resource_variable.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/resource/resource_variable.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = resource_variable.cc
+  source_name_part = resource_variable
+build obj/third_party/tflite/tflite/static_hashtable.o: cxx ../../third_party/tflite/src/tensorflow/lite/experimental/resource/static_hashtable.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = static_hashtable.cc
+  source_name_part = static_hashtable
+build obj/third_party/tflite/tflite/external_cpu_backend_context.o: cxx ../../third_party/tflite/src/tensorflow/lite/external_cpu_backend_context.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = external_cpu_backend_context.cc
+  source_name_part = external_cpu_backend_context
+build obj/third_party/tflite/tflite/graph_info.o: cxx ../../third_party/tflite/src/tensorflow/lite/graph_info.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = graph_info.cc
+  source_name_part = graph_info
+build obj/third_party/tflite/tflite/portable_tensor_utils.o: cxx ../../third_party/tflite/src/tensorflow/lite/kernels/internal/portable_tensor_utils.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = portable_tensor_utils.cc
+  source_name_part = portable_tensor_utils
+build obj/third_party/tflite/tflite/minimal_logging.o: cxx ../../third_party/tflite/src/tensorflow/lite/minimal_logging.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = minimal_logging.cc
+  source_name_part = minimal_logging
+build obj/third_party/tflite/tflite/mutable_op_resolver.o: cxx ../../third_party/tflite/src/tensorflow/lite/mutable_op_resolver.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = mutable_op_resolver.cc
+  source_name_part = mutable_op_resolver
+build obj/third_party/tflite/tflite/nnapi_implementation_disabled.o: cxx ../../third_party/tflite/src/tensorflow/lite/nnapi/nnapi_implementation_disabled.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = nnapi_implementation_disabled.cc
+  source_name_part = nnapi_implementation_disabled
+build obj/third_party/tflite/tflite/optional_debug_tools.o: cxx ../../third_party/tflite/src/tensorflow/lite/optional_debug_tools.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = optional_debug_tools.cc
+  source_name_part = optional_debug_tools
+build obj/third_party/tflite/tflite/memory_info.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/memory_info.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = memory_info.cc
+  source_name_part = memory_info
+build obj/third_party/tflite/tflite/platform_profiler.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/platform_profiler.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = platform_profiler.cc
+  source_name_part = platform_profiler
+build obj/third_party/tflite/tflite/root_profiler.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/root_profiler.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = root_profiler.cc
+  source_name_part = root_profiler
+build obj/third_party/tflite/tflite/profiler.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/telemetry/profiler.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = profiler.cc
+  source_name_part = profiler
+build obj/third_party/tflite/tflite/telemetry.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/telemetry/telemetry.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = telemetry.cc
+  source_name_part = telemetry
+build obj/third_party/tflite/tflite/time.o: cxx ../../third_party/tflite/src/tensorflow/lite/profiling/time.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = time.cc
+  source_name_part = time
+build obj/third_party/tflite/tflite/schema_utils.o: cxx ../../third_party/tflite/src/tensorflow/lite/schema/schema_utils.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = schema_utils.cc
+  source_name_part = schema_utils
+build obj/third_party/tflite/tflite/signature_runner.o: cxx ../../third_party/tflite/src/tensorflow/lite/signature_runner.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = signature_runner.cc
+  source_name_part = signature_runner
+build obj/third_party/tflite/tflite/simple_memory_arena.o: cxx ../../third_party/tflite/src/tensorflow/lite/simple_memory_arena.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = simple_memory_arena.cc
+  source_name_part = simple_memory_arena
+build obj/third_party/tflite/tflite/stderr_reporter.o: cxx ../../third_party/tflite/src/tensorflow/lite/stderr_reporter.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = stderr_reporter.cc
+  source_name_part = stderr_reporter
+build obj/third_party/tflite/tflite/string_util.o: cxx ../../third_party/tflite/src/tensorflow/lite/string_util.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = string_util.cc
+  source_name_part = string_util
+build obj/third_party/tflite/tflite/tflite_with_xnnpack_optional.o: cxx ../../third_party/tflite/src/tensorflow/lite/tflite_with_xnnpack_optional.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = tflite_with_xnnpack_optional.cc
+  source_name_part = tflite_with_xnnpack_optional
+build obj/third_party/tflite/tflite/util.o: cxx ../../third_party/tflite/src/tensorflow/lite/util.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = util.cc
+  source_name_part = util
+build obj/third_party/tflite/tflite/mmap_allocation.o: cxx ../../third_party/tflite/src/tensorflow/lite/mmap_allocation.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = mmap_allocation.cc
+  source_name_part = mmap_allocation
+build obj/third_party/tflite/tflite/minimal_logging_default.o: cxx ../../third_party/tflite/src/tensorflow/lite/minimal_logging_default.cc || obj/third_party/tflite/tflite.inputdeps.stamp
+  source_file_part = minimal_logging_default.cc
+  source_name_part = minimal_logging_default
+
+build obj/third_party/tflite/libtflite.a: alink obj/third_party/tflite/tflite/allocation.o obj/third_party/tflite/tflite/arena_planner.o obj/third_party/tflite/tflite/common_internal.o obj/third_party/tflite/tflite/error_reporter.o obj/third_party/tflite/tflite/flatbuffer_conversions.o obj/third_party/tflite/tflite/op_resolver.o obj/third_party/tflite/tflite/tensor_utils.o obj/third_party/tflite/tflite/async_signature_runner.o obj/third_party/tflite/tflite/async_subgraph.o obj/third_party/tflite/tflite/task_internal.o obj/third_party/tflite/tflite/common.o obj/third_party/tflite/tflite/delegate_registry.o obj/third_party/tflite/tflite/interpreter.o obj/third_party/tflite/tflite/interpreter_builder.o obj/third_party/tflite/tflite/interpreter_experimental.o obj/third_party/tflite/tflite/model_builder.o obj/third_party/tflite/tflite/subgraph.o obj/third_party/tflite/tflite/verifier.o obj/third_party/tflite/tflite/verifier_internal.o obj/third_party/tflite/tflite/interpreter_utils.o obj/third_party/tflite/tflite/nnapi_delegate_disabled.o obj/third_party/tflite/tflite/flatbuffer_to_proto.o obj/third_party/tflite/tflite/proto_to_flatbuffer.o obj/third_party/tflite/tflite/mini_benchmark.o obj/third_party/tflite/tflite/metadata_util.o obj/third_party/tflite/tflite/initialization_status.o obj/third_party/tflite/tflite/resource_variable.o obj/third_party/tflite/tflite/static_hashtable.o obj/third_party/tflite/tflite/external_cpu_backend_context.o obj/third_party/tflite/tflite/graph_info.o obj/third_party/tflite/tflite/portable_tensor_utils.o obj/third_party/tflite/tflite/minimal_logging.o obj/third_party/tflite/tflite/mutable_op_resolver.o obj/third_party/tflite/tflite/nnapi_implementation_disabled.o obj/third_party/tflite/tflite/optional_debug_tools.o obj/third_party/tflite/tflite/memory_info.o obj/third_party/tflite/tflite/platform_profiler.o obj/third_party/tflite/tflite/root_profiler.o obj/third_party/tflite/tflite/profiler.o obj/third_party/tflite/tflite/telemetry.o obj/third_party/tflite/tflite/time.o obj/third_party/tflite/tflite/schema_utils.o obj/third_party/tflite/tflite/signature_runner.o obj/third_party/tflite/tflite/simple_memory_arena.o obj/third_party/tflite/tflite/stderr_reporter.o obj/third_party/tflite/tflite/string_util.o obj/third_party/tflite/tflite/tflite_with_xnnpack_optional.o obj/third_party/tflite/tflite/util.o obj/third_party/tflite/tflite/mmap_allocation.o obj/third_party/tflite/tflite/minimal_logging_default.o || obj/third_party/tflite/libtflite-config-proto.a obj/third_party/tflite/tflite_kernel_common_headers.stamp obj/third_party/tflite/tflite_kernels.stamp obj/third_party/tflite/tflite_public_headers.stamp obj/third_party/flatbuffers/flatbuffers.stamp ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/farmhash/farmhash.stamp obj/third_party/fft2d/fft2d.stamp obj/third_party/fp16/fp16.stamp obj/third_party/gemmlowp/gemmlowp.stamp obj/third_party/neon_2_sse/neon_2_sse.stamp obj/third_party/pthreadpool/pthreadpool.stamp obj/third_party/ruy/ruy.stamp ./libthird_party_protobuf_protobuf_lite.so.TOC obj/third_party/tflite/fft2d_deps.stamp obj/third_party/tflite/tflite_kernel_internals.stamp obj/third_party/ruy/ruy_check_macros.stamp obj/third_party/ruy/ruy_context.stamp obj/third_party/ruy/ruy_allocator.stamp obj/third_party/ruy/ruy_opt_set.stamp obj/third_party/ruy/ruy_size_util.stamp obj/third_party/ruy/ruy_system_aligned_alloc.stamp obj/third_party/ruy/ruy_ctx.stamp obj/third_party/ruy/ruy_cpuinfo.stamp obj/third_party/ruy/ruy_cpu_cache_params.stamp obj/third_party/ruy/ruy_platform.stamp obj/third_party/cpuinfo/cpuinfo.stamp obj/third_party/cpuinfo/cpu_and_os_specific.stamp obj/third_party/cpuinfo/cpu_specific.stamp obj/third_party/cpuinfo/x86_cache.stamp obj/third_party/cpuinfo/os_specific.stamp obj/third_party/ruy/ruy_have_built_path_for.stamp obj/third_party/ruy/ruy_have_built_path_for_avx.stamp obj/third_party/ruy/ruy_have_built_path_for_avx2_fma.stamp obj/third_party/ruy/ruy_have_built_path_for_avx512.stamp obj/third_party/ruy/ruy_path.stamp obj/third_party/ruy/ruy_performance_advisory.stamp obj/third_party/ruy/ruy_prepacked_cache.stamp obj/third_party/ruy/ruy_mat.stamp obj/third_party/ruy/ruy_matrix.stamp obj/third_party/ruy/ruy_profiler_instrumentation.stamp obj/third_party/ruy/ruy_instrumentation.stamp obj/third_party/ruy/ruy_thread_pool.stamp obj/third_party/ruy/ruy_blocking_counter.stamp obj/third_party/ruy/ruy_time.stamp obj/third_party/ruy/ruy_wait.stamp obj/third_party/ruy/ruy_denormal.stamp obj/third_party/ruy/ruy_trace.stamp obj/third_party/ruy/ruy_side_pair.stamp obj/third_party/ruy/ruy_tune.stamp obj/third_party/ruy/ruy_context_get_ctx.stamp obj/third_party/ruy/ruy_frontend.stamp obj/third_party/ruy/ruy_create_trmul_params.stamp obj/third_party/ruy/ruy_kernel.stamp obj/third_party/ruy/ruy_apply_multiplier.stamp obj/third_party/ruy/ruy_mul_params.stamp obj/third_party/ruy/ruy_kernel_arm.stamp obj/third_party/ruy/ruy_asm_helpers.stamp obj/third_party/ruy/ruy_kernel_common.stamp obj/third_party/ruy/ruy_kernel_avx.stamp obj/third_party/ruy/ruy_kernel_avx2_fma.stamp obj/third_party/ruy/ruy_kernel_avx512.stamp obj/third_party/ruy/ruy_pack.stamp obj/third_party/ruy/ruy_pack_arm.stamp obj/third_party/ruy/ruy_pack_common.stamp obj/third_party/ruy/ruy_pack_avx.stamp obj/third_party/ruy/ruy_pack_avx2_fma.stamp obj/third_party/ruy/ruy_pack_avx512.stamp obj/third_party/ruy/ruy_trmul_params.stamp obj/third_party/ruy/ruy_prepare_packed_matrices.stamp obj/third_party/ruy/ruy_trmul.stamp obj/third_party/ruy/ruy_block_map.stamp obj/third_party/ruy/ruy_validate.stamp obj/third_party/fxdiv/fxdiv.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/tflite

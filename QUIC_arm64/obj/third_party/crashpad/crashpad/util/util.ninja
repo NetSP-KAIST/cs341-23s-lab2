@@ -1,0 +1,228 @@
+defines = -DZLIB_CONST -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DCRASHPAD_FLOCK_ALWAYS_SUPPORTED=true -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DCRASHPAD_ZLIB_SOURCE_EXTERNAL -DCRASHPAD_LSS_SOURCE_EXTERNAL
+include_dirs = -Igen/third_party/crashpad/crashpad -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/crashpad/crashpad -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/crashpad/crashpad/compat/linux -I../../third_party/crashpad/crashpad/compat/non_win -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/zlib
+asmflags = -fPIC -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -std=c11 -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wa,-fdebug-compilation-dir,. -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf --sysroot=../../build/linux/debian_bullseye_arm64-sysroot
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = util
+target_out_dir = obj/third_party/crashpad/crashpad/util
+target_output_name = libutil
+
+build obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/third_party/crashpad/crashpad/util/util/delimited_file_reader.o: cxx ../../third_party/crashpad/crashpad/util/file/delimited_file_reader.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = delimited_file_reader.cc
+  source_name_part = delimited_file_reader
+build obj/third_party/crashpad/crashpad/util/util/file_helper.o: cxx ../../third_party/crashpad/crashpad/util/file/file_helper.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_helper.cc
+  source_name_part = file_helper
+build obj/third_party/crashpad/crashpad/util/util/file_io.o: cxx ../../third_party/crashpad/crashpad/util/file/file_io.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_io.cc
+  source_name_part = file_io
+build obj/third_party/crashpad/crashpad/util/util/file_reader.o: cxx ../../third_party/crashpad/crashpad/util/file/file_reader.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_reader.cc
+  source_name_part = file_reader
+build obj/third_party/crashpad/crashpad/util/util/file_seeker.o: cxx ../../third_party/crashpad/crashpad/util/file/file_seeker.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_seeker.cc
+  source_name_part = file_seeker
+build obj/third_party/crashpad/crashpad/util/util/file_writer.o: cxx ../../third_party/crashpad/crashpad/util/file/file_writer.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_writer.cc
+  source_name_part = file_writer
+build obj/third_party/crashpad/crashpad/util/util/output_stream_file_writer.o: cxx ../../third_party/crashpad/crashpad/util/file/output_stream_file_writer.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = output_stream_file_writer.cc
+  source_name_part = output_stream_file_writer
+build obj/third_party/crashpad/crashpad/util/util/scoped_remove_file.o: cxx ../../third_party/crashpad/crashpad/util/file/scoped_remove_file.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_remove_file.cc
+  source_name_part = scoped_remove_file
+build obj/third_party/crashpad/crashpad/util/util/string_file.o: cxx ../../third_party/crashpad/crashpad/util/file/string_file.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = string_file.cc
+  source_name_part = string_file
+build obj/third_party/crashpad/crashpad/util/util/initialization_state_dcheck.o: cxx ../../third_party/crashpad/crashpad/util/misc/initialization_state_dcheck.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = initialization_state_dcheck.cc
+  source_name_part = initialization_state_dcheck
+build obj/third_party/crashpad/crashpad/util/util/lexing.o: cxx ../../third_party/crashpad/crashpad/util/misc/lexing.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = lexing.cc
+  source_name_part = lexing
+build obj/third_party/crashpad/crashpad/util/util/metrics.o: cxx ../../third_party/crashpad/crashpad/util/misc/metrics.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = metrics.cc
+  source_name_part = metrics
+build obj/third_party/crashpad/crashpad/util/util/pdb_structures.o: cxx ../../third_party/crashpad/crashpad/util/misc/pdb_structures.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = pdb_structures.cc
+  source_name_part = pdb_structures
+build obj/third_party/crashpad/crashpad/util/util/random_string.o: cxx ../../third_party/crashpad/crashpad/util/misc/random_string.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = random_string.cc
+  source_name_part = random_string
+build obj/third_party/crashpad/crashpad/util/util/range_set.o: cxx ../../third_party/crashpad/crashpad/util/misc/range_set.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = range_set.cc
+  source_name_part = range_set
+build obj/third_party/crashpad/crashpad/util/util/reinterpret_bytes.o: cxx ../../third_party/crashpad/crashpad/util/misc/reinterpret_bytes.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = reinterpret_bytes.cc
+  source_name_part = reinterpret_bytes
+build obj/third_party/crashpad/crashpad/util/util/scoped_forbid_return.o: cxx ../../third_party/crashpad/crashpad/util/misc/scoped_forbid_return.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_forbid_return.cc
+  source_name_part = scoped_forbid_return
+build obj/third_party/crashpad/crashpad/util/util/time.o: cxx ../../third_party/crashpad/crashpad/util/misc/time.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = time.cc
+  source_name_part = time
+build obj/third_party/crashpad/crashpad/util/util/uuid.o: cxx ../../third_party/crashpad/crashpad/util/misc/uuid.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = uuid.cc
+  source_name_part = uuid
+build obj/third_party/crashpad/crashpad/util/util/zlib.o: cxx ../../third_party/crashpad/crashpad/util/misc/zlib.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = zlib.cc
+  source_name_part = zlib
+build obj/third_party/crashpad/crashpad/util/util/checked_address_range.o: cxx ../../third_party/crashpad/crashpad/util/numeric/checked_address_range.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = checked_address_range.cc
+  source_name_part = checked_address_range
+build obj/third_party/crashpad/crashpad/util/util/process_memory.o: cxx ../../third_party/crashpad/crashpad/util/process/process_memory.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = process_memory.cc
+  source_name_part = process_memory
+build obj/third_party/crashpad/crashpad/util/util/process_memory_range.o: cxx ../../third_party/crashpad/crashpad/util/process/process_memory_range.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = process_memory_range.cc
+  source_name_part = process_memory_range
+build obj/third_party/crashpad/crashpad/util/util/aligned_allocator.o: cxx ../../third_party/crashpad/crashpad/util/stdlib/aligned_allocator.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = aligned_allocator.cc
+  source_name_part = aligned_allocator
+build obj/third_party/crashpad/crashpad/util/util/string_number_conversion.o: cxx ../../third_party/crashpad/crashpad/util/stdlib/string_number_conversion.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = string_number_conversion.cc
+  source_name_part = string_number_conversion
+build obj/third_party/crashpad/crashpad/util/util/strlcpy.o: cxx ../../third_party/crashpad/crashpad/util/stdlib/strlcpy.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = strlcpy.cc
+  source_name_part = strlcpy
+build obj/third_party/crashpad/crashpad/util/util/strnlen.o: cxx ../../third_party/crashpad/crashpad/util/stdlib/strnlen.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = strnlen.cc
+  source_name_part = strnlen
+build obj/third_party/crashpad/crashpad/util/util/base94_output_stream.o: cxx ../../third_party/crashpad/crashpad/util/stream/base94_output_stream.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = base94_output_stream.cc
+  source_name_part = base94_output_stream
+build obj/third_party/crashpad/crashpad/util/util/file_encoder.o: cxx ../../third_party/crashpad/crashpad/util/stream/file_encoder.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_encoder.cc
+  source_name_part = file_encoder
+build obj/third_party/crashpad/crashpad/util/util/file_output_stream.o: cxx ../../third_party/crashpad/crashpad/util/stream/file_output_stream.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_output_stream.cc
+  source_name_part = file_output_stream
+build obj/third_party/crashpad/crashpad/util/util/log_output_stream.o: cxx ../../third_party/crashpad/crashpad/util/stream/log_output_stream.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = log_output_stream.cc
+  source_name_part = log_output_stream
+build obj/third_party/crashpad/crashpad/util/util/zlib_output_stream.o: cxx ../../third_party/crashpad/crashpad/util/stream/zlib_output_stream.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = zlib_output_stream.cc
+  source_name_part = zlib_output_stream
+build obj/third_party/crashpad/crashpad/util/util/split_string.o: cxx ../../third_party/crashpad/crashpad/util/string/split_string.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = split_string.cc
+  source_name_part = split_string
+build obj/third_party/crashpad/crashpad/util/util/thread.o: cxx ../../third_party/crashpad/crashpad/util/thread/thread.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = thread.cc
+  source_name_part = thread
+build obj/third_party/crashpad/crashpad/util/util/thread_log_messages.o: cxx ../../third_party/crashpad/crashpad/util/thread/thread_log_messages.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = thread_log_messages.cc
+  source_name_part = thread_log_messages
+build obj/third_party/crashpad/crashpad/util/util/worker_thread.o: cxx ../../third_party/crashpad/crashpad/util/thread/worker_thread.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = worker_thread.cc
+  source_name_part = worker_thread
+build obj/third_party/crashpad/crashpad/util/util/directory_reader_posix.o: cxx ../../third_party/crashpad/crashpad/util/file/directory_reader_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = directory_reader_posix.cc
+  source_name_part = directory_reader_posix
+build obj/third_party/crashpad/crashpad/util/util/file_io_posix.o: cxx ../../third_party/crashpad/crashpad/util/file/file_io_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = file_io_posix.cc
+  source_name_part = file_io_posix
+build obj/third_party/crashpad/crashpad/util/util/filesystem_posix.o: cxx ../../third_party/crashpad/crashpad/util/file/filesystem_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = filesystem_posix.cc
+  source_name_part = filesystem_posix
+build obj/third_party/crashpad/crashpad/util/util/clock_posix.o: cxx ../../third_party/crashpad/crashpad/util/misc/clock_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = clock_posix.cc
+  source_name_part = clock_posix
+build obj/third_party/crashpad/crashpad/util/util/close_stdio.o: cxx ../../third_party/crashpad/crashpad/util/posix/close_stdio.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = close_stdio.cc
+  source_name_part = close_stdio
+build obj/third_party/crashpad/crashpad/util/util/scoped_dir.o: cxx ../../third_party/crashpad/crashpad/util/posix/scoped_dir.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_dir.cc
+  source_name_part = scoped_dir
+build obj/third_party/crashpad/crashpad/util/util/scoped_mmap.o: cxx ../../third_party/crashpad/crashpad/util/posix/scoped_mmap.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_mmap.cc
+  source_name_part = scoped_mmap
+build obj/third_party/crashpad/crashpad/util/util/signals.o: cxx ../../third_party/crashpad/crashpad/util/posix/signals.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = signals.cc
+  source_name_part = signals
+build obj/third_party/crashpad/crashpad/util/util/semaphore_posix.o: cxx ../../third_party/crashpad/crashpad/util/synchronization/semaphore_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = semaphore_posix.cc
+  source_name_part = semaphore_posix
+build obj/third_party/crashpad/crashpad/util/util/thread_posix.o: cxx ../../third_party/crashpad/crashpad/util/thread/thread_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = thread_posix.cc
+  source_name_part = thread_posix
+build obj/third_party/crashpad/crashpad/util/util/close_multiple.o: cxx ../../third_party/crashpad/crashpad/util/posix/close_multiple.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = close_multiple.cc
+  source_name_part = close_multiple
+build obj/third_party/crashpad/crashpad/util/util/drop_privileges.o: cxx ../../third_party/crashpad/crashpad/util/posix/drop_privileges.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = drop_privileges.cc
+  source_name_part = drop_privileges
+build obj/third_party/crashpad/crashpad/util/util/spawn_subprocess.o: cxx ../../third_party/crashpad/crashpad/util/posix/spawn_subprocess.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = spawn_subprocess.cc
+  source_name_part = spawn_subprocess
+build obj/third_party/crashpad/crashpad/util/util/symbolic_constants_posix.o: cxx ../../third_party/crashpad/crashpad/util/posix/symbolic_constants_posix.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = symbolic_constants_posix.cc
+  source_name_part = symbolic_constants_posix
+build obj/third_party/crashpad/crashpad/util/util/auxiliary_vector.o: cxx ../../third_party/crashpad/crashpad/util/linux/auxiliary_vector.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = auxiliary_vector.cc
+  source_name_part = auxiliary_vector
+build obj/third_party/crashpad/crashpad/util/util/direct_ptrace_connection.o: cxx ../../third_party/crashpad/crashpad/util/linux/direct_ptrace_connection.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = direct_ptrace_connection.cc
+  source_name_part = direct_ptrace_connection
+build obj/third_party/crashpad/crashpad/util/util/exception_handler_client.o: cxx ../../third_party/crashpad/crashpad/util/linux/exception_handler_client.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = exception_handler_client.cc
+  source_name_part = exception_handler_client
+build obj/third_party/crashpad/crashpad/util/util/exception_handler_protocol.o: cxx ../../third_party/crashpad/crashpad/util/linux/exception_handler_protocol.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = exception_handler_protocol.cc
+  source_name_part = exception_handler_protocol
+build obj/third_party/crashpad/crashpad/util/util/memory_map.o: cxx ../../third_party/crashpad/crashpad/util/linux/memory_map.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = memory_map.cc
+  source_name_part = memory_map
+build obj/third_party/crashpad/crashpad/util/util/proc_stat_reader.o: cxx ../../third_party/crashpad/crashpad/util/linux/proc_stat_reader.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = proc_stat_reader.cc
+  source_name_part = proc_stat_reader
+build obj/third_party/crashpad/crashpad/util/util/proc_task_reader.o: cxx ../../third_party/crashpad/crashpad/util/linux/proc_task_reader.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = proc_task_reader.cc
+  source_name_part = proc_task_reader
+build obj/third_party/crashpad/crashpad/util/util/ptrace_broker.o: cxx ../../third_party/crashpad/crashpad/util/linux/ptrace_broker.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = ptrace_broker.cc
+  source_name_part = ptrace_broker
+build obj/third_party/crashpad/crashpad/util/util/ptrace_client.o: cxx ../../third_party/crashpad/crashpad/util/linux/ptrace_client.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = ptrace_client.cc
+  source_name_part = ptrace_client
+build obj/third_party/crashpad/crashpad/util/util/ptracer.o: cxx ../../third_party/crashpad/crashpad/util/linux/ptracer.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = ptracer.cc
+  source_name_part = ptracer
+build obj/third_party/crashpad/crashpad/util/util/scoped_pr_set_dumpable.o: cxx ../../third_party/crashpad/crashpad/util/linux/scoped_pr_set_dumpable.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_pr_set_dumpable.cc
+  source_name_part = scoped_pr_set_dumpable
+build obj/third_party/crashpad/crashpad/util/util/scoped_pr_set_ptracer.o: cxx ../../third_party/crashpad/crashpad/util/linux/scoped_pr_set_ptracer.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_pr_set_ptracer.cc
+  source_name_part = scoped_pr_set_ptracer
+build obj/third_party/crashpad/crashpad/util/util/scoped_ptrace_attach.o: cxx ../../third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = scoped_ptrace_attach.cc
+  source_name_part = scoped_ptrace_attach
+build obj/third_party/crashpad/crashpad/util/util/socket.o: cxx ../../third_party/crashpad/crashpad/util/linux/socket.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = socket.cc
+  source_name_part = socket
+build obj/third_party/crashpad/crashpad/util/util/thread_info.o: cxx ../../third_party/crashpad/crashpad/util/linux/thread_info.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = thread_info.cc
+  source_name_part = thread_info
+build obj/third_party/crashpad/crashpad/util/util/capture_context_linux.o: asm ../../third_party/crashpad/crashpad/util/misc/capture_context_linux.S || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = capture_context_linux.S
+  source_name_part = capture_context_linux
+build obj/third_party/crashpad/crashpad/util/util/paths_linux.o: cxx ../../third_party/crashpad/crashpad/util/misc/paths_linux.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = paths_linux.cc
+  source_name_part = paths_linux
+build obj/third_party/crashpad/crashpad/util/util/time_linux.o: cxx ../../third_party/crashpad/crashpad/util/misc/time_linux.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = time_linux.cc
+  source_name_part = time_linux
+build obj/third_party/crashpad/crashpad/util/util/process_info_linux.o: cxx ../../third_party/crashpad/crashpad/util/posix/process_info_linux.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = process_info_linux.cc
+  source_name_part = process_info_linux
+build obj/third_party/crashpad/crashpad/util/util/process_memory_linux.o: cxx ../../third_party/crashpad/crashpad/util/process/process_memory_linux.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = process_memory_linux.cc
+  source_name_part = process_memory_linux
+build obj/third_party/crashpad/crashpad/util/util/process_memory_sanitized.o: cxx ../../third_party/crashpad/crashpad/util/process/process_memory_sanitized.cc || obj/third_party/crashpad/crashpad/util/util.inputdeps.stamp
+  source_file_part = process_memory_sanitized.cc
+  source_name_part = process_memory_sanitized
+
+build obj/third_party/crashpad/crashpad/util/libutil.a: alink obj/third_party/crashpad/crashpad/util/util/delimited_file_reader.o obj/third_party/crashpad/crashpad/util/util/file_helper.o obj/third_party/crashpad/crashpad/util/util/file_io.o obj/third_party/crashpad/crashpad/util/util/file_reader.o obj/third_party/crashpad/crashpad/util/util/file_seeker.o obj/third_party/crashpad/crashpad/util/util/file_writer.o obj/third_party/crashpad/crashpad/util/util/output_stream_file_writer.o obj/third_party/crashpad/crashpad/util/util/scoped_remove_file.o obj/third_party/crashpad/crashpad/util/util/string_file.o obj/third_party/crashpad/crashpad/util/util/initialization_state_dcheck.o obj/third_party/crashpad/crashpad/util/util/lexing.o obj/third_party/crashpad/crashpad/util/util/metrics.o obj/third_party/crashpad/crashpad/util/util/pdb_structures.o obj/third_party/crashpad/crashpad/util/util/random_string.o obj/third_party/crashpad/crashpad/util/util/range_set.o obj/third_party/crashpad/crashpad/util/util/reinterpret_bytes.o obj/third_party/crashpad/crashpad/util/util/scoped_forbid_return.o obj/third_party/crashpad/crashpad/util/util/time.o obj/third_party/crashpad/crashpad/util/util/uuid.o obj/third_party/crashpad/crashpad/util/util/zlib.o obj/third_party/crashpad/crashpad/util/util/checked_address_range.o obj/third_party/crashpad/crashpad/util/util/process_memory.o obj/third_party/crashpad/crashpad/util/util/process_memory_range.o obj/third_party/crashpad/crashpad/util/util/aligned_allocator.o obj/third_party/crashpad/crashpad/util/util/string_number_conversion.o obj/third_party/crashpad/crashpad/util/util/strlcpy.o obj/third_party/crashpad/crashpad/util/util/strnlen.o obj/third_party/crashpad/crashpad/util/util/base94_output_stream.o obj/third_party/crashpad/crashpad/util/util/file_encoder.o obj/third_party/crashpad/crashpad/util/util/file_output_stream.o obj/third_party/crashpad/crashpad/util/util/log_output_stream.o obj/third_party/crashpad/crashpad/util/util/zlib_output_stream.o obj/third_party/crashpad/crashpad/util/util/split_string.o obj/third_party/crashpad/crashpad/util/util/thread.o obj/third_party/crashpad/crashpad/util/util/thread_log_messages.o obj/third_party/crashpad/crashpad/util/util/worker_thread.o obj/third_party/crashpad/crashpad/util/util/directory_reader_posix.o obj/third_party/crashpad/crashpad/util/util/file_io_posix.o obj/third_party/crashpad/crashpad/util/util/filesystem_posix.o obj/third_party/crashpad/crashpad/util/util/clock_posix.o obj/third_party/crashpad/crashpad/util/util/close_stdio.o obj/third_party/crashpad/crashpad/util/util/scoped_dir.o obj/third_party/crashpad/crashpad/util/util/scoped_mmap.o obj/third_party/crashpad/crashpad/util/util/signals.o obj/third_party/crashpad/crashpad/util/util/semaphore_posix.o obj/third_party/crashpad/crashpad/util/util/thread_posix.o obj/third_party/crashpad/crashpad/util/util/close_multiple.o obj/third_party/crashpad/crashpad/util/util/drop_privileges.o obj/third_party/crashpad/crashpad/util/util/spawn_subprocess.o obj/third_party/crashpad/crashpad/util/util/symbolic_constants_posix.o obj/third_party/crashpad/crashpad/util/util/auxiliary_vector.o obj/third_party/crashpad/crashpad/util/util/direct_ptrace_connection.o obj/third_party/crashpad/crashpad/util/util/exception_handler_client.o obj/third_party/crashpad/crashpad/util/util/exception_handler_protocol.o obj/third_party/crashpad/crashpad/util/util/memory_map.o obj/third_party/crashpad/crashpad/util/util/proc_stat_reader.o obj/third_party/crashpad/crashpad/util/util/proc_task_reader.o obj/third_party/crashpad/crashpad/util/util/ptrace_broker.o obj/third_party/crashpad/crashpad/util/util/ptrace_client.o obj/third_party/crashpad/crashpad/util/util/ptracer.o obj/third_party/crashpad/crashpad/util/util/scoped_pr_set_dumpable.o obj/third_party/crashpad/crashpad/util/util/scoped_pr_set_ptracer.o obj/third_party/crashpad/crashpad/util/util/scoped_ptrace_attach.o obj/third_party/crashpad/crashpad/util/util/socket.o obj/third_party/crashpad/crashpad/util/util/thread_info.o obj/third_party/crashpad/crashpad/util/util/capture_context_linux.o obj/third_party/crashpad/crashpad/util/util/paths_linux.o obj/third_party/crashpad/crashpad/util/util/time_linux.o obj/third_party/crashpad/crashpad/util/util/process_info_linux.o obj/third_party/crashpad/crashpad/util/util/process_memory_linux.o obj/third_party/crashpad/crashpad/util/util/process_memory_sanitized.o || obj/third_party/crashpad/crashpad/util/no_cfi_icall.stamp obj/third_party/crashpad/crashpad/compat/libcompat.a obj/third_party/crashpad/crashpad/third_party/zlib/zlib.stamp obj/build/chromeos_buildflags.stamp obj/third_party/crashpad/crashpad/third_party/mini_chromium/base.stamp obj/third_party/crashpad/crashpad/third_party/mini_chromium/chromeos_buildflags.stamp obj/third_party/crashpad/crashpad/third_party/lss/lss.stamp ./libbase.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libchrome_zlib.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/crashpad/crashpad/util

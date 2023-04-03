@@ -1,0 +1,8 @@
+{
+  "deps": [
+
+  ],
+  "sources": [
+    "../../../../../../components/nacl/common/nacl.mojom"
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "traits_deps": [
+      ":attribution_reporting_proto",
+      "//content/common:mojo_bindings",
+      "//components/aggregation_service:mojom"
+    ],
+    "traits_headers": [
+      "content/browser/attribution_reporting/attribution_internals_mojom_traits.h",
+      "content/browser/attribution_reporting/attribution_report.h"
+    ],
+    "traits_sources": [
+      "attribution_internals_mojom_traits.cc"
+    ],
+    "types": [
+      {
+        "cpp": "::content::AttributionReport::AggregatableAttributionData::Id",
+        "mojom": "attribution_internals.mojom.AggregatableAttributionReportID"
+      },
+      {
+        "cpp": "::content::AttributionReport::EventLevelData::Id",
+        "mojom": "attribution_internals.mojom.EventLevelReportID"
+      },
+      {
+        "cpp": "::content::AttributionReport::Id",
+        "mojom": "attribution_internals.mojom.ReportID"
+      }
+    ]
+  }
+]

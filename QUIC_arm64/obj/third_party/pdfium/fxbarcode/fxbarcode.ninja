@@ -1,0 +1,194 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DOPJ_STATIC -D_SKIA_SUPPORT_ -DPDF_USE_PARTITION_ALLOC -DPDF_ENABLE_V8 -DPDF_ENABLE_XFA -DPDF_ENABLE_XFA_BMP -DPDF_ENABLE_XFA_GIF -DPDF_ENABLE_XFA_PNG -DPDF_ENABLE_XFA_TIFF -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DFT_CONFIG_MODULES_H=\"freetype-custom/freetype/config/ftmodule.h\" -DFT_CONFIG_OPTIONS_H=\"freetype-custom/freetype/config/ftoption.h\" -DPDFIUM_REQUIRED_MODULES -DABSL_CONSUME_DLL -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/pdfium -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/freetype/include -I../../third_party/freetype/include/freetype-custom -I../../third_party/freetype/src/include -I../../third_party/harfbuzz-ng/src/src -I../../third_party/abseil-cpp -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wc++11-narrowing -Wdeprecated-copy -Wtautological-unsigned-zero-compare -Xclang -add-plugin -Xclang blink-gc-plugin -Wshadow -Wexit-time-destructors -Wglobal-constructors -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -Wno-redundant-parens
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = fxbarcode
+target_out_dir = obj/third_party/pdfium/fxbarcode
+target_output_name = fxbarcode
+
+build obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/gpu/config/workaround_list.stamp obj/skia/buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Library.o: cxx ../../third_party/pdfium/fxbarcode/BC_Library.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_Library.cpp
+  source_name_part = BC_Library
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_TwoDimWriter.o: cxx ../../third_party/pdfium/fxbarcode/BC_TwoDimWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_TwoDimWriter.cpp
+  source_name_part = BC_TwoDimWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Writer.o: cxx ../../third_party/pdfium/fxbarcode/BC_Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_Writer.cpp
+  source_name_part = BC_Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_codabar.o: cxx ../../third_party/pdfium/fxbarcode/cbc_codabar.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_codabar.cpp
+  source_name_part = cbc_codabar
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_code128.o: cxx ../../third_party/pdfium/fxbarcode/cbc_code128.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_code128.cpp
+  source_name_part = cbc_code128
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_code39.o: cxx ../../third_party/pdfium/fxbarcode/cbc_code39.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_code39.cpp
+  source_name_part = cbc_code39
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_codebase.o: cxx ../../third_party/pdfium/fxbarcode/cbc_codebase.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_codebase.cpp
+  source_name_part = cbc_codebase
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_datamatrix.o: cxx ../../third_party/pdfium/fxbarcode/cbc_datamatrix.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_datamatrix.cpp
+  source_name_part = cbc_datamatrix
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_ean13.o: cxx ../../third_party/pdfium/fxbarcode/cbc_ean13.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_ean13.cpp
+  source_name_part = cbc_ean13
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_ean8.o: cxx ../../third_party/pdfium/fxbarcode/cbc_ean8.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_ean8.cpp
+  source_name_part = cbc_ean8
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_eancode.o: cxx ../../third_party/pdfium/fxbarcode/cbc_eancode.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_eancode.cpp
+  source_name_part = cbc_eancode
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_onecode.o: cxx ../../third_party/pdfium/fxbarcode/cbc_onecode.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_onecode.cpp
+  source_name_part = cbc_onecode
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_pdf417i.o: cxx ../../third_party/pdfium/fxbarcode/cbc_pdf417i.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_pdf417i.cpp
+  source_name_part = cbc_pdf417i
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_qrcode.o: cxx ../../third_party/pdfium/fxbarcode/cbc_qrcode.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_qrcode.cpp
+  source_name_part = cbc_qrcode
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_upca.o: cxx ../../third_party/pdfium/fxbarcode/cbc_upca.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cbc_upca.cpp
+  source_name_part = cbc_upca
+build obj/third_party/pdfium/fxbarcode/fxbarcode/cfx_barcode.o: cxx ../../third_party/pdfium/fxbarcode/cfx_barcode.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = cfx_barcode.cpp
+  source_name_part = cfx_barcode
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_CommonBitMatrix.o: cxx ../../third_party/pdfium/fxbarcode/common/BC_CommonBitMatrix.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_CommonBitMatrix.cpp
+  source_name_part = BC_CommonBitMatrix
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_CommonByteMatrix.o: cxx ../../third_party/pdfium/fxbarcode/common/BC_CommonByteMatrix.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_CommonByteMatrix.cpp
+  source_name_part = BC_CommonByteMatrix
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomon.o: cxx ../../third_party/pdfium/fxbarcode/common/reedsolomon/BC_ReedSolomon.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_ReedSolomon.cpp
+  source_name_part = BC_ReedSolomon
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomonGF256.o: cxx ../../third_party/pdfium/fxbarcode/common/reedsolomon/BC_ReedSolomonGF256.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_ReedSolomonGF256.cpp
+  source_name_part = BC_ReedSolomonGF256
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomonGF256Poly.o: cxx ../../third_party/pdfium/fxbarcode/common/reedsolomon/BC_ReedSolomonGF256Poly.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_ReedSolomonGF256Poly.cpp
+  source_name_part = BC_ReedSolomonGF256Poly
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ASCIIEncoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_ASCIIEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_ASCIIEncoder.cpp
+  source_name_part = BC_ASCIIEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Base256Encoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_Base256Encoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_Base256Encoder.cpp
+  source_name_part = BC_Base256Encoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_C40Encoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_C40Encoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_C40Encoder.cpp
+  source_name_part = BC_C40Encoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DataMatrixSymbolInfo144.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_DataMatrixSymbolInfo144.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_DataMatrixSymbolInfo144.cpp
+  source_name_part = BC_DataMatrixSymbolInfo144
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DataMatrixWriter.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_DataMatrixWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_DataMatrixWriter.cpp
+  source_name_part = BC_DataMatrixWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DefaultPlacement.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_DefaultPlacement.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_DefaultPlacement.cpp
+  source_name_part = BC_DefaultPlacement
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_EdifactEncoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_EdifactEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_EdifactEncoder.cpp
+  source_name_part = BC_EdifactEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Encoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_Encoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_Encoder.cpp
+  source_name_part = BC_Encoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_EncoderContext.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_EncoderContext.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_EncoderContext.cpp
+  source_name_part = BC_EncoderContext
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ErrorCorrection.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_ErrorCorrection.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_ErrorCorrection.cpp
+  source_name_part = BC_ErrorCorrection
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_HighLevelEncoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_HighLevelEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_HighLevelEncoder.cpp
+  source_name_part = BC_HighLevelEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_SymbolInfo.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_SymbolInfo.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_SymbolInfo.cpp
+  source_name_part = BC_SymbolInfo
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_TextEncoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_TextEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_TextEncoder.cpp
+  source_name_part = BC_TextEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_X12Encoder.o: cxx ../../third_party/pdfium/fxbarcode/datamatrix/BC_X12Encoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_X12Encoder.cpp
+  source_name_part = BC_X12Encoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OneDimWriter.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OneDimWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OneDimWriter.cpp
+  source_name_part = BC_OneDimWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCodaBarWriter.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedCodaBarWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedCodaBarWriter.cpp
+  source_name_part = BC_OnedCodaBarWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCode128Writer.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedCode128Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedCode128Writer.cpp
+  source_name_part = BC_OnedCode128Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCode39Writer.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedCode39Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedCode39Writer.cpp
+  source_name_part = BC_OnedCode39Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEAN13Writer.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedEAN13Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedEAN13Writer.cpp
+  source_name_part = BC_OnedEAN13Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEAN8Writer.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedEAN8Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedEAN8Writer.cpp
+  source_name_part = BC_OnedEAN8Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEANChecksum.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedEANChecksum.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedEANChecksum.cpp
+  source_name_part = BC_OnedEANChecksum
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEANWriter.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedEANWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedEANWriter.cpp
+  source_name_part = BC_OnedEANWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedUPCAWriter.o: cxx ../../third_party/pdfium/fxbarcode/oned/BC_OnedUPCAWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_OnedUPCAWriter.cpp
+  source_name_part = BC_OnedUPCAWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417.cpp
+  source_name_part = BC_PDF417
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417BarcodeMatrix.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417BarcodeMatrix.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417BarcodeMatrix.cpp
+  source_name_part = BC_PDF417BarcodeMatrix
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417BarcodeRow.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417BarcodeRow.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417BarcodeRow.cpp
+  source_name_part = BC_PDF417BarcodeRow
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417ErrorCorrection.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417ErrorCorrection.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417ErrorCorrection.cpp
+  source_name_part = BC_PDF417ErrorCorrection
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417HighLevelEncoder.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417HighLevelEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417HighLevelEncoder.cpp
+  source_name_part = BC_PDF417HighLevelEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417Writer.o: cxx ../../third_party/pdfium/fxbarcode/pdf417/BC_PDF417Writer.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_PDF417Writer.cpp
+  source_name_part = BC_PDF417Writer
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCodeWriter.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCodeWriter.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCodeWriter.cpp
+  source_name_part = BC_QRCodeWriter
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoder.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoder.cpp
+  source_name_part = BC_QRCoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderBitVector.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderBitVector.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderBitVector.cpp
+  source_name_part = BC_QRCoderBitVector
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderECBlocks.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderECBlocks.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderECBlocks.cpp
+  source_name_part = BC_QRCoderECBlocks
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderECBlocksData.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderECBlocksData.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderECBlocksData.cpp
+  source_name_part = BC_QRCoderECBlocksData
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderEncoder.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderEncoder.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderEncoder.cpp
+  source_name_part = BC_QRCoderEncoder
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderErrorCorrectionLevel.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderErrorCorrectionLevel.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderErrorCorrectionLevel.cpp
+  source_name_part = BC_QRCoderErrorCorrectionLevel
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMaskUtil.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderMaskUtil.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderMaskUtil.cpp
+  source_name_part = BC_QRCoderMaskUtil
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMatrixUtil.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderMatrixUtil.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderMatrixUtil.cpp
+  source_name_part = BC_QRCoderMatrixUtil
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMode.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderMode.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderMode.cpp
+  source_name_part = BC_QRCoderMode
+build obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderVersion.o: cxx ../../third_party/pdfium/fxbarcode/qrcode/BC_QRCoderVersion.cpp || obj/third_party/pdfium/fxbarcode/fxbarcode.inputdeps.stamp
+  source_file_part = BC_QRCoderVersion.cpp
+  source_name_part = BC_QRCoderVersion
+
+build obj/third_party/pdfium/fxbarcode/fxbarcode.stamp: stamp obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Library.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_TwoDimWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_codabar.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_code128.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_code39.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_codebase.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_datamatrix.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_ean13.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_ean8.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_eancode.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_onecode.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_pdf417i.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_qrcode.o obj/third_party/pdfium/fxbarcode/fxbarcode/cbc_upca.o obj/third_party/pdfium/fxbarcode/fxbarcode/cfx_barcode.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_CommonBitMatrix.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_CommonByteMatrix.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomon.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomonGF256.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ReedSolomonGF256Poly.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ASCIIEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Base256Encoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_C40Encoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DataMatrixSymbolInfo144.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DataMatrixWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_DefaultPlacement.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_EdifactEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_Encoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_EncoderContext.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_ErrorCorrection.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_HighLevelEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_SymbolInfo.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_TextEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_X12Encoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OneDimWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCodaBarWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCode128Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedCode39Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEAN13Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEAN8Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEANChecksum.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedEANWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_OnedUPCAWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417BarcodeMatrix.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417BarcodeRow.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417ErrorCorrection.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417HighLevelEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_PDF417Writer.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCodeWriter.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderBitVector.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderECBlocks.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderECBlocksData.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderEncoder.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderErrorCorrectionLevel.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMaskUtil.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMatrixUtil.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderMode.o obj/third_party/pdfium/fxbarcode/fxbarcode/BC_QRCoderVersion.o || obj/third_party/pdfium/core/fxcrt/fxcrt.stamp obj/third_party/pdfium/core/fxge/fxge.stamp obj/third_party/pdfium/third_party/bigint.stamp obj/third_party/pdfium/core/fxcrt/unowned_ptr.stamp obj/third_party/pdfium/third_party/pdfium_compiler_specific.stamp ./libthird_party_freetype_harfbuzz.so.TOC obj/third_party/pdfium/third_party/pdfium_base.stamp ./libthird_party_abseil-cpp_absl.so.TOC ./libicuuc.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libskia.so.TOC obj/third_party/pdfium/third_party/fx_agg.stamp

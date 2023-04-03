@@ -1,0 +1,137 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DOPJ_STATIC -D_SKIA_SUPPORT_ -DPDF_USE_PARTITION_ALLOC -DPDF_ENABLE_V8 -DPDF_ENABLE_XFA -DPDF_ENABLE_XFA_BMP -DPDF_ENABLE_XFA_GIF -DPDF_ENABLE_XFA_PNG -DPDF_ENABLE_XFA_TIFF -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DFT_CONFIG_MODULES_H=\"freetype-custom/freetype/config/ftmodule.h\" -DFT_CONFIG_OPTIONS_H=\"freetype-custom/freetype/config/ftoption.h\" -DPDFIUM_REQUIRED_MODULES -DABSL_CONSUME_DLL -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DUSE_LIBJPEG_TURBO=1 -DMANGLE_JPEG_NAMES
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/pdfium -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/zlib -I../../third_party/freetype/include -I../../third_party/freetype/include/freetype-custom -I../../third_party/freetype/src/include -I../../third_party/harfbuzz-ng/src/src -I../../third_party/abseil-cpp -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/libjpeg_turbo -I../../third_party/libpng
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wc++11-narrowing -Wdeprecated-copy -Wtautological-unsigned-zero-compare -Xclang -add-plugin -Xclang blink-gc-plugin -Wshadow -Wexit-time-destructors -Wglobal-constructors -Wshorten-64-to-32 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -Wno-redundant-parens
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = fxcodec
+target_out_dir = obj/third_party/pdfium/core/fxcodec
+target_output_name = fxcodec
+
+build obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/gpu/config/workaround_list.stamp obj/skia/buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp
+build obj/third_party/pdfium/core/fxcodec/fxcodec/basicmodule.o: cxx ../../third_party/pdfium/core/fxcodec/basic/basicmodule.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = basicmodule.cpp
+  source_name_part = basicmodule
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_codec_memory.o: cxx ../../third_party/pdfium/core/fxcodec/cfx_codec_memory.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cfx_codec_memory.cpp
+  source_name_part = cfx_codec_memory
+build obj/third_party/pdfium/core/fxcodec/fxcodec/faxmodule.o: cxx ../../third_party/pdfium/core/fxcodec/fax/faxmodule.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = faxmodule.cpp
+  source_name_part = faxmodule
+build obj/third_party/pdfium/core/fxcodec/fxcodec/flatemodule.o: cxx ../../third_party/pdfium/core/fxcodec/flate/flatemodule.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = flatemodule.cpp
+  source_name_part = flatemodule
+build obj/third_party/pdfium/core/fxcodec/fxcodec/fx_codec.o: cxx ../../third_party/pdfium/core/fxcodec/fx_codec.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = fx_codec.cpp
+  source_name_part = fx_codec
+build obj/third_party/pdfium/core/fxcodec/fxcodec/icc_transform.o: cxx ../../third_party/pdfium/core/fxcodec/icc/icc_transform.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = icc_transform.cpp
+  source_name_part = icc_transform
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_ArithDecoder.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_ArithDecoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_ArithDecoder.cpp
+  source_name_part = JBig2_ArithDecoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_ArithIntDecoder.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_ArithIntDecoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_ArithIntDecoder.cpp
+  source_name_part = JBig2_ArithIntDecoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_BitStream.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_BitStream.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_BitStream.cpp
+  source_name_part = JBig2_BitStream
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Context.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_Context.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_Context.cpp
+  source_name_part = JBig2_Context
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_DocumentContext.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_DocumentContext.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_DocumentContext.cpp
+  source_name_part = JBig2_DocumentContext
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_GrdProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_GrdProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_GrdProc.cpp
+  source_name_part = JBig2_GrdProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_GrrdProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_GrrdProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_GrrdProc.cpp
+  source_name_part = JBig2_GrrdProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HtrdProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_HtrdProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_HtrdProc.cpp
+  source_name_part = JBig2_HtrdProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HuffmanDecoder.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_HuffmanDecoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_HuffmanDecoder.cpp
+  source_name_part = JBig2_HuffmanDecoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HuffmanTable.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_HuffmanTable.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_HuffmanTable.cpp
+  source_name_part = JBig2_HuffmanTable
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Image.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_Image.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_Image.cpp
+  source_name_part = JBig2_Image
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_PatternDict.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_PatternDict.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_PatternDict.cpp
+  source_name_part = JBig2_PatternDict
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_PddProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_PddProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_PddProc.cpp
+  source_name_part = JBig2_PddProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_SddProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_SddProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_SddProc.cpp
+  source_name_part = JBig2_SddProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Segment.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_Segment.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_Segment.cpp
+  source_name_part = JBig2_Segment
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_SymbolDict.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_SymbolDict.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_SymbolDict.cpp
+  source_name_part = JBig2_SymbolDict
+build obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_TrdProc.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/JBig2_TrdProc.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = JBig2_TrdProc.cpp
+  source_name_part = JBig2_TrdProc
+build obj/third_party/pdfium/core/fxcodec/fxcodec/jbig2_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/jbig2/jbig2_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = jbig2_decoder.cpp
+  source_name_part = jbig2_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/jpeg_common.o: cxx ../../third_party/pdfium/core/fxcodec/jpeg/jpeg_common.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = jpeg_common.cpp
+  source_name_part = jpeg_common
+build obj/third_party/pdfium/core/fxcodec/fxcodec/jpegmodule.o: cxx ../../third_party/pdfium/core/fxcodec/jpeg/jpegmodule.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = jpegmodule.cpp
+  source_name_part = jpegmodule
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cjpx_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/jpx/cjpx_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cjpx_decoder.cpp
+  source_name_part = cjpx_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/jpx_decode_utils.o: cxx ../../third_party/pdfium/core/fxcodec/jpx/jpx_decode_utils.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = jpx_decode_utils.cpp
+  source_name_part = jpx_decode_utils
+build obj/third_party/pdfium/core/fxcodec/fxcodec/scanlinedecoder.o: cxx ../../third_party/pdfium/core/fxcodec/scanlinedecoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = scanlinedecoder.cpp
+  source_name_part = scanlinedecoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/jpeg_progressive_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/jpeg/jpeg_progressive_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = jpeg_progressive_decoder.cpp
+  source_name_part = jpeg_progressive_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/progressive_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/progressive_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = progressive_decoder.cpp
+  source_name_part = progressive_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/bmp_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/bmp/bmp_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = bmp_decoder.cpp
+  source_name_part = bmp_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/bmp_progressive_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/bmp/bmp_progressive_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = bmp_progressive_decoder.cpp
+  source_name_part = bmp_progressive_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_bmpcontext.o: cxx ../../third_party/pdfium/core/fxcodec/bmp/cfx_bmpcontext.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cfx_bmpcontext.cpp
+  source_name_part = cfx_bmpcontext
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_bmpdecompressor.o: cxx ../../third_party/pdfium/core/fxcodec/bmp/cfx_bmpdecompressor.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cfx_bmpdecompressor.cpp
+  source_name_part = cfx_bmpdecompressor
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_gif.o: cxx ../../third_party/pdfium/core/fxcodec/gif/cfx_gif.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cfx_gif.cpp
+  source_name_part = cfx_gif
+build obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_gifcontext.o: cxx ../../third_party/pdfium/core/fxcodec/gif/cfx_gifcontext.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = cfx_gifcontext.cpp
+  source_name_part = cfx_gifcontext
+build obj/third_party/pdfium/core/fxcodec/fxcodec/gif_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/gif/gif_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = gif_decoder.cpp
+  source_name_part = gif_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/gif_progressive_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/gif/gif_progressive_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = gif_progressive_decoder.cpp
+  source_name_part = gif_progressive_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/lzw_decompressor.o: cxx ../../third_party/pdfium/core/fxcodec/gif/lzw_decompressor.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = lzw_decompressor.cpp
+  source_name_part = lzw_decompressor
+build obj/third_party/pdfium/core/fxcodec/fxcodec/png_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/png/png_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = png_decoder.cpp
+  source_name_part = png_decoder
+build obj/third_party/pdfium/core/fxcodec/fxcodec/tiff_decoder.o: cxx ../../third_party/pdfium/core/fxcodec/tiff/tiff_decoder.cpp || obj/third_party/pdfium/core/fxcodec/fxcodec.inputdeps.stamp
+  source_file_part = tiff_decoder.cpp
+  source_name_part = tiff_decoder
+
+build obj/third_party/pdfium/core/fxcodec/fxcodec.stamp: stamp obj/third_party/pdfium/core/fxcodec/fxcodec/basicmodule.o obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_codec_memory.o obj/third_party/pdfium/core/fxcodec/fxcodec/faxmodule.o obj/third_party/pdfium/core/fxcodec/fxcodec/flatemodule.o obj/third_party/pdfium/core/fxcodec/fxcodec/fx_codec.o obj/third_party/pdfium/core/fxcodec/fxcodec/icc_transform.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_ArithDecoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_ArithIntDecoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_BitStream.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Context.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_DocumentContext.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_GrdProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_GrrdProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HtrdProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HuffmanDecoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_HuffmanTable.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Image.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_PatternDict.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_PddProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_SddProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_Segment.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_SymbolDict.o obj/third_party/pdfium/core/fxcodec/fxcodec/JBig2_TrdProc.o obj/third_party/pdfium/core/fxcodec/fxcodec/jbig2_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/jpeg_common.o obj/third_party/pdfium/core/fxcodec/fxcodec/jpegmodule.o obj/third_party/pdfium/core/fxcodec/fxcodec/cjpx_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/jpx_decode_utils.o obj/third_party/pdfium/core/fxcodec/fxcodec/scanlinedecoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/jpeg_progressive_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/progressive_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/bmp_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/bmp_progressive_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_bmpcontext.o obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_bmpdecompressor.o obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_gif.o obj/third_party/pdfium/core/fxcodec/fxcodec/cfx_gifcontext.o obj/third_party/pdfium/core/fxcodec/fxcodec/gif_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/gif_progressive_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/lzw_decompressor.o obj/third_party/pdfium/core/fxcodec/fxcodec/png_decoder.o obj/third_party/pdfium/core/fxcodec/fxcodec/tiff_decoder.o || obj/third_party/pdfium/third_party/lcms2.stamp obj/third_party/pdfium/third_party/libopenjpeg2.stamp obj/third_party/pdfium/third_party/zlib.stamp obj/third_party/pdfium/core/fxcrt/fxcrt.stamp obj/third_party/pdfium/core/fxge/fxge.stamp obj/third_party/jpeg.stamp obj/third_party/pdfium/third_party/png.stamp obj/third_party/pdfium/third_party/fx_tiff.stamp obj/third_party/pdfium/third_party/fx_lcms2.stamp obj/third_party/pdfium/core/fxcrt/unowned_ptr.stamp obj/third_party/pdfium/third_party/pdfium_compiler_specific.stamp ./libthird_party_freetype_harfbuzz.so.TOC obj/third_party/pdfium/third_party/pdfium_base.stamp ./libthird_party_abseil-cpp_absl.so.TOC ./libicuuc.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC obj/third_party/pdfium/third_party/fx_libopenjpeg.stamp ./libchrome_zlib.so.TOC ./libskia.so.TOC obj/third_party/pdfium/third_party/fx_agg.stamp obj/third_party/libjpeg_turbo/libjpeg.a obj/third_party/libjpeg_turbo/libjpeg_headers.stamp obj/third_party/libjpeg_turbo/libsimd.a obj/third_party/libpng/libpng_sources.stamp

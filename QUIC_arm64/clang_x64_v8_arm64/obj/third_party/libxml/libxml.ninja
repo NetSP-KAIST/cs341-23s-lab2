@@ -1,0 +1,94 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../../third_party/libxml/linux -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/libxml/src/include -I../../third_party/libxml/linux/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../third_party/zlib
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-pointer-sign -Wno-empty-body -Wno-tautological-pointer-compare -Wno-ignored-attributes -Wno-int-to-void-pointer-cast -Wno-incompatible-pointer-types -Wno-unused-function -Wno-enum-compare -DLIBXML_STATIC=
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libxml
+target_out_dir = clang_x64_v8_arm64/obj/third_party/libxml
+target_output_name = libxml2
+
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/HTMLparser.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/HTMLparser.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = HTMLparser.c
+  source_name_part = HTMLparser
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/HTMLtree.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/HTMLtree.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = HTMLtree.c
+  source_name_part = HTMLtree
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/SAX2.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/SAX2.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = SAX2.c
+  source_name_part = SAX2
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/buf.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/buf.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = buf.c
+  source_name_part = buf
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/chvalid.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/chvalid.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = chvalid.c
+  source_name_part = chvalid
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/dict.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/dict.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = dict.c
+  source_name_part = dict
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/encoding.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/encoding.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = encoding.c
+  source_name_part = encoding
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/entities.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/entities.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = entities.c
+  source_name_part = entities
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/error.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/error.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = error.c
+  source_name_part = error
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/globals.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/globals.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = globals.c
+  source_name_part = globals
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/hash.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/hash.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = hash.c
+  source_name_part = hash
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/list.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/list.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = list.c
+  source_name_part = list
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/parser.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/parser.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = parser.c
+  source_name_part = parser
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/parserInternals.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/parserInternals.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = parserInternals.c
+  source_name_part = parserInternals
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/pattern.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/pattern.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = pattern.c
+  source_name_part = pattern
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/threads.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/threads.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = threads.c
+  source_name_part = threads
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/tree.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/tree.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = tree.c
+  source_name_part = tree
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/uri.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/uri.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = uri.c
+  source_name_part = uri
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/valid.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/valid.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = valid.c
+  source_name_part = valid
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlIO.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlIO.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlIO.c
+  source_name_part = xmlIO
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlmemory.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlmemory.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlmemory.c
+  source_name_part = xmlmemory
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlreader.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlreader.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlreader.c
+  source_name_part = xmlreader
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlsave.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlsave.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlsave.c
+  source_name_part = xmlsave
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlstring.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlstring.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlstring.c
+  source_name_part = xmlstring
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlunicode.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlunicode.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlunicode.c
+  source_name_part = xmlunicode
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlwriter.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xmlwriter.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xmlwriter.c
+  source_name_part = xmlwriter
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml/xpath.o: clang_x64_v8_arm64_cc ../../third_party/libxml/src/xpath.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xpath.c
+  source_name_part = xpath
+
+build clang_x64_v8_arm64/obj/third_party/libxml/libxml2.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/libxml/libxml/HTMLparser.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/HTMLtree.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/SAX2.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/buf.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/chvalid.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/dict.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/encoding.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/entities.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/error.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/globals.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/hash.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/list.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/parser.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/parserInternals.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/pattern.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/threads.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/tree.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/uri.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/valid.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlIO.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlmemory.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlreader.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlsave.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlstring.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlunicode.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xmlwriter.o clang_x64_v8_arm64/obj/third_party/libxml/libxml/xpath.o || clang_x64_v8_arm64/obj/third_party/icu/icuuc.stamp clang_x64_v8_arm64/libchrome_zlib.so.TOC clang_x64_v8_arm64/libicuuc.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/libxml

@@ -1,0 +1,2 @@
+../../services/cert_verifier/public/mojom/cert_verifier_service_factory.mojom
+../../services/cert_verifier/public/mojom/trial_comparison_cert_verifier.mojom

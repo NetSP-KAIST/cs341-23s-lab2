@@ -1,0 +1,961 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DIS_SKIA_IMPL=1 -DSKIA_IMPLEMENTATION=1 -DSK_FREETYPE_MINIMUM_RUNTIME_VERSION=\(\(\(FREETYPE_MAJOR\)\$ \*\$ 0x01000000\)\$ \|\$ \(\(FREETYPE_MINOR\)\$ \*\$ 0x00010000\)\$ \|\$ \(\(FREETYPE_PATCH\)\$ \*\$ 0x00000100\)\) -DSK_TYPEFACE_FACTORY_FREETYPE -DSK_GAMMA_EXPONENT=1.2 -DSK_GAMMA_CONTRAST=0.2 -DSK_DEFAULT_FONT_CACHE_LIMIT=20971520
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wno-redundant-parens -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = skia_core_and_effects
+target_out_dir = clang_x64_v8_arm64/obj/skia
+target_output_name = skia_core_and_effects
+
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkArenaAlloc.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkArenaAlloc.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkArenaAlloc.cpp
+  source_name_part = SkArenaAlloc
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBezierCurves.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkBezierCurves.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBezierCurves.cpp
+  source_name_part = SkBezierCurves
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlockAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkBlockAllocator.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlockAllocator.cpp
+  source_name_part = SkBlockAllocator
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkBuffer.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBuffer.cpp
+  source_name_part = SkBuffer
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkContainers.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkContainers.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkContainers.cpp
+  source_name_part = SkContainers
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubics.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkCubics.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCubics.cpp
+  source_name_part = SkCubics
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeque.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkDeque.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDeque.cpp
+  source_name_part = SkDeque
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFloatingPoint.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkFloatingPoint.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFloatingPoint.cpp
+  source_name_part = SkFloatingPoint
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkHalf.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkHalf.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkHalf.cpp
+  source_name_part = SkHalf
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMalloc.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkMalloc.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMalloc.cpp
+  source_name_part = SkMalloc
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMathPriv.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkMathPriv.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMathPriv.cpp
+  source_name_part = SkMathPriv
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkQuads.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkQuads.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkQuads.cpp
+  source_name_part = SkQuads
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSafeMath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkSafeMath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSafeMath.cpp
+  source_name_part = SkSafeMath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSemaphore.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkSemaphore.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSemaphore.cpp
+  source_name_part = SkSemaphore
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTDArray.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkTDArray.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTDArray.cpp
+  source_name_part = SkTDArray
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTSearch.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkTSearch.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTSearch.cpp
+  source_name_part = SkTSearch
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkThreadID.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkThreadID.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkThreadID.cpp
+  source_name_part = SkThreadID
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUTF.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkUTF.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkUTF.cpp
+  source_name_part = SkUTF
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUtils.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/base/SkUtils.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkUtils.cpp
+  source_name_part = SkUtils
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAAClip.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkAAClip.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAAClip.cpp
+  source_name_part = SkAAClip
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkATrace.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkATrace.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkATrace.cpp
+  source_name_part = SkATrace
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAlphaRuns.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkAlphaRuns.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAlphaRuns.cpp
+  source_name_part = SkAlphaRuns
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAnalyticEdge.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkAnalyticEdge.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAnalyticEdge.cpp
+  source_name_part = SkAnalyticEdge
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAnnotation.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkAnnotation.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAnnotation.cpp
+  source_name_part = SkAnnotation
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAutoPixmapStorage.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkAutoPixmapStorage.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAutoPixmapStorage.cpp
+  source_name_part = SkAutoPixmapStorage
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBBHFactory.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBBHFactory.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBBHFactory.cpp
+  source_name_part = SkBBHFactory
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmap.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBitmap.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmap.cpp
+  source_name_part = SkBitmap
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBitmapCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmapCache.cpp
+  source_name_part = SkBitmapCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapDevice.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBitmapDevice.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmapDevice.cpp
+  source_name_part = SkBitmapDevice
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcState.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBitmapProcState.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmapProcState.cpp
+  source_name_part = SkBitmapProcState
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcState_matrixProcs.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBitmapProcState_matrixProcs.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmapProcState_matrixProcs.cpp
+  source_name_part = SkBitmapProcState_matrixProcs
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendMode.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlendMode.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlendMode.cpp
+  source_name_part = SkBlendMode
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendModeBlender.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlendModeBlender.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlendModeBlender.cpp
+  source_name_part = SkBlendModeBlender
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitRow_D32.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlitRow_D32.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlitRow_D32.cpp
+  source_name_part = SkBlitRow_D32
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlitter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlitter.cpp
+  source_name_part = SkBlitter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_A8.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlitter_A8.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlitter_A8.cpp
+  source_name_part = SkBlitter_A8
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_ARGB32.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlitter_ARGB32.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlitter_ARGB32.cpp
+  source_name_part = SkBlitter_ARGB32
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_Sprite.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlitter_Sprite.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlitter_Sprite.cpp
+  source_name_part = SkBlitter_Sprite
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurMF.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlurMF.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlurMF.cpp
+  source_name_part = SkBlurMF
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurMask.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBlurMask.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlurMask.cpp
+  source_name_part = SkBlurMask
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCachedData.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCachedData.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCachedData.cpp
+  source_name_part = SkCachedData
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvas.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCanvas.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCanvas.cpp
+  source_name_part = SkCanvas
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvasPriv.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCanvasPriv.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCanvasPriv.cpp
+  source_name_part = SkCanvasPriv
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvas_Raster.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCanvas_Raster.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCanvas_Raster.cpp
+  source_name_part = SkCanvas_Raster
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCapabilities.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCapabilities.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCapabilities.cpp
+  source_name_part = SkCapabilities
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkChromeRemoteGlyphCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkChromeRemoteGlyphCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkChromeRemoteGlyphCache.cpp
+  source_name_part = SkChromeRemoteGlyphCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkClipStack.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkClipStack.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkClipStack.cpp
+  source_name_part = SkClipStack
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkClipStackDevice.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkClipStackDevice.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkClipStackDevice.cpp
+  source_name_part = SkClipStackDevice
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColor.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkColor.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColor.cpp
+  source_name_part = SkColor
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkColorFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorFilter.cpp
+  source_name_part = SkColorFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilter_Matrix.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkColorFilter_Matrix.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorFilter_Matrix.cpp
+  source_name_part = SkColorFilter_Matrix
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorSpace.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkColorSpace.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorSpace.cpp
+  source_name_part = SkColorSpace
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorSpaceXformSteps.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkColorSpaceXformSteps.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorSpaceXformSteps.cpp
+  source_name_part = SkColorSpaceXformSteps
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCompressedDataUtils.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCompressedDataUtils.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCompressedDataUtils.cpp
+  source_name_part = SkCompressedDataUtils
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkContourMeasure.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkContourMeasure.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkContourMeasure.cpp
+  source_name_part = SkContourMeasure
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkConvertPixels.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkConvertPixels.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkConvertPixels.cpp
+  source_name_part = SkConvertPixels
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCpu.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCpu.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCpu.cpp
+  source_name_part = SkCpu
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubicClipper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCubicClipper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCubicClipper.cpp
+  source_name_part = SkCubicClipper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubicMap.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkCubicMap.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCubicMap.cpp
+  source_name_part = SkCubicMap
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkData.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkData.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkData.cpp
+  source_name_part = SkData
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDataTable.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDataTable.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDataTable.cpp
+  source_name_part = SkDataTable
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDebug.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDebug.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDebug.cpp
+  source_name_part = SkDebug
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeferredDisplayList.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDeferredDisplayList.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDeferredDisplayList.cpp
+  source_name_part = SkDeferredDisplayList
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeferredDisplayListRecorder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDeferredDisplayListRecorder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDeferredDisplayListRecorder.cpp
+  source_name_part = SkDeferredDisplayListRecorder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDescriptor.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDescriptor.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDescriptor.cpp
+  source_name_part = SkDescriptor
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDevice.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDevice.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDevice.cpp
+  source_name_part = SkDevice
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDistanceFieldGen.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDistanceFieldGen.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDistanceFieldGen.cpp
+  source_name_part = SkDistanceFieldGen
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDocument.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDocument.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDocument.cpp
+  source_name_part = SkDocument
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDraw.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDraw.cpp
+  source_name_part = SkDraw
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawBase.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDrawBase.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDrawBase.cpp
+  source_name_part = SkDrawBase
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawLooper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDrawLooper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDrawLooper.cpp
+  source_name_part = SkDrawLooper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawShadowInfo.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDrawShadowInfo.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDrawShadowInfo.cpp
+  source_name_part = SkDrawShadowInfo
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_atlas.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDraw_atlas.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDraw_atlas.cpp
+  source_name_part = SkDraw_atlas
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_text.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDraw_text.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDraw_text.cpp
+  source_name_part = SkDraw_text
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_vertices.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDraw_vertices.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDraw_vertices.cpp
+  source_name_part = SkDraw_vertices
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawable.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkDrawable.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDrawable.cpp
+  source_name_part = SkDrawable
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdge.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkEdge.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEdge.cpp
+  source_name_part = SkEdge
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdgeBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkEdgeBuilder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEdgeBuilder.cpp
+  source_name_part = SkEdgeBuilder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdgeClipper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkEdgeClipper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEdgeClipper.cpp
+  source_name_part = SkEdgeClipper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkExecutor.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkExecutor.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkExecutor.cpp
+  source_name_part = SkExecutor
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFlattenable.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFlattenable.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFlattenable.cpp
+  source_name_part = SkFlattenable
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFont.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFont.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFont.cpp
+  source_name_part = SkFont
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontDescriptor.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFontDescriptor.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFontDescriptor.cpp
+  source_name_part = SkFontDescriptor
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontMetricsPriv.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFontMetricsPriv.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFontMetricsPriv.cpp
+  source_name_part = SkFontMetricsPriv
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontMgr.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFontMgr.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFontMgr.cpp
+  source_name_part = SkFontMgr
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontStream.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFontStream.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFontStream.cpp
+  source_name_part = SkFontStream
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFont_serial.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkFont_serial.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkFont_serial.cpp
+  source_name_part = SkFont_serial
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGaussFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGaussFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGaussFilter.cpp
+  source_name_part = SkGaussFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGeometry.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGeometry.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGeometry.cpp
+  source_name_part = SkGeometry
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlobalInitialization_core.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGlobalInitialization_core.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGlobalInitialization_core.cpp
+  source_name_part = SkGlobalInitialization_core
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlyph.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGlyph.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGlyph.cpp
+  source_name_part = SkGlyph
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlyphRunPainter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGlyphRunPainter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGlyphRunPainter.cpp
+  source_name_part = SkGlyphRunPainter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGpuBlurUtils.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGpuBlurUtils.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGpuBlurUtils.cpp
+  source_name_part = SkGpuBlurUtils
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGraphics.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkGraphics.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGraphics.cpp
+  source_name_part = SkGraphics
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkICC.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkICC.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkICC.cpp
+  source_name_part = SkICC
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkIDChangeListener.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkIDChangeListener.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkIDChangeListener.cpp
+  source_name_part = SkIDChangeListener
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageFilter.cpp
+  source_name_part = SkImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilterCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkImageFilterCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageFilterCache.cpp
+  source_name_part = SkImageFilterCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilterTypes.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkImageFilterTypes.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageFilterTypes.cpp
+  source_name_part = SkImageFilterTypes
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageGenerator.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkImageGenerator.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageGenerator.cpp
+  source_name_part = SkImageGenerator
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageInfo.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkImageInfo.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageInfo.cpp
+  source_name_part = SkImageInfo
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLatticeIter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkLatticeIter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLatticeIter.cpp
+  source_name_part = SkLatticeIter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLineClipper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkLineClipper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLineClipper.cpp
+  source_name_part = SkLineClipper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLocalMatrixImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkLocalMatrixImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLocalMatrixImageFilter.cpp
+  source_name_part = SkLocalMatrixImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkM44.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkM44.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkM44.cpp
+  source_name_part = SkM44
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMD5.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMD5.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMD5.cpp
+  source_name_part = SkMD5
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMallocPixelRef.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMallocPixelRef.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMallocPixelRef.cpp
+  source_name_part = SkMallocPixelRef
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMask.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMask.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMask.cpp
+  source_name_part = SkMask
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskBlurFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMaskBlurFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMaskBlurFilter.cpp
+  source_name_part = SkMaskBlurFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMaskCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMaskCache.cpp
+  source_name_part = SkMaskCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMaskFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMaskFilter.cpp
+  source_name_part = SkMaskFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskGamma.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMaskGamma.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMaskGamma.cpp
+  source_name_part = SkMaskGamma
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrix.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMatrix.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMatrix.cpp
+  source_name_part = SkMatrix
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixInvert.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMatrixInvert.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMatrixInvert.cpp
+  source_name_part = SkMatrixInvert
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMesh.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMesh.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMesh.cpp
+  source_name_part = SkMesh
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmap.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMipmap.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMipmap.cpp
+  source_name_part = SkMipmap
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmapAccessor.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMipmapAccessor.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMipmapAccessor.cpp
+  source_name_part = SkMipmapAccessor
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmapBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkMipmapBuilder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMipmapBuilder.cpp
+  source_name_part = SkMipmapBuilder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkModeColorFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkModeColorFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkModeColorFilter.cpp
+  source_name_part = SkModeColorFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpts.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkOpts.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpts.cpp
+  source_name_part = SkOpts
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpts_erms.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkOpts_erms.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpts_erms.cpp
+  source_name_part = SkOpts_erms
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOverdrawCanvas.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkOverdrawCanvas.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOverdrawCanvas.cpp
+  source_name_part = SkOverdrawCanvas
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPaint.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPaint.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPaint.cpp
+  source_name_part = SkPaint
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPaintPriv.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPaintPriv.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPaintPriv.cpp
+  source_name_part = SkPaintPriv
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPath.cpp
+  source_name_part = SkPath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPathBuilder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathBuilder.cpp
+  source_name_part = SkPathBuilder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathEffect.cpp
+  source_name_part = SkPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathMeasure.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPathMeasure.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathMeasure.cpp
+  source_name_part = SkPathMeasure
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathRef.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPathRef.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathRef.cpp
+  source_name_part = SkPathRef
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathUtils.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPathUtils.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathUtils.cpp
+  source_name_part = SkPathUtils
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPath_serial.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPath_serial.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPath_serial.cpp
+  source_name_part = SkPath_serial
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixelRef.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPixelRef.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPixelRef.cpp
+  source_name_part = SkPixelRef
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixmap.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPixmap.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPixmap.cpp
+  source_name_part = SkPixmap
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixmapDraw.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPixmapDraw.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPixmapDraw.cpp
+  source_name_part = SkPixmapDraw
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPoint.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPoint.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPoint.cpp
+  source_name_part = SkPoint
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPoint3.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPoint3.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPoint3.cpp
+  source_name_part = SkPoint3
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPromiseImageTexture.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPromiseImageTexture.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPromiseImageTexture.cpp
+  source_name_part = SkPromiseImageTexture
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPtrRecorder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPtrRecorder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPtrRecorder.cpp
+  source_name_part = SkPtrRecorder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkQuadClipper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkQuadClipper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkQuadClipper.cpp
+  source_name_part = SkQuadClipper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRRect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRRect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRRect.cpp
+  source_name_part = SkRRect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRSXform.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRSXform.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRSXform.cpp
+  source_name_part = SkRSXform
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRTree.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRTree.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRTree.cpp
+  source_name_part = SkRTree
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterClip.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRasterClip.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRasterClip.cpp
+  source_name_part = SkRasterClip
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterPipeline.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRasterPipeline.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRasterPipeline.cpp
+  source_name_part = SkRasterPipeline
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterPipelineBlitter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRasterPipelineBlitter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRasterPipelineBlitter.cpp
+  source_name_part = SkRasterPipelineBlitter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReadBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkReadBuffer.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkReadBuffer.cpp
+  source_name_part = SkReadBuffer
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReadPixelsRec.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkReadPixelsRec.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkReadPixelsRec.cpp
+  source_name_part = SkReadPixelsRec
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecord.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecord.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecord.cpp
+  source_name_part = SkRecord
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordDraw.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecordDraw.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecordDraw.cpp
+  source_name_part = SkRecordDraw
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordOpts.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecordOpts.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecordOpts.cpp
+  source_name_part = SkRecordOpts
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecords.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecords.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecords.cpp
+  source_name_part = SkRecords
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRect.cpp
+  source_name_part = SkRect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRegion.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRegion.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRegion.cpp
+  source_name_part = SkRegion
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRegion_path.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRegion_path.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRegion_path.cpp
+  source_name_part = SkRegion_path
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkResourceCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkResourceCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkResourceCache.cpp
+  source_name_part = SkResourceCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRuntimeEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRuntimeEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRuntimeEffect.cpp
+  source_name_part = SkRuntimeEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSLTypeShared.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSLTypeShared.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSLTypeShared.cpp
+  source_name_part = SkSLTypeShared
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScalar.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScalar.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScalar.cpp
+  source_name_part = SkScalar
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScalerContext.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScalerContext.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScalerContext.cpp
+  source_name_part = SkScalerContext
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan.cpp
+  source_name_part = SkScan
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_AAAPath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_AAAPath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_AAAPath.cpp
+  source_name_part = SkScan_AAAPath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_AntiPath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_AntiPath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_AntiPath.cpp
+  source_name_part = SkScan_AntiPath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Antihair.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_Antihair.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_Antihair.cpp
+  source_name_part = SkScan_Antihair
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Hairline.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_Hairline.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_Hairline.cpp
+  source_name_part = SkScan_Hairline
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Path.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_Path.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_Path.cpp
+  source_name_part = SkScan_Path
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_SAAPath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkScan_SAAPath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkScan_SAAPath.cpp
+  source_name_part = SkScan_SAAPath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSharedMutex.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSharedMutex.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSharedMutex.cpp
+  source_name_part = SkSharedMutex
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpecialImage.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSpecialImage.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSpecialImage.cpp
+  source_name_part = SkSpecialImage
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpecialSurface.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSpecialSurface.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSpecialSurface.cpp
+  source_name_part = SkSpecialSurface
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpinlock.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSpinlock.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSpinlock.cpp
+  source_name_part = SkSpinlock
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpriteBlitter_ARGB32.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSpriteBlitter_ARGB32.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSpriteBlitter_ARGB32.cpp
+  source_name_part = SkSpriteBlitter_ARGB32
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStream.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStream.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStream.cpp
+  source_name_part = SkStream
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrike.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStrike.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStrike.cpp
+  source_name_part = SkStrike
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrikeCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStrikeCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStrikeCache.cpp
+  source_name_part = SkStrikeCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrikeSpec.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStrikeSpec.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStrikeSpec.cpp
+  source_name_part = SkStrikeSpec
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkString.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkString.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkString.cpp
+  source_name_part = SkString
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStringUtils.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStringUtils.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStringUtils.cpp
+  source_name_part = SkStringUtils
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStroke.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStroke.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStroke.cpp
+  source_name_part = SkStroke
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrokeRec.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStrokeRec.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStrokeRec.cpp
+  source_name_part = SkStrokeRec
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrokerPriv.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkStrokerPriv.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkStrokerPriv.cpp
+  source_name_part = SkStrokerPriv
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurfaceCharacterization.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSurfaceCharacterization.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSurfaceCharacterization.cpp
+  source_name_part = SkSurfaceCharacterization
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSwizzle.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkSwizzle.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSwizzle.cpp
+  source_name_part = SkSwizzle
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTaskGroup.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTaskGroup.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTaskGroup.cpp
+  source_name_part = SkTaskGroup
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTextBlob.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTextBlob.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTextBlob.cpp
+  source_name_part = SkTextBlob
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTextBlobTrace.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTextBlobTrace.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTextBlobTrace.cpp
+  source_name_part = SkTextBlobTrace
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTime.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTime.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTime.cpp
+  source_name_part = SkTime
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypeface.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTypeface.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTypeface.cpp
+  source_name_part = SkTypeface
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypefaceCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTypefaceCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTypefaceCache.cpp
+  source_name_part = SkTypefaceCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypeface_remote.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkTypeface_remote.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTypeface_remote.cpp
+  source_name_part = SkTypeface_remote
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUnPreMultiply.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkUnPreMultiply.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkUnPreMultiply.cpp
+  source_name_part = SkUnPreMultiply
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVM.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkVM.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkVM.cpp
+  source_name_part = SkVM
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVMBlitter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkVMBlitter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkVMBlitter.cpp
+  source_name_part = SkVMBlitter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVertState.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkVertState.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkVertState.cpp
+  source_name_part = SkVertState
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVertices.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkVertices.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkVertices.cpp
+  source_name_part = SkVertices
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWriteBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkWriteBuffer.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkWriteBuffer.cpp
+  source_name_part = SkWriteBuffer
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWritePixelsRec.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkWritePixelsRec.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkWritePixelsRec.cpp
+  source_name_part = SkWritePixelsRec
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWriter32.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkWriter32.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkWriter32.cpp
+  source_name_part = SkWriter32
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkXfermode.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkXfermode.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkXfermode.cpp
+  source_name_part = SkXfermode
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkXfermodeInterpretation.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkXfermodeInterpretation.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkXfermodeInterpretation.cpp
+  source_name_part = SkXfermodeInterpretation
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVAInfo.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkYUVAInfo.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkYUVAInfo.cpp
+  source_name_part = SkYUVAInfo
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVAPixmaps.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkYUVAPixmaps.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkYUVAPixmaps.cpp
+  source_name_part = SkYUVAPixmaps
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVMath.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkYUVMath.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkYUVMath.cpp
+  source_name_part = SkYUVMath
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVPlanesCache.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkYUVPlanesCache.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkYUVPlanesCache.cpp
+  source_name_part = SkYUVPlanesCache
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage.cpp
+  source_name_part = SkImage
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Base.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage_Base.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage_Base.cpp
+  source_name_part = SkImage_Base
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Lazy.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage_Lazy.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage_Lazy.cpp
+  source_name_part = SkImage_Lazy
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_LazyFactories.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage_LazyFactories.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage_LazyFactories.cpp
+  source_name_part = SkImage_LazyFactories
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Raster.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage_Raster.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage_Raster.cpp
+  source_name_part = SkImage_Raster
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_RasterFactories.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkImage_RasterFactories.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImage_RasterFactories.cpp
+  source_name_part = SkImage_RasterFactories
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRescaleAndReadPixels.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkRescaleAndReadPixels.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRescaleAndReadPixels.cpp
+  source_name_part = SkRescaleAndReadPixels
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkSurface.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSurface.cpp
+  source_name_part = SkSurface
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Base.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkSurface_Base.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSurface_Base.cpp
+  source_name_part = SkSurface_Base
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Null.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkSurface_Null.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSurface_Null.cpp
+  source_name_part = SkSurface_Null
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Raster.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/image/SkSurface_Raster.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSurface_Raster.cpp
+  source_name_part = SkSurface_Raster
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDiscardableMemoryPool.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/lazy/SkDiscardableMemoryPool.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDiscardableMemoryPool.cpp
+  source_name_part = SkDiscardableMemoryPool
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkBitmapProcShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBitmapProcShader.cpp
+  source_name_part = SkBitmapProcShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilterShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkColorFilterShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorFilterShader.cpp
+  source_name_part = SkColorFilterShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkColorShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorShader.cpp
+  source_name_part = SkColorShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkComposeShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkComposeShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkComposeShader.cpp
+  source_name_part = SkComposeShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCoordClampShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkCoordClampShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCoordClampShader.cpp
+  source_name_part = SkCoordClampShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmptyShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkEmptyShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEmptyShader.cpp
+  source_name_part = SkEmptyShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGainmapShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkGainmapShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGainmapShader.cpp
+  source_name_part = SkGainmapShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkImageShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageShader.cpp
+  source_name_part = SkImageShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLocalMatrixShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkLocalMatrixShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLocalMatrixShader.cpp
+  source_name_part = SkLocalMatrixShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPerlinNoiseShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkPerlinNoiseShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPerlinNoiseShader.cpp
+  source_name_part = SkPerlinNoiseShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkShader.cpp
+  source_name_part = SkShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTransformShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkTransformShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTransformShader.cpp
+  source_name_part = SkTransformShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/GlyphRun.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/text/GlyphRun.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = GlyphRun.cpp
+  source_name_part = GlyphRun
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/StrikeForGPU.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/text/StrikeForGPU.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = StrikeForGPU.cpp
+  source_name_part = StrikeForGPU
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAddIntersections.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkAddIntersections.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAddIntersections.cpp
+  source_name_part = SkAddIntersections
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDConicLineIntersection.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkDConicLineIntersection.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDConicLineIntersection.cpp
+  source_name_part = SkDConicLineIntersection
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDCubicLineIntersection.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkDCubicLineIntersection.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDCubicLineIntersection.cpp
+  source_name_part = SkDCubicLineIntersection
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDCubicToQuads.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkDCubicToQuads.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDCubicToQuads.cpp
+  source_name_part = SkDCubicToQuads
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDLineIntersection.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkDLineIntersection.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDLineIntersection.cpp
+  source_name_part = SkDLineIntersection
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDQuadLineIntersection.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkDQuadLineIntersection.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDQuadLineIntersection.cpp
+  source_name_part = SkDQuadLineIntersection
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkIntersections.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkIntersections.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkIntersections.cpp
+  source_name_part = SkIntersections
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpAngle.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpAngle.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpAngle.cpp
+  source_name_part = SkOpAngle
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpBuilder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpBuilder.cpp
+  source_name_part = SkOpBuilder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpCoincidence.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpCoincidence.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpCoincidence.cpp
+  source_name_part = SkOpCoincidence
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpContour.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpContour.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpContour.cpp
+  source_name_part = SkOpContour
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpCubicHull.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpCubicHull.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpCubicHull.cpp
+  source_name_part = SkOpCubicHull
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpEdgeBuilder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpEdgeBuilder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpEdgeBuilder.cpp
+  source_name_part = SkOpEdgeBuilder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpSegment.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpSegment.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpSegment.cpp
+  source_name_part = SkOpSegment
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpSpan.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkOpSpan.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpSpan.cpp
+  source_name_part = SkOpSpan
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsAsWinding.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsAsWinding.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsAsWinding.cpp
+  source_name_part = SkPathOpsAsWinding
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCommon.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsCommon.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsCommon.cpp
+  source_name_part = SkPathOpsCommon
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsConic.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsConic.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsConic.cpp
+  source_name_part = SkPathOpsConic
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCubic.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsCubic.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsCubic.cpp
+  source_name_part = SkPathOpsCubic
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCurve.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsCurve.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsCurve.cpp
+  source_name_part = SkPathOpsCurve
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsDebug.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsDebug.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsDebug.cpp
+  source_name_part = SkPathOpsDebug
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsLine.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsLine.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsLine.cpp
+  source_name_part = SkPathOpsLine
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsOp.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsOp.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsOp.cpp
+  source_name_part = SkPathOpsOp
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsQuad.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsQuad.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsQuad.cpp
+  source_name_part = SkPathOpsQuad
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsRect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsRect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsRect.cpp
+  source_name_part = SkPathOpsRect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsSimplify.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsSimplify.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsSimplify.cpp
+  source_name_part = SkPathOpsSimplify
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTSect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsTSect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsTSect.cpp
+  source_name_part = SkPathOpsTSect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTightBounds.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsTightBounds.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsTightBounds.cpp
+  source_name_part = SkPathOpsTightBounds
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTypes.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsTypes.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsTypes.cpp
+  source_name_part = SkPathOpsTypes
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsWinding.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathOpsWinding.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathOpsWinding.cpp
+  source_name_part = SkPathOpsWinding
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathWriter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkPathWriter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPathWriter.cpp
+  source_name_part = SkPathWriter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReduceOrder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/pathops/SkReduceOrder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkReduceOrder.cpp
+  source_name_part = SkReduceOrder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBigPicture.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkBigPicture.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBigPicture.cpp
+  source_name_part = SkBigPicture
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPicture.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPicture.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPicture.cpp
+  source_name_part = SkPicture
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureData.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPictureData.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureData.cpp
+  source_name_part = SkPictureData
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureFlat.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPictureFlat.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureFlat.cpp
+  source_name_part = SkPictureFlat
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureImageGenerator.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPictureImageGenerator.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureImageGenerator.cpp
+  source_name_part = SkPictureImageGenerator
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPicturePlayback.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPicturePlayback.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPicturePlayback.cpp
+  source_name_part = SkPicturePlayback
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureRecord.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPictureRecord.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureRecord.cpp
+  source_name_part = SkPictureRecord
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureRecorder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkPictureRecorder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureRecorder.cpp
+  source_name_part = SkPictureRecorder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordedDrawable.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecordedDrawable.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecordedDrawable.cpp
+  source_name_part = SkRecordedDrawable
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecorder.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/core/SkRecorder.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRecorder.cpp
+  source_name_part = SkRecorder
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/SkPictureShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureShader.cpp
+  source_name_part = SkPictureShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/Sk1DPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/Sk1DPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = Sk1DPathEffect.cpp
+  source_name_part = Sk1DPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/Sk2DPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/Sk2DPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = Sk2DPathEffect.cpp
+  source_name_part = Sk2DPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlenders.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkBlenders.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlenders.cpp
+  source_name_part = SkBlenders
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorMatrix.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkColorMatrix.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorMatrix.cpp
+  source_name_part = SkColorMatrix
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorMatrixFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkColorMatrixFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorMatrixFilter.cpp
+  source_name_part = SkColorMatrixFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCornerPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkCornerPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCornerPathEffect.cpp
+  source_name_part = SkCornerPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDashPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkDashPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDashPathEffect.cpp
+  source_name_part = SkDashPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDiscretePathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkDiscretePathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDiscretePathEffect.cpp
+  source_name_part = SkDiscretePathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmbossMask.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkEmbossMask.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEmbossMask.cpp
+  source_name_part = SkEmbossMask
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmbossMaskFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkEmbossMaskFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkEmbossMaskFilter.cpp
+  source_name_part = SkEmbossMaskFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkHighContrastFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkHighContrastFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkHighContrastFilter.cpp
+  source_name_part = SkHighContrastFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLayerDrawLooper.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkLayerDrawLooper.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLayerDrawLooper.cpp
+  source_name_part = SkLayerDrawLooper
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLumaColorFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkLumaColorFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLumaColorFilter.cpp
+  source_name_part = SkLumaColorFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkOpPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOpPathEffect.cpp
+  source_name_part = SkOpPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOverdrawColorFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkOverdrawColorFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkOverdrawColorFilter.cpp
+  source_name_part = SkOverdrawColorFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShaderMaskFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkShaderMaskFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkShaderMaskFilter.cpp
+  source_name_part = SkShaderMaskFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTableColorFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkTableColorFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTableColorFilter.cpp
+  source_name_part = SkTableColorFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTableMaskFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkTableMaskFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTableMaskFilter.cpp
+  source_name_part = SkTableMaskFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTrimPathEffect.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/SkTrimPathEffect.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTrimPathEffect.cpp
+  source_name_part = SkTrimPathEffect
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGradientShader.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkGradientShader.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGradientShader.cpp
+  source_name_part = SkGradientShader
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGradientShaderBase.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkGradientShaderBase.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkGradientShaderBase.cpp
+  source_name_part = SkGradientShaderBase
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLinearGradient.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkLinearGradient.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLinearGradient.cpp
+  source_name_part = SkLinearGradient
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRadialGradient.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkRadialGradient.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRadialGradient.cpp
+  source_name_part = SkRadialGradient
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSweepGradient.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkSweepGradient.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkSweepGradient.cpp
+  source_name_part = SkSweepGradient
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTwoPointConicalGradient.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/shaders/gradients/SkTwoPointConicalGradient.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTwoPointConicalGradient.cpp
+  source_name_part = SkTwoPointConicalGradient
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAlphaThresholdImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkAlphaThresholdImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkAlphaThresholdImageFilter.cpp
+  source_name_part = SkAlphaThresholdImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkArithmeticImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkArithmeticImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkArithmeticImageFilter.cpp
+  source_name_part = SkArithmeticImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkBlendImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlendImageFilter.cpp
+  source_name_part = SkBlendImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkBlurImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkBlurImageFilter.cpp
+  source_name_part = SkBlurImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilterImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkColorFilterImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkColorFilterImageFilter.cpp
+  source_name_part = SkColorFilterImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkComposeImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkComposeImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkComposeImageFilter.cpp
+  source_name_part = SkComposeImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCropImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkCropImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkCropImageFilter.cpp
+  source_name_part = SkCropImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDisplacementMapImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkDisplacementMapImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDisplacementMapImageFilter.cpp
+  source_name_part = SkDisplacementMapImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDropShadowImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkDropShadowImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkDropShadowImageFilter.cpp
+  source_name_part = SkDropShadowImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkImageImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkImageImageFilter.cpp
+  source_name_part = SkImageImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLightingImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkLightingImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkLightingImageFilter.cpp
+  source_name_part = SkLightingImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMagnifierImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkMagnifierImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMagnifierImageFilter.cpp
+  source_name_part = SkMagnifierImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixConvolutionImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkMatrixConvolutionImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMatrixConvolutionImageFilter.cpp
+  source_name_part = SkMatrixConvolutionImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixTransformImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkMatrixTransformImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMatrixTransformImageFilter.cpp
+  source_name_part = SkMatrixTransformImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMergeImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkMergeImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMergeImageFilter.cpp
+  source_name_part = SkMergeImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMorphologyImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkMorphologyImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkMorphologyImageFilter.cpp
+  source_name_part = SkMorphologyImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkPictureImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkPictureImageFilter.cpp
+  source_name_part = SkPictureImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRuntimeImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkRuntimeImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkRuntimeImageFilter.cpp
+  source_name_part = SkRuntimeImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShaderImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkShaderImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkShaderImageFilter.cpp
+  source_name_part = SkShaderImageFilter
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTileImageFilter.o: clang_x64_v8_arm64_cxx ../../third_party/skia/src/effects/imagefilters/SkTileImageFilter.cpp || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp
+  source_file_part = SkTileImageFilter.cpp
+  source_name_part = SkTileImageFilter
+
+build clang_x64_v8_arm64/obj/skia/skia_core_and_effects.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkArenaAlloc.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBezierCurves.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlockAllocator.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBuffer.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkContainers.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubics.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeque.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFloatingPoint.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkHalf.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMalloc.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMathPriv.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkQuads.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSafeMath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSemaphore.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTDArray.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTSearch.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkThreadID.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUTF.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUtils.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAAClip.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkATrace.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAlphaRuns.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAnalyticEdge.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAnnotation.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAutoPixmapStorage.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBBHFactory.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmap.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapDevice.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcState.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcState_matrixProcs.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendMode.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendModeBlender.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitRow_D32.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_A8.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_ARGB32.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlitter_Sprite.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurMF.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurMask.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCachedData.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvas.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvasPriv.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCanvas_Raster.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCapabilities.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkChromeRemoteGlyphCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkClipStack.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkClipStackDevice.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColor.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilter_Matrix.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorSpace.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorSpaceXformSteps.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCompressedDataUtils.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkContourMeasure.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkConvertPixels.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCpu.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubicClipper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCubicMap.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkData.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDataTable.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDebug.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeferredDisplayList.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDeferredDisplayListRecorder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDescriptor.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDevice.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDistanceFieldGen.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDocument.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawBase.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawLooper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawShadowInfo.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_atlas.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_text.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDraw_vertices.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDrawable.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdge.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdgeBuilder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEdgeClipper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkExecutor.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFlattenable.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFont.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontDescriptor.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontMetricsPriv.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontMgr.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFontStream.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkFont_serial.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGaussFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGeometry.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlobalInitialization_core.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlyph.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGlyphRunPainter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGpuBlurUtils.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGraphics.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkICC.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkIDChangeListener.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilterCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageFilterTypes.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageGenerator.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageInfo.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLatticeIter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLineClipper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLocalMatrixImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkM44.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMD5.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMallocPixelRef.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMask.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskBlurFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMaskGamma.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrix.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixInvert.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMesh.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmap.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmapAccessor.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMipmapBuilder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkModeColorFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpts.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpts_erms.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOverdrawCanvas.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPaint.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPaintPriv.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathBuilder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathMeasure.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathRef.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathUtils.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPath_serial.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixelRef.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixmap.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPixmapDraw.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPoint.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPoint3.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPromiseImageTexture.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPtrRecorder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkQuadClipper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRRect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRSXform.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRTree.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterClip.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterPipeline.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRasterPipelineBlitter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReadBuffer.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReadPixelsRec.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecord.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordDraw.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordOpts.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecords.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRegion.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRegion_path.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkResourceCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRuntimeEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSLTypeShared.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScalar.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScalerContext.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_AAAPath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_AntiPath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Antihair.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Hairline.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_Path.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkScan_SAAPath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSharedMutex.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpecialImage.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpecialSurface.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpinlock.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSpriteBlitter_ARGB32.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStream.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrike.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrikeCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrikeSpec.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkString.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStringUtils.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStroke.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrokeRec.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkStrokerPriv.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurfaceCharacterization.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSwizzle.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTaskGroup.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTextBlob.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTextBlobTrace.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTime.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypeface.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypefaceCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTypeface_remote.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkUnPreMultiply.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVM.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVMBlitter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVertState.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkVertices.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWriteBuffer.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWritePixelsRec.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkWriter32.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkXfermode.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkXfermodeInterpretation.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVAInfo.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVAPixmaps.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVMath.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkYUVPlanesCache.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Base.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Lazy.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_LazyFactories.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_Raster.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImage_RasterFactories.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRescaleAndReadPixels.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Base.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Null.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSurface_Raster.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDiscardableMemoryPool.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBitmapProcShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilterShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkComposeShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCoordClampShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmptyShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGainmapShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLocalMatrixShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPerlinNoiseShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTransformShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/GlyphRun.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/StrikeForGPU.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAddIntersections.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDConicLineIntersection.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDCubicLineIntersection.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDCubicToQuads.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDLineIntersection.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDQuadLineIntersection.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkIntersections.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpAngle.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpBuilder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpCoincidence.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpContour.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpCubicHull.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpEdgeBuilder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpSegment.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpSpan.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsAsWinding.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCommon.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsConic.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCubic.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsCurve.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsDebug.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsLine.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsOp.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsQuad.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsRect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsSimplify.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTSect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTightBounds.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsTypes.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathOpsWinding.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPathWriter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkReduceOrder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBigPicture.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPicture.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureData.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureFlat.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureImageGenerator.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPicturePlayback.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureRecord.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureRecorder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecordedDrawable.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRecorder.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/Sk1DPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/Sk2DPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlenders.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorMatrix.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorMatrixFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCornerPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDashPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDiscretePathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmbossMask.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkEmbossMaskFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkHighContrastFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLayerDrawLooper.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLumaColorFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOpPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkOverdrawColorFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShaderMaskFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTableColorFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTableMaskFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTrimPathEffect.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGradientShader.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkGradientShaderBase.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLinearGradient.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRadialGradient.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkSweepGradient.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTwoPointConicalGradient.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkAlphaThresholdImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkArithmeticImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlendImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkBlurImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkColorFilterImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkComposeImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkCropImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDisplacementMapImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkDropShadowImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkImageImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkLightingImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMagnifierImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixConvolutionImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMatrixTransformImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMergeImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkMorphologyImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkPictureImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkRuntimeImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkShaderImageFilter.o clang_x64_v8_arm64/obj/skia/skia_core_and_effects/SkTileImageFilter.o || clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp

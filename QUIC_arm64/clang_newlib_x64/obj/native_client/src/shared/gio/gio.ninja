@@ -1,0 +1,20 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE=1 -D__STDC_LIMIT_MACROS=1
+include_dirs = -I../.. -Iclang_newlib_x64/gen
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wno-missing-field-initializers -Wno-unused-parameter -Wloop-analysis -Wno-unneeded-internal-declaration -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -O0 -fno-omit-frame-pointer -fvisibility=hidden
+cflags_c = -std=c11
+label_name = gio
+root_out_dir = clang_newlib_x64
+target_out_dir = clang_newlib_x64/obj/native_client/src/shared/gio
+target_output_name = libgio
+
+build clang_newlib_x64/obj/native_client/src/shared/gio/gio/gio.o: clang_newlib_x64_cc ../../native_client/src/shared/gio/gio.c
+  source_file_part = gio.c
+  source_name_part = gio
+build clang_newlib_x64/obj/native_client/src/shared/gio/gio/gprintf.o: clang_newlib_x64_cc ../../native_client/src/shared/gio/gprintf.c
+  source_file_part = gprintf.c
+  source_name_part = gprintf
+
+build clang_newlib_x64/obj/native_client/src/shared/gio/libgio.a: clang_newlib_x64_alink clang_newlib_x64/obj/native_client/src/shared/gio/gio/gio.o clang_newlib_x64/obj/native_client/src/shared/gio/gio/gprintf.o || clang_newlib_x64/obj/build/config/nacl/nacl_base.stamp
+  arflags =
+  output_extension = .a
+  output_dir = clang_newlib_x64/obj/native_client/src/shared/gio

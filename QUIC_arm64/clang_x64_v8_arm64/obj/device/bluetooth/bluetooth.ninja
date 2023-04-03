@@ -1,0 +1,444 @@
+defines = -DDEVICE_BLUETOOTH_IMPLEMENTATION -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Iclang_x64_v8_arm64/gen/third_party/perfetto/build_config -Iclang_x64_v8_arm64/gen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Iclang_x64_v8_arm64/gen/protoc_out -I../../third_party/ipcz/include -I../../third_party/ced/src -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n -I../../net/third_party/quiche/overrides -I../../net/third_party/quiche/src/quiche/common/platform/default -I../../net/third_party/quiche/src -Iclang_x64_v8_arm64/gen/net/third_party/quiche/src -I../../third_party/re2/src -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nss -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/nspr -Wno-redundant-parens -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/dbus-1.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/dbus-1.0/include
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = bluetooth
+target_out_dir = clang_x64_v8_arm64/obj/device/bluetooth
+target_output_name = libdevice_bluetooth
+
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/base/anchor_functions_buildflags.stamp clang_x64_v8_arm64/obj/base/build_date.stamp clang_x64_v8_arm64/obj/base/cfi_buildflags.stamp clang_x64_v8_arm64/obj/base/clang_profiling_buildflags.stamp clang_x64_v8_arm64/obj/base/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/feature_list_buildflags.stamp clang_x64_v8_arm64/obj/base/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/base/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/message_pump_buildflags.stamp clang_x64_v8_arm64/obj/base/orderfile_buildflags.stamp clang_x64_v8_arm64/obj/base/power_monitor_buildflags.stamp clang_x64_v8_arm64/obj/base/profiler_buildflags.stamp clang_x64_v8_arm64/obj/base/rust_buildflags.stamp clang_x64_v8_arm64/obj/base/sanitizer_buildflags.stamp clang_x64_v8_arm64/obj/base/synchronization_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/debugging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/logging_buildflags.stamp clang_x64_v8_arm64/obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_gen.stamp clang_x64_v8_arm64/obj/base/tracing/protos/chrome_track_event_zero_gen.stamp clang_x64_v8_arm64/obj/build/blink_buildflags.stamp clang_x64_v8_arm64/obj/build/branding_buildflags.stamp clang_x64_v8_arm64/obj/build/chromecast_buildflags.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/build/config/compiler/compiler_buildflags.stamp clang_x64_v8_arm64/obj/build/linux/libudev/udev0_loader_loader.stamp clang_x64_v8_arm64/obj/build/linux/libudev/udev1_loader_loader.stamp clang_x64_v8_arm64/obj/components/crash/core/common/crash_buildflags.stamp clang_x64_v8_arm64/obj/components/nacl/common/buildflags.stamp clang_x64_v8_arm64/obj/crypto/buildflags.stamp clang_x64_v8_arm64/obj/device/bluetooth/strings/strings_grit.stamp clang_x64_v8_arm64/obj/device/vr/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/gpu/config/workaround_list.stamp clang_x64_v8_arm64/obj/ipc/ipc_buildflags.stamp clang_x64_v8_arm64/obj/ipc/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ipc/mojom__generator.stamp clang_x64_v8_arm64/obj/ipc/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/mojo/buildflags.stamp clang_x64_v8_arm64/obj/mojo/public/cpp/bindings/mojo_buildflags.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings__generate_message_ids.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings__generator.stamp clang_x64_v8_arm64/obj/mojo/public/interfaces/bindings/bindings_shared__generator.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base__generate_message_ids.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base__generator.stamp clang_x64_v8_arm64/obj/mojo/public/mojom/base/base_shared__generator.stamp clang_x64_v8_arm64/obj/net/buildflags.stamp clang_x64_v8_arm64/obj/net/ios_cronet_buildflags.stamp clang_x64_v8_arm64/obj/net/isolation_info_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_nqe_proto_gen.stamp clang_x64_v8_arm64/obj/net/net_resources_grit.stamp clang_x64_v8_arm64/obj/net/base/registry_controlled_domains/registry_controlled_domains.stamp clang_x64_v8_arm64/obj/net/cert/root_store_proto_lite_gen.stamp clang_x64_v8_arm64/obj/net/data/ssl/chrome_root_store/gen_root_store_inc.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_proto_gen.stamp clang_x64_v8_arm64/obj/net/third_party/quiche/net_quic_test_tools_proto_gen.stamp clang_x64_v8_arm64/obj/printing/buildflags/buildflags.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/sandbox/policy/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/services/metrics/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/services/tracing/public/cpp/buildflags.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/services/tracing/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/skia/buildflags.stamp clang_x64_v8_arm64/obj/skia/public/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp clang_x64_v8_arm64/obj/third_party/metrics_proto/metrics_proto_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/gn/gen_buildflags.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/minimal_complete_lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp clang_x64_v8_arm64/obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp clang_x64_v8_arm64/obj/ui/base/buildflags.stamp clang_x64_v8_arm64/obj/ui/base/locales_list_gen.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/base/dragdrop/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/color/mojom__generate_message_ids.stamp clang_x64_v8_arm64/obj/ui/color/mojom__generator.stamp clang_x64_v8_arm64/obj/ui/color/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/display/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/geometry/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/mojom/native_handle_types_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/range/mojom/mojom_shared__generator.stamp clang_x64_v8_arm64/obj/ui/gfx/x/gen_xprotos.stamp clang_x64_v8_arm64/obj/ui/gfx/x/xlib_loader_loader.stamp clang_x64_v8_arm64/obj/ui/gfx/x/xlib_xcb_loader_loader.stamp clang_x64_v8_arm64/obj/ui/latency/jank_tracker_for_experiments_buildflags.stamp clang_x64_v8_arm64/obj/ui/ozone/buildflags.stamp clang_x64_v8_arm64/obj/ui/resources/webui_resources_grd_grit.stamp clang_x64_v8_arm64/obj/ui/strings/app_locale_settings_grit.stamp clang_x64_v8_arm64/obj/ui/strings/ax_strings_grit.stamp clang_x64_v8_arm64/obj/ui/strings/ui_strings_grit.stamp clang_x64_v8_arm64/obj/url/buildflags.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl__generate_message_ids.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_gurl_shared__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_origin_shared__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port__generate_message_ids.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port__generator.stamp clang_x64_v8_arm64/obj/url/mojom/url_mojom_scheme_host_port_shared__generator.stamp
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_adapter.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter.cc
+  source_name_part = bluetooth_adapter
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_factory.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_adapter_factory.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_factory.cc
+  source_name_part = bluetooth_adapter_factory
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_advertisement.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement.cc
+  source_name_part = bluetooth_advertisement
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_device.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_device.cc
+  source_name_part = bluetooth_device
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_discovery_filter.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_discovery_filter.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_discovery_filter.cc
+  source_name_part = bluetooth_discovery_filter
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_discovery_session.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_discovery_session.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_discovery_session.cc
+  source_name_part = bluetooth_discovery_session
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_gatt_characteristic.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic.cc
+  source_name_part = bluetooth_gatt_characteristic
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_gatt_connection.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_connection.cc
+  source_name_part = bluetooth_gatt_connection
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_gatt_descriptor.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor.cc
+  source_name_part = bluetooth_gatt_descriptor
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_notify_session.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_gatt_notify_session.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_notify_session.cc
+  source_name_part = bluetooth_gatt_notify_session
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_gatt_service.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service.cc
+  source_name_part = bluetooth_gatt_service
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_local_gatt_characteristic.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_characteristic.cc
+  source_name_part = bluetooth_local_gatt_characteristic
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_local_gatt_descriptor.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_descriptor.cc
+  source_name_part = bluetooth_local_gatt_descriptor
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_local_gatt_service.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_service.cc
+  source_name_part = bluetooth_local_gatt_service
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_filter.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_low_energy_scan_filter.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_low_energy_scan_filter.cc
+  source_name_part = bluetooth_low_energy_scan_filter
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_low_energy_scan_session.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_low_energy_scan_session.cc
+  source_name_part = bluetooth_low_energy_scan_session
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_remote_gatt_characteristic.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_characteristic.cc
+  source_name_part = bluetooth_remote_gatt_characteristic
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_remote_gatt_descriptor.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_descriptor.cc
+  source_name_part = bluetooth_remote_gatt_descriptor
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_remote_gatt_service.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_service.cc
+  source_name_part = bluetooth_remote_gatt_service
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_socket.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_socket.cc
+  source_name_part = bluetooth_socket
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_net.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_socket_net.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_socket_net.cc
+  source_name_part = bluetooth_socket_net
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_thread.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_socket_thread.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_socket_thread.cc
+  source_name_part = bluetooth_socket_thread
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/string_util_icu.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/string_util_icu.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = string_util_icu.cc
+  source_name_part = string_util_icu
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_chromeos.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluetooth_adapter_chromeos.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_chromeos.cc
+  source_name_part = bluetooth_adapter_chromeos
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_adapter_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_bluez.cc
+  source_name_part = bluetooth_adapter_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_profile_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_adapter_profile_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_profile_bluez.cc
+  source_name_part = bluetooth_adapter_profile_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_advertisement_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_bluez.cc
+  source_name_part = bluetooth_advertisement_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_device_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_device_bluez.cc
+  source_name_part = bluetooth_device_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_gatt_characteristic_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_bluez.cc
+  source_name_part = bluetooth_gatt_characteristic_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_gatt_connection_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_connection_bluez.cc
+  source_name_part = bluetooth_gatt_connection_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_gatt_descriptor_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor_bluez.cc
+  source_name_part = bluetooth_gatt_descriptor_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_gatt_service_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service_bluez.cc
+  source_name_part = bluetooth_gatt_service_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_local_gatt_characteristic_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_characteristic_bluez.cc
+  source_name_part = bluetooth_local_gatt_characteristic_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_local_gatt_descriptor_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_descriptor_bluez.cc
+  source_name_part = bluetooth_local_gatt_descriptor_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_local_gatt_service_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_service_bluez.cc
+  source_name_part = bluetooth_local_gatt_service_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_low_energy_scan_session_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_low_energy_scan_session_bluez.cc
+  source_name_part = bluetooth_low_energy_scan_session_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_pairing_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_pairing_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_pairing_bluez.cc
+  source_name_part = bluetooth_pairing_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_remote_gatt_characteristic_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_characteristic_bluez.cc
+  source_name_part = bluetooth_remote_gatt_characteristic_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_remote_gatt_descriptor_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_descriptor_bluez.cc
+  source_name_part = bluetooth_remote_gatt_descriptor_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_remote_gatt_service_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_service_bluez.cc
+  source_name_part = bluetooth_remote_gatt_service_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_service_attribute_value_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_service_attribute_value_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_service_attribute_value_bluez.cc
+  source_name_part = bluetooth_service_attribute_value_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_service_record_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_service_record_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_service_record_bluez.cc
+  source_name_part = bluetooth_service_record_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_bluez.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluetooth_socket_bluez.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_socket_bluez.cc
+  source_name_part = bluetooth_socket_bluez
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_features.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/bluez_features.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluez_features.cc
+  source_name_part = bluez_features
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/metrics_recorder.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/bluez/metrics_recorder.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = metrics_recorder.cc
+  source_name_part = metrics_recorder
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_adapter_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_client.cc
+  source_name_part = bluetooth_adapter_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_admin_policy_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_admin_policy_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_admin_policy_client.cc
+  source_name_part = bluetooth_admin_policy_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_application_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_advertisement_monitor_application_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_monitor_application_service_provider.cc
+  source_name_part = bluetooth_advertisement_monitor_application_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_application_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_advertisement_monitor_application_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_monitor_application_service_provider_impl.cc
+  source_name_part = bluetooth_advertisement_monitor_application_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_advertisement_monitor_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_monitor_manager_client.cc
+  source_name_part = bluetooth_advertisement_monitor_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_advertisement_monitor_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_monitor_service_provider.cc
+  source_name_part = bluetooth_advertisement_monitor_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_advertisement_monitor_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_monitor_service_provider_impl.cc
+  source_name_part = bluetooth_advertisement_monitor_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_agent_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_agent_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_agent_manager_client.cc
+  source_name_part = bluetooth_agent_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_agent_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_agent_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_agent_service_provider.cc
+  source_name_part = bluetooth_agent_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_battery_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_battery_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_battery_client.cc
+  source_name_part = bluetooth_battery_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_dbus_client_bundle.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_dbus_client_bundle.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_dbus_client_bundle.cc
+  source_name_part = bluetooth_dbus_client_bundle
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_debug_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_debug_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_debug_manager_client.cc
+  source_name_part = bluetooth_debug_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_device_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_device_client.cc
+  source_name_part = bluetooth_device_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_application_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_application_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_application_service_provider.cc
+  source_name_part = bluetooth_gatt_application_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_application_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_application_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_application_service_provider_impl.cc
+  source_name_part = bluetooth_gatt_application_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_attribute_helpers.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_attribute_helpers.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_attribute_helpers.cc
+  source_name_part = bluetooth_gatt_attribute_helpers
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_attribute_value_delegate.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_attribute_value_delegate.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_attribute_value_delegate.cc
+  source_name_part = bluetooth_gatt_attribute_value_delegate
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_characteristic_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_client.cc
+  source_name_part = bluetooth_gatt_characteristic_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_delegate_wrapper.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_characteristic_delegate_wrapper.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_delegate_wrapper.cc
+  source_name_part = bluetooth_gatt_characteristic_delegate_wrapper
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_characteristic_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_service_provider.cc
+  source_name_part = bluetooth_gatt_characteristic_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_characteristic_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_service_provider_impl.cc
+  source_name_part = bluetooth_gatt_characteristic_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_descriptor_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor_client.cc
+  source_name_part = bluetooth_gatt_descriptor_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_delegate_wrapper.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_descriptor_delegate_wrapper.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor_delegate_wrapper.cc
+  source_name_part = bluetooth_gatt_descriptor_delegate_wrapper
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_descriptor_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor_service_provider.cc
+  source_name_part = bluetooth_gatt_descriptor_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_descriptor_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_descriptor_service_provider_impl.cc
+  source_name_part = bluetooth_gatt_descriptor_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_manager_client.cc
+  source_name_part = bluetooth_gatt_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_service_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service_client.cc
+  source_name_part = bluetooth_gatt_service_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_service_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service_service_provider.cc
+  source_name_part = bluetooth_gatt_service_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_service_provider_impl.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_gatt_service_service_provider_impl.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service_service_provider_impl.cc
+  source_name_part = bluetooth_gatt_service_service_provider_impl
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_input_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_input_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_input_client.cc
+  source_name_part = bluetooth_input_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_le_advertisement_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_le_advertisement_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_le_advertisement_service_provider.cc
+  source_name_part = bluetooth_le_advertisement_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_le_advertising_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_le_advertising_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_le_advertising_manager_client.cc
+  source_name_part = bluetooth_le_advertising_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_metrics_helper.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_metrics_helper.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_metrics_helper.cc
+  source_name_part = bluetooth_metrics_helper
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_profile_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_profile_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_profile_manager_client.cc
+  source_name_part = bluetooth_profile_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_profile_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluetooth_profile_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_profile_service_provider.cc
+  source_name_part = bluetooth_profile_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_dbus_manager.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluez_dbus_manager.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluez_dbus_manager.cc
+  source_name_part = bluez_dbus_manager
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_dbus_thread_manager.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/bluez_dbus_thread_manager.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluez_dbus_thread_manager.cc
+  source_name_part = bluez_dbus_thread_manager
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/dbus_bluez_manager_wrapper_linux.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/dbus_bluez_manager_wrapper_linux.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = dbus_bluez_manager_wrapper_linux.cc
+  source_name_part = dbus_bluez_manager_wrapper_linux
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_adapter_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_adapter_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_adapter_client.cc
+  source_name_part = fake_bluetooth_adapter_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_admin_policy_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_admin_policy_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_admin_policy_client.cc
+  source_name_part = fake_bluetooth_admin_policy_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_application_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_advertisement_monitor_application_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_advertisement_monitor_application_service_provider.cc
+  source_name_part = fake_bluetooth_advertisement_monitor_application_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_advertisement_monitor_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_advertisement_monitor_manager_client.cc
+  source_name_part = fake_bluetooth_advertisement_monitor_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_advertisement_monitor_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_advertisement_monitor_service_provider.cc
+  source_name_part = fake_bluetooth_advertisement_monitor_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_agent_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_agent_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_agent_manager_client.cc
+  source_name_part = fake_bluetooth_agent_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_agent_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_agent_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_agent_service_provider.cc
+  source_name_part = fake_bluetooth_agent_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_battery_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_battery_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_battery_client.cc
+  source_name_part = fake_bluetooth_battery_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_debug_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_debug_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_debug_manager_client.cc
+  source_name_part = fake_bluetooth_debug_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_device_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_device_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_device_client.cc
+  source_name_part = fake_bluetooth_device_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_application_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_application_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_application_service_provider.cc
+  source_name_part = fake_bluetooth_gatt_application_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_characteristic_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_characteristic_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_characteristic_client.cc
+  source_name_part = fake_bluetooth_gatt_characteristic_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_characteristic_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_characteristic_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_characteristic_service_provider.cc
+  source_name_part = fake_bluetooth_gatt_characteristic_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_descriptor_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_descriptor_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_descriptor_client.cc
+  source_name_part = fake_bluetooth_gatt_descriptor_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_descriptor_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_descriptor_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_descriptor_service_provider.cc
+  source_name_part = fake_bluetooth_gatt_descriptor_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_manager_client.cc
+  source_name_part = fake_bluetooth_gatt_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_service_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_service_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_service_client.cc
+  source_name_part = fake_bluetooth_gatt_service_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_service_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_gatt_service_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_gatt_service_service_provider.cc
+  source_name_part = fake_bluetooth_gatt_service_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_input_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_input_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_input_client.cc
+  source_name_part = fake_bluetooth_input_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_le_advertisement_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_le_advertisement_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_le_advertisement_service_provider.cc
+  source_name_part = fake_bluetooth_le_advertisement_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_le_advertising_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_le_advertising_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_le_advertising_manager_client.cc
+  source_name_part = fake_bluetooth_le_advertising_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_profile_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_profile_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_profile_manager_client.cc
+  source_name_part = fake_bluetooth_profile_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_profile_service_provider.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/dbus/fake_bluetooth_profile_service_provider.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_bluetooth_profile_service_provider.cc
+  source_name_part = fake_bluetooth_profile_service_provider
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_adapter_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_adapter_floss.cc
+  source_name_part = bluetooth_adapter_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_advertisement_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_advertisement_floss.cc
+  source_name_part = bluetooth_advertisement_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_device_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_device_floss.cc
+  source_name_part = bluetooth_device_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_gatt_characteristic_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_characteristic_floss.cc
+  source_name_part = bluetooth_gatt_characteristic_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_gatt_connection_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_connection_floss.cc
+  source_name_part = bluetooth_gatt_connection_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_gatt_service_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_gatt_service_floss.cc
+  source_name_part = bluetooth_gatt_service_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_local_gatt_characteristic_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_characteristic_floss.cc
+  source_name_part = bluetooth_local_gatt_characteristic_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_local_gatt_descriptor_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_descriptor_floss.cc
+  source_name_part = bluetooth_local_gatt_descriptor_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_local_gatt_service_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_local_gatt_service_floss.cc
+  source_name_part = bluetooth_local_gatt_service_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_low_energy_scan_session_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_low_energy_scan_session_floss.cc
+  source_name_part = bluetooth_low_energy_scan_session_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_pairing_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_pairing_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_pairing_floss.cc
+  source_name_part = bluetooth_pairing_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_remote_gatt_characteristic_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_characteristic_floss.cc
+  source_name_part = bluetooth_remote_gatt_characteristic_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_remote_gatt_descriptor_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_descriptor_floss.cc
+  source_name_part = bluetooth_remote_gatt_descriptor_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_remote_gatt_service_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_remote_gatt_service_floss.cc
+  source_name_part = bluetooth_remote_gatt_service_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_floss.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/bluetooth_socket_floss.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = bluetooth_socket_floss.cc
+  source_name_part = bluetooth_socket_floss
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_adapter_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_adapter_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_adapter_client.cc
+  source_name_part = fake_floss_adapter_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_admin_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_admin_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_admin_client.cc
+  source_name_part = fake_floss_admin_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_advertiser_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_advertiser_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_advertiser_client.cc
+  source_name_part = fake_floss_advertiser_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_battery_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_battery_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_battery_manager_client.cc
+  source_name_part = fake_floss_battery_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_gatt_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_gatt_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_gatt_manager_client.cc
+  source_name_part = fake_floss_gatt_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_lescan_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_lescan_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_lescan_client.cc
+  source_name_part = fake_floss_lescan_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_logging_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_logging_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_logging_client.cc
+  source_name_part = fake_floss_logging_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_manager_client.cc
+  source_name_part = fake_floss_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_socket_manager.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/fake_floss_socket_manager.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = fake_floss_socket_manager.cc
+  source_name_part = fake_floss_socket_manager
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_adapter_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_adapter_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_adapter_client.cc
+  source_name_part = floss_adapter_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_admin_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_admin_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_admin_client.cc
+  source_name_part = floss_admin_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_advertiser_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_advertiser_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_advertiser_client.cc
+  source_name_part = floss_advertiser_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_battery_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_battery_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_battery_manager_client.cc
+  source_name_part = floss_battery_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_dbus_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_dbus_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_dbus_client.cc
+  source_name_part = floss_dbus_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_dbus_manager.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_dbus_manager.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_dbus_manager.cc
+  source_name_part = floss_dbus_manager
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_features.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_features.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_features.cc
+  source_name_part = floss_features
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_gatt_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_gatt_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_gatt_manager_client.cc
+  source_name_part = floss_gatt_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_lescan_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_lescan_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_lescan_client.cc
+  source_name_part = floss_lescan_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_logging_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_logging_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_logging_client.cc
+  source_name_part = floss_logging_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_manager_client.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_manager_client.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_manager_client.cc
+  source_name_part = floss_manager_client
+build clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_socket_manager.o: clang_x64_v8_arm64_cxx ../../device/bluetooth/floss/floss_socket_manager.cc || clang_x64_v8_arm64/obj/device/bluetooth/bluetooth.inputdeps.stamp
+  source_file_part = floss_socket_manager.cc
+  source_name_part = floss_socket_manager
+
+build clang_x64_v8_arm64/libdevice_bluetooth.so clang_x64_v8_arm64/libdevice_bluetooth.so.TOC: clang_x64_v8_arm64_solink clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_factory.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_discovery_filter.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_discovery_session.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_notify_session.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_filter.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_net.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_thread.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/string_util_icu.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_chromeos.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_profile_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_pairing_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_service_attribute_value_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_service_record_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_bluez.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_features.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/metrics_recorder.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_admin_policy_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_application_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_application_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_monitor_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_agent_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_agent_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_battery_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_dbus_client_bundle.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_debug_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_application_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_application_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_attribute_helpers.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_attribute_value_delegate.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_delegate_wrapper.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_delegate_wrapper.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_descriptor_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_service_provider_impl.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_input_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_le_advertisement_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_le_advertising_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_metrics_helper.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_profile_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_profile_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_dbus_manager.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluez_dbus_thread_manager.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/dbus_bluez_manager_wrapper_linux.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_adapter_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_admin_policy_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_application_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_advertisement_monitor_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_agent_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_agent_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_battery_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_debug_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_device_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_application_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_characteristic_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_characteristic_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_descriptor_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_descriptor_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_service_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_gatt_service_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_input_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_le_advertisement_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_le_advertising_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_profile_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_bluetooth_profile_service_provider.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_adapter_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_advertisement_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_device_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_characteristic_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_connection_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_gatt_service_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_characteristic_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_descriptor_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_local_gatt_service_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_low_energy_scan_session_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_pairing_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_characteristic_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_descriptor_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_remote_gatt_service_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/bluetooth_socket_floss.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_adapter_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_admin_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_advertiser_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_battery_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_gatt_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_lescan_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_logging_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/fake_floss_socket_manager.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_adapter_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_admin_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_advertiser_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_battery_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_dbus_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_dbus_manager.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_features.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_gatt_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_lescan_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_logging_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_manager_client.o clang_x64_v8_arm64/obj/device/bluetooth/bluetooth/floss_socket_manager.o clang_x64_v8_arm64/obj/device/bluetooth/public/cpp/cpp/bluetooth_address.o clang_x64_v8_arm64/obj/device/bluetooth/public/cpp/cpp/bluetooth_uuid.o clang_x64_v8_arm64/obj/third_party/re2/libre2.a | clang_x64_v8_arm64/libbase.so.TOC clang_x64_v8_arm64/libcomponents_device_event_log.so.TOC clang_x64_v8_arm64/libcrcrypto.so.TOC clang_x64_v8_arm64/libdevice_base.so.TOC clang_x64_v8_arm64/libipc.so.TOC clang_x64_v8_arm64/libnet.so.TOC clang_x64_v8_arm64/libui_base.so.TOC clang_x64_v8_arm64/libdbus.so.TOC clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/libthird_party_boringssl.so.TOC clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so.TOC clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so.TOC clang_x64_v8_arm64/libipc_message_support.so.TOC clang_x64_v8_arm64/libmojo_public_system_cpp.so.TOC clang_x64_v8_arm64/libmojo_core_embedder.so.TOC clang_x64_v8_arm64/libmojo_cpp_platform.so.TOC clang_x64_v8_arm64/libmojo_public_system.so.TOC clang_x64_v8_arm64/libipc_mojom.so.TOC clang_x64_v8_arm64/libipc_mojom_shared.so.TOC clang_x64_v8_arm64/libmojo_public_cpp_bindings.so.TOC clang_x64_v8_arm64/libmojo_public_cpp_bindings_bindings_base.so.TOC clang_x64_v8_arm64/libmojo_mojom_bindings.so.TOC clang_x64_v8_arm64/libmojo_mojom_bindings_shared.so.TOC clang_x64_v8_arm64/libmojo_base_mojom_shared.so.TOC clang_x64_v8_arm64/libmojo_base_mojom.so.TOC clang_x64_v8_arm64/libmojo_base_lib.so.TOC clang_x64_v8_arm64/libmojo_base_shared_typemap_traits.so.TOC clang_x64_v8_arm64/libbase_i18n.so.TOC clang_x64_v8_arm64/libthird_party_icu_icui18n.so.TOC clang_x64_v8_arm64/libicuuc.so.TOC clang_x64_v8_arm64/libmojo_base_typemap_traits.so.TOC clang_x64_v8_arm64/libtracing_cpp.so.TOC clang_x64_v8_arm64/libcomponents_tracing_startup_tracing.so.TOC clang_x64_v8_arm64/libtracing_mojom.so.TOC clang_x64_v8_arm64/libtracing_mojom_shared.so.TOC clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so.TOC clang_x64_v8_arm64/libnet_uri_template.so.TOC clang_x64_v8_arm64/libnet_third_party_quiche.so.TOC clang_x64_v8_arm64/liburl.so.TOC clang_x64_v8_arm64/libui_base_features.so.TOC clang_x64_v8_arm64/libui_base_ui_data_pack.so.TOC clang_x64_v8_arm64/libskia.so.TOC clang_x64_v8_arm64/libui_gfx_color_utils.so.TOC clang_x64_v8_arm64/libui_gfx_geometry.so.TOC clang_x64_v8_arm64/libui_gfx.so.TOC clang_x64_v8_arm64/libui_gfx_color_space.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_skia.so.TOC clang_x64_v8_arm64/libui_gfx_gfx_switches.so.TOC clang_x64_v8_arm64/libui_gfx_animation.so.TOC clang_x64_v8_arm64/libui_gfx_codec.so.TOC clang_x64_v8_arm64/libui_gfx_geometry_geometry_skia.so.TOC clang_x64_v8_arm64/libui_gfx_range.so.TOC clang_x64_v8_arm64/libcc_paint.so.TOC clang_x64_v8_arm64/libcc_base.so.TOC clang_x64_v8_arm64/libcc_debug.so.TOC clang_x64_v8_arm64/libui_base_file_info.so.TOC clang_x64_v8_arm64/libui_events_events_base.so.TOC clang_x64_v8_arm64/libui_events_platform.so.TOC clang_x64_v8_arm64/libkeycodes_x11.so.TOC clang_x64_v8_arm64/libc++.so.TOC || clang_x64_v8_arm64/obj/device/bluetooth/public/cpp/cpp.stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/device/bluetooth/strings/strings.stamp clang_x64_v8_arm64/obj/build/config/shared_library_deps.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0 -lnss3 -lnssutil3 -lsmime3 -lplds4 -lplc4 -lnspr4 -ldbus-1
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = clang_x64_v8_arm64
+  solibs = clang_x64_v8_arm64/libbase.so clang_x64_v8_arm64/libcomponents_device_event_log.so clang_x64_v8_arm64/libcrcrypto.so clang_x64_v8_arm64/libdevice_base.so clang_x64_v8_arm64/libipc.so clang_x64_v8_arm64/libnet.so clang_x64_v8_arm64/libui_base.so clang_x64_v8_arm64/libdbus.so clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so clang_x64_v8_arm64/libthird_party_boringssl.so clang_x64_v8_arm64/libbase_allocator_partition_allocator_partition_alloc.so clang_x64_v8_arm64/libthird_party_perfetto_libperfetto.so clang_x64_v8_arm64/libipc_message_support.so clang_x64_v8_arm64/libmojo_public_system_cpp.so clang_x64_v8_arm64/libmojo_core_embedder.so clang_x64_v8_arm64/libmojo_cpp_platform.so clang_x64_v8_arm64/libmojo_public_system.so clang_x64_v8_arm64/libipc_mojom.so clang_x64_v8_arm64/libipc_mojom_shared.so clang_x64_v8_arm64/libmojo_public_cpp_bindings.so clang_x64_v8_arm64/libmojo_public_cpp_bindings_bindings_base.so clang_x64_v8_arm64/libmojo_mojom_bindings.so clang_x64_v8_arm64/libmojo_mojom_bindings_shared.so clang_x64_v8_arm64/libmojo_base_mojom_shared.so clang_x64_v8_arm64/libmojo_base_mojom.so clang_x64_v8_arm64/libmojo_base_lib.so clang_x64_v8_arm64/libmojo_base_shared_typemap_traits.so clang_x64_v8_arm64/libbase_i18n.so clang_x64_v8_arm64/libthird_party_icu_icui18n.so clang_x64_v8_arm64/libicuuc.so clang_x64_v8_arm64/libmojo_base_typemap_traits.so clang_x64_v8_arm64/libtracing_cpp.so clang_x64_v8_arm64/libcomponents_tracing_startup_tracing.so clang_x64_v8_arm64/libtracing_mojom.so clang_x64_v8_arm64/libtracing_mojom_shared.so clang_x64_v8_arm64/libthird_party_protobuf_protobuf_lite.so clang_x64_v8_arm64/libnet_uri_template.so clang_x64_v8_arm64/libnet_third_party_quiche.so clang_x64_v8_arm64/liburl.so clang_x64_v8_arm64/libui_base_features.so clang_x64_v8_arm64/libui_base_ui_data_pack.so clang_x64_v8_arm64/libskia.so clang_x64_v8_arm64/libui_gfx_color_utils.so clang_x64_v8_arm64/libui_gfx_geometry.so clang_x64_v8_arm64/libui_gfx.so clang_x64_v8_arm64/libui_gfx_color_space.so clang_x64_v8_arm64/libui_gfx_gfx_skia.so clang_x64_v8_arm64/libui_gfx_gfx_switches.so clang_x64_v8_arm64/libui_gfx_animation.so clang_x64_v8_arm64/libui_gfx_codec.so clang_x64_v8_arm64/libui_gfx_geometry_geometry_skia.so clang_x64_v8_arm64/libui_gfx_range.so clang_x64_v8_arm64/libcc_paint.so clang_x64_v8_arm64/libcc_base.so clang_x64_v8_arm64/libcc_debug.so clang_x64_v8_arm64/libui_base_file_info.so clang_x64_v8_arm64/libui_events_events_base.so clang_x64_v8_arm64/libui_events_platform.so clang_x64_v8_arm64/libkeycodes_x11.so clang_x64_v8_arm64/libc++.so

@@ -1,0 +1,80 @@
+defines = -DHAVE_A_OUT_H -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../../third_party/breakpad/breakpad/src -I../.. -Iclang_x64/gen -I../../buildtools/third_party/libc++
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden -frtti
+label_name = dump_syms
+target_out_dir = clang_x64/obj/third_party/breakpad
+target_output_name = dump_syms
+
+build clang_x64/obj/third_party/breakpad/dump_syms/bytereader.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf/bytereader.cc
+  source_file_part = bytereader.cc
+  source_name_part = bytereader
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf2diehandler.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf/dwarf2diehandler.cc
+  source_file_part = dwarf2diehandler.cc
+  source_name_part = dwarf2diehandler
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf2reader.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf/dwarf2reader.cc
+  source_file_part = dwarf2reader.cc
+  source_name_part = dwarf2reader
+build clang_x64/obj/third_party/breakpad/dump_syms/elf_reader.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf/elf_reader.cc
+  source_file_part = elf_reader.cc
+  source_name_part = elf_reader
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf_cfi_to_module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf_cfi_to_module.cc
+  source_file_part = dwarf_cfi_to_module.cc
+  source_name_part = dwarf_cfi_to_module
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf_cu_to_module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf_cu_to_module.cc
+  source_file_part = dwarf_cu_to_module.cc
+  source_name_part = dwarf_cu_to_module
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf_line_to_module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf_line_to_module.cc
+  source_file_part = dwarf_line_to_module.cc
+  source_name_part = dwarf_line_to_module
+build clang_x64/obj/third_party/breakpad/dump_syms/dwarf_range_list_handler.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/dwarf_range_list_handler.cc
+  source_file_part = dwarf_range_list_handler.cc
+  source_name_part = dwarf_range_list_handler
+build clang_x64/obj/third_party/breakpad/dump_syms/language.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/language.cc
+  source_file_part = language.cc
+  source_name_part = language
+build clang_x64/obj/third_party/breakpad/dump_syms/crc32.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/crc32.cc
+  source_file_part = crc32.cc
+  source_name_part = crc32
+build clang_x64/obj/third_party/breakpad/dump_syms/dump_symbols.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/dump_symbols.cc
+  source_file_part = dump_symbols.cc
+  source_name_part = dump_symbols
+build clang_x64/obj/third_party/breakpad/dump_syms/elf_symbols_to_module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/elf_symbols_to_module.cc
+  source_file_part = elf_symbols_to_module.cc
+  source_name_part = elf_symbols_to_module
+build clang_x64/obj/third_party/breakpad/dump_syms/elfutils.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/elfutils.cc
+  source_file_part = elfutils.cc
+  source_name_part = elfutils
+build clang_x64/obj/third_party/breakpad/dump_syms/file_id.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/file_id.cc
+  source_file_part = file_id.cc
+  source_name_part = file_id
+build clang_x64/obj/third_party/breakpad/dump_syms/linux_libc_support.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/linux_libc_support.cc
+  source_file_part = linux_libc_support.cc
+  source_name_part = linux_libc_support
+build clang_x64/obj/third_party/breakpad/dump_syms/memory_mapped_file.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/linux/memory_mapped_file.cc
+  source_file_part = memory_mapped_file.cc
+  source_name_part = memory_mapped_file
+build clang_x64/obj/third_party/breakpad/dump_syms/module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/module.cc
+  source_file_part = module.cc
+  source_name_part = module
+build clang_x64/obj/third_party/breakpad/dump_syms/path_helper.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/path_helper.cc
+  source_file_part = path_helper.cc
+  source_name_part = path_helper
+build clang_x64/obj/third_party/breakpad/dump_syms/stabs_reader.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/stabs_reader.cc
+  source_file_part = stabs_reader.cc
+  source_name_part = stabs_reader
+build clang_x64/obj/third_party/breakpad/dump_syms/stabs_to_module.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/common/stabs_to_module.cc
+  source_file_part = stabs_to_module.cc
+  source_name_part = stabs_to_module
+build clang_x64/obj/third_party/breakpad/dump_syms/dump_syms.o: clang_x64_cxx ../../third_party/breakpad/breakpad/src/tools/linux/dump_syms/dump_syms.cc
+  source_file_part = dump_syms.cc
+  source_name_part = dump_syms
+
+build clang_x64/dump_syms: clang_x64_link clang_x64/obj/third_party/breakpad/dump_syms/bytereader.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf2diehandler.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf2reader.o clang_x64/obj/third_party/breakpad/dump_syms/elf_reader.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf_cfi_to_module.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf_cu_to_module.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf_line_to_module.o clang_x64/obj/third_party/breakpad/dump_syms/dwarf_range_list_handler.o clang_x64/obj/third_party/breakpad/dump_syms/language.o clang_x64/obj/third_party/breakpad/dump_syms/crc32.o clang_x64/obj/third_party/breakpad/dump_syms/dump_symbols.o clang_x64/obj/third_party/breakpad/dump_syms/elf_symbols_to_module.o clang_x64/obj/third_party/breakpad/dump_syms/elfutils.o clang_x64/obj/third_party/breakpad/dump_syms/file_id.o clang_x64/obj/third_party/breakpad/dump_syms/linux_libc_support.o clang_x64/obj/third_party/breakpad/dump_syms/memory_mapped_file.o clang_x64/obj/third_party/breakpad/dump_syms/module.o clang_x64/obj/third_party/breakpad/dump_syms/path_helper.o clang_x64/obj/third_party/breakpad/dump_syms/stabs_reader.o clang_x64/obj/third_party/breakpad/dump_syms/stabs_to_module.o clang_x64/obj/third_party/breakpad/dump_syms/dump_syms.o | clang_x64/libc++.so.TOC || clang_x64/obj/build/config/executable_deps.stamp
+  ldflags = -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -pie -Wl,--disable-new-dtags -Wl,-rpath=\$$ORIGIN -Werror
+  libs = -lz -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = 
+  output_dir = clang_x64
+  solibs = clang_x64/libc++.so

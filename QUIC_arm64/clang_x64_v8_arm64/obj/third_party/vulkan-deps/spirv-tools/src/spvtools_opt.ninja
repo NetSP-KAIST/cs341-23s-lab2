@@ -1,0 +1,353 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/vulkan-deps/spirv-tools/src -I../../third_party/vulkan-deps/spirv-headers/src/include -I../../third_party/vulkan-deps/spirv-tools/src/include -Iclang_x64_v8_arm64/gen/third_party/vulkan-deps/spirv-tools/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-implicit-fallthrough -Wno-newline-eof -Wno-unreachable-code-break -Wno-unreachable-code-return -std=c++17
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = spvtools_opt
+target_out_dir = clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src
+target_output_name = libspvtools_opt
+
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/aggressive_dead_code_elim_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/aggressive_dead_code_elim_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = aggressive_dead_code_elim_pass.cpp
+  source_name_part = aggressive_dead_code_elim_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/amd_ext_to_khr.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/amd_ext_to_khr.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = amd_ext_to_khr.cpp
+  source_name_part = amd_ext_to_khr
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/analyze_live_input_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/analyze_live_input_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = analyze_live_input_pass.cpp
+  source_name_part = analyze_live_input_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/basic_block.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/basic_block.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = basic_block.cpp
+  source_name_part = basic_block
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/block_merge_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/block_merge_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = block_merge_pass.cpp
+  source_name_part = block_merge_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/block_merge_util.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/block_merge_util.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = block_merge_util.cpp
+  source_name_part = block_merge_util
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/build_module.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/build_module.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = build_module.cpp
+  source_name_part = build_module
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ccp_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/ccp_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = ccp_pass.cpp
+  source_name_part = ccp_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/cfg.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/cfg.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = cfg.cpp
+  source_name_part = cfg
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/cfg_cleanup_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/cfg_cleanup_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = cfg_cleanup_pass.cpp
+  source_name_part = cfg_cleanup_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/code_sink.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/code_sink.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = code_sink.cpp
+  source_name_part = code_sink
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/combine_access_chains.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/combine_access_chains.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = combine_access_chains.cpp
+  source_name_part = combine_access_chains
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/compact_ids_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/compact_ids_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = compact_ids_pass.cpp
+  source_name_part = compact_ids_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/composite.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/composite.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = composite.cpp
+  source_name_part = composite
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/const_folding_rules.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/const_folding_rules.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = const_folding_rules.cpp
+  source_name_part = const_folding_rules
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/constants.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/constants.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = constants.cpp
+  source_name_part = constants
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/control_dependence.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/control_dependence.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = control_dependence.cpp
+  source_name_part = control_dependence
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/convert_to_half_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/convert_to_half_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = convert_to_half_pass.cpp
+  source_name_part = convert_to_half_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/convert_to_sampled_image_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/convert_to_sampled_image_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = convert_to_sampled_image_pass.cpp
+  source_name_part = convert_to_sampled_image_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/copy_prop_arrays.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/copy_prop_arrays.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = copy_prop_arrays.cpp
+  source_name_part = copy_prop_arrays
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dataflow.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dataflow.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dataflow.cpp
+  source_name_part = dataflow
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_branch_elim_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dead_branch_elim_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dead_branch_elim_pass.cpp
+  source_name_part = dead_branch_elim_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_insert_elim_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dead_insert_elim_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dead_insert_elim_pass.cpp
+  source_name_part = dead_insert_elim_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_variable_elimination.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dead_variable_elimination.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dead_variable_elimination.cpp
+  source_name_part = dead_variable_elimination
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/debug_info_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/debug_info_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = debug_info_manager.cpp
+  source_name_part = debug_info_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/decoration_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/decoration_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = decoration_manager.cpp
+  source_name_part = decoration_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/def_use_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/def_use_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = def_use_manager.cpp
+  source_name_part = def_use_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/desc_sroa.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/desc_sroa.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = desc_sroa.cpp
+  source_name_part = desc_sroa
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/desc_sroa_util.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/desc_sroa_util.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = desc_sroa_util.cpp
+  source_name_part = desc_sroa_util
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dominator_analysis.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dominator_analysis.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dominator_analysis.cpp
+  source_name_part = dominator_analysis
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dominator_tree.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/dominator_tree.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = dominator_tree.cpp
+  source_name_part = dominator_tree
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_constant_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_constant_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_constant_pass.cpp
+  source_name_part = eliminate_dead_constant_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_functions_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_functions_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_functions_pass.cpp
+  source_name_part = eliminate_dead_functions_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_functions_util.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_functions_util.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_functions_util.cpp
+  source_name_part = eliminate_dead_functions_util
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_io_components_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_io_components_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_io_components_pass.cpp
+  source_name_part = eliminate_dead_io_components_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_members_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_members_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_members_pass.cpp
+  source_name_part = eliminate_dead_members_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_output_stores_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/eliminate_dead_output_stores_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = eliminate_dead_output_stores_pass.cpp
+  source_name_part = eliminate_dead_output_stores_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/feature_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/feature_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = feature_manager.cpp
+  source_name_part = feature_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fix_func_call_arguments.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/fix_func_call_arguments.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = fix_func_call_arguments.cpp
+  source_name_part = fix_func_call_arguments
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fix_storage_class.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/fix_storage_class.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = fix_storage_class.cpp
+  source_name_part = fix_storage_class
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/flatten_decoration_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/flatten_decoration_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = flatten_decoration_pass.cpp
+  source_name_part = flatten_decoration_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fold.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/fold.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = fold.cpp
+  source_name_part = fold
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fold_spec_constant_op_and_composite_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/fold_spec_constant_op_and_composite_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = fold_spec_constant_op_and_composite_pass.cpp
+  source_name_part = fold_spec_constant_op_and_composite_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/folding_rules.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/folding_rules.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = folding_rules.cpp
+  source_name_part = folding_rules
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/freeze_spec_constant_value_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/freeze_spec_constant_value_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = freeze_spec_constant_value_pass.cpp
+  source_name_part = freeze_spec_constant_value_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/function.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/function.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = function.cpp
+  source_name_part = function
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/graphics_robust_access_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/graphics_robust_access_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = graphics_robust_access_pass.cpp
+  source_name_part = graphics_robust_access_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/if_conversion.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/if_conversion.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = if_conversion.cpp
+  source_name_part = if_conversion
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_exhaustive_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inline_exhaustive_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inline_exhaustive_pass.cpp
+  source_name_part = inline_exhaustive_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_opaque_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inline_opaque_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inline_opaque_pass.cpp
+  source_name_part = inline_opaque_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inline_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inline_pass.cpp
+  source_name_part = inline_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_bindless_check_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inst_bindless_check_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inst_bindless_check_pass.cpp
+  source_name_part = inst_bindless_check_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_buff_addr_check_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inst_buff_addr_check_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inst_buff_addr_check_pass.cpp
+  source_name_part = inst_buff_addr_check_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_debug_printf_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/inst_debug_printf_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = inst_debug_printf_pass.cpp
+  source_name_part = inst_debug_printf_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instruction.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/instruction.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = instruction.cpp
+  source_name_part = instruction
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instruction_list.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/instruction_list.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = instruction_list.cpp
+  source_name_part = instruction_list
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instrument_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/instrument_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = instrument_pass.cpp
+  source_name_part = instrument_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/interface_var_sroa.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/interface_var_sroa.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = interface_var_sroa.cpp
+  source_name_part = interface_var_sroa
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/interp_fixup_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/interp_fixup_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = interp_fixup_pass.cpp
+  source_name_part = interp_fixup_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ir_context.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/ir_context.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = ir_context.cpp
+  source_name_part = ir_context
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ir_loader.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/ir_loader.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = ir_loader.cpp
+  source_name_part = ir_loader
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/licm_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/licm_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = licm_pass.cpp
+  source_name_part = licm_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/liveness.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/liveness.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = liveness.cpp
+  source_name_part = liveness
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_access_chain_convert_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/local_access_chain_convert_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = local_access_chain_convert_pass.cpp
+  source_name_part = local_access_chain_convert_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_redundancy_elimination.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/local_redundancy_elimination.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = local_redundancy_elimination.cpp
+  source_name_part = local_redundancy_elimination
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_single_block_elim_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/local_single_block_elim_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = local_single_block_elim_pass.cpp
+  source_name_part = local_single_block_elim_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_single_store_elim_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/local_single_store_elim_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = local_single_store_elim_pass.cpp
+  source_name_part = local_single_store_elim_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_dependence.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_dependence.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_dependence.cpp
+  source_name_part = loop_dependence
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_dependence_helpers.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_dependence_helpers.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_dependence_helpers.cpp
+  source_name_part = loop_dependence_helpers
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_descriptor.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_descriptor.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_descriptor.cpp
+  source_name_part = loop_descriptor
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fission.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_fission.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_fission.cpp
+  source_name_part = loop_fission
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fusion.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_fusion.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_fusion.cpp
+  source_name_part = loop_fusion
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fusion_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_fusion_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_fusion_pass.cpp
+  source_name_part = loop_fusion_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_peeling.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_peeling.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_peeling.cpp
+  source_name_part = loop_peeling
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_unroller.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_unroller.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_unroller.cpp
+  source_name_part = loop_unroller
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_unswitch_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_unswitch_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_unswitch_pass.cpp
+  source_name_part = loop_unswitch_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_utils.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/loop_utils.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = loop_utils.cpp
+  source_name_part = loop_utils
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/mem_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/mem_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = mem_pass.cpp
+  source_name_part = mem_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/merge_return_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/merge_return_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = merge_return_pass.cpp
+  source_name_part = merge_return_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/module.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/module.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = module.cpp
+  source_name_part = module
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/optimizer.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/optimizer.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = optimizer.cpp
+  source_name_part = optimizer
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = pass.cpp
+  source_name_part = pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/pass_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/pass_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = pass_manager.cpp
+  source_name_part = pass_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/private_to_local_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/private_to_local_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = private_to_local_pass.cpp
+  source_name_part = private_to_local_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/propagator.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/propagator.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = propagator.cpp
+  source_name_part = propagator
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/reduce_load_size.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/reduce_load_size.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = reduce_load_size.cpp
+  source_name_part = reduce_load_size
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/redundancy_elimination.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/redundancy_elimination.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = redundancy_elimination.cpp
+  source_name_part = redundancy_elimination
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/register_pressure.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/register_pressure.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = register_pressure.cpp
+  source_name_part = register_pressure
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/relax_float_ops_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/relax_float_ops_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = relax_float_ops_pass.cpp
+  source_name_part = relax_float_ops_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_dontinline_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/remove_dontinline_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = remove_dontinline_pass.cpp
+  source_name_part = remove_dontinline_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_duplicates_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/remove_duplicates_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = remove_duplicates_pass.cpp
+  source_name_part = remove_duplicates_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_unused_interface_variables_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/remove_unused_interface_variables_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = remove_unused_interface_variables_pass.cpp
+  source_name_part = remove_unused_interface_variables_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/replace_desc_array_access_using_var_index.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/replace_desc_array_access_using_var_index.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = replace_desc_array_access_using_var_index.cpp
+  source_name_part = replace_desc_array_access_using_var_index
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/replace_invalid_opc.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/replace_invalid_opc.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = replace_invalid_opc.cpp
+  source_name_part = replace_invalid_opc
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_analysis.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/scalar_analysis.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = scalar_analysis.cpp
+  source_name_part = scalar_analysis
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_analysis_simplification.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/scalar_analysis_simplification.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = scalar_analysis_simplification.cpp
+  source_name_part = scalar_analysis_simplification
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_replacement_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/scalar_replacement_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = scalar_replacement_pass.cpp
+  source_name_part = scalar_replacement_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/set_spec_constant_default_value_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/set_spec_constant_default_value_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = set_spec_constant_default_value_pass.cpp
+  source_name_part = set_spec_constant_default_value_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/simplification_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/simplification_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = simplification_pass.cpp
+  source_name_part = simplification_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/spread_volatile_semantics.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/spread_volatile_semantics.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = spread_volatile_semantics.cpp
+  source_name_part = spread_volatile_semantics
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ssa_rewrite_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/ssa_rewrite_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = ssa_rewrite_pass.cpp
+  source_name_part = ssa_rewrite_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strength_reduction_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/strength_reduction_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = strength_reduction_pass.cpp
+  source_name_part = strength_reduction_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strip_debug_info_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/strip_debug_info_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = strip_debug_info_pass.cpp
+  source_name_part = strip_debug_info_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strip_nonsemantic_info_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/strip_nonsemantic_info_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = strip_nonsemantic_info_pass.cpp
+  source_name_part = strip_nonsemantic_info_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/struct_cfg_analysis.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/struct_cfg_analysis.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = struct_cfg_analysis.cpp
+  source_name_part = struct_cfg_analysis
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/type_manager.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/type_manager.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = type_manager.cpp
+  source_name_part = type_manager
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/types.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/types.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = types.cpp
+  source_name_part = types
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/unify_const_pass.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/unify_const_pass.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = unify_const_pass.cpp
+  source_name_part = unify_const_pass
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/upgrade_memory_model.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/upgrade_memory_model.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = upgrade_memory_model.cpp
+  source_name_part = upgrade_memory_model
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/value_number_table.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/value_number_table.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = value_number_table.cpp
+  source_name_part = value_number_table
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/vector_dce.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/vector_dce.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = vector_dce.cpp
+  source_name_part = vector_dce
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/workaround1209.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/workaround1209.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = workaround1209.cpp
+  source_name_part = workaround1209
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/wrap_opkill.o: clang_x64_v8_arm64_cxx ../../third_party/vulkan-deps/spirv-tools/src/source/opt/wrap_opkill.cpp || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt.inputdeps.stamp
+  source_file_part = wrap_opkill.cpp
+  source_name_part = wrap_opkill
+
+build clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_opt.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/aggressive_dead_code_elim_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/amd_ext_to_khr.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/analyze_live_input_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/basic_block.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/block_merge_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/block_merge_util.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/build_module.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ccp_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/cfg.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/cfg_cleanup_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/code_sink.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/combine_access_chains.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/compact_ids_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/composite.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/const_folding_rules.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/constants.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/control_dependence.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/convert_to_half_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/convert_to_sampled_image_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/copy_prop_arrays.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dataflow.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_branch_elim_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_insert_elim_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dead_variable_elimination.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/debug_info_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/decoration_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/def_use_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/desc_sroa.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/desc_sroa_util.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dominator_analysis.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/dominator_tree.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_constant_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_functions_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_functions_util.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_io_components_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_members_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/eliminate_dead_output_stores_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/feature_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fix_func_call_arguments.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fix_storage_class.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/flatten_decoration_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fold.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/fold_spec_constant_op_and_composite_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/folding_rules.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/freeze_spec_constant_value_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/function.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/graphics_robust_access_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/if_conversion.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_exhaustive_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_opaque_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inline_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_bindless_check_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_buff_addr_check_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/inst_debug_printf_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instruction.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instruction_list.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/instrument_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/interface_var_sroa.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/interp_fixup_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ir_context.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ir_loader.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/licm_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/liveness.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_access_chain_convert_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_redundancy_elimination.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_single_block_elim_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/local_single_store_elim_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_dependence.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_dependence_helpers.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_descriptor.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fission.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fusion.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_fusion_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_peeling.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_unroller.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_unswitch_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/loop_utils.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/mem_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/merge_return_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/module.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/optimizer.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/pass_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/private_to_local_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/propagator.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/reduce_load_size.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/redundancy_elimination.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/register_pressure.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/relax_float_ops_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_dontinline_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_duplicates_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/remove_unused_interface_variables_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/replace_desc_array_access_using_var_index.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/replace_invalid_opc.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_analysis.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_analysis_simplification.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/scalar_replacement_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/set_spec_constant_default_value_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/simplification_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/spread_volatile_semantics.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/ssa_rewrite_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strength_reduction_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strip_debug_info_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/strip_nonsemantic_info_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/struct_cfg_analysis.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/type_manager.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/types.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/unify_const_pass.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/upgrade_memory_model.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/value_number_table.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/vector_dce.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/workaround1209.o clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opt/wrap_opkill.o || clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src

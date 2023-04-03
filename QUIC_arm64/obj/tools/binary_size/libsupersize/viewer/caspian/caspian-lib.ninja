@@ -1,0 +1,31 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/jsoncpp/source/include -I../../third_party/re2/src -I../../third_party/zlib
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -O3 -fdata-sections -ffunction-sections -fno-unique-section-names
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = caspian-lib
+target_out_dir = obj/tools/binary_size/libsupersize/viewer/caspian
+target_output_name = caspian-lib
+
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/diff.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/diff.cc
+  source_file_part = diff.cc
+  source_name_part = diff
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/file_format.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/file_format.cc
+  source_file_part = file_format.cc
+  source_name_part = file_format
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/function_signature.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/function_signature.cc
+  source_file_part = function_signature.cc
+  source_name_part = function_signature
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/grouped_path.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/grouped_path.cc
+  source_file_part = grouped_path.cc
+  source_name_part = grouped_path
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/lens.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/lens.cc
+  source_file_part = lens.cc
+  source_name_part = lens
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/model.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/model.cc
+  source_file_part = model.cc
+  source_name_part = model
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/tree_builder.o: cxx ../../tools/binary_size/libsupersize/viewer/caspian/tree_builder.cc
+  source_file_part = tree_builder.cc
+  source_name_part = tree_builder
+
+build obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib.stamp: stamp obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/diff.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/file_format.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/function_signature.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/grouped_path.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/lens.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/model.o obj/tools/binary_size/libsupersize/viewer/caspian/caspian-lib/tree_builder.o || obj/third_party/jsoncpp/jsoncpp.stamp obj/third_party/re2/libre2.a ./libchrome_zlib.so.TOC obj/third_party/zlib/google/libcompression_utils_portable.a

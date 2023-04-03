@@ -1,0 +1,296 @@
+defines = -DANGLE_GENERATE_SHADER_DEBUG_INFO -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DANGLE_ASSERT_ALWAYS_ON -DANGLE_VMA_VERSION=2003000 -DANGLE_IS_LINUX -DANGLE_USE_VULKAN_DISPLAY -DANGLE_USE_X11 -DANGLE_USE_WAYLAND -DANGLE_VULKAN_DISPLAY_MODE_HEADLESS -DANGLE_DEBUG_LAYERS_ENABLED -DANGLE_OUTSIDE_WEBKIT -DANGLE_ENABLE_DEBUG_ANNOTATIONS -DLIBANGLE_IMPLEMENTATION -DANGLE_ENABLE_OVERLAY=1 -DANGLE_ENABLE_OPENGL -DANGLE_ENABLE_GL_DESKTOP_BACKEND -DANGLE_ENABLE_OPENGL_NULL -DANGLE_ENABLE_NULL -DANGLE_ENABLE_VULKAN -DANGLE_ENABLE_SWIFTSHADER -DANGLE_ENABLE_VULKAN_VALIDATION_LAYERS -DANGLE_ENABLE_VULKAN_SHARED_RING_BUFFER_CMD_ALLOC=false -DANGLE_DELEGATE_WORKERS -DANGLE_USE_ABSEIL -DABSL_ALLOCATOR_NOTHROW=1 -DABSL_CONSUME_DLL
+include_dirs = -I../../buildtools/third_party/libc++ -I../../third_party/angle/include -I../../third_party/angle/src -I../../third_party/angle/src/third_party/khronos -I../../third_party/angle/src/common/base -I../../third_party/angle/src/common/third_party/xxhash -I../../third_party/abseil-cpp -I../../third_party/wayland/src/egl -I../../third_party/wayland/src/src -I../../third_party/wayland/include -I../../third_party/wayland/include/src -I../../third_party/wayland/src/cursor -Iclang_x64_v8_arm64/gen/third_party/wayland/src/protocol -I../../third_party/zlib/google -I../../third_party/zlib
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -Wglobal-constructors -Wbad-function-cast -Wconditional-uninitialized -Wextra-semi-stmt -Wfloat-conversion -Winconsistent-missing-destructor-override -Wmissing-field-initializers -Wnewline-eof -Wnon-virtual-dtor -Wredundant-parens -Wreturn-std-move -Wshadow -Wshadow-field -Wtautological-type-limit-compare -Wundefined-reinterpret-cast -Wunneeded-internal-declaration -Wunused-but-set-variable -Wsuggest-destructor-override -Wsuggest-override -Wparentheses -Wrange-loop-analysis -Wstrict-prototypes -Wunreachable-code-aggressive -Wshorten-64-to-32
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = libANGLE_no_vulkan
+target_out_dir = clang_x64_v8_arm64/obj/third_party/angle
+target_output_name = libANGLE_no_vulkan
+
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_commit_id.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_program_version_id.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_enums_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_core_tables_unified1.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_generators_inc.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_glsl_tables_glsl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_cldebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_language_header_vkdebuginfo100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_opencl_tables_opencl1-0.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_debuginfo.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.clspvreflection.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_nonsemantic.shader.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_opencl.debuginfo.100.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-gcn-shader.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-ballot.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-explicit-vertex-parameter.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_vendor_tables_spv-amd-shader-trinary-minmax.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_client_protocol_gen.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_protocol_c_gen.stamp
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/AttributeMap.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/AttributeMap.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = AttributeMap.cpp
+  source_name_part = AttributeMap
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/BlobCache.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/BlobCache.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = BlobCache.cpp
+  source_name_part = BlobCache
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Buffer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Buffer.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Buffer.cpp
+  source_name_part = Buffer
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Caps.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Caps.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Caps.cpp
+  source_name_part = Caps
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Compiler.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Compiler.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Compiler.cpp
+  source_name_part = Compiler
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Config.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Config.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Config.cpp
+  source_name_part = Config
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Context.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Context.cpp
+  source_name_part = Context
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context_gl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Context_gl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Context_gl.cpp
+  source_name_part = Context_gl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context_gles_1_0.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Context_gles_1_0.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Context_gles_1_0.cpp
+  source_name_part = Context_gles_1_0
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Debug.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Debug.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Debug.cpp
+  source_name_part = Debug
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Device.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Device.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Device.cpp
+  source_name_part = Device
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Display.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Display.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Display.cpp
+  source_name_part = Display
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLSync.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/EGLSync.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = EGLSync.cpp
+  source_name_part = EGLSync
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Error.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Error.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Error.cpp
+  source_name_part = Error
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Fence.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Fence.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Fence.cpp
+  source_name_part = Fence
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Framebuffer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Framebuffer.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Framebuffer.cpp
+  source_name_part = Framebuffer
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/FramebufferAttachment.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/FramebufferAttachment.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = FramebufferAttachment.cpp
+  source_name_part = FramebufferAttachment
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/GLES1Renderer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/GLES1Renderer.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = GLES1Renderer.cpp
+  source_name_part = GLES1Renderer
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/GLES1State.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/GLES1State.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = GLES1State.cpp
+  source_name_part = GLES1State
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/HandleAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/HandleAllocator.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = HandleAllocator.cpp
+  source_name_part = HandleAllocator
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Image.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Image.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Image.cpp
+  source_name_part = Image
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ImageIndex.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/ImageIndex.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ImageIndex.cpp
+  source_name_part = ImageIndex
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/IndexRangeCache.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/IndexRangeCache.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = IndexRangeCache.cpp
+  source_name_part = IndexRangeCache
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/LoggingAnnotator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/LoggingAnnotator.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = LoggingAnnotator.cpp
+  source_name_part = LoggingAnnotator
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryObject.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/MemoryObject.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = MemoryObject.cpp
+  source_name_part = MemoryObject
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryProgramCache.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/MemoryProgramCache.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = MemoryProgramCache.cpp
+  source_name_part = MemoryProgramCache
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryShaderCache.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/MemoryShaderCache.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = MemoryShaderCache.cpp
+  source_name_part = MemoryShaderCache
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Observer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Observer.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Observer.cpp
+  source_name_part = Observer
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Overlay.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Overlay.cpp
+  source_name_part = Overlay
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/OverlayWidgets.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/OverlayWidgets.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = OverlayWidgets.cpp
+  source_name_part = OverlayWidgets
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Overlay_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Overlay_autogen.cpp
+  source_name_part = Overlay_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay_font_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Overlay_font_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Overlay_font_autogen.cpp
+  source_name_part = Overlay_font_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/PixelLocalStorage.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/PixelLocalStorage.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = PixelLocalStorage.cpp
+  source_name_part = PixelLocalStorage
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Platform.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Platform.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Platform.cpp
+  source_name_part = Platform
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Program.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Program.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Program.cpp
+  source_name_part = Program
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramExecutable.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/ProgramExecutable.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ProgramExecutable.cpp
+  source_name_part = ProgramExecutable
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramLinkedResources.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/ProgramLinkedResources.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ProgramLinkedResources.cpp
+  source_name_part = ProgramLinkedResources
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramPipeline.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/ProgramPipeline.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ProgramPipeline.cpp
+  source_name_part = ProgramPipeline
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Query.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Query.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Query.cpp
+  source_name_part = Query
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Renderbuffer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Renderbuffer.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Renderbuffer.cpp
+  source_name_part = Renderbuffer
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ResourceManager.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/ResourceManager.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ResourceManager.cpp
+  source_name_part = ResourceManager
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Sampler.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Sampler.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Sampler.cpp
+  source_name_part = Sampler
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Semaphore.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Semaphore.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Semaphore.cpp
+  source_name_part = Semaphore
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Shader.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Shader.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Shader.cpp
+  source_name_part = Shader
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/State.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/State.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = State.cpp
+  source_name_part = State
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Stream.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Stream.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Stream.cpp
+  source_name_part = Stream
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Surface.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Surface.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Surface.cpp
+  source_name_part = Surface
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Texture.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Texture.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Texture.cpp
+  source_name_part = Texture
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Thread.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Thread.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Thread.cpp
+  source_name_part = Thread
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TransformFeedback.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/TransformFeedback.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = TransformFeedback.cpp
+  source_name_part = TransformFeedback
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Uniform.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/Uniform.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Uniform.cpp
+  source_name_part = Uniform
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VaryingPacking.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/VaryingPacking.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = VaryingPacking.cpp
+  source_name_part = VaryingPacking
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexArray.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/VertexArray.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = VertexArray.cpp
+  source_name_part = VertexArray
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexAttribute.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/VertexAttribute.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = VertexAttribute.cpp
+  source_name_part = VertexAttribute
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/angletypes.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/angletypes.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = angletypes.cpp
+  source_name_part = angletypes
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/es3_copy_conversion_table_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/es3_copy_conversion_table_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = es3_copy_conversion_table_autogen.cpp
+  source_name_part = es3_copy_conversion_table_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/format_map_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/format_map_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = format_map_autogen.cpp
+  source_name_part = format_map_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/format_map_desktop.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/format_map_desktop.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = format_map_desktop.cpp
+  source_name_part = format_map_desktop
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/formatutils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/formatutils.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = formatutils.cpp
+  source_name_part = formatutils
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/gles_extensions_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/gles_extensions_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = gles_extensions_autogen.cpp
+  source_name_part = gles_extensions_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/queryconversions.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/queryconversions.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = queryconversions.cpp
+  source_name_part = queryconversions
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/queryutils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/queryutils.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = queryutils.cpp
+  source_name_part = queryutils
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/BufferImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/BufferImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = BufferImpl.cpp
+  source_name_part = BufferImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ContextImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/ContextImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ContextImpl.cpp
+  source_name_part = ContextImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/DeviceImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/DeviceImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = DeviceImpl.cpp
+  source_name_part = DeviceImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/DisplayImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/DisplayImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = DisplayImpl.cpp
+  source_name_part = DisplayImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLReusableSync.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/EGLReusableSync.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = EGLReusableSync.cpp
+  source_name_part = EGLReusableSync
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLSyncImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/EGLSyncImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = EGLSyncImpl.cpp
+  source_name_part = EGLSyncImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Format_table_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/Format_table_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = Format_table_autogen.cpp
+  source_name_part = Format_table_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/FramebufferImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/FramebufferImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = FramebufferImpl.cpp
+  source_name_part = FramebufferImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ImageImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/ImageImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ImageImpl.cpp
+  source_name_part = ImageImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/ProgramImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ProgramImpl.cpp
+  source_name_part = ProgramImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramPipelineImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/ProgramPipelineImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ProgramPipelineImpl.cpp
+  source_name_part = ProgramPipelineImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/QueryImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/QueryImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = QueryImpl.cpp
+  source_name_part = QueryImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/RenderbufferImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/RenderbufferImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = RenderbufferImpl.cpp
+  source_name_part = RenderbufferImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ShaderImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/ShaderImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = ShaderImpl.cpp
+  source_name_part = ShaderImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/SurfaceImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/SurfaceImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = SurfaceImpl.cpp
+  source_name_part = SurfaceImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TextureImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/TextureImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = TextureImpl.cpp
+  source_name_part = TextureImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TransformFeedbackImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/TransformFeedbackImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = TransformFeedbackImpl.cpp
+  source_name_part = TransformFeedbackImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexArrayImpl.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/VertexArrayImpl.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = VertexArrayImpl.cpp
+  source_name_part = VertexArrayImpl
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/driver_utils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/driver_utils.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = driver_utils.cpp
+  source_name_part = driver_utils
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/load_functions_table_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/load_functions_table_autogen.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = load_functions_table_autogen.cpp
+  source_name_part = load_functions_table_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/renderer_utils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/renderer/renderer_utils.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = renderer_utils.cpp
+  source_name_part = renderer_utils
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationEGL.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationEGL.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationEGL.cpp
+  source_name_part = validationEGL
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES.cpp
+  source_name_part = validationES
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES1.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES1.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES1.cpp
+  source_name_part = validationES1
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES2.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES2.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES2.cpp
+  source_name_part = validationES2
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES3.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES3.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES3.cpp
+  source_name_part = validationES3
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES31.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES31.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES31.cpp
+  source_name_part = validationES31
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES32.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationES32.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationES32.cpp
+  source_name_part = validationES32
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationESEXT.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationESEXT.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationESEXT.cpp
+  source_name_part = validationESEXT
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL1.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationGL1.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationGL1.cpp
+  source_name_part = validationGL1
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL2.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationGL2.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationGL2.cpp
+  source_name_part = validationGL2
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL3.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationGL3.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationGL3.cpp
+  source_name_part = validationGL3
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL4.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/libANGLE/validationGL4.cpp || clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.inputdeps.stamp
+  source_file_part = validationGL4.cpp
+  source_name_part = validationGL4
+
+build clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/AttributeMap.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/BlobCache.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Buffer.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Caps.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Compiler.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Config.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context_gl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Context_gles_1_0.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Debug.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Device.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Display.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLSync.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Error.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Fence.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Framebuffer.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/FramebufferAttachment.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/GLES1Renderer.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/GLES1State.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/HandleAllocator.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Image.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ImageIndex.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/IndexRangeCache.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/LoggingAnnotator.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryObject.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryProgramCache.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/MemoryShaderCache.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Observer.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/OverlayWidgets.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Overlay_font_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/PixelLocalStorage.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Platform.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Program.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramExecutable.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramLinkedResources.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramPipeline.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Query.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Renderbuffer.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ResourceManager.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Sampler.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Semaphore.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Shader.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/State.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Stream.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Surface.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Texture.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Thread.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TransformFeedback.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Uniform.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VaryingPacking.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexArray.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexAttribute.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/angletypes.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/es3_copy_conversion_table_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/format_map_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/format_map_desktop.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/formatutils.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/gles_extensions_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/queryconversions.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/queryutils.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/BufferImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ContextImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/DeviceImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/DisplayImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLReusableSync.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/EGLSyncImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/Format_table_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/FramebufferImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ImageImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ProgramPipelineImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/QueryImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/RenderbufferImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/ShaderImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/SurfaceImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TextureImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/TransformFeedbackImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/VertexArrayImpl.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/driver_utils.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/load_functions_table_autogen.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/renderer_utils.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationEGL.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES1.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES2.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES3.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES31.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationES32.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationESEXT.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL1.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL2.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL3.o clang_x64_v8_arm64/obj/third_party/angle/libANGLE_no_vulkan/validationGL4.o || clang_x64_v8_arm64/obj/third_party/angle/libangle_common.a clang_x64_v8_arm64/obj/third_party/angle/libangle_common_shader_state.a clang_x64_v8_arm64/obj/third_party/angle/libangle_gpu_info_util.a clang_x64_v8_arm64/obj/third_party/angle/libangle_image_util.a clang_x64_v8_arm64/obj/third_party/angle/angle_version_info.stamp clang_x64_v8_arm64/obj/third_party/angle/libANGLE_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/libtranslator.a clang_x64_v8_arm64/obj/third_party/angle/src/libANGLE/renderer/gl/angle_gl_backend.stamp clang_x64_v8_arm64/obj/third_party/angle/src/libANGLE/renderer/null/angle_null_backend.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_compression.stamp clang_x64_v8_arm64/obj/third_party/angle/includes.stamp clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC clang_x64_v8_arm64/obj/third_party/angle/xxhash.stamp clang_x64_v8_arm64/obj/third_party/wayland/libwayland_client.a clang_x64_v8_arm64/obj/third_party/wayland/wayland_client_protocol.stamp clang_x64_v8_arm64/obj/third_party/wayland/wayland_util.stamp clang_x64_v8_arm64/obj/third_party/wayland/libwayland_private.a clang_x64_v8_arm64/obj/third_party/wayland/wayland_protocol_c.stamp clang_x64_v8_arm64/obj/third_party/wayland/libwayland_egl.a clang_x64_v8_arm64/obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/src/common/vulkan/angle_libvulkan_loader.stamp clang_x64_v8_arm64/obj/third_party/angle/src/common/vulkan/angle_vulkan_icd.stamp clang_x64_v8_arm64/obj/third_party/angle/src/common/vulkan/angle_vulkan_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/src/third_party/volk/volk.stamp clang_x64_v8_arm64/obj/third_party/angle/src/third_party/libXNVCtrl/libXNVCtrl.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_image_util_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_translator_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/angle_version.stamp clang_x64_v8_arm64/obj/third_party/angle/libpreprocessor.a clang_x64_v8_arm64/obj/third_party/angle/src/common/spirv/angle_spirv_headers.stamp clang_x64_v8_arm64/obj/third_party/angle/src/common/spirv/angle_spirv_base.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-headers/src/spv_headers.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/spvtools_headers.stamp clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools_val.a clang_x64_v8_arm64/obj/third_party/vulkan-deps/spirv-tools/src/libspvtools.a clang_x64_v8_arm64/obj/third_party/angle/src/common/spirv/angle_spirv_builder.stamp clang_x64_v8_arm64/obj/third_party/angle/src/common/linux/angle_dma_buf.stamp clang_x64_v8_arm64/obj/third_party/zlib/google/libcompression_utils_portable.a clang_x64_v8_arm64/libchrome_zlib.so.TOC

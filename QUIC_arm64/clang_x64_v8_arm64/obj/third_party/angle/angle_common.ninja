@@ -1,0 +1,88 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DANGLE_ASSERT_ALWAYS_ON -DANGLE_VMA_VERSION=2003000 -DANGLE_IS_LINUX -DANGLE_USE_VULKAN_DISPLAY -DANGLE_USE_X11 -DANGLE_USE_WAYLAND -DANGLE_VULKAN_DISPLAY_MODE_HEADLESS -DANGLE_DEBUG_LAYERS_ENABLED -DANGLE_OUTSIDE_WEBKIT -DANGLE_DELEGATE_WORKERS -DANGLE_ENABLE_DEBUG_ANNOTATIONS -DANGLE_USE_ABSEIL -DABSL_ALLOCATOR_NOTHROW=1 -DABSL_CONSUME_DLL
+include_dirs = -I../../buildtools/third_party/libc++ -I../../third_party/angle/include -I../../third_party/angle/src -I../../third_party/angle/src/common/base -I../../third_party/angle/src/common/third_party/xxhash -I../../third_party/abseil-cpp
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -Wglobal-constructors -Wbad-function-cast -Wconditional-uninitialized -Wextra-semi-stmt -Wfloat-conversion -Winconsistent-missing-destructor-override -Wmissing-field-initializers -Wnewline-eof -Wnon-virtual-dtor -Wredundant-parens -Wreturn-std-move -Wshadow -Wshadow-field -Wtautological-type-limit-compare -Wundefined-reinterpret-cast -Wunneeded-internal-declaration -Wunused-but-set-variable -Wsuggest-destructor-override -Wsuggest-override -Wparentheses -Wrange-loop-analysis -Wstrict-prototypes -Wunreachable-code-aggressive -Wshorten-64-to-32
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = angle_common
+target_out_dir = clang_x64_v8_arm64/obj/third_party/angle
+target_output_name = libangle_common
+
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/Float16ToFloat32.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/Float16ToFloat32.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = Float16ToFloat32.cpp
+  source_name_part = Float16ToFloat32
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/MemoryBuffer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/MemoryBuffer.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = MemoryBuffer.cpp
+  source_name_part = MemoryBuffer
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedEGLEnums_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/PackedEGLEnums_autogen.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = PackedEGLEnums_autogen.cpp
+  source_name_part = PackedEGLEnums_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedEnums.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/PackedEnums.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = PackedEnums.cpp
+  source_name_part = PackedEnums
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedGLEnums_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/PackedGLEnums_autogen.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = PackedGLEnums_autogen.cpp
+  source_name_part = PackedGLEnums_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/PoolAlloc.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/PoolAlloc.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = PoolAlloc.cpp
+  source_name_part = PoolAlloc
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/RingBufferAllocator.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/RingBufferAllocator.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = RingBufferAllocator.cpp
+  source_name_part = RingBufferAllocator
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/WorkerThread.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/WorkerThread.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = WorkerThread.cpp
+  source_name_part = WorkerThread
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/aligned_memory.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/aligned_memory.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = aligned_memory.cpp
+  source_name_part = aligned_memory
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/android_util.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/android_util.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = android_util.cpp
+  source_name_part = android_util
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/angleutils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/angleutils.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = angleutils.cpp
+  source_name_part = angleutils
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/sha1.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/base/anglebase/sha1.cc || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = sha1.cc
+  source_name_part = sha1
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/debug.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/debug.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = debug.cpp
+  source_name_part = debug
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/entry_points_enum_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/entry_points_enum_autogen.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = entry_points_enum_autogen.cpp
+  source_name_part = entry_points_enum_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/event_tracer.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/event_tracer.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = event_tracer.cpp
+  source_name_part = event_tracer
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/mathutil.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/mathutil.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = mathutil.cpp
+  source_name_part = mathutil
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/matrix_utils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/matrix_utils.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = matrix_utils.cpp
+  source_name_part = matrix_utils
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/string_utils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/string_utils.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = string_utils.cpp
+  source_name_part = string_utils
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/system_utils.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = system_utils.cpp
+  source_name_part = system_utils
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/tls.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/tls.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = tls.cpp
+  source_name_part = tls
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/uniform_type_info_autogen.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/uniform_type_info_autogen.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = uniform_type_info_autogen.cpp
+  source_name_part = uniform_type_info_autogen
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/utilities.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/utilities.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = utilities.cpp
+  source_name_part = utilities
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/backtrace_utils_noop.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/backtrace_utils_noop.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = backtrace_utils_noop.cpp
+  source_name_part = backtrace_utils_noop
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils_linux.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/system_utils_linux.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = system_utils_linux.cpp
+  source_name_part = system_utils_linux
+build clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils_posix.o: clang_x64_v8_arm64_cxx ../../third_party/angle/src/common/system_utils_posix.cpp || clang_x64_v8_arm64/obj/build/chromeos_buildflags.stamp
+  source_file_part = system_utils_posix.cpp
+  source_name_part = system_utils_posix
+
+build clang_x64_v8_arm64/obj/third_party/angle/libangle_common.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/angle/angle_common/Float16ToFloat32.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/MemoryBuffer.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedEGLEnums_autogen.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedEnums.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/PackedGLEnums_autogen.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/PoolAlloc.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/RingBufferAllocator.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/WorkerThread.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/aligned_memory.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/android_util.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/angleutils.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/sha1.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/debug.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/entry_points_enum_autogen.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/event_tracer.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/mathutil.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/matrix_utils.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/string_utils.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/tls.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/uniform_type_info_autogen.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/utilities.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/backtrace_utils_noop.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils_linux.o clang_x64_v8_arm64/obj/third_party/angle/angle_common/system_utils_posix.o || clang_x64_v8_arm64/obj/third_party/angle/angle_abseil.stamp clang_x64_v8_arm64/obj/third_party/angle/includes.stamp clang_x64_v8_arm64/obj/third_party/angle/xxhash.stamp clang_x64_v8_arm64/libthird_party_abseil-cpp_absl.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/angle

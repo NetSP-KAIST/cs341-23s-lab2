@@ -1,0 +1,159 @@
+defines = -DCC_PAINT_IMPLEMENTATION=1 -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-1 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DWEBP_EXTERN=extern -DSK_CODEC_DECODES_PNG -DSK_CODEC_DECODES_WEBP -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_GL -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_HAS_WUFFS_LIBRARY -DSK_VULKAN=1 -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DABSL_CONSUME_DLL -DBORINGSSL_SHARED_LIBRARY -DCRASHPAD_ZLIB_SOURCE_EXTERNAL
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../third_party/libwebp/src/src -I../../third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out -I../../third_party/crashpad/crashpad -I../../third_party/crashpad/crashpad/compat/linux -I../../third_party/crashpad/crashpad/compat/non_win -I../../third_party/zlib
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wshadow -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -mbranch-protection=standard --target=aarch64-linux-gnu -mno-outline -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Wexit-time-destructors -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu/glib-2.0/include -Wno-redundant-parens -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -fvisibility-inlines-hidden
+label_name = paint
+target_out_dir = obj/cc/paint
+target_output_name = libcc_paint
+
+build obj/cc/paint/paint.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/debugging_buildflags.stamp obj/base/allocator/partition_allocator/logging_buildflags.stamp obj/base/allocator/partition_allocator/partition_alloc_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/components/crash/core/common/crash_buildflags.stamp obj/gpu/config/workaround_list.stamp obj/printing/buildflags/buildflags.stamp obj/skia/buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp obj/ui/base/buildflags.stamp
+build obj/cc/paint/paint/clear_for_opaque_raster.o: cxx ../../cc/paint/clear_for_opaque_raster.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = clear_for_opaque_raster.cc
+  source_name_part = clear_for_opaque_raster
+build obj/cc/paint/paint/decode_stashing_image_provider.o: cxx ../../cc/paint/decode_stashing_image_provider.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = decode_stashing_image_provider.cc
+  source_name_part = decode_stashing_image_provider
+build obj/cc/paint/paint/decoded_draw_image.o: cxx ../../cc/paint/decoded_draw_image.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = decoded_draw_image.cc
+  source_name_part = decoded_draw_image
+build obj/cc/paint/paint/discardable_image_map.o: cxx ../../cc/paint/discardable_image_map.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = discardable_image_map.cc
+  source_name_part = discardable_image_map
+build obj/cc/paint/paint/display_item_list.o: cxx ../../cc/paint/display_item_list.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = display_item_list.cc
+  source_name_part = display_item_list
+build obj/cc/paint/paint/draw_image.o: cxx ../../cc/paint/draw_image.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = draw_image.cc
+  source_name_part = draw_image
+build obj/cc/paint/paint/element_id.o: cxx ../../cc/paint/element_id.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = element_id.cc
+  source_name_part = element_id
+build obj/cc/paint/paint/filter_operation.o: cxx ../../cc/paint/filter_operation.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = filter_operation.cc
+  source_name_part = filter_operation
+build obj/cc/paint/paint/filter_operations.o: cxx ../../cc/paint/filter_operations.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = filter_operations.cc
+  source_name_part = filter_operations
+build obj/cc/paint/paint/image_provider.o: cxx ../../cc/paint/image_provider.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = image_provider.cc
+  source_name_part = image_provider
+build obj/cc/paint/paint/image_transfer_cache_entry.o: cxx ../../cc/paint/image_transfer_cache_entry.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = image_transfer_cache_entry.cc
+  source_name_part = image_transfer_cache_entry
+build obj/cc/paint/paint/paint_cache.o: cxx ../../cc/paint/paint_cache.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_cache.cc
+  source_name_part = paint_cache
+build obj/cc/paint/paint/paint_filter.o: cxx ../../cc/paint/paint_filter.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_filter.cc
+  source_name_part = paint_filter
+build obj/cc/paint/paint/paint_flags.o: cxx ../../cc/paint/paint_flags.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_flags.cc
+  source_name_part = paint_flags
+build obj/cc/paint/paint/paint_image.o: cxx ../../cc/paint/paint_image.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_image.cc
+  source_name_part = paint_image
+build obj/cc/paint/paint/paint_image_builder.o: cxx ../../cc/paint/paint_image_builder.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_image_builder.cc
+  source_name_part = paint_image_builder
+build obj/cc/paint/paint/paint_image_generator.o: cxx ../../cc/paint/paint_image_generator.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_image_generator.cc
+  source_name_part = paint_image_generator
+build obj/cc/paint/paint/paint_op.o: cxx ../../cc/paint/paint_op.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op.cc
+  source_name_part = paint_op
+build obj/cc/paint/paint/paint_op_buffer.o: cxx ../../cc/paint/paint_op_buffer.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op_buffer.cc
+  source_name_part = paint_op_buffer
+build obj/cc/paint/paint/paint_op_buffer_iterator.o: cxx ../../cc/paint/paint_op_buffer_iterator.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op_buffer_iterator.cc
+  source_name_part = paint_op_buffer_iterator
+build obj/cc/paint/paint/paint_op_buffer_serializer.o: cxx ../../cc/paint/paint_op_buffer_serializer.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op_buffer_serializer.cc
+  source_name_part = paint_op_buffer_serializer
+build obj/cc/paint/paint/paint_op_reader.o: cxx ../../cc/paint/paint_op_reader.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op_reader.cc
+  source_name_part = paint_op_reader
+build obj/cc/paint/paint/paint_op_writer.o: cxx ../../cc/paint/paint_op_writer.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_op_writer.cc
+  source_name_part = paint_op_writer
+build obj/cc/paint/paint/paint_record.o: cxx ../../cc/paint/paint_record.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_record.cc
+  source_name_part = paint_record
+build obj/cc/paint/paint/paint_recorder.o: cxx ../../cc/paint/paint_recorder.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_recorder.cc
+  source_name_part = paint_recorder
+build obj/cc/paint/paint/paint_shader.o: cxx ../../cc/paint/paint_shader.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_shader.cc
+  source_name_part = paint_shader
+build obj/cc/paint/paint/paint_worklet_input.o: cxx ../../cc/paint/paint_worklet_input.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_worklet_input.cc
+  source_name_part = paint_worklet_input
+build obj/cc/paint/paint/paint_worklet_job.o: cxx ../../cc/paint/paint_worklet_job.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = paint_worklet_job.cc
+  source_name_part = paint_worklet_job
+build obj/cc/paint/paint/raw_memory_transfer_cache_entry.o: cxx ../../cc/paint/raw_memory_transfer_cache_entry.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = raw_memory_transfer_cache_entry.cc
+  source_name_part = raw_memory_transfer_cache_entry
+build obj/cc/paint/paint/record_paint_canvas.o: cxx ../../cc/paint/record_paint_canvas.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = record_paint_canvas.cc
+  source_name_part = record_paint_canvas
+build obj/cc/paint/paint/render_surface_filters.o: cxx ../../cc/paint/render_surface_filters.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = render_surface_filters.cc
+  source_name_part = render_surface_filters
+build obj/cc/paint/paint/scoped_raster_flags.o: cxx ../../cc/paint/scoped_raster_flags.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = scoped_raster_flags.cc
+  source_name_part = scoped_raster_flags
+build obj/cc/paint/paint/shader_transfer_cache_entry.o: cxx ../../cc/paint/shader_transfer_cache_entry.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = shader_transfer_cache_entry.cc
+  source_name_part = shader_transfer_cache_entry
+build obj/cc/paint/paint/skia_paint_canvas.o: cxx ../../cc/paint/skia_paint_canvas.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skia_paint_canvas.cc
+  source_name_part = skia_paint_canvas
+build obj/cc/paint/paint/skia_paint_image_generator.o: cxx ../../cc/paint/skia_paint_image_generator.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skia_paint_image_generator.cc
+  source_name_part = skia_paint_image_generator
+build obj/cc/paint/paint/skottie_resource_metadata.o: cxx ../../cc/paint/skottie_resource_metadata.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_resource_metadata.cc
+  source_name_part = skottie_resource_metadata
+build obj/cc/paint/paint/skottie_serialization_history.o: cxx ../../cc/paint/skottie_serialization_history.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_serialization_history.cc
+  source_name_part = skottie_serialization_history
+build obj/cc/paint/paint/skottie_text_property_value.o: cxx ../../cc/paint/skottie_text_property_value.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_text_property_value.cc
+  source_name_part = skottie_text_property_value
+build obj/cc/paint/paint/skottie_transfer_cache_entry.o: cxx ../../cc/paint/skottie_transfer_cache_entry.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_transfer_cache_entry.cc
+  source_name_part = skottie_transfer_cache_entry
+build obj/cc/paint/paint/skottie_transform_property_value.o: cxx ../../cc/paint/skottie_transform_property_value.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_transform_property_value.cc
+  source_name_part = skottie_transform_property_value
+build obj/cc/paint/paint/skottie_wrapper.o: cxx ../../cc/paint/skottie_wrapper.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_wrapper.cc
+  source_name_part = skottie_wrapper
+build obj/cc/paint/paint/solid_color_analyzer.o: cxx ../../cc/paint/solid_color_analyzer.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = solid_color_analyzer.cc
+  source_name_part = solid_color_analyzer
+build obj/cc/paint/paint/target_color_params.o: cxx ../../cc/paint/target_color_params.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = target_color_params.cc
+  source_name_part = target_color_params
+build obj/cc/paint/paint/transfer_cache_entry.o: cxx ../../cc/paint/transfer_cache_entry.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = transfer_cache_entry.cc
+  source_name_part = transfer_cache_entry
+build obj/cc/paint/paint/transfer_cache_serialize_helper.o: cxx ../../cc/paint/transfer_cache_serialize_helper.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = transfer_cache_serialize_helper.cc
+  source_name_part = transfer_cache_serialize_helper
+build obj/cc/paint/paint/skottie_mru_resource_provider.o: cxx ../../cc/paint/skottie_mru_resource_provider.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_mru_resource_provider.cc
+  source_name_part = skottie_mru_resource_provider
+build obj/cc/paint/paint/skottie_wrapper_impl.o: cxx ../../cc/paint/skottie_wrapper_impl.cc || obj/cc/paint/paint.inputdeps.stamp
+  source_file_part = skottie_wrapper_impl.cc
+  source_name_part = skottie_wrapper_impl
+
+build ./libcc_paint.so ./libcc_paint.so.TOC: solink obj/cc/paint/paint/clear_for_opaque_raster.o obj/cc/paint/paint/decode_stashing_image_provider.o obj/cc/paint/paint/decoded_draw_image.o obj/cc/paint/paint/discardable_image_map.o obj/cc/paint/paint/display_item_list.o obj/cc/paint/paint/draw_image.o obj/cc/paint/paint/element_id.o obj/cc/paint/paint/filter_operation.o obj/cc/paint/paint/filter_operations.o obj/cc/paint/paint/image_provider.o obj/cc/paint/paint/image_transfer_cache_entry.o obj/cc/paint/paint/paint_cache.o obj/cc/paint/paint/paint_filter.o obj/cc/paint/paint/paint_flags.o obj/cc/paint/paint/paint_image.o obj/cc/paint/paint/paint_image_builder.o obj/cc/paint/paint/paint_image_generator.o obj/cc/paint/paint/paint_op.o obj/cc/paint/paint/paint_op_buffer.o obj/cc/paint/paint/paint_op_buffer_iterator.o obj/cc/paint/paint/paint_op_buffer_serializer.o obj/cc/paint/paint/paint_op_reader.o obj/cc/paint/paint/paint_op_writer.o obj/cc/paint/paint/paint_record.o obj/cc/paint/paint/paint_recorder.o obj/cc/paint/paint/paint_shader.o obj/cc/paint/paint/paint_worklet_input.o obj/cc/paint/paint/paint_worklet_job.o obj/cc/paint/paint/raw_memory_transfer_cache_entry.o obj/cc/paint/paint/record_paint_canvas.o obj/cc/paint/paint/render_surface_filters.o obj/cc/paint/paint/scoped_raster_flags.o obj/cc/paint/paint/shader_transfer_cache_entry.o obj/cc/paint/paint/skia_paint_canvas.o obj/cc/paint/paint/skia_paint_image_generator.o obj/cc/paint/paint/skottie_resource_metadata.o obj/cc/paint/paint/skottie_serialization_history.o obj/cc/paint/paint/skottie_text_property_value.o obj/cc/paint/paint/skottie_transfer_cache_entry.o obj/cc/paint/paint/skottie_transform_property_value.o obj/cc/paint/paint/skottie_wrapper.o obj/cc/paint/paint/solid_color_analyzer.o obj/cc/paint/paint/target_color_params.o obj/cc/paint/paint/transfer_cache_entry.o obj/cc/paint/paint/transfer_cache_serialize_helper.o obj/cc/paint/paint/skottie_mru_resource_provider.o obj/cc/paint/paint/skottie_wrapper_impl.o obj/skia/skcms/skcms.o obj/components/crash/core/common/libcrash_key_lib.a obj/third_party/crashpad/crashpad/client/libclient.a obj/third_party/crashpad/crashpad/client/libcommon.a obj/third_party/crashpad/crashpad/util/libutil.a obj/third_party/crashpad/crashpad/compat/libcompat.a | ./libcc_base.so.TOC ./libcc_debug.so.TOC ./libskia.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libui_gfx_color_space.so.TOC ./libui_gfx_geometry.so.TOC ./libui_gfx_geometry_geometry_skia.so.TOC ./libbase.so.TOC ./libui_gfx_animation.so.TOC ./libthird_party_boringssl.so.TOC ./libbase_allocator_partition_allocator_partition_alloc.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC ./libchrome_zlib.so.TOC ./libgpu_mailbox.so.TOC ./libc++.so.TOC || obj/skia/skcms.stamp obj/components/crash/core/common/crash_key.stamp obj/gpu/command_buffer/common/mailbox.stamp obj/build/config/shared_library_deps.stamp obj/third_party/crashpad/crashpad/util/no_cfi_icall.stamp obj/third_party/crashpad/crashpad/third_party/lss/lss.stamp
+  ldflags = -Werror -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort --target=aarch64-linux-gnu -Wl,-mllvm,-enable-machine-outliner=never -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_arm64-sysroot -Wl,-rpath=\$$ORIGIN -L../../build/linux/debian_bullseye_arm64-sysroot/usr/lib/aarch64-linux-gnu
+  libs = -ldl -lpthread -lrt -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lglib-2.0
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = .
+  solibs = ./libcc_base.so ./libcc_debug.so ./libskia.so ./libthird_party_abseil-cpp_absl.so ./libui_gfx_color_space.so ./libui_gfx_geometry.so ./libui_gfx_geometry_geometry_skia.so ./libbase.so ./libui_gfx_animation.so ./libthird_party_boringssl.so ./libbase_allocator_partition_allocator_partition_alloc.so ./libthird_party_perfetto_libperfetto.so ./libchrome_zlib.so ./libgpu_mailbox.so ./libc++.so

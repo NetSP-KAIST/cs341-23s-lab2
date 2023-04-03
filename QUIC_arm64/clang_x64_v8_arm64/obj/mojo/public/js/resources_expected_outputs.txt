@@ -1,0 +1,4 @@
+clang_x64_v8_arm64/gen/mojo/public/js/grit/mojo_bindings_resources.h
+clang_x64_v8_arm64/gen/mojo/public/js/grit/mojo_bindings_resources_map.cc
+clang_x64_v8_arm64/gen/mojo/public/js/grit/mojo_bindings_resources_map.h
+clang_x64_v8_arm64/gen/mojo/public/js/mojo_bindings_resources.pak

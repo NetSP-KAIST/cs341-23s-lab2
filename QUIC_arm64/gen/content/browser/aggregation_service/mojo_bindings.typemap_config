@@ -1,0 +1,21 @@
+[
+  {
+    "traits_deps": [
+      "//components/services/storage",
+      "//content/common:mojo_bindings"
+    ],
+    "traits_headers": [
+      "content/browser/aggregation_service/aggregation_service_internals_mojom_traits.h",
+      "content/browser/aggregation_service/aggregatable_report_request_storage_id.h"
+    ],
+    "traits_sources": [
+      "aggregation_service_internals_mojom_traits.cc"
+    ],
+    "types": [
+      {
+        "cpp": "::content::AggregatableReportRequestStorageId",
+        "mojom": "aggregation_service_internals.mojom.AggregatableReportRequestID"
+      }
+    ]
+  }
+]

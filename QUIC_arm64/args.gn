@@ -1,0 +1,2 @@
+# Set build arguments here. See `gn help buildargs`
+target_cpu = "arm64"

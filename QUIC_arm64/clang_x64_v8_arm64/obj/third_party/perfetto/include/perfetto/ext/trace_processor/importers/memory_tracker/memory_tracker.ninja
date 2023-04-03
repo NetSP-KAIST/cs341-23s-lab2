@@ -1,0 +1,8 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Iclang_x64_v8_arm64/gen/third_party/perfetto/build_config -Iclang_x64_v8_arm64/gen/third_party/perfetto
+label_name = memory_tracker
+target_out_dir = clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/ext/trace_processor/importers/memory_tracker
+target_output_name = memory_tracker
+
+
+build clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/ext/trace_processor/importers/memory_tracker/memory_tracker.stamp: clang_x64_v8_arm64_stamp || clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/base/base.stamp clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/ext/base/base.stamp clang_x64_v8_arm64/obj/third_party/perfetto/gn/default_deps.stamp clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/public/base.stamp clang_x64_v8_arm64/obj/third_party/perfetto/include/perfetto/public/abi/base.stamp

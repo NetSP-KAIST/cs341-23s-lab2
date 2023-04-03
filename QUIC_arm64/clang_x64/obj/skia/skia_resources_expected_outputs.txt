@@ -1,0 +1,4 @@
+clang_x64/gen/skia/grit/skia_resources.h
+clang_x64/gen/skia/grit/skia_resources_map.cc
+clang_x64/gen/skia/grit/skia_resources_map.h
+clang_x64/gen/skia/skia_resources.pak

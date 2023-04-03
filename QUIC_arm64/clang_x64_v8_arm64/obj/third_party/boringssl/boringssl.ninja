@@ -1,0 +1,798 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DBORINGSSL_IMPLEMENTATION -DBORINGSSL_ALLOW_CXX_RUNTIME -DBORINGSSL_NO_STATIC_INITIALIZER -DOPENSSL_SMALL -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/boringssl/src/include
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../buildtools/third_party/libc++/trunk/include -isystem../../buildtools/third_party/libc++abi/trunk/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = boringssl
+target_out_dir = clang_x64_v8_arm64/obj/third_party/boringssl
+target_output_name = libthird_party_boringssl
+
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/err_data.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/err_data.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = err_data.c
+  source_name_part = err_data
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_bitstr.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_bitstr.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_bitstr.c
+  source_name_part = a_bitstr
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_bool.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_bool.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_bool.c
+  source_name_part = a_bool
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_d2i_fp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_d2i_fp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_d2i_fp.c
+  source_name_part = a_d2i_fp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_dup.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_dup.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_dup.c
+  source_name_part = a_dup
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_gentm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_gentm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_gentm.c
+  source_name_part = a_gentm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_i2d_fp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_i2d_fp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_i2d_fp.c
+  source_name_part = a_i2d_fp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_int.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_int.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_int.c
+  source_name_part = a_int
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_mbstr.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_mbstr.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_mbstr.c
+  source_name_part = a_mbstr
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_object.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_object.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_object.c
+  source_name_part = a_object
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_octet.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_octet.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_octet.c
+  source_name_part = a_octet
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_strex.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_strex.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_strex.c
+  source_name_part = a_strex
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_strnid.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_strnid.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_strnid.c
+  source_name_part = a_strnid
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_time.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_time.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_time.c
+  source_name_part = a_time
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_type.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_type.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_type.c
+  source_name_part = a_type
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_utctm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/a_utctm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_utctm.c
+  source_name_part = a_utctm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_lib.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/asn1_lib.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = asn1_lib.c
+  source_name_part = asn1_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_par.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/asn1_par.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = asn1_par.c
+  source_name_part = asn1_par
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn_pack.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/asn_pack.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = asn_pack.c
+  source_name_part = asn_pack
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/f_int.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/f_int.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = f_int.c
+  source_name_part = f_int
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/f_string.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/f_string.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = f_string.c
+  source_name_part = f_string
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/posix_time.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/posix_time.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = posix_time.c
+  source_name_part = posix_time
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_dec.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_dec.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_dec.c
+  source_name_part = tasn_dec
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_enc.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_enc.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_enc.c
+  source_name_part = tasn_enc
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_fre.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_fre.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_fre.c
+  source_name_part = tasn_fre
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_new.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_new.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_new.c
+  source_name_part = tasn_new
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_typ.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_typ.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_typ.c
+  source_name_part = tasn_typ
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_utl.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/asn1/tasn_utl.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tasn_utl.c
+  source_name_part = tasn_utl
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/base64.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/base64/base64.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = base64.c
+  source_name_part = base64
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/bio.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = bio.c
+  source_name_part = bio
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio_mem.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/bio_mem.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = bio_mem.c
+  source_name_part = bio_mem
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/connect.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/connect.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = connect.c
+  source_name_part = connect
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fd.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/fd.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = fd.c
+  source_name_part = fd
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/file.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/file.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = file.c
+  source_name_part = file
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hexdump.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/hexdump.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = hexdump.c
+  source_name_part = hexdump
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pair.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/pair.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pair.c
+  source_name_part = pair
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/printf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/printf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = printf.c
+  source_name_part = printf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/socket.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/socket.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = socket.c
+  source_name_part = socket
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/socket_helper.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bio/socket_helper.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = socket_helper.c
+  source_name_part = socket_helper
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/blake2.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/blake2/blake2.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = blake2.c
+  source_name_part = blake2
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bn_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bn_extra/bn_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = bn_asn1.c
+  source_name_part = bn_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/convert.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bn_extra/convert.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = convert.c
+  source_name_part = convert
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/buf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/buf/buf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = buf.c
+  source_name_part = buf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_compat.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bytestring/asn1_compat.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = asn1_compat.c
+  source_name_part = asn1_compat
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ber.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bytestring/ber.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ber.c
+  source_name_part = ber
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cbb.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bytestring/cbb.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cbb.c
+  source_name_part = cbb
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cbs.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bytestring/cbs.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cbs.c
+  source_name_part = cbs
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/unicode.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/bytestring/unicode.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = unicode.c
+  source_name_part = unicode
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/chacha.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/chacha/chacha.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = chacha.c
+  source_name_part = chacha
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cipher_extra.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/cipher_extra.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cipher_extra.c
+  source_name_part = cipher_extra
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/derive_key.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/derive_key.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = derive_key.c
+  source_name_part = derive_key
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_aesctrhmac.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_aesctrhmac.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_aesctrhmac.c
+  source_name_part = e_aesctrhmac
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_aesgcmsiv.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_aesgcmsiv.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_aesgcmsiv.c
+  source_name_part = e_aesgcmsiv
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_chacha20poly1305.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_chacha20poly1305.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_chacha20poly1305.c
+  source_name_part = e_chacha20poly1305
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_des.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_des.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_des.c
+  source_name_part = e_des
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_null.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_null.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_null.c
+  source_name_part = e_null
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_rc2.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_rc2.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_rc2.c
+  source_name_part = e_rc2
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_rc4.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_rc4.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_rc4.c
+  source_name_part = e_rc4
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_tls.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/e_tls.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = e_tls.c
+  source_name_part = e_tls
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_cbc.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cipher_extra/tls_cbc.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls_cbc.c
+  source_name_part = tls_cbc
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/conf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/conf/conf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = conf.c
+  source_name_part = conf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_apple.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_aarch64_apple.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_aarch64_apple.c
+  source_name_part = cpu_aarch64_apple
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_freebsd.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_aarch64_freebsd.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_aarch64_freebsd.c
+  source_name_part = cpu_aarch64_freebsd
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_fuchsia.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_aarch64_fuchsia.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_aarch64_fuchsia.c
+  source_name_part = cpu_aarch64_fuchsia
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_linux.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_aarch64_linux.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_aarch64_linux.c
+  source_name_part = cpu_aarch64_linux
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_win.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_aarch64_win.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_aarch64_win.c
+  source_name_part = cpu_aarch64_win
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_arm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_arm.c
+  source_name_part = cpu_arm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm_freebsd.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_arm_freebsd.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_arm_freebsd.c
+  source_name_part = cpu_arm_freebsd
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm_linux.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_arm_linux.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_arm_linux.c
+  source_name_part = cpu_arm_linux
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_intel.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/cpu_intel.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = cpu_intel.c
+  source_name_part = cpu_intel
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/crypto.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/crypto.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = crypto.c
+  source_name_part = crypto
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/curve25519.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/curve25519/curve25519.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = curve25519.c
+  source_name_part = curve25519
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/spake25519.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/curve25519/spake25519.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = spake25519.c
+  source_name_part = spake25519
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/des.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/des/des.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = des.c
+  source_name_part = des
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dh_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/dh_extra/dh_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = dh_asn1.c
+  source_name_part = dh_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/params.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/dh_extra/params.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = params.c
+  source_name_part = params
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/digest_extra.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/digest_extra/digest_extra.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = digest_extra.c
+  source_name_part = digest_extra
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dsa.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/dsa/dsa.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = dsa.c
+  source_name_part = dsa
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dsa_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/dsa/dsa_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = dsa_asn1.c
+  source_name_part = dsa_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ec_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ec_extra/ec_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ec_asn1.c
+  source_name_part = ec_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ec_derive.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ec_extra/ec_derive.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ec_derive.c
+  source_name_part = ec_derive
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hash_to_curve.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ec_extra/hash_to_curve.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = hash_to_curve.c
+  source_name_part = hash_to_curve
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ecdh_extra.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ecdh_extra/ecdh_extra.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ecdh_extra.c
+  source_name_part = ecdh_extra
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ecdsa_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ecdsa_extra/ecdsa_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ecdsa_asn1.c
+  source_name_part = ecdsa_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/engine.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/engine/engine.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = engine.c
+  source_name_part = engine
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/err.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/err/err.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = err.c
+  source_name_part = err
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/evp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = evp.c
+  source_name_part = evp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/evp_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = evp_asn1.c
+  source_name_part = evp_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp_ctx.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/evp_ctx.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = evp_ctx.c
+  source_name_part = evp_ctx
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_dsa_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_dsa_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_dsa_asn1.c
+  source_name_part = p_dsa_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ec.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_ec.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_ec.c
+  source_name_part = p_ec
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ec_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_ec_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_ec_asn1.c
+  source_name_part = p_ec_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ed25519.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_ed25519.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_ed25519.c
+  source_name_part = p_ed25519
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ed25519_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_ed25519_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_ed25519_asn1.c
+  source_name_part = p_ed25519_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_hkdf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_hkdf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_hkdf.c
+  source_name_part = p_hkdf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_rsa.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_rsa.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_rsa.c
+  source_name_part = p_rsa
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_rsa_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_rsa_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_rsa_asn1.c
+  source_name_part = p_rsa_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_x25519.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_x25519.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_x25519.c
+  source_name_part = p_x25519
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_x25519_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/p_x25519_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p_x25519_asn1.c
+  source_name_part = p_x25519_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pbkdf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/pbkdf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pbkdf.c
+  source_name_part = pbkdf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/print.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/print.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = print.c
+  source_name_part = print
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/scrypt.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/scrypt.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = scrypt.c
+  source_name_part = scrypt
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/sign.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/evp/sign.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = sign.c
+  source_name_part = sign
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ex_data.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/ex_data.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = ex_data.c
+  source_name_part = ex_data
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bcm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/fipsmodule/bcm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = bcm.c
+  source_name_part = bcm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fips_shared_support.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/fipsmodule/fips_shared_support.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = fips_shared_support.c
+  source_name_part = fips_shared_support
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hkdf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/hkdf/hkdf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = hkdf.c
+  source_name_part = hkdf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hpke.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/hpke/hpke.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = hpke.c
+  source_name_part = hpke
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hrss.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/hrss/hrss.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = hrss.c
+  source_name_part = hrss
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/keccak.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/kyber/keccak.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = keccak.c
+  source_name_part = keccak
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/lhash.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/lhash/lhash.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = lhash.c
+  source_name_part = lhash
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/mem.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/mem.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = mem.c
+  source_name_part = mem
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/obj.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/obj/obj.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = obj.c
+  source_name_part = obj
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/obj_xref.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/obj/obj_xref.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = obj_xref.c
+  source_name_part = obj_xref
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_all.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_all.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_all.c
+  source_name_part = pem_all
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_info.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_info.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_info.c
+  source_name_part = pem_info
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_lib.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_lib.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_lib.c
+  source_name_part = pem_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_oth.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_oth.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_oth.c
+  source_name_part = pem_oth
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_pk8.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_pk8.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_pk8.c
+  source_name_part = pem_pk8
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_pkey.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_pkey.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_pkey.c
+  source_name_part = pem_pkey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_x509.c
+  source_name_part = pem_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_xaux.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pem/pem_xaux.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pem_xaux.c
+  source_name_part = pem_xaux
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs7.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pkcs7/pkcs7.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pkcs7.c
+  source_name_part = pkcs7
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs7_x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pkcs7/pkcs7_x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pkcs7_x509.c
+  source_name_part = pkcs7_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p5_pbev2.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pkcs8/p5_pbev2.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = p5_pbev2.c
+  source_name_part = p5_pbev2
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs8.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pkcs8/pkcs8.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pkcs8.c
+  source_name_part = pkcs8
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs8_x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pkcs8/pkcs8_x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pkcs8_x509.c
+  source_name_part = pkcs8_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/poly1305/poly1305.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = poly1305.c
+  source_name_part = poly1305
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305_arm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/poly1305/poly1305_arm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = poly1305_arm.c
+  source_name_part = poly1305_arm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305_vec.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/poly1305/poly1305_vec.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = poly1305_vec.c
+  source_name_part = poly1305_vec
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pool.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/pool/pool.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pool.c
+  source_name_part = pool
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/deterministic.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/deterministic.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = deterministic.c
+  source_name_part = deterministic
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/forkunsafe.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/forkunsafe.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = forkunsafe.c
+  source_name_part = forkunsafe
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fuchsia.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/fuchsia.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = fuchsia.c
+  source_name_part = fuchsia
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/passive.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/passive.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = passive.c
+  source_name_part = passive
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rand_extra.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/rand_extra.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = rand_extra.c
+  source_name_part = rand_extra
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/windows.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rand_extra/windows.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = windows.c
+  source_name_part = windows
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rc4.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rc4/rc4.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = rc4.c
+  source_name_part = rc4
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/refcount_c11.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/refcount_c11.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = refcount_c11.c
+  source_name_part = refcount_c11
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/refcount_lock.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/refcount_lock.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = refcount_lock.c
+  source_name_part = refcount_lock
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_asn1.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rsa_extra/rsa_asn1.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = rsa_asn1.c
+  source_name_part = rsa_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_print.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/rsa_extra/rsa_print.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = rsa_print.c
+  source_name_part = rsa_print
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/siphash.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/siphash/siphash.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = siphash.c
+  source_name_part = siphash
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/stack.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/stack/stack.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = stack.c
+  source_name_part = stack
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/thread.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = thread.c
+  source_name_part = thread
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_none.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/thread_none.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = thread_none.c
+  source_name_part = thread_none
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_pthread.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/thread_pthread.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = thread_pthread.c
+  source_name_part = thread_pthread
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_win.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/thread_win.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = thread_win.c
+  source_name_part = thread_win
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pmbtoken.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/trust_token/pmbtoken.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = pmbtoken.c
+  source_name_part = pmbtoken
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/trust_token.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/trust_token/trust_token.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = trust_token.c
+  source_name_part = trust_token
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/voprf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/trust_token/voprf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = voprf.c
+  source_name_part = voprf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_digest.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/a_digest.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_digest.c
+  source_name_part = a_digest
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_sign.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/a_sign.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_sign.c
+  source_name_part = a_sign
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_verify.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/a_verify.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = a_verify.c
+  source_name_part = a_verify
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/algorithm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/algorithm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = algorithm.c
+  source_name_part = algorithm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_gen.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/asn1_gen.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = asn1_gen.c
+  source_name_part = asn1_gen
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/by_dir.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/by_dir.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = by_dir.c
+  source_name_part = by_dir
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/by_file.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/by_file.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = by_file.c
+  source_name_part = by_file
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/i2d_pr.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/i2d_pr.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = i2d_pr.c
+  source_name_part = i2d_pr
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/name_print.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/name_print.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = name_print.c
+  source_name_part = name_print
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/policy.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/policy.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = policy.c
+  source_name_part = policy
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_pss.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/rsa_pss.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = rsa_pss.c
+  source_name_part = rsa_pss
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_crl.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/t_crl.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = t_crl.c
+  source_name_part = t_crl
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_req.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/t_req.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = t_req.c
+  source_name_part = t_req
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/t_x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = t_x509.c
+  source_name_part = t_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_x509a.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/t_x509a.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = t_x509a.c
+  source_name_part = t_x509a
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509.c
+  source_name_part = x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_att.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_att.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_att.c
+  source_name_part = x509_att
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_cmp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_cmp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_cmp.c
+  source_name_part = x509_cmp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_d2.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_d2.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_d2.c
+  source_name_part = x509_d2
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_def.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_def.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_def.c
+  source_name_part = x509_def
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_ext.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_ext.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_ext.c
+  source_name_part = x509_ext
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_lu.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_lu.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_lu.c
+  source_name_part = x509_lu
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_obj.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_obj.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_obj.c
+  source_name_part = x509_obj
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_req.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_req.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_req.c
+  source_name_part = x509_req
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_set.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_set.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_set.c
+  source_name_part = x509_set
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_trs.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_trs.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_trs.c
+  source_name_part = x509_trs
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_txt.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_txt.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_txt.c
+  source_name_part = x509_txt
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_v3.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_v3.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_v3.c
+  source_name_part = x509_v3
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_vfy.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_vfy.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_vfy.c
+  source_name_part = x509_vfy
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_vpm.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509_vpm.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509_vpm.c
+  source_name_part = x509_vpm
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509cset.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509cset.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509cset.c
+  source_name_part = x509cset
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509name.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509name.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509name.c
+  source_name_part = x509name
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509rset.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509rset.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509rset.c
+  source_name_part = x509rset
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509spki.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x509spki.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x509spki.c
+  source_name_part = x509spki
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_algor.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_algor.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_algor.c
+  source_name_part = x_algor
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_all.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_all.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_all.c
+  source_name_part = x_all
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_attrib.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_attrib.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_attrib.c
+  source_name_part = x_attrib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_crl.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_crl.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_crl.c
+  source_name_part = x_crl
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_exten.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_exten.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_exten.c
+  source_name_part = x_exten
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_info.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_info.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_info.c
+  source_name_part = x_info
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_name.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_name.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_name.c
+  source_name_part = x_name
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_pkey.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_pkey.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_pkey.c
+  source_name_part = x_pkey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_pubkey.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_pubkey.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_pubkey.c
+  source_name_part = x_pubkey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_req.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_req.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_req.c
+  source_name_part = x_req
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_sig.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_sig.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_sig.c
+  source_name_part = x_sig
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_spki.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_spki.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_spki.c
+  source_name_part = x_spki
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_val.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_val.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_val.c
+  source_name_part = x_val
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_x509.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_x509.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_x509.c
+  source_name_part = x_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_x509a.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509/x_x509a.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = x_x509a.c
+  source_name_part = x_x509a
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_akey.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_akey.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_akey.c
+  source_name_part = v3_akey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_akeya.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_akeya.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_akeya.c
+  source_name_part = v3_akeya
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_alt.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_alt.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_alt.c
+  source_name_part = v3_alt
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_bcons.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_bcons.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_bcons.c
+  source_name_part = v3_bcons
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_bitst.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_bitst.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_bitst.c
+  source_name_part = v3_bitst
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_conf.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_conf.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_conf.c
+  source_name_part = v3_conf
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_cpols.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_cpols.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_cpols.c
+  source_name_part = v3_cpols
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_crld.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_crld.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_crld.c
+  source_name_part = v3_crld
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_enum.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_enum.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_enum.c
+  source_name_part = v3_enum
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_extku.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_extku.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_extku.c
+  source_name_part = v3_extku
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_genn.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_genn.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_genn.c
+  source_name_part = v3_genn
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ia5.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_ia5.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_ia5.c
+  source_name_part = v3_ia5
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_info.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_info.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_info.c
+  source_name_part = v3_info
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_int.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_int.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_int.c
+  source_name_part = v3_int
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_lib.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_lib.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_lib.c
+  source_name_part = v3_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ncons.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_ncons.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_ncons.c
+  source_name_part = v3_ncons
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ocsp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_ocsp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_ocsp.c
+  source_name_part = v3_ocsp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_pcons.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_pcons.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_pcons.c
+  source_name_part = v3_pcons
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_pmaps.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_pmaps.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_pmaps.c
+  source_name_part = v3_pmaps
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_prn.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_prn.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_prn.c
+  source_name_part = v3_prn
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_purp.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_purp.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_purp.c
+  source_name_part = v3_purp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_skey.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_skey.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_skey.c
+  source_name_part = v3_skey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_utl.o: clang_x64_v8_arm64_cc ../../third_party/boringssl/src/crypto/x509v3/v3_utl.c | ../../third_party/boringssl/boringssl.map
+  source_file_part = v3_utl.c
+  source_name_part = v3_utl
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio_ssl.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/bio_ssl.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = bio_ssl.cc
+  source_name_part = bio_ssl
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_both.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/d1_both.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = d1_both.cc
+  source_name_part = d1_both
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_lib.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/d1_lib.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = d1_lib.cc
+  source_name_part = d1_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_pkt.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/d1_pkt.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = d1_pkt.cc
+  source_name_part = d1_pkt
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_srtp.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/d1_srtp.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = d1_srtp.cc
+  source_name_part = d1_srtp
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dtls_method.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/dtls_method.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = dtls_method.cc
+  source_name_part = dtls_method
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dtls_record.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/dtls_record.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = dtls_record.cc
+  source_name_part = dtls_record
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/encrypted_client_hello.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/encrypted_client_hello.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = encrypted_client_hello.cc
+  source_name_part = encrypted_client_hello
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/extensions.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/extensions.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = extensions.cc
+  source_name_part = extensions
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handoff.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/handoff.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = handoff.cc
+  source_name_part = handoff
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/handshake.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = handshake.cc
+  source_name_part = handshake
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake_client.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/handshake_client.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = handshake_client.cc
+  source_name_part = handshake_client
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake_server.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/handshake_server.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = handshake_server.cc
+  source_name_part = handshake_server
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_both.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/s3_both.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = s3_both.cc
+  source_name_part = s3_both
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_lib.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/s3_lib.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = s3_lib.cc
+  source_name_part = s3_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_pkt.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/s3_pkt.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = s3_pkt.cc
+  source_name_part = s3_pkt
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_aead_ctx.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_aead_ctx.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_aead_ctx.cc
+  source_name_part = ssl_aead_ctx
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_asn1.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_asn1.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_asn1.cc
+  source_name_part = ssl_asn1
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_buffer.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_buffer.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_buffer.cc
+  source_name_part = ssl_buffer
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_cert.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_cert.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_cert.cc
+  source_name_part = ssl_cert
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_cipher.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_cipher.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_cipher.cc
+  source_name_part = ssl_cipher
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_file.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_file.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_file.cc
+  source_name_part = ssl_file
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_key_share.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_key_share.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_key_share.cc
+  source_name_part = ssl_key_share
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_lib.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_lib.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_lib.cc
+  source_name_part = ssl_lib
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_privkey.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_privkey.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_privkey.cc
+  source_name_part = ssl_privkey
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_session.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_session.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_session.cc
+  source_name_part = ssl_session
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_stat.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_stat.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_stat.cc
+  source_name_part = ssl_stat
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_transcript.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_transcript.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_transcript.cc
+  source_name_part = ssl_transcript
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_versions.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_versions.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_versions.cc
+  source_name_part = ssl_versions
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_x509.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/ssl_x509.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = ssl_x509.cc
+  source_name_part = ssl_x509
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t1_enc.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/t1_enc.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = t1_enc.cc
+  source_name_part = t1_enc
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_both.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls13_both.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls13_both.cc
+  source_name_part = tls13_both
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_client.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls13_client.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls13_client.cc
+  source_name_part = tls13_client
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_enc.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls13_enc.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls13_enc.cc
+  source_name_part = tls13_enc
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_server.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls13_server.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls13_server.cc
+  source_name_part = tls13_server
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_method.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls_method.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls_method.cc
+  source_name_part = tls_method
+build clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_record.o: clang_x64_v8_arm64_cxx ../../third_party/boringssl/src/ssl/tls_record.cc | ../../third_party/boringssl/boringssl.map
+  source_file_part = tls_record.cc
+  source_name_part = tls_record
+
+build clang_x64_v8_arm64/libthird_party_boringssl.so clang_x64_v8_arm64/libthird_party_boringssl.so.TOC: clang_x64_v8_arm64_solink clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/err_data.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_bitstr.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_bool.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_d2i_fp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_dup.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_gentm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_i2d_fp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_int.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_mbstr.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_object.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_octet.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_strex.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_strnid.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_time.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_type.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_utctm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_par.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn_pack.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/f_int.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/f_string.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/posix_time.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_dec.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_enc.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_fre.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_new.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_typ.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tasn_utl.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/base64.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio_mem.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/connect.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fd.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/file.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hexdump.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pair.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/printf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/socket.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/socket_helper.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/blake2.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bn_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/convert.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/buf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_compat.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ber.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cbb.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cbs.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/unicode.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/chacha.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cipher_extra.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/derive_key.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_aesctrhmac.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_aesgcmsiv.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_chacha20poly1305.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_des.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_null.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_rc2.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_rc4.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/e_tls.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_cbc.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/conf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_apple.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_freebsd.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_fuchsia.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_aarch64_win.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm_freebsd.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_arm_linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/cpu_intel.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/crypto.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/curve25519.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/spake25519.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/des.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dh_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/params.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/digest_extra.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dsa.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dsa_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ec_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ec_derive.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hash_to_curve.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ecdh_extra.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ecdsa_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/engine.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/err.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/evp_ctx.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_dsa_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ec.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ec_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ed25519.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_ed25519_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_hkdf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_rsa.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_rsa_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_x25519.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p_x25519_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pbkdf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/print.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/scrypt.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/sign.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ex_data.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bcm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fips_shared_support.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hkdf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hpke.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/hrss.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/keccak.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/lhash.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/mem.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/obj.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/obj_xref.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_all.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_info.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_oth.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_pk8.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_pkey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pem_xaux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs7.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs7_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/p5_pbev2.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs8.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pkcs8_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305_arm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/poly1305_vec.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pool.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/deterministic.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/forkunsafe.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/fuchsia.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/passive.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rand_extra.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/windows.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rc4.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/refcount_c11.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/refcount_lock.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_print.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/siphash.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/stack.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_none.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_pthread.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/thread_win.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/pmbtoken.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/trust_token.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/voprf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_digest.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_sign.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/a_verify.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/algorithm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/asn1_gen.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/by_dir.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/by_file.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/i2d_pr.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/name_print.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/policy.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/rsa_pss.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_crl.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_req.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t_x509a.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_att.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_cmp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_d2.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_def.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_ext.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_lu.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_obj.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_req.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_set.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_trs.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_txt.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_v3.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_vfy.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509_vpm.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509cset.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509name.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509rset.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x509spki.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_algor.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_all.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_attrib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_crl.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_exten.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_info.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_name.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_pkey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_pubkey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_req.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_sig.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_spki.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_val.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/x_x509a.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_akey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_akeya.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_alt.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_bcons.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_bitst.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_conf.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_cpols.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_crld.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_enum.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_extku.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_genn.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ia5.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_info.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_int.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ncons.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_ocsp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_pcons.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_pmaps.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_prn.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_purp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_skey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/v3_utl.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/bio_ssl.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_both.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_pkt.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/d1_srtp.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dtls_method.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/dtls_record.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/encrypted_client_hello.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/extensions.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handoff.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake_client.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/handshake_server.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_both.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/s3_pkt.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_aead_ctx.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_asn1.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_buffer.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_cert.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_cipher.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_file.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_key_share.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_lib.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_privkey.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_session.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_stat.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_transcript.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_versions.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/ssl_x509.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/t1_enc.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_both.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_client.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_enc.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls13_server.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_method.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl/tls_record.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/chacha-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/aes128gcmsiv-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/chacha20_poly1305_x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/aesni-gcm-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/aesni-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/ghash-ssse3-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/ghash-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/md5-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/p256-x86_64-asm-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/p256_beeu-x86_64-asm-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/rdrand-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/rsaz-avx2-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/sha1-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/sha256-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/sha512-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/vpaes-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/x86_64-mont-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/x86_64-mont5-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/trampoline-x86_64-linux.o clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm/poly_rq_mul.o | clang_x64_v8_arm64/libc++.so.TOC ../../third_party/boringssl/boringssl.map || clang_x64_v8_arm64/obj/third_party/boringssl/boringssl_asm.stamp clang_x64_v8_arm64/obj/third_party/boringssl/src/third_party/fiat/fiat_license.stamp clang_x64_v8_arm64/obj/build/config/shared_library_deps.stamp
+  ldflags = -Wl,--version-script=../../third_party/boringssl/boringssl.map -fuse-ld=lld -Wl,--fatal-warnings -Wl,--build-id -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,--color-diagnostics -Wl,--undefined-version -Wl,--no-call-graph-profile-sort -m64 -no-canonical-prefixes -Wl,--gdb-index -rdynamic -Wl,-z,defs -Wl,--as-needed -nostdlib++ --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -Wl,-rpath=\$$ORIGIN -Werror
+  libs = -ldl -lpthread -lrt
+  frameworks =
+  swiftmodules =
+  output_extension = .so
+  output_dir = clang_x64_v8_arm64
+  solibs = clang_x64_v8_arm64/libc++.so

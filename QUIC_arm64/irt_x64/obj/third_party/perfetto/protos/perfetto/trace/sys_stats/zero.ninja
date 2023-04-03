@@ -1,0 +1,18 @@
+defines = -DDCHECK_ALWAYS_ON=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -DPERFETTO_IMPLEMENTATION
+include_dirs = -I../.. -Iirt_x64/gen -I../../third_party/protobuf/src -Iirt_x64/gen/protoc_out -I../../third_party/perfetto -I../../third_party/perfetto/src/profiling/memory/include -I../../third_party/perfetto/include -Iirt_x64/gen/third_party/perfetto/build_config -Iirt_x64/gen/third_party/perfetto
+cflags = -Wall -Werror -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wshadow -fno-ident -fno-strict-aliasing -fcolor-diagnostics -fmerge-all-constants -U__STRICT_ANSI__ -integrated-as -m64 -msse3 -fasynchronous-unwind-tables -fomit-frame-pointer -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -Xclang -fdebug-compilation-dir -Xclang . -no-canonical-prefixes -Os -ffunction-sections -fdata-sections -fno-omit-frame-pointer -g2 -Xclang -fuse-ctor-homing -fvisibility=hidden -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -fno-exceptions -fno-rtti -fvisibility-inlines-hidden
+label_name = zero
+root_out_dir = irt_x64
+target_out_dir = irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats
+target_output_name = libzero
+
+build irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero.inputdeps.stamp: irt_x64_stamp ./tls_edit irt_x64/obj/third_party/perfetto/gn/gen_buildflags.stamp irt_x64/obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp
+build irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero/sys_stats.pbzero.o: irt_x64_cxx irt_x64/gen/third_party/perfetto/protos/perfetto/trace/sys_stats/sys_stats.pbzero.cc || irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero.inputdeps.stamp
+  source_file_part = sys_stats.pbzero.cc
+  source_name_part = sys_stats.pbzero
+
+build irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/libzero.a: irt_x64_alink irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero/sys_stats.pbzero.o || irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp irt_x64/obj/third_party/perfetto/protos/perfetto/common/libzero.a irt_x64/obj/third_party/perfetto/src/protozero/protozero.stamp irt_x64/obj/third_party/perfetto/include/perfetto/base/base.stamp irt_x64/obj/third_party/perfetto/include/perfetto/public/base.stamp irt_x64/obj/third_party/perfetto/include/perfetto/public/abi/base.stamp irt_x64/obj/third_party/perfetto/include/perfetto/protozero/protozero.stamp irt_x64/obj/third_party/perfetto/include/perfetto/public/protozero.stamp irt_x64/obj/third_party/perfetto/src/base/base.stamp irt_x64/obj/third_party/perfetto/include/perfetto/ext/base/base.stamp irt_x64/obj/third_party/perfetto/src/base/perfetto_base_default_platform.stamp
+  arflags =
+  output_extension = .a
+  output_dir = irt_x64/obj/third_party/perfetto/protos/perfetto/trace/sys_stats

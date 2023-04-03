@@ -1,0 +1,2 @@
+clang_x64_v8_arm64/gen/net/grit/net_resources.h
+clang_x64_v8_arm64/gen/net/net_resources.pak

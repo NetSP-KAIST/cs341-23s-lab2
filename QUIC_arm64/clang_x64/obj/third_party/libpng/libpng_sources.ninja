@@ -1,0 +1,61 @@
+defines = -DPNG_SET_OPTION_SUPPORTED -DPNG_INTEL_SSE_OPT=1 -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Iclang_x64/gen -I../../buildtools/third_party/libc++ -I../../third_party/libpng -I../../third_party/zlib
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-tautological-constant-out-of-range-compare
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libpng_sources
+target_out_dir = clang_x64/obj/third_party/libpng
+target_output_name = libpng_sources
+
+build clang_x64/obj/third_party/libpng/libpng_sources/png.o: clang_x64_cc ../../third_party/libpng/png.c
+  source_file_part = png.c
+  source_name_part = png
+build clang_x64/obj/third_party/libpng/libpng_sources/pngerror.o: clang_x64_cc ../../third_party/libpng/pngerror.c
+  source_file_part = pngerror.c
+  source_name_part = pngerror
+build clang_x64/obj/third_party/libpng/libpng_sources/pngget.o: clang_x64_cc ../../third_party/libpng/pngget.c
+  source_file_part = pngget.c
+  source_name_part = pngget
+build clang_x64/obj/third_party/libpng/libpng_sources/pngmem.o: clang_x64_cc ../../third_party/libpng/pngmem.c
+  source_file_part = pngmem.c
+  source_name_part = pngmem
+build clang_x64/obj/third_party/libpng/libpng_sources/pngpread.o: clang_x64_cc ../../third_party/libpng/pngpread.c
+  source_file_part = pngpread.c
+  source_name_part = pngpread
+build clang_x64/obj/third_party/libpng/libpng_sources/pngread.o: clang_x64_cc ../../third_party/libpng/pngread.c
+  source_file_part = pngread.c
+  source_name_part = pngread
+build clang_x64/obj/third_party/libpng/libpng_sources/pngrio.o: clang_x64_cc ../../third_party/libpng/pngrio.c
+  source_file_part = pngrio.c
+  source_name_part = pngrio
+build clang_x64/obj/third_party/libpng/libpng_sources/pngrtran.o: clang_x64_cc ../../third_party/libpng/pngrtran.c
+  source_file_part = pngrtran.c
+  source_name_part = pngrtran
+build clang_x64/obj/third_party/libpng/libpng_sources/pngrutil.o: clang_x64_cc ../../third_party/libpng/pngrutil.c
+  source_file_part = pngrutil.c
+  source_name_part = pngrutil
+build clang_x64/obj/third_party/libpng/libpng_sources/pngset.o: clang_x64_cc ../../third_party/libpng/pngset.c
+  source_file_part = pngset.c
+  source_name_part = pngset
+build clang_x64/obj/third_party/libpng/libpng_sources/pngtrans.o: clang_x64_cc ../../third_party/libpng/pngtrans.c
+  source_file_part = pngtrans.c
+  source_name_part = pngtrans
+build clang_x64/obj/third_party/libpng/libpng_sources/pngwio.o: clang_x64_cc ../../third_party/libpng/pngwio.c
+  source_file_part = pngwio.c
+  source_name_part = pngwio
+build clang_x64/obj/third_party/libpng/libpng_sources/pngwrite.o: clang_x64_cc ../../third_party/libpng/pngwrite.c
+  source_file_part = pngwrite.c
+  source_name_part = pngwrite
+build clang_x64/obj/third_party/libpng/libpng_sources/pngwtran.o: clang_x64_cc ../../third_party/libpng/pngwtran.c
+  source_file_part = pngwtran.c
+  source_name_part = pngwtran
+build clang_x64/obj/third_party/libpng/libpng_sources/pngwutil.o: clang_x64_cc ../../third_party/libpng/pngwutil.c
+  source_file_part = pngwutil.c
+  source_name_part = pngwutil
+build clang_x64/obj/third_party/libpng/libpng_sources/filter_sse2_intrinsics.o: clang_x64_cc ../../third_party/libpng/intel/filter_sse2_intrinsics.c
+  source_file_part = filter_sse2_intrinsics.c
+  source_name_part = filter_sse2_intrinsics
+build clang_x64/obj/third_party/libpng/libpng_sources/intel_init.o: clang_x64_cc ../../third_party/libpng/intel/intel_init.c
+  source_file_part = intel_init.c
+  source_name_part = intel_init
+
+build clang_x64/obj/third_party/libpng/libpng_sources.stamp: clang_x64_stamp clang_x64/obj/third_party/libpng/libpng_sources/png.o clang_x64/obj/third_party/libpng/libpng_sources/pngerror.o clang_x64/obj/third_party/libpng/libpng_sources/pngget.o clang_x64/obj/third_party/libpng/libpng_sources/pngmem.o clang_x64/obj/third_party/libpng/libpng_sources/pngpread.o clang_x64/obj/third_party/libpng/libpng_sources/pngread.o clang_x64/obj/third_party/libpng/libpng_sources/pngrio.o clang_x64/obj/third_party/libpng/libpng_sources/pngrtran.o clang_x64/obj/third_party/libpng/libpng_sources/pngrutil.o clang_x64/obj/third_party/libpng/libpng_sources/pngset.o clang_x64/obj/third_party/libpng/libpng_sources/pngtrans.o clang_x64/obj/third_party/libpng/libpng_sources/pngwio.o clang_x64/obj/third_party/libpng/libpng_sources/pngwrite.o clang_x64/obj/third_party/libpng/libpng_sources/pngwtran.o clang_x64/obj/third_party/libpng/libpng_sources/pngwutil.o clang_x64/obj/third_party/libpng/libpng_sources/filter_sse2_intrinsics.o clang_x64/obj/third_party/libpng/libpng_sources/intel_init.o || clang_x64/libchrome_zlib.so.TOC

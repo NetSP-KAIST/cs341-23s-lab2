@@ -1,0 +1,52 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1
+include_dirs = -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/libvpx/source/config -I../../third_party/libvpx/source/config/linux/x64 -I../../third_party/libvpx/source/libvpx
+cflags = -mavx2 -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-conversion -Wno-parentheses-equality -Wno-unused-function
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libvpx_intrinsics_avx2
+target_out_dir = clang_x64_v8_arm64/obj/third_party/libvpx
+target_output_name = libvpx_intrinsics_avx2
+
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vp9_error_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vp9/encoder/x86/vp9_error_avx2.c
+  source_file_part = vp9_error_avx2.c
+  source_name_part = vp9_error_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vp9_quantize_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vp9/encoder/x86/vp9_quantize_avx2.c
+  source_file_part = vp9_quantize_avx2.c
+  source_name_part = vp9_quantize_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/avg_intrin_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/avg_intrin_avx2.c
+  source_file_part = avg_intrin_avx2.c
+  source_name_part = avg_intrin_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_convolve_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/highbd_convolve_avx2.c
+  source_file_part = highbd_convolve_avx2.c
+  source_name_part = highbd_convolve_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_quantize_intrin_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/highbd_quantize_intrin_avx2.c
+  source_file_part = highbd_quantize_intrin_avx2.c
+  source_name_part = highbd_quantize_intrin_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_sad4d_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/highbd_sad4d_avx2.c
+  source_file_part = highbd_sad4d_avx2.c
+  source_name_part = highbd_sad4d_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_sad_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/highbd_sad_avx2.c
+  source_file_part = highbd_sad_avx2.c
+  source_name_part = highbd_sad_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/loopfilter_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/loopfilter_avx2.c
+  source_file_part = loopfilter_avx2.c
+  source_name_part = loopfilter_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/quantize_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/quantize_avx2.c
+  source_file_part = quantize_avx2.c
+  source_name_part = quantize_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/sad4d_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/sad4d_avx2.c
+  source_file_part = sad4d_avx2.c
+  source_name_part = sad4d_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/sad_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/sad_avx2.c
+  source_file_part = sad_avx2.c
+  source_name_part = sad_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/subtract_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/subtract_avx2.c
+  source_file_part = subtract_avx2.c
+  source_name_part = subtract_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/variance_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/variance_avx2.c
+  source_file_part = variance_avx2.c
+  source_name_part = variance_avx2
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vpx_subpixel_8t_intrin_avx2.o: clang_x64_v8_arm64_cc ../../third_party/libvpx/source/libvpx/vpx_dsp/x86/vpx_subpixel_8t_intrin_avx2.c
+  source_file_part = vpx_subpixel_8t_intrin_avx2.c
+  source_name_part = vpx_subpixel_8t_intrin_avx2
+
+build clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2.stamp: clang_x64_v8_arm64_stamp clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vp9_error_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vp9_quantize_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/avg_intrin_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_convolve_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_quantize_intrin_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_sad4d_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/highbd_sad_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/loopfilter_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/quantize_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/sad4d_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/sad_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/subtract_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/variance_avx2.o clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_intrinsics_avx2/vpx_subpixel_8t_intrin_avx2.o || clang_x64_v8_arm64/obj/third_party/libvpx/libvpx_x86_64_headers.stamp

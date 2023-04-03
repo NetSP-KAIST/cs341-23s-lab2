@@ -1,0 +1,70 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DCR_CLANG_REVISION=\"llvmorg-17-init-4759-g547e3456-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=9b076b80036741c3a3c29ab32fb992efb30223c5 -D_LIBCPP_ENABLE_ASSERTIONS=1 -DCR_SYSROOT_KEY=20221105T211506Z-0 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DLIBXSLT_STATIC -DU_USING_ICU_NAMESPACE=0 -DU_ENABLE_DYLOAD=0 -DUSE_CHROMIUM_ICU=1 -DU_ENABLE_TRACING=1 -DU_ENABLE_RESOURCE_TRACING=0 -DICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE
+include_dirs = -I../../third_party/libxslt/linux -I../.. -Iclang_x64_v8_arm64/gen -I../../buildtools/third_party/libc++ -I../../third_party/libxslt/src -I../../third_party/libxml/src/include -I../../third_party/libxml/linux/include -I../../third_party/icu/source/common -I../../third_party/icu/source/i18n
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing --param=ssp-buffer-size=4 -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Werror -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wenum-compare-conditional -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-pointer-sign -Wno-unused-function -DLIBXML_STATIC=
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = libxslt
+target_out_dir = clang_x64_v8_arm64/obj/third_party/libxslt
+target_output_name = libxslt
+
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/attributes.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/attributes.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = attributes.c
+  source_name_part = attributes
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/attrvt.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/attrvt.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = attrvt.c
+  source_name_part = attrvt
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/documents.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/documents.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = documents.c
+  source_name_part = documents
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/extensions.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/extensions.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = extensions.c
+  source_name_part = extensions
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/extra.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/extra.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = extra.c
+  source_name_part = extra
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/functions.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/functions.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = functions.c
+  source_name_part = functions
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/imports.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/imports.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = imports.c
+  source_name_part = imports
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/keys.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/keys.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = keys.c
+  source_name_part = keys
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/namespaces.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/namespaces.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = namespaces.c
+  source_name_part = namespaces
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/numbers.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/numbers.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = numbers.c
+  source_name_part = numbers
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/pattern.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/pattern.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = pattern.c
+  source_name_part = pattern
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/preproc.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/preproc.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = preproc.c
+  source_name_part = preproc
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/security.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/security.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = security.c
+  source_name_part = security
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/templates.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/templates.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = templates.c
+  source_name_part = templates
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/transform.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/transform.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = transform.c
+  source_name_part = transform
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/variables.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/variables.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = variables.c
+  source_name_part = variables
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xslt.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/xslt.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xslt.c
+  source_name_part = xslt
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xsltlocale.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/xsltlocale.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xsltlocale.c
+  source_name_part = xsltlocale
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xsltutils.o: clang_x64_v8_arm64_cc ../../third_party/libxslt/src/libxslt/xsltutils.c || clang_x64_v8_arm64/obj/third_party/icu/copy_icudata.stamp
+  source_file_part = xsltutils.c
+  source_name_part = xsltutils
+
+build clang_x64_v8_arm64/obj/third_party/libxslt/libxslt.a: clang_x64_v8_arm64_alink clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/attributes.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/attrvt.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/documents.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/extensions.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/extra.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/functions.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/imports.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/keys.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/namespaces.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/numbers.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/pattern.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/preproc.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/security.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/templates.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/transform.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/variables.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xslt.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xsltlocale.o clang_x64_v8_arm64/obj/third_party/libxslt/libxslt/xsltutils.o || clang_x64_v8_arm64/obj/third_party/libxml/libxml2.a clang_x64_v8_arm64/libicuuc.so.TOC clang_x64_v8_arm64/libchrome_zlib.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = clang_x64_v8_arm64/obj/third_party/libxslt
